@@ -16,24 +16,24 @@ def update_readme_index(processed_videos: List[Dict[str, Any]], total_catalog_co
     pct = (len(processed_videos) / total_catalog_count * 100) if total_catalog_count > 0 else 0
 
     lines = [
-        f"# ?? YT_BrockMesarich ? Veille & Transcriptions Multimodales",
+        f"# 🎬 YT_BrockMesarich — Veille & Transcriptions Multimodales",
         "",
-        f"> Base de connaissances et transcriptions int?grales mot pour mot en fran?ais (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'?cran (via `gemini-3.5-flash-lite`) avec captures d'?cran cl?s et fiches interactives HTML de la cha?ne **[{CHANNEL_NAME}]({CHANNEL_URL})** ({CHANNEL_HANDLE}).",
+        f"> Base de connaissances et transcriptions intégrales mot pour mot en français (audio via `whisper-v3-large-turbo`) et descriptions visuelles d'écran (via `gemini-3.5-flash-lite`) avec captures d'écran clés et fiches interactives HTML de la chaîne **[{CHANNEL_NAME}]({CHANNEL_URL})** ({CHANNEL_HANDLE}).",
         "",
-        "## ?? Organisation des Fichiers",
-        "- Tous les rapports `.md` et pages interactives `.html` sont centralis?s dans le dossier d?di? : **`YT_BrockMesarich_Transcript/`**",
-        "- Les captures d'?cran par timeline sont archiv?es dans : **`screenshots/<video_id>/`**",
+        "## 📁 Organisation des Fichiers",
+        "- Tous les rapports `.md` et pages interactives `.html` sont centralisés dans le dossier dédié : **`YT_BrockMesarich_Transcript/`**",
+        "- Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**",
         "",
-        "## ?? Statistiques de l'Automatisation",
-        f"- **Vid?os trait?es** : `{len(processed_videos)} / {total_catalog_count}` (`{pct:.1f}%`)",
-        f"- **Mod?le Audio & Synth?se** : `whisper-v3-large-turbo` (100% Verbatim Fran?ais int?gral mot pour mot)",
-        f"- **Mod?le Vision d'?cran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)",
+        "## 📊 Statistiques de l'Automatisation",
+        f"- **Vidéos traitées** : `{len(processed_videos)} / {total_catalog_count}` (`{pct:.1f}%`)",
+        f"- **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)",
+        f"- **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)",
         f"- **Signature de traitement** : `{MODEL_SIGNATURE}`",
-        f"- **Mode Op?ratoire** : Z?ro coquille vide (Mode X - Sinc?rit? Technique Absolue)",
+        f"- **Mode Opératoire** : Zéro coquille vide (Mode X - Sincérité Technique Absolue)",
         "",
-        "## ?? Index Exhaustif des Vid?os Analys?es",
+        "## 📑 Index Exhaustif des Vidéos Analysées",
         "",
-        "| Date | R?f. Vid?o | Titre Fran?ais / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |",
+        "| Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |",
         "| :--- | :--- | :--- | :--- | :--- | :---: |"
     ]
 
@@ -58,12 +58,12 @@ def update_readme_index(processed_videos: List[Dict[str, Any]], total_catalog_co
 
     lines.append("")
     lines.append("---")
-    lines.append("*G?n?r? automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*")
+    lines.append("*Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*")
 
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
 
-    print(f"[GitManager] README.md mis ? jour ({len(processed_videos)} vid?os index?es).", flush=True)
+    print(f"[GitManager] README.md mis à jour ({len(processed_videos)} vidéos indexées).", flush=True)
 
 def commit_and_push_repo(commit_msg: str) -> bool:
     try:
@@ -74,20 +74,20 @@ def commit_and_push_repo(commit_msg: str) -> bool:
             cwd=REPO_DIR, capture_output=True, text=True, check=True
         )
         if not status_res.stdout.strip():
-            print("[GitManager] Aucun nouveau changement ? commiter.", flush=True)
+            print("[GitManager] Aucun nouveau changement à commiter.", flush=True)
             return True
 
         subprocess.run(
             ["git", "commit", "-m", commit_msg],
             cwd=REPO_DIR, check=True, capture_output=True
         )
-        print(f"[GitManager] Commit cr?? : '{commit_msg}'", flush=True)
+        print(f"[GitManager] Commit créé : '{commit_msg}'", flush=True)
 
         subprocess.run(
             ["git", "push", "origin", "main"],
             cwd=REPO_DIR, check=True, capture_output=True
         )
-        print(f"[GitManager] ?? D?ploiement GitHub r?ussi vers origin/main.", flush=True)
+        print(f"[GitManager] 🚀 Déploiement GitHub réussi vers origin/main.", flush=True)
         return True
     except subprocess.CalledProcessError as e:
         print(f"[GitManager] Erreur Git (code {e.returncode}) : {e.stderr}", flush=True)

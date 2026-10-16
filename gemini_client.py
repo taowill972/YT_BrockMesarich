@@ -25,14 +25,14 @@ def _load_keys(filepath: Path) -> List[str]:
             keys = [k.strip() for k in f if k.strip() and not k.startswith("#")]
         if keys:
             return keys
-    raise ValueError(f"Fichier de cl?s introuvable ou vide : {filepath}")
+    raise ValueError(f"Fichier de clés introuvable ou vide : {filepath}")
 
 _GEMINI_KEYS = _load_keys(GEMINI_KEYS_FILE)
 _KEY_IDX = [0]
 STATS = {"api_calls": 0, "rotations": 0, "failures": 0}
 
 def call_gemini(parts: List[Dict[str, Any]], model: str = VISUAL_GEMINI_MODEL, retries: int = 5) -> str:
-    """Appel r?silient avec rotation automatique sur pool de cl?s et repli mod?le."""
+    """Appel résilient avec rotation automatique sur pool de clés et repli modèle."""
     models_to_try = [model, "gemini-3.5-flash", "gemini-3.8-flash"]
 
     for m in models_to_try:
@@ -66,10 +66,10 @@ def call_gemini(parts: List[Dict[str, Any]], model: str = VISUAL_GEMINI_MODEL, r
 
 def translate_title_fr(title_en: str) -> str:
     prompt = (
-        f"Tu es un traducteur expert en vulgarisation IA, automatisation et outils no-code pour la cha?ne {CHANNEL_NAME}.\n"
-        "Traduis ce titre de vid?o YouTube de l'anglais vers un fran?ais captivant, ?l?gant, professionnel et fid?le.\n"
-        "Garde les noms de marques, protocoles et outils intacts (Claude, Grok, ChatGPT, Gemini, Make, n8n, Zapier, Python, etc.).\n"
-        "R?ponds STRICTEMENT avec le titre traduit uniquement, sans guillemets ni fioritures.\n\n"
+        f"Tu es un traducteur expert en vulgarisation financière, vulgarisation de l'IA, automatisation et outils no-code et agents IA pour la chaîne {CHANNEL_NAME}.\n"
+        "Traduis ce titre de vidéo YouTube de l'anglais vers un français captivant, élégant, professionnel et fidèle.\n"
+        "Garde les noms de marques, protocoles et outils intacts (Claude Code, Grok Bots, Muse Wonder, Pine Script, TradingView, Blofin, WEEX, Python, etc.).\n"
+        "Réponds STRICTEMENT avec le titre traduit uniquement, sans guillemets ni fioritures.\n\n"
         f"Titre : {title_en}"
     )
     res = call_gemini([{"text": prompt}], model=AUDIO_GEMINI_MODEL)
@@ -85,20 +85,42 @@ def process_multimodal_block(
         "verbatim_fr": text_en,
         "valid_frame_indices": [],
         "frame_captions": {},
-        "interface": "Pr?sentation ou face-cam?ra explicatif de Brock Mesarich sans interface logicielle partag?e.",
-        "contenu": "Explications orales des concepts IA, m?thodologie et cas d'usage pratiques.",
-        "action": "Explications face cam?ra et mise en contexte des outils IA."
+        "interface": "Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.",
+        "contenu": "Explications orales des stratégies et mise en contexte méthodologique du marché.",
+        "action": "Explications face caméra et analyse conceptuelle des marchés."
     }
 
-    # 1. Traduction / Transcription Verbatim int?grale en Fran?ais
-    if text_en and text_en.strip():
+    # 1. Audio Verbatim mot à mot intégral en Français
+    if audio_slice_path and audio_slice_path.exists() and audio_slice_path.stat().st_size > 0:
+        try:
+            with open(audio_slice_path, "rb") as af:
+                b64_audio = base64.b64encode(af.read()).decode("utf-8")
+            audio_prompt = (
+                f"Tu es un transcripteur et traducteur expert pour la chaîne YouTube '{CHANNEL_NAME}' (segment {timestamp_str}).\n"
+                "Écoute attentivement le segment audio ci-joint.\n"
+                "CONSIGNE STRICTE :\n"
+                "- Transcris et traduis ce discours intégralement mot pour mot en français (100% en français, fidèle, sans aucun résumé, sans omission ni paraphrase).\n"
+                "- Conserve les termes techniques de trading, noms de modèles (Claude Code, Grok Bots, Pine Script, chandeliers, stop-loss, take-profit...) et chiffres exacts.\n"
+                "- Si c'est un silence ou de la musique sans parole, écris : [Séquence sonore / Musique d'ambiance].\n"
+                "Réponds uniquement avec le texte complet en français, sans aucun commentaire méta."
+            )
+            res_audio = call_gemini([
+                {"inline_data": {"mime_type": "audio/mp3", "data": b64_audio}},
+                {"text": audio_prompt}
+            ], model=AUDIO_GEMINI_MODEL)
+            if res_audio and res_audio.strip():
+                default_res["verbatim_fr"] = res_audio.strip()
+        except Exception as e:
+            print(f"[Gemini-Client] Erreur transcription audio directe : {e}", flush=True)
+
+    elif text_en and text_en.strip():
         audio_prompt = (
-            f"Tu es un traducteur et transcripteur professionnel pour la cha?ne {CHANNEL_NAME} (segment {timestamp_str}).\n"
-            f"Voici le discours audio anglais exact prononc? dans ce segment :\n"
+            f"Tu es un traducteur et transcripteur professionnel pour la chaîne {CHANNEL_NAME} (segment {timestamp_str}).\n"
+            f"Voici le discours audio anglais exact prononcé dans ce segment :\n"
             f'"""\n{text_en}\n"""\n\n'
-            "Traduis ce discours mot pour mot int?gralement en fran?ais, naturel, fluide et sans AUCUNE coupure, omission ni r?sum?.\n"
-            "Si c'est musical ou sans parole, indique : [S?quence sonore / Ambiance musicale].\n"
-            "R?ponds uniquement avec le texte fran?ais complet mot pour mot."
+            "Traduis ce discours mot pour mot intégralement en français, naturel et sans AUCUNE coupure ni résumé.\n"
+            "Si c'est musical ou sans parole, indique : [Séquence sonore / Ambiance musicale].\n"
+            "Réponds uniquement avec le texte français complet mot pour mot."
         )
         for _ in range(3):
             verbatim_fr = call_gemini([{"text": audio_prompt}], model=AUDIO_GEMINI_MODEL)
@@ -114,21 +136,21 @@ def process_multimodal_block(
 
     img_list_txt = "\n".join([f"- Image #{i+1} : horodatage @ {cf.get('timestamp_str', '')}" for i, cf in enumerate(candidate_frames)])
     visual_prompt = (
-        f"Tu es un analyste visuel pour la cha?ne {CHANNEL_NAME} (segment {timestamp_str}).\n"
+        f"Tu es un analyste visuel pour la chaîne {CHANNEL_NAME} (segment {timestamp_str}).\n"
         f"Contexte audio du segment : {default_res['verbatim_fr'][:300]}\n\n"
-        f"Tu as re?u {n_imgs} capture(s) d'?cran candidate(s) :\n{img_list_txt}\n\n"
-        "DIRECTIVE DE S?LECTION D'IMAGES :\n"
-        "- Retiens imp?rativement les images de d?monstrations r?elles : interfaces de mod?les IA (ChatGPT, Claude, Grok, Gemini), plateformes d'automatisation (n8n, Make, Zapier), outils de productivit?, ?diteurs de prompts, dashboards, workflows visuels, configurations ou pages web d'outils.\n"
-        "- ?limine les images purement floues ou les gros plans statiques du pr?sentateur qui parle sans aucun logiciel ni ?l?ment visuel pertinent ? l'?cran.\n\n"
-        "Format STRICT obligatoire de ta r?ponse :\n"
-        "[VALID_IMAGES] <num?ros s?par?s par virgule (ex: 1, 2) ou AUCUNE>\n"
+        f"Tu as reçu {n_imgs} capture(s) d'écran candidate(s) :\n{img_list_txt}\n\n"
+        "DIRECTIVE DE SÉLECTION D'IMAGES :\n"
+        "- Retiens impérativement les images de démonstrations réelles : graphiques TradingView, code Pine Script / Python, terminaux de commandes (Claude Code, Grok Bots, scripts CLI), interfaces de brokers/échanges (Blofin, WEEX, Bybit), backtests, métriques et carnets d'ordres.\n"
+        "- Élimine les images purement floues ou les gros plans statiques du présentateur qui parle sans aucun graphique ni élément visuel pertinent.\n\n"
+        "Format STRICT obligatoire de ta réponse :\n"
+        "[VALID_IMAGES] <numéros séparés par virgule (ex: 1, 2) ou AUCUNE>\n"
     )
     for i in range(n_imgs):
-        visual_prompt += f"[DESC_IMAGE_{i+1}] <l?gende concise d?crivant pr?cis?ment ce qui est visible ? l'?cran>\n"
+        visual_prompt += f"[DESC_IMAGE_{i+1}] <légende concise décrivant précisément ce qui est visible à l'écran>\n"
     visual_prompt += (
-        "[INTERFACE] <logiciels, terminaux, applications web, dashboards ou sites montr?s>\n"
-        "[CONTENU] <prompts, param?tres, workflows, code ou donn?es affich?es ? l'?cran>\n"
-        "[ACTION] <action, manipulation ou d?monstration effectu?e par l'auteur>"
+        "[INTERFACE] <logiciels, terminaux, graphiques, courtiers ou sites web montrés>\n"
+        "[CONTENU] <indicateurs techniques, code source, prompts, configurations ou données chiffrées affichées à l'écran>\n"
+        "[ACTION] <action, analyse graphique, exécution de backtest ou manipulation effectuée>"
     )
 
     visual_parts: List[Dict[str, Any]] = [{"text": visual_prompt}]
@@ -213,31 +235,31 @@ def process_multimodal_block(
     return res
 
 def generate_executive_summary(video_title: str, full_verbatim_fr: str, tools_detected: List[str]) -> str:
-    tools_str = ", ".join(tools_detected) if tools_detected else "Outils IA, Agents, Automatisation, Productivit?"
+    tools_str = ", ".join(tools_detected) if tools_detected else "Claude, ChatGPT, Grok, Gemini, Make, n8n, Zapier, Prompt Engineering"
     prompt = (
-        f"Tu es un analyste expert en intelligence artificielle, automatisation no-code et technologies ?mergentes pour la cha?ne {CHANNEL_NAME}.\n"
-        f"Vid?o intitul?e : ? {video_title} ?.\n"
-        f"Technologies, outils & concepts abord?s : {tools_str}\n\n"
-        f"Transcription int?grale de la vid?o en fran?ais :\n\"\"\"\n{full_verbatim_fr[:12000]}\n\"\"\"\n\n"
-        "R?dige une synth?se ex?cutive structur?e, dense, fluide et tr?s riche en enseignements concrets en fran?ais.\n"
+        f"Tu es un analyste expert en trading quantitatif, intelligence artificielle et automatisation de stratégies pour la chaîne {CHANNEL_NAME}.\n"
+        f"Vidéo intitulée : « {video_title} ».\n"
+        f"Technologies, outils & concepts abordés : {tools_str}\n\n"
+        f"Transcription intégrale de la vidéo en français :\n\"\"\"\n{full_verbatim_fr[:12000]}\n\"\"\"\n\n"
+        "Rédige une synthèse exécutive structurée, dense, fluide et très riche en enseignements concrets en français.\n"
         "Tu DOIS STRICTEMENT employer ces titres de niveau 3 exacts :\n"
-        "### ?? R?sum?\n"
-        "(2 ? 3 paragraphes immersifs et pr?cis expliquant le c?ur de la vid?o, les outils d?cortiqu?s et les d?monstrations concr?tes pr?sent?es)\n\n"
-        "### ??? Outils, Mod?les & Logiciels Pr?sent?s\n"
-        "(Liste ? puces exhaustive avec nom de l'outil/mod?le/plateforme en gras et une phrase explicative percutante)\n\n"
-        "### ?? Points Cl?s & Enseignements Strat?giques\n"
-        "(8 ? 12 points cl?s d?taill?s, analytiques et actionnables r?sumant les m?thodologies, astuces de prompting, gains de productivit? et cas d'usage pr?sent?s)"
+        "### 💡 Résumé\n"
+        "(2 à 3 paragraphes immersifs et précis expliquant le cœur de la vidéo, les indicateurs et stratégies décortiqués, et les démonstrations de trading présentées)\n\n"
+        "### 🛠️ Outils, Modèles & Logiciels Présentés\n"
+        "(Liste à puces exhaustive avec nom de l'outil/modèle/plateforme en gras et une phrase explicative percutante)\n\n"
+        "### 🔑 Points Clés & Enseignements Stratégiques\n"
+        "(8 à 12 points clés détaillés, analytiques et actionnables résumant les configurations graphiques, règles de risk management, points d'entrée/sortie et méthodologies présentées)"
     )
 
     res = call_gemini([{"text": prompt}], model=AUDIO_GEMINI_MODEL)
     if not res:
         res = (
-            "### ?? R?sum?\n"
-            f"Dans cette vid?o intitul?e **{video_title}**, Brock Mesarich pr?sente des solutions d'intelligence artificielle et d'automatisation accessibles et pratiques.\n\n"
-            "### ??? Outils, Mod?les & Logiciels Pr?sent?s\n"
-            "- **Outils IA & Automatisation** : D?monstration pratique et prise en main ?tape par ?tape.\n\n"
-            "### ?? Points Cl?s & Enseignements Strat?giques\n"
-            "- Adoption pragmatique des agents et outils IA pour booster sa productivit? quotidienne.\n"
-            "- M?thodes de prompting et flux de travail sans comp?tences avanc?es en programmation."
+            "### 💡 Résumé\n"
+            f"Dans cette vidéo intitulée **{video_title}**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.\n\n"
+            "### 🛠️ Outils, Modèles & Logiciels Présentés\n"
+            "- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.\n\n"
+            "### 🔑 Points Clés & Enseignements Stratégiques\n"
+            "- Respect rigoureux du ratio risque/rendement et du money management.\n"
+            "- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents."
         )
     return res

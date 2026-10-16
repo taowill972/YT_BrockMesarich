@@ -95,10 +95,10 @@ def audit_generated_content(
     if md_path.exists():
         content = md_path.read_text(encoding="utf-8", errors="ignore")
         required_patterns = [
-            ("Synth?se Ex?cutive", r"##\s*.*Synth.*Ex.*cutiv"),
-            ("R?sum?", r"###\s*.*R.*sum"),
+            ("Synthèse Exécutive", r"##\s*.*Synth.*Ex.*cutiv"),
+            ("Résumé", r"###\s*.*R.*sum"),
             ("Outils", r"###\s*.*Outils"),
-            ("Points Cl?s", r"###\s*.*Points\s+Cl"),
+            ("Points Clés", r"###\s*.*Points\s+Cl"),
             ("Chronologie", r"##\s*.*Chronologie"),
             ("Audio Verbatim", r"\*\*.*Audio.*(Transcription|Verbatim)"),
             ("Analyse Visuelle", r"\*\*.*Analyse\s+Visuelle")
@@ -165,7 +165,7 @@ def _process_single_block_task(
 
             shutil.copyfile(src_path, final_path)
             rel_path = f"../screenshots/{video_id}/{final_filename}"
-            cap_text = captions_map.get(v_idx, f"D?monstration ? l'?cran @ {cf['timestamp_str']}")
+            cap_text = captions_map.get(v_idx, f"Démonstration à l'écran @ {cf['timestamp_str']}")
 
             saved_block_screenshots.append({
                 "path": rel_path,
@@ -177,7 +177,7 @@ def _process_single_block_task(
         "index": b_idx + 1,
         "start_str": block["start_str"],
         "end_str": block["end_str"],
-        "timestamp_header": f"?? `{t_str}` | Segment #{b_idx+1:02d}",
+        "timestamp_header": f"⏱️ `{t_str}` | Segment #{b_idx+1:02d}",
         "verbatim_fr": block_analysis["verbatim_fr"],
         "interface": block_analysis["interface"],
         "contenu": block_analysis["contenu"],
@@ -190,40 +190,40 @@ def process_single_video(
     catalog_title: Optional[str] = None
 ) -> Dict[str, Any]:
     print(f"\n=======================================================", flush=True)
-    print(f"?? [Pipeline] D?but du traitement de la vid?o : {video_id}", flush=True)
-    print(f"??  Mod?le Audio/Visuel : {MODEL_SIGNATURE}", flush=True)
+    print(f"🎬 [Pipeline] Début du traitement de la vidéo : {video_id}", flush=True)
+    print(f"⚙️  Modèle Audio/Visuel : {MODEL_SIGNATURE}", flush=True)
     print(f"=======================================================", flush=True)
 
     video_work_dir = WORK_DIR / video_id
     video_work_dir.mkdir(parents=True, exist_ok=True)
     video_target_file = video_work_dir / f"{video_id}.mp4"
 
-    # 1. M?tadonn?es
+    # 1. Métadonnées
     meta = None
     for trial in range(3):
         try:
-            print(f"[Pipeline] Extraction des m?tadonn?es YouTube (Essai {trial+1}/3)...", flush=True)
+            print(f"[Pipeline] Extraction des métadonnées YouTube (Essai {trial+1}/3)...", flush=True)
             meta = extract_video_metadata(video_id)
             break
         except Exception as e:
-            print(f"[Pipeline] Avertissement m?tadonn?es : {e}", flush=True)
+            print(f"[Pipeline] Avertissement métadonnées : {e}", flush=True)
             time.sleep(2)
 
-    title_en = (meta.get("title") if meta else None) or catalog_title or f"Vid?o {video_id}"
+    title_en = (meta.get("title") if meta else None) or catalog_title or f"Vidéo {video_id}"
     upload_date = (meta.get("upload_date") if meta else None) or "20260101"
     duration = (meta.get("duration") if meta else None) or 0
     duration_str = format_timestamp(duration)
 
     print(f"[Pipeline] Titre original (EN) : {title_en}", flush=True)
-    print(f"[Pipeline] Date : {upload_date} | Dur?e : {duration_str}", flush=True)
+    print(f"[Pipeline] Date : {upload_date} | Durée : {duration_str}", flush=True)
 
     # 2. Traduction du titre
     title_fr = translate_title_fr(title_en)
     print(f"[Pipeline] Titre traduit (FR) : {title_fr}", flush=True)
 
-    # 3. T?l?chargement vid?o optimis? (authentique pour chaque video_id)
+    # 3. Téléchargement vidéo optimisé (authentique pour chaque video_id)
     if not video_target_file.exists() or video_target_file.stat().st_size == 0:
-        print(f"[Pipeline] T?l?chargement vid?o r?elle (360p/480p) pour {video_id}...", flush=True)
+        print(f"[Pipeline] Téléchargement vidéo réelle (360p/480p) pour {video_id}...", flush=True)
         dl_cmd = [
             "yt-dlp",
             "--proxy", PROXY,
@@ -234,7 +234,7 @@ def process_single_video(
         ]
         res_dl = subprocess.run(dl_cmd, capture_output=True, text=True)
         if res_dl.returncode != 0 or not video_target_file.exists() or video_target_file.stat().st_size == 0:
-            print(f"[Pipeline] Repli t?l?chargement avec format alternatif...", flush=True)
+            print(f"[Pipeline] Repli téléchargement avec format alternatif...", flush=True)
             dl_cmd_fallback = [
                 "yt-dlp",
                 "--proxy", PROXY,
@@ -248,9 +248,9 @@ def process_single_video(
     # 4. Transcription Faster-Whisper large-v3-turbo
     whisper_res = transcribe_audio_english(str(video_target_file))
     blocks = whisper_res.get("blocks", [])
-    print(f"[Pipeline] Transcription Faster-Whisper termin?e : {len(blocks)} blocs temporels g?n?r?s.", flush=True)
+    print(f"[Pipeline] Transcription Faster-Whisper terminée : {len(blocks)} blocs temporels générés.", flush=True)
 
-    # 5. Extraction, d?tection de frames significatives & analyse multimodale concurrente
+    # 5. Extraction, détection de frames significatives & analyse multimodale concurrente
     video_screens_dir = SCREENSHOTS_DIR / video_id
     video_screens_dir.mkdir(parents=True, exist_ok=True)
     temp_frames_dir = video_work_dir / "temp_frames"
@@ -279,16 +279,16 @@ def process_single_video(
                 res_block = future.result()
                 processed_segments_map[b_idx] = res_block
                 n_done = len(processed_segments_map)
-                print(f"[Pipeline] Segment #{b_idx+1:02d} termin? ({n_done}/{len(blocks)} faits).", flush=True)
+                print(f"[Pipeline] Segment #{b_idx+1:02d} terminé ({n_done}/{len(blocks)} faits).", flush=True)
             except Exception as e:
                 print(f"[Pipeline] Erreur segment #{b_idx+1} : {e}", flush=True)
 
     # Reconstituer les segments dans l'ordre chronologique
     processed_segments = [processed_segments_map[i] for i in range(len(blocks)) if i in processed_segments_map]
     total_saved_screenshots = sum(len(s.get("screenshots", [])) for s in processed_segments)
-    print(f"[Pipeline] Total captures d'?cran significatives retenues : {total_saved_screenshots}", flush=True)
+    print(f"[Pipeline] Total captures d'écran significatives retenues : {total_saved_screenshots}", flush=True)
 
-    # 6. Synth?se ex?cutive
+    # 6. Synthèse exécutive
     full_verbatim_text = "\n".join([s["verbatim_fr"] for s in processed_segments])
     tools_detected_set = set(["Claude", "ChatGPT", "Grok", "Gemini", "Make", "n8n", "Zapier", "Prompt Engineering"])
     exec_summary_md = generate_executive_summary(
@@ -304,51 +304,51 @@ def process_single_video(
     md_filename = f"{base_filename}.md"
     html_filename = f"{base_filename}.html"
 
-    # Enregistrement dans le sous-dossier d?di? TRANSCRIPTS_DIR
+    # Enregistrement dans le sous-dossier dédié TRANSCRIPTS_DIR
     md_output_path = TRANSCRIPTS_DIR / md_filename
     html_output_path = TRANSCRIPTS_DIR / html_filename
 
-    # 8. Assemblage Markdown calqu? sur l'exemple d'excellence
+    # 8. Assemblage Markdown calqué sur l'exemple d'excellence
     md_lines = [
-        f"# ?? {title_en}",
+        f"# 🎬 {title_en}",
         "",
-        f"> **Cha?ne** : [{CHANNEL_NAME}]({CHANNEL_URL})  ",
+        f"> **Chaîne** : [{CHANNEL_NAME}]({CHANNEL_URL})  ",
         f"> **Lien YouTube** : [https://www.youtube.com/watch?v={video_id}](https://www.youtube.com/watch?v={video_id})  ",
         f"> **Date de publication** : {upload_date}  ",
-        f"> **Dur?e** : {duration_str}  ",
-        f"> **Identifiant vid?o** : `{video_id}`  ",
+        f"> **Durée** : {duration_str}  ",
+        f"> **Identifiant vidéo** : `{video_id}`  ",
         f"> **Transcription & Analyse** : `{MODEL_SIGNATURE}`  ",
         "",
         "---",
         "",
-        "## ?? Synth?se Ex?cutive & Outils",
+        "## 📌 Synthèse Exécutive & Outils",
         "",
         exec_summary_md,
         "",
         "---",
         "",
-        "## ?? Chronologie & Transcription Compl?te Audio & Visuelle (Mot pour Mot)",
+        "## ⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)",
         ""
     ]
 
     for s in processed_segments:
         md_lines.append(f"### {s['timestamp_header']}")
         md_lines.append("")
-        md_lines.append("**?? Audio (Transcription Int?grale Mot pour Mot en Fran?ais) :**")
+        md_lines.append("**🔊 Audio (Transcription Intégrale Mot pour Mot en Français) :**")
         md_lines.append(f"> {s['verbatim_fr']}")
         md_lines.append("")
-        md_lines.append(f"**??? Analyse Visuelle d'?cran ({VISUAL_GEMINI_MODEL}) :**")
+        md_lines.append(f"**👁️ Analyse Visuelle d'Écran ({VISUAL_GEMINI_MODEL}) :**")
         md_lines.append(f"**Interface & Outils** : {s['interface']}")
         md_lines.append("")
         md_lines.append(f"**Contenu textuel & Code** : {s['contenu']}")
         md_lines.append("")
-        md_lines.append(f"**Action / D?monstration** : {s['action']}")
+        md_lines.append(f"**Action / Démonstration** : {s['action']}")
         md_lines.append("")
 
         if s["screenshots"]:
             for sc in s["screenshots"]:
                 md_lines.append(f"![{sc['caption']}]({sc['path']})")
-                md_lines.append(f"*?? {sc['timestamp']} ? {sc['caption']}*")
+                md_lines.append(f"*⏱️ {sc['timestamp']} — {sc['caption']}*")
                 md_lines.append("")
 
         md_lines.append("---")
@@ -360,17 +360,17 @@ def process_single_video(
     # 9. Assemblage HTML interactif moderne
     tools_list = []
     key_points = []
-    if "### ??? Outils" in exec_summary_md:
-        sub = exec_summary_md.split("### ??? Outils")[1]
-        if "### ??" in sub:
-            sub = sub.split("### ??")[0]
+    if "### 🛠️ Outils" in exec_summary_md:
+        sub = exec_summary_md.split("### 🛠️ Outils")[1]
+        if "### 🔑" in sub:
+            sub = sub.split("### 🔑")[0]
         for l in sub.splitlines():
             m = re.search(r'\*\*(.*?)\*\*', l)
             if m:
                 tools_list.append(m.group(1))
 
-    if "### ?? Points Cl?s" in exec_summary_md:
-        sub_k = exec_summary_md.split("### ?? Points Cl?s")[1]
+    if "### 🔑 Points Clés" in exec_summary_md:
+        sub_k = exec_summary_md.split("### 🔑 Points Clés")[1]
         for l in sub_k.splitlines():
             l_clean = l.strip().lstrip("-* ").strip()
             if l_clean and not l_clean.startswith("#"):
@@ -393,9 +393,9 @@ def process_single_video(
     with open(html_output_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    # 10. Auto-Test & Boucle R?cursive Mode X
+    # 10. Auto-Test & Boucle Récursive Mode X
     passed, score, errors = audit_generated_content(md_output_path, html_output_path, total_saved_screenshots)
-    print(f"\n?? [/auto-test] R?sultat de l'audit : Score = {score:.1f}% | Conforme : {passed}", flush=True)
+    print(f"\n🔍 [/auto-test] Résultat de l'audit : Score = {score:.1f}% | Conforme : {passed}", flush=True)
 
     # Nettoyage espace temporaire
     shutil.rmtree(video_work_dir, ignore_errors=True)
@@ -415,6 +415,6 @@ def process_single_video(
     }
 
 if __name__ == "__main__":
-    v_id = sys.argv[1] if len(sys.argv) > 1 else "qYZu2ncbBvI"
+    v_id = sys.argv[1] if len(sys.argv) > 1 else "mcOSG1gvCw0"
     res = process_single_video(v_id)
-    print(f"\nR?sultat final : {res}")
+    print(f"\nRésultat final : {res}")

@@ -28,7 +28,7 @@ running = True
 
 def handle_signal(sig, frame):
     global running
-    print(f"\n[Listener] Signal {sig} re?u, arr?t propre du d?mon d'?coute...", flush=True)
+    print(f"\n[Listener] Signal {sig} reçu, arrêt propre du démon d'écoute...", flush=True)
     running = False
 
 signal.signal(signal.SIGINT, handle_signal)
@@ -115,11 +115,11 @@ def fetch_ytdlp_latest() -> List[Dict[str, str]]:
 
 def main():
     print(f"\n=======================================================", flush=True)
-    print(f"??? [Listener] D?marrage de l'?coute Passive Z?ro-Token", flush=True)
-    print(f"?? Cha?ne : {CHANNEL_NAME} ({CHANNEL_ID})", flush=True)
-    print(f"?? Flux Atom XML : {RSS_FEED_URL}", flush=True)
-    print(f"? Surveillance : 100% Z?RO TOKEN LLM consomm?s (HTTP Atom XML direct)", flush=True)
-    print(f"?? Intervalle de scrutation : {POLL_INTERVAL_SECONDS}s ({POLL_INTERVAL_SECONDS//60} min)", flush=True)
+    print(f"🛰️ [Listener] Démarrage de l'écoute Passive Zéro-Token", flush=True)
+    print(f"📡 Chaîne : {CHANNEL_NAME} ({CHANNEL_ID})", flush=True)
+    print(f"🔗 Flux Atom XML : {RSS_FEED_URL}", flush=True)
+    print(f"⚡ Surveillance : 100% ZÉRO TOKEN LLM consommés (HTTP Atom XML direct)", flush=True)
+    print(f"⏱️ Intervalle de scrutation : {POLL_INTERVAL_SECONDS}s ({POLL_INTERVAL_SECONDS//60} min)", flush=True)
     print(f"=======================================================", flush=True)
 
     state = load_state()
@@ -129,56 +129,55 @@ def main():
                 cat = json.load(f)
             state["known_baseline_ids"] = [v["id"] for v in cat if "id" in v]
             save_state(state)
-            print(f"[Listener] Baseline initialis? avec {len(state['known_baseline_ids'])} vid?os du catalogue.", flush=True)
+            print(f"[Listener] Baseline initialisé avec {len(state['known_baseline_ids'])} vidéos du catalogue.", flush=True)
         except Exception as e:
             print(f"[Listener] Erreur chargement baseline catalogue : {e}", flush=True)
 
     while running:
         try:
-            print(f"\n[Listener {time.strftime('%Y-%m-%d %H:%M:%S UTC')}] V?rification de nouvelles publications...", flush=True)
+            print(f"\n[Listener {time.strftime('%Y-%m-%d %H:%M:%S UTC')}] Vérification de nouvelles publications...", flush=True)
             latest_items = fetch_rss_videos()
 
             state = load_state()
             processed_ids = set(state.get("processed_ids", []))
             known_baseline = set(state.get("known_baseline_ids", []))
 
-            # Une NOUVELLE publication est une vid?o qui n'?tait ni dans le catalogue initial, ni d?j? trait?e
+            # Une NOUVELLE publication est une vidéo qui n'était ni dans le catalogue initial, ni déjà traitée
             new_videos = [v for v in latest_items if v.get("id") and v.get("id") not in processed_ids and v.get("id") not in known_baseline]
 
             if not new_videos:
-                print(f"[Listener] Aucune nouvelle publication d?tect?e. Veille active.", flush=True)
+                print(f"[Listener] Aucune nouvelle publication détectée. Veille active.", flush=True)
             else:
-                print(f"[Listener] ?? {len(new_videos)} NOUVELLE(S) VID?O(S) D?TECT?E(S) !", flush=True)
-                for nv in new_videos:
+                print(f"[Listener] 🚨 NOUVELLE PUBLICATION DÉTECTÉE : {len(new_videos)} vidéo(s) !", flush=True)
+
+                for nv in reversed(new_videos):
                     vid_id = nv["id"]
-                    v_title = nv.get("title", "")
-                    print(f"[Listener] ?? Lancement traitement imm?diat de la nouvelle vid?o : {vid_id} ? {v_title}", flush=True)
+                    vid_title = nv.get("title", "")
+                    print(f"\n[Listener] Traitement prioritaire de la nouvelle vidéo : {vid_id} — '{vid_title}'", flush=True)
 
                     try:
-                        res = process_single_video(vid_id, catalog_title=v_title)
+                        res = process_single_video(vid_id, catalog_title=vid_title)
                         state["processed_ids"].append(vid_id)
                         state["processed_videos"].append(res)
-                        state["known_baseline_ids"].append(vid_id)
                         state["completed_count"] = len(state["processed_ids"])
+                        state["known_baseline_ids"].append(vid_id)
                         save_state(state)
 
-                        cat_len = len(state.get("known_baseline_ids", []))
-                        update_readme_index(state["processed_videos"], total_catalog_count=cat_len)
-                        commit_and_push_repo(f"feat(listener): nouvelle vid?o {vid_id} - {res.get('title_fr', v_title)[:50]}")
-                        print(f"[Listener] ? Nouvelle vid?o {vid_id} trait?e et publi?e sur GitHub avec succ?s !", flush=True)
-
+                        update_readme_index(state["processed_videos"])
+                        commit_and_push_repo(f"feat(listener): nouvelle vidéo {vid_id} - {res.get('title_fr', vid_title)[:50]}")
+                        print(f"[Listener] ✓ Traitement et publication GitHub réussis pour {vid_id}.", flush=True)
                     except Exception as e:
-                        print(f"[Listener] ? Erreur traitement nouvelle vid?o {vid_id} : {e}", flush=True)
+                        print(f"[Listener] ❌ Erreur sur la nouvelle vidéo {vid_id} : {e}", flush=True)
 
         except Exception as e:
-            print(f"[Listener] Exception g?n?rale dans la boucle d'?coute : {e}", flush=True)
+            print(f"[Listener] Erreur boucle d'écoute : {e}", flush=True)
 
         for _ in range(POLL_INTERVAL_SECONDS):
             if not running:
                 break
             time.sleep(1)
 
-    print("[Listener] Arr?t propre du d?mon d'?coute termin?.", flush=True)
+    print("[Listener] Arrêt complet du démon d'écoute.", flush=True)
 
 if __name__ == "__main__":
     main()
