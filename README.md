@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `30 / 273` (`11.0%`)
+- **Vidéos traitées** : `31 / 273` (`11.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -47,6 +47,7 @@
 | 2026-09-10 | [DgovrfgLxYs](https://www.youtube.com/watch?v=DgovrfgLxYs) | **ChatGPT 6 Astra + Blender = Endless Possibilities** | [2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-09 | [JiQr45mQ1Hw](https://www.youtube.com/watch?v=JiQr45mQ1Hw) | **ChatGPT Image 2.5 Just Dropped (Full Breakdown)** | [2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-08 | [IsUpatC9obI](https://www.youtube.com/watch?v=IsUpatC9obI) | **How to Use Grok Bot Better Than 99% of People (FULL COURSE)** | [2026-09-08_YT-[IsUpatC9obI]_How to Use Grok Bot Better Than 99% of People (FULL COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-08_YT-[IsUpatC9obI]_How to Use Grok Bot Better Than 99% of People (FULL COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-08_YT-[IsUpatC9obI]_How to Use Grok Bot Better Than 99% of People (FULL COURSE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-03 | [MYtqdJ-096g](https://www.youtube.com/watch?v=MYtqdJ-096g) | **I Tested Fable 5.1 vs Fable 5 vs Opus 5 (Cost/Speed/Design)** | [2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
