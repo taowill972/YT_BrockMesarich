@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment l&#x27;équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment l&#x27;équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-14</span>
+                <span class="badge">⏱️ 00:13:45</span>
+                <span class="badge">🆔 <code>qYZu2ncbBvI</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=qYZu2ncbBvI" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo, présentée par Brock Mesarich sur la chaîne *Brock Mesarich | AI for Non Techies*, analyse en profondeur les guides officiels publiés par l'équipe de SpaceXAI concernant l'utilisation avancée de plus de 30 Grok Bots. Loin d'être de simples gadgets conversationnels, ces agents autonomes sont structurés en véritables écosystèmes hiérarchiques capables d'optimiser des départements entiers — de la gestion administrative quotidienne au marketing stratégique en passant par le développement commercial en « mode fondateur ». L'analyse décortique la mise en place de ces flottes d'assistants spécialisés, conçus pour opérer en arrière-plan tout en maintenant un contrôle humain strict via des boucles de validation (HITL - Human-In-The-Loop).<br><br>Sur le plan méthodologique et opérationnel, la vidéo met en lumière une architecture de pilotage indispensable : le concept de « Bot Boss » (ou agent superviseur principal). Plutôt que de saturer l'utilisateur final de notifications fragmentées provenant de dizaines d'agents autonomes, un méta-bot central consolide, filtre et priorise l'ensemble des flux d'informations (e-mails, Slack, réunions, veilles concurrentielles). Cette approche réduit la charge cognitive et transforme l'intelligence artificielle en un véritable comité de direction virtuel, capable d'exécuter des boucles de rétroaction complexes (prospection, analyse de marché, rédaction de cahiers des charges et déploiement publicitaire) sans jamais agir sans l'aval explicite de l'opérateur.<br><br>Enfin, l'intervention intègre une dimension d'optimisation technique cruciale pour les flux de travail à fort volume de données, notamment à travers l'intégration d'outils de web-scraping intelligents comme Firecrawl. En remplaçant une navigation séquentielle et lourde par un parsing direct et épuré des sites web concurrents, cette méthode réduit drastiquement les coûts de tokens et accélère l'exécution des agents de veille. L'ensemble démontre comment des non-techniciens peuvent orchestrer des flottes d'agents IA hautement spécialisés pour automatiser des processus métier critiques, maximiser le temps de concentration et piloter des stratégies de croissance complexes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Grok / GrokBot** : Plateforme principale d'agents conversationnels et d'automatisation intelligente utilisée par SpaceXAI pour exécuter des bots autonomes spécialisés.<br>* **Firecrawl** : Outil de scraping et d'extraction de données web spécifiquement conçu pour l'IA, permettant d'aspirer et de nettoyer le contenu des sites concurrents pour réduire drastiquement les coûts de tokens.<br>* **Claude** : Modèle linguistique avancé mentionné dans l'écosystème d'agents de l'analyste pour la génération de code et l'analyse textuelle complexe.<br>* **ChatGPT** : Modèle d'intelligence artificielle conversationnelle de référence utilisé pour l'ingénierie de prompts et le traitement de données textuelles.<br>* **Gemini** : Modèle multimodal de Google intégré dans divers flux de travail de recherche et de synthèse de données.<br>* **Make** : Plateforme d'automatisation de flux de travail (no-code) pour connecter des applications tierces et orchestrer des déclencheurs complexes.<br>* **n8n** : Outil d'automatisation de workflows open-source et flexible, prisé pour la création d'architectures d'agents sur mesure.<br>* **Zapier** : Solution d'intégration logicielle automatisant le transfert de données entre des milliers d'applications professionnelles sans nécessiter de codage.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Architecture hiérarchique en meute (« Bot Packs »)** : Organisation de flottes d'agents spécialisés (jusqu'à 9 bots par département) sous la direction d'un chef de cabinet ou d'un agent superviseur unique pour éviter la dispersion des flux d'information.<br>* **Le rôle du « Bot Boss » (Agent Superviseur)** : Centralisation des rapports de tous les bots subordonnés en un seul point de contact matinal, éliminant la fatigue décisionnelle et la saturation des notifications.<br>* **Filtrage drastique de la boîte de réception (Inbox Manager)** : Configuration d'un bot en lecture seule qui analyse les e-mails, messages Slack et directs pour ne remonter que les 3 communications réellement importantes et urgentes.<br>* **Protection du temps exécutif (Calendar Assistant)** : Agent paramétré pour regrouper les réunions de manière contiguë, identifier les conflits d'horaires et protéger les blocs de travail en profondeur sans déplacer d'événements sans confirmation humaine.<br>* **Veille contextuelle automatisée (Intel Scout)** : Exécution de revues bi-quotidiennes (8h00 et 17h00) croisant e-mails, Slack et notes de réunion pour repérer les décisions prises dans des canaux non lus et anticiper les points de suivi nécessaires.<br>* **Le « Mode Fondateur » appliqué aux ventes** : Déploiement d'un pack de 9 bots autonomes gérant la prospection, la préparation des appels commerciaux, les récapitulatifs post-appel, le support client et la veille concurrentielle.<br>* **Génération de prospects chauds par analyse comportementale** : Bot social identifiant les créateurs de contenu traitant des mêmes problématiques métier que l'entreprise pour alimenter automatiquement le pipeline de prospection.<br>* **Boucle marketing fermée et séquentielle** : Orchestration de 6 bots marketing (analyse de marché, marketing produit, performance ads, opérations web, analyses de conversion et gestion de projet) travaillant de concert de la recherche à la mise en ligne.<br>* **Principe strict du « Human-In-The-Loop » (HITL)** : Règle absolue de sécurité opérationnelle où aucun e-mail, message, campagne publicitaire ou publication ne part ou ne se publie sans l'approbation manuelle préalable de l'utilisateur.<br>* **Optimisation drastique des coûts d'IA avec Firecrawl** : Utilisation d'un parseur web dédié qui élimine menus, pieds de page et scripts publicitaires pour réduire de 93 % les coûts de lecture de sites par l'IA lors des veilles concurrentielles.<br>* **Automatisation de la prospection ciblée hebdomadaire** : Configuration d'un bot analysant chaque lundi matin les entreprises correspondant au profil client idéal pour pré-rédiger des messages personnalisés directement placés dans les brouillons Gmail.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Grok / GrokBot</span><span class="tool-tag">Firecrawl</span><span class="tool-tag">Claude</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Gemini</span><span class="tool-tag">Make</span><span class="tool-tag">n8n</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Architecture hiérarchique en meute (« Bot Packs »)** : Organisation de flottes d&#x27;agents spécialisés (jusqu&#x27;à 9 bots par département) sous la direction d&#x27;un chef de cabinet ou d&#x27;un agent superviseur unique pour éviter la dispersion des flux d&#x27;information.</span></li><li><span class="point-bullet">✦</span><span>Le rôle du « Bot Boss » (Agent Superviseur)** : Centralisation des rapports de tous les bots subordonnés en un seul point de contact matinal, éliminant la fatigue décisionnelle et la saturation des notifications.</span></li><li><span class="point-bullet">✦</span><span>Filtrage drastique de la boîte de réception (Inbox Manager)** : Configuration d&#x27;un bot en lecture seule qui analyse les e-mails, messages Slack et directs pour ne remonter que les 3 communications réellement importantes et urgentes.</span></li><li><span class="point-bullet">✦</span><span>Protection du temps exécutif (Calendar Assistant)** : Agent paramétré pour regrouper les réunions de manière contiguë, identifier les conflits d&#x27;horaires et protéger les blocs de travail en profondeur sans déplacer d&#x27;événements sans confirmation humaine.</span></li><li><span class="point-bullet">✦</span><span>Veille contextuelle automatisée (Intel Scout)** : Exécution de revues bi-quotidiennes (8h00 et 17h00) croisant e-mails, Slack et notes de réunion pour repérer les décisions prises dans des canaux non lus et anticiper les points de suivi nécessaires.</span></li><li><span class="point-bullet">✦</span><span>Le « Mode Fondateur » appliqué aux ventes** : Déploiement d&#x27;un pack de 9 bots autonomes gérant la prospection, la préparation des appels commerciaux, les récapitulatifs post-appel, le support client et la veille concurrentielle.</span></li><li><span class="point-bullet">✦</span><span>Génération de prospects chauds par analyse comportementale** : Bot social identifiant les créateurs de contenu traitant des mêmes problématiques métier que l&#x27;entreprise pour alimenter automatiquement le pipeline de prospection.</span></li><li><span class="point-bullet">✦</span><span>Boucle marketing fermée et séquentielle** : Orchestration de 6 bots marketing (analyse de marché, marketing produit, performance ads, opérations web, analyses de conversion et gestion de projet) travaillant de concert de la recherche à la mise en ligne.</span></li><li><span class="point-bullet">✦</span><span>Principe strict du « Human-In-The-Loop » (HITL)** : Règle absolue de sécurité opérationnelle où aucun e-mail, message, campagne publicitaire ou publication ne part ou ne se publie sans l&#x27;approbation manuelle préalable de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Optimisation drastique des coûts d&#x27;IA avec Firecrawl** : Utilisation d&#x27;un parseur web dédié qui élimine menus, pieds de page et scripts publicitaires pour réduire de 93 % les coûts de lecture de sites par l&#x27;IA lors des veilles concurrentielles.</span></li><li><span class="point-bullet">✦</span><span>Automatisation de la prospection ciblée hebdomadaire** : Configuration d&#x27;un bot analysant chaque lundi matin les entreprises correspondant au profil client idéal pour pré-rédiger des messages personnalisés directement placés dans les brouillons Gmail.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:24</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">SpaceX AI vient de publier un ensemble complet de guides expliquant exactement comment utiliser GrokBot à son plein potentiel, et ils ont été écrits par leur propre équipe montrant les bots qu&#x27;ils utilisent réellement pour leurs propres tâches. J&#x27;ai donc parcouru l&#x27;ensemble d&#x27;entre eux et j&#x27;ai sélectionné ces six guides qui me semblent les plus utiles si vous n&#x27;êtes pas technique. Et je vais vous montrer chacun des bots qu&#x27;ils contiennent afin que vous puissiez vous faire une idée de ce donc GrokBot est réellement capable et lesquels vous pouvez piquer et utiliser vous-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de présentation vidéo avec des diapositives textuelles et graphiques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres et puces textuelles décrivant les guides des bots Grok.</p>
+                        <p><strong>Action / Démonstration :</strong> Introduction au sujet des guides officiels des bots Grok de SpaceX AI.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:24 - 00:00:45</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous n&#x27;avez pas besoin d&#x27;avoir l&#x27;un de ces emplois pour que cela soit utile, car chacun de ces bots va vous donner une idée pour votre propre travail. Donc, sans plus attendre, plongeons-nous dedans. Très bien, le premier guide s&#x27;appelle GrokBot for Work, et celui-ci est pour n&#x27;importe quel emploi. C&#x27;est quelque chose dont chaque personne pourrait avoir besoin, donc je voulais commencer par cela avant d&#x27;entrer dans les flux de travail plus complexes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec diapositive graphique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du guide &#x27;Guide 1 of 6 - Any job - Grok Bot for Work&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Introduction du premier guide sur Grok Bot pour le travail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000034_seg2.jpg" alt="Diapositive de présentation bleue et sombre affichant &#x27;Guide 1 of 6&#x27;, &#x27;Any job&#x27; et &#x27;Grok Bot for Work&#x27; avec une barre de progression." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Diapositive de présentation bleue et sombre affichant &#x27;Guide 1 of 6&#x27;, &#x27;Any job&#x27; et &#x27;Grok Bot for Work&#x27; avec une barre de progression.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:45 - 00:01:11</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, la personne qui a écrit ceci dit qu&#x27;il y a quatre bots qui modifient réellement leur travail de sortie, et comme vous pouvez le voir juste ici, ils donnent le prompt complet pour chacun d&#x27;entre eux, donc vous pouvez simplement le copier. Tout d&#x27;abord, nous avons le gestionnaire de boîte de réception, et je pense sincèrement que c&#x27;est celui par lequel la plupart d&#x27;entre vous devraient probablement commencer. En gros, le bot lit absolument tous les e-mails, messages Slack et messages directs que vous recevez, et il ne garde que ceux qui sont réellement importants et urgents, ce qui, dans le prompt, représente environ trois messages.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un guide de configuration de bot IA sur x.ai.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte complet d&#x27;un prompt système pour le bot Inbox Manager, définissant ses rôles, règles de filtrage des e-mails et comportements.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le prompt affiché à l&#x27;écran pour expliquer le premier des quatre bots de travail présentés dans le guide.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000052_seg3.jpg" alt="Interface web montrant un prompt détaillé pour le gestionnaire d&#x27;e-mails (Inbox Manager) issu de x.ai/bot/guides/grok-bot-for-work, avec le présentateur visible à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000052_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Interface web montrant un prompt détaillé pour le gestionnaire d&#x27;e-mails (Inbox Manager) issu de x.ai/bot/guides/grok-bot-for-work, avec le présentateur visible à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000058_seg3.jpg" alt="Diapositive intitulée &quot;Four bots, one guide&quot; présentant l&#x27;icône bleue de l&#x27;Inbox Manager et trois emplacements vides, avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000058_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:58</span>
+                        <span class="caption-text">Diapositive intitulée &quot;Four bots, one guide&quot; présentant l&#x27;icône bleue de l&#x27;Inbox Manager et trois emplacements vides, avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:12 - 00:01:31</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la seule chose que je tiens à souligner, c&#x27;est que c&#x27;est en lecture seule, donc il peut parcourir votre boîte de réception, mais il ne peut pas aller répondre à qui que ce soit à votre place si vous ne le voulez pas. Cependant, vous pouvez configurer cela si vous aimeriez qu&#x27;il aille envoyer des messages en votre nom. J&#x27;ai personnellement mon propre agent de boîte de réception à l&#x27;intérieur de GrokBot qui fait quelque chose d&#x27;extrêmement similaire à cela. Ensuite, nous avons l&#x27;assistant exécutif pour le calendrier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de gestion d&#x27;e-mails et de bots IA (Grok Bot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes d&#x27;e-mails simulées avec des étiquettes (Urgent, Later) et icônes d&#x27;agents conversationnels.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des fonctionnalités de tri et de lecture seule des e-mails par l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000117_seg4.jpg" alt="Capture montrant le présentateur à droite et une interface explicative à gauche illustrant le mode &#x27;Read-only&#x27; avec des exemples de tri d&#x27;e-mails." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000117_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:17</span>
+                        <span class="caption-text">Capture montrant le présentateur à droite et une interface explicative à gauche illustrant le mode &#x27;Read-only&#x27; avec des exemples de tri d&#x27;e-mails.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000127_seg4.jpg" alt="Capture montrant le présentateur à droite et une interface de bots d&#x27;intelligence artificielle à gauche étiquetée &#x27;My own Grok Bot&#x27; avec plusieurs agents (Inbox Triage, Short-Form, etc.)." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000127_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Capture montrant le présentateur à droite et une interface de bots d&#x27;intelligence artificielle à gauche étiquetée &#x27;My own Grok Bot&#x27; avec plusieurs agents (Inbox Triage, Short-Form, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:32 - 00:02:00</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, pensez à cela comme si vous aviez un assistant qui protège votre temps de concentration. Il va donc regrouper vos réunions les unes près des autres et signaler tout conflit qui pourrait survenir. Mais il ne va pas déplacer une réunion ou envoyer une invitation tant que vous ne l&#x27;avez pas confirmé. Nous avons également l&#x27;Intel Scout, et je pense que celui-ci est vraiment assez cool. Donc, deux fois par jour, à 8 heures du matin et à 17 heures, il parcourt votre boîte de réception, votre Slack et vos notes de réunion, et il vous dit ce qui s&#x27;est passé dans l&#x27;entreprise qui vous concerne, ce que vous devez encore assurer comme suivi, et ce que vous devez savoir avant vos prochaines réunions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de calendrier / application de gestion de temps intelligente.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Planning journalier (de 9h à 17h) avec des blocs &quot;Standup&quot;, &quot;1:1&quot;, &quot;Review&quot;, &quot;Sync&quot;, et un large bloc &quot;Focus time&quot;, accompagnés d&#x27;alertes &quot;Clash flagged&quot; et &quot;New invite - 3 PM&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du regroupement automatisé des réunions et de la protection du temps de concentration par l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000139_seg5.jpg" alt="Capture d&#x27;écran montrant une interface de gestion de calendrier avec le titre &quot;Protects your focus time&quot;, affichant des réunions groupées et un bloc de temps de concentration, ainsi que la vidéo du présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000139_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de gestion de calendrier avec le titre &quot;Protects your focus time&quot;, affichant des réunions groupées et un bloc de temps de concentration, ainsi que la vidéo du présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:00 - 00:02:22</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, par exemple, disons qu&#x27;une décision a été prise hier dans un canal Slack que vous ne lisez jamais. C&#x27;est le bot qui va capter toutes ces informations pour vous. Et le dernier s&#x27;appelle Bot Boss. Et le guide qualifie d&#x27;ailleurs celui-ci de peut-être le plus important des quatre. En gros, au lieu d&#x27;avoir trois bots différents qui vous envoient des messages toute la journée, ils font tous rapport au Bot Boss pour que vous ne parliez jamais qu&#x27;à un seul d&#x27;entre eux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le guide x.ai et schémas explicatifs de bots.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif sur l&#x27;optimisation du temps, de la communication et du &quot;Bot Boss&quot; avec des illustrations de flux de données.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation théorique du fonctionnement et de l&#x27;architecture des assistants IA interconnectés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000211_seg6.jpg" alt="Texte du guide x.ai décrivant le concept de Bot Boss et son rôle central." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000211_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:11</span>
+                        <span class="caption-text">Texte du guide x.ai décrivant le concept de Bot Boss et son rôle central.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000217_seg6.jpg" alt="Schéma montrant la centralisation des différents bots (Inbox Manager, Calendar EA, Intel Scout) vers l&#x27;utilisateur via Bot Boss." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000217_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:17</span>
+                        <span class="caption-text">Schéma montrant la centralisation des différents bots (Inbox Manager, Calendar EA, Intel Scout) vers l&#x27;utilisateur via Bot Boss.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:02:41</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, c&#x27;est la même configuration que j&#x27;ai à l&#x27;intérieur de mon propre GrokBot, où j&#x27;ai un agent principal qui parle à tous mes autres agents pour moi. Et j&#x27;appelle celui-ci Michael Scott. Je vais vous montrer à quel point il est simple d&#x27;en configurer un vous-même. Donc tout ce que je vais faire, c&#x27;est copier le prompt directement de la page, et ensuite je vais simplement le coller à l&#x27;intérieur d&#x27;un nouveau bot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de configuration de Grok Bots (x.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des agents virtuels (Michael Scott, Main Agent, Inbox Triage, Health Agent, etc.) et instructions textuelles de configuration pour l&#x27;Inbox Manager.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;architecture des agents IA configurés par l&#x27;utilisateur et explication de leurs rôles respectifs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000227_seg7.jpg" alt="Interface affichant les différents agents Grok Bot, incluant &#x27;Michael Scott&#x27; et &#x27;Main Agent&#x27;, avec le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000227_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Interface affichant les différents agents Grok Bot, incluant &#x27;Michael Scott&#x27; et &#x27;Main Agent&#x27;, avec le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000236_seg7.jpg" alt="Page web x.ai montrant un guide sur les Grok Bots avec un extrait de code ou de configuration textuelle d&#x27;un agent." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000236_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:36</span>
+                        <span class="caption-text">Page web x.ai montrant un guide sur les Grok Bots avec un extrait de code ou de configuration textuelle d&#x27;un agent.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:41 - 00:03:00</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et une chose à savoir, c&#x27;est que chacun d&#x27;entre eux est créé désactivé. Donc rien ne va s&#x27;exécuter tant que vous n&#x27;aurez pas cliqué sur activer dans votre GrokBot. Ensuite, nous avons le guide des ventes. Et celui-ci a été écrit par quelqu&#x27;un qui a été l&#x27;un des premiers commerciaux chez Cursor. C&#x27;est donc conçu pour les fondateurs qui font encore toutes leurs ventes eux-mêmes. Mais je pense qu&#x27;une grande partie de cela s&#x27;applique à quiconque vend quoi que ce soit par ses propres moyens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de GrokBot et navigateur web affichant un guide x.ai</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de configuration de routine &quot;Inbox Manager&quot; désactivée par défaut et texte biographique d&#x27;un ancien commercial de Cursor.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication du fonctionnement des bots IA qui nécessitent une activation manuelle de l&#x27;utilisateur pour s&#x27;exécuter.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000246_seg8.jpg" alt="Interface de GrokBot montrant la configuration d&#x27;un agent de gestion de boîte de réception avec un bouton d&#x27;activation, accompagné du présentateur en vignette." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000246_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:46</span>
+                        <span class="caption-text">Interface de GrokBot montrant la configuration d&#x27;un agent de gestion de boîte de réception avec un bouton d&#x27;activation, accompagné du présentateur en vignette.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000251_seg8.jpg" alt="Page Web d&#x27;un guide sur x.ai concernant les ventes dirigées par les fondateurs (&quot;Grok Bot for Founder-Led Sales&quot;), avec le présentateur en vignette." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000251_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:51</span>
+                        <span class="caption-text">Page Web d&#x27;un guide sur x.ai concernant les ventes dirigées par les fondateurs (&quot;Grok Bot for Founder-Led Sales&quot;), avec le présentateur en vignette.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:00 - 00:03:33</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, le pack s&#x27;appelle mode fondateur, et c&#x27;est en fait neuf bots différents. Donc vous avez un chef de cabinet et ensuite huit spécialistes qui travaillent sous ses ordres. Le chef de cabinet est le seul à qui vous parlez réellement. Et tous les matins à 8 heures, il prend tout ce que les huit autres bots ont fait et le transforme en une seule liste de ce que vous devez faire ce jour-là. Ensuite, nous avons deux bots pour votre pipeline. Nous avons un bot de prospection, qui rédige vos e-mails de prospection et vos notes LinkedIn tous les soirs — tous les matins. Et tout ce lot reste là et attend votre approbation avant d&#x27;être publié. Ensuite, nous avons un bot de vente, qui élabore un dossier avant chaque appel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma explicatif du système d&#x27;agents IA « Founder Mode ».</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres : « Founder Mode », « One chief of staff and eight specialists », icône noire du bot « Founder Mode » et 8 emplacements sous forme de cercles en pointillés.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication de l&#x27;architecture organisationnelle des 9 bots autonomes et du rôle central du chef de cabinet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000308_seg9.jpg" alt="Présentation visuelle de la structure « Founder Mode » affichant le bot principal (Chief of staff) et les emplacements pour les 8 bots spécialistes." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000308_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:08</span>
+                        <span class="caption-text">Présentation visuelle de la structure « Founder Mode » affichant le bot principal (Chief of staff) et les emplacements pour les 8 bots spécialistes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:33 - 00:04:08</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et après l&#x27;appel, il rédige le récapitulatif et les messages de suivi. Ensuite, nous avons deux bots pour vos clients. Le bot de boîte de réception vérifie votre e-mail de support deux fois par jour, et il va classer chaque message et rédiger une réponse dans votre ton. Et ensuite, le bot d&#x27;analyses prend tous ces retours une fois par semaine, les regroupe et classe les thèmes principaux afin que vous puissiez réellement voir ce que vos clients ne cessent de demander. Ensuite, il y en a deux spécifiques pour votre produit. Le bot produit prend le thème principal de vos clients et le transforme en un court cahier des charges pour ce qu&#x27;il faut construire ensuite. Le bot stock surveille vos concurrents et vous dit ce qui a changé. Des choses comme les prix, les mises à jour de produits, etc. Le contenu</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diaporama / Interface conceptuelle d&#x27;automatisation IA (Inbox Bot)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Mentions &quot;Inbox Bot&quot;, &quot;Customers&quot;, paramètre &quot;Support email · 2x a day&quot;, bloc &quot;Support inbox&quot; relié à une icône d&#x27;agent IA, avec la vidéo du présentateur sur la droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication du flux de travail du bot d&#x27;automatisation qui consulte la boîte de support deux fois par jour pour catégoriser et répondre aux messages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000342_seg10.jpg" alt="Schéma de présentation du bot de boîte de réception (Inbox Bot) illustrant le traitement automatique des e-mails de support." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000342_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:42</span>
+                        <span class="caption-text">Schéma de présentation du bot de boîte de réception (Inbox Bot) illustrant le traitement automatique des e-mails de support.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:08 - 00:04:37</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le bot rédige vos publications avec votre voix, et le bot social va trouver des personnes qui publient sur les mêmes problèmes exacts que ceux que vous résolvez, puis il transmet ces personnes à votre bot de prospection sous forme de prospects chauds. Donc, comme vous pouvez le voir, il s&#x27;agit essentiellement d&#x27;une boucle complète, et la partie vraiment importante, c&#x27;est que rien n&#x27;est envoyé, posté ou publié tant que vous ne l&#x27;approuvez pas. Maintenant, neuf bots, c&#x27;est évidemment beaucoup à configurer, donc le guide vous donne aussi un prompt que vous pouvez simplement copier. Laissez-moi vous montrer celui-ci juste ici, parce que vous pourriez l&#x27;exécuter seul sans avoir à configurer l&#x27;ensemble du pack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de documentation (x.ai) et schémas conceptuels de bots d&#x27;automatisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de documentation sur les bonnes pratiques de vente par fondateur et instructions de prompts pour bots de prospection.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des règles de sécurité des bots (interdiction d&#x27;envoi automatique) et démonstration des prompts d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000415_seg11.jpg" alt="Schéma explicatif illustrant le fonctionnement du &#x27;Social Bot&#x27; et sa connexion avec l&#x27;Outreach Bot." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000415_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">Schéma explicatif illustrant le fonctionnement du &#x27;Social Bot&#x27; et sa connexion avec l&#x27;Outreach Bot.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000423_seg11.jpg" alt="Capture d&#x27;écran d&#x27;un article ou guide sur x.ai détaillant les considérations importantes pour la prospection à un stade précoce." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000423_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:23</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un article ou guide sur x.ai détaillant les considérations importantes pour la prospection à un stade précoce.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000430_seg11.jpg" alt="Aperçu d&#x27;un bloc de code ou d&#x27;un prompt d&#x27;automatisation détaillant les routines hebdomadaires de recherche de prospects et de qualification." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000430_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:30</span>
+                        <span class="caption-text">Aperçu d&#x27;un bloc de code ou d&#x27;un prompt d&#x27;automatisation détaillant les routines hebdomadaires de recherche de prospects et de qualification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:37 - 00:04:56</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En gros, tous les lundis à 7 h du matin, il va aller trouver des entreprises qui correspondent à votre client idéal et qui publient sur votre problème cette même semaine. Et ensuite, il rédige un premier message pour chacune d&#x27;entre elles et il les laisse dans vos brouillons Gmail. Comme ça, vous êtes le seul à vraiment cliquer sur envoyer. Très bien, passons donc au numéro trois, et il s&#x27;agit du guide marketing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur web de prospection automatisée, présentation vidéo intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;The Monday scan&quot;, &quot;Mon 7:00 AM&quot;, cartes de prospects avec &quot;Why now&quot;, bouton &quot;Keep&quot;, et indicateur de statut &quot;Scanning&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle de l&#x27;automatisation du balayage des prospects du lundi matin.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000442_seg12.jpg" alt="Une interface utilisateur montrant le scan du lundi avec des cartes de prospects (dentistes à Austin, Denver, Tampa) et une mascotte violette animée avec l&#x27;indication &quot;Scanning&quot;, tandis que le présentateur apparaît dans un encadré à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000442_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:42</span>
+                        <span class="caption-text">Une interface utilisateur montrant le scan du lundi avec des cartes de prospects (dentistes à Austin, Denver, Tampa) et une mascotte violette animée avec l&#x27;indication &quot;Scanning&quot;, tandis que le présentateur apparaît dans un encadré à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:56 - 00:05:15</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pense sincèrement que c&#x27;est le meilleur de tous, parce que ce sont six bots qui travaillent ensemble comme une petite équipe marketing. Maintenant, le guide passe en revue ces six éléments à travers l&#x27;exemple d&#x27;une compagnie aérienne fictive appelée Xair. Je vais les passer en revue dans ce même ordre. Comme ça, vous pourrez voir comment le travail est transmis d&#x27;un bot au suivant. Ça commence donc avec l&#x27;analyste de marché.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le guide x.ai sur les bots de marketing.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagrammes de flux et descriptions textuelles des rôles des bots (Market Researcher, Product Marketer, Website Ops, Performance Marketer, Marketing Analyst, Project Manager).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;organisation et le fonctionnement séquentiel de l&#x27;équipe marketing virtuelle appliquée à la compagnie aérienne X-Air.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000501_seg13.jpg" alt="Présentation des six bots marketing par l&#x27;interface x.ai avec leurs rôles respectifs : Market Researcher, Product Marketer, Website Ops, Performance Marketer, Marketing Analyst et Project Manager." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000501_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:01</span>
+                        <span class="caption-text">Présentation des six bots marketing par l&#x27;interface x.ai avec leurs rôles respectifs : Market Researcher, Product Marketer, Website Ops, Performance Marketer, Marketing Analyst et Project Manager.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000506_seg13.jpg" alt="Extrait du guide textuel sur x.ai expliquant l&#x27;exemple de la compagnie aérienne fictive X-Air." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000506_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Extrait du guide textuel sur x.ai expliquant l&#x27;exemple de la compagnie aérienne fictive X-Air.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000511_seg13.jpg" alt="Schéma d&#x27;orchestration montrant le flux de travail séquentiel entre les différents bots de marketing de la recherche jusqu&#x27;à l&#x27;analyse de performance." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000511_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:11</span>
+                        <span class="caption-text">Schéma d&#x27;orchestration montrant le flux de travail séquentiel entre les différents bots de marketing de la recherche jusqu&#x27;à l&#x27;analyse de performance.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:16 - 00:05:39</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous le pointez essentiellement vers votre site Web et quelques-uns de vos concurrents, et il ouvre son propre navigateur et les lit tous. Et puis il revient avec un écart entre vos concurrents que vous pouvez exploiter. Donc, par exemple, avec la compagnie aérienne, l&#x27;écart qu&#x27;il a trouvé était de parler du temps utile dans les airs et pas seulement du luxe. Ensuite, nous avons le spécialiste du marketing produit, et celui-ci prend la recherche et rédige un dossier de positionnement dans Google Docs.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique de présentation (slides schématiques) et flux vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL fictives (yoursite.com, competitor-a.com) et étapes de recherche de marché (Market Researcher, Product Marketer, Website Ops, Ads).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication visuelle du fonctionnement de l&#x27;agent IA qui parcourt les sites web concurrents pour en extraire des données stratégiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000521_seg14.jpg" alt="Schéma explicatif intitulé &#x27;Market Researcher&#x27; illustrant l&#x27;analyse automatisée de sites concurrents via un navigateur virtuel." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000521_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:21</span>
+                        <span class="caption-text">Schéma explicatif intitulé &#x27;Market Researcher&#x27; illustrant l&#x27;analyse automatisée de sites concurrents via un navigateur virtuel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000533_seg14.jpg" alt="Schéma de flux de travail montrant les différentes étapes marketing connectées entre elles, de la recherche au positionnement." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000533_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:33</span>
+                        <span class="caption-text">Schéma de flux de travail montrant les différentes étapes marketing connectées entre elles, de la recherche au positionnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:39 - 00:06:11</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la partie géniale là-dedans, c&#x27;est que vous lui donnez des retours de la même manière qu&#x27;avec un coéquipier, donc vous pouvez simplement laisser un commentaire directement à l&#x27;intérieur du document. Ensuite, il va réviser le brief, il élabore la structure de la page de destination, et il rédige les annonces de recherche. Troisièmement, nous avons le spécialiste du marketing de performance. Celui-ci prend le texte que vous avez approuvé et crée réellement ces campagnes dans votre véritable compte Google Ads. Ce n&#x27;est donc pas seulement une maquette que vous devez reconstruire plus tard. Ensuite, nous avons les opérations de site web, et celui-ci prend cette structure de page de destination et construit réellement la page pour vous, et il vous envoie des captures d&#x27;écran pendant qu&#x27;il travaille. Le cinquième est le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Google Docs et présentation visuelle de workflow.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Document &quot;Positioning brief&quot;, commentaires de révision et étapes du processus marketing.
+[DESC_IMAGE_1 et DESC_IMAGE_2] Explication du fonctionnement des retours et de la révision d&#x27;un brief de positionnement marketing.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000547_seg15.jpg" alt="Démonstration visuelle d&#x27;un document Google Docs de positionnement de produit avec un commentaire utilisateur et le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000547_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:47</span>
+                        <span class="caption-text">Démonstration visuelle d&#x27;un document Google Docs de positionnement de produit avec un commentaire utilisateur et le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000603_seg15.jpg" alt="Schéma de workflow marketing montrant différentes étapes connectées par des flèches avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000603_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:03</span>
+                        <span class="caption-text">Schéma de workflow marketing montrant différentes étapes connectées par des flèches avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:11 - 00:06:46</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">analyste marketing. Une fois que les publicités sont diffusées, il va extraire les chiffres et vous donner un tableau de bord indiquant ce qu&#x27;il faut amplifier, ce qu&#x27;il faut couper et ce qu&#x27;il faut tester ensuite. Et le dernier est le chef de projet. Ce bot gère essentiellement les transferts entre les cinq autres, de sorte que vous ne parlez qu&#x27;à un seul bot au lieu de cinq chats différents. Maintenant, tout cela est formidable, mais je vais vous montrer exactement à quel point il est facile de les ajouter. Donc, voici le marché GrokBot, et ces six bots se trouvent tous ici. Tout ce que vous avez à faire est d&#x27;ouvrir celui que vous voulez, de cliquer sur « importer le bot », et comme vous pouvez le voir, il est maintenant dans ma barre latérale. De cette façon, nous n&#x27;avons pas eu à écrire un seul prompt pour construire</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de documentation et de marketplace de bots x.ai.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma d&#x27;automatisation marketing et description du bot « Market Researcher » qui surveille les concurrents.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle du flux de travail des bots marketing et de leur description sur la plateforme.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000620_seg16.jpg" alt="Schéma de workflow montrant les étapes de marketing (Positioning, Website, Ads, Performance) avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000620_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:20</span>
+                        <span class="caption-text">Schéma de workflow montrant les étapes de marketing (Positioning, Website, Ads, Performance) avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000637_seg16.jpg" alt="Page web présentant l&#x27;outil « Market Researcher » par Josh Kim avec le bouton « Import Bot » et le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000637_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:37</span>
+                        <span class="caption-text">Page web présentant l&#x27;outil « Market Researcher » par Josh Kim avec le bouton « Import Bot » et le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:46 - 00:07:19</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ceci. Maintenant, bien sûr, vous n&#x27;avez pas besoin de ces six éléments le jour où vous l&#x27;installez, et le guide dit exactement la même chose. Il est conseillé d&#x27;essayer un bot sur une tâche marketing cette semaine, et pour commencer, de limiter ses permissions. Maintenant, je commencerais personnellement par le chercheur de marché, et il y a une chose que j&#x27;ajouterais, c&#x27;est quelque chose appelé Firecrawl, et je veux vous montrer exactement pourquoi. Donc, en ce moment, ce bot lit les sites Web comme le ferait une vraie personne. Il ouvre une page, la fait défiler, puis passe à la suivante. Et le site d&#x27;un concurrent peut comporter de nombreuses pages. C&#x27;est donc lent et cela peut consommer beaucoup de votre utilisation de GrokBot. Maintenant, c&#x27;est là que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de présentation graphique, site web de documentation et schémas explicatifs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte sur l&#x27;utilisation d&#x27;un bot marketing par semaine, logo Firecrawl, et liste d&#x27;URL de pages web (home, pricing, features, etc.).
+[DESC_IMAGE_1] Article de blog ou guide en ligne soulignant l&#x27;importance d&#x27;essayer un bot sur une tâche marketing.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des outils d&#x27;IA et de scraping web pour automatiser les tâches marketing.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000703_seg17.jpg" alt="Diapositive de présentation affichant le logo Firecrawl avec le texte &quot;Read the whole site in one go&quot;." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000703_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Diapositive de présentation affichant le logo Firecrawl avec le texte &quot;Read the whole site in one go&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000711_seg17.jpg" alt="Schéma illustrant la lecture d&#x27;un site web page par page avec une liste de pages URL et un compteur de progression, accompagné de la vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000711_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Schéma illustrant la lecture d&#x27;un site web page par page avec une liste de pages URL et un compteur de progression, accompagné de la vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:19 - 00:07:54</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Firecrawl entre en jeu. Firecrawl est fondamentalement un outil qui a été conçu pour lire des sites web pour l&#x27;IA. Vous pouvez donc lui donner un lien et il parcourt tout le site pour vous, enlève tous les menus, les pieds de page et les publicités, et ne restitue que le texte propre. La façon la plus simple de concevoir cela, c&#x27;est comme faire ses courses. Sans Firecrawl, c&#x27;est un peu comme si votre robot devait parcourir absolument toutes les allées du magasin juste pour trouver trois choses dont il a réellement besoin. Et avec Firecrawl, c&#x27;est plutôt comme commander à emporter, où vous remettez simplement la liste et on vous apporte tout déjà emballé. Et sur leur site, Firecrawl affirme que cela coûte 93 % de moins pour l&#x27;IA à lire. De cette façon, notre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation graphique (diapositive/schéma comparatif) et webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif intitulé « One site, read two ways » montrant d&#x27;un côté la navigation standard page par page et de l&#x27;autre le résultat épuré obtenu via l&#x27;outil Firecrawl.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les avantages de l&#x27;utilisation de Firecrawl pour extraire et nettoyer le contenu textuel d&#x27;un site web à destination d&#x27;une IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000728_seg18.jpg" alt="Comparatif visuel illustrant l&#x27;utilisation de l&#x27;outil Firecrawl par rapport à une lecture standard d&#x27;un site web, avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000728_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:28</span>
+                        <span class="caption-text">Comparatif visuel illustrant l&#x27;utilisation de l&#x27;outil Firecrawl par rapport à une lecture standard d&#x27;un site web, avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:54 - 00:08:13</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Le robot chercheur obtient les mêmes informations mais plus rapidement et utilise beaucoup moins de votre utilisation. Donc par exemple, disons que vous avez trois concurrents et que vous voulez savoir à la seconde où l&#x27;un d&#x27;eux change ses tarifs ou lance quelque chose de nouveau. Vous pourriez faire en sorte que le chercheur parcoure les trois sites Web chaque matin avec Firecrawl, et il va simplement vous envoyer un message chaque fois que quelque chose change.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale sans support visuel technique.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:13 - 00:08:31</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et personnellement, j&#x27;utilise ça assez régulièrement à travers tous mes différents agents IA à l&#x27;intérieur de Codex, Claude Code, GrokBot, et j&#x27;en passe. Maintenant, je vais vous montrer très rapidement comment vous pouvez ajouter Firecrawl à l&#x27;intérieur de GrokBot afin qu&#x27;il puisse s&#x27;exécuter pour vous en arrière-plan. Sur le côté gauche de l&#x27;écran, vous allez cliquer sur Connecter les applications. Ensuite, vous allez trouver Firecrawl. Vous cliquez sur ajouter et vous vous connectez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de Grok Bot, menu d&#x27;intégration de services et de gestion des applications.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;applications connectables comprenant des outils de productivité (Notion) et des gestionnaires de mots de passe (1Password).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface de configuration des agents et des applications connectées dans Grok Bot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000827_seg20.jpg" alt="Interface de Grok Bot montrant un panneau d&#x27;intégration d&#x27;applications et de gestionnaires de mots de passe, avec le présentateur visible en incrustation à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000827_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:27</span>
+                        <span class="caption-text">Interface de Grok Bot montrant un panneau d&#x27;intégration d&#x27;applications et de gestionnaires de mots de passe, avec le présentateur visible en incrustation à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:31 - 00:08:52</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et le meilleur, c&#x27;est qu&#x27;ils ont un forfait gratuit. Vous pouvez donc tester cela vous-même avant d&#x27;avoir à payer quoi que ce soit. De plus, si vous souhaitez essayer, il y a aura un lien dans la description pour vous inscrire. Et une fois que c&#x27;est connecté, vous n&#x27;avez rien d&#x27;autre à faire car le bot va simplement l&#x27;utiliser de lui-même chaque fois qu&#x27;il lit un site web. Passons maintenant au guide numéro quatre, et c&#x27;est le guide de support. SpaceX AI dit qu&#x27;ils gèrent des milliers de tickets de support par jour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web présentant le site Firecrawl et des listes de fonctionnalités pour Grok Bot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation et liste des compétences de l&#x27;API Firecrawl (recherche, extraction, téléchargement, interaction).
+[DESC_IMAGE_3] Écran de présentation thématique vert.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des fonctionnalités et compétences de l&#x27;outil Firecrawl.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000837_seg21.jpg" alt="Page d&#x27;accueil du site Firecrawl montrant le slogan &#x27;Power AI agents with clean web data&#x27;." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000837_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:37</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Firecrawl montrant le slogan &#x27;Power AI agents with clean web data&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000842_seg21.jpg" alt="Interface de configuration affichant les compétences (skills) de Firecrawl (agent, crawl, download, interact)." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000842_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:42</span>
+                        <span class="caption-text">Interface de configuration affichant les compétences (skills) de Firecrawl (agent, crawl, download, interact).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:52 - 00:09:11</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je pense que celui-ci est plutôt intéressant parce que vous pouvez voir comment ils gèrent réellement cela avec GrokBot. Et même si vous ne travaillez pas dans le support, je prêterais quand même attention à celui-ci parce que presque tous ceux qui ont affaire à des clients ou des usagers pourraient utiliser une version de ceux-là. Et celui-ci est un petit peu différent parce que c&#x27;est un seul bot avec cinq rôles différents. Donc tout d&#x27;abord, il suit les versions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec diapositive graphique intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif de la diapositive : &quot;One bot. Five jobs.&quot; et une liste numérotée de 1 à 5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit un cas d&#x27;usage démontrant la polyvalence d&#x27;un bot d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000906_seg22.jpg" alt="Diapositive avec le texte &quot;One bot. Five jobs.&quot; à gauche, accompagnée d&#x27;un graphisme épuré et du présentateur en médaillon à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000906_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:06</span>
+                        <span class="caption-text">Diapositive avec le texte &quot;One bot. Five jobs.&quot; à gauche, accompagnée d&#x27;un graphisme épuré et du présentateur en médaillon à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:11 - 00:09:31</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">De cette façon, vos articles d&#x27;aide restent à jour chaque fois qu&#x27;une date de lancement est modifiée. Deuxièmement, il recrée des bugs. Disons donc qu&#x27;un client signale un bug. Le bot va essayer de le reproduire, enregistrer une vidéo de celui-ci et rédiger les étapes, ce qui est en fait assez fou si l&#x27;on y pense. Maintenant, celui-ci est évidemment plutôt destiné aux entreprises de logiciels. Le troisième est celui que j&#x27;utiliserais probablement le plus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun</p>
+                        <p><strong>Action / Démonstration :</strong> Aucune</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:32 - 00:09:53</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il trouve les clients qui sont sur le point de partir. Vous pouvez simplement lui demander de trouver tous ceux qui ont menacé de partir cette semaine, et il les regroupe par la vraie raison. De cette façon, vous pouvez comprendre comment améliorer votre produit et fidéliser plus de clients. Quatrièmement, nous avons les remboursements. Vous lui donnez fondamentalement votre politique de remboursement, et il vérifie chaque demande par rapport à celle-ci, mais il attend votre approbation avant de faire quoi que ce soit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de SupportGrok (x.ai/bot/guides) et navigateur de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt concernant l&#x27;analyse du taux de désabonnement (churn) et les demandes de remboursement, avec des graphiques de répartition et des tableaux de données.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un cas d&#x27;usage de chatbot IA pour l&#x27;analyse des raisons de départ des clients et l&#x27;automatisation des remboursements.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000937_seg24.jpg" alt="Interface de SupportGrok affichant une analyse du taux de désabonnement (churn analysis) et un tableau thermique par motif et ancienneté, avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000937_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:37</span>
+                        <span class="caption-text">Interface de SupportGrok affichant une analyse du taux de désabonnement (churn analysis) et un tableau thermique par motif et ancienneté, avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000947_seg24.jpg" alt="Interface de SupportGrok montrant une requête d&#x27;automatisation des remboursements connectée à Notion, avec le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_000947_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:47</span>
+                        <span class="caption-text">Interface de SupportGrok montrant une requête d&#x27;automatisation des remboursements connectée à Notion, avec le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:53 - 00:10:11</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And this works for any kind of request where you have a set of rules so it doesn&#x27;t just have to be refund. And the fifth one is reports. So you just tell it which numbers you care about and it sends them to you as a graphic. Now, the part that I think makes this really useful is you could put any of these on a schedule so it&#x27;s running every hour or every day while you&#x27;re doing something else.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application SupportGrok (Grok Bot for Support / x.ai)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt de demande de données métriques pour trois postes clés, affichage d&#x27;un rapport visuel synthétique avec taux de résolution (81 %), niveau de service SLA (99,8 %) et requêtes.</p>
+                        <p><strong>Action / Démonstration :</strong> Génération et restitution automatique d&#x27;un rapport d&#x27;activité chiffré sous forme de graphique infographique par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001002_seg25.jpg" alt="Interface de démonstration de l&#x27;application SupportGrok (Grok Bot) affichant un prompt et un graphique de métriques clés généré automatiquement." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001002_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:02</span>
+                        <span class="caption-text">Interface de démonstration de l&#x27;application SupportGrok (Grok Bot) affichant un prompt et un graphique de métriques clés généré automatiquement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:11 - 00:10:33</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc le cinquième guide est pour le recrutement et ces quatre bots viennent en fait d&#x27;un séminaire d&#x27;équipe. En gros, l&#x27;équipe de recrutement s&#x27;est divisée en petits groupes et chaque groupe a construit un bot pour un problème auquel ils font face chaque jour. Tout d&#x27;abord, nous avons Preppy. Juste avant un entretien, Preppy vous envoie une note sur Slack avec la personne à qui vous parlez, pourquoi l&#x27;équipe est enthousiaste à son sujet, et sur quoi vous devriez vous concentrer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec graphismes schématiques minimalistes.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas d&#x27;organisation d&#x27;équipe et illustration d&#x27;une notification de bot Slack nommé Preppy.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication par le présentateur de la création de bots par l&#x27;équipe de recrutement lors d&#x27;un séminaire.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:33 - 00:10:52</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, au lieu de fouiller dans plein d&#x27;outils différents pour trouver tout ça, c&#x27;est au même endroit. Ensuite, nous avons Pulse, et celui-ci entre en action après l&#x27;entretien. Il extrait les transcriptions et rédige votre formulaire de commentaires pour vous. Mais ensuite, il s&#x27;arrête réellement et vous pose quelques questions, de sorte que votre véritable avis y figure et qu&#x27;il ne s&#x27;agisse pas seulement d&#x27;un résumé de la transcription.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:52 - 00:11:28</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Troisièmement, nous avons Scout. Scout lit essentiellement les fiches d&#x27;évaluation et les CV des personnes qui ont été embauchées et de celles qui ont été refusées. Il apprend donc ce qui a fonctionné et ce qui n&#x27;a pas fonctionné. Et ensuite, il va chercher de nouveaux candidats pendant la nuit et rédige des messages de prise de contact. Tout ce que vous avez à faire, c&#x27;est donc d&#x27;approuver l&#x27;envoi. Et franchement, c&#x27;est vraiment dingue. Si vous y réfléchissez vraiment, tous ces différents agents d&#x27;IA qui travaillent ensemble pour ce secteur particulier d&#x27;une entreprise, vous pourriez vraiment automatiser beaucoup de choses si vous vous montrez créatif avec vos différents cas d&#x27;usage. Et le dernier bot qu&#x27;ils ont, c&#x27;est Eval. Celui-ci regarde là où les candidats continuent d&#x27;échouer dans le processus d&#x27;entretien et le transforme en questions que vous pouvez poser dès le tout premier</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diapositive de présentation schématique / Infographie de l&#x27;outil Scout.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre &quot;Scout&quot;, étiquettes &quot;Scorecards&quot;, &quot;Resumes&quot;, section &quot;What it reads&quot; listant &quot;People who got hired (What worked)&quot; et &quot;People who got rejected (What didn&#x27;t)&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication théorique et visuelle du processus d&#x27;apprentissage automatique de l&#x27;agent Scout à partir des historiques de recrutement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001101_seg28.jpg" alt="Diapositive d&#x27;explication graphique montrant le fonctionnement de l&#x27;agent IA &quot;Scout&quot; et son analyse des fiches d&#x27;évaluation et CV (candidats embauchés vs rejetés)." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001101_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:01</span>
+                        <span class="caption-text">Diapositive d&#x27;explication graphique montrant le fonctionnement de l&#x27;agent IA &quot;Scout&quot; et son analyse des fiches d&#x27;évaluation et CV (candidats embauchés vs rejetés).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:28 - 00:11:48</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">appel. Maintenant, la seule chose que je tiens à souligner, c&#x27;est que ces quatre bots différents se transmettent le travail, ce qui signifie qu&#x27;ils sont capables de prendre leurs connaissances spécialisées et de les passer au bot assigné qui va accomplir la tâche. Et le meilleur dans tout ça, c&#x27;est que si vous voulez essayer n&#x27;importe lequel de ces bots, vous pouvez le faire et je vais vous montrer exactement comment les ajouter. Donc, chacun d&#x27;eux a un lien juste ici sur la page.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec schéma explicatif intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma relationnel illustrant le transfert de tâches entre quatre bots IA nommés eVal, Scout, Pulse et Preppy.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment les bots se transmettent le travail et partagent leurs connaissances spécialisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001133_seg29.jpg" alt="L&#x27;écran est divisé en deux : à gauche, un schéma animé avec quatre personnages/bots colorés (eVAl, Scout, Pulse, Preppy) reliés par des lignes de transmission avec la mention &quot;They pass work to each other&quot; ; à droite, le présentateur dans une pastille vidéo." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001133_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">L&#x27;écran est divisé en deux : à gauche, un schéma animé avec quatre personnages/bots colorés (eVAl, Scout, Pulse, Preppy) reliés par des lignes de transmission avec la mention &quot;They pass work to each other&quot; ; à droite, le présentateur dans une pastille vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:49 - 00:12:09</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et tout ce que vous avez à faire, c&#x27;est de cliquer dessus et cela ajoute le bot pour vous parce que c&#x27;est un template. Et passons au guide numéro six, et celui-ci s&#x27;adresse aux product managers. Et honnêtement, celui-ci fonctionne pour quiconque jongle avec beaucoup de projets différents. Maintenant, le guide commence en disant que la plupart des product managers ne gèrent en fait personne. Donc la personne qui l&#x27;a écrit est allée créer toute une équipe de bots qui lui rendent des comptes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (x.ai) et application de visioconférence ou montage vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de présentation de la page &quot;Grok Bot for PMs&quot; abordant la gestion de produit et le rôle des PMs.
+[DESC_IMAGE_3] Navigation sur le guide en ligne pour les Product Managers et présentation des cas d&#x27;usage du bot.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001204_seg30.jpg" alt="Capture d&#x27;écran d&#x27;un navigateur affichant une page web (x.ai/bot/guides/grok-bot-for-pms) avec du texte sur le rôle des Product Managers, aux côtés d&#x27;une incrustation vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001204_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:04</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un navigateur affichant une page web (x.ai/bot/guides/grok-bot-for-pms) avec du texte sur le rôle des Product Managers, aux côtés d&#x27;une incrustation vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:10 - 00:12:35</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, vous n&#x27;allez évidemment pas copier cette équipe exacte, mais je pense que c&#x27;est un très bon aperçu de jusqu&#x27;où nous pouvons aller avec cela. Ils ont un chef de cabinet qui gère leur calendrier, leur Slack et leur boîte de réception. Ils ont un responsable de l&#x27;ingénierie qui n&#x27;écrit aucun code, donc qui distribue fondamentalement du travail à cinq robots ingénieurs et vérifie ce qui est revenu. Ils ont un analyste de données, et l&#x27;auteur dit que c&#x27;est en fait celui qu&#x27;ils utilisent le plus parce qu&#x27;il est connecté aux données de l&#x27;entreprise et qu&#x27;il répond à leurs questions avec des graphiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> </p>
+                        <p><strong>Contenu textuel & Code :</strong> </p>
+                        <p><strong>Action / Démonstration :</strong> </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:35 - 00:13:01</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, ils ont un produit nommé Sidekick, appelé PMPet, qui peut transformer une conversation Slack brouillonne en proposition écrite. Et ils ont même un recruteur. Mais il y a une idée là-dedans qui, selon moi, fonctionne pour tout le monde, et qui s&#x27;appelle la liste d&#x27;attention. La plupart d&#x27;entre nous écrivent leurs priorités au début de la semaine, et elles deviennent obsolètes presque immédiatement. Donc, ce que fait ce bot, c&#x27;est que toutes les heures, il examine vos e-mails, Slack, vos réunions et votre calendrier, et il tient une liste de ce sur quoi vous travaillez réellement et de ce qui doit être fait ensuite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec schéma explicatif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Organigramme hiérarchique montrant l&#x27;utilisateur (« You ») au sommet supervisant divers bots spécialisés (Chief of staff, Eng manager avec 5 engineer bots, Data analyst, PM Pete, Recruiter).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;organisation et les rôles des différents bots d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:01 - 00:13:20</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, vos autres bots peuvent utiliser cette liste comme filtre. Donc par exemple, vous pourriez lui faire archiver tous les e-mails qui n&#x27;ont rien à voir avec ce sur quoi vous vous concentrez. Maintenant, laissez-moi vous montrer exactement comment configurer ceci. La configuration tient littéralement en une seule phrase et vous pouvez la copier directement depuis la page. Je vais donc la coller ici. Et à partir de ce moment-là, elle va mettre cette liste à jour toutes les heures.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un guide d&#x27;utilisation de bot IA (x.ai/bot/guides/grok-bot-for-pms) et graphiques explicatifs de filtrage d&#x27;e-mails.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Guide textuel sur la configuration d&#x27;un agent IA pour créer une liste d&#x27;attention (&quot;attention list&quot;) à partir d&#x27;e-mails, messages Slack et calendrier.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et illustre le fonctionnement d&#x27;un bot IA agissant comme filtre intelligent d&#x27;e-mails, puis montre le texte de configuration à copier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001306_seg33.jpg" alt="Schéma explicatif montrant comment une liste d&#x27;attention filtre des e-mails (garder ou archiver) selon les projets en cours." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001306_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:06</span>
+                        <span class="caption-text">Schéma explicatif montrant comment une liste d&#x27;attention filtre des e-mails (garder ou archiver) selon les projets en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001311_seg33.jpg" alt="Page web de documentation (x.ai/bot/guides/grok-bot-for-pms) détaillant l&#x27;utilisation d&#x27;une &quot;attention list&quot; comme filtre pour les agents IA." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001311_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:11</span>
+                        <span class="caption-text">Page web de documentation (x.ai/bot/guides/grok-bot-for-pms) détaillant l&#x27;utilisation d&#x27;une &quot;attention list&quot; comme filtre pour les agents IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001315_seg33.jpg" alt="Page web similaire à l&#x27;image 2, avec un paragraphe sur la configuration (&quot;To set this up&quot;) surligné et copié dans le presse-papier." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001315_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:15</span>
+                        <span class="caption-text">Page web similaire à l&#x27;image 2, avec un paragraphe sur la configuration (&quot;To set this up&quot;) surligné et copié dans le presse-papier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:20 - 00:13:42</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc, nous avons analysé une tonne de bots différents que l&#x27;équipe GrokBot utilise dans ces différents guides qu&#x27;ils ont créés pour différents domaines de leur entreprise. Pour être franc, vous n&#x27;utiliserez peut-être même pas la moitié d&#x27;entre eux, mais j&#x27;espère que maintenant vous comprenez exactement comment vous pourriez créer des agents spécialisés pour différentes tâches et les faire travailler ensemble au sein de votre entreprise. Quoi qu&#x27;il en soit, les gars, si vous avez aimé cette vidéo, assurez-vous de vous abonner pour plus de contenu de ce genre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de démonstration de bots (Grok Bot launch film), navigateur web ou application de bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif des guides et des bots (&#x27;6 guides. 30+ bots.&#x27;), interface utilisateur avec l&#x27;option &#x27;Teach a task&#x27; et le bot nommé &#x27;Louie&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un guide et démonstration visuelle d&#x27;un bot capable d&#x27;apprendre et de répliquer des flux de travail complexes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001336_seg34.jpg" alt="Gros plan sur l&#x27;écran d&#x27;un ordinateur portable montrant une interface logicielle avec un curseur sur l&#x27;option &#x27;Teach a task&#x27;, accompagné d&#x27;une mention textuelle décrivant &#x27;Vincent&#x27;s Bot: Louie - Learns and replicates tricky workflows&#x27;." loading="lazy" onclick="openLightbox('../screenshots/qYZu2ncbBvI/qYZu2ncbBvI_001336_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:36</span>
+                        <span class="caption-text">Gros plan sur l&#x27;écran d&#x27;un ordinateur portable montrant une interface logicielle avec un curseur sur l&#x27;option &#x27;Teach a task&#x27;, accompagné d&#x27;une mention textuelle décrivant &#x27;Vincent&#x27;s Bot: Louie - Learns and replicates tricky workflows&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:42 - 00:13:44</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Merci d&#x27;avoir regardé jusqu&#x27;à la fin, et je vous vois dans la prochaine vidéo. Salut.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface ou logiciel visible.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, graphique, indicateur technique ou donnée chiffrée affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement au public pour conclure la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
