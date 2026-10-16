@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `22 / 273` (`8.1%`)
+- **Vidéos traitées** : `23 / 273` (`8.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-16 | [8htNqGGxlDo](https://www.youtube.com/watch?v=8htNqGGxlDo) | **Claude Fable 5.5 is Coming + More (AI News)** | [2026-10-16_YT-[8htNqGGxlDo]_Claude Fable 5.5 is Coming + More (AI News)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-16_YT-[8htNqGGxlDo]_Claude Fable 5.5 is Coming + More (AI News)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-16_YT-[8htNqGGxlDo]_Claude Fable 5.5 is Coming + More (AI News)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `7` |
 | 2026-10-14 | [qYZu2ncbBvI](https://www.youtube.com/watch?v=qYZu2ncbBvI) | **Comment l'équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots)** | [2026-10-14_YT-[qYZu2ncbBvI]_Comment l'équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-14_YT-[qYZu2ncbBvI]_Comment l'équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-14_YT-[qYZu2ncbBvI]_Comment l'équipe de SpaceXAI utilise les Grok Bots (plus de 30 bots)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `44` |
 | 2026-10-12 | [d_UgqLKUZHY](https://www.youtube.com/watch?v=d_UgqLKUZHY) | **Meta vient de lancer Muse Wonder (Meilleur que Opus 5.5 ?)** | [2026-10-12_YT-[d_UgqLKUZHY]_Meta vient de lancer Muse Wonder (Meilleur que Opus 5.5 )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-12_YT-[d_UgqLKUZHY]_Meta vient de lancer Muse Wonder (Meilleur que Opus 5.5 )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-12_YT-[d_UgqLKUZHY]_Meta vient de lancer Muse Wonder (Meilleur que Opus 5.5 )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `18` |
 | 2026-10-10 | [YGW6GJUWmWA](https://www.youtube.com/watch?v=YGW6GJUWmWA) | **L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable** | [2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `4` |
