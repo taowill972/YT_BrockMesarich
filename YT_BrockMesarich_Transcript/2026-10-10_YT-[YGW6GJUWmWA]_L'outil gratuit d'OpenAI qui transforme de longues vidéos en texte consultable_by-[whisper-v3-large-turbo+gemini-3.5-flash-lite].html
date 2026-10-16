@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 L&#x27;outil gratuit d&#x27;OpenAI qui transforme de longues vidéos en texte consultable — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 L&#x27;outil gratuit d&#x27;OpenAI qui transforme de longues vidéos en texte consultable</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-10</span>
+                <span class="badge">⏱️ 00:00:32</span>
+                <span class="badge">🆔 <code>YGW6GJUWmWA</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=YGW6GJUWmWA" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 🚀 Résumé<br><br>Cette vidéo de la chaîne *Brock Mesarich | AI for Non Techies* met en lumière une solution open-source majeure développée par OpenAI pour valoriser les archives audiovisuelles. L'outil central présenté est **Whisper**, un dépôt GitHub gratuit capable d'analyser n'importe quel enregistrement audio ou vidéo pour le transcrire intégralement avec une précision temporelle millimétrée. En transformant des flux multimédias en données textuelles indexables, il permet de naviguer à l'intérieur d'un catalogue de podcasts ou de vidéos exactement comme on le ferait dans un document bureautique, offrant la possibilité de rechercher un mot-clé pour être redirigé instantanément vers la séquence correspondante.<br><br>Au-delà de la simple transcription brute, la solution s'intègre dans une chaîne de valeur éditoriale plus large. Le texte généré multilingue — qui peut également être traduit directement en anglais — sert de matière première pour automatiser la création de sous-titres, la rédaction de notes d'émissions (*show notes*) et la production de nouveaux formats de publications textuelles. Cette approche permet aux créateurs de contenu et aux entreprises d'exploiter pleinement des heures de *legacy media* qui restaient jusqu'alors inactives, en transformant de vagues archives en une base de connaissances consultable et réutilisable.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Whisper** : Modèle de transcription vocale open-source d'OpenAI disponible sur GitHub, capable d'écouter, transcrire, horolorer et traduire des enregistrements audio en texte consultable.<br>* **ChatGPT** : Modèle conversationnel d'OpenAI évoqué dans l'écosystème global de traitement textuel et d'assistance à la création de contenu.<br>* **Claude** : Modèle d'intelligence artificielle conversationnelle d'Anthropic spécialisé dans l'analyse de documents complexes et la rédaction.<br>* **Gemini** : Modèle multimodal de Google capable de traiter de larges contextes textuels, audio et vidéo.<br>* **Grok** : Modèle d'intelligence artificielle développé par xAI pour l'analyse en temps réel et la génération de contenu.<br>* **Make** : Plateforme d'automatisation no-code avancée permettant de connecter des applications et de concevoir des flux de travail complexes.<br>* **n8n** : Outil d'automatisation de flux de travail open-source et no-code/low-code axé sur la souveraineté des données et les intégrations techniques.<br>* **Zapier** : Logiciel pionnier d'automatisation no-code facilitant le transfert de données entre des milliers d'applications cloud de manière intuitive.<br><br>### 💡 Points Clés & Enseignements Stratégiques<br><br>* **Valorisation des archives dormantes** : Transformer d'anciens podcasts ou vidéos en texte permet d'éviter que le contenu historique ne perde de sa valeur et de lui redonner une utilité opérationnelle immédiate.<br>* **Indexation et recherche textuelle** : Le passage de la vidéo au format textuel permet de parcourir des heures d'enregistrement via une simple recherche par mots-clés, abolissant la contrainte de l'écoute linéaire.<br>* **Précision temporelle granulaire** : Whisper fournit l'instant exact où chaque ligne a été prononcée, facilitant la navigation directe vers la séquence vidéo pertinente sans tâtonnement.<br>* **Capacités de traduction multilingue** : L'outil gère nativement de nombreuses langues et intègre des fonctionnalités de traduction directe vers l'anglais, élargissant instantanément l'audience potentielle du contenu.<br>* **Génération automatisée de sous-titres** : La transcription horodatée constitue la base idéale pour produire des sous-titres précis et synchronisés pour les plateformes de diffusion.<br>* **Repurposing de contenu multi-canal** : La transcription textuelle sert de fondation pour rédiger automatiquement des notes d'émission, des articles de blog ou des publications pour les réseaux sociaux.<br>* **Accessibilité et gratuité de l'open-source** : En s'appuyant sur un dépôt GitHub gratuit, les utilisateurs peuvent accéder à des technologies de pointe sans s'abonner à des logiciels propriétaires onéreux.<br>* **Gain de productivité éditoriale** : L'automatisation de la phase de retranscription et de résumé libère un temps précieux pour les créateurs, leur permettant de se concentrer sur la stratégie de diffusion.<br>* **Stratégie d'engagement communautaire** : L'appel à l'action formulé dans la vidéo (commenter un mot-clé pour recevoir le dépôt) illustre une méthode efficace pour stimuler l'algorithme d'engagement tout en qualifiant les prospects intéressés par l'IA.<br>* **Convergence des technologies d'automatisation** : Bien que Whisper soit l'outil vedette, son intégration dans des écosystèmes no-code (Make, Zapier, n8n) ouvre la voie à des pipelines de production entièrement automatisés de la vidéo brute au post publié.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:22</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">OpenAI a un dépôt GitHub gratuit qui transforme vos anciennes vidéos en texte consultable. Il s&#x27;appelle Whisper. Il écoute n&#x27;importe quel enregistrement et écrit chaque mot. Et il indique l&#x27;exact moment où chaque ligne a été prononcée. Donc, si vous avez des centaines de vieux podcasts ou vidéos, vous pouvez les parcourir comme un document. Tapez un sujet, allez directement au moment où vous l&#x27;avez dit. Et cela fonctionne dans de nombreuses langues différentes. Cela peut même les traduire en anglais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, terminal de commande et interface de lecteur multimédia.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte transcrit horodaté, graphique d&#x27;onde audio et barre de recherche avec des extraits surlignés.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du fonctionnement de l&#x27;outil Whisper d&#x27;OpenAI pour transcrire et rechercher dans des fichiers audio ou vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000005_seg1.jpg" alt="Le présentateur en bas et un visuel montrant le nom de l&#x27;outil Whisper d&#x27;OpenAI et une interface d&#x27;enregistrement audio en haut." loading="lazy" onclick="openLightbox('../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Le présentateur en bas et un visuel montrant le nom de l&#x27;outil Whisper d&#x27;OpenAI et une interface d&#x27;enregistrement audio en haut.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000011_seg1.jpg" alt="Une interface de terminal affichant la transcription textuelle avec des horodatages associés à un fichier audio représenté par une onde sonore." loading="lazy" onclick="openLightbox('../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000011_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:11</span>
+                        <span class="caption-text">Une interface de terminal affichant la transcription textuelle avec des horodatages associés à un fichier audio représenté par une onde sonore.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000016_seg1.jpg" alt="Une interface de recherche textuelle montrant les résultats d&#x27;une recherche par mot-clé (« pricing ») dans des épisodes de podcast avec lecture vidéo." loading="lazy" onclick="openLightbox('../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000016_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:16</span>
+                        <span class="caption-text">Une interface de recherche textuelle montrant les résultats d&#x27;une recherche par mot-clé (« pricing ») dans des épisodes de podcast avec lecture vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:22 - 00:00:32</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, il peut utiliser cette transcription pour les sous-titres, les notes d&#x27;émission ou de nouvelles publications. Ainsi, vos anciens épisodes ne prennent plus la poussière. Si vous voulez redonner vie à vos anciennes vidéos, commentez Whisper et je vous enverrai le dépôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Graphique explicatif animé / Schéma conceptuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte montrant &#x27;episode.txt&#x27;, les formats de fichiers (.srt, .vtt, etc.) et les options &#x27;Captions&#x27; et &#x27;Show notes&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du processus de transformation de transcription audio en contenu textuel et sous-titres.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000024_seg2.jpg" alt="Schéma explicatif montrant la transcription d&#x27;un fichier audio transformée en plusieurs formats (sous-titres, notes d&#x27;émission)." loading="lazy" onclick="openLightbox('../screenshots/YGW6GJUWmWA/YGW6GJUWmWA_000024_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Schéma explicatif montrant la transcription d&#x27;un fichier audio transformée en plusieurs formats (sous-titres, notes d&#x27;émission).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

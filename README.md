@@ -7,7 +7,7 @@
 - Les captures d'?cran par timeline sont archiv?es dans : **`screenshots/<video_id>/`**
 
 ## ?? Statistiques de l'Automatisation
-- **Vid?os trait?es** : `0 / 273` (`0.0%`)
+- **Vid?os trait?es** : `1 / 274` (`0.4%`)
 - **Mod?le Audio & Synth?se** : `whisper-v3-large-turbo` (100% Verbatim Fran?ais int?gral mot pour mot)
 - **Mod?le Vision d'?cran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | R?f. Vid?o | Titre Fran?ais / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-10 | [YGW6GJUWmWA](https://www.youtube.com/watch?v=YGW6GJUWmWA) | **L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable** | [2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-10_YT-[YGW6GJUWmWA]_L'outil gratuit d'OpenAI qui transforme de longues vidéos en texte consultable_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `4` |
 
 ---
 *G?n?r? automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
