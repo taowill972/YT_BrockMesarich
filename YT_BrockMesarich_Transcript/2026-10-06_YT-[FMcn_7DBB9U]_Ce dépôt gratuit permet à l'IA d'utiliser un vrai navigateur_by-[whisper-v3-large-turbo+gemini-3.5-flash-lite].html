@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Ce dépôt gratuit permet à l&#x27;IA d&#x27;utiliser un vrai navigateur — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Ce dépôt gratuit permet à l&#x27;IA d&#x27;utiliser un vrai navigateur</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-06</span>
+                <span class="badge">⏱️ 00:00:28</span>
+                <span class="badge">🆔 <code>FMcn_7DBB9U</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=FMcn_7DBB9U" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Cette intervention met en lumière une avancée majeure dans l'automatisation des flux de travail numériques et l'utilisation d'agents intelligents : le dépôt open-source « browser use ». Contrairement aux approches traditionnelles de web scraping statique ou d'appels API rigides, cet outil dote les grands modèles de langage (LLM) d'une autonomie visuelle et comportementale complète au sein d'un véritable navigateur web. L'agent est ainsi capable de reproduire fidèlement les interactions humaines — clics, défilements, lecture de pages dynamiques et contournement de structures complexes — pour exécuter des tâches multidimensionnelles sans intervention humaine constante.<br><br>Dans une perspective d'intelligence économique, de trading quantitatif et de veille concurrentielle, cette technologie révolutionne la collecte de données non structurées. Plutôt que de multiplier manuellement les onglets pour analyser des grilles tarifaires, des indicateurs macroéconomiques ou des flux d'actualités en temps réel, l'opérateur délèse la recherche exhaustive à l'agent. Celui-ci opère une navigation itérative, compile les informations de manière granulaire et fournit un rapport comparatif auditable.<br><br>L'aspect critique de cette automatisation réside dans sa capacité de traçabilité : l'agent répertorie l'ensemble des URLs visitées, permettant un audit rigoureux des sources de données avant toute prise de décision stratégique ou exécution algorithmique. C'est un pont direct entre le prompt engineering conversationnel et l'exécution technique sur des interfaces web complexes, réduisant drastiquement la friction opérationnelle pour les professionnels non techniques.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Browser Use** : Dépôt GitHub open-source permettant de doter un agent IA d'un véritable navigateur web automatisé pour interagir visuellement avec les sites internet.<br>* **ChatGPT** : Modèle de langage conversationnel avancé pouvant servir de moteur décisionnel pour piloter la logique de navigation et structurer les données collectées.<br>* **Claude** : LLM hautement performant reconnu pour ses capacités d'analyse textuelle approfondie et de synthèse contextuelle des informations extraites du web.<br>* **Gemini** : Modèle multimodal de Google adapté au traitement de larges volumes de données et à la navigation contextuelle.<br>* **Grok** : Modèle d'intelligence artificielle orienté vers l'accès aux données en temps réel et l'analyse de l'actualité.<br>* **n8n** : Plateforme d'automatisation de flux de travail (workflow automation) open-source permettant d'orchestrer des agents IA et des déclencheurs web.<br>* **Make** : Outil d'intégration visuelle avancé pour connecter des applications cloud et automatiser des processus complexes sans coder.<br>* **Zapier** : Solution SaaS d'automatisation no-code facilitant le transfert de données entre le navigateur IA et des applications tierces (CRM, tableurs).<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Autonomie visuelle des agents** : Transition du scraping basé sur le code HTML brut vers une navigation basée sur la vision et l'interaction semblable à celle d'un humain (clics et scrolls).<br>* **Élimination de la surcharge cognitive** : Suppression de la nécessité d'ouvrir des dizaines d'onglets simultanément pour effectuer des recherches de marché ou de la veille concurrentielle.<br>* **Auditabilité et transparence des sources** : Obligation programmatique pour l'agent de lister l'intégralité des pages web consultées afin de garantir la vérifiabilité des données collectées.<br>* **Veille concurrentielle automatisée** : Capacité à extraire en un temps record des grilles tarifaires, des catalogues produits ou des positionnements de marché de multiples concurrents simultanément.<br>* **Prompt engineering opérationnel** : Utilisation de consignes en langage naturel pour orchestrer des parcours de navigation complexes et multi-étapes sans compétences en programmation.<br>* **Amélioration de la reproductibilité** : Standardisation des processus de collecte d'informations pour éliminer les biais humains lors de la phase de recherche préliminaire.<br>* **Intégration écosystémique** : Synergie entre les outils d'automatisation no-code (Make, Zapier, n8n) et les capacités de navigation autonome pour alimenter des bases de données en temps réel.<br>* **Réduction de la friction technique** : Démocratisation de l'accès aux données web profondes grâce à des dépôts open-source accessibles aux profils non techniques (stratégie "AI for Non Techies").<br>* **Sécurisation des décisions basées sur la donnée** : Rapprochement entre l'agilité des LLM et la rigueur analytique par la vérification systématique des points de contact web empruntés par l'agent.<br>* **Scalabilité des analyses de marché** : Passage d'une observation manuelle et restreinte à une exploration exhaustive et comparative de l'écosystème numérique en quelques minutes.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Browser Use</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Claude</span><span class="tool-tag">Gemini</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Autonomie visuelle des agents** : Transition du scraping basé sur le code HTML brut vers une navigation basée sur la vision et l&#x27;interaction semblable à celle d&#x27;un humain (clics et scrolls).</span></li><li><span class="point-bullet">✦</span><span>Élimination de la surcharge cognitive** : Suppression de la nécessité d&#x27;ouvrir des dizaines d&#x27;onglets simultanément pour effectuer des recherches de marché ou de la veille concurrentielle.</span></li><li><span class="point-bullet">✦</span><span>Auditabilité et transparence des sources** : Obligation programmatique pour l&#x27;agent de lister l&#x27;intégralité des pages web consultées afin de garantir la vérifiabilité des données collectées.</span></li><li><span class="point-bullet">✦</span><span>Veille concurrentielle automatisée** : Capacité à extraire en un temps record des grilles tarifaires, des catalogues produits ou des positionnements de marché de multiples concurrents simultanément.</span></li><li><span class="point-bullet">✦</span><span>Prompt engineering opérationnel** : Utilisation de consignes en langage naturel pour orchestrer des parcours de navigation complexes et multi-étapes sans compétences en programmation.</span></li><li><span class="point-bullet">✦</span><span>Amélioration de la reproductibilité** : Standardisation des processus de collecte d&#x27;informations pour éliminer les biais humains lors de la phase de recherche préliminaire.</span></li><li><span class="point-bullet">✦</span><span>Intégration écosystémique** : Synergie entre les outils d&#x27;automatisation no-code (Make, Zapier, n8n) et les capacités de navigation autonome pour alimenter des bases de données en temps réel.</span></li><li><span class="point-bullet">✦</span><span>Réduction de la friction technique** : Démocratisation de l&#x27;accès aux données web profondes grâce à des dépôts open-source accessibles aux profils non techniques (stratégie &quot;AI for Non Techies&quot;).</span></li><li><span class="point-bullet">✦</span><span>Sécurisation des décisions basées sur la donnée** : Rapprochement entre l&#x27;agilité des LLM et la rigueur analytique par la vérification systématique des points de contact web empruntés par l&#x27;agent.</span></li><li><span class="point-bullet">✦</span><span>Scalabilité des analyses de marché** : Passage d&#x27;une observation manuelle et restreinte à une exploration exhaustive et comparative de l&#x27;écosystème numérique en quelques minutes.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:27</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Arrêtez d&#x27;ouvrir 40 onglets pour vos recherches. Ce dépôt GitHub gratuit permet à l&#x27;IA de naviguer sur le web à votre place. Ça s&#x27;appelle browser use et ça donne à votre agent IA son propre navigateur. Il peut donc cliquer, faire défiler et lire de vrais sites web exactement comme vous le feriez. Disons donc que vous voulez savoir ce que vos concurrents facturent. Il suffit de le dire à l&#x27;agent. Il visite chaque site et ramène une comparaison côte à côte. Le meilleur dans tout ça, c&#x27;est que vous pouvez lui demander de lister chaque page qu&#x27;il a utilisée. Vous pouvez donc tout vérifier deux fois. Si vous voulez l&#x27;essayer, commentez web agent et je vous enverrai le dépôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de démonstration du projet GitHub browser-use et tableau de tarification comparatif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de saisie de tâches pour l&#x27;agent IA et tableau comparatif de prix (Starter: $19, $24, $15 / Pro: $49, $59, $45).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des fonctionnalités de l&#x27;agent IA capable de comparer des prix et d&#x27;exécuter des tâches de navigation web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FMcn_7DBB9U/FMcn_7DBB9U_000021_seg1.jpg" alt="Tableau comparatif de prix entre différents services (Acme, Brightly, Nimbus) affiché au-dessus du présentateur." loading="lazy" onclick="openLightbox('../screenshots/FMcn_7DBB9U/FMcn_7DBB9U_000021_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:21</span>
+                        <span class="caption-text">Tableau comparatif de prix entre différents services (Acme, Brightly, Nimbus) affiché au-dessus du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
