@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Anthropic a créé une académie gratuite pour apprendre Claude — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Anthropic a créé une académie gratuite pour apprendre Claude</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-30</span>
+                <span class="badge">⏱️ 00:00:44</span>
+                <span class="badge">🆔 <code>xJgWA7WCvQ4</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=xJgWA7WCvQ4" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Anthropic frappe un grand coup dans l'écosystème de l'intelligence artificielle en lançant une académie de formation entièrement gratuite et certifiante, qui demeure pourtant ignorée du grand public. Conçu en collaboration avec des professeurs d'université, ce programme structuré s'articule autour de 22 cours rigoureux, rompant totalement avec les simples pages marketing habituelles. Sans nécessiter le moindre abonnement payant, cette initiative offre aux professionnels, aux développeurs et aux passionnés une opportunité unique de maîtriser l'un des modèles linguistiques les plus puissants du marché à travers un véritable cursus académique.<br><br>La structure pédagogique se divise en deux axes majeurs, dont 16 cours à son propre rythme répartis sur trois blocs fondamentaux : l'utilisation quotidienne et l'optimisation des interactions avec Claude, le développement avancé via l'API, la création de compétences d'agents autonomes couplées au protocole MCP (Model Context Protocol), ainsi que le déploiement à grande échelle sur des infrastructures cloud de premierplan telles que Google Cloud et Amazon Bedrock. <br><br>Au-delà de la simple montée en compétences technique, ce programme se distingue par la délivrance de véritables certificats de fin de formation valorisables sur les réseaux professionnels comme LinkedIn. En démocratisant ainsi l'accès à l'expertise de pointe sur Claude, Anthropic consolide son écosystème et permet à une audience non technique ou technique d'accéder aux standards les plus exigeants de l'automatisation et de l'ingénierie prompt, positionnant cette académie comme un levier stratégique incontournable pour devancer la concurrence.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude** : Modèle de langage de pointe développé par Anthropic, au cœur du programme de formation gratuit et reconnu pour ses capacités avancées d'analyse et de raisonnement.<br>* **ChatGPT** : Modèle conversationnel d'OpenAI, mentionné dans l'écosystème global de l'intelligence artificielle générative et de l'automatisation.<br>* **Gemini** : Modèle multimodal de Google, faisant partie du panorama concurrentiel des grands modèles de langage abordés dans les stratégies d'intégration.<br>* **Grok** : Modèle conversationnel développé par xAI, intégré dans le paysage des outils d'IA conversationnelle et d'analyse de données.<br>* **n8n** : Plateforme d'automatisation de flux de travail open-source et flexible, essentielle pour orchestrer des agents IA et des processus complexes sans code ou low-code.<br>* **Make** : Puissant outil d'intégration et d'automatisation visuelle (anciennement Integromat), permettant de connecter Claude à des centaines d'applications tierces.<br>* **Zapier** : Pionnier de l'automatisation no-code, utilisé pour relier instantanément des flux de données et déclencher des actions basées sur des interactions textuelles.<br>* **Amazon Bedrock** : Service managé d'AWS permettant d'accéder à des modèles de fondation performants comme Claude pour le déploiement d'applications d'entreprise sécurisées.<br>* **Google Cloud** : Infrastructure cloud de pointe offrant les ressources nécessaires pour exécuter, scaler et intégrer des solutions d'intelligence artificielle à l'échelle industrielle.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Démocratisation de l'expertise certifiante** : Accès à un programme universitaire gratuit de 22 cours délivrant de vrais certificats valorisables sur LinkedIn, éliminant les barrières financières à l'apprentissage de l'IA.<br>* **Absence de barrière financière** : Le cursus ne requiert aucun abonnement payant à Claude, permettant une adoption de masse des fonctionnalités avancées par les professionnels et les développeurs.<br>* **Conception académique rigoureuse** : Un programme élaboré en partenariat direct avec des professeurs d'université, garantissant une pédagogie structurée bien loin des simples tutoriels marketing superficiels.<br>* **Apprentissage autonome et modulaire** : 16 cours accessibles à son propre rythme, segmentés en trois grands blocs thématiques pour absorber la complexité technique progressivement.<br>* **Maîtrise des usages quotidiens** : Apprentissage des bonnes pratiques pour exploiter Claude de manière optimale dans les tâches bureautiques, analytiques et créatives de tous les jours.<br>* **Développement avancé par API** : Acquisition des compétences nécessaires pour intégrer directement les capacités de Claude dans des architectures logicielles tierces et des pipelines de données.<br>* **Ingénierie des agents autonomes** : Exploration approfondie de la création de compétences d'agents capables d'exécuter des flux de travail complexes de manière semi-autonome.<br>* **Intégration du protocole MCP** : Maîtrise du Model Context Protocol (MCP) pour connecter efficacement les modèles de langage à des sources de données et des outils externes sécurisés.<br>* **Déploiement sur infrastructures Cloud** : Apprentissage pratique de l'exécution et de la mise à l'échelle de Claude au sein d'environnements d'entreprise majeurs tels que Google Cloud et Amazon Bedrock.<br>* **Alignement avec l'écosystème d'Anthropic** : Stratégie de l'entreprise visant à structurer sa communauté d'utilisateurs en fournissant des ressources officielles face aux contenus fragmentés du web.<br>* **Levier de différenciation professionnelle** : Opportunité unique pour les profils non techniques d'acquérir des qualifications vérifiables et recherchées sur le marché du travail en pleine mutation technologique.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Gemini</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">Amazon Bedrock</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Démocratisation de l&#x27;expertise certifiante** : Accès à un programme universitaire gratuit de 22 cours délivrant de vrais certificats valorisables sur LinkedIn, éliminant les barrières financières à l&#x27;apprentissage de l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Absence de barrière financière** : Le cursus ne requiert aucun abonnement payant à Claude, permettant une adoption de masse des fonctionnalités avancées par les professionnels et les développeurs.</span></li><li><span class="point-bullet">✦</span><span>Conception académique rigoureuse** : Un programme élaboré en partenariat direct avec des professeurs d&#x27;université, garantissant une pédagogie structurée bien loin des simples tutoriels marketing superficiels.</span></li><li><span class="point-bullet">✦</span><span>Apprentissage autonome et modulaire** : 16 cours accessibles à son propre rythme, segmentés en trois grands blocs thématiques pour absorber la complexité technique progressivement.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise des usages quotidiens** : Apprentissage des bonnes pratiques pour exploiter Claude de manière optimale dans les tâches bureautiques, analytiques et créatives de tous les jours.</span></li><li><span class="point-bullet">✦</span><span>Développement avancé par API** : Acquisition des compétences nécessaires pour intégrer directement les capacités de Claude dans des architectures logicielles tierces et des pipelines de données.</span></li><li><span class="point-bullet">✦</span><span>Ingénierie des agents autonomes** : Exploration approfondie de la création de compétences d&#x27;agents capables d&#x27;exécuter des flux de travail complexes de manière semi-autonome.</span></li><li><span class="point-bullet">✦</span><span>Intégration du protocole MCP** : Maîtrise du Model Context Protocol (MCP) pour connecter efficacement les modèles de langage à des sources de données et des outils externes sécurisés.</span></li><li><span class="point-bullet">✦</span><span>Déploiement sur infrastructures Cloud** : Apprentissage pratique de l&#x27;exécution et de la mise à l&#x27;échelle de Claude au sein d&#x27;environnements d&#x27;entreprise majeurs tels que Google Cloud et Amazon Bedrock.</span></li><li><span class="point-bullet">✦</span><span>Alignement avec l&#x27;écosystème d&#x27;Anthropic** : Stratégie de l&#x27;entreprise visant à structurer sa communauté d&#x27;utilisateurs en fournissant des ressources officielles face aux contenus fragmentés du web.</span></li><li><span class="point-bullet">✦</span><span>Levier de différenciation professionnelle** : Opportunité unique pour les profils non techniques d&#x27;acquérir des qualifications vérifiables et recherchées sur le marché du travail en pleine mutation technologique.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:25</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic a une académie gratuite dont la plupart des gens ignorent l&#x27;existence. 22 cours, de vrais certificats, créés avec deux professeurs d&#x27;université. Aucun abonnement payant à CLAWD n&#x27;est requis, l&#x27;inscription est gratuite, et c&#x27;est un véritable programme d&#x27;études, pas une page marketing. 16 cours à son propre rythme divisés en trois tâches différentes. Comment réellement utiliser CLAWD au jour le jour, comment construire avec l&#x27;API, les compétences d&#x27;agents et le protocole MCP, et comment l&#x27;exécuter dans des outils comme Google Cloud et Amazon Bedrock.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;une plateforme de cours en ligne (Anthropic Academy).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Question de quiz : &quot;If Claude&#x27;s response is too generic, what should you try?&quot; avec plusieurs choix de réponses multiples.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente visuellement le contenu concret des cours, illustrant qu&#x27;il s&#x27;agit d&#x27;un véritable programme d&#x27;études avec des quiz et non d&#x27;une simple page marketing.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xJgWA7WCvQ4/xJgWA7WCvQ4_000013_seg1.jpg" alt="Capture d&#x27;écran montrant une interface de quiz de cours en ligne avec une question sur l&#x27;utilisation de Claude, et le présentateur en bas." loading="lazy" onclick="openLightbox('../screenshots/xJgWA7WCvQ4/xJgWA7WCvQ4_000013_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:13</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de quiz de cours en ligne avec une question sur l&#x27;utilisation de Claude, et le présentateur en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:26 - 00:00:44</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici la partie qui vaut la peine d&#x27;être terminée. Chaque cours vous donne un véritable certificat de fin de formation, quelque chose que vous pouvez réellement mettre sur LinkedIn, et pas seulement un simple badge de participation. C&#x27;f&#x27;est le même écosystème gratuit qu&#x27;Anthropic continue de développer, tout simplement les versions officielles structurées que la plupart des gens qui font défiler leur écran ne remarquent jamais. Alors commentez Academy et je vous enverrai le lien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo au format vertical.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte illustratif sur les certificats et les cours gratuits d&#x27;Anthropic.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les avantages et les certifications des cours d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
