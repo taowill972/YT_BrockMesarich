@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-28</span>
+                <span class="badge">⏱️ 00:07:12</span>
+                <span class="badge">🆔 <code>pAkG5PstlYI</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=pAkG5PstlYI" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:26</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic est de retour avec un nouveau modèle. Ils viennent de lancer Claude Sonnet 5.5, juste quelques jours après avoir sorti Opus 5.5. Et comme toujours, dans cette vidéo, je vais décortiquer toutes les nouveautés de ce modèle. Je vais faire vite et aller droit au but pour que vous puissiez gagner du temps. Sans plus attendre, plongeons-noisi dedans. Ce que je vais faire dans cette vidéo, c&#x27;est analyser cet article juste ici qu&#x27;Anthropic nous a fourni et vous donner les principaux points importants qui comptent pour vous, afin que vous puissiez gagner du temps sans avoir à parcourir tout ceci et essayer de le déchiffrer par vous-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:26 - 00:00:51</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez vraiment y jeter un œil vous-même, il y aura un lien dans la description pour le faire. Maintenant, première chose importante, Anthropic a présenté Claude Sonnet 5.5, le deuxième modèle de la famille Claude 5.5, puisqu&#x27;ils viennent de sortir Opus 5.5 il y a tout juste quelques jours, et il est très, très performant, et j&#x27;ai été impressionné par lui. Ils poursuivent en disant que c&#x27; qu&#x27;il s&#x27;agit d&#x27;une nette amélioration par rapport au Sonnet 5, et qu&#x27;il fonctionne 30 % plus rapidement, et qu&#x27;il coûte jusqu&#x27;à 30 % moins cher pour la plupart des travaux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:51 - 00:01:29</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En plus de cela, Anthropic a laissé entendre que Haiku 5.5 sortira probablement au cours des deux prochaines semaines, ce qui en fera le troisième modèle de la famille 5.5. Si vous ne connaissez pas les modèles Claude Haiku, ils sont principalement conçus pour les applications à haut volume et sensibles aux coûts, c&#x27;est donc leur modèle le moins cher et, de toute évidence, le moins performant. Cependant, nous devrions assister à une assez mise à niveau importante de ce modèle au cours des prochaines semaines, ce qui m&#x27;enthousiasme. Passons maintenant à la première grande mise à niveau de Sonnet 5.5, qui concerne la collaboration et, plus important encore, la communication avec ce modèle. Anthropic a donc indiqué que, tout comme Opus 5.5, Sonnet 5.5 écrit</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Excalidraw ou un document similaire avec un texte descriptif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte présentant les modèles Claude (Sonnet 5.5, Opus 5.5 et Claude Haiku 5.5 pour les applications à haut volume et sensibles aux coûts).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le texte affiché à l&#x27;écran concernant la sortie prochaine de Haiku 5.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000101_seg3.jpg" alt="Capture d&#x27;écran montrant un navigateur web affichant une page avec le titre &quot;Haiku 5.5 Coming Soon&quot; et un paragraphe sur les modèles Claude d&#x27;Anthropic, avec la webcam du présentateur incrustée en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000101_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un navigateur web affichant une page avec le titre &quot;Haiku 5.5 Coming Soon&quot; et un paragraphe sur les modèles Claude d&#x27;Anthropic, avec la webcam du présentateur incrustée en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:29 - 00:02:08</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plus clairement que notre génération précédente de modèles. Les premiers testeurs le décrivent comme un bien meilleur partenaire de collaboration que Sonnet 5. Sa vitesse le rend également très bien adapté à l&#x27;itération rapide sur des tâches complexes. C&#x27;est donc une chose que j&#x27;ai vraiment remarquée en utilisant Opus 5.5 et j&#x27;ai vu beaucoup d&#x27;autres personnes en parler. Il est très doué pour communiquer. On n&#x27;a pas l&#x27;impression de devoir déchiffrer exactement ce qu&#x27;il essaie de vous dire. Et cela résout un très gros problème lorsqu&#x27;il s&#x27;agit de travailler avec des grands modèles de langage. Donc, ici même, se trouve un exemple parfait côte à côte de Claude Opus 5 par rapport à Claude Opus 5.5 décortiquant ce problème spécifique en ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface d&#x27;Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : &quot;Collaboration. Like Opus 5.5, Sonnet 5.5 writes more clearly than our previous generation of models; early testers described it as a better partner for collaboration than Sonnet 5. Its speed also makes it well suited to fast iteration on less complex tasks.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le texte affiché à l&#x27;écran concernant les capacités de communication et de collaboration du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000138_seg4.jpg" alt="Une capture d&#x27;écran montrant une page de l&#x27;application Excalidraw avec le titre &quot;Better for Communication (Like Opus 5.5):&quot; et un paragraphe de texte souligné, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000138_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:38</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant une page de l&#x27;application Excalidraw avec le titre &quot;Better for Communication (Like Opus 5.5):&quot; et un paragraphe de texte souligné, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:08 - 00:02:42</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ici. Et il est très évident que celui de droite, Claude Opus 5.5, est beaucoup plus concis et facile à comprendre au premier coup d&#x27;œil. Maintenant, ce sont évidemment de superbes nouvelles car cela arrive maintenant sur Sonnet 5.5, qui va être moins cher qu&#x27;Opus 5.5, même si Opus est plutôt rentable. Voici donc une comparaison côte à côte entre Sonnet 5.5 et Opus 5.5. Pour les lectures en cache, ils sont tous les deux à 20 cents par million de jetons. Sonnet 5.5 coûte la moitié du prix d&#x27;Opus 5.5 en ce qui concerne les écritures en cache. Les jetons d&#x27;entrée, c&#x27;est la moitié du prix. Et pour les jetons de sortie,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Excalidraw, avec l&#x27;encadré vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte surligné expliquant que Sonnet 5.5 écrit plus clairement que la génération précédente, améliorant la collaboration par rapport à Sonnet 5.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le texte affiché à l&#x27;écran concernant les performances de communication de Sonnet 5.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000216_seg5.jpg" alt="Une page Excalidraw affichant le titre manuscrit &#x27;Better for Communication (Like Opus 5.5):&#x27; ainsi qu&#x27;un texte sur la collaboration avec le modèle Sonnet 5.5." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000216_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:16</span>
+                        <span class="caption-text">Une page Excalidraw affichant le titre manuscrit &#x27;Better for Communication (Like Opus 5.5):&#x27; ainsi qu&#x27;un texte sur la collaboration avec le modèle Sonnet 5.5.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:42 - 00:03:16</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est aussi moitié moins cher. Donc ça devient plutôt rentable par rapport à Opus 5.5. Et comme je l&#x27;ai dit, celui-là était déjà plutôt efficace. Ensuite, Anthropic affirme que Sonnet 5.5 nécessite moins de jetons par tâche que Sonnet 5, donc son utilisation coûte moins cher. Et il génère aussi des résultats 30 % plus rapidement, et son efficacité se remarque immédiatement. C&#x27;est quelque chose qu&#x27;on commence à observer partout avec toutes ces sorties de nouveaux modèles. On a vraiment l&#x27;impression qu&#x27;ils deviennent beaucoup plus efficaces en matière de consommation de jetons. Et c&#x27;est quelque chose qui résout un problème majeur pour nous, les consommateurs d&#x27;intelligence artificielle, parce que ce n&#x27;est pas comme si ces modèles n&#x27;étaient pas capables</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Excalidraw et une webcam incrustée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte surligné en orange : &quot;Sonnet 5.5 requires fewer tokens per task than Sonnet 5, so it&#x27;s less expensive to run. It also generates output 30%+ faster, and its efficiency is immediately noticeable:&quot;. Un tableau avec l&#x27;en-tête &quot;Output tokens&quot; et les montants &quot;$10&quot; et &quot;$20&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente le texte affiché à l&#x27;écran concernant les performances et les coûts du modèle Sonnet 5.5.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000250_seg6.jpg" alt="Un tableau comparatif et un texte explicatif sur l&#x27;interface Excalidraw, avec la vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000250_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:50</span>
+                        <span class="caption-text">Un tableau comparatif et un texte explicatif sur l&#x27;interface Excalidraw, avec la vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:16 - 00:03:53</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plus maintenant. Il s&#x27;agit plutôt de savoir à quel point ils sont efficaces lorsqu&#x27;il s&#x27;agit du coût que va représenter une tâche donnée. Maintenant, bien sûr, le coût est important, mais cela ne veut pas dire grand-chose si ce n&#x27;est pas très capable. Eh bien, le voici comparé à Sonnet 5, Opus 5.5, et ChatGPT 6 vendu. Ce qui ressort vraiment ici, c&#x27;est de regarder la différence de codage agentique entre Sonnet 5.5 et Sonnet 5. 5.5 est à 70,6 %, alors que Sonnet 5 était à 10,3 %. Tant de gens se plaignaient des capacités de Sonnet 5. Donc, cela ressemble vraiment à une mise à niveau significative quand il s&#x27;agit de beaucoup</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de documentation officielle (site anthropic.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de benchmarks affichant des pourcentages et scores pour des catégories telles que &#x27;Agentic coding&#x27;, &#x27;Knowledge work&#x27;, &#x27;Multidisciplinary reasoning&#x27;, &#x27;Computer use&#x27;, et &#x27;Visual chart recognition&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le tableau comparatif affiché à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000326_seg7.jpg" alt="Tableau comparatif des performances de différents modèles d&#x27;IA (Sonnet 5.5, Sonnet 5, Opus 5.5, GPT-6 Sol) sur diverses tâches." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000326_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:26</span>
+                        <span class="caption-text">Tableau comparatif des performances de différents modèles d&#x27;IA (Sonnet 5.5, Sonnet 5, Opus 5.5, GPT-6 Sol) sur diverses tâches.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:53 - 00:04:29</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de ces benchmarks ici, que je vais parcourir. Ensuite, vous pouvez voir qu&#x27;Opus 5,5 est à 66,4 %. Il obtient même un score supérieur de 4 % au tout nouveau modèle Opus 5,5. Et si vous allez jusqu&#x27;au bout de la liste ici, il surpasse évidemment Sonnet 5 sur tous ces différents benchmarks avec une marge significative. Et ensuite, si vous le comparez à Opus 5,5, Opus 5,5 reste meilleur dans tout le reste, à part pour le codage agentique. C&#x27;est donc très intéressant pour moi qu&#x27;il soit si bon en codage agentique. Je me demande pourquoi. En parlant de codage, décortiquons cela encore plus. Il est écrit ici qu&#x27;à effort élevé sur Frontier Code, il obtient 10 points de plus que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de documentation officielle (Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de benchmarks affichant des pourcentages de réussite et scores (Agentic coding, Knowledge work, Multidisciplinary reasoning, Computer use, Visual chart recognition) avec une incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente et survole le tableau comparatif des modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000402_seg8.jpg" alt="Tableau comparatif des performances de différents modèles d&#x27;IA sur plusieurs benchmarks (Sonnet 5.5, Sonnet 5, Opus 5.5, GPT-5 Sol)." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000402_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:02</span>
+                        <span class="caption-text">Tableau comparatif des performances de différents modèles d&#x27;IA sur plusieurs benchmarks (Sonnet 5.5, Sonnet 5, Opus 5.5, GPT-5 Sol).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:29 - 00:05:01</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Sonnet 5 avec le même paramètre. Et voici le plus fou, à environ un quinzième du coût par tâche. Le coût de ceci baisse donc de manière significative. Et le plus fou là-dedans, c&#x27;est qu&#x27;Epic Games a écrit cette citation à propos du code de Sonnet 5.5. Ils ont dit que lors des premiers tests d&#x27;Epic, Claude Sonnet 5.5 a atteint le même niveau de qualité que l&#x27;on attendrait d&#x27;un modèle de catégorie supérieure. Et cela ne vient pas seulement de quelqu&#x27;un qui code au feeling pour un jeu et montre une démo sur Twitter. Cela vient de l&#x27;entreprise Epic Games. C&#x27;est assez fou si l&#x27;on y réfléchit vraiment. Le directeur du machine learning chez SpaceX AI</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:01 - 00:05:38</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">a même dit que Claude Sonnet 5.5 offre des performances de niveau frontalier sur Cursor Bench 4.0 à 55 %, devancé seulement par Opus 5.5 qui vient de sortir. Nous pensons qu&#x27;il fera un tabac auprès des développeurs qui cherchent à concilier performance et coûts. Et encore une fois, c&#x27;est le thème principal qui se dégage ici. Il ne s&#x27;agit pas nécessairement de savoir à quel point ces modèles sont capables, car ils sont très capables, et ce, depuis un certain temps déjà, mais plutôt s&#x27;ils peuvent le faire à un prix qui ne va pas ruiner les consommateurs ordinaires comme vous et moi. Anthropic a tout de même affirmé qu&#x27;il est environ 30 % plus rapide que Claude Sonnet 5. Voici donc une analyse en direct du temps qu&#x27;il faut, entre le moment où on lui donne une invite et celui où il écrit le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la page de présentation officielle d&#x27;Anthropic sur Claude Sonnet 5.5 et webcam du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de citation souligné : &quot;Claude Sonnet 5.5 delivers frontier-level performance on CursorBench 4.0 at 55.5%, second only to Opus 5.5.&quot; et test comparatif de tokens de réflexion (&quot;Thinking: 100 tokens&quot; vs &quot;267 tokens&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le test de performance de Claude Sonnet 5.5 sur CursorBench et les capacités de réflexion des différents modèles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000510_seg10.jpg" alt="Capture d&#x27;écran du navigateur affichant le site web d&#x27;Anthropic avec une citation mettant en avant les performances de Claude Sonnet 5.5 sur CursorBench 4.0 à 55,5 %." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000510_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:10</span>
+                        <span class="caption-text">Capture d&#x27;écran du navigateur affichant le site web d&#x27;Anthropic avec une citation mettant en avant les performances de Claude Sonnet 5.5 sur CursorBench 4.0 à 55,5 %.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000529_seg10.jpg" alt="Capture d&#x27;écran du navigateur montrant une comparaison visuelle entre Claude Sonnet 5 et Claude Sonnet 5.5 avec le prompt d&#x27;une simulation de murmuration d&#x27;étourneaux." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000529_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Capture d&#x27;écran du navigateur montrant une comparaison visuelle entre Claude Sonnet 5 et Claude Sonnet 5.5 avec le prompt d&#x27;une simulation de murmuration d&#x27;étourneaux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:38 - 00:06:03</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">code pour générer réellement un fichier HTML juste ici. Donc il semble évidemment que Claude Sonnet 5.5 consomme ces jetons beaucoup plus rapidement. C&#x27;est très rapide en ce qui concerne le code et attendons de voir le résultat. Donc il semble que Sonnet 5.5 ait terminé. Cette petite animation fonctionne maintenant avec ces poissons qui nagent autour dans cette page HTML, tandis que nous avons toujours Claude Sonnet 5 de l&#x27;autre côté qui code ceci, cela semble effectivement beaucoup plus rapide que Sonnet 5.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:03 - 00:06:36</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, je vais faire une prédiction en ce moment même. Donc, OpenAI a sa journée des développeurs demain, et j&#x27;ai la forte conviction qu&#x27;ils vont lancer leur propre agent IA, un agent IA personnel, similaire à Muse et GrokBot demain. Et si l&#x27;histoire se répète, ce qui est le cas, ces entreprises d&#x27;IA aiment jouer à la corde raide. Quand une entreprise sort quelque chose, l&#x27;autre sort une nouveauté très similaire juste quelques jours plus tard pour attirer tous les regards et les tourner vers ses propres produits. Donc, à mon avis, après qu&#x27;OpenAI aura sorti ceci demain, Anthropic va probablement sortir le sien plus tard cette semaine ou peut-être la semaine prochaine. Et si vous reliez les points,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un post de @OpenAIDevs disant « 72 hours to OpenAI DevDay. We&#x27;ve been building. Time to show our work. » avec une image générée montrant des personnages sphériques (violet, orange, vert) attachés sur des sièges d&#x27;avion.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;annonce imminente de l&#x27;OpenAI DevDay et les teasers publiés sur les réseaux sociaux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000611_seg12.jpg" alt="Capture d&#x27;écran montrant un tweet du compte officiel @OpenAIDevs sur la plateforme X (Twitter) concernant l&#x27;OpenAI DevDay, avec une image illustrant trois sphères colorées dans un avion." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000611_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:11</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tweet du compte officiel @OpenAIDevs sur la plateforme X (Twitter) concernant l&#x27;OpenAI DevDay, avec une image illustrant trois sphères colorées dans un avion.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:37 - 00:06:56</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cela est logique parce qu&#x27;Anthropic lance des modèles comme Opus 5.5 et maintenant Sonnet 5.5 qui sont bien meilleurs pour communiquer. Et c&#x27;est un timing parfait avant de lancer un agent assistant personnel que les gens vont utiliser pour communiquer sans cesse. Encore une fois, ce ne sont que mes deux centimes. Prenez cela avec des pincettes. Dites-moi ce que vous en pensez dans les commentaires.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:12</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Penses-tu que ce soit le cas ? Parce que j&#x27;ai la forte conviction que c&#x27;est ce qui se passe. Et voilà. C&#x27;est un résumé super rapide du nouveau modèle Claude Sonnet 5.5. J&#x27;ai hâte de le tester et de le mettre à l&#x27;épreuve sur cette chaîne YouTube. Donc, si vous voulez plus de vidéos comme celle-ci, abonnez-vous à la chaîne. Dites-moi ce que vous en pensez dans les commentaires et je vous vois dans la prochaine vidéo. À la vôtre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site web d&#x27;Anthropic (anthropic.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affichant &quot;Claude Sonnet 5.5&quot;, la date &quot;SEPTEMBER 28, 2026&quot;, ainsi que les sections de la page : Introduction, Performance and cost, Safety, Getting started.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la page web du nouveau modèle d&#x27;intelligence artificielle par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pAkG5PstlYI/pAkG5PstlYI_000700_seg14.jpg" alt="Capture d&#x27;écran montrant le site officiel d&#x27;Anthropic avec la page de présentation du modèle Claude Sonnet 5.5, avec le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pAkG5PstlYI/pAkG5PstlYI_000700_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le site officiel d&#x27;Anthropic avec la page de présentation du modèle Claude Sonnet 5.5, avec le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
