@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `16 / 273` (`5.9%`)
+- **Vidéos traitées** : `17 / 273` (`6.2%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -33,6 +33,7 @@
 | 2026-09-30 | [xJgWA7WCvQ4](https://www.youtube.com/watch?v=xJgWA7WCvQ4) | **Anthropic a créé une académie gratuite pour apprendre Claude** | [2026-09-30_YT-[xJgWA7WCvQ4]_Anthropic a créé une académie gratuite pour apprendre Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-30_YT-[xJgWA7WCvQ4]_Anthropic a créé une académie gratuite pour apprendre Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-30_YT-[xJgWA7WCvQ4]_Anthropic a créé une académie gratuite pour apprendre Claude_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2026-09-30 | [rWw0HggLtGI](https://www.youtube.com/watch?v=rWw0HggLtGI) | **ChatGPT Space = L'Ultime Second Cerveau IA** | [2026-09-30_YT-[rWw0HggLtGI]_ChatGPT Space = L'Ultime Second Cerveau IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-30_YT-[rWw0HggLtGI]_ChatGPT Space = L'Ultime Second Cerveau IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-30_YT-[rWw0HggLtGI]_ChatGPT Space = L'Ultime Second Cerveau IA_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `38` |
 | 2026-09-29 | [XdMwDbKBiIw](https://www.youtube.com/watch?v=XdMwDbKBiIw) | **ChatGPT Dots are Here… GPT 6.1 Sol, ChatGPT Spaces & More** | [2026-09-29_YT-[XdMwDbKBiIw]_ChatGPT Dots are Here… GPT 6.1 Sol, ChatGPT Spaces & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-29_YT-[XdMwDbKBiIw]_ChatGPT Dots are Here… GPT 6.1 Sol, ChatGPT Spaces & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-29_YT-[XdMwDbKBiIw]_ChatGPT Dots are Here… GPT 6.1 Sol, ChatGPT Spaces & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `26` |
+| 2026-09-29 | [pn08Kdp998Y](https://www.youtube.com/watch?v=pn08Kdp998Y) | **J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)** | [2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `34` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 J&#x27;ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 J&#x27;ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-09-29</span>
+                <span class="badge">⏱️ 00:08:55</span>
+                <span class="badge">🆔 <code>pn08Kdp998Y</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=pn08Kdp998Y" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo, présentée par Brock Mesarich sur la chaîne *AI for Non Techies*, propose une analyse comparative rigoureuse et empirique des performances, des coûts et des temps de génération de plusieurs modèles d'intelligence artificielle de pointe d'Anthropic (Claude Sonnet 5, Sonnet 5.5, Opus 5.5 et Fable 5.1). À travers un test exigent consistant à générer un jeu vidéo tridimensionnel interactif de type « monde ouvert » à partir d'un prompt unique et structuré, l'expérimentateur évalue la robustesse du code, la cohérence visuelle, la physique des mouvements et l'ergonomie globale des environnements produits.<br><br>Au-delà de la simple comparaison créative, cette démarche méthodologique s'apparente à un stress-test quantitatif appliqué aux LLM (Large Language Models), mesurant l'efficacité algorithmique sous contraintes complexes. Les métriques financières et temporelles sont passées au crible : chaque modèle est évalué sur sa consommation de jetons (tokens d'entrée/sortie, lectures et écritures en cache) ainsi que sur sa vitesse d'exécution. Les résultats démontrent qu'un modèle de nouvelle génération comme Claude Sonnet 5.5 surpasse parfois ses homologues plus onéreux en termes de rapport qualité-prix et d'optimisation des performances graphiques et logiques.<br><br>Cette analyse fournit aux développeurs, aux architectes de solutions automatisées et aux ingénieurs de prompt des indicateurs précieux pour arbitrer entre complexité de calcul, latence d'exécution et maîtrise budgétaire. Elle illustre parfaitement l'importance d'un étalonnage (benchmarking) rigoureux avant d'intégrer des LLM au cœur de pipelines d'automatisation ou de production logicielle complexes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude Sonnet 5** : Modèle de base antérieur d'Anthropic, économique mais affichant des lacunes prononcées en matière de cohérence logique et de rendu graphique lors de tâches de codage complexes.<br>* **Claude Sonnet 5.5** : Dernier modèle d'Anthropic testé comme la solution au meilleur rapport qualité-prix, offrant des graphismes dynamiques de haute qualité, des animations fluides et une vitesse d'exécution optimisée pour un coût modéré.<br>* **Opus 5.5** : Modèle haut de gamme orienté vers la haute intelligence, caractérisé par des coûts opérationnels et des temps de génération nettement plus élevés pour un rendu visuel solide et stable.<br>* **Fable 5.1** : Modèle de pointe d'Anthropic représentant le summum de la capacité de raisonnement, affichant le coût par exécution le plus élevé mais souffrant de micro-bugs de mouvement malgré une esthétique soignée.<br>* **Prompt Engineering** : Méthodologie fondamentale utilisée pour structurer rigoureusement les instructions de génération du monde 3D, en imposant une planification préalable de l'architecture et une organisation stricte du code.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Étanchéité des contraintes de prompt** : L'utilisation d'un prompt hautement structuré et séquentiel est indispensable pour guider les LLM vers la production de code propre et fonctionnel sur des architectures complexes.<br>* **Analyse comparative du coût par jeton** : Claude Sonnet 5.5 bénéficie d'une tarification agressive, notamment avec des écritures en cache réduites à 2,50 $ par million de jetons et des jetons d'entrée fixés à 2 $.<br>* **Arbitrage performance vs coût** : Opus 5.5 s'avère environ dix fois plus cher que Sonnet 5 (11,95 $) sans pour autant surclasser systématiquement Sonnet 5.5 sur des tâches de rendu dynamique.<br>* **Optimisation de la vitesse d'exécution** : Sonnet 5.5 combine une vitesse accrue de 30 % par rapport aux versions antérieures et un temps de génération maîtrisé (36 minutes et 43 secondes pour un monde 3D complexe).<br>* **Ratio complexité/temps de calcul** : Fable 5.1, bien qu'étant le modèle le plus intelligent et le plus cher (17,45 $), présente des temps de génération comparables à Opus 5.5 (environ 40 minutes) tout en conservant des imperfections de mouvement.<br>* **Gestion des états et de la physique** : Les modèles de dernière génération (Sonnet 5.5) démontrent une supériorité flagrante dans la gestion des éléments interactifs (lapins en mouvement, poissons, dynamiques de l'eau et cycle jour/nuit).<br>* **Réduction de la dette technique générative** : Un modèle optimisé (Sonnet 5.5) produit moins de bugs de collision (comme passer à travers les lacs) que ses prédécesseurs, minimisant ainsi les efforts de debugging post-génération.<br>* **Importance du benchmarking empirique** : Tester les LLM en conditions réelles (ici via la génération de jeux vidéo) permet d'identifier précisément les goulets d'étranglement avant d'industrialiser des solutions automatisées.<br>* **Impact du niveau d'effort maximal** : Tous les modèles ont été testés sous un même niveau d'effort élevé garantissant l'équité des comparaisons en matière de profondeur de calcul et de consommation de ressources.<br>* **Maîtrise du budget de développement** : Pour les créateurs et développeurs, l'arbitrage entre Sonnet 5.5 (9,02 $) et Fable 5.1 (17,45 $) met en lumière l'inefficacité d'utiliser systématiquement le modèle le plus cher lorsque le rapport qualité-prix du modèle intermédiaire est supérieur.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Sonnet 5</span><span class="tool-tag">Claude Sonnet 5.5</span><span class="tool-tag">Opus 5.5</span><span class="tool-tag">Fable 5.1</span><span class="tool-tag">Prompt Engineering</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Étanchéité des contraintes de prompt** : L&#x27;utilisation d&#x27;un prompt hautement structuré et séquentiel est indispensable pour guider les LLM vers la production de code propre et fonctionnel sur des architectures complexes.</span></li><li><span class="point-bullet">✦</span><span>Analyse comparative du coût par jeton** : Claude Sonnet 5.5 bénéficie d&#x27;une tarification agressive, notamment avec des écritures en cache réduites à 2,50 $ par million de jetons et des jetons d&#x27;entrée fixés à 2 $.</span></li><li><span class="point-bullet">✦</span><span>Arbitrage performance vs coût** : Opus 5.5 s&#x27;avère environ dix fois plus cher que Sonnet 5 (11,95 $) sans pour autant surclasser systématiquement Sonnet 5.5 sur des tâches de rendu dynamique.</span></li><li><span class="point-bullet">✦</span><span>Optimisation de la vitesse d&#x27;exécution** : Sonnet 5.5 combine une vitesse accrue de 30 % par rapport aux versions antérieures et un temps de génération maîtrisé (36 minutes et 43 secondes pour un monde 3D complexe).</span></li><li><span class="point-bullet">✦</span><span>Ratio complexité/temps de calcul** : Fable 5.1, bien qu&#x27;étant le modèle le plus intelligent et le plus cher (17,45 $), présente des temps de génération comparables à Opus 5.5 (environ 40 minutes) tout en conservant des imperfections de mouvement.</span></li><li><span class="point-bullet">✦</span><span>Gestion des états et de la physique** : Les modèles de dernière génération (Sonnet 5.5) démontrent une supériorité flagrante dans la gestion des éléments interactifs (lapins en mouvement, poissons, dynamiques de l&#x27;eau et cycle jour/nuit).</span></li><li><span class="point-bullet">✦</span><span>Réduction de la dette technique générative** : Un modèle optimisé (Sonnet 5.5) produit moins de bugs de collision (comme passer à travers les lacs) que ses prédécesseurs, minimisant ainsi les efforts de debugging post-génération.</span></li><li><span class="point-bullet">✦</span><span>Importance du benchmarking empirique** : Tester les LLM en conditions réelles (ici via la génération de jeux vidéo) permet d&#x27;identifier précisément les goulets d&#x27;étranglement avant d&#x27;industrialiser des solutions automatisées.</span></li><li><span class="point-bullet">✦</span><span>Impact du niveau d&#x27;effort maximal** : Tous les modèles ont été testés sous un même niveau d&#x27;effort élevé garantissant l&#x27;équité des comparaisons en matière de profondeur de calcul et de consommation de ressources.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise du budget de développement** : Pour les créateurs et développeurs, l&#x27;arbitrage entre Sonnet 5.5 (9,02 $) et Fable 5.1 (17,45 $) met en lumière l&#x27;inefficacité d&#x27;utiliser systématiquement le modèle le plus cher lorsque le rapport qualité-prix du modèle intermédiaire est supérieur.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:31</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic vient de lancer Claude Sonnet 5.5, quelques jours seulement après Opus 5.5. Et si vous êtes comme moi, vous êtes probablement curieux de voir la différence de capacités entre ces différents modèles. Dans cette vidéo, je vais donc générer un jeu vidéo complet avec Claude Sonnet 5, Sonnet 5.5, Opus 5.5 et Fable 5.1. Je vais également analyser le coût exact et le temps nécessaire pour chacun de ces modèles. Ainsi, à la fin de cette vidéo, vous comprendrez la différence de capacités ainsi que le prix entre ces différents modèles. Alors, sans plus attendre, plongeons dans le vif du sujet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application de dessin et de tableaux blancs Excalidraw (app.excalidraw.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif des modèles d&#x27;IA (&quot;THE SCORECARD&quot;) avec les colonnes &quot;MODEL&quot;, &quot;TIME&quot; et &quot;COST&quot;, et les lignes &quot;Sonnet 5&quot;, &quot;Sonnet 5.5&quot;, &quot;Opus 5.5&quot; et &quot;Fable 5.1&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du tableau comparatif des performances et des coûts des différents modèles d&#x27;IA d&#x27;Anthropic pour évaluer leurs capacités de génération de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000016_seg1.jpg" alt="Capture d&#x27;écran d&#x27;un tableau comparatif intitulé &quot;THE SCORECARD&quot; sur Excalidraw, listant les modèles Sonnet 5, Sonnet 5.5, Opus 5.5 et Fable 5.1 avec des colonnes TIME et COST, tandis qu&#x27;une petite incrustation vidéo montre le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000016_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:16</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tableau comparatif intitulé &quot;THE SCORECARD&quot; sur Excalidraw, listant les modèles Sonnet 5, Sonnet 5.5, Opus 5.5 et Fable 5.1 avec des colonnes TIME et COST, tandis qu&#x27;une petite incrustation vidéo montre le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:32 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Alors tout d&#x27;abord, parlons de l&#x27;affirmation et de ce à quoi nous pouvons nous attendre. Donc Anthropic, dans l&#x27;article de sortie, Anthropic a fondamentalement dit que c&#x27;est une nette mise à niveau par rapport à Sonnet 5.5. Il tourne 30 % plus vite et coûte jusqu&#x27;à 30 % moins cher pour la plupart du travail. Maintenant, parlons rapidement de la ventilation des coûts. Donc lorsque nous comparons Sonnet 5.5 et Opus 5.5, nous pouvons voir une grande différence de prix ici. Donc sur les lectures en cache par 1 million de jetons d&#x27;entrée, c&#x27;est en fait le même prix à 20 centimes, pour les écritures en cache, c&#x27;est moitié moins cher, donc au lieu d&#x27;être à cinq dollars comme Claude Opus 5, c&#x27;est deux dollars et cinquante centimes, et ensuite pour les jetons d&#x27;entrée, c&#x27;est deux dollars contre les quatre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de type tableau blanc / notes (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de présentation de Claude Sonnet 5.5 et tableau de tarification par million de tokens (Cache reads, Cache writes, Input tokens, Output tokens).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les performances, la vitesse et la structure tarifaire du modèle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000041_seg2.jpg" alt="Capture montrant un texte sur l&#x27;introduction de Claude Sonnet 5.5 avec des portions de texte surlignées." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000041_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:41</span>
+                        <span class="caption-text">Capture montrant un texte sur l&#x27;introduction de Claude Sonnet 5.5 avec des portions de texte surlignées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000050_seg2.jpg" alt="Tableau comparatif des prix et de la vitesse entre Claude Sonnet 5.5 et Claude Opus 9.5." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000050_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:50</span>
+                        <span class="caption-text">Tableau comparatif des prix et de la vitesse entre Claude Sonnet 5.5 et Claude Opus 9.5.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:45</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dollars pour Opus 5.5 et ensuite à nouveau nous voyons cela doublé ici sur les jetons de sortie. Sonnet 5.5 coûte dix dollars tandis qu&#x27;Opus 5.5 coûte vingt dollars. Maintenant, c&#x27;est une affirmation importante ici, ils ont basically dit que Sonnet 5.5 nécessite moins de jetons par tâche que Sonnet 5, donc c&#x27;est moins cher à exécuter, et il génère aussi jusqu&#x27;à 30 % plus rapidement. C&#x27;est donc quelque chose que nous allons réellement tester en temps réel dans cette vidéo. Ceci étant dit, plongeons-le directement. Le prompt que nous allons utiliser est celui-ci. En gros, nous allons générer un monde tridimensionnel un peu similaire à Minecraft, par exemple. Et nous avons ici quelques contraintes strictes. Nous détaillons spécifiquement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau de tarification et des notes textuelles sur une interface de type Excalidraw, avec la webcam du présentateur en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tarifs par million de jetons pour les modèles d&#x27;IA (Cache reads, Cache writes, Input tokens, Output tokens) et spécifications d&#x27;un prompt de test de performance 3D.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et compare les coûts des différents modèles d&#x27;IA et détaille les exigences d&#x27;un benchmark de génération de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000118_seg3.jpg" alt="Tableau comparatif des coûts par million de jetons entre Claude Sonnet 5.5 et Claude Opus 5.5, affichant les tarifs pour les lectures de cache ($0.20), les écritures de cache ($2.50 vs $5), les jetons d&#x27;entrée ($2 vs $4) et de sortie ($10 vs $20)." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000118_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:18</span>
+                        <span class="caption-text">Tableau comparatif des coûts par million de jetons entre Claude Sonnet 5.5 et Claude Opus 5.5, affichant les tarifs pour les lectures de cache ($0.20), les écritures de cache ($2.50 vs $5), les jetons d&#x27;entrée ($2 vs $4) et de sortie ($10 vs $20).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000136_seg3.jpg" alt="Document textuel détaillé affichant des contraintes de test de capacité (« Hard Constraints ») pour construire un monde 3D interactif exécutable dans le navigateur." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000136_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Document textuel détaillé affichant des contraintes de test de capacité (« Hard Constraints ») pour construire un monde 3D interactif exécutable dans le navigateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:45 - 00:02:09</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce que nous voulons que le monde soit en un tas d&#x27;étapes différentes. Nous avons réellement décomposé la façon de travailler. Donc nous voulions planifier l&#x27;architecture avant d&#x27;écrire le code, garder le code organisé, et ainsi de suite. C&#x27;est donc un prompt que nous donnons à chacun de ces modèles. Alors allons-y et testons-les dès maintenant. Très bien. Voici donc celui que Sonnet 5 a généré. Nous allons passer par chacun de ceux-ci de manière incrémentielle. Commençons donc par celui-ci. Très bien. Nous avons donc ce petit jeu sympa ici. Ce n&#x27;est rien de fou ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web Chrome, tableau blanc virtuel Excalidraw (app.excalidraw.com), démo interactive WebGL/Three.js exécutée en local.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt système pour IA (contraintes techniques Three.js, rendu 50 FPS, cycle jour/nuit, météo, physique), commandes utilisateur (WASD, E, Espace, Shift, T, R).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication de la structure des consignes envoyées aux modèles d&#x27;IA et démonstration du résultat d&#x27;un monde 3D généré exécuté dans le navigateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000151_seg4.jpg" alt="Zoom dans l&#x27;outil Excalidraw sur la section &quot;HOW TO WORK&quot; du prompt, détaillant les consignes de planification d&#x27;architecture et de structuration du code." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000151_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:51</span>
+                        <span class="caption-text">Zoom dans l&#x27;outil Excalidraw sur la section &quot;HOW TO WORK&quot; du prompt, détaillant les consignes de planification d&#x27;architecture et de structuration du code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000157_seg4.jpg" alt="Vue globale du prompt d&#x27;évaluation dans Excalidraw décrivant les spécifications d&#x27;un monde 3D interactif à générer avec Three.js." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000157_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:57</span>
+                        <span class="caption-text">Vue globale du prompt d&#x27;évaluation dans Excalidraw décrivant les spécifications d&#x27;un monde 3D interactif à générer avec Three.js.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000203_seg4.jpg" alt="Écran de démarrage de la démo web 3D &quot;THE EDGE OF THE SKY&quot; ouverte dans le navigateur à partir d&#x27;un fichier index.html local, affichant la configuration des commandes." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000203_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:03</span>
+                        <span class="caption-text">Écran de démarrage de la démo web 3D &quot;THE EDGE OF THE SKY&quot; ouverte dans le navigateur à partir d&#x27;un fichier index.html local, affichant la configuration des commandes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:09 - 00:02:31</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est un peu comme un monde dans le style de Minecraft, je ne pense pas que ce soit génial, mais évidemment nous pouvons nous déplacer ici. Je pense que notre objectif est en fait de saisir ces éléments. Donc oui, donc ce que nous devons faire, c&#x27;est venir ici et je pense que nous devons attraper ces petites choses et nous ne... je ne sais pas nécessairement quel est notre objectif. Je pense que nous devons l&#x27;emmener quelque part mais je n&#x27;en suis pas tout à fait sûr. Vous pouvez voir qu&#x27;il y a de la neige qui tombe même s&#x27;il n&#x27;y a pas de nuages.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application 3D locale (démo d&#x27;île flottante HTML) et webcam du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Environnement 3D interactif avec affichage du nombre d&#x27;images par seconde (FPS) et indicateurs d&#x27;interaction utilisateur (&#x27;E to pick up&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et exploration interactive d&#x27;un monde virtuel 3D généré par code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000215_seg5.jpg" alt="Vue d&#x27;un monde virtuel 3D style Minecraft avec un paysage vallonné et des arbres polygonaux verts, le présentateur apparaissant en incrustation." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000215_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:15</span>
+                        <span class="caption-text">Vue d&#x27;un monde virtuel 3D style Minecraft avec un paysage vallonné et des arbres polygonaux verts, le présentateur apparaissant en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000220_seg5.jpg" alt="Gros plan sur un objet sphérique sombre flottant dans l&#x27;environnement 3D avec l&#x27;interface indiquant &#x27;E to pick up&#x27;." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000220_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:20</span>
+                        <span class="caption-text">Gros plan sur un objet sphérique sombre flottant dans l&#x27;environnement 3D avec l&#x27;interface indiquant &#x27;E to pick up&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000226_seg5.jpg" alt="Vue montrant l&#x27;interaction avec l&#x27;objet sphérique et le sol texturé vert dans le prototype 3D." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000226_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:26</span>
+                        <span class="caption-text">Vue montrant l&#x27;interaction avec l&#x27;objet sphérique et le sol texturé vert dans le prototype 3D.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:32 - 00:03:04</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons un petit lac par ici et voyons si je peux aller dans le lac. Eh bien oh, devine quoi, je ne peux pas aller dans le lac. Je pourrais aller en dessous. Donc ça bugue pas mal. Ouais, ce n&#x27;est pas génial. Je dirai que je pense que d&#x27;autres résultats vont être beaucoup mieux. Laisse-moi venir par ici et essayer de saisir cette petite orbe. Ouais, je ne sais pas vraiment quoi faire avec ça, mais je veux dire que c&#x27;est un point de départ sympa. Ce n&#x27;est pas ça. Maintenant, en termes de prix pour Sonic 5, décomposons cela ainsi que le temps que ça a pris pour générer. Tout d&#x27;abord, c&#x27;était 1,59 $ pour générer, ce qui est très bon marché par rapport à ces autres modèles. Vous allez voir que ça devient beaucoup plus cher que ça. Et puis pour le temps,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application 3D locale et l&#x27;outil de tableau blanc Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèles d&#x27;IA listés (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1) avec une métrique de coût affichée à 1,59$.</p>
+                        <p><strong>Action / Démonstration :</strong> Test d&#x27;interaction et de collision dans l&#x27;environnement 3D, puis navigation vers le tableau comparatif des modèles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000240_seg6.jpg" alt="Démonstration 3D d&#x27;une application web montrant un paysage vallonné avec une grosse sphère grise au premier plan." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000240_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:40</span>
+                        <span class="caption-text">Démonstration 3D d&#x27;une application web montrant un paysage vallonné avec une grosse sphère grise au premier plan.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000248_seg6.jpg" alt="Vue de la scène 3D montrant un plan d&#x27;eau lumineux (lac) intégré dans le paysage virtuel." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000248_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:48</span>
+                        <span class="caption-text">Vue de la scène 3D montrant un plan d&#x27;eau lumineux (lac) intégré dans le paysage virtuel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000256_seg6.jpg" alt="Tableau comparatif sur Excalidraw intitulé &#x27;THE SCORECARD&#x27; listant différents modèles d&#x27;IA, le temps et le coût." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000256_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Tableau comparatif sur Excalidraw intitulé &#x27;THE SCORECARD&#x27; listant différents modèles d&#x27;IA, le temps et le coût.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:04 - 00:03:41</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela a pris sept minutes et six secondes, ce qui est plutôt rapide dans l&#x27;ensemble des choses. Et une chose que je tiens à mentionner, c&#x27;est que nous avons tout cela au niveau d&#x27;effort élevé. Ils fonctionnent donc tous au même niveau d&#x27;effort, juste par souci de transparence. Très bien, passons à Opus 5, nous avons ce petit monde ici. Je vais donc simplement cliquer sur commencer. Évidemment, nous pouvons nous déplacer avec notre souris et tout le reste. D&#x27;accord, celui-ci a l&#x27;air vraiment bien. Il s&#x27;agit d&#x27;Opus 5.5, qui est sorti la semaine dernière. C&#x27;généralement bien meilleur que Sonic 5. Je ne vais pas mentir. Je trouve que cela a vraiment l&#x27;air très bien. Je pourrais même lancer les pierres. Je pourrais venir ici et ramasser ce petit orbe, qui est, je crois, le but de ce jeu. Il me suffit de trouver un endroit pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de tableau blanc (Excalidraw) et un environnement 3D interactif dans le navigateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif avec les modèles Sonnet 5, Sonnet 5.5, Opus 5.5 et Fable 5.1, incluant des métriques de temps et de coût.
+[DESC_IMAGE_3] Le présentateur présente les résultats comparatifs des différents modèles d&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000313_seg7.jpg" alt="Un tableau comparatif intitulé &quot;THE SCORECARD&quot; affichant les modèles d&#x27;IA, le temps d&#x27;exécution (7:06) et le coût ($1.59) pour le modèle Sonnet 5." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000313_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:13</span>
+                        <span class="caption-text">Un tableau comparatif intitulé &quot;THE SCORECARD&quot; affichant les modèles d&#x27;IA, le temps d&#x27;exécution (7:06) et le coût ($1.59) pour le modèle Sonnet 5.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:41 - 00:04:15</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">amener ça à. Ouais, ça a l&#x27;air vraiment bien. Honnêtement, je pense que le monde est très cohérent. En gros, c&#x27;est comme si les objets ne bougeaient pas avant, avec le précédent, tu pouvais voir que, genre, le lac, je pouvais aller sous le lac, alors qu&#x27;avec celui-ci, je pense que je pourrais réellement aller à l&#x27;intérieur, donc allons juste par ici et testons ça. Ouais, donc je peux en quelque sorte aller dans le lac, euh, même si, genre, ça bug un tout petit peu quand je suis à l&#x27;intérieur, c&#x27;est quand même un niveau au-dessus du précédent, rien de fou, mais je trouve que les graphismes ont l&#x27;air vraiment bien, et puis les mouvements, évidemment, avec ce personnage, sont très bien aussi, et je peux juste lancer cette petite distorsion, donc ouais, je suis plutôt</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application ou un jeu 3D interactif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Environnement 3D de type low-poly avec des collines verdoyantes, des arbres, de l&#x27;herbe et un plan d&#x27;eau.</p>
+                        <p><strong>Action / Démonstration :</strong> Exploration visuelle et test d&#x27;un monde virtuel généré ou interactif.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:15 - 00:04:47</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">impressionné par celui-ci. Et vous pouvez voir maintenant le brouillard qui arrive. Je veux dire, c&#x27;est pratiquement comme Minecraft. C&#x27;est plutôt cool. Bref, c&#x27;est super. Allons-y pour évaluer celui-ci sur le coût et le temps que ça a pris. Très bien. Donc Opus 5.5 a coûté, roulement de tambours s&#x27;il vous plaît, 11 dollars et 95 cents. Donc c&#x27;était à peu près, ou peu importe ce que donne le calcul, je ne suis pas très fort en maths, mais environ 10 fois plus cher que Sonnet 5. Et cela a pris 41 minutes et 47 secondes. Donc ça a pris pas mal de temps par rapport à Sonnet 5, ce qui, je suppose, est logique puisque c&#x27;est beaucoup plus intelligent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif avec les colonnes MODEL, TIME et COST, listant des modèles comme Sonnet 5, Sonnet 5.5, Opus 5.5, et Fable 5.1 avec des valeurs de coût et de temps.</p>
+                        <p><strong>Action / Démonstration :</strong> Évaluation et affichage du tableau de bord comparant le temps d&#x27;exécution et les coûts des différents modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000431_seg9.jpg" alt="Tableau comparatif sur Excalidraw intitulé &#x27;THE SCORECARD&#x27; affichant les métriques de temps et de coût pour différents modèles d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000431_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:31</span>
+                        <span class="caption-text">Tableau comparatif sur Excalidraw intitulé &#x27;THE SCORECARD&#x27; affichant les métriques de temps et de coût pour différents modèles d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:47 - 00:05:24</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">modèle. Passons à Fable 5.1 et testons celui-ci. Entrons dans le monde pour Fable 5.1, cliquons pour commencer, et c&#x27;est parti. D&#x27;accord, c&#x27;est la même chose. Nous pouvons venir ramasser la roche. Ça a l&#x27;air super. L&#x27;ombre de la roche a l&#x27;air plutôt cool. Mon personnage se déplace assez facilement. On dirait que ça bugue un tout petit peu quand j&#x27;essaie de marcher ici. Donc pour une raison quelconque, vous pouvez voir l&#x27;écran trembler un petit peu. J&#x27;aime le fait d&#x27;avoir ajouté ces petites, comme ces petites ruines ici, mais ouais, pour une raison quelconque, ça n&#x27;a pas l&#x27;air génial en termes de mouvement. Voyons, je pense aussi que je pourrais lancer la roche, ouais, je suis capable de lancer la roche.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un jeu vidéo interactif 3D nommé Fable 5.1.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Environnement de jeu en 3D avec éléments textuels (« Find the three runes », « CLICK throw », « E drop »).</p>
+                        <p><strong>Action / Démonstration :</strong> Exploration du monde virtuel et manipulation d&#x27;objets (roche) au sein du jeu Fable 5.1.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000456_seg10.jpg" alt="Image 1 (00:04:56) : Le jeu Fable 5.1 s&#x27;ouvre avec un personnage sur un terrain verdoyant, un rocher au premier plan et du texte à l&#x27;écran indiquant &#x27;Find the three runes. Follow the pillars of light.&#x27;" loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000456_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:56</span>
+                        <span class="caption-text">Image 1 (00:04:56) : Le jeu Fable 5.1 s&#x27;ouvre avec un personnage sur un terrain verdoyant, un rocher au premier plan et du texte à l&#x27;écran indiquant &#x27;Find the three runes. Follow the pillars of light.&#x27;</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000506_seg10.jpg" alt="Image 2 (00:05:06) : Vue rapprochée d&#x27;un rocher dans le jeu Fable 5.1 avec des instructions textuelles en bas de l&#x27;écran (&#x27;CLICK throw&#x27;, &#x27;E drop&#x27;) et le présentateur visible en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000506_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Image 2 (00:05:06) : Vue rapprochée d&#x27;un rocher dans le jeu Fable 5.1 avec des instructions textuelles en bas de l&#x27;écran (&#x27;CLICK throw&#x27;, &#x27;E drop&#x27;) et le présentateur visible en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000515_seg10.jpg" alt="Image 3 (00:05:15) : Le personnage évolue dans un paysage forestier du jeu Fable 5.1 sous un ciel clair, montrant les interactions avec les objets du monde virtuel." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000515_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:15</span>
+                        <span class="caption-text">Image 3 (00:05:15) : Le personnage évolue dans un paysage forestier du jeu Fable 5.1 sous un ciel clair, montrant les interactions avec les objets du monde virtuel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:05:50</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous avons notre petite orbe ici, testons l&#x27;eau rapidement après avoir remis ceci en place, alors viens ici, entre dans l&#x27;eau, euh on dirait qu&#x27;elle ne bugue pas dans l&#x27;eau comme les deux précédentes, donc c&#x27;est bien, euh ouais, celle-ci est plutôt solide et un truc cool, si vous regardez en haut à gauche de mon écran, ça montre quand le soleil se couche. Donc on dirait que l&#x27;après-midi arrive, ça montre le temps qui avance progressivement. Ouais, celle-ci est plutôt solide.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application 3D interactive (fichier HTML local).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de simulation 3D avec affichage de l&#x27;heure, de la météo et des commandes à l&#x27;écran (Click: throw, E: drop).</p>
+                        <p><strong>Action / Démonstration :</strong> Test des interactions physiques dans l&#x27;environnement 3D virtuel (eau, objets).</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:50 - 00:06:19</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pense que c&#x27;est l&#x27;un des meilleurs que nous ayons générés jusqu&#x27;à présent. Très bien. Donc, pour la ventilation des coûts sur Fable 5.1, jetons un œil à cela maintenant. Donc, pour le coût, c&#x27;était de 17,45 dollars, ce qui est beaucoup plus cher que Sonic 5. Évidemment, c&#x27;est environ 6 dollars, 5,5 dollars de plus qu&#x27;Opus 5.5 également, ce qui est normal. C&#x27;est un modèle plus performant, plus intelligent. C&#x27;est leur plus haut niveau en matière d&#x27;intelligence. Et puis, nous avons maintenant 40 minutes et 30 secondes, ce qui est intéressant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw / Interface de tableau blanc virtuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif &quot;THE SCORECARD&quot; avec les modèles Sonnet 5 ($1.59, 7:06), Opus 5.5 ($11.95, 41:47), et Fable 5.1 ($17.45).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative des coûts et des temps de génération de différents modèles d&#x27;IA sur un tableau blanc numérique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000557_seg12.jpg" alt="Tableau de bord comparatif affichant les modèles, le temps et le coût, avec le curseur sur Fable 5.1 à 17,45 dollars." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000557_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:57</span>
+                        <span class="caption-text">Tableau de bord comparatif affichant les modèles, le temps et le coût, avec le curseur sur Fable 5.1 à 17,45 dollars.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000612_seg12.jpg" alt="Le présentateur manipule le tableau de bord Excalidraw, sélectionnant une cellule vide pour le modèle Fable 5.1." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000612_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:12</span>
+                        <span class="caption-text">Le présentateur manipule le tableau de bord Excalidraw, sélectionnant une cellule vide pour le modèle Fable 5.1.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:20 - 00:06:56</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela a en fait pris moins de temps qu&#x27;Opus 5.5. Pourtant, cela a pris pas mal de temps, 40 minutes et 30 secondes par rapport à Sonnet 5, qui n&#x27;a pris que sept minutes et six secondes. Pour notre test final, nous avons le résultat de Claude Sonnet 5.5. Allons-y donc et jetons un œil. Très bien, voici à quoi ressemble notre monde. Je trouve que c&#x27;est vraiment incroyable. Personnellement, je pense que c&#x27;est peut-être le monde le plus beau, enfin celui qui a le meilleur aspect. Évidemment, nous pourrions nous déplacer et il n&#x27;y a pas de mouvements bizarres en cours. Nous avons ces petits lapins qui bondissent partout. La pluie arrive en ce moment même. Je pourrais même aller dans l&#x27;eau juste ici. Il y a des poissons qui nagent partout. Je veux dire, je suis</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un jeu 3D interactif (application web locale).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface d&#x27;accueil d&#x27;un jeu vidéo généré (&quot;Skyreach&quot;) avec commandes clavier affichées et graphismes 3D low-poly.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation du résultat visuel et jouable du test de génération de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000629_seg13.jpg" alt="Écran titre du jeu &quot;Skyreach&quot; affiché dans un navigateur web, avec le menu de démarrage et les instructions de contrôle." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000629_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Écran titre du jeu &quot;Skyreach&quot; affiché dans un navigateur web, avec le menu de démarrage et les instructions de contrôle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000638_seg13.jpg" alt="Vue de gameplay à la première personne dans l&#x27;environnement 3D du jeu Skyreach, montrant une prairie verdoyante et une petite mare." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000638_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:38</span>
+                        <span class="caption-text">Vue de gameplay à la première personne dans l&#x27;environnement 3D du jeu Skyreach, montrant une prairie verdoyante et une petite mare.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000647_seg13.jpg" alt="Exploration de l&#x27;environnement 3D avec des ruines de colonnes en pierre au loin et une végétation stylisée." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000647_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:47</span>
+                        <span class="caption-text">Exploration de l&#x27;environnement 3D avec des ruines de colonnes en pierre au loin et une végétation stylisée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:56 - 00:07:16</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">franchement assez impressionné par ça. C&#x27;est censé être le modèle le moins cher du marché à part genre Claude Opus 5. Je crois que c&#x27;est exactement le même prix mais genre ça a l&#x27;air mieux à mon avis que le résultat de Fable 5.1. C&#x27;est assez dingue. Je pourrais balancer ça. Tu peux voir qu&#x27;il fait plus sombre dehors. Cet univers a l&#x27;air plutôt bien. Et encore une fois, les mouvements ici sont super.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application 3D interactive (WebGL / HTML5) avec webcam incrustée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Environnement virtuel 3D low-poly (arbres, herbe, rochers, ciel), compteur de performance et instructions de jeu à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et test interactif d&#x27;un environnement 3D généré par une intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000701_seg14.jpg" alt="Vue d&#x27;un environnement 3D low-poly de type jeu vidéo affiché dans un navigateur web, avec le visage du présentateur en incrustation en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000701_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Vue d&#x27;un environnement 3D low-poly de type jeu vidéo affiché dans un navigateur web, avec le visage du présentateur en incrustation en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000706_seg14.jpg" alt="Navigation rapprochée dans le même univers virtuel en 3D low-poly arborant des arbres verts et un ciel nuageux." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000706_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:06</span>
+                        <span class="caption-text">Navigation rapprochée dans le même univers virtuel en 3D low-poly arborant des arbres verts et un ciel nuageux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000711_seg14.jpg" alt="Autre angle de vue dans le décor 3D généré, montrant des herbes hautes et un ciel crépusculaire." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000711_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Autre angle de vue dans le décor 3D généré, montrant des herbes hautes et un ciel crépusculaire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:16 - 00:07:50</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il n&#x27;y a rien de mal ici. Donc ouais, c&#x27;est assez fou. C&#x27;est honnêtement mon résultat préféré que nous ayons. Allons donc voir le prix et le temps qu&#x27;il a fallu pour générer ceci. Très bien, donc en termes de coût, cela n&#x27;a coûté que 9,02 dollars par rapport à Opus 5,5, qui est à 11,95 cents. Fable 5,1 est à 17,45 dollars. Et encore une fois, je pense que c&#x27;est probablement le meilleur résultat que nous avons obtenu ici pour très bon marché comparativement. Ensuite, si nous passons au temps, cela a été généré en 36 minutes et 43 secondes. C&#x27;est le deuxième plus rapide de tous. Il y a un saut significatif à partir de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau récapitulatif sur l&#x27;application Excalidraw, avec la webcam du présentateur en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif avec les colonnes MODEL, TIME et COST : Sonnet 5 (7:06, $1.59), Sonnet 5.5 (champ vide pour le temps, $9.02), Opus 5.5 (41:47, $11.95), Fable 5.1 (40:30, $17.45).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et commente le tableau comparatif des coûts et des temps de génération des différents modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000733_seg15.jpg" alt="Tableau comparatif sur Excalidraw affichant les performances, le temps et le coût de différents modèles d&#x27;IA (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1)." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000733_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:33</span>
+                        <span class="caption-text">Tableau comparatif sur Excalidraw affichant les performances, le temps et le coût de différents modèles d&#x27;IA (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:50 - 00:08:15</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">De Sonnet 5 à Sonnet 5.5 et ensuite ces autres modèles ici. C&#x27;est très bon pour le montant de temps qu&#x27;il a fallu pour générer ceci et le coût de sortie. Je suis très, très impressionné. Et juste pour vous montrer à nouveau les sorties ici au cas où vous ne vous souvenez pas. C&#x27;est ce que Sonnet 5 a généré. Ça avait l&#x27;air très, très mauvais en comparaison avec les autres. Nous avons Opus 5.5. Ça avait l&#x27;air plutôt solide. Rien de fou ici. Et ensuite nous avons Fable 5.1. Ça avait l&#x27;air très, très bon, mais les mouvements étaient tout à fait faux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Excalidraw (application de tableau blanc numérique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau des scores des modèles d&#x27;IA : Sonnet 5 (7:06, $1.59), Sonnet 5.5 (36:43, $9.02), Opus 5.5 (41:47, $11.95), Fable 5.1 (40:30, $17.45) et environnements graphiques 3D basse résolution (paysages avec arbres et plans d&#x27;eau).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et compare les temps de génération et les coûts des différents modèles d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000757_seg16.jpg" alt="Tableau comparatif (The Scorecard) affichant les performances des modèles d&#x27;IA (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1) avec le temps et le coût." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000757_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:57</span>
+                        <span class="caption-text">Tableau comparatif (The Scorecard) affichant les performances des modèles d&#x27;IA (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1) avec le temps et le coût.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000803_seg16.jpg" alt="Interface Excalidraw montrant des captures d&#x27;écran comparatives de l&#x27;environnement virtuel généré par les différents modèles d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000803_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Interface Excalidraw montrant des captures d&#x27;écran comparatives de l&#x27;environnement virtuel généré par les différents modèles d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000809_seg16.jpg" alt="Vue rapprochée de l&#x27;environnement virtuel en 3D généré par le modèle Opus 5.5 dans l&#x27;interface Excalidraw." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000809_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:09</span>
+                        <span class="caption-text">Vue rapprochée de l&#x27;environnement virtuel en 3D généré par le modèle Opus 5.5 dans l&#x27;interface Excalidraw.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:15 - 00:08:48</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis Sonnet 5.5, qui est le meilleur dans l&#x27;ensemble. Les couleurs sont très vives. Il y avait des lapins qui sautaient partout. Ça avait l&#x27;air très dynamique. Et les mouvements étaient parfaits avec ce résultat ici. Bref, les gars, voilà, c&#x27;est fait. C&#x27;est la ventilation des coûts pour tous ces différents modèles. Je sais que ce n&#x27;est peut-être pas la chose la plus pratique. Tout le monde ne va pas générer des jeux vidéo avec ces modèles, mais c&#x27;est un bon moyen de tester leur capacité face à une tâche de codage complexe comme celle-ci, en voyant combien de temps cela prend et la ventilation des coûts. J&#x27;espère donc que cette vidéo vous a apporté quelque chose. Et si vous voulez donner un coup de main à un pote, vu que j&#x27;ai payé de ma poche pour tester tout ça,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de tableau blanc Excalidraw et lecteur vidéo de démonstration.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif des performances et des coûts des modèles d&#x27;IA : Sonnet 5 ($1.59), Sonnet 5.5 ($9.02), Opus 5.5 ($11.95), Fable 5.1 ($17.45).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et ventilation finale des coûts et des performances des différents modèles d&#x27;intelligence artificielle testés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000824_seg17.jpg" alt="Capture montrant l&#x27;interface Excalidraw avec une démonstration vidéo en cours de lecture affichant un paysage virtuel en 3D généré par le modèle Sonnet 5.5, avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000824_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:24</span>
+                        <span class="caption-text">Capture montrant l&#x27;interface Excalidraw avec une démonstration vidéo en cours de lecture affichant un paysage virtuel en 3D généré par le modèle Sonnet 5.5, avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000832_seg17.jpg" alt="Capture montrant un tableau récapitulatif (&quot;THE SCORECARD&quot;) sur Excalidraw présentant les modèles (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1), le temps d&#x27;exécution et les coûts associés." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000832_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:32</span>
+                        <span class="caption-text">Capture montrant un tableau récapitulatif (&quot;THE SCORECARD&quot;) sur Excalidraw présentant les modèles (Sonnet 5, Sonnet 5.5, Opus 5.5, Fable 5.1), le temps d&#x27;exécution et les coûts associés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:48 - 00:08:54</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">abonnez-vous simplement à la chaîne pour plus de vidéos de ce genre. Cela étant dit, j&#x27;apprécie que vous soyez restés jusqu&#x27;à la fin et je vous vois dans la prochaine. Santé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc collaboratif (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau avec les colonnes MODEL, TIME et COST pour différents modèles : Sonnet 5 (7:06, $1.59), Sonnet 5.5 (36:43, $9.02), Opus 5.5 (41:47, $11.95) et Fable 5.1 (40:30, $17.45).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du tableau récapitulatif des coûts et du temps d&#x27;exécution des modèles d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pn08Kdp998Y/pn08Kdp998Y_000850_seg18.jpg" alt="Tableau comparatif (The Scorecard) affichant les performances, temps d&#x27;exécution et coûts de différents modèles d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/pn08Kdp998Y/pn08Kdp998Y_000850_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:50</span>
+                        <span class="caption-text">Tableau comparatif (The Scorecard) affichant les performances, temps d&#x27;exécution et coûts de différents modèles d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
