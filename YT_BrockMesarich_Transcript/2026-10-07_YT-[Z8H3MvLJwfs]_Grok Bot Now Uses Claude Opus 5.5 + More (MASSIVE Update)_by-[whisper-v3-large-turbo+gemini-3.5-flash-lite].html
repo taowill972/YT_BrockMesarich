@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Grok Bot Now Uses Claude Opus 5.5 + More (MASSIVE Update) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Grok Bot Now Uses Claude Opus 5.5 + More (MASSIVE Update)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-07</span>
+                <span class="badge">⏱️ 00:07:10</span>
+                <span class="badge">🆔 <code>Z8H3MvLJwfs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=Z8H3MvLJwfs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Grok Bot Now Uses Claude Opus 5.5 + More (MASSIVE Update)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">GrokBot vient de recevoir une mise a jour massive qui change complètement le paysage des agents d&#x27;intelligence artificielle. Elon vient d&#x27;annoncer que GrokBot ne sera plus limité aux propres modèles de Grok, et qu&#x27;il va commencer a utiliser d&#x27;autres modèles d&#x27;intelligence artificielle de premier plan comme Claude Opus 5.5. Donc, cela donne a GrokBot accès au meilleur modèle pour n&#x27;importe quelle tâche que vous lui confiez, et il choisit ce modèle pour vous automatiquement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du réseau social X (Twitter) affichant un tweet officiel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication d&#x27;Elon Musk annonçant l&#x27;utilisation des meilleurs modèles back-end pour Grok @Bot (notamment Claude Opus 5.5, MidJourney, Suno, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture à l&#x27;écran du tweet d&#x27;Elon Musk pour illustrer l&#x27;annonce de la mise à jour majeure des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000010_seg1.jpg" alt="Capture d&#x27;un post X (Twitter) d&#x27;Elon Musk concernant la mise à jour de Grok @Bot, avec une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Capture d&#x27;un post X (Twitter) d&#x27;Elon Musk concernant la mise à jour de Grok @Bot, avec une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et il y a trois raisons pour lesquelles je pense que c&#x27;est si important, et la troisième est la plus importante. Il y a aussi quelques choses importantes que nous ne savons toujours pas, et je vais aborder cela à la fin de cette vidéo. Donc, sans plus attendre, plongeons-nous directement dedans. Très bien, voici exactement ce qui s&#x27;est passé. Ce matin, Elon a publié ceci sur X, et je vais vous le lire mot pour mot, et ensuite nous allons analyser tout ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du réseau social X (Twitter).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication textuelle d&#x27;Elon Musk du 7 octobre 2026 mentionnant @SpaceX et l&#x27;utilisation de modèles comme Claude Opus 5.5, MidJourney et Suno.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture à l&#x27;écran d&#x27;un tweet illustrant les annonces sur l&#x27;IA abordées dans la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000034_seg2.jpg" alt="Capture d&#x27;écran d&#x27;une publication X (Twitter) d&#x27;Elon Musk concernant l&#x27;utilisation de différents modèles d&#x27;IA par SpaceX et Grok, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;une publication X (Twitter) d&#x27;Elon Musk concernant l&#x27;utilisation de différents modèles d&#x27;IA par SpaceX et Grok, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:38 - 00:01:01</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">À l&#x27;avenir, SpaceX utilisera le meilleur modèle de backend pour toute tâche donnée, y compris Cloud Opus 5.5, MidJourney, Suno et d&#x27;autres API de premier plan, tout ce qui est le plus susceptible de donner le meilleur résultat. Maintenant, si vous n&#x27;avez jamais utilisé GrokBot auparavant, c&#x27;est fondamentalement une plateforme d&#x27;agents d&#x27;IA à qui vous pouvez envoyer des SMS comme à un ami ou un employé. Vous pouvez créer plusieurs agents qui travaillent ensemble et déléguer des tâches à des agents spécifiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de présentation avec visuels de tweets et schémas d&#x27;intelligence artificielle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de tweet attribué à Elon Musk concernant l&#x27;utilisation de modèles d&#x27;IA de pointe et illustration d&#x27;un bot de routage de tâches.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de l&#x27;architecture multi-modèle et des fonctionnalités de routage des requêtes par un bot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000044_seg3.jpg" alt="Capture montrant un faux tweet d&#x27;Elon Musk sur Grok Bot et l&#x27;utilisation du meilleur modèle backend, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000044_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Capture montrant un faux tweet d&#x27;Elon Musk sur Grok Bot et l&#x27;utilisation du meilleur modèle backend, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000055_seg3.jpg" alt="Illustration du concept &quot;One chat, a team of bots&quot; avec un exemple de prompt utilisateur et le présentateur en encadré." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000055_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:55</span>
+                        <span class="caption-text">Illustration du concept &quot;One chat, a team of bots&quot; avec un exemple de prompt utilisateur et le présentateur en encadré.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:01 - 00:01:21</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous pouvez lui envoyer des messages comme à un employé, il peut se connecter à vos outils et continue de travailler même quand votre ordinateur est fermé. Et cette plateforme a été incroyable. J&#x27;ai absolument adoré. Je l&#x27;ai utilisée tous les jours au cours des deux derniers mois comme mon outil principal au quotidien, mais il y avait certaines limites à cela. Jusqu&#x27;à aujourd&#x27;hui, elle ne fonctionnait qu&#x27;avec les propres modèles de Grok et vous ne pouviez pas choisir un modèle différent si vous le vouliez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de messagerie de gestion d&#x27;agents IA (panneau latéral avec des agents comme Video Agent, Chief of Staff, Content Bot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur textuelle avec des interactions de type chat, des aperçus de fichiers vidéo et des listes d&#x27;agents conversationnels.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;interface de la plateforme d&#x27;agents IA et de la conversation textuelle avec l&#x27;assistant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000111_seg4.jpg" alt="Interface de la plateforme montrant une liste de bots sur le panneau latéral gauche et une conversation textuelle avec des aperçus vidéo et des instructions de montage." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000111_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:11</span>
+                        <span class="caption-text">Interface de la plateforme montrant une liste de bots sur le panneau latéral gauche et une conversation textuelle avec des aperçus vidéo et des instructions de montage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:21 - 00:01:42</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Eh bien, maintenant Grokbot va examiner la tâche que vous lui donnez, puis l&#x27;envoyer à l&#x27;intelligence artificielle qui convient le mieux à ce travail spécifique. Et je pense que cela résout le seul problème qui retenait vraiment GrokBot en arrière. La première raison pour laquelle c&#x27;est important, c&#x27;est donc le modèle lui-même. Les modèles de Grok ont toujours eu une ou deux ou trois étapes de retard sur Claude et ChatGPT, et même Elon l&#x27;a dit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo / Schéma graphique explicatif de modèles d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;Best model per task&quot; et icônes des modèles d&#x27;IA (Claude, Midjourney, Suno, Grok).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication de la sélection du meilleur modèle d&#x27;intelligence artificielle selon la tâche demandée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000127_seg5.jpg" alt="Schéma explicatif montrant le concept &quot;Best model per task&quot; avec différentes IA (Claude Opus 5.5, Midjourney, Suno, Grok) et le présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000127_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Schéma explicatif montrant le concept &quot;Best model per task&quot; avec différentes IA (Claude Opus 5.5, Midjourney, Suno, Grok) et le présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:42 - 00:02:05</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a quelques semaines, il a dit dans une interview que Grok n&#x27;est pas aussi bon qu&#x27;Opus 5.5 et qu&#x27;ils rattraperaient probablement leur retard dans le courant de l&#x27;année prochaine. Et donc, au lieu d&#x27;attendre l&#x27;année prochaine, il a simplement décidé d&#x27;intégrer Opus 5.5 et les meilleurs modèles de pointe directement dans GrokBot. Personnellement, je pense qu&#x27;Opus 5.5 est le modèle le plus puissant que vous puissiez utiliser en ce moment, de loin, et j&#x27;ai construit des choses incroyables avec au cours de la semaine dernière.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Réseau social X (anciennement Twitter) affichant un tweet officiel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication d&#x27;Elon Musk mentionnant l&#x27;utilisation de modèles externes comme Claude Opus 5.5 et MidJourney pour les tâches de Grok et SpaceX.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et mise en surbrillance d&#x27;un tweet illustrant la décision d&#x27;intégrer d&#x27;autres modèles d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000154_seg6.jpg" alt="Capture d&#x27;écran montrant un tweet d&#x27;Elon Musk sur X avec une mise en avant du texte &quot;Claude Opus 5.5, MidJourney&quot; et le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000154_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:54</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tweet d&#x27;Elon Musk sur X avec une mise en avant du texte &quot;Claude Opus 5.5, MidJourney&quot; et le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:05 - 00:02:38</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais personnellement, j&#x27;aime vraiment la façon dont GrokBot communique avec moi. Je trouve que c&#x27;est beaucoup plus facile à utiliser et adapté aux débutants. J&#x27;ai vraiment l&#x27;impression d&#x27;envoyer un SMS à un collègue ou à un ami, et il se souvient réellement de ma façon de travailler. Donc, jusqu&#x27;à présent, je devais en quelque sorte faire un choix. J&#x27;allais sur Claude pour les choses difficiles comme la programmation ou des flux de travail plus spécifiques et complexes, et ensuite j&#x27;allais sur GrokBot pour toutes les différentes tâches administratives et tout le reste qui était plus facile à gérer pour ce modèle. Maintenant, voici un rapide exemple de ce à quoi cela pourrait ressembler à l&#x27;avenir. Disons que j&#x27;envoie un SMS à mon GrokBot et que je lui demande de me créer un tableau de bord qui suit tous mes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de présentation graphique, interface de chat textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur les outils d&#x27;IA (Claude vs Grok Bot) et exemples de messages professionnels.</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du mode de communication conversationnel et comparaison des assistants d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000213_seg7.jpg" alt="Capture montrant un exemple d&#x27;interface de messagerie textuelle avec une bulle de dialogue illustrant une conversation de type &#x27;Like texting a coworker&#x27; et le présentateur en médaillon vidéo." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000213_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:13</span>
+                        <span class="caption-text">Capture montrant un exemple d&#x27;interface de messagerie textuelle avec une bulle de dialogue illustrant une conversation de type &#x27;Like texting a coworker&#x27; et le présentateur en médaillon vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000222_seg7.jpg" alt="Capture montrant un comparatif visuel entre &#x27;Claude (For the hard stuff)&#x27; et &#x27;Grok Bot (For everything else)&#x27; avec le présentateur en médaillon vidéo." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000222_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:22</span>
+                        <span class="caption-text">Capture montrant un comparatif visuel entre &#x27;Claude (For the hard stuff)&#x27; et &#x27;Grok Bot (For everything else)&#x27; avec le présentateur en médaillon vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:38 - 00:02:59</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différentes factures. Je parle toujours au même agent dans la même discussion, mais dans les coulisses, c&#x27;est Opus 5.5 qui pourrait écrire le code puisque c&#x27;est bien meilleur pour cela. De cette façon, j&#x27;obtiens l&#x27;agent avec qui j&#x27;aime parler dans le modèle en qui j&#x27;ai confiance pour le travail difficile, qui est Opus 5.5. Très bien, passons à la deuxième raison pour laquelle je pense que c&#x27;est si important, et c&#x27;est que vous n&#x27;avez plus besoin de choisir un modèle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de présentation graphique / diaporama.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les modèles d&#x27;IA (Claude Opus 5.5, Midjourney, Suno, Grok) et le choix automatique par l&#x27;assistant.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des avantages de l&#x27;utilisation de différents modèles d&#x27;IA sous-jacents au sein d&#x27;une même interface de discussion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000243_seg8.jpg" alt="Capture d&#x27;écran montrant le présentateur à droite et une infographie explicative à gauche intitulée « Same chat, different model » avec des options de modèles d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000243_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:43</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur à droite et une infographie explicative à gauche intitulée « Same chat, different model » avec des options de modèles d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:59 - 00:03:21</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En ce moment, si vous voulez les meilleurs résultats, vous devez en quelque sorte savoir quel type d&#x27;IA est doué pour quoi. Donc, vous iriez sur Claude pour la rédaction et le code, puis sur Midjourney pour les images, et Suno pour la musique, et vous voyez le genre. Et comme vous le savez probablement déjà, cela représente une application différente et un abonnement différent pour tous ces différents outils et plateformes d&#x27;IA. Mais de la façon dont Elon a formulé cela dans ce tweet, GrokBot fait ce choix pour vous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> </p>
+                        <p><strong>Contenu textuel & Code :</strong> </p>
+                        <p><strong>Action / Démonstration :</strong> </p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:21 - 00:03:43</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pourriez donc demander à un bot d&#x27;écrire un message de lancement, de créer l&#x27;image associée, et même de composer une petite chanson publicitaire pour l&#x27;accompagner. Et ensuite, chaque élément de cette tâche spécifique est confié au modèle spécifique qui est le plus adapté pour le réaliser. Maintenant, il est également possible que cela nous fasse faire des économies. Si Claude, ChatGPT et Suno finissent tous par être inclus dans l&#x27;abonnement à GrokBot, cela pourrait représenter un seul abonnement au lieu d&#x27;avoir à payer pour les quatre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec animations graphiques explicatives et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif et icônes d&#x27;outils d&#x27;IA (Claude, Midjourney, Suno, Grok, ChatGPT).</p>
+                        <p><strong>Action / Démonstration :</strong> Illustration visuelle du concept de multi-modèles et d&#x27;abonnements groupés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000327_seg10.jpg" alt="Présentation graphique montrant le texte &#x27;One ask, three models&#x27; avec un exemple de prompt de bot et les logos de Claude Opus, Midjourney, Suno et Grok." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000327_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:27</span>
+                        <span class="caption-text">Présentation graphique montrant le texte &#x27;One ask, three models&#x27; avec un exemple de prompt de bot et les logos de Claude Opus, Midjourney, Suno et Grok.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000338_seg10.jpg" alt="Présentation graphique montrant le texte &#x27;One plan in place of four?&#x27; avec les abonnements de Claude, ChatGPT et Suno." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000338_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:38</span>
+                        <span class="caption-text">Présentation graphique montrant le texte &#x27;One plan in place of four?&#x27; avec les abonnements de Claude, ChatGPT et Suno.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:43 - 00:04:06</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, je tiens à préciser et à dire que les tarifs n&#x27;ont pas encore été annoncés, donc je n&#x27;irais pas tout annuler aujourd&#x27;hui, évidemment. Mais c&#x27;est quelque chose auquel je pense vraiment et qui m&#x27;enthousiasme pour l&#x27;avenir. Et cela m&#x27;amène à la troisième raison, qui est selon moi la plus importante, et c&#x27;est ce que cela implique pour tout le monde. Car au cours des derniers mois, pratiquement toutes les grandes entreprises d&#x27;IA ont lancé leur propre version de Grokbot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec diapositives graphiques et incrustation du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte à l&#x27;écran concernant les tarifs (&#x27;Pricing not announced&#x27;) et la structure des plans (&#x27;One plan in place of four?&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale des raisons et des perspectives d&#x27;avenir par le créateur.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:06 - 00:04:25</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Meta a lancé sa plateforme appelée Muse, qui fait fureur dans le monde entier depuis ces deux dernières semaines. Et puis la semaine dernière, OpenAI a lancé ChatGPT Dots. Et j&#x27;étais personnellement extrêmement enthousiaste à l&#x27;idée de l&#x27;essayer. Et des tonnes d&#x27;autres personnes aussi, mais c&#x27;est honnêtement extrêmement décevant jusqu&#x27;à présent. Mais voici ce que tout cela a en commun.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique de présentation d&#x27;agents IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logos et dates de lancement de Meta Muse et Grok Bot.
+[DESC_IMAGE_3] Aucun graphique ou élément visuel technique pertinent.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000411_seg12.jpg" alt="Présentation des agents intelligents avec les cartes Meta Muse et Grok Bot." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000411_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Présentation des agents intelligents avec les cartes Meta Muse et Grok Bot.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:25 - 00:04:45</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Chachabiti Dots fonctionne sur les modèles d&#x27;OpenAI et Muse fonctionne sur les modèles de Meta, qui sont très limités. Donc, vous pariez en quelque sorte que l&#x27;entreprise qui a construit votre agent est aussi celle qui a le meilleur modèle. Et cela change presque chaque semaine, car ces entreprises publient de nouveaux modèles chaque semaine. Et GrokBot était exactement pareil jusqu&#x27;à aujourd&#x27;hui. Mais je veux que vous réfléchissiez à ce qu&#x27;est réellement GrokBot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma graphique explicatif de type présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;one agent, one model&quot;, blocs représentant &quot;ChatGPT Dots&quot; (GPT-6 Astra) et &quot;Meta Muse&quot; (Muse Spark 1.3).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la relation entre les agents conversationnels et les modèles sous-jacents.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:45 - 00:05:05</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est un ordinateur dans le cloud qui est connecté à tous vos différents outils et qui exécute vos routines et vos tâches planifiées pendant que vous dormez. Et après ce changement, le modèle derrière tout cela n&#x27;est plus qu&#x27;une pièce qui peut être remplacée. Ainsi, lorsqu&#x27;un meilleur modèle sort, GrokBot peut simplement l&#x27;intégrer et vous n&#x27;avez rien à changer. Et si vous êtes un peu comme moi, cela vous facilitera tellement la vie que vous n&#x27;aurez pas à changer constamment de plateforme.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma didactique animé et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte schématique expliquant l&#x27;architecture des agents IA (&quot;what Grok Bot actually is&quot;, &quot;its own computer in the cloud&quot;, &quot;swap the part, keep the agent&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication visuelle et schématique de l&#x27;architecture modulaire des agents conversationnels et des bots cloud.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:34</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et selon moi, je pense que cela met une vraie pression sur toutes les autres entreprises d&#x27;IA. Anthropic a déjà Cloud Cowork et je parie qu&#x27;ils ont une version plus grande de ceci qui arrive aussi en lançant un concurrent à GrokBot, Metamuse, Chachaput, Dots, etc. Donc la grande question est de savoir si l&#x27;une de ces différentes plateformes d&#x27;IA va suivre et ouvrir ses agents à d&#x27;autres modèles. Je devine qu&#x27;ils ne le feront probablement pas de sitôt parce que leurs modèles sont la chose qu&#x27;ils vendent. Et c&#x27;est exactement pourquoi je pense que c&#x27;est une si grande douve à l&#x27;avenir pour GrokBot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface graphique de présentation avec des cartes d&#x27;applications d&#x27;IA (ChatGPT Dots, Meta Muse, Claude Cowork).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Noms des modèles d&#x27;IA concurrents et icônes de cadenas indiquant des fonctionnalités verrouillées.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des différents acteurs du marché de l&#x27;IA et de leurs produits respectifs par l&#x27;animateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000519_seg15.jpg" alt="Image 2 : Diapositive montrant les différentes fonctionnalités d&#x27;IA des concurrents avec le titre &quot;Will the others open up?&quot;." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000519_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:19</span>
+                        <span class="caption-text">Image 2 : Diapositive montrant les différentes fonctionnalités d&#x27;IA des concurrents avec le titre &quot;Will the others open up?&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:34 - 00:06:06</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, avant de vous emballer trop vite, il y a quatre choses que nous ne savons toujours pas et quelques-unes d&#x27;entre elles sont vraiment importantes. La première est de savoir quand cela sera réellement en ligne, car tout ce qu&#x27;Elon a dit dans ce tweet, c&#x27;est que ce serait le cas à l&#x27;avenir. Cela pourrait donc signifier aujourd&#x27;hui, cette semaine, ou cela pourrait signifier d&#x27;ici un mois. Nous ne le savons pas nécessairement. Espérons que plus tard dans aujourd&#x27;hui, nous obtiendrons quelques éclaircissements, mais à l&#x27;heure actuelle, nous ne savons pas quand cela sera mis en ligne. La seconde est de savoir si vous pouvez choisir le modèle vous-même ou voir lequel a fait le travail. La façon dont ce tweet est rédigé suggère que GrokBot va choisir pour vous. Et nous ne savons pas non plus quelles tâches vont réellement vers</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de publication X (Twitter) et présentation graphique animée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tweet d&#x27;Elon Musk sur les API (Claude Opus 5.5, MidJourney, Suno) et chronologie illustrant l&#x27;incertitude sur la date de lancement.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le tweet d&#x27;Elon Musk et détaille les quatre inconnues, en commençant par la date de sortie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000542_seg16.jpg" alt="Capture d&#x27;écran d&#x27;un tweet d&#x27;Elon Musk concernant Grok @Bot et l&#x27;utilisation de différents modèles back-end." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000542_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:42</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tweet d&#x27;Elon Musk concernant Grok @Bot et l&#x27;utilisation de différents modèles back-end.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000550_seg16.jpg" alt="Infographie posant la question &quot;When does it go live?&quot; avec une ligne chronologique comportant des points d&#x27;interrogation (&quot;Today&quot;, &quot;This week&quot;, &quot;A month from now&quot;)." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000550_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Infographie posant la question &quot;When does it go live?&quot; avec une ligne chronologique comportant des points d&#x27;interrogation (&quot;Today&quot;, &quot;This week&quot;, &quot;A month from now&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:38</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">quel modèle spécifique. Comment prend-il ces décisions ? Il est donc possible qu&#x27;Opus ne soit utilisé que pour les tâches vraiment difficiles et que tout le reste fonctionne sur les modèles Grok. Nous ne le savons tout simplement pas. Et si une tâche revient erronée, vous ne savez pas forcément quel modèle a fait cela. Et le troisième point, c&#x27;est le prix. Actuellement, l&#x27;utilisation supplémentaire sur GrokBot est facturée au coût par jeton, et Opus est un modèle plus coûteux à faire tourner que Grok. Il y a donc une chance que votre utilisation ne dure pas aussi longtemps lorsqu&#x27;Opus fait une plus grande partie de votre travail. Nous ne savons pas non plus si chaque formule aura accès à cela ou seulement les formules GrokBot les plus chères. Et le quatrième point important ici, c&#x27;est vos données.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la FAQ officielle de Grok Bot (x.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif concernant les abonnements Grok Bot, incluant l&#x27;utilisation hebdomadaire et la tarification basée sur les tokens.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur illustre ses propos sur le fonctionnement et les coûts des différents modèles d&#x27;IA en affichant la FAQ correspondante.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000622_seg17.jpg" alt="Capture d&#x27;écran d&#x27;une page FAQ (x.ai/bot - FAQ) affichant des informations sur le coût de Grok Bot, avec la vidéo du présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/Z8H3MvLJwfs/Z8H3MvLJwfs_000622_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:22</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;une page FAQ (x.ai/bot - FAQ) affichant des informations sur le coût de Grok Bot, avec la vidéo du présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:39 - 00:07:09</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Your GrokBots are logged into your emails, your files, and all of your other tools that it&#x27;s working across. So if a task gets sent to another company&#x27;s model, some of that information could be going with it. And right now, we don&#x27;t know if you&#x27;ll be able to turn that off. I&#x27;m going to be testing this the second it shows up in my account, and I&#x27;ll make a full video on it because I am extremely excited for this. So if you enjoyed this video, make sure to subscribe for more content like this. And then let me know in the comments if you think OpenAI, Anthropic, and all these other different AI companies are going to follow in GrokBot&#x27;s shoes. Cheers, and I&#x27;ll see you in the next video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
