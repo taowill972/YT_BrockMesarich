@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `19 / 273` (`7.0%`)
+- **Vidéos traitées** : `20 / 273` (`7.3%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -36,6 +36,7 @@
 | 2026-09-29 | [pn08Kdp998Y](https://www.youtube.com/watch?v=pn08Kdp998Y) | **J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)** | [2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-29_YT-[pn08Kdp998Y]_J'ai testé Sonnet 5.5 vs Opus 5.5 (RÉSULTATS SURPRENANTS)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `34` |
 | 2026-09-28 | [pAkG5PstlYI](https://www.youtube.com/watch?v=pAkG5PstlYI) | **Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)** | [2026-09-28_YT-[pAkG5PstlYI]_Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-28_YT-[pAkG5PstlYI]_Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-28_YT-[pAkG5PstlYI]_Anthropic vient de lancer Claude Sonnet 5.5 (MAJEURE MISE À JOUR)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `10` |
 | 2026-09-26 | [is3XYKl2bpI](https://www.youtube.com/watch?v=is3XYKl2bpI) | **Anthropic Revealed Their Secret Guide to Mastering Opus 5.5** | [2026-09-26_YT-[is3XYKl2bpI]_Anthropic Revealed Their Secret Guide to Mastering Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-26_YT-[is3XYKl2bpI]_Anthropic Revealed Their Secret Guide to Mastering Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-26_YT-[is3XYKl2bpI]_Anthropic Revealed Their Secret Guide to Mastering Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `14` |
+| 2026-09-25 | [k5Wo0-FWK3k](https://www.youtube.com/watch?v=k5Wo0-FWK3k) | **AI News: $500 ChatGPT Plan? OpenAI Agent Leak & Opus 5.5** | [2026-09-25_YT-[k5Wo0-FWK3k]_AI News $500 ChatGPT Plan OpenAI Agent Leak & Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-25_YT-[k5Wo0-FWK3k]_AI News $500 ChatGPT Plan OpenAI Agent Leak & Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-25_YT-[k5Wo0-FWK3k]_AI News $500 ChatGPT Plan OpenAI Agent Leak & Opus 5.5_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `89` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
