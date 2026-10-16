@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `28 / 273` (`10.3%`)
+- **Vidéos traitées** : `29 / 273` (`10.6%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -45,6 +45,7 @@
 | 2026-09-17 | [lrsW8k-dHSk](https://www.youtube.com/watch?v=lrsW8k-dHSk) | **Anthropic Just Dropped Claude 2.0 (Full Breakdown)** | [2026-09-17_YT-[lrsW8k-dHSk]_Anthropic Just Dropped Claude 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-17_YT-[lrsW8k-dHSk]_Anthropic Just Dropped Claude 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-17_YT-[lrsW8k-dHSk]_Anthropic Just Dropped Claude 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-12 | [zFgu699Ga28](https://www.youtube.com/watch?v=zFgu699Ga28) | **AI News: Big ChatGPT & Grok Bot Updates, Meta Muse Is Here** | [2026-09-12_YT-[zFgu699Ga28]_AI News Big ChatGPT & Grok Bot Updates, Meta Muse Is Here_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-12_YT-[zFgu699Ga28]_AI News Big ChatGPT & Grok Bot Updates, Meta Muse Is Here_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-12_YT-[zFgu699Ga28]_AI News Big ChatGPT & Grok Bot Updates, Meta Muse Is Here_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-09-10 | [DgovrfgLxYs](https://www.youtube.com/watch?v=DgovrfgLxYs) | **ChatGPT 6 Astra + Blender = Endless Possibilities** | [2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-10_YT-[DgovrfgLxYs]_ChatGPT 6 Astra + Blender = Endless Possibilities_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-09-09 | [JiQr45mQ1Hw](https://www.youtube.com/watch?v=JiQr45mQ1Hw) | **ChatGPT Image 2.5 Just Dropped (Full Breakdown)** | [2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-09_YT-[JiQr45mQ1Hw]_ChatGPT Image 2.5 Just Dropped (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
