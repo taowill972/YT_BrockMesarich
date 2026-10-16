@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Ce dépôt gratuit crée un agent de support à partir de vos documents — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Ce dépôt gratuit crée un agent de support à partir de vos documents</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-01</span>
+                <span class="badge">⏱️ 00:00:33</span>
+                <span class="badge">🆔 <code>cXP4_UfnL_4</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=cXP4_UfnL_4" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La vidéo met en lumière l'émergence d'outils open-source puissants permettant de démocratiser l'intelligence artificielle générative sans nécessiter de compétences en programmation. Au cœur de cette démonstration se trouve le dépôt GitHub **Dify**, une plateforme cumulant plus de 100 000 étoiles, conçue pour transformer des bases documentaires existantes en agents conversationnels autonomes et précis. Grâce à une interface visuelle en "drag-and-drop", les entreprises peuvent ingérer leurs propres guides et documentations techniques pour alimenter un agent de support, éliminant ainsi les risques d'hallucination inhérents aux grands modèles de langage (LLM) grâce à une stricte limitation des réponses au contexte fourni.<br><br>Dans une perspective d'analyste en automatisation et en IA appliquée, cette approche s'apparente à l'implémentation de pipelines RAG (*Retrieval-Augmented Generation*) sans friction, transposables à l'ingénierie financière ou au traitement de données de marché non structurées. L'utilisation d'interfaces no-code/low-code connectées à des modèles de pointe (tels que ceux de OpenAI, Anthropic ou Google) permet aux équipes opérationnelles de prototyper, tester et déployer des flux de travail intelligents en quelques minutes. La possibilité de sélectionner dynamiquement le moteur d'IA sous-jacent offre une flexibilité critique pour optimiser le ratio coût/latence/précision des assistants déployés.<br><br>Cette méthodologie s'inscrit dans un écosystème plus large d'automatisation (croisant des plateformes comme n8n, Make ou Zapier) où l'IA ne se contente plus de générer du contenu de manière isolée, mais devient un agent décisionnel ancré dans la base de connaissances propriétaire d'une organisation. Pour les professionnels cherchant à industrialiser leurs processus ou à structurer des flux de support client robustes, l'adoption de telles architectures représente un levier immédiat de gain d'efficacité opérationnelle et de réduction de la charge cognitive des équipes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Dify** : Dépôt GitHub open-source permettant de construire visuellement des agents conversationnels et des applications basées sur des LLM à partir de documents propriétaires.<br>* **ChatGPT (OpenAI)** : Modèle de langage de pointe pouvant être sélectionné comme moteur conversationnel sous-jacent pour propulser l'agent de support.<br>* **Claude (Anthropic)** : Modèle d'intelligence artificielle hautement performant en matière de traitement contextuel et d'analyse documentaire, intégrable dans l'architecture.<br>* **Gemini (Google)** : Modèle multimodal de grande capacité offert comme alternative pour alimenter les flux de traitement de l'agent.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle mentionné dans l'écosystème global des options de modélisation.<br>* **n8n** : Plateforme d'automatisation de flux de travail (*workflow automation*) no-code/low-code pour interconnecter des applications et des IA.<br>* **Make** : Outil d'intégration et d'automatisation visuelle permettant de orchestrer des processus complexes entre différentes API.<br>* **Zapier** : Solution cloud d'automatisation facilitant la connexion rapide entre des bases de données documentaires et des interfaces de messagerie.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Gouvernance des données et RAG strict** : L'utilisation de documents internes propriétaires contraint le modèle à puiser exclusivement dans une base de connaissances vérifiée, réduisant à néant les risques d'hallucination commerciale ou technique.<br>* **Abstraction de la complexité technique (No-Code)** : La conception d'agents conversationnels complexes par simple glisser-déposer (*drag-and-drop*) permet aux profils non techniques de déployer des architectures d'IA avancées sans écrire une seule ligne de code.<br>* **Agilité multi-modèles** : La liberté de basculer entre différents moteurs d'IA (ChatGPT, Claude, Gemini) permet d'optimiser les performances, les coûts d'inférence et la pertinence sémantique selon la spécificité des documents ingérés.<br>* **Phase de test sandbox intégrée** : L'obligation de tester l'agent dans un environnement de pré-production sécurisé avant toute mise en production garantit l'expérience utilisateur et protège la marque face aux clients finaux.<br>* **Industrialisation du support client** : Transformation des centres d'aide statiques et des FAQ textuelles en interfaces conversationnelles dynamiques, augmentant considérablement l'engagement et la satisfaction des utilisateurs.<br>* **Modularité des architectures open-source** : L'adoption d'un dépôt GitHub open-source confère une totale souveraineté sur les données hébergées et sr l'infrastructure par rapport aux solutions SaaS purement propriétaires.<br>* **Synergie avec l'écosystème d'automatisation** : Les concepts de flux présentés s'intègrent naturellement dans des architectures plus larges pilotées par des outils comme n8n ou Make pour déclencher des actions suite aux interactions de l'agent.<br>* **Réduction drastique du Time-to-Market** : Le passage de la documentation brute à un assistant conversationnel opérationnel est réduit de plusieurs semaines de développement à quelques minutes de configuration visuelle.<br>* **Scalabilité de la connaissance** : Centraliser l'ensemble des guides d'entreprise dans un agent unique permet de diffuser l'information de manière homogène et instantanée, 24h/24 et 7j/7.<br>* **Optimisation des coûts opérationnels** : Automatiser le premier niveau de support à l'aide de documents existants décharge les équipes humaines des requêtes récurrentes et à faible valeur ajoutée.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Dify</span><span class="tool-tag">ChatGPT (OpenAI)</span><span class="tool-tag">Claude (Anthropic)</span><span class="tool-tag">Gemini (Google)</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Gouvernance des données et RAG strict** : L&#x27;utilisation de documents internes propriétaires contraint le modèle à puiser exclusivement dans une base de connaissances vérifiée, réduisant à néant les risques d&#x27;hallucination commerciale ou technique.</span></li><li><span class="point-bullet">✦</span><span>Abstraction de la complexité technique (No-Code)** : La conception d&#x27;agents conversationnels complexes par simple glisser-déposer (*drag-and-drop*) permet aux profils non techniques de déployer des architectures d&#x27;IA avancées sans écrire une seule ligne de code.</span></li><li><span class="point-bullet">✦</span><span>Agilité multi-modèles** : La liberté de basculer entre différents moteurs d&#x27;IA (ChatGPT, Claude, Gemini) permet d&#x27;optimiser les performances, les coûts d&#x27;inférence et la pertinence sémantique selon la spécificité des documents ingérés.</span></li><li><span class="point-bullet">✦</span><span>Phase de test sandbox intégrée** : L&#x27;obligation de tester l&#x27;agent dans un environnement de pré-production sécurisé avant toute mise en production garantit l&#x27;expérience utilisateur et protège la marque face aux clients finaux.</span></li><li><span class="point-bullet">✦</span><span>Industrialisation du support client** : Transformation des centres d&#x27;aide statiques et des FAQ textuelles en interfaces conversationnelles dynamiques, augmentant considérablement l&#x27;engagement et la satisfaction des utilisateurs.</span></li><li><span class="point-bullet">✦</span><span>Modularité des architectures open-source** : L&#x27;adoption d&#x27;un dépôt GitHub open-source confère une totale souveraineté sur les données hébergées et sr l&#x27;infrastructure par rapport aux solutions SaaS purement propriétaires.</span></li><li><span class="point-bullet">✦</span><span>Synergie avec l&#x27;écosystème d&#x27;automatisation** : Les concepts de flux présentés s&#x27;intègrent naturellement dans des architectures plus larges pilotées par des outils comme n8n ou Make pour déclencher des actions suite aux interactions de l&#x27;agent.</span></li><li><span class="point-bullet">✦</span><span>Réduction drastique du Time-to-Market** : Le passage de la documentation brute à un assistant conversationnel opérationnel est réduit de plusieurs semaines de développement à quelques minutes de configuration visuelle.</span></li><li><span class="point-bullet">✦</span><span>Scalabilité de la connaissance** : Centraliser l&#x27;ensemble des guides d&#x27;entreprise dans un agent unique permet de diffuser l&#x27;information de manière homogène et instantanée, 24h/24 et 7j/7.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts opérationnels** : Automatiser le premier niveau de support à l&#x27;aide de documents existants décharge les équipes humaines des requêtes récurrentes et à faible valeur ajoutée.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:30</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez désormais transformer vos documents d&#x27;aide en un agent de support IA avec un seul dépôt GitHub gratuit. Il s&#x27;appelle Dify et il a plus de 100 000 étoiles. Vous téléchargez les guides de votre entreprise, puis l&#x27;IA répond aux questions des clients en les utilisant. De cette façon, elle n&#x27;invente rien, elle puise dans ce que vous avez déjà écrit. Et vous n&#x27;avez pas besoin de coder, vous construisez le tout en glissant des boîtes sur un écran. Vous choisissez même quel modèle d&#x27;IA l&#x27;alimente, puis vous le testez vous-même avant qu&#x27;aucun client ne le voie. Ainsi, le centre d&#x27;aide que vous avez déjà écrit devient quelque chose à qui les gens peuvent réellement parler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface GitHub et interface utilisateur de l&#x27;application Dify.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques GitHub du dépôt langgenius/dify (157.4k étoiles, 24.8k forks) et sélection du modèle Claude (Anthropic) dans l&#x27;assistant Dify.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du projet open-source Dify et de son intégration avec un modèle de langage (Claude).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cXP4_UfnL_4/cXP4_UfnL_4_000007_seg1.jpg" alt="Capture d&#x27;écran montrant le dépôt GitHub de Dify avec ses statistiques (157.4k étoiles) et le présentateur en bas." loading="lazy" onclick="openLightbox('../screenshots/cXP4_UfnL_4/cXP4_UfnL_4_000007_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le dépôt GitHub de Dify avec ses statistiques (157.4k étoiles) et le présentateur en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cXP4_UfnL_4/cXP4_UfnL_4_000022_seg1.jpg" alt="Capture d&#x27;écran de l&#x27;interface de Dify montrant l&#x27;assistant de support propulsé par Claude (Anthropic)." loading="lazy" onclick="openLightbox('../screenshots/cXP4_UfnL_4/cXP4_UfnL_4_000022_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:22</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de Dify montrant l&#x27;assistant de support propulsé par Claude (Anthropic).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:30 - 00:00:32</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez essayer cela, commentez Defy, et je vous enverrai le dépôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Vidéo de présentation verticale (format type Reels/Shorts)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logo textuel &quot;Dify&quot; et sous-titre &quot;this out&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet par le créateur en face caméra</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
