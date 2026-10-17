@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `42 / 273` (`15.4%`)
+- **Vidéos traitées** : `43 / 273` (`15.8%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -59,6 +59,7 @@
 | 2026-07-21 | [jbiMx17fEK0](https://www.youtube.com/watch?v=jbiMx17fEK0) | **Anthropic Just Changed How We Build Skills Forever (screen record)** | [2026-07-21_YT-[jbiMx17fEK0]_Anthropic Just Changed How We Build Skills Forever (screen record)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-21_YT-[jbiMx17fEK0]_Anthropic Just Changed How We Build Skills Forever (screen record)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-21_YT-[jbiMx17fEK0]_Anthropic Just Changed How We Build Skills Forever (screen record)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-21 | [EhbDgMlXyBk](https://www.youtube.com/watch?v=EhbDgMlXyBk) | **5 INSANE ChatGPT Work Use Cases (Cowork Killer?)** | [2026-07-21_YT-[EhbDgMlXyBk]_5 INSANE ChatGPT Work Use Cases (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-21_YT-[EhbDgMlXyBk]_5 INSANE ChatGPT Work Use Cases (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-21_YT-[EhbDgMlXyBk]_5 INSANE ChatGPT Work Use Cases (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-17 | [V1SWuUosVMI](https://www.youtube.com/watch?v=V1SWuUosVMI) | **The SIMPLE Claude Cowork Setup That Runs my Life (Steal It)** | [2026-07-17_YT-[V1SWuUosVMI]_The SIMPLE Claude Cowork Setup That Runs my Life (Steal It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-17_YT-[V1SWuUosVMI]_The SIMPLE Claude Cowork Setup That Runs my Life (Steal It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-17_YT-[V1SWuUosVMI]_The SIMPLE Claude Cowork Setup That Runs my Life (Steal It)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `30` |
+| 2026-07-10 | [qotnt0fzT5Y](https://www.youtube.com/watch?v=qotnt0fzT5Y) | **Le nouveau ChatGPT Work est-il le tueur de Claude Cowork ? (Analyse complète)** | [2026-07-10_YT-[qotnt0fzT5Y]_Le nouveau ChatGPT Work est-il le tueur de Claude Cowork (Analyse complète)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-10_YT-[qotnt0fzT5Y]_Le nouveau ChatGPT Work est-il le tueur de Claude Cowork (Analyse complète)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-10_YT-[qotnt0fzT5Y]_Le nouveau ChatGPT Work est-il le tueur de Claude Cowork (Analyse complète)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `38` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
