@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `38 / 273` (`13.9%`)
+- **Vidéos traitées** : `39 / 273` (`14.3%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -55,6 +55,7 @@
 | 2026-08-13 | [lRUpu2-KtGQ](https://www.youtube.com/watch?v=lRUpu2-KtGQ) | **5 INSANE Grok Bot Use Cases I Can't Live Without** | [2026-08-13_YT-[lRUpu2-KtGQ]_5 INSANE Grok Bot Use Cases I Can't Live Without_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-08-13_YT-[lRUpu2-KtGQ]_5 INSANE Grok Bot Use Cases I Can't Live Without_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-08-13_YT-[lRUpu2-KtGQ]_5 INSANE Grok Bot Use Cases I Can't Live Without_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-12 | [j2WiGVqMczw](https://www.youtube.com/watch?v=j2WiGVqMczw) | **Grok Bot Just Dropped. (Brutally Honest Review)** | [2026-08-12_YT-[j2WiGVqMczw]_Grok Bot Just Dropped. (Brutally Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-08-12_YT-[j2WiGVqMczw]_Grok Bot Just Dropped. (Brutally Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-08-12_YT-[j2WiGVqMczw]_Grok Bot Just Dropped. (Brutally Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-07-26 | [7j3uSBMFy9U](https://www.youtube.com/watch?v=7j3uSBMFy9U) | **ChatGPT Voice 2.0 + Codex, c'est DINGUE (possibilités infinies)** | [2026-07-26_YT-[7j3uSBMFy9U]_ChatGPT Voice 2.0 + Codex, c'est DINGUE (possibilités infinies)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-26_YT-[7j3uSBMFy9U]_ChatGPT Voice 2.0 + Codex, c'est DINGUE (possibilités infinies)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-26_YT-[7j3uSBMFy9U]_ChatGPT Voice 2.0 + Codex, c'est DINGUE (possibilités infinies)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-07-25 | [R0WtPgiJtKw](https://www.youtube.com/watch?v=R0WtPgiJtKw) | **Claude Opus 5 Builds $15,000+ Animated Websites (FOR CHEAP)** | [2026-07-25_YT-[R0WtPgiJtKw]_Claude Opus 5 Builds $15,000+ Animated Websites (FOR CHEAP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-25_YT-[R0WtPgiJtKw]_Claude Opus 5 Builds $15,000+ Animated Websites (FOR CHEAP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-25_YT-[R0WtPgiJtKw]_Claude Opus 5 Builds $15,000+ Animated Websites (FOR CHEAP)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
