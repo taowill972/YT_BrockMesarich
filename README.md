@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `33 / 273` (`12.1%`)
+- **Vidéos traitées** : `34 / 273` (`12.5%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -50,6 +50,7 @@
 | 2026-09-03 | [MYtqdJ-096g](https://www.youtube.com/watch?v=MYtqdJ-096g) | **I Tested Fable 5.1 vs Fable 5 vs Opus 5 (Cost/Speed/Design)** | [2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-09-03_YT-[MYtqdJ-096g]_I Tested Fable 5.1 vs Fable 5 vs Opus 5 (CostSpeedDesign)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-28 | [r-HlzWx2-Eg](https://www.youtube.com/watch?v=r-HlzWx2-Eg) | **AI News: Big Claude & ChatGPT Updates, Grok Bot Jarvis Leak & More** | [2026-08-28_YT-[r-HlzWx2-Eg]_AI News Big Claude & ChatGPT Updates, Grok Bot Jarvis Leak & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-08-28_YT-[r-HlzWx2-Eg]_AI News Big Claude & ChatGPT Updates, Grok Bot Jarvis Leak & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-08-28_YT-[r-HlzWx2-Eg]_AI News Big Claude & ChatGPT Updates, Grok Bot Jarvis Leak & More_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-08-25 | [Fys9ua-x0A0](https://www.youtube.com/watch?v=Fys9ua-x0A0) | **Anthropic Just Dropped Claude Memory 2.0 (Full Breakdown)** | [2026-08-25_YT-[Fys9ua-x0A0]_Anthropic Just Dropped Claude Memory 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-08-25_YT-[Fys9ua-x0A0]_Anthropic Just Dropped Claude Memory 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-08-25_YT-[Fys9ua-x0A0]_Anthropic Just Dropped Claude Memory 2.0 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-08-23 | [BFZ7lyKYcg8](https://www.youtube.com/watch?v=BFZ7lyKYcg8) | **Grok Bot Just Got 70% Cheaper... (I Switched)** | [2026-08-23_YT-[BFZ7lyKYcg8]_Grok Bot Just Got 70% Cheaper... (I Switched)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-08-23_YT-[BFZ7lyKYcg8]_Grok Bot Just Got 70% Cheaper... (I Switched)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-08-23_YT-[BFZ7lyKYcg8]_Grok Bot Just Got 70% Cheaper... (I Switched)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
