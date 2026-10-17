@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `56 / 273` (`20.5%`)
+- **Vidéos traitées** : `57 / 273` (`20.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -73,6 +73,7 @@
 | 2026-06-08 | [hJbD2ZnfSCY](https://www.youtube.com/watch?v=hJbD2ZnfSCY) | **Are You Wasting Your Time Learning Claude? (important video)** | [2026-06-08_YT-[hJbD2ZnfSCY]_Are You Wasting Your Time Learning Claude (important video)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-06-08_YT-[hJbD2ZnfSCY]_Are You Wasting Your Time Learning Claude (important video)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-06-08_YT-[hJbD2ZnfSCY]_Are You Wasting Your Time Learning Claude (important video)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-05 | [VhhVoUXEGeo](https://www.youtube.com/watch?v=VhhVoUXEGeo) | **Anthropic Just Dropped Their Claude Skills Secrets (steal these)** | [2026-06-05_YT-[VhhVoUXEGeo]_Anthropic Just Dropped Their Claude Skills Secrets (steal these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-06-05_YT-[VhhVoUXEGeo]_Anthropic Just Dropped Their Claude Skills Secrets (steal these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-06-05_YT-[VhhVoUXEGeo]_Anthropic Just Dropped Their Claude Skills Secrets (steal these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-06-02 | [tU3HDnFPlqk](https://www.youtube.com/watch?v=tU3HDnFPlqk) | **My Simple Claude Cowork System (steal this)** | [2026-06-02_YT-[tU3HDnFPlqk]_My Simple Claude Cowork System (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-06-02_YT-[tU3HDnFPlqk]_My Simple Claude Cowork System (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-06-02_YT-[tU3HDnFPlqk]_My Simple Claude Cowork System (steal this)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-05-28 | [xoog7Kk6Jy0](https://www.youtube.com/watch?v=xoog7Kk6Jy0) | **Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)** | [2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
