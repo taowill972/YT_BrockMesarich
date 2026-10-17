@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-06-29</span>
+                <span class="badge">⏱️ 00:13:13</span>
+                <span class="badge">🆔 <code>TJ80fChZXW4</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=TJ80fChZXW4" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>La vidéo de la chaîne *Brock Mesarich | AI for Non Techies* présente la mise à jour majeure **Claude Design 2.0** déployée par Anthropic, une refonte complète de leur plateforme de prototypage visuel et d'interface utilisateur, qui se positionne comme un concurrent direct de Figma. L'analyste y détaille l'ergonomie repensée de l'interface, l'intégration unifiée des limites d'utilisation au sein des abonnements Claude Pro et Max, ainsi que l'introduction de fonctionnalités de modification directe sur le canevas, éliminant la nécessité de passer systématiquement par des prompts textuels complexes et réduisant drastiquement la consommation de jetons (*tokens*).<br><br>Au-delà des améliorations graphiques, la démonstration met en lumière la passerelle bidirectionnelle entre **Claude Design** et **Claude Code**, permettant une synchronisation automatisée des systèmes de design (*design sync*) via des composants React préexistants. L'expert démontre un flux de travail complet (*workflow*) allant de la conception visuelle d'une application de suivi nutritionnel (le cas d'usage pratique présenté) jusqu'à son exportation vers un environnement de développement fonctionnel. Grâce à l'utilisation de connecteurs natifs et d'outils de backend comme **Supabase**, la structure frontend initialement conçue est rapidement connectée à une base de données relationnelle, transformant un simple prototype visuel en une application opérationnelle sans nécessiter de compétences avancées en codage.<br><br>Cette approche illustre l'accélération de l'automatisation dans le développement d'applications légères et d'outils de productivité par l'intelligence artificielle générative. En connectant des environnements de design visuel à des agents de code autonomes et des bases de données cloud, les créateurs non-techniques peuvent concevoir, itérer et déployer des prototypes fonctionnels avec une fidélité visuelle et une cohérence de marque rigoureuses, tout en optimisant l'allocation de leurs ressources informatiques.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude Design** : La plateforme de prototypage et de conception d'interfaces d'Anthropic, utilisée pour générer des prototypes d'applications web/mobiles, des diapositives, des wireframes et des animations.<br>* **Claude Code** : L'environnement de développement et d'exécution de code d'Anthropic permettant de transformer les designs visuels en applications fonctionnelles et de synchroniser les systèmes de design.<br>* **Claude Cowork** : L'espace de travail collaboratif d'Anthropic pour la gestion d'artefacts, de tableaux de bord et de contenus structurés.<br>* **Supabase** : La plateforme de base de données backend cloud utilisée pour stocker et gérer les informations dynamiques nécessaires au fonctionnement des applications créées.<br>* **Figma** : L'outil de conception d'interface de référence, mentionné comme standard de comparaison et option d'importation de systèmes de design.<br>* **GitHub** : La plateforme de gestion de code source et de versioning utilisable pour connecter et importer des systèmes de design.<br>* **Make** : Mentionné dans le contexte général des écosystèmes d'automatisation de flux de travail No-Code/Low-Code.<br>* **Zapier** : Cité parmi les outils d'automatisation et de connectivité inter-applications.<br>* **n8n** : Évoqué dans l'écosystème des outils d'automatisation et de gestion de workflows complexes.<br>* **ChatGPT** : Modèle et assistant conversationnel d'OpenAI mentionné dans le panorama général des intelligences artificielles.<br>* **Gemini** : La suite de modèles d'intelligence artificielle de Google citée parmi les concurrents du marché.<br>* **Grok** : Le modèle conversationnel et d'IA développé par xAI.<br>* **Lovable** : Un outil de développement orienté vers le code instinctif et la génération d'applications, compatible avec les exportations de Claude Design.<br>* **Gamma** : Une plateforme de création de documents et de présentations visuelles connectable aux flux de travail de design.<br>* **Miro** : Un tableau blanc collaboratif en ligne intégré parmi les options de partage et d'exportation de Claude Design.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Refonte ergonomique de l'interface** : Claude Design 2.0 propose une organisation visuelle modernisée et intuitive, articulée autour d'une zone de texte centrale et de modèles préconfigurés pour accélérer le démarrage des projets (prototypes, diapositives, documents, wireframes, animations).<br>* **Unification des quotas d'utilisation** : La facturation et les limites d'utilisation de Claude Design sont désormais mutualisées avec l'ensemble du plan global de l'utilisateur (Claude Pro ou Claude Max), éliminant les restrictions cloisonnées de la première version qui pénalisaient l'expérimentation intensive.<br>* **Édition directe sur le canevas (*Canvas Editing*)** : L'introduction d'un mode d'édition visuelle permet de manipuler directement le texte, les éléments structurels et les propriétés graphiques (comme les couleurs d'arrière-plan des *divs*) sans passer par le module de chat textuel.<br>* **Optimisation de la consommation de jetons** : En permettant des ajustements graphiques visuels et ciblés directement sur l'interface, la plateforme réduit drastiquement le recours à des invites textuelles itératives, économisant ainsi de précieux *tokens* sur le modèle.<br>* **Synchronisation automatisée des systèmes de design (*Design Sync*)** : La fonctionnalité de liaison avec Claude Code permet d'importer et de compiler automatiquement des composants React et des chartes graphiques existantes sans nécessiter d'importation manuelle laborieuse.<br>* **Préservation de la cohérence visuelle et de marque** : L'utilisation de commandes de synchronisation garantit que les nouveaux prototypes respectent strictement l'identité visuelle, la typographie et la charte graphique développées pour les projets d'entreprise ou les marques personnelles.<br>* **Passerelle fluide vers le développement fonctionnel** : La fonction de partage « Envoyer vers » permet de transférer instantanément la structure d'une interface visuelle vers des environnements de code comme Claude Code ou des outils de programmation instinctive (Lovable).<br>* **Intégration transparente des bases de données backend** : L'utilisation de connecteurs natifs pour des solutions cloud telles que Supabase permet d'associer un backend relationnel à un frontend purement visuel en quelques clics, autorisant l'enregistrement et la manipulation de données réelles.<br>* **Abstraction de la complexité technique** : Le processus de connexion à Supabase via les paramètres de l'application Claude ne requiert aucune programmation backend complexe, permettant aux utilisateurs non-techniques de doter leurs applications d'une persistance des données opérationnelle.<br>* **Standardisation des flux de travail de prototypage** : La méthode démontrée valide un cycle de production complet : idéation, conception visuelle, synchronisation du design système, exportation vers l'environnement de code et connexion d'une base de données, réduisant le temps de mise sur le marché d'un prototype fonctionnel à quelques minutes.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Design</span><span class="tool-tag">Claude Code</span><span class="tool-tag">Claude Cowork</span><span class="tool-tag">Supabase</span><span class="tool-tag">Figma</span><span class="tool-tag">GitHub</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Refonte ergonomique de l&#x27;interface** : Claude Design 2.0 propose une organisation visuelle modernisée et intuitive, articulée autour d&#x27;une zone de texte centrale et de modèles préconfigurés pour accélérer le démarrage des projets (prototypes, diapositives, documents, wireframes, animations).</span></li><li><span class="point-bullet">✦</span><span>Unification des quotas d&#x27;utilisation** : La facturation et les limites d&#x27;utilisation de Claude Design sont désormais mutualisées avec l&#x27;ensemble du plan global de l&#x27;utilisateur (Claude Pro ou Claude Max), éliminant les restrictions cloisonnées de la première version qui pénalisaient l&#x27;expérimentation intensive.</span></li><li><span class="point-bullet">✦</span><span>Édition directe sur le canevas (*Canvas Editing*)** : L&#x27;introduction d&#x27;un mode d&#x27;édition visuelle permet de manipuler directement le texte, les éléments structurels et les propriétés graphiques (comme les couleurs d&#x27;arrière-plan des *divs*) sans passer par le module de chat textuel.</span></li><li><span class="point-bullet">✦</span><span>Optimisation de la consommation de jetons** : En permettant des ajustements graphiques visuels et ciblés directement sur l&#x27;interface, la plateforme réduit drastiquement le recours à des invites textuelles itératives, économisant ainsi de précieux *tokens* sur le modèle.</span></li><li><span class="point-bullet">✦</span><span>Synchronisation automatisée des systèmes de design (*Design Sync*)** : La fonctionnalité de liaison avec Claude Code permet d&#x27;importer et de compiler automatiquement des composants React et des chartes graphiques existantes sans nécessiter d&#x27;importation manuelle laborieuse.</span></li><li><span class="point-bullet">✦</span><span>Préservation de la cohérence visuelle et de marque** : L&#x27;utilisation de commandes de synchronisation garantit que les nouveaux prototypes respectent strictement l&#x27;identité visuelle, la typographie et la charte graphique développées pour les projets d&#x27;entreprise ou les marques personnelles.</span></li><li><span class="point-bullet">✦</span><span>Passerelle fluide vers le développement fonctionnel** : La fonction de partage « Envoyer vers » permet de transférer instantanément la structure d&#x27;une interface visuelle vers des environnements de code comme Claude Code ou des outils de programmation instinctive (Lovable).</span></li><li><span class="point-bullet">✦</span><span>Intégration transparente des bases de données backend** : L&#x27;utilisation de connecteurs natifs pour des solutions cloud telles que Supabase permet d&#x27;associer un backend relationnel à un frontend purement visuel en quelques clics, autorisant l&#x27;enregistrement et la manipulation de données réelles.</span></li><li><span class="point-bullet">✦</span><span>Abstraction de la complexité technique** : Le processus de connexion à Supabase via les paramètres de l&#x27;application Claude ne requiert aucune programmation backend complexe, permettant aux utilisateurs non-techniques de doter leurs applications d&#x27;une persistance des données opérationnelle.</span></li><li><span class="point-bullet">✦</span><span>Standardisation des flux de travail de prototypage** : La méthode démontrée valide un cycle de production complet : idéation, conception visuelle, synchronisation du design système, exportation vers l&#x27;environnement de code et connexion d&#x27;une base de données, réduisant le temps de mise sur le marché d&#x27;un prototype fonctionnel à quelques minutes.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:18</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic just dropped Claude Design 2.0. They did a complete revamp to the platform. So I decided to put it to the test and it does feel like a much more capable platform. And there are four distinct new features that they added that I&#x27;m gonna go over in this video. Now, if you don&#x27;t know what Claude Design is, let me break it down very simply so you can understand the rest of this video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Claude Design d&#x27;Anthropic.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Claude Design 2.0 avec options de modèles (Prototype, Slides, Document, Wireframe, Animation) et projets récents.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation dans la nouvelle interface de Claude Design 2.0.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000005_seg1.jpg" alt="Gros plan sur l&#x27;interface de l&#x27;application Claude Design 2.0 montrant le champ de saisie de prompt et le titre CLAUDE DESIGN 2.0 en bas." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface de l&#x27;application Claude Design 2.0 montrant le champ de saisie de prompt et le titre CLAUDE DESIGN 2.0 en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000009_seg1.jpg" alt="Vue du navigateur web affichant l&#x27;interface principale de Claude Design avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Vue du navigateur web affichant l&#x27;interface principale de Claude Design avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:18 - 00:00:45</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Claude Design is a product that Anthropic released about two months ago. We could use it to generate things like web app prototypes, slideshows, mobile app prototypes. And it&#x27;s basically Anthropic&#x27;s version of Figma that we could use for tons of different use cases. I even used it to generate this entire animated video. I did this in one simple prompt and it took my design style from Claude Code and was able to import that directly into Claude Design and built this for me again in just one simple prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Claude / Claude Design / Navigateur web</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts de génération de prototypes, interface de personnalisation de design, pages de présentation de projets web et mobiles.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la création et de la personnalisation de prototypes visuels (applications et présentations) à l&#x27;aide de l&#x27;outil d&#x27;Anthropic.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000025_seg2.jpg" alt="Aperçu d&#x27;une interface de prototype d&#x27;application mobile générée avec des options de personnalisation de design (mode sombre, thèmes, typographie)." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000025_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:25</span>
+                        <span class="caption-text">Aperçu d&#x27;une interface de prototype d&#x27;application mobile générée avec des options de personnalisation de design (mode sombre, thèmes, typographie).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000031_seg2.jpg" alt="Interface de chat avec une invite demandant de prototyper une application mobile de méditation sereine, avec la caméra du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000031_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:31</span>
+                        <span class="caption-text">Interface de chat avec une invite demandant de prototyper une application mobile de méditation sereine, avec la caméra du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000038_seg2.jpg" alt="Navigateur web affichant une page de présentation de projet générée par l&#x27;outil, avec le présentateur visible en incrustation vidéo." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000038_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:38</span>
+                        <span class="caption-text">Navigateur web affichant une page de présentation de projet générée par l&#x27;outil, avec le présentateur visible en incrustation vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:45 - 00:01:03</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, the first thing that is different, this one is apparent right when we open it up is we have a completely new design of the platform. I think this looks so much better and it&#x27;s much easier to use. So right off the bat, we get this text box. We have the ability to select a design system or create one from scratch, which I&#x27;m gonna show you later in this video, how to import this from Cloud Code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Claude Design</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec barre de texte pour créer un design, options de template (Prototype, Slides, Document, Wireframe, Animation) et liste des projets récents.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la nouvelle interface de la plateforme Claude Design par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000049_seg3.jpg" alt="Interface principale de Claude Design affichant les options de projets et de templates avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000049_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:49</span>
+                        <span class="caption-text">Interface principale de Claude Design affichant les options de projets et de templates avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000054_seg3.jpg" alt="Gros plan sur la barre de saisie de Claude Design avec le curseur en train de taper une description de design." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000054_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:54</span>
+                        <span class="caption-text">Gros plan sur la barre de saisie de Claude Design avec le curseur en train de taper une description de design.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:03 - 00:01:22</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Then we have the option to select from a template so we could create a prototype, slide, document, wireframe, or animation. So all we have to do is just click on this. Then it knows that you wanna create a prototype and then we just write in the prototype we wanna create. Our next update, this is one that people are probably gonna be pretty excited for and I personally am as well. And that is usage.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Design (Claude.ai) et pop-up de gestion d&#x27;utilisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de sélection de modèles (Prototype, Slides, Document, Wireframe, Animation), paramètres de design system et statistiques d&#x27;utilisation des crédits et des modèles (Sonnet).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un modèle de prototype/wireframe dans l&#x27;interface de conception de Claude Design puis affichage des limites d&#x27;utilisation de l&#x27;API/compte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000108_seg4.jpg" alt="Interface de Claude Design montrant les options de modèles (Prototype, Slides, Document, Wireframe, Animation) avec le curseur sur Wireframe." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000108_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Interface de Claude Design montrant les options de modèles (Prototype, Slides, Document, Wireframe, Animation) avec le curseur sur Wireframe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000113_seg4.jpg" alt="Interface de Claude Design montrant le champ de saisie pour créer une animation de chargement avec les projets récents en dessous." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000113_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:13</span>
+                        <span class="caption-text">Interface de Claude Design montrant le champ de saisie pour créer une animation de chargement avec les projets récents en dessous.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000117_seg4.jpg" alt="Fenêtre contextuelle affichant les limites d&#x27;utilisation, les quotas des modèles et les crédits de l&#x27;application Claude." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000117_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:17</span>
+                        <span class="caption-text">Fenêtre contextuelle affichant les limites d&#x27;utilisation, les quotas des modèles et les crédits de l&#x27;application Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:22 - 00:01:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Usage is now calculated differently than before. Now, Claude design is taking from your overall Claude plan. So for me, I&#x27;m on the Claude max plan. So it now has usage limits across my Claude code, Claude cowork and Claude design. Whereas before we had one specific to Claude design. So we&#x27;d have one limit for Claude design and then for the rest of our Claude accounts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Claude Design et une modale de gestion des quotas d&#x27;utilisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Barres de progression indiquant le pourcentage d&#x27;utilisation des différents modèles (All models, Sonnet only), les crédits d&#x27;utilisation (Usage credits), le solde actuel et la limite de dépenses mensuelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication des limites d&#x27;utilisation combinées et du suivi des quotas sur la plateforme Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000128_seg5.jpg" alt="Une fenêtre pop-up affichant les limites d&#x27;utilisation (Usage) de Claude Design, avec des barres de progression pour la session en cours et les limites hebdomadaires." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000128_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:28</span>
+                        <span class="caption-text">Une fenêtre pop-up affichant les limites d&#x27;utilisation (Usage) de Claude Design, avec des barres de progression pour la session en cours et les limites hebdomadaires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:04</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;était plutôt ennuyeux parce qu&#x27;il y avait des limites de conception de Claude assez basses. Je connais beaucoup de gens qui essayaient de tester cela et de faire de vraies choses avec. Nous atteignions ces limites très rapidement. Donc maintenant, si nous avons un forfait Claude Pro ou un forfait Claude Max, cela va alors automatiquement puiser dans ces limites d&#x27;utilisation au lieu d&#x27;une limite individuelle séparée. Très bien, alors la prochaine nouvelle fonctionnalité, celle-ci est plutôt cool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;application Claude et un panneau de gestion des limites d&#x27;utilisation et crédits.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Barres de progression indiquant l&#x27;utilisation de la session en cours, les limites hebdomadaires pour tous les modèles et pour Sonnet uniquement, ainsi que les options de crédits d&#x27;utilisation et la limite de dépenses mensuelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication visuelle des limites d&#x27;utilisation et des forfaits de l&#x27;outil Claude par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000149_seg6.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un navigateur avec une fenêtre pop-up affichant les limites d&#x27;utilisation (usage limits) et les crédits de Claude, tandis que le présentateur apparaît en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000149_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un navigateur avec une fenêtre pop-up affichant les limites d&#x27;utilisation (usage limits) et les crédits de Claude, tandis que le présentateur apparaît en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:04 - 00:02:22</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et celui-ci va nous faire économiser beaucoup d&#x27;argent en jetons, espérons-le. Et c&#x27;est que nous pouvons maintenant modifier directement à l&#x27;intérieur de Claude Design. Donc ce que je veux dire par là, c&#x27;est que si je clique sur modifier en haut à droite, vous pouvez voir que je suis en train de concevoir cette interface utilisateur pour cette application que je veux créer. Et je vais en fait prendre ceci et le transformer en une véritable application fonctionnelle à l&#x27;intérieur de Claude Code plus tard dans cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de Claude / application web de suivi calorique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord &#x27;Nourish&#x27; avec graphiques de macros, barres de progression, et outils d&#x27;édition textuelle et visuelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur clique sur le bouton &#x27;Edit&#x27; pour modifier directement le design à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000208_seg7.jpg" alt="Gros plan sur la barre supérieure de l&#x27;interface montrant le curseur sur le bouton &#x27;Edit&#x27;." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000208_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:08</span>
+                        <span class="caption-text">Gros plan sur la barre supérieure de l&#x27;interface montrant le curseur sur le bouton &#x27;Edit&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000218_seg7.jpg" alt="Vue d&#x27;ensemble de l&#x27;application de suivi calorique &#x27;Nourish&#x27; dans le navigateur, avec le panneau d&#x27;édition latéral ouvert." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000218_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:18</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;application de suivi calorique &#x27;Nourish&#x27; dans le navigateur, avec le panneau d&#x27;édition latéral ouvert.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:02:41</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et sur le côté gauche, vous pouvez voir que je dois juste sélectionner ce que je veux modifier. Disons donc que je veux modifier le texte. Je cliquerais dessus. Je pourrais effectivement faire glisser du texte où je veux. Disons donc que je veux ajouter du texte ici même. Je pourrais aller de l&#x27;avant et le faire. Je pourrais taper ici même. Disons donc simplement Claude Cowork ou quelque chose comme ça. Et nous pourrions aller de l&#x27;avant et placer cela directement sur notre zone de travail qui est Claude Design.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de développement/édition de Claude.ai (claude.ai) pour une application de suivi des calories.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Maquette d&#x27;application de suivi des calories nommée &quot;Nourish&quot;, affichant des graphiques circulaires et des barres de progression pour les macronutriments (protéines, glucides, lipides), ainsi qu&#x27;un panneau d&#x27;outils d&#x27;édition textuelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un élément textuel sur le canevas de l&#x27;application web pour en modifier le contenu ou l&#x27;emplacement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000227_seg8.jpg" alt="Aperçu de l&#x27;interface de l&#x27;application de suivi des calories &quot;Nourish&quot; sur Claude.ai, montrant le panneau latéral d&#x27;édition et la prévisualisation de l&#x27;application." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000227_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Aperçu de l&#x27;interface de l&#x27;application de suivi des calories &quot;Nourish&quot; sur Claude.ai, montrant le panneau latéral d&#x27;édition et la prévisualisation de l&#x27;application.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000232_seg8.jpg" alt="Sélection et modification d&#x27;un élément textuel (&quot;Your text here&quot;) directement sur la maquette de l&#x27;application de suivi des calories." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000232_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Sélection et modification d&#x27;un élément textuel (&quot;Your text here&quot;) directement sur la maquette de l&#x27;application de suivi des calories.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:41 - 00:03:15</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ou si je veux modifier, vous savez, le texte que j&#x27;utilise ici, je pour-rais le faire. Changeons simplement ceci pour dire Brock&#x27;s Daily Macros. Et c&#x27;est aussi simple que cela pour effectuer des modifications, au lieu de devoir venir dans le chat juste ici et expliquer ce que nous voulons modifier, car cela va consommer beaucoup de nos jetons. Alors maintenant, pensez à ceci comme à un mélange de Claude Design où nous faisons en quelque sorte de la programmation intuitive sur un design spécifique, mais aussi quelque chose comme Canva où nous pouvons réellement effectuer des modifications directement sur notre canevas. Maintenant, nous pouvons modifier bien plus que du texte également. Donc, si je clique sur modifier et que je viens sélectionner certains éléments</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface d&#x27;édition visuelle de type constructeur d&#x27;application / no-code (Bolt.new ou équivalent)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord affichant le texte &quot;Brock&#x27;s Daily Macros&quot;, des graphiques de calories (1369 kcal), des barres de progression pour les protéines, glucides et lipides, ainsi qu&#x27;une liste de repas (Breakfast, Lunch) et un panneau latéral de configuration de style CSS/layout.</p>
+                        <p><strong>Action / Démonstration :</strong> Modification directe du texte du titre de l&#x27;application via l&#x27;interface visuelle au lieu d&#x27;utiliser le chat textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000250_seg9.jpg" alt="Interface d&#x27;une application de suivi des calories et macronutriments (Nourish) avec des graphiques de progression et un panneau d&#x27;édition visuel sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000250_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:50</span>
+                        <span class="caption-text">Interface d&#x27;une application de suivi des calories et macronutriments (Nourish) avec des graphiques de progression et un panneau d&#x27;édition visuel sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:15 - 00:03:38</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ici, je peux aller de l&#x27;avant et changer à quoi cela ressemble. Cliquons sur cette petite div. Je pourrais ensuite changer l&#x27;arrière-plan. Disons donc que je veux changer la couleur de ceci pour qu&#x27;elle soit rouge, par exemple. C&#x27;est aussi simple que d&#x27;avoir la possibilité d&#x27;aller modifier chacun de ces éléments individuellement au lieu d&#x27;avoir besoin d&#x27;aller sur le chat et d&#x27;essayer de coder au feeling pour, vous savez, faire en sorte que ça ait exactement l&#x27;air de ce que je veux. Très rapidement, j&#x27;ai pris les devants et j&#x27;ai préparé cette ressource gratuite pour vous les gars que vous pouvez récupérer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web de type dashboard (Calorie tracking app) avec des outils d&#x27;édition visuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord &#x27;Nourish&#x27; affichant les macros quotidiennes (protéines, glucides, lipides), des graphiques circulaires et des listes de repas, avec un panneau d&#x27;options de style ouvert sur le côté gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Manipulation des options de design de l&#x27;interface pour modifier les éléments visuels de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000320_seg10.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de suivi des calories avec un panneau de personnalisation de l&#x27;apparence ouvert à gauche." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000320_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:20</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de suivi des calories avec un panneau de personnalisation de l&#x27;apparence ouvert à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:38 - 00:03:59</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous n&#x27;avez jamais utilisé Claude Design auparavant ou si vous voulez d&#x27;autres cas d&#x27;utilisation que vous pouvez essayer par vous-même, ce guide pratique vous l&#x27;expliquera réellement et vous donnera même des invites que vous pourrez copier-coller et mettre dans Claude Design. Et si vous voulez l&#x27;obtenir, c&#x27;est complètement gratuit. Il y a un lien dans la description pour l&#x27;obtenir. En gros, venez simplement ici, mettez 0 $, cliquez sur « Je veux ceci », et vous entrerez votre email et il vous l&#x27;enverra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:59 - 00:04:18</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, revenons à la vidéo. Très bien, alors notre prochaine fonctionnalité, et celle-ci va être vraiment utile si vous êtes un utilisateur actuel de Cloud Code. Donc, cela concerne notre système de design. Alors pour vous montrer ce que je veux dire, si je viens ici et que je clique là où il est écrit « système de design », vous pouvez voir que j&#x27;ai quelques systèmes de design préconfigurés que j&#x27;ai élaborés au préalable, ou nous pouvons en créer un nouveau de toutes pièces.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Claude Design (Claude.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de design, choix du modèle (Claude Opus 4.8), sélection de templates (Prototype, Slides, Document, Wireframe, Animation) et liste des projets.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface et survole les options du système de design de Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000404_seg12.jpg" alt="Interface web de Claude Design affichant la page d&#x27;accueil avec un champ de saisie, des options de modèles et la liste des projets récents." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000404_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:04</span>
+                        <span class="caption-text">Interface web de Claude Design affichant la page d&#x27;accueil avec un champ de saisie, des options de modèles et la liste des projets récents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000408_seg12.jpg" alt="Zoom sur l&#x27;interface de Claude Design montrant le champ de saisie du prompt, le choix du système de design et le modèle IA (Claude Opus 4.8)." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000408_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:08</span>
+                        <span class="caption-text">Zoom sur l&#x27;interface de Claude Design montrant le champ de saisie du prompt, le choix du système de design et le modèle IA (Claude Opus 4.8).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:18 - 00:04:40</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we have two options. First, we could create it here by connecting either Figma, GitHub, or uploading all the different design assets manually. But now we have a new option where we could use Cloud Code, which actually gives us the best fidelity when it comes to the designs if we&#x27;re using React components. And it will do this for us automatically so we don&#x27;t manually need to import all the designs we&#x27;ve built.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude / outil de design system.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de création de design system : &quot;Create here&quot; (Connect to Figma or GitHub, or upload slides and assets) et &quot;Create using Claude Code&quot; avec le badge &quot;BEST FIDELITY&quot; pour les composants React.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des deux méthodes disponibles pour configurer et importer un design system dans Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000424_seg13.jpg" alt="Interface montrant une fenêtre modale &quot;Add a design system&quot; avec deux options : &quot;Create here&quot; et &quot;Create using Claude Code (BEST FIDELITY)&quot;." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000424_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:24</span>
+                        <span class="caption-text">Interface montrant une fenêtre modale &quot;Add a design system&quot; avec deux options : &quot;Create here&quot; et &quot;Create using Claude Code (BEST FIDELITY)&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:00</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc pour vous montrer ce que je veux dire, si je clique là-dessus, cela nous montre alors cet ensemble d&#x27;instructions pour exécuter cela directement à l&#x27;intérieur de Cloud Code. Donc si notre système de design vit déjà à l&#x27;intérieur de Cloud Code, nous pourrions ouvrir notre paquet de système de design dans Cloud et simplement exécuter cette commande ici appelée design sync. Maintenant, pour expliquer cela encore plus, nous avons donc la possibilité simplement de cliquer sur le bouton du système de design.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:00 - 00:05:21</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It then reads our kit using Cloud Code with a design sync. It reads and compiles all the different parts and components that we use inside of our designs. So if we have things like a preexisting client project or specific design styles you&#x27;ve crafted for your business, For me personally, I have a specific style I use for my school community as well as for my personal brand content, which you&#x27;ve probably seen on my YouTube channel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:21 - 00:05:43</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant, avec cette commande, il va automatiquement le scraper, puis il va le téléverser directement dans Cloud Design pour que nous n&#x27;ayons pas à le faire manuellement. Maintenant, afin de vous montrer ce que je veux dire, à l&#x27;intérieur de Cloud Co-Work, j&#x27;ai des tonnes d&#x27;artefacts et de tableaux de bord différents que j&#x27;ai construits dans ce style exact ici, que vous avez probablement vu sur cette chaîne YouTube. Et comme vous pouvez le voir, c&#x27;est dans un style Claude très spécifique ici que j&#x27;aime personnellement beaucoup dans n&#x27;importe quel tableau de bord que je crée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant des diaporamas et l&#x27;application Cloud Co-Work / Cowork OS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas explicatifs de design, tableaux de bord de gestion de contenu, indicateurs de performance et listes de tâches quotidiennes.
+[DESC_IMAGE_1] Présentation des fonctionnalités de synchronisation de design et des flux de travail automatisés.
+[DESC_IMAGE_2] Navigation dans le tableau de bord personnel Cowork OS pour illustrer l&#x27;organisation des artefacts.
+[DESC_IMAGE_3] Consultation de la vue du plan de la journée au sein de l&#x27;interface de travail.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000527_seg16.jpg" alt="Une diapositive explicative montrant le fonctionnement de &quot;Design Sync&quot; pour intégrer les composants de design dans l&#x27;outil de Claude." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000527_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">Une diapositive explicative montrant le fonctionnement de &quot;Design Sync&quot; pour intégrer les composants de design dans l&#x27;outil de Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000532_seg16.jpg" alt="L&#x27;interface de &quot;Brock&#x27;s Cowork OS&quot; affichant le tableau de bord principal avec les signaux du jour et les métriques de contenu." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000532_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:32</span>
+                        <span class="caption-text">L&#x27;interface de &quot;Brock&#x27;s Cowork OS&quot; affichant le tableau de bord principal avec les signaux du jour et les métriques de contenu.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000538_seg16.jpg" alt="L&#x27;onglet &quot;Today&#x27;s plan&quot; de l&#x27;application Cowork OS montrant les sections Calendrier et les e-mails prioritaires nécessitant une réponse." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000538_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:38</span>
+                        <span class="caption-text">L&#x27;onglet &quot;Today&#x27;s plan&quot; de l&#x27;application Cowork OS montrant les sections Calendrier et les e-mails prioritaires nécessitant une réponse.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:44 - 00:06:02</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;utilise ceci comme exemple. Je reviens à notre application de suivi des calories pour laquelle je conçois le design. Elle est exactement dans le même style. Et c&#x27;est parce que je l&#x27;ai importée directement depuis Claude Code. Il y aura donc toujours cette cohérence visuelle, comme vous pouvez le voir ici. Et pour donner un autre exemple, voici une petite vidéo animée rapide que j&#x27;ai fait concevoir et créer par Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Claude et des applications web créées.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de suivi nutritionnel (calories, protéines, glucides, lipides) et graphiques statistiques comparatifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;application de suivi des calories et montre la cohérence visuelle générée par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000548_seg17.jpg" alt="Interface d&#x27;une application de suivi des calories et macronutriments conçue via Claude Code." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000548_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:48</span>
+                        <span class="caption-text">Interface d&#x27;une application de suivi des calories et macronutriments conçue via Claude Code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000557_seg17.jpg" alt="Présentation visuelle sur les intérêts composés intitulée &#x27;Time is the biggest lever&#x27;, montrant une comparaison graphique." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000557_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:57</span>
+                        <span class="caption-text">Présentation visuelle sur les intérêts composés intitulée &#x27;Time is the biggest lever&#x27;, montrant une comparaison graphique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:22</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et encore une fois, c&#x27;est dans le tout même style que nous avons vu à l&#x27;intérieur de Claude. Donc avant de vous montrer certaines des autres fonctionnalités du nouveau design de Claude, je veux d&#x27;abord montrer comment nous pourrions prendre un design d&#x27;application que nous avons juste ici et l&#x27;envoyer automatiquement à Claude Code et transformer cela en une application fonctionnelle que je pourrais réellement utiliser. Parce qu&#x27;en ce moment tout cela a l&#x27;air super, mais il n&#x27;y a pas de base de données construite sur le backend de ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:43</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je ne peux pas vraiment utiliser ça en fait. C&#x27;est juste une sorte de design sophistiqué que j&#x27;ai construit dans Claude Design. Donc pour faire ça, nous pourrions venir ici, cliquer sur partager et nous voulons cliquer sur envoyer vers. Et à partir de là, nous pourrions envoyer ceci vers différentes applications. Donc CloudCode, Canva, Miro. Et si je clique sur ajouter plus, je pourrais même l&#x27;envoyer à des outils de codage instinctif comme Lovable ou d&#x27;autres outils de design comme Gamma.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:44 - 00:07:16</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now, I&#x27;m going to focus on sending this to CloudCode. So I&#x27;m just going to click send. It gives me this fancy little prompt that I could use in order to set this up. So I&#x27;m going to come back over to my Cloud Desktop app, click on CloudCode. And I&#x27;m simply just going to paste in the prompts that it gave me. All right. So just like that, we now have our app imported directly into Cloud Code. And I could begin making changes here since we have our design finalized. We obviously did that inside of Cloud Design. Now, what I need to do is build out an actual database. So what I&#x27;m going to be using is something called Supabase. If you don&#x27;t know what Supabase is, do not worry if you&#x27;re non-technical.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Code, interface web de tableau de bord, caméra de présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, journaux d&#x27;exécution, aperçu d&#x27;application de suivi calorique &quot;Nourish&quot;, graphiques de macronutriments et barres de progression.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface développée et du flux de génération par l&#x27;intelligence artificielle dans Claude Code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000700_seg20.jpg" alt="Interface de Claude Code affichant le journal de génération de code à gauche et un tableau de bord nutritionnel interactif à droite (&quot;Nourish&quot;)." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000700_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Interface de Claude Code affichant le journal de génération de code à gauche et un tableau de bord nutritionnel interactif à droite (&quot;Nourish&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:16 - 00:07:35</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You don&#x27;t really need to know how it works because I&#x27;m going to use this via a connector inside of Cloud. And it&#x27;s going to do all this stuff for me. Supabase is basically a platform that allows us to store all of the backend information necessary to make our app functional. So to give you an example, here is a database I have that tracks all of my different content.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:35 - 00:08:12</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça me montre la durée. Ça montre le nombre de j&#x27;aime. Ça montre le titre des vidéos. Ça montre l&#x27;URL, et cetera. Parce que si je n&#x27;ai pas de backend pour mon application, alors le frontend est fondamentalement inutile car il n&#x27;est capable de stocker aucune des informations. Eh bien, heureusement, Supabase rend cela incroyablement simple. Laissez-moi donc vous montrer comment configurer ceci. Maintenant, tout d&#x27;abord, assurez-vous simplement de créer un compte. Il y aura un lien dans la description ainsi que dans le commentaire épinglé pour créer un compte Supabase. Et ensuite, nous allons revenir à Claude et nous allons venir sur le côté gauche où il est indiqué personnaliser. Et nous devons simplement ajouter le connecteur Supabase. Donc, cliquez sur les connecteurs. J&#x27;ai une liste d&#x27;applications que j&#x27;ai connectées. Nous allons cliquer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface de base de données backend (Supabase ou similaire) avec le présentateur en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de données structurés contenant des identifiants vidéo, des titres, des URLs, des catégories, des dates de publication et des durées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface backend qui stocke les informations des vidéos pour l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000744_seg22.jpg" alt="Un tableau de base de données avec des colonnes de titres, URL, durée et vues de vidéos." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000744_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:44</span>
+                        <span class="caption-text">Un tableau de base de données avec des colonnes de titres, URL, durée et vues de vidéos.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:12 - 00:08:36</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sur parcourir et cherchez simplement Supabase. Ensuite, cliquez sur le bouton plus. Cela va nous amener à notre compte Supabase. Et tout ce que nous avons à faire, c&#x27;est d&#x27;accorder l&#x27;accès à l&#x27;organisation de l&#x27;espace de travail spécifique auquel nous voulons donner accès. Je vais donc simplement sélectionner mon email ici, cliquer sur autoriser Claude, et cela devrait nous renvoyer vers Claude. Et voilà. Vous pouvez voir que Supabase est maintenant connectée sur le côté droit. Et ensuite, ce que je vais faire, c&#x27;est que je vais sélectionner Supabase.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Supabase, interface de configuration de Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Écran de demande d&#x27;accès OAuth pour lier Supabase à Claude avec sélection de l&#x27;organisation et permissions (Read/Write).</p>
+                        <p><strong>Action / Démonstration :</strong> Autorisation de l&#x27;accès à Supabase et affichage des connecteurs disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000824_seg23.jpg" alt="Écran d&#x27;autorisation Supabase pour l&#x27;application Claude." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000824_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:24</span>
+                        <span class="caption-text">Écran d&#x27;autorisation Supabase pour l&#x27;application Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000830_seg23.jpg" alt="Interface de configuration des connecteurs et permissions d&#x27;outils." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000830_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:30</span>
+                        <span class="caption-text">Interface de configuration des connecteurs et permissions d&#x27;outils.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:36 - 00:09:09</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais simplement cliquer sur toujours approuver. Comme ça, ça ne demandera pas si c&#x27;est autorisé à aller chercher des données dans ces différentes tables de base de données, ainsi qu&#x27;à créer des tables de base de données. Et maintenant, nous devrions être prêts. Ensuite, je vais simplement revenir à Claude et lui dire simplement, hé, je veux que tu transformes ceci en une application fonctionnelle, utilise le connecteur Supabase afin de créer une base de données pour moi pour suivre toutes ces informations afin que l&#x27;utilisateur puisse ajouter des aliments spécifiques et suivre toutes ces données et faire en sorte que cela se reflète fidèlement sur cette application. D&#x27;accord, donc je vais lui donner cette instruction et maintenant ce qu&#x27;il va faire, c&#x27;est aller créer la base de données backend pour moi, et ensuite je vous montrerai le résultat final.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:09 - 00:09:30</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, et juste comme ça, il a construit toute cette base de données d&#x27;application. Donc pour vous montrer exactement ce que je veux dire, nous avons mon application affichée juste ici. Nous avons ma base de données Supabase configurée juste ici avec toutes les informations à l&#x27;intérieur de notre application. Donc pour tester cela, ce que je vais faire, c&#x27;est que je vais saisir l&#x27;un de mes repas et nous devrions voir cela s&#x27;ajouter dans cette base de données au fur et à mesure que nous le faisons.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Nourish et la plateforme Supabase.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de calories, macros quotidiennes (protéines, glucides, lipides) et tables de données relationnelles Supabase.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;interface utilisateur de l&#x27;application et visualisation de la structure de la base de données backend.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000914_seg25.jpg" alt="Aperçu de l&#x27;application web de suivi nutritionnel (Nourish) avec le tableau de bord des calories et macros." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000914_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:14</span>
+                        <span class="caption-text">Aperçu de l&#x27;application web de suivi nutritionnel (Nourish) avec le tableau de bord des calories et macros.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000920_seg25.jpg" alt="Affichage de l&#x27;interface de gestion de la base de données Supabase montrant les tables et les enregistrements alimentaires." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000920_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:20</span>
+                        <span class="caption-text">Affichage de l&#x27;interface de gestion de la base de données Supabase montrant les tables et les enregistrements alimentaires.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:30 - 00:09:54</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si je me dirige par ici, je vais tout simplement ajouter quelques produits différents ici. Disons donc que j&#x27;ai mangé des flocons d&#x27;avoine, j&#x27;ai pris une banane, du yaourt grec et des œufs brouillés pour le petit-déjeuner ou quelque chose comme ça. Maintenant, comme vous pouvez le voir juste ici là où il est écrit petit-déjeuner, nous pouvons voir chacun de ces éléments alimentaires ajoutés à cette liste. Et si je reviens à mon journal alimentaire et que je rafraîchis ceci, vous pouvez maintenant voir que cela a rempli toutes ces métadonnées dans cette base de données.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de suivi nutritionnel et de gestion des repas.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;aliments avec leur apport calorique en kilocalories (kcal) et répartition des macronutriments (protéines, glucides, lipides).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et ajout d&#x27;aliments pour composer le repas du petit-déjeuner et calcul automatique des calories totales.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000936_seg26.jpg" alt="Interface de suivi nutritionnel montrant la sélection d&#x27;aliments courants (flocons d&#x27;avoine, banane, yaourt grec, œufs brouillés)." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000936_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:36</span>
+                        <span class="caption-text">Interface de suivi nutritionnel montrant la sélection d&#x27;aliments courants (flocons d&#x27;avoine, banane, yaourt grec, œufs brouillés).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000942_seg26.jpg" alt="Récapitulatif du repas du petit-déjeuner avec le total calorique et les différents aliments ajoutés." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000942_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:42</span>
+                        <span class="caption-text">Récapitulatif du repas du petit-déjeuner avec le total calorique et les différents aliments ajoutés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:54 - 00:10:14</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So hopefully this gives you a sense of how you could go from Cloud Design into Cloud Code and use something like Supabase to turn this into an actual app that works in real time. Now, the next update that I want to talk about is we could access Claude Design directly inside of the desktop app, whether inside of Claude Cowork or Claude Chat Mode. We&#x27;ll see it at the bottom left of our screen.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Applications web et de bureau (Cloud Design, Cowork)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de suivi nutritionnel, listes de tâches, interface de chat IA et menus de navigation</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des fonctionnalités de conception d&#x27;applications et d&#x27;accès direct aux outils de design.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_000959_seg27.jpg" alt="Interface d&#x27;une application de suivi des calories et macronutriments, affichant un tableau de bord détaillé avec des graphiques de progression et un panneau latéral de code/notes." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_000959_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:59</span>
+                        <span class="caption-text">Interface d&#x27;une application de suivi des calories et macronutriments, affichant un tableau de bord détaillé avec des graphiques de progression et un panneau latéral de code/notes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001004_seg27.jpg" alt="Interface d&#x27;une application de bureau (Cowork) avec une barre de recherche centrale pour interagir avec l&#x27;IA et une liste de tâches actives et planifiées." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001004_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:04</span>
+                        <span class="caption-text">Interface d&#x27;une application de bureau (Cowork) avec une barre de recherche centrale pour interagir avec l&#x27;IA et une liste de tâches actives et planifiées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001009_seg27.jpg" alt="Gros plan sur le menu latéral inférieur de l&#x27;application de bureau, mettant en surbrillance l&#x27;option &quot;Design&quot;." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001009_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:09</span>
+                        <span class="caption-text">Gros plan sur le menu latéral inférieur de l&#x27;application de bureau, mettant en surbrillance l&#x27;option &quot;Design&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:14 - 00:10:40</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si je clique dessus, ce que ça va faire, c&#x27;est ouvrir cet écran séparé où nous pourrions commencer à utiliser Claude Design au lieu de l&#x27;utiliser seulement sur l&#x27;application Web. Parce que jusqu&#x27;à présent, nous devions aller sur Claude.ai dans le navigateur Web et l&#x27;utiliser directement ici. Donc maintenant, nous n&#x27;avons pas besoin de quitter l&#x27;application de bureau pour utiliser Claude Design, ce que, je le sais pour ma part, je n&#x27;utiliserais même pas Claude Design la plupart du temps de nos jours, je suis dans l&#x27;application de bureau et je ne penserais même pas à basculer sur le navigateur Web.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:41 - 00:11:13</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, la prochaine fonctionnalité dont je veux parler dans la nouvelle mise à jour de Cloud Design, ce sont les connecteurs. Donc je clique sur ma petite icône de compte et je vais sur les connecteurs. Vous pouvez voir que je peux accéder à n&#x27;importe lequel des différents connecteurs cloud que j&#x27;ai configurés, et j&#x27;en ai déjà une tonne d&#x27;ajoutés. Si je clique sur parcourir le répertoire, cela va nous amener ici où nous pouvons ajouter n&#x27;importe quelle application que nous voulons utiliser. Maintenant, disons qu&#x27;il y a une application que vous voulez utiliser avec Claude Design, mais que vous ne la voyez pas dans ce répertoire ici même dans Claude. Eh bien, je vais vous montrer un truc qui vous permettra de vous connecter à plus de 9 000 applications différentes en utilisant quelque chose appelé le MCP Zapier. Si vous ne savez pas</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Cloud Design / interface web de gestion des connecteurs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des connecteurs cloud disponibles dans le répertoire (Figma, Notion, Asana, Google Drive, Canva, Microsoft 365, Gmail, Slack, HubSpot, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans le répertoire des connecteurs pour montrer les différentes intégrations disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001057_seg29.jpg" alt="Capture d&#x27;écran montrant une fenêtre de répertoire affichant divers connecteurs et intégrations disponibles (Figma, Notion, Asana, Google Drive, Canva, Microsoft 365, etc.)." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001057_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:57</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une fenêtre de répertoire affichant divers connecteurs et intégrations disponibles (Figma, Notion, Asana, Google Drive, Canva, Microsoft 365, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:13 - 00:11:47</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">what Zapier is, it&#x27;s an automation platform that connects to 9,000 plus different apps. And an MCP server is like a universal connector that connects your AI to any of the apps that you want to use. So that way you can go and perform actions across those apps. So I&#x27;m going to click on get started. there will be a link in the description to sign up if you want to test this out. Next, we&#x27;re going to click on add new MCP server. Then we&#x27;re just going to come to Claude, copy in the prompt here. And then I&#x27;m going to come to the Claude desktop app and just simply paste in this prompt. And now it&#x27;s going to pull up this little box here where I&#x27;m just going to click connect. Then it&#x27;s going to bring you back to Zapier to copy another prompt. Then I&#x27;m going</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site de Zapier.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur Zapier MCP (&quot;Your AI can talk. Zapier MCP makes it act.&quot;) et boutons d&#x27;action.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à cliquer sur le bouton &quot;Get started&quot; pour démarrer l&#x27;intégration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001121_seg30.jpg" alt="Page web de Zapier présentant le service Zapier MCP avec un bouton &quot;Get started&quot; orange sur lequel le curseur de la souris est positionné." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001121_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:21</span>
+                        <span class="caption-text">Page web de Zapier présentant le service Zapier MCP avec un bouton &quot;Get started&quot; orange sur lequel le curseur de la souris est positionné.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:47 - 00:12:09</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">de cliquer sur continuer, de cliquer sur autoriser, et ensuite de cliquer sur ouvrir Claude. Et cela devrait être configuré et prêt à fonctionner. Maintenant de retour dans le chat, si je clique sur ce bouton utiliser, cela va ensuite me guider sur la façon de configurer cela exactement comme je veux que ça fonctionne. Donc maintenant nous avons notre compte Zapier connecté. Afin d&#x27;ajouter différentes applications, nous allons venir sur notre serveur MCP que nous avons créé, cliquer sur ajouter, et nous pourrions sélectionner n&#x27;importe quelle application que nous voulons ajouter à notre serveur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude avec un encadré de configuration Zapier (bouton &quot;Use&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un message textuel demandant de se connecter à Zapier MCP, suivi d&#x27;un composant d&#x27;interface indiquant &quot;Zapier Connected&quot; avec un bouton d&#x27;action &quot;Use&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris se positionne près du bouton d&#x27;action pour configurer ou utiliser le connecteur Zapier MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001152_seg31.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de type chat (Claude) avec une boîte de dialogue proposant de connecter Zapier via un connecteur MCP." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001152_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de type chat (Claude) avec une boîte de dialogue proposant de connecter Zapier via un connecteur MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:09 - 00:12:28</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est aussi simple que de cliquer sur ce bouton, de sélectionner tous les outils ici, pour qu&#x27;il soit capable d&#x27;effectuer ces actions à travers ces applications, et ensuite de cliquer sur ajouter un outil. Et juste comme ça, nous pouvons maintenant demander à Claude Design d&#x27;effectuer des actions à travers ces différentes applications avec Zapier. Très bien, alors testons cela et construisons réellement une animation à l&#x27;intérieur de Claude Design. Donc ce que je vais faire, c&#x27;est simplement sélectionner un modèle ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de gestion de serveur MCP (Zapier MCP).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des applications connectées avec le nombre d&#x27;outils associés (Synthflow AI, Sheet, Slack) et options de configuration d&#x27;agent IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion de l&#x27;application Slack et sélection des outils pour permettre à l&#x27;agent IA d&#x27;effectuer des actions à travers les applications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001214_seg32.jpg" alt="Fenêtre contextuelle affichant la connexion à l&#x27;application Slack avec le compte &#x27;Slack @brockmesarich (AI Accelerator)&#x27; et un bouton d&#x27;ajout de 34 outils en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001214_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:14</span>
+                        <span class="caption-text">Fenêtre contextuelle affichant la connexion à l&#x27;application Slack avec le compte &#x27;Slack @brockmesarich (AI Accelerator)&#x27; et un bouton d&#x27;ajout de 34 outils en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001219_seg32.jpg" alt="Interface complète montrant la configuration des applications connectées, incluant Synthflow AI, Sheet et Slack dans une interface de gestion de serveur MCP." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001219_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:19</span>
+                        <span class="caption-text">Interface complète montrant la configuration des applications connectées, incluant Synthflow AI, Sheet et Slack dans une interface de gestion de serveur MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:28 - 00:12:50</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais sélectionner animation. Je vais sélectionner mon design system, qui s&#x27;appelle Claw Design System, que j&#x27;ai configuré. Et ensuite, je vais simplement venir et dire, je veux que tu génères une vidéo de style lancement de produit avec cette compétence d&#x27;animation sur le fonctionnement des intérêts composés. Donc je pourrais envoyer ça et maintenant, ça va générer toute cette vidéo animée pour moi après avoir répondu à quelques-unes de ces différentes questions.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;application Claude Design et son panneau de configuration.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu déroulant de sélection des design systems (&quot;Claude Design System&quot;, &quot;AI for Non-Techies Design System&quot;) et zone de prompt textuel.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un design system et d&#x27;une compétence d&#x27;animation, puis soumission d&#x27;une requête textuelle pour générer une vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001234_seg33.jpg" alt="Interface web montrant la sélection d&#x27;un design system et d&#x27;un modèle d&#x27;animation sur Claude Design." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001234_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:34</span>
+                        <span class="caption-text">Interface web montrant la sélection d&#x27;un design system et d&#x27;un modèle d&#x27;animation sur Claude Design.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001244_seg33.jpg" alt="Interface de génération montrant un prompt textuel demandant une vidéo de style lancement de produit sur les intérêts composés." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001244_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:44</span>
+                        <span class="caption-text">Interface de génération montrant un prompt textuel demandant une vidéo de style lancement de produit sur les intérêts composés.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:50 - 00:13:12</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, quelques minutes plus tard, nous avons cette vidéo animée qu&#x27;il a créée dans ce style exact que je vous ai montré plus tôt dans la vidéo. Je veux dire, c&#x27;est plutôt cool. Le fait que Claude Design ait été capable de générer tout cela est assez fou. Très bien, les gars, voilà. Ce sont toutes les nouvelles mises à jour de Claude Design. Si vous voulez plus de contenu comme celui-ci, abonnez-vous à cette chaîne. Je couvre l&#x27;IA pour les non-techniciens. Ceci étant dit, merci d&#x27;être restés jusqu&#x27;à la fin et je vous vois dans la prochaine vidéo. Salut.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Claude AI / Interface de génération de vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur affichant une animation graphique sur les intérêts composés ($1,000, $1,080, $1,166, $1,260) et le panneau de chat latéral.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du résultat final d&#x27;une vidéo animée générée automatiquement par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/TJ80fChZXW4/TJ80fChZXW4_001255_seg34.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du navigateur avec une application web (Claude AI / Claude Design System) affichant une vidéo animée sur les intérêts composés (&quot;Interest earns interest&quot;, The Snowball Effect) avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/TJ80fChZXW4/TJ80fChZXW4_001255_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:55</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du navigateur avec une application web (Claude AI / Claude Design System) affichant une vidéo animée sur les intérêts composés (&quot;Interest earns interest&quot;, The Snowball Effect) avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `46 / 273` (`16.8%`)
+- **Vidéos traitées** : `47 / 273` (`17.2%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -63,6 +63,7 @@
 | 2026-07-09 | [kIiHhWVOlCM](https://www.youtube.com/watch?v=kIiHhWVOlCM) | **Anthropic vient de lancer Claude Cowork Mobile : Analyse complète** | [2026-07-09_YT-[kIiHhWVOlCM]_Anthropic vient de lancer Claude Cowork Mobile Analyse complète_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-09_YT-[kIiHhWVOlCM]_Anthropic vient de lancer Claude Cowork Mobile Analyse complète_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-09_YT-[kIiHhWVOlCM]_Anthropic vient de lancer Claude Cowork Mobile Analyse complète_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
 | 2026-07-06 | [_8TUhqsgyXk](https://www.youtube.com/watch?v=_8TUhqsgyXk) | **Maîtriser Claude pour le marketing en 72 minutes (COURS COMPLET)** | [2026-07-06_YT-[_8TUhqsgyXk]_Maîtriser Claude pour le marketing en 72 minutes (COURS COMPLET)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-06_YT-[_8TUhqsgyXk]_Maîtriser Claude pour le marketing en 72 minutes (COURS COMPLET)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-06_YT-[_8TUhqsgyXk]_Maîtriser Claude pour le marketing en 72 minutes (COURS COMPLET)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `237` |
 | 2026-07-05 | [OnUjckeLuhQ](https://www.youtube.com/watch?v=OnUjckeLuhQ) | **Claude Fable 5 Builds $15,000+ Animated Websites (in minutes)** | [2026-07-05_YT-[OnUjckeLuhQ]_Claude Fable 5 Builds $15,000+ Animated Websites (in minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-07-05_YT-[OnUjckeLuhQ]_Claude Fable 5 Builds $15,000+ Animated Websites (in minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-07-05_YT-[OnUjckeLuhQ]_Claude Fable 5 Builds $15,000+ Animated Websites (in minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `59` |
+| 2026-06-29 | [TJ80fChZXW4](https://www.youtube.com/watch?v=TJ80fChZXW4) | **Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities)** | [2026-06-29_YT-[TJ80fChZXW4]_Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-06-29_YT-[TJ80fChZXW4]_Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-06-29_YT-[TJ80fChZXW4]_Anthropic Just Dropped Claude Design 2.0 (Endless Capabilities)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `45` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
