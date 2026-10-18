@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `63 / 273` (`23.1%`)
+- **Vidéos traitées** : `64 / 273` (`23.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -80,6 +80,7 @@
 | 2026-05-11 | [nLnqz-ll_CE](https://www.youtube.com/watch?v=nLnqz-ll_CE) | **13 Ways to Give Claude Cowork Superpowers (master these)** | [2026-05-11_YT-[nLnqz-ll_CE]_13 Ways to Give Claude Cowork Superpowers (master these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-11_YT-[nLnqz-ll_CE]_13 Ways to Give Claude Cowork Superpowers (master these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-11_YT-[nLnqz-ll_CE]_13 Ways to Give Claude Cowork Superpowers (master these)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-05-04 | [k8igQH7SLwI](https://www.youtube.com/watch?v=k8igQH7SLwI) | **Claude Video Just Changed Content Creation Forever…** | [2026-05-04_YT-[k8igQH7SLwI]_Claude Video Just Changed Content Creation Forever…_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-04_YT-[k8igQH7SLwI]_Claude Video Just Changed Content Creation Forever…_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-04_YT-[k8igQH7SLwI]_Claude Video Just Changed Content Creation Forever…_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `72` |
 | 2026-04-28 | [6cu14oQCL3Q](https://www.youtube.com/watch?v=6cu14oQCL3Q) | **La meilleure fonctionnalité de Claude Cowork de l'année (elle est cachée)** | [2026-04-28_YT-[6cu14oQCL3Q]_La meilleure fonctionnalité de Claude Cowork de l'année (elle est cachée)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-28_YT-[6cu14oQCL3Q]_La meilleure fonctionnalité de Claude Cowork de l'année (elle est cachée)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-28_YT-[6cu14oQCL3Q]_La meilleure fonctionnalité de Claude Cowork de l'année (elle est cachée)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `78` |
+| 2026-04-25 | [OK9c7UWl24M](https://www.youtube.com/watch?v=OK9c7UWl24M) | **9 compétences Claude dont je ne peux plus me passer (volez-les)** | [2026-04-25_YT-[OK9c7UWl24M]_9 compétences Claude dont je ne peux plus me passer (volez-les)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-25_YT-[OK9c7UWl24M]_9 compétences Claude dont je ne peux plus me passer (volez-les)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-25_YT-[OK9c7UWl24M]_9 compétences Claude dont je ne peux plus me passer (volez-les)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `111` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
