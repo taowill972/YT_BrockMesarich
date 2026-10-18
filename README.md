@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `69 / 273` (`25.3%`)
+- **Vidéos traitées** : `70 / 273` (`25.6%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -86,6 +86,7 @@
 | 2026-04-18 | [e7ngdzwzRZ0](https://www.youtube.com/watch?v=e7ngdzwzRZ0) | **Maîtrisez 95 % de Claude Design en 17 minutes** | [2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `90` |
 | 2026-04-17 | [ow8dl9gfjCI](https://www.youtube.com/watch?v=ow8dl9gfjCI) | **Anthropic vient de révolutionner le design pour toujours... (Claude Design)** | [2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `55` |
 | 2026-04-17 | [YHx-E8NOg8s](https://www.youtube.com/watch?v=YHx-E8NOg8s) | **Claude Code 2.0 vient de sortir (Le tueur de Cowork ?)** | [2026-04-17_YT-[YHx-E8NOg8s]_Claude Code 2.0 vient de sortir (Le tueur de Cowork )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-17_YT-[YHx-E8NOg8s]_Claude Code 2.0 vient de sortir (Le tueur de Cowork )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-17_YT-[YHx-E8NOg8s]_Claude Code 2.0 vient de sortir (Le tueur de Cowork )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `85` |
+| 2026-04-15 | [uVfj5fEihOk](https://www.youtube.com/watch?v=uVfj5fEihOk) | **Claude Cowork + Obsidian viennent de changer ma façon de travailler pour toujours...** | [2026-04-15_YT-[uVfj5fEihOk]_Claude Cowork + Obsidian viennent de changer ma façon de travailler pour toujour_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-15_YT-[uVfj5fEihOk]_Claude Cowork + Obsidian viennent de changer ma façon de travailler pour toujour_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-15_YT-[uVfj5fEihOk]_Claude Cowork + Obsidian viennent de changer ma façon de travailler pour toujour_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `79` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
