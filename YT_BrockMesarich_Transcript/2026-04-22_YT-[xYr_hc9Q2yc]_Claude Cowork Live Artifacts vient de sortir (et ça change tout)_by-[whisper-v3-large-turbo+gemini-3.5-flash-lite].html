@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Cowork Live Artifacts vient de sortir (et ça change tout) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Cowork Live Artifacts vient de sortir (et ça change tout)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-22</span>
+                <span class="badge">⏱️ 00:10:31</span>
+                <span class="badge">🆔 <code>xYr_hc9Q2yc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=xYr_hc9Q2yc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La vidéo de la chaîne *Brock Mesarich | AI for Non Techies* met en lumière une avancée majeure d'Anthropic : **Claude Cowork Live Artifacts**, couplé à un système de connecteurs natifs. Jusqu'à présent, l'utilisation de tâches planifiées ou de tableaux de bord HTML statiques générait une obsolescence rapide des données, obligeant les utilisateurs à relancer manuellement des requêtes énergivores en jetons (*tokens*). Avec cette mise à jour, l'application de bureau Claude se transforme en un véritable centre de commandement opérationnel capable de synchroniser en temps réel des sources hétérogènes (Gmail, Google Agenda, Bitly, Notion, HubSpot) sans intervention humaine constante. <br><br>Le démonstrateur décortique la création d'un système d'exploitation quotidien automatisé — allant du briefing matinal au suivi analytique des liens marketing. En s'appuyant sur des interfaces de type mini-applications web embarquées, le flux d'informations est géré de manière asynchrone et dynamique. Cette architecture réduit drastiquement le gaspillage de crédits sur les abonnements Pro ou Max tout en s'affranchissant du développement complexe d'applications sur des plateformes tierces comme Lovable ou Replit.<br><br>L'analyse démontre comment l'automatisation des flux de travail par IA générative passe d'une logique de requêtes textuelles isolées à une exécution contextuelle continue. En connectant directement les applications de productivité aux artefacts dynamiques de Claude, l'utilisateur gagne en efficacité opérationnelle, structurant un écosystème où l'intelligence artificielle agit en arrière-plan pour prioriser les tâches urgentes et agréger des métriques de performance exploitables.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude (Anthropic)** : Modèle d'intelligence artificielle et application de bureau centrale utilisée pour exécuter le mode Cowork, gérer les connecteurs et générer les artefacts dynamiques.<br>* **Claude Cowork Live Artifacts** : Fonctionnalité avancée de Claude permettant de créer des mini-applications web interactives et auto-actualisables au sein de l'interface.<br>* **Google Agenda** : Outil de gestion du temps et de planification connecté à Claude pour l'extraction automatique des réunions et des agendas de la semaine.<br>* **Gmail** : Messagerie électronique intégrée via les connecteurs pour trier, analyser et préparer des suggestions de réponses aux e-mails urgents.<br>* **Bitly** : Plateforme de gestion de liens et de suivi analytique connectée pour surveiller en temps réel les performances des clics, des sources de trafic et des appareils des utilisateurs.<br>* **Google Drive** : Espace de stockage cloud synchronisé via les connecteurs natifs pour l'importation et l'extraction automatisée de documents.<br>* **Notion** : Application de productivité et de gestion de bases de données mentionnée comme intégration potentielle dans l'écosystème de connecteurs.<br>* **HubSpot** : Logiciel CRM et de gestion de la relation client cité parmi les applications connectables pour alimenter les tableaux de bord en temps réel.<br>* **Whisperflow** : Outil de dictée vocale utilisé pour alimenter rapidement Claude en instructions complexes sous forme de "déversement de cerveau" (*brain dump*).<br>* **Lovable** : Plateforme de développement d'applications web mentionnée comme alternative plus complexe aux artefacts en direct de Claude.<br>* **Replit** : Environnement de développement cloud également évoqué pour la création d'applications, rendu moins indispensable grâce aux nouvelles fonctionnalités natives de Claude.<br>* **Zapier / n8n / Make / Grok / Gemini / ChatGPT** : Outils d'automatisation et modèles concurrents cités dans l'écosystème global de l'intelligence artificielle et de l'intégration de données.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Obsolescence des artefacts statiques** : Les tableaux de bord HTML générés par le passé nécessitaient des actualisations manuelles et répétitives, gaspillant massivement les jetons de l'API ou de l'abonnement.<br>* **Révolution des artefacts en direct** : Introduction de mini-applications web intégrées à Claude qui s'actualisent automatiquement à l'arrivée de nouvelles données sans intervention de l'utilisateur.<br>* **Optimisation des coûts d'utilisation** : Élimination de la régénération quotidienne forcée de tableaux de bord complexes, réduisant significativement la consommation de crédits sur les forfaits Pro et Max de Claude.<br>* **Architecture des connecteurs natifs** : Utilisation d'une passerelle de connexion directe permettant à Claude de puiser et d'injecter des données en arrière-plan à travers différentes applications tierces.<br>* **Prérequis technique d'accès** : L'accès aux fonctionnalités de Cowork et aux artefacts en direct nécessite obligatoirement le téléchargement et l'utilisation de l'application de bureau Claude.<br>* **Configuration du dossier de travail** : Structuration d'un répertoire local dédié sur l'ordinateur de l'utilisateur pour stocker de manière centralisée les projets, les fichiers et les codes HTML des tableaux de bord.<br>* **Centralisation de la barre latérale** : Accès persistant aux artefacts générés directement depuis la navigation de gauche, évitant de fouiller l'historique des conversations pour retrouver un tableau de bord.<br>* **Agrégation multi-sources automatisée** : Capacité à fusionner en un unique centre de commandement des flux de données hétérogènes provenant de la messagerie, des agendas et des outils d'analytique de liens.<br>* **Transcription vocale pour le prompt engineering** : Utilisation d'outils de dictée rapide (*Whisperflow*) pour structurer des instructions complexes et détaillées sous forme de flux de pensée continu (*brain dump*).<br>* **Personnalisation graphique des interfaces** : Application de chartes visuelles cohérentes (comme le thème de style Anthropic) pour standardiser l'ergonomie des centres de commandement générés.<br>* **Suivi analytique en temps réel** : Intégration de métriques de performance marketing (provenance géographique, types d'appareils, volume de clics à la minute) directement exploitables pour la création de contenu.<br>* **Système d'exploitation quotidien (OS)** : Transformation de l'IA en un tableau de bord décisionnel permanent qui filtre les urgences, priorise les tâches et automatise le pilotage opérationnel sans nécessiter de compétences en programmation.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude (Anthropic)</span><span class="tool-tag">Claude Cowork Live Artifacts</span><span class="tool-tag">Google Agenda</span><span class="tool-tag">Gmail</span><span class="tool-tag">Bitly</span><span class="tool-tag">Google Drive</span><span class="tool-tag">Notion</span><span class="tool-tag">HubSpot</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Obsolescence des artefacts statiques** : Les tableaux de bord HTML générés par le passé nécessitaient des actualisations manuelles et répétitives, gaspillant massivement les jetons de l&#x27;API ou de l&#x27;abonnement.</span></li><li><span class="point-bullet">✦</span><span>Révolution des artefacts en direct** : Introduction de mini-applications web intégrées à Claude qui s&#x27;actualisent automatiquement à l&#x27;arrivée de nouvelles données sans intervention de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts d&#x27;utilisation** : Élimination de la régénération quotidienne forcée de tableaux de bord complexes, réduisant significativement la consommation de crédits sur les forfaits Pro et Max de Claude.</span></li><li><span class="point-bullet">✦</span><span>Architecture des connecteurs natifs** : Utilisation d&#x27;une passerelle de connexion directe permettant à Claude de puiser et d&#x27;injecter des données en arrière-plan à travers différentes applications tierces.</span></li><li><span class="point-bullet">✦</span><span>Prérequis technique d&#x27;accès** : L&#x27;accès aux fonctionnalités de Cowork et aux artefacts en direct nécessite obligatoirement le téléchargement et l&#x27;utilisation de l&#x27;application de bureau Claude.</span></li><li><span class="point-bullet">✦</span><span>Configuration du dossier de travail** : Structuration d&#x27;un répertoire local dédié sur l&#x27;ordinateur de l&#x27;utilisateur pour stocker de manière centralisée les projets, les fichiers et les codes HTML des tableaux de bord.</span></li><li><span class="point-bullet">✦</span><span>Centralisation de la barre latérale** : Accès persistant aux artefacts générés directement depuis la navigation de gauche, évitant de fouiller l&#x27;historique des conversations pour retrouver un tableau de bord.</span></li><li><span class="point-bullet">✦</span><span>Agrégation multi-sources automatisée** : Capacité à fusionner en un unique centre de commandement des flux de données hétérogènes provenant de la messagerie, des agendas et des outils d&#x27;analytique de liens.</span></li><li><span class="point-bullet">✦</span><span>Transcription vocale pour le prompt engineering** : Utilisation d&#x27;outils de dictée rapide (*Whisperflow*) pour structurer des instructions complexes et détaillées sous forme de flux de pensée continu (*brain dump*).</span></li><li><span class="point-bullet">✦</span><span>Personnalisation graphique des interfaces** : Application de chartes visuelles cohérentes (comme le thème de style Anthropic) pour standardiser l&#x27;ergonomie des centres de commandement générés.</span></li><li><span class="point-bullet">✦</span><span>Suivi analytique en temps réel** : Intégration de métriques de performance marketing (provenance géographique, types d&#x27;appareils, volume de clics à la minute) directement exploitables pour la création de contenu.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic vient de lancer Claude Cowork Live Artifacts et cela change complètement ma façon de l&#x27;utiliser. Et je pense sincèrement qu&#x27;il n&#x27;y a pas assez de gens qui parlent de la puissance réelle de cet outil. Donc, dans cette vidéo, je vais vous l&#x27;expliquer en termes simples pour que tout le monde puisse comprendre et vous montrer comment vous pouvez commencer à l&#x27;utiliser dès maintenant. Alors, sans plus attendre, entrons tout de suite dans le vif du sujet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / Application web interactive (Rhythm Machine).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;une boîte à rythmes interactive avec pistes audio (Kick, Snare, Hihat, Openhat, Clap), boutons de contrôle (Play, Stop, Tempo) et tags de genres musicaux.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle d&#x27;une application interactive générée ou alimentée par une intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000010_seg1.jpg" alt="Interface d&#x27;une application web interactive appelée « Rhythm Machine » (modèle d&#x27;intelligence artificielle de génération de rythmes)." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Interface d&#x27;une application web interactive appelée « Rhythm Machine » (modèle d&#x27;intelligence artificielle de génération de rythmes).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Laissez-moi souligner rapidement ce problème que résout le nouveau Cowork Live Artifacts, et ensuite je vais l&#x27;analyser en profondeur. Et ce problème, c&#x27;est que les artefacts statiques deviennent obsolètes très rapidement. Pour vous montrer exactement ce que je veux dire, voici ma compétence de briefing matinal qui s&#x27;exécute comme une tâche planifiée tous les matins à 8 heures.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web et application Cowork / interface de productivité.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre de présentation, puces textuelles, sources d&#x27;actualités sur l&#x27;IA (GPT-6, Claude Mythos, Gemma 4, Muse Spark), calendrier et e-mails.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit le problème des artefacts statiques et montre un exemple concret de briefing matinal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000024_seg2.jpg" alt="Présentation affichant le titre &#x27;Static artifacts go stale fast&#x27; avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000024_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Présentation affichant le titre &#x27;Static artifacts go stale fast&#x27; avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000033_seg2.jpg" alt="Interface de l&#x27;application Cowork montrant un briefing matinal avec des blocs de calendrier, des e-mails et des sources textuelles, et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000033_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:33</span>
+                        <span class="caption-text">Interface de l&#x27;application Cowork montrant un briefing matinal avec des blocs de calendrier, des e-mails et des sources textuelles, et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:38 - 00:00:57</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il extrait automatiquement les données de mon Google Agenda et de mon adresse e-mail, puis décompose fondamentalement tous les e-mails qui nécessitent une réponse ainsi que des suggestions de réponses, et ventile même les trois principales priorités de la journée, et cela a changé la donne pour moi personnellement. Mais le gros problème avec cela, c&#x27;est qu&#x27;il s&#x27;agit d&#x27;un tableau de bord HTML statique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de productivité Cowork avec vue sur les e-mails et les briefings.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résumé des e-mails, priorités de la journée, suggestions de réponses automatiques pour chaque e-mail, sources d&#x27;actualités sur l&#x27;IA et barre de commande textuelle en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface et lecture des e-mails analysés par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000042_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de productivité propulsé par l&#x27;IA (Cowork) affichant un briefing matinal avec des e-mails analysés et des suggestions de réponses." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000042_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:42</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de productivité propulsé par l&#x27;IA (Cowork) affichant un briefing matinal avec des e-mails analysés et des suggestions de réponses.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:57 - 00:01:19</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Laissez-moi donc vous expliquer dès maintenant ce que cela signifie en français simple. Cela signifie essentiellement que chaque fois que je veux que cela se mette à jour avec des informations en direct, je dois venir voir Claude et lui dire, hé, rafraîchis ces informations. Et il doit passer par là, extraire les données de mon Google Agenda. Il doit à nouveau extraire les données de mes e-mails et générer automatiquement ce tableau de bord à partir de zéro, ce qui gaspille tellement de mes jetons Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de productivité Cowork (interface web/bureau avec panneau latéral, sources d&#x27;actualités et zone de chat IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;un briefing matinal sur l&#x27;intelligence artificielle (GPT-6, Claude, actualités technologiques), calendrier vide et aperçu des e-mails.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de l&#x27;application et démonstration de la zone de discussion pour rafraîchir les informations.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000102_seg4.jpg" alt="Interface de l&#x27;application Cowork affichant un briefing matinal (« Good morning, Brock ») avec des actualités sur l&#x27;IA et un panneau de discussion en bas." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000102_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:02</span>
+                        <span class="caption-text">Interface de l&#x27;application Cowork affichant un briefing matinal (« Good morning, Brock ») avec des actualités sur l&#x27;IA et un panneau de discussion en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000108_seg4.jpg" alt="Gros plan sur la zone de saisie du chat (« Reply... Ask ») dans l&#x27;interface de Cowork, illustrant la zone où l&#x27;utilisateur interagit avec l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000108_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Gros plan sur la zone de saisie du chat (« Reply... Ask ») dans l&#x27;interface de Cowork, illustrant la zone où l&#x27;utilisateur interagit avec l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000114_seg4.jpg" alt="Vue similaire de l&#x27;application de productivité Cowork montrant le tableau de bord avec les tâches planifiées et les sources d&#x27;information." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000114_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Vue similaire de l&#x27;application de productivité Cowork montrant le tableau de bord avec les tâches planifiées et les sources d&#x27;information.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:19 - 00:01:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous avez probablement rencontré exactement le même problème. Eh bien, ce n&#x27;est plus un problème avec les nouveaux artefacts en direct. Ceci, juste ici, est un artefact en direct que j&#x27;ai créé en environ deux minutes et qui me donne automatiquement un résumé matinal. Il analyse donc tous les e-mails auxquels je dois répondre. Il me montre tout ce qui se trouve sur mon agenda Google pour la semaine, détaille mes principales priorités, et détaille même différentes conversations en cours que j&#x27;ai et qui nécessitent une réponse.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web &quot;Claude Cowork&quot; / Tableau de bord de gestion des e-mails.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques des e-mails (19 nouveaux e-mails, 7 priorités, 4 réunions), widgets de résumé matinal, calendrier hebdomadaire et liste des e-mails prioritaires.
+[ACCESS] Navigation et présentation du tableau de bord de résumé des e-mails par l&#x27;orateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000126_seg5.jpg" alt="Vue d&#x27;ensemble du tableau de bord &quot;Morning command center&quot; affichant les statistiques des e-mails et les tâches prioritaires." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000126_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:26</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord &quot;Morning command center&quot; affichant les statistiques des e-mails et les tâches prioritaires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000132_seg5.jpg" alt="Défilement sur le tableau de bord montrant la section &quot;The week ahead&quot; avec le calendrier des réunions et des événements." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000132_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Défilement sur le tableau de bord montrant la section &quot;The week ahead&quot; avec le calendrier des réunions et des événements.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000138_seg5.jpg" alt="Vue détaillée des sections &quot;Top priority&quot; et &quot;Inbox summary&quot; classant les e-mails par catégories et priorités." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000138_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:38</span>
+                        <span class="caption-text">Vue détaillée des sections &quot;Top priority&quot; et &quot;Inbox summary&quot; classant les e-mails par catégories et priorités.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:14</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La chose clé à noter ici, c&#x27;est que lorsque je reçois un nouvel e-mail, cet artéfact en direct va automatiquement intégrer cet e-mail sans que j&#x27;aie besoin d&#x27;aller cliquer sur actualiser ou de demander à Claude d&#x27;analyser toute ma boîte de réception et de régénérer ceci. C&#x27;est pourquoi c&#x27;est une telle révolution, car nous pouvons désormais commencer à utiliser ces mini applications web au sein de Claude Cowork qui utilisent nos données provenant des différentes applications que nous utilisons, sans que nous ayons besoin d&#x27;aller créer quelque chose dans Lovable ou Replit, par exemple.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type tableau de bord / Claude Cowork avec panneau latéral et affichage central interactif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre « Morning command center », statistiques (« 19 NEW EMAILS », « 7 TOP PRIORITY », « 0 MEETINGS TODAY », « 4 MEETINGS (7D) »), et aperçu de la semaine à venir.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du fonctionnement dynamique et en direct du tableau de bord d&#x27;e-mails.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000152_seg6.jpg" alt="Capture d&#x27;écran montrant une interface de tableau de bord nommée « Morning Inbox Dashboard » avec un panneau latéral de navigation et un espace de travail central affichant des résumés d&#x27;e-mails et de planning, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000152_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de tableau de bord nommée « Morning Inbox Dashboard » avec un panneau latéral de navigation et un espace de travail central affichant des résumés d&#x27;e-mails et de planning, tandis que le présentateur apparaît en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:14 - 00:02:34</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici un exemple d&#x27;un autre artéfact en direct que j&#x27;ai créé qui suit automatiquement tous les liens qui suit automatiquement tous les liens dans mes descriptions pour mes vidéos YouTube, récupère à partir d&#x27;une plateforme appelée Bitly que j&#x27;ai connectée à Claude. Et je peux voir en temps réel quels liens de vidéos obtiennent des clics et combien de clics il obtient à la minute.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Cowork, interface de tableau de bord Bitly intégrée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques de clics en temps réel, graphiques d&#x27;évolution temporelle, métriques par pays, par source (YouTube) et par système d&#x27;exploitation (macOS), ainsi qu&#x27;un classement des liens les plus performants.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation dans le tableau de bord interactif des liens Bitly connectés à Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000219_seg7.jpg" alt="Capture d&#x27;écran montrant le tableau de bord Bitly (Bitly Dashboard) intégré dans Claude Cowork, affichant des statistiques globales de clics sur les liens YouTube." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000219_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:19</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tableau de bord Bitly (Bitly Dashboard) intégré dans Claude Cowork, affichant des statistiques globales de clics sur les liens YouTube.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000229_seg7.jpg" alt="Capture d&#x27;écran montrant la suite du tableau de bord avec la liste des liens les plus performants (Top performing links) et leurs métriques de clics." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000229_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la suite du tableau de bord avec la liste des liens les plus performants (Top performing links) et leurs métriques de clics.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:34 - 00:02:56</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, par exemple, je pourrais voir quel pays clique sur ces vidéos. Je pourrais voir d&#x27;où cela vient, que ce soit YouTube, Instagram, et cetera. Je pourrais voir les différents appareils que les gens utilisent pour cliquer sur ces ressources. Et tout cela provient d&#x27;un logiciel appelé Bitly que je connecte simplement à Claude. Et encore une fois, pour que cela se mette à jour avec de nouvelles informations, je n&#x27;ai pas besoin d&#x27;aller sur Claude et de lui dire de régénérer cela comme je devais le faire avant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de tableau de bord analytique (Claude Cowork / Bitly Dashboard)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques de clics, graphiques circulaires par pays, source de trafic et OS, graphiques d&#x27;évolution temporelle et métriques agrégées.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication des différentes métriques de suivi des liens par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000240_seg8.jpg" alt="Dashboard analytique affichant les statistiques détaillées des clics par pays, source de trafic (referrer) et système d&#x27;exploitation des appareils." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000240_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:40</span>
+                        <span class="caption-text">Dashboard analytique affichant les statistiques détaillées des clics par pays, source de trafic (referrer) et système d&#x27;exploitation des appareils.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000245_seg8.jpg" alt="Vue d&#x27;ensemble du tableau de bord &#x27;Bitly links&#x27; avec des indicateurs clés (total des clics, liens actifs, pays et appareil principaux) et un graphique temporel." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000245_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord &#x27;Bitly links&#x27; avec des indicateurs clés (total des clics, liens actifs, pays et appareil principaux) et un graphique temporel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000251_seg8.jpg" alt="Suite de la vue d&#x27;ensemble du tableau de bord &#x27;Bitly links&#x27; montrant le graphique d&#x27;évolution des clics au fil du temps." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000251_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:51</span>
+                        <span class="caption-text">Suite de la vue d&#x27;ensemble du tableau de bord &#x27;Bitly links&#x27; montrant le graphique d&#x27;évolution des clics au fil du temps.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:56 - 00:03:30</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;avais littéralement une tâche programmée où, chaque jour à 17 heures, le système allait chercher toutes ces informations sur Bitly, régénérait tout ce tableau de bord, et honnêtement, me faisait gaspiller des tonnes de crédits. Si vous êtes sur le forfait pro à 20 dollars par mois avec Claude ou même sur le forfait max, cela va vous faire économiser tellement d&#x27;argent si vous générez des tableaux de bord HTML comme je le fais personnellement tout le temps. Tout cela est possible grâce aux artefacts en direct avec la fonction de connecteurs à l&#x27;intérieur de Claude. Et si vous n&#x27;êtes pas familiarisé avec ça, c&#x27;est fondamentalement ainsi que vous connectez vos applications à Claude, afin que vous puissiez extraire des données de votre e-mail. Vous pourriez rédiger des réponses à des e-mails.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude Cowork et navigateur web affichant une interface de tableau de bord et une présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques de liens Bitly (total des clics, liens actifs, pays, source de trafic, appareil) et graphiques d&#x27;évolution temporelle.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du fonctionnement des tableaux de bord automatisés et des artefacts dynamiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000305_seg9.jpg" alt="Capture d&#x27;écran montrant le tableau de bord Bitly (Claude Cowork) avec des statistiques de clics et un graphique temporel." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000305_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tableau de bord Bitly (Claude Cowork) avec des statistiques de clics et un graphique temporel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000322_seg9.jpg" alt="Diapositive de présentation illustrant le concept de &quot;Live Artifacts&quot; comparant le HTML statique aux artefacts dynamiques." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000322_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:22</span>
+                        <span class="caption-text">Diapositive de présentation illustrant le concept de &quot;Live Artifacts&quot; comparant le HTML statique aux artefacts dynamiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:30 - 00:03:51</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez extraire des données de votre agenda Google et fondamentalement faire différentes choses à travers ces applications en ayant accès à cela via ces connecteurs. Ceci ici même est un visuel parfait de ce dont je parle. Nous avons Gmail, Agenda, Notion, HubSpot, toutes ces différentes applications que nous utilisons connectées à Claude. Et cela génère en fait ces artefacts en direct, en temps réel, alors que nous ne sommes même pas sur notre ordinateur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de présentation de type slide avec une incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre &#x27;Live Artifacts call your tools on open&#x27;, comparaison entre &#x27;STATIC HTML&#x27; et &#x27;LIVE ARTIFACT&#x27;, ainsi qu&#x27;une liste d&#x27;intégrations (Gmail, Calendar, Notion, YouTube).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique visuellement comment les artefacts en direct se connectent à différents outils et applications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000335_seg10.jpg" alt="Capture d&#x27;écran montrant une présentation web sur le thème des &#x27;Live Artifacts&#x27;, illustrant l&#x27;intégration avec différents outils." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000335_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une présentation web sur le thème des &#x27;Live Artifacts&#x27;, illustrant l&#x27;intégration avec différents outils.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:51 - 00:04:10</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Laissez-moi maintenant vous montrer exactement comment vous pouvez commencer à utiliser ceci dès maintenant et exactement comment cela fonctionne. Tout d&#x27;abord, assurez-vous d&#x27;avoir téléchargé l&#x27;application de bureau Claude. Vous ne pourrez pas y accéder à moins d&#x27;être dans l&#x27;application de bureau. Donc, si vous ne l&#x27;avez pas téléchargée, il y a un lien dans la description pour le faire. Une fois que nous aurons téléchargé l&#x27;application de bureau et que nous l&#x27;aurons ouverte, nous verrons cette interface ici même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site claude.com et application de bureau Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de téléchargement de l&#x27;application Claude et interface de chat de bureau avec options de saisie.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du site de téléchargement de Claude puis affichage de l&#x27;application de bureau installée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000356_seg11.jpg" alt="Page web officielle de téléchargement de Claude affichant le bouton pour macOS et les options pour ordinateur et mobile." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000356_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Page web officielle de téléchargement de Claude affichant le bouton pour macOS et les options pour ordinateur et mobile.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000405_seg11.jpg" alt="Interface principale de l&#x27;application de bureau Claude affichant le message d&#x27;accueil et la barre de saisie pour démarrer une conversation." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000405_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:05</span>
+                        <span class="caption-text">Interface principale de l&#x27;application de bureau Claude affichant le message d&#x27;accueil et la barre de saisie pour démarrer une conversation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:10 - 00:04:46</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ils ont récemment redessiné ceci. Donc, afin d&#x27;accéder au mode co-travail, qui est l&#x27;endroit où nous devons être pour essayer ceci, nous devons venir ici et activer ce bouton de co-travail. Il a cette petite liste de tâches, cette sorte de liste de contrôle. Donc, cliquez dessus et nous allons voir cette interface. Nous devons nous assurer de sélectionner le dossier de travail de notre choix que nous voulons ajouter. Donc, si vous n&#x27;en avez pas déjà un, vous pouvez venir ici et créer un dossier différent. C&#x27;est fondamentalement là que vos projets et tous vos tableaux de bord HTML et vos fichiers vont être stockés sur votre ordinateur. Ensuite, si vous faites défiler vers le bas juste ici sur la barre latérale gauche, j&#x27;ai personnellement ces différents artefacts que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude / Bureau virtuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de co-travail, liste de tâches programmées (Scheduled, Dispatch, Pinned) et sélection de dossiers de projets (Claude Code Short System, Obsidian, Receipts, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de co-travail, clic sur le bouton Cowork et sélection d&#x27;un dossier de projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000419_seg12.jpg" alt="Interface principale montrant le menu latéral avec le curseur sur le bouton de co-travail (Cowork)." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000419_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:19</span>
+                        <span class="caption-text">Interface principale montrant le menu latéral avec le curseur sur le bouton de co-travail (Cowork).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000428_seg12.jpg" alt="Interface de co-travail active avec le menu déroulant affichant les dossiers de projets disponibles." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000428_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:28</span>
+                        <span class="caption-text">Interface de co-travail active avec le menu déroulant affichant les dossiers de projets disponibles.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000437_seg12.jpg" alt="Interface de co-travail affichant la liste des tâches actives et planifiées." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000437_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:37</span>
+                        <span class="caption-text">Interface de co-travail affichant la liste des tâches actives et planifiées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:46 - 00:05:20</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sont stockés directement ici même. Et c&#x27;est l&#x27;une des meilleures choses à ce sujet parce qu&#x27;une fois que nous générons un artéfact en direct, nous pouvons toujours y accéder dans la barre latérale. Nous n&#x27;avons donc pas besoin de chercher dans toutes nos conversations pour comprendre où se trouve ce tableau de bord HTML spécifique. Cela va honnêtement être un gain de temps considérable. J&#x27;ai donc ceux-ci juste ici. Par exemple, j&#x27;ai celui-ci d&#x27;ouvert. Ce sont toutes mes différentes compétences Claude que j&#x27;utilise, un total de 237 ici dans co-work et littéralement à chaque fois que je génère une nouvelle compétence, cela va se remplir automatiquement sans que j&#x27;aie besoin d&#x27;aller demander à Claude de mettre à jour et de balayer tous mes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle Cowork (application de gestion de tâches et d&#x27;IA collaborative)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Barre latérale de navigation avec des projets épinglés, zone de saisie centrale, et grille de modules/compétences (skills) sous forme de cartes.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de l&#x27;application Cowork et survol de la section &#x27;All Skills Explorer&#x27; avec le curseur de la souris.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000454_seg13.jpg" alt="Interface principale de l&#x27;application Cowork montrant le tableau de bord avec une barre latérale à gauche listant les tâches et projets, et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000454_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:54</span>
+                        <span class="caption-text">Interface principale de l&#x27;application Cowork montrant le tableau de bord avec une barre latérale à gauche listant les tâches et projets, et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000511_seg13.jpg" alt="Vue de l&#x27;explorateur de compétences (All Skills Explorer) dans l&#x27;application Cowork, affichant une grille de cartes interactives (invoice-generator, context-builder, sop-writer, etc.)." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000511_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:11</span>
+                        <span class="caption-text">Vue de l&#x27;explorateur de compétences (All Skills Explorer) dans l&#x27;application Cowork, affichant une grille de cartes interactives (invoice-generator, context-builder, sop-writer, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:20 - 00:05:56</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différentes compétences et met cela à jour quotidiennement. Ensuite, vous pouvez voir que j&#x27;ai mon tableau de bord bit.ly ici que je vous ai déjà montré plus tôt dans cette vidéo et ensuite j&#x27;ai mon tableau de bord de boîte de réception du matin également et si je clique dessus, cela prendra juste quelques secondes et il se remplira automatiquement avec toutes ces informations ici. Donc vous vous demandez probablement comment je crée ces artefacts en direct, alors voici comment vous le faites dès maintenant. Vous allez simplement venir sur nouvelle tâche. Et par exemple, je vais juste dire, hé, crée-moi un tableau de bord qui catégorise automatiquement tous mes différents emails avec ceux auxquels je dois répondre. Et ensuite, décompose également toutes les différentes réunions que j&#x27;ai dans Google Calendar. En plus de cela, pouvez-vous également ajouter différentes informations de suivi bit.ly pour que je puisse</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de type application de productivité / tableau de bord personnel (« Claude Cowork »).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de productivité, statistiques de la semaine, calendrier hebdomadaire et liste de tâches en cours (« What needs my attention », « Video: Claude Cowork Artifacts », etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des différents tableaux de bord et outils de gestion quotidienne par le présentateur.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:56 - 00:06:20</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">voir quels liens de vidéo obtiennent la majorité des clics. Je veux que ce soit mon système d&#x27;exploitation quotidien. Je ne veux donc plus jamais avoir à parcourir manuellement ces différentes applications. Je pourrais simplement regarder ce tableau de bord et faire en sorte qu&#x27;il devienne mon principal système d&#x27;exploitation quotidien. Je lui donne donc ce déversement de cerveau sur le moment. J&#x27;utilise simplement Whisperflow pour parler à mon ordinateur et déverser automatiquement tout cela dans Claude. Et à partir de là, ce qu&#x27;il va faire, c&#x27;est quelques choses différentes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Cowork sur macOS, interface de tableau de bord de productivité propulsée par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt utilisateur : &quot;Hey, create me a dashboard that: automatically categorizes all of my different emails... breaks down all the different meetings... adds different Bitly tracking information so I could see which video links are getting the majority of clicks...&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et envoi d&#x27;un prompt complexe à l&#x27;assistant IA pour automatiser la création d&#x27;un système d&#x27;exploitation quotidien unifié.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000602_seg15.jpg" alt="Interface principale de l&#x27;application Cowork montrant le tableau de bord avec une barre de recherche textuelle et des listes de tâches actives." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000602_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:02</span>
+                        <span class="caption-text">Interface principale de l&#x27;application Cowork montrant le tableau de bord avec une barre de recherche textuelle et des listes de tâches actives.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000614_seg15.jpg" alt="Interface de Cowork affichant un prompt textuel détaillé demandant la création d&#x27;un tableau de bord opérationnel unifié." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000614_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:14</span>
+                        <span class="caption-text">Interface de Cowork affichant un prompt textuel détaillé demandant la création d&#x27;un tableau de bord opérationnel unifié.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:20 - 00:06:53</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça va extraire de mon Gmail en utilisant des connecteurs, que je vais vous montrer comment connecter tout de suite. Ça va extraire de mon Google Agenda et ça va automatiquement extraire de Bitly afin de voir toutes ces informations différentes. Avant cela, je devais aller sur le site Web de Bitly et récupérer tous ces liens différents, faire défiler tous ces liens, voir quel est le niveau d&#x27;engagement. Je devais cliquer dessus individuellement pour voir ces différentes données. Donc maintenant, avec cette nouvelle fonction des artéfacts en direct, cela va automatiquement alimenter mon tableau de bord du système d&#x27;exploitation quotidien que je n&#x27;ai pas besoin d&#x27;actualiser sans cesse et de gaspiller des jetons. Très bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Bitly (app.bitly.com) et interface de l&#x27;outil de productivité IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liens Bitly suivis (ex: &quot;Claude Code 2.0 + Opus 4.7&quot;), métriques d&#x27;engagement (347 engagements), codes QR associés.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de Bitly pour consulter les performances et statistiques des différents liens de suivi.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000636_seg16.jpg" alt="Interface du tableau de bord Bitly affichant la liste des liens raccourcis avec leurs statistiques d&#x27;engagement et dates." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000636_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Interface du tableau de bord Bitly affichant la liste des liens raccourcis avec leurs statistiques d&#x27;engagement et dates.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000644_seg16.jpg" alt="Vue détaillée d&#x27;un lien spécifique sur Bitly montrant les métriques d&#x27;engagement (347 clics, +100% de variation hebdomadaire)." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000644_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:44</span>
+                        <span class="caption-text">Vue détaillée d&#x27;un lien spécifique sur Bitly montrant les métriques d&#x27;engagement (347 clics, +100% de variation hebdomadaire).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:53 - 00:07:28</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et comme par magie, deux minutes plus tard, nous avons maintenant notre centre de commandement quotidien qui est généré. Et je tiens à mentionner que c&#x27;est dans le style que j&#x27;ai demandé à Claude d&#x27;utiliser toujours pour générer ces tableaux de bord. Vous pouvez voir que c&#x27;est dans le thème de style d&#x27;Anthropic. C&#x27;est parce que je l&#x27;ai configuré personnellement ainsi. J&#x27;aime tout simplement beaucoup ce design, mais vous pouvez en faire le design que vous voulez. Nous avons maintenant notre tri de boîte de réception qui montre tous nos e-mails importants juste ici. Vous pouvez voir ceux qui sont urgents par rapport à ceux qui peuvent attendre. C&#x27;est plutôt cool. Nous avons tout sur notre calendrier parce qu&#x27;il extrait les données de notre Google Agenda et il montre même la performance de nos liens via Bitly. Ainsi, je peux voir quelles vidéos sont</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude Cowork / Claude Artifacts avec un affichage en écran partagé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord &#x27;Daily Operating System&#x27; affichant des métriques d&#x27;e-mails, de calendrier et de liens (Bitly), ainsi qu&#x27;une interface de chat interactive.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation du centre de commandement quotidien généré automatiquement par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000701_seg17.jpg" alt="Interface divisée en deux montrant le chat de Claude à gauche et le tableau de bord &#x27;Daily Operating System&#x27; généré à droite avec des métriques." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000701_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Interface divisée en deux montrant le chat de Claude à gauche et le tableau de bord &#x27;Daily Operating System&#x27; généré à droite avec des métriques.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000719_seg17.jpg" alt="Vue rapprochée de la section &#x27;Inbox triage&#x27; du tableau de bord avec une liste d&#x27;e-mails catégorisés dans l&#x27;interface de Claude." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000719_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Vue rapprochée de la section &#x27;Inbox triage&#x27; du tableau de bord avec une liste d&#x27;e-mails catégorisés dans l&#x27;interface de Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:28 - 00:07:56</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qui génère le plus de trafic vers ma communauté scolaire. Je pourrais donc recréer des vidéos similaires. C&#x27;est maintenant mon système d&#x27;exploitation quotidien que j&#x27;ai généré en environ deux minutes et qui se met à jour automatiquement sans que j&#x27;aie besoin de l&#x27;actualiser. Tout cela est formidable, pouvoir générer des artefacts en direct, mais il n&#x27;y a honnêtement aucun intérêt à pouvoir faire cela à moins de puiser dans nos véritables informations provenant de toutes nos applications. Voici donc exactement comment nous configurons cela en quelques étapes simples. Nous allons donc nous rendre sur la barre latérale de gauche et cliquer sur personnaliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Cowork / application de tableau de bord personnel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord opérationnel personnalisé affichant des métriques d&#x27;e-mails, de calendrier et de performances de liens Bitly, ainsi qu&#x27;une barre latérale listant des scripts de suivi automatisés.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du système d&#x27;exploitation quotidien automatisé généré par l&#x27;IA et de son interface de pilotage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000735_seg18.jpg" alt="Interface de Claude Cowork affichant le tableau de bord quotidien « Your daily command center » avec des métriques de clics et un volet de discussion contextuel sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000735_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Interface de Claude Cowork affichant le tableau de bord quotidien « Your daily command center » avec des métriques de clics et un volet de discussion contextuel sur la gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000742_seg18.jpg" alt="Interface de gestion de tâches et de compétences « Cowork » avec un champ de saisie de commandes et la liste des tâches actives (Morning briefing, YouTube competitor scan, etc.)." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000742_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:42</span>
+                        <span class="caption-text">Interface de gestion de tâches et de compétences « Cowork » avec un champ de saisie de commandes et la liste des tâches actives (Morning briefing, YouTube competitor scan, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:56 - 00:08:24</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si nous ne voyons pas cette barre latérale, assurez-vous d&#x27;ouvrir cette petite icône juste ici, et ensuite nous verrons « personnaliser » juste sous « dispatch ». Et puis à partir d&#x27;ici, nous cliquons sur « connecteurs », qui se trouve en dessous des compétences. Et ici, nous pouvons ajouter nos différentes applications. Vous pouvez voir que j&#x27;en ai configuré quelques-unes différentes ici. Nous viendrions simplement ici, en cliquant sur « parcourir les connecteurs », et nous pourrions aller de l&#x27;avant et ajouter tous ces différents éléments. Laissez-moi simplement ajouter Google Drive, par exemple. Tout ce que j&#x27;ai à faire est de cliquer sur « continuer » pour accorder l&#x27;accès ici. Et puis juste comme ça, vous pouvez maintenant voir que Google Drive est connecté.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de configuration/personnalisation de l&#x27;outil d&#x27;IA et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des applications connectables et options de configuration des permissions d&#x27;outils.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans les menus de personnalisation et sélection des connecteurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000803_seg19.jpg" alt="Vue principale de l&#x27;interface de personnalisation montrant la section des connecteurs et des compétences." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000803_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Vue principale de l&#x27;interface de personnalisation montrant la section des connecteurs et des compétences.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000810_seg19.jpg" alt="Liste détaillée des connecteurs disponibles (Bitly, Canva, GitHub, Gmail, Notion, etc.) avec leurs permissions." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000810_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Liste détaillée des connecteurs disponibles (Bitly, Canva, GitHub, Gmail, Notion, etc.) avec leurs permissions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:24 - 00:08:42</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donc je pourrais commencer à extraire des informations de là. Et ensuite, je pourrais même faire en sorte que Cowork importe des choses pour moi sur Google Drive en pilote automatique. Maintenant, disons que vous parcourez toute cette liste sur Claude et qu&#x27;il y a ici une application à laquelle vous voulez vous connecter qui n&#x27;est pas incluse ici et qui ne se connecte pas de manière native. Si vous voulez faire cela, vous pourriez utiliser quelque chose appelé un serveur MCP. Laissez-moi donc vous montrer comment configurer cela maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion de connecteurs et d&#x27;intégrations (style tableau de bord de configuration d&#x27;IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des connecteurs web et bureau (Google Drive, Notion, Slack, Zoom, Canva, Microsoft 365, etc.) avec leurs permissions de lecture et d&#x27;écriture.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des différents connecteurs et outils d&#x27;intégration disponibles pour automatiser les tâches avec l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000828_seg20.jpg" alt="Interface des connecteurs avec Google Drive sélectionné, affichant les autorisations d&#x27;outils et de fichiers." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000828_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Interface des connecteurs avec Google Drive sélectionné, affichant les autorisations d&#x27;outils et de fichiers.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000833_seg20.jpg" alt="Fenêtre modale du répertoire affichant une liste d&#x27;intégrations logicielles disponibles comme Zoom, Canva, Notion et Slack." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000833_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:33</span>
+                        <span class="caption-text">Fenêtre modale du répertoire affichant une liste d&#x27;intégrations logicielles disponibles comme Zoom, Canva, Notion et Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:42 - 00:09:18</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Personnellement, j&#x27;utilise un outil appelé Zapier MCP. Il vous permet de vous connecter à plus de 9 000 applications différentes. Et un point essentiel que je tiens à mentionner ici, c&#x27;est que vous n&#x27;êtes pas obligé de l&#x27;utiliser. Utilisez-le simplement s&#x27;il y a une application spécifique que vous voulez utiliser et que vous ne pouvez pas connecter directement à l&#x27;intérieur de Claude. Une fois que nous sommes dans Zapier MCP, nous allons simplement cliquer sur ajouter un nouveau serveur MCP. Et les gars, ça prend environ 30 secondes. Laissez-moi donc vous expliquer cela simplement. Vous allez venir sur Cowork comme notre client. Et juste ici, j&#x27;ai déjà quelques applications différentes configurées. Donc si vous voulez connecter différentes applications, vous cliquez simplement sur ajouter des outils, vous recherchez l&#x27;un des outils que vous voulez ajouter, vous les configurez ici. Et ensuite, une fois que vous voulez connecter cela à votre Claude, vous cliquez simplement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur Web affichant l&#x27;application Zapier MCP et l&#x27;interface de configuration des serveurs MCP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des clients MCP compatibles (Claude, ChatGPT, Cursor, Gemini CLI, etc.) et intégrations d&#x27;applications tierces (Stripe, HubSpot, Google Drive).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la page d&#x27;accueil de Zapier MCP, sélection d&#x27;un client dans la modale de configuration et affichage des outils connectés au serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000851_seg21.jpg" alt="Page d&#x27;accueil du site Web de Zapier MCP présentant le slogan « Your AI can talk. Zapier MCP makes it act. » avec un encart vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000851_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Web de Zapier MCP présentant le slogan « Your AI can talk. Zapier MCP makes it act. » avec un encart vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000900_seg21.jpg" alt="Fenêtre modale de sélection d&#x27;un client MCP sur l&#x27;interface de Zapier MCP montrant plusieurs clients populaires comme Claude, Claude Code, ChatGPT et Cursor." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000900_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:00</span>
+                        <span class="caption-text">Fenêtre modale de sélection d&#x27;un client MCP sur l&#x27;interface de Zapier MCP montrant plusieurs clients populaires comme Claude, Claude Code, ChatGPT et Cursor.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000909_seg21.jpg" alt="Tableau de bord du serveur Claude MCP sur Zapier affichant la liste des outils connectés tels que Stripe, HubSpot, Google Drive, Skool et Google Docs." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000909_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:09</span>
+                        <span class="caption-text">Tableau de bord du serveur Claude MCP sur Zapier affichant la liste des outils connectés tels que Stripe, HubSpot, Google Drive, Skool et Google Docs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:18 - 00:09:37</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On clique sur connecter, puis sur ajouter à Claude. Ça va vous ramener directement ici sur Claude. Assurez-vous simplement de connecter Zapier. Et une fois que c&#x27;est connecté, vous devriez voir Zapier juste ici. Et nous pourrons commencer à utiliser n&#x27;importe lequel de ces outils que nous avons configurés à l&#x27;intérieur de ce serveur. Ensuite, pour voir tous les artefacts en direct que vous avez créés sur la barre latérale de gauche, vous devriez les voir juste ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude / Cowork et panneau de configuration des connecteurs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Intégrations d&#x27;applications (Zapier, Google Docs, Google Drive, HubSpot) et paramètres de permissions de l&#x27;assistant IA.
+[Candidat sélectionné] Navigation dans l&#x27;interface de configuration des connecteurs tiers et retour à l&#x27;espace de travail principal.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000923_seg22.jpg" alt="Vue d&#x27;une fenêtre de navigateur affichant l&#x27;annuaire des connecteurs de Claude avec l&#x27;intégration Zapier sélectionnée." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000923_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:23</span>
+                        <span class="caption-text">Vue d&#x27;une fenêtre de navigateur affichant l&#x27;annuaire des connecteurs de Claude avec l&#x27;intégration Zapier sélectionnée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000928_seg22.jpg" alt="Interface de configuration montrant les permissions des outils Zapier connectés, avec une liste d&#x27;applications associées." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000928_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:28</span>
+                        <span class="caption-text">Interface de configuration montrant les permissions des outils Zapier connectés, avec une liste d&#x27;applications associées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000932_seg22.jpg" alt="Interface principale de Cowork (Claude) affichant le champ de saisie de texte et la liste des tâches actives récentes." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000932_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:32</span>
+                        <span class="caption-text">Interface principale de Cowork (Claude) affichant le champ de saisie de texte et la liste des tâches actives récentes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:37 - 00:09:56</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir évidemment mon système d&#x27;exploitation quotidien que je vous ai montré. Et puis aussi, il y a un bouton ici en haut où vous pouvez cliquer sur &quot;artefacts en direct&quot;. Et cela montre tous les différents artefacts que vous avez créés, ainsi que vous pouvez cliquer sur &quot;nouvel artefact&quot; et en créer un à partir d&#x27;ici. Et cela ajoute même ces différents invites ici pour vous donner des idées d&#x27;artefacts en direct spécifiques que vous pouvez créer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Cowork (système d&#x27;exploitation quotidien).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord, listes d&#x27;artefacts en direct, métriques de productivité et de marketing (e-mails, réunions, clics).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de Claude Cowork pour présenter le centre de commande et les artefacts dynamiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000942_seg23.jpg" alt="Vue du tableau de bord &quot;Daily Operating System&quot; dans Claude Cowork, montrant les e-mails urgents, réunions et clics Bitly." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000942_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:42</span>
+                        <span class="caption-text">Vue du tableau de bord &quot;Daily Operating System&quot; dans Claude Cowork, montrant les e-mails urgents, réunions et clics Bitly.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000946_seg23.jpg" alt="Vue de la section &quot;Live artifacts&quot; montrant les différents artefacts créés (Daily Operating System, QuickBooks, Bitly Dashboard, etc.) et le bouton &quot;New artifact&quot;." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_000946_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:46</span>
+                        <span class="caption-text">Vue de la section &quot;Live artifacts&quot; montrant les différents artefacts créés (Daily Operating System, QuickBooks, Bitly Dashboard, etc.) et le bouton &quot;New artifact&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:56 - 00:10:21</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc par exemple, celui-ci juste ici indique ce qui nécessite mon attention. Vous cliquez dessus, cela va alors générer cet artefact dynamique et ils résident tous fondamentalement sur la barre latérale de gauche à laquelle vous pouvez accéder à tout moment. Si vous voulez approfondir encore plus Claude et Claude Cowork et spécifiquement les artefacts dynamiques, vous pouvez rejoindre ma communauté School. Il y a un lien dans la description pour le faire, je vais publier un guide complet sur exactement comment utiliser et exploiter les artefacts, ainsi qu&#x27;à partager différents cas d&#x27;usage que je trouve pour cela dans ma communauté.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type interface utilisateur IA (Claude Cowork) et plateforme communautaire Skool.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;artefacts récents dans la barre latérale (&quot;What needs my attention&quot;, &quot;Build unified daily operating dashboard&quot;, etc.) et invite textuelle principale en cours de traitement.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration de l&#x27;interface des artefacts dynamiques et de la barre latérale gauche.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_001002_seg24.jpg" alt="Interface d&#x27;une application avec une barre latérale à gauche affichant l&#x27;historique des artefacts et un panneau central montrant une requête active de type tableau de bord." loading="lazy" onclick="openLightbox('../screenshots/xYr_hc9Q2yc/xYr_hc9Q2yc_001002_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:02</span>
+                        <span class="caption-text">Interface d&#x27;une application avec une barre latérale à gauche affichant l&#x27;historique des artefacts et un panneau central montrant une requête active de type tableau de bord.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:22 - 00:10:31</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela étant dit, si vous voulez plus de contenu gratuit comme celui-ci, abonnez-vous à cette chaîne. Je couvre tous les sujets liés à l&#x27;IA pour les non-techniciens. Et cela étant dit, les gars, merci beaucoup d&#x27;être restés jusqu&#x27;à la fin et je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Skool et la chaîne YouTube de Brock Mesarich.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de communauté en ligne avec des publications de discussions (&quot;Claude Cowork Live Artifacts Just Dropped&quot;) et liste de vidéos YouTube sur l&#x27;IA (Claude Cowork, automatisation).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la communauté Skool et de la chaîne YouTube pour encourager les spectateurs à s&#x27;abonner.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
