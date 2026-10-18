@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `59 / 273` (`21.6%`)
+- **Vidéos traitées** : `60 / 273` (`22.0%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -76,6 +76,7 @@
 | 2026-05-28 | [xoog7Kk6Jy0](https://www.youtube.com/watch?v=xoog7Kk6Jy0) | **Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)** | [2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-28_YT-[xoog7Kk6Jy0]_Anthropic Just Dropped Claude Opus 4.8 (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2026-05-27 | [9pS15oeoi1k](https://www.youtube.com/watch?v=9pS15oeoi1k) | **The 3 Claude Cowork Features You Can’t Ignore (master them)** | [2026-05-27_YT-[9pS15oeoi1k]_The 3 Claude Cowork Features You Can’t Ignore (master them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-27_YT-[9pS15oeoi1k]_The 3 Claude Cowork Features You Can’t Ignore (master them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-27_YT-[9pS15oeoi1k]_The 3 Claude Cowork Features You Can’t Ignore (master them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `2` |
 | 2026-05-21 | [zzo33HUOfxI](https://www.youtube.com/watch?v=zzo33HUOfxI) | **Anthropic vient de lancer Claude pour les petites entreprises (31 compétences)** | [2026-05-21_YT-[zzo33HUOfxI]_Anthropic vient de lancer Claude pour les petites entreprises (31 compétences)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-21_YT-[zzo33HUOfxI]_Anthropic vient de lancer Claude pour les petites entreprises (31 compétences)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-21_YT-[zzo33HUOfxI]_Anthropic vient de lancer Claude pour les petites entreprises (31 compétences)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-05-19 | [DM9XhQ7ycFE](https://www.youtube.com/watch?v=DM9XhQ7ycFE) | **My Claude Cowork OS Just Changed How I Work Forever...** | [2026-05-19_YT-[DM9XhQ7ycFE]_My Claude Cowork OS Just Changed How I Work Forever..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-05-19_YT-[DM9XhQ7ycFE]_My Claude Cowork OS Just Changed How I Work Forever..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-05-19_YT-[DM9XhQ7ycFE]_My Claude Cowork OS Just Changed How I Work Forever..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
