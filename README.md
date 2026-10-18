@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `67 / 273` (`24.5%`)
+- **Vidéos traitées** : `68 / 273` (`24.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -84,6 +84,7 @@
 | 2026-04-23 | [CwvqbHREnYQ](https://www.youtube.com/watch?v=CwvqbHREnYQ) | **5 cas d'usage fous de Claude Cowork Live Artifacts (à copier sans modération)** | [2026-04-23_YT-[CwvqbHREnYQ]_5 cas d'usage fous de Claude Cowork Live Artifacts (à copier sans modération)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-23_YT-[CwvqbHREnYQ]_5 cas d'usage fous de Claude Cowork Live Artifacts (à copier sans modération)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-23_YT-[CwvqbHREnYQ]_5 cas d'usage fous de Claude Cowork Live Artifacts (à copier sans modération)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `58` |
 | 2026-04-22 | [xYr_hc9Q2yc](https://www.youtube.com/watch?v=xYr_hc9Q2yc) | **Claude Cowork Live Artifacts vient de sortir (et ça change tout)** | [2026-04-22_YT-[xYr_hc9Q2yc]_Claude Cowork Live Artifacts vient de sortir (et ça change tout)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-22_YT-[xYr_hc9Q2yc]_Claude Cowork Live Artifacts vient de sortir (et ça change tout)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-22_YT-[xYr_hc9Q2yc]_Claude Cowork Live Artifacts vient de sortir (et ça change tout)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `47` |
 | 2026-04-18 | [e7ngdzwzRZ0](https://www.youtube.com/watch?v=e7ngdzwzRZ0) | **Maîtrisez 95 % de Claude Design en 17 minutes** | [2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-18_YT-[e7ngdzwzRZ0]_Maîtrisez 95 % de Claude Design en 17 minutes_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `90` |
+| 2026-04-17 | [ow8dl9gfjCI](https://www.youtube.com/watch?v=ow8dl9gfjCI) | **Anthropic vient de révolutionner le design pour toujours... (Claude Design)** | [2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-04-17_YT-[ow8dl9gfjCI]_Anthropic vient de révolutionner le design pour toujours... (Claude Design)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `55` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
