@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `80 / 273` (`29.3%`)
+- **Vidéos traitées** : `81 / 273` (`29.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -97,6 +97,7 @@
 | 2026-03-21 | [4CiCwvAA5FI](https://www.youtube.com/watch?v=4CiCwvAA5FI) | **Claude Cowork Projects Just Dropped... (Instant Upgrade)** | [2026-03-21_YT-[4CiCwvAA5FI]_Claude Cowork Projects Just Dropped... (Instant Upgrade)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-21_YT-[4CiCwvAA5FI]_Claude Cowork Projects Just Dropped... (Instant Upgrade)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-21_YT-[4CiCwvAA5FI]_Claude Cowork Projects Just Dropped... (Instant Upgrade)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-20 | [mnsDx7HDwls](https://www.youtube.com/watch?v=mnsDx7HDwls) | **5 Insane Claude Cowork Dispatch Use Cases (Steal Them)** | [2026-03-20_YT-[mnsDx7HDwls]_5 Insane Claude Cowork Dispatch Use Cases (Steal Them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-20_YT-[mnsDx7HDwls]_5 Insane Claude Cowork Dispatch Use Cases (Steal Them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-20_YT-[mnsDx7HDwls]_5 Insane Claude Cowork Dispatch Use Cases (Steal Them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-18 | [blBrZw237Yw](https://www.youtube.com/watch?v=blBrZw237Yw) | **Claude Cowork fonctionne désormais de PARTOUT (Le tueur d'OpenClaw ?)** | [2026-03-18_YT-[blBrZw237Yw]_Claude Cowork fonctionne désormais de PARTOUT (Le tueur d'OpenClaw )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-18_YT-[blBrZw237Yw]_Claude Cowork fonctionne désormais de PARTOUT (Le tueur d'OpenClaw )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-18_YT-[blBrZw237Yw]_Claude Cowork fonctionne désormais de PARTOUT (Le tueur d'OpenClaw )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `5` |
+| 2026-03-16 | [9BEWaO_eEFE](https://www.youtube.com/watch?v=9BEWaO_eEFE) | **Claude Cowork ULTIMATE COURSE (Beginner to Expert)** | [2026-03-16_YT-[9BEWaO_eEFE]_Claude Cowork ULTIMATE COURSE (Beginner to Expert)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-16_YT-[9BEWaO_eEFE]_Claude Cowork ULTIMATE COURSE (Beginner to Expert)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-16_YT-[9BEWaO_eEFE]_Claude Cowork ULTIMATE COURSE (Beginner to Expert)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
