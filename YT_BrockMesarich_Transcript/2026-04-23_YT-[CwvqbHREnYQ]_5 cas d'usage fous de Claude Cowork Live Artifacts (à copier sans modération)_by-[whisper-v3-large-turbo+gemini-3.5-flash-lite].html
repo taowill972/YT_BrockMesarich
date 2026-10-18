@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 5 cas d&#x27;usage fous de Claude Cowork Live Artifacts (à copier sans modération) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 5 cas d&#x27;usage fous de Claude Cowork Live Artifacts (à copier sans modération)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-04-23</span>
+                <span class="badge">⏱️ 00:16:20</span>
+                <span class="badge">🆔 <code>CwvqbHREnYQ</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=CwvqbHREnYQ" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Anthropic redéfinit l'interaction homme-machine avec le lancement de Claude Cowork Live Artifacts, une avancée majeure qui fait basculer l'écosystème technologique dans l'ère des logiciels sur mesure générés à la demande. Dans cette vidéo, Brock Mesarich décortique ce nouveau paradigme où les utilisateurs n'ont plus besoin de jongler entre des dizaines d'applications tierces (Gmail, Google Calendar, Stripe, Bitly). À la place, Claude agit comme un véritable système d'exploitation centralisé capable de concevoir des tableaux de bord dynamiques et vivants, actualisés en temps réel grâce à des connecteurs natifs. <br><br>L'analogie centrale repose sur le concept d'artefacts dynamiques : des interfaces graphiques interactives stockées dans la barre latérale gauche de Claude, persistantes et auto-alimentées. La démonstration s'articule autour de deux cas d'usage puissants et immédiatement reproductibles. D'une part, le « centre de commande matinal » synthétise en un clin d'œil les e-mails non lus classés par urgence (partenariats, newsletters, urgences), le planning de la semaine en cours et les performances de liens trackés via Bitly. D'autre part, le tableau de bord des revenus Stripe combine l'extraction de données financières en direct (solde disponible, revenus récents, valeur vie client, concentration des contrats de marque) et une couche de « vibe coding » personnalisé permettant de suivre manuellement les factures impayées et les créances.<br><br>Cette approche révolutionne l'efficacité opérationnelle des professionnels, des entrepreneurs et des traders en éliminant la friction de la navigation multi-plateforme. En combinant la puissance de calcul d'Anthropic, le prompt engineering avancé et l'intégration d'API en temps réel, Claude Cowork permet de prototyper et déployer des applications métiers complexes en quelques minutes, tout en conservant un historique de version granulaire pour itérer sans risque sur le design et les fonctionnalités.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude / Claude Cowork** : Modèle d'intelligence artificielle et environnement de travail d'Anthropic intégrant les Live Artifacts et des connecteurs en temps réel pour générer des logiciels personnalisés à la demande.<br>* **ChatGPT** : Modèle conversationnel d'OpenAI, mentionné dans le paysage concurrentiel de l'IA générative.<br>* **Gemini** : Assistant IA de Google, évoqué parmi les solutions alternatives du marché.<br>* **Grok** : Modèle d'intelligence artificielle développé par xAI, cité dans l'écosystème global des LLM.<br>* **n8n** : Plateforme d'automatisation de flux de travail (workflow automation) open-source et auto-hégeable pour connecter des applications entre elles.<br>* **Make** : Outil d'intégration et d'automatisation No-Code (anciennement Integromat) permettant de lier des services cloud.<br>* **Zapier** : Solution pionnière d'automatisation et de connectivité inter-applications.<br>* **Stripe** : Passerelle de paiement en ligne utilisée pour l'extraction de données financières, le suivi des abonnés et la gestion des flux transactionnels.<br>* **Gmail** : Service de messagerie de Google connecté pour l'analyse, le résumé et la catégorisation intelligente des e-mails entrants.<br>* **Google Calendar** : Outil de gestion d'agenda synchronisé pour afficher en temps réel les événements et la charge de travail à venir.<br>* **Bitly** : Service de gestion et de raccourcissement de liens, utilisé ici pour tracker les taux de clics et l'engagement sur les vidéos YouTube.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Avénement des logiciels à la demande** : Rupture avec le modèle traditionnel des applications cloisonnées (SaaS multiples) au profit d'une interface unifiée et auto-construite par l'IA selon les besoins précis de l'utilisateur.<br>* **Architecture des Live Artifacts** : Tableaux de bord dynamiques et persistants, accessibles instantanément via la barre latérale gauche de Claude, qui s'actualisent en continu sans nécessiter de rafraîchissement manuel.<br>* **Centre de commande matinal automatisé** : Regroupement synthétique (TLDR) des e-mails manqués et du calendrier Google, permettant un gain de temps cognitif considérable dès le début de la journée de travail.<br>* **Catégorisation intelligente des flux de communication** : Tri automatisé de la boîte de réception par l'IA pour isoler immédiatement les opportunités de partenariats, les parrainages et les conversations prioritaires.<br>* **Monitoring analytique cross-canal** : Intégration transparente de métriques externes (comme les clics Bitly sur les ressources YouTube) directement au sein du tableau de bord quotidien pour un suivi sans friction.<br>* **Extraction de données financières en temps réel** : Connexion native à Stripe pour visualiser instantanément le solde disponible, les revenus récents, la valeur vie client (LTV) et les abonnés actifs récurrents.<br>* **Enrichissement applicatif par « Vibe Coding »** : Capacité à coder intuitivement par-dessus les données brutes extraites d'une API (comme l'ajout d'un module de suivi manuel pour les factures impayées et les créances clients sur Stripe).<br>* **Sécurité et utilisation de comptes de test** : Méthodologie rigoureuse consistant à utiliser des environnements sandbox ou de test (comme sur Stripe) pour concevoir et démontrer des tableaux de bord sans exposer de données financières sensibles ou réelles.<br>* **Gestion de versions et itération visuelle** : Utilisation de l'historique des versions des artefacts pour revenir à une itération antérieure en cas de modification non souhaitée lors de la phase de design ou de codage.<br>* **Personnalisation esthétique et identitaire** : Application de prompts comportementaux pour imposer une charte graphique cohérente (typographie, codes couleur inspirés d'Anthropic) à l'ensemble des applications générées.<br>* **Rapidité de prototypage extrême** : Conception, configuration et mise en production d'une application métier personnalisée connectée à des API en seulement 2 à 3 minutes grâce au prompt engineering conversationnel.<br>* **Communauté et montée en compétences continue** : Importance stratégique de s'entourer de professionnels et d'entrepreneurs au sein de groupes spécialisés (type communauté School) pour partager des dizaines de compétences et cas d'usage avancés mis à jour chaque semaine.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude / Claude Cowork</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Gemini</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">Stripe</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Avénement des logiciels à la demande** : Rupture avec le modèle traditionnel des applications cloisonnées (SaaS multiples) au profit d&#x27;une interface unifiée et auto-construite par l&#x27;IA selon les besoins précis de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Architecture des Live Artifacts** : Tableaux de bord dynamiques et persistants, accessibles instantanément via la barre latérale gauche de Claude, qui s&#x27;actualisent en continu sans nécessiter de rafraîchissement manuel.</span></li><li><span class="point-bullet">✦</span><span>Centre de commande matinal automatisé** : Regroupement synthétique (TLDR) des e-mails manqués et du calendrier Google, permettant un gain de temps cognitif considérable dès le début de la journée de travail.</span></li><li><span class="point-bullet">✦</span><span>Catégorisation intelligente des flux de communication** : Tri automatisé de la boîte de réception par l&#x27;IA pour isoler immédiatement les opportunités de partenariats, les parrainages et les conversations prioritaires.</span></li><li><span class="point-bullet">✦</span><span>Monitoring analytique cross-canal** : Intégration transparente de métriques externes (comme les clics Bitly sur les ressources YouTube) directement au sein du tableau de bord quotidien pour un suivi sans friction.</span></li><li><span class="point-bullet">✦</span><span>Extraction de données financières en temps réel** : Connexion native à Stripe pour visualiser instantanément le solde disponible, les revenus récents, la valeur vie client (LTV) et les abonnés actifs récurrents.</span></li><li><span class="point-bullet">✦</span><span>Enrichissement applicatif par « Vibe Coding »** : Capacité à coder intuitivement par-dessus les données brutes extraites d&#x27;une API (comme l&#x27;ajout d&#x27;un module de suivi manuel pour les factures impayées et les créances clients sur Stripe).</span></li><li><span class="point-bullet">✦</span><span>Sécurité et utilisation de comptes de test** : Méthodologie rigoureuse consistant à utiliser des environnements sandbox ou de test (comme sur Stripe) pour concevoir et démontrer des tableaux de bord sans exposer de données financières sensibles ou réelles.</span></li><li><span class="point-bullet">✦</span><span>Gestion de versions et itération visuelle** : Utilisation de l&#x27;historique des versions des artefacts pour revenir à une itération antérieure en cas de modification non souhaitée lors de la phase de design ou de codage.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation esthétique et identitaire** : Application de prompts comportementaux pour imposer une charte graphique cohérente (typographie, codes couleur inspirés d&#x27;Anthropic) à l&#x27;ensemble des applications générées.</span></li><li><span class="point-bullet">✦</span><span>Rapidité de prototypage extrême** : Conception, configuration et mise en production d&#x27;une application métier personnalisée connectée à des API en seulement 2 à 3 minutes grâce au prompt engineering conversationnel.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic vient de lancer Claude Cowork Live Artifacts et je pense sincèrement qu&#x27;il n&#x27;y a pas assez de gens qui prêtent attention à cette nouvelle sortie. Dans cette vidéo, je vais décortiquer ce que c&#x27;est, pourquoi vous devriez y prêter attention, et vous montrer cinq cas d&#x27;usage clés que j&#x27;ai trouvés personnellement et que vous pouvez reproduire. Donc, sans plus attendre, plongeons directement dans le sujet. Avant de plonger dans ces cinq cas d&#x27;usage différents que j&#x27;utilise personnellement et que vous pouvez reproduire, parlons rapidement de ce que sont exactement les &quot;live artifacts&quot; afin que vous puissiez bien comprendre tout le reste dont je vais parler dans cette vidéo. Je veux que vous pensiez à cela comme à un tableau de bord qui s&#x27;actualise automatiquement à chaque fois que vous l&#x27;ouvrez. Et cela peut puiser dans toutes les différentes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de présentation HTML/slides et la webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur les Live Artifacts (&quot;Not a screenshot. Not a dead chat response. A real page that calls your tools for fresh data every open.&quot;) et schéma explicatif des connexions d&#x27;API.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit la notion de &quot;Live Artifacts&quot; à l&#x27;aide d&#x27;une page de présentation visuelle sur son écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000018_seg1.jpg" alt="Capture d&#x27;écran montrant une présentation web sur fond noir intitulée &quot;A page that refreshes every time you open it&quot;, illustrant le concept des Live Artifacts avec des connexions vers des outils comme Gmail, Calendar et Stripe, et le présentateur visible dans un encadré en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000018_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:18</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une présentation web sur fond noir intitulée &quot;A page that refreshes every time you open it&quot;, illustrant le concept des Live Artifacts avec des connexions vers des outils comme Gmail, Calendar et Stripe, et le présentateur visible dans un encadré en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:36 - 00:01:04</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">applications que vous utilisez à l&#x27;intérieur de Claude et plus spécifiquement de Claude Cowork. Il peut donc extraire des informations de votre Gmail, de votre Google Calendar, de vos données Stripe, et il va transformer cela en un artefact dynamique, qui est fondamentalement un tableau de bord vivant sur votre ordinateur. Pour vous montrer exactement ce que je veux dire, voici un tableau de bord des revenus Stripe que j&#x27;ai créé à l&#x27;intérieur de Claude en tant qu&#x27;artefact dynamique qui extrait automatiquement mes informations Stripe et les intègre dans ce tableau de bord sans que j&#x27;aie besoin de l&#x27;actualiser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Cowork et interface web de tableau de bord dynamique (&quot;Live Artifacts&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques financières et graphiques de revenus connectés à Stripe (revenus récents, paiements cumulés, répartition par marque).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation d&#x27;un tableau de bord dynamique interactif alimenté par des données en temps réel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000050_seg2.jpg" alt="Tableau de bord dynamique nommé &quot;Studio OS — Revenue&quot; affichant des graphiques de revenus Stripe avec un diagramme à barres et un diagramme circulaire." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000050_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:50</span>
+                        <span class="caption-text">Tableau de bord dynamique nommé &quot;Studio OS — Revenue&quot; affichant des graphiques de revenus Stripe avec un diagramme à barres et un diagramme circulaire.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000057_seg2.jpg" alt="Vue similaire du tableau de bord &quot;Studio OS — Revenue&quot; avec la souris survolant les graphiques de données financières." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000057_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Vue similaire du tableau de bord &quot;Studio OS — Revenue&quot; avec la souris survolant les graphiques de données financières.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:04 - 00:01:40</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et vous pourriez faire cela à travers n&#x27;importe laquelle des différentes applications qui se connectent à votre compte Claude. Il y a quelque chose de vraiment important que vous devez comprendre à propos de cette sortie. Et c&#x27;est que nous basculons dans ce nouveau monde de logiciels personnalisés construits à la demande. Donc, au lieu que nous ayons besoin d&#x27;utiliser toutes ces différentes plates-formes et de devoir ouvrir Stripe, ouvrir notre e-mail, ouvrir Google Calendar, bref, ouvrir n&#x27;importe laquelle de ces différentes applications que nous utilisons, nous pouvons construire un système d&#x27;exploitation directement à l&#x27;intérieur de Claude qui rassemble toutes ces informations dans une interface que nous pouvons facilement consulter à l&#x27;intérieur de Claude Cowork. Le premier est un centre de commande matinal. Laissez-moi donc vous montrer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une diapositive de présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le logiciel personnalisé à la demande : &quot;One prompt, a running page&quot;, &quot;Calls your real tools&quot;, &quot;Different next week? Rebuild next week&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du concept de transition vers le logiciel personnalisé généré par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000113_seg3.jpg" alt="Capture d&#x27;écran montrant une page de présentation avec le titre &quot;Personal software, built on demand.&quot; et le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000113_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:13</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page de présentation avec le titre &quot;Personal software, built on demand.&quot; et le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:40 - 00:01:58</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tu vois exactement ce que je veux dire. Très bien, voici donc l&#x27;artefact du centre de commande du matin. C&#x27;est à quoi cela ressemble. Celui-ci est l&#x27;un de mes préférés. Et je pense sincèrement que c&#x27;est un outil que tout le monde peut implémenter dès maintenant et en retirer des bénéfices immédiats. Laisse-moi t&#x27;expliquer cela rapidement. Tout d&#x27;abord, j&#x27;ai ce design spécifique que j&#x27;ai créé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Cowork / Navigateur affichant le tableau de bord du centre de commande du matin.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résumé des e-mails (18 nouveaux e-mails, 7 priorités, 1 réunion aujourd&#x27;hui, 5 réunions cette semaine) et aperçu du calendrier hebdomadaire.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de l&#x27;artefact du centre de commande du matin et de son interface utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000144_seg4.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du &quot;Morning Inbox Dashboard&quot; ou &quot;Morning command center&quot; propulsé par Claude Cowork, affichant divers widgets et résumés d&#x27;e-mails et de réunions." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000144_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du &quot;Morning Inbox Dashboard&quot; ou &quot;Morning command center&quot; propulsé par Claude Cowork, affichant divers widgets et résumés d&#x27;e-mails et de réunions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:59 - 00:02:26</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai une compétence Claude qui génère automatiquement tous mes tableaux de bord dans un style très similaire à celui-ci avec ce type de typographie, cette couleur, qui correspond en quelque sorte à l&#x27;ambiance d&#x27;Anthropic. Personnellement, j&#x27;aime juste ça. C&#x27;est pourquoi c&#x27;est dans ce style. Mais vous pouvez les personnaliser pour qu&#x27;ils aient l&#x27;apparence que vous voulez. Tout en haut de notre centre de commande matinal, nous obtenons un résumé TLDR, qui décompose fondamentalement chaque chose que nous avons ratée dans notre e-mail, ainsi que sur notre agenda Google.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle personnalisée / application web type tableau de bord Claude Cowork.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de productivité et de communication (18 nouveaux e-mails, 7 priorités, 1 réunion aujourd&#x27;hui, 5 réunions cette semaine) et aperçu du calendrier hebdomadaire.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation visuelle à travers le tableau de bord personnalisé généré par une compétence Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000206_seg5.jpg" alt="Interface d&#x27;un tableau de bord &#x27;Morning command center&#x27; dans un style épuré aux couleurs sombres, avec une barre latérale listant différents projets et compétences Claude." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000206_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:06</span>
+                        <span class="caption-text">Interface d&#x27;un tableau de bord &#x27;Morning command center&#x27; dans un style épuré aux couleurs sombres, avec une barre latérale listant différents projets et compétences Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000219_seg5.jpg" alt="Même tableau de bord &#x27;Morning command center&#x27; avec le curseur se déplaçant légèrement sur le texte de résumé matinal (&#x27;Here&#x27;s what matters this morning&#x27;)." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000219_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:19</span>
+                        <span class="caption-text">Même tableau de bord &#x27;Morning command center&#x27; avec le curseur se déplaçant légèrement sur le texte de résumé matinal (&#x27;Here&#x27;s what matters this morning&#x27;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:26 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il pioche dans ces deux endroits différents via ces connecteurs en temps réel. Donc par exemple, si je lis ceci, ça dit que vous avez 18 nouveaux e-mails avec quelques-uns qui nécessitent de l&#x27;attention et en gros, ça détaille quelques-uns de ceux auxquels je dois répondre aujourd&#x27;hui. Ensuite, évidemment, nous pouvons voir la semaine à venir, en gros tout ce qui est sur mon agenda Google en temps réel. Comme vous pouvez le voir, mon emploi du temps est plutôt dégagé. Et ensuite, ça détaille même les principales priorités ici et ça montre même quand ces e-mails ont été reçus. Donc celui-ci juste ici, c&#x27;était il y a 15 heures. Celui-ci, c&#x27;était il y a six heures. Et un élément clé à noter ici, c&#x27;est que si je devais recevoir un e-mail maintenant, cela</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type tableau de bord / interface de gestion de tâches personnalisée (Cowork / Morning Inbox Dashboard).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques sur les e-mails (18 nouveaux, 7 priorités), aperçus de messages, calendrier hebdomadaire et sections de priorités.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement à travers le tableau de bord pour présenter les e-mails et les tâches en attente.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000234_seg6.jpg" alt="Vue d&#x27;ensemble du tableau de bord &#x27;Morning Command Center&#x27; affichant les résumés d&#x27;e-mails et le calendrier." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000234_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:34</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord &#x27;Morning Command Center&#x27; affichant les résumés d&#x27;e-mails et le calendrier.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000242_seg6.jpg" alt="Défilement vers le bas du tableau de bord montrant la section calendrier de la semaine et les priorités principales." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000242_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Défilement vers le bas du tableau de bord montrant la section calendrier de la semaine et les priorités principales.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000250_seg6.jpg" alt="Poursuite du défilement affichant la liste détaillée des e-mails par ordre de priorité et le résumé de la boîte de réception." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000250_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:50</span>
+                        <span class="caption-text">Poursuite du défilement affichant la liste détaillée des e-mails par ordre de priorité et le résumé de la boîte de réception.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:20</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">se remplir automatiquement sur ce tableau de bord grâce à la nouvelle fonctionnalité d&#x27;artefacts en direct. C&#x27;est vraiment ce qui change la donne, honnêtement. Et ensuite, ça décompose même ma boîte de réception par catégorie spécifique. Ça identifie donc lesquels de ces éléments sont des partenariats de marque et des parrainages potentiels. Ça catégorise également les conversations en cours, les bulletins d&#x27;information et les mises à jour, et fondamentalement tout le reste auquel je dois répondre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Cowork (interface de tableau de bord de gestion de tâches et d&#x27;e-mails)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Morning Inbox Dashboard, sections &#x27;The week ahead&#x27; (calendrier), &#x27;Top priority&#x27; (e-mails urgents) et &#x27;Inbox summary&#x27; (ventilé par catégories : Brand &amp; sponsorship, Ongoing conversations, Newsletters &amp; updates).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement dans le tableau de bord pour présenter la catégorisation automatique de la boîte de réception.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000304_seg7.jpg" alt="Vue d&#x27;ensemble du tableau de bord &#x27;Morning Inbox Dashboard&#x27; dans l&#x27;application Cowork, affichant le calendrier de la semaine et les e-mails prioritaires." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000304_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord &#x27;Morning Inbox Dashboard&#x27; dans l&#x27;application Cowork, affichant le calendrier de la semaine et les e-mails prioritaires.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000309_seg7.jpg" alt="Gros plan sur la section &#x27;Inbox summary&#x27; du tableau de bord, détaillant les catégories comme &#x27;Brand &amp; sponsorship&#x27; et &#x27;Ongoing conversations&#x27;." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000309_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:09</span>
+                        <span class="caption-text">Gros plan sur la section &#x27;Inbox summary&#x27; du tableau de bord, détaillant les catégories comme &#x27;Brand &amp; sponsorship&#x27; et &#x27;Ongoing conversations&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000315_seg7.jpg" alt="Vue défilée du tableau de bord montrant la ventilation des e-mails avec les catégories &#x27;Ongoing conversations&#x27;, &#x27;Newsletters &amp; updates&#x27; et &#x27;Everything else&#x27;." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000315_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:15</span>
+                        <span class="caption-text">Vue défilée du tableau de bord montrant la ventilation des e-mails avec les catégories &#x27;Ongoing conversations&#x27;, &#x27;Newsletters &amp; updates&#x27; et &#x27;Everything else&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:20 - 00:03:40</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et l&#x27;une des parties les plus cool à ce sujet, chaque fois que je veux y accéder, tout ce que j&#x27;ai à faire est d&#x27;aller dans la barre latérale de gauche, et nous pouvons voir tous nos artefacts directement à l&#x27;intérieur d&#x27;ici. Donc tout ce que j&#x27;ai à faire est d&#x27;ouvrir le tableau de bord de la boîte de réception du matin, et il se chargera automatiquement, et cela prendra probablement environ 5 à 10 secondes, et ensuite toutes ces informations se rempliront.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Cowork (Morning Inbox Dashboard) avec barre latérale de gestion des artefacts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord &#x27;Morning command center&#x27;, résumés d&#x27;e-mails, aperçu des priorités et calendrier de la semaine à venir.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et sélection des différents artefacts et tableaux de bord depuis la barre latérale de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000325_seg8.jpg" alt="Interface Claude Cowork affichant le tableau de bord &#x27;Morning command center&#x27; avec le panneau latéral gauche listant les différents artefacts." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000325_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Interface Claude Cowork affichant le tableau de bord &#x27;Morning command center&#x27; avec le panneau latéral gauche listant les différents artefacts.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000335_seg8.jpg" alt="Navigation dans la barre latérale gauche du tableau de bord de Claude Cowork vers la sélection de l&#x27;artefact &#x27;Morning Inbox Dashboard&#x27;." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000335_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Navigation dans la barre latérale gauche du tableau de bord de Claude Cowork vers la sélection de l&#x27;artefact &#x27;Morning Inbox Dashboard&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:10</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous n&#x27;avons pas besoin d&#x27;aller chercher une conversation spécifique où nous avons généré ceci. Nous pouvons simplement le voir automatiquement dans la barre latérale de gauche chaque fois que nous voulons y accéder. Pour configurer celui-ci vous-même, c&#x27;est très facile. En gros, vous pouvez simplement venir sur Claude. Vous pouvez simplement lui donner l&#x27;invite et dire quelque chose du genre, je veux que vous génériez un tableau de bord de briefing matinal qui extrait tous les e-mails pertinents de ma boîte de réception, les catégorise en fonction de l&#x27;urgence, et extrait également des données de mon Google Agenda, et il générera un résultat très similaire à exactement ce que je vous ai montré.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude Cowork</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord personnalisé &quot;Morning command center&quot; avec des indicateurs chiffrés (18 e-mails, 7 priorités, réunions) et une barre latérale de navigation avec des artefacts épinglés.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface du tableau de bord interactif dans Claude Cowork.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000347_seg9.jpg" alt="Interface Claude Cowork affichant le tableau de bord &quot;Morning command center&quot; avec une barre latérale listant différents projets et artefacts épinglés." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000347_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:47</span>
+                        <span class="caption-text">Interface Claude Cowork affichant le tableau de bord &quot;Morning command center&quot; avec une barre latérale listant différents projets et artefacts épinglés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000355_seg9.jpg" alt="Interface Claude Cowork montrant la page principale de création ou de gestion de tâches avec une barre de recherche et les éléments actifs en bas." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000355_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:55</span>
+                        <span class="caption-text">Interface Claude Cowork montrant la page principale de création ou de gestion de tâches avec une barre de recherche et les éléments actifs en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:10 - 00:04:41</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, afin de connecter Gmail, vous allez simplement aller dans les connecteurs. Vous devez vous assurer que vous avez configuré Gmail et Google Agenda, ainsi que toutes les autres applications que vous souhaitez réellement y ajouter. Il vous suffit donc de cliquer sur Gmail, de veiller à le connecter, de faire de même pour Google Agenda, et il pourra alors extraire ces informations en temps réel. Un autre exemple de cas d&#x27;usage personnel que j&#x27;ai sur mon tableau de bord de centre de commande quotidien, c&#x27;est que je pourrais aussi extraire des informations en direct de Bitly, ce qui me permet fondamentalement de suivre combien de personnes cliquent sur des liens spécifiques dans mes vidéos YouTube.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de gestion de connecteurs et d&#x27;applications tierces.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des applications disponibles pour l&#x27;intégration (Gmail, Google Drive, Google Calendar, HubSpot, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et sélection des connecteurs pour configurer les intégrations d&#x27;applications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000418_seg10.jpg" alt="Fenêtre de répertoire des connecteurs affichant différentes applications comme Google Drive, Gmail, Google Calendar et Zoom." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000418_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Fenêtre de répertoire des connecteurs affichant différentes applications comme Google Drive, Gmail, Google Calendar et Zoom.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:41 - 00:05:04</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si je veux voir combien de personnes cliquent sur ce lien de ressource ici, au lieu d&#x27;avoir à être dans l&#x27;application Bitly. Pour vous montrer ce que je veux dire, ceci est à l&#x27;intérieur de Bitly. Auparavant, je devrais réellement venir ici et regarder chaque lien individuel, voir combien de personnes ont interagi avec. Je devrais cliquer dessus pour voir toutes ces données spécifiques. Eh bien, maintenant, j&#x27;ai simplement cela ajouté à mon artéfact en direct de système d&#x27;exploitation quotidien et cela se met à jour en temps réel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Bitly et interface d&#x27;un espace de travail logiciel personnalisé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes de liens raccourcis, titres de vidéos ou publications, liens Bitly, nombres d&#x27;engagements et graphiques de performance classés.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement dans le tableau de bord Bitly, puis basculement vers une vue de performance centralisée des liens.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000447_seg11.jpg" alt="Vue générale du tableau de bord de l&#x27;application Bitly montrant une liste de liens raccourcis et leurs métriques d&#x27;engagement." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000447_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:47</span>
+                        <span class="caption-text">Vue générale du tableau de bord de l&#x27;application Bitly montrant une liste de liens raccourcis et leurs métriques d&#x27;engagement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000452_seg11.jpg" alt="Défilement de la liste des liens raccourcis sur l&#x27;interface Bitly avec affichage des statistiques de clics pour chaque publication." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000452_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:52</span>
+                        <span class="caption-text">Défilement de la liste des liens raccourcis sur l&#x27;interface Bitly avec affichage des statistiques de clics pour chaque publication.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000458_seg11.jpg" alt="Transition montrant un tableau de bord personnalisé de performances de liens (Link performance) intégré au sein d&#x27;un espace de travail logiciel." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000458_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:58</span>
+                        <span class="caption-text">Transition montrant un tableau de bord personnalisé de performances de liens (Link performance) intégré au sein d&#x27;un espace de travail logiciel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:04 - 00:05:26</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donc je n&#x27;ai pas besoin de quitter cette page. Très rapidement, si vous appréciez cette vidéo et que vous souhaitez aller plus loin, il y a un lien pour rejoindre ma communauté School dans la description ci-dessous. J&#x27;aborde encore plus en profondeur Claude et spécifiquement Claude Cowork et je partage même les plus de 50 compétences dont je ne peux pas me passer et je mets cela à jour chaque semaine. Ainsi que des tonnes d&#x27;entrepreneurs et de professionnels qui utilisent Claude Cowork chaque jour dans leur entreprise et leur vie professionnelle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme communautaire Skool et interface utilisateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications textuelles de membres, classements (leaderboard) et onglets de discussion de la communauté.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la communauté Skool liée à la vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:26 - 00:06:01</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous voulez rejoindre cela, il y a un lien dans la description pour le faire. Cas d&#x27;usage numéro deux, nous avons le suivi des revenus. C&#x27;est fondamentalement une façon de récupérer toutes vos informations depuis Stripe, de voir tous les différents paiements, de voir toutes les données de tendances, ainsi qu&#x27;en plus de cela, j&#x27;ai codé au feeling à ma façon pour suivre les factures impayées que je dois encaisser. Tout d&#x27;abord, laissez-moi vous montrer exactement à quoi cela ressemble. Et ensuite, je vais vous montrer étape par étape comment vous pouvez configurer cela pour vous aussi. Très bien. Donc c&#x27;est à cela que ressemble notre tableau de bord des revenus Stripe. Et c&#x27;est plutôt cool. Nous pouvons voir plusieurs choses différentes ici. Nous pouvons voir notre solde disponible. Nous pouvons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de tableau de bord de suivi des revenus et des interfaces de présentation de type diaporama.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données financières connectées à Stripe, graphiques à barres horizontales pour les partenariats de marques, diagramme circulaire de concentration des revenus, et graphiques de cumul des 100 derniers paiements.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation du cas d&#x27;usage du suivi des revenus connecté à Stripe, illustrant les visualisations de données financières.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000535_seg13.jpg" alt="Diapositive de présentation montrant le titre &#x27;Revenue Tracker&#x27; et le cas d&#x27;usage numéro deux lié aux revenus Stripe, avec une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000535_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:35</span>
+                        <span class="caption-text">Diapositive de présentation montrant le titre &#x27;Revenue Tracker&#x27; et le cas d&#x27;usage numéro deux lié aux revenus Stripe, avec une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000552_seg13.jpg" alt="Capture d&#x27;écran détaillée d&#x27;un tableau de bord &#x27;Stripe Revenue Dashboard&#x27; affichant des graphiques de revenus, des répartitions par partenariats et des métriques financières, avec le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000552_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Capture d&#x27;écran détaillée d&#x27;un tableau de bord &#x27;Stripe Revenue Dashboard&#x27; affichant des graphiques de revenus, des répartitions par partenariats et des métriques financières, avec le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:34</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">voir nos revenus récents. Nous pouvons voir la valeur vie client capturée, les abonnés actifs spécifiques qui sont des clients récurrents. Nous pouvons voir le paiement moyen sur l&#x27;ensemble de notre écosystème Stripe. Et juste ici, vous pouvez voir tous les différents contrats de marque. Nous pouvons voir la concentration de nos revenus. Et une chose que je tiens à préciser, c&#x27;est que toutes ces informations ici sont en fait de faux données. Je ne voulais pas montrer mes revenus Stripe réels. J&#x27;utilise donc un compte de test Stripe afin de montrer toutes ces informations. Vous pouvez voir que c&#x27;est également catégorisé automatiquement en fonction de ce que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord d&#x27;application (Stripe Revenue Dashboard) sur macOS, avec une incrustation vidéo du présentateur en bas à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques financières affichées : $0,00 (disponible), $234 556,50 (revenu récent), $262 573,50 (valeur vie client capturée), 3 (abonnés actifs), $2 495,28 (paiement moyen). Graphiques en barres des revenus par contrat de marque, graphique circulaire de concentration des revenus, et graphique linéaire des revenus cumulés sur les 100 derniers paiements.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les différentes métriques et sources de revenus affichées sur le tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000609_seg14.jpg" alt="Capture d&#x27;écran montrant un tableau de bord des revenus Stripe affichant différentes métriques financières et graphiques." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000609_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau de bord des revenus Stripe affichant différentes métriques financières et graphiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:09</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">type de paiements dont il s&#x27;agit. Donc par exemple, tous ces différents liens de paiement qui contiennent le mot partenariats, cela les catégorise automatiquement comme des contrats de marque. Je n&#x27;have donc pas besoin d&#x27;aller trier l&#x27;ensemble de mes paiements afin de voir combien de contrats de marque j&#x27;ai réalisés via mes paiements Stripe. Ensuite, nous pouvons même voir le statut de toutes ces informations. Nous pouvons voir le montant qui a été payé. Nous pouvons voir l&#x27;identifiant du paiement, le client spécifique. Si nous avons un client lié à cela, nous pouvons également voir notre liste de clients ici. Et puis, si je clique sur ce bouton de suivi sur le côté droit, c&#x27;est là que je peux fondamentalement ajouter n&#x27;importe lequel des différents paiements dont j&#x27;ai besoin</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau de bord personnalisé (Studio OS / Stripe Revenue Dashboard) affiché dans une application de type interface de gestion.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Données financières de revenus, liste de contrats de marque catégorisés (&quot;Jordan March Partnerships&quot;, etc.), métriques globales (Available, Recent revenue, Lifetime captured, Active subs, Avg payment) et liste de clients avec le nombre de factures et montants payés.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des fonctionnalités de catégorisation automatique des paiements et des contrats de marque dans le tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000643_seg15.jpg" alt="Vue du tableau de bord Stripe montrant la liste des contrats de marque (Brand deals) avec les montants de revenus associés." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000643_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:43</span>
+                        <span class="caption-text">Vue du tableau de bord Stripe montrant la liste des contrats de marque (Brand deals) avec les montants de revenus associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000700_seg15.jpg" alt="Vue générale du tableau de bord Studio OS — Revenue avec les métriques financières globales et la liste des meilleurs clients (Top customers)." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000700_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Vue générale du tableau de bord Studio OS — Revenue avec les métriques financières globales et la liste des meilleurs clients (Top customers).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:09 - 00:07:46</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour les collecter afin que je puisse suivre cela. Disons donc qu&#x27;on me doit de l&#x27;argent pour un Airbnb à Los Angeles, quelque chose comme ça. Je peux indiquer un montant de paiement. Disons simplement 2 500 dollars. Disons que cela a été facturé. Je pourrais écrire des notes spécifiques, puis je pourrais cliquer sur « ajouter des paiements ». Et juste ici, vous pouvez voir que nous avons tous nos paiements en attente ainsi que le statut du paiement. Et ensuite, nous avons notre solde impayé ici. Ainsi, non seulement nous extrayons des données en direct et des informations en direct de notre compte Stripe via ce connecteur spécifique que nous avons dans Claude, mais nous sommes capables de coder intuitivement par-dessus ces données et cette application spécifiques. Donc cela pourrait</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web &quot;Stripe Revenue Dashboard&quot; affichée dans un navigateur avec une barre latérale de gestion des tâches.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques financières (revenus récents, paiements à vie capturés) et formulaire d&#x27;ajout de paiement en attente (Client, Montant en USD, Date d&#x27;échéance, Statut).</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et ajout d&#x27;un paiement en attente de 2 500 dollars pour &quot;LA Airbnb&quot; dans l&#x27;interface du tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000719_seg16.jpg" alt="Le présentateur ajoute un paiement en attente dans un tableau de bord Stripe de démonstration, en saisissant &quot;LA Airbnb&quot; et un montant de 2 500 dollars." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000719_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Le présentateur ajoute un paiement en attente dans un tableau de bord Stripe de démonstration, en saisissant &quot;LA Airbnb&quot; et un montant de 2 500 dollars.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000728_seg16.jpg" alt="Le tableau de bord Stripe mis à jour affiche &quot;LA Airbnb&quot; avec un montant de 2 500 dollars dans la section des paiements en attente (&quot;Outstanding&quot;)." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000728_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:28</span>
+                        <span class="caption-text">Le tableau de bord Stripe mis à jour affiche &quot;LA Airbnb&quot; avec un montant de 2 500 dollars dans la section des paiements en attente (&quot;Outstanding&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:46 - 00:08:21</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">résoudre un problème pour vous si vous êtes un utilisateur de Stripe, mais disons que vous voulez enrichir vos données Stripe et les transformer en une application personnalisée pour vous-même. C&#x27;est un moyen très simple de le faire désormais directement à l&#x27;intérieur de Claude. Et franchement les gars, ça m&#x27;a pris probablement deux à trois minutes à configurer. Une fois que j&#x27;avais connecté Stripe, tout ce que j&#x27;avais à faire était de venir voir Claude et de dire : Hé, je veux que tu crées un tableau de bord montrant l&#x27;ensemble de mes revenus Stripe, et je veux aussi pouvoir ajouter des paiements spécifiques que je dois percevoir. Un autre point clé ici, c&#x27;est disons que nous apportons des modifications à cet artefact. Je pourrais venir ici et consulter différents historiques de versions. Donc si nous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;une application personnalisée (Claude Artifacts / Cowork) simulant un tableau de bord de revenus Stripe.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques financières affichées : &quot;Recent Revenue&quot; ($234,556.50), &quot;Lifetime Capture&quot; ($262,573.50), &quot;Active Subs&quot; (3), &quot;A/R Payment&quot; ($2,495.28), ainsi que des formulaires d&#x27;ajout de paiement et des listes de factures en suspens.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation dans l&#x27;application personnalisée générée par Claude pour enrichir et suivre les données Stripe.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000755_seg17.jpg" alt="Capture d&#x27;écran montrant un tableau de bord personnalisé &quot;Studio OS - Revenue&quot; créé avec les artefacts Claude à partir de données Stripe, affichant divers indicateurs financiers." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000755_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau de bord personnalisé &quot;Studio OS - Revenue&quot; créé avec les artefacts Claude à partir de données Stripe, affichant divers indicateurs financiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:21 - 00:08:57</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">le vibe coding et en construisant cette interface, en construisant notre application personnalisée, nous pouvons toujours revenir à une version précédente si nous préférons cette version. Très bien, donc la première chose que nous devons faire est de configurer le connecteur spécifique que nous voulons ajouter. Donc pour ce cas d&#x27;utilisation, nous allons utiliser Stripe. Nous allons venir sur Cowork, s&#x27;assurer que la barre latérale est ouverte. À partir de là, nous allons cliquer sur Personnaliser. C&#x27;est ici que nous ajoutons nos différents connecteurs afin de récupérer et de publier des informations sur ces différentes applications que nous utilisons. Nous allons voir Compétences ainsi que Connecteurs. Cliquez sur Connecteurs. Et à partir de là, j&#x27;en ai configuré quelques-uns moi-même,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de productivité/interface de type Cowork avec assistant IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de personnalisation avec les sections &quot;Connect your apps&quot;, &quot;Create new skills&quot; et &quot;Browse plugins&quot;, et la liste des plugins et connecteurs sur le panneau latéral gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;application et sélection de l&#x27;onglet &quot;Connectors&quot; pour configurer les intégrations d&#x27;applications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000830_seg18.jpg" alt="Interface de l&#x27;application Cowork affichant une liste de tâches, un champ de saisie prompt et le panneau latéral de navigation." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000830_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:30</span>
+                        <span class="caption-text">Interface de l&#x27;application Cowork affichant une liste de tâches, un champ de saisie prompt et le panneau latéral de navigation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000848_seg18.jpg" alt="Page de personnalisation de Claude dans l&#x27;application avec les options Connectors, Skills et Browse plugins." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000848_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:48</span>
+                        <span class="caption-text">Page de personnalisation de Claude dans l&#x27;application avec les options Connectors, Skills et Browse plugins.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:58 - 00:09:32</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mais nous voulons juste cliquer sur Ajouter puis sur Parcourir les connecteurs. À partir d&#x27;ici, vous pouvez soit faire défiler vers le bas, soit pour faire simple, je vais juste cliquer sur cette barre de recherche, cliquer sur Stripe, cliquer sur ce bouton plus. Et à partir d&#x27;ici, nous devons autoriser notre compte Stripe. Alors allez-y et assurez-vous de configurer ceci. Je vais cliquer sur écriture pour toutes les autorisations. Je vais cliquer sur autoriser et cela devrait nous renvoyer directement vers Claude. Je vais donc cliquer sur ouvrir Claude et nous devrions maintenant voir cette notification de connexion à Stripe ici. Et ensuite, afin de s&#x27;assurer que cela est ajouté à notre Claude, si nous descendons, vous pouvez maintenant voir Stripe juste ici. Ensuite,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de configuration d&#x27;assistant IA et page web d&#x27;autorisation Stripe.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Répertoire des connecteurs (Stripe, Bitly, etc.) et demandes de permissions d&#x27;API.</p>
+                        <p><strong>Action / Démonstration :</strong> Recherche et sélection du connecteur Stripe, puis autorisation de l&#x27;accès au compte.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000906_seg19.jpg" alt="Fenêtre de recherche de connecteurs montrant &quot;Stripe&quot; dans le répertoire avec un bouton d&#x27;ajout." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000906_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:06</span>
+                        <span class="caption-text">Fenêtre de recherche de connecteurs montrant &quot;Stripe&quot; dans le répertoire avec un bouton d&#x27;ajout.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000915_seg19.jpg" alt="Page d&#x27;autorisation Stripe demandant l&#x27;accès pour Claude à un compte Stripe avec différents niveaux de permissions." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000915_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:15</span>
+                        <span class="caption-text">Page d&#x27;autorisation Stripe demandant l&#x27;accès pour Claude à un compte Stripe avec différents niveaux de permissions.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000923_seg19.jpg" alt="Interface de configuration des connecteurs montrant les permissions pour Bitly et la notification &quot;Connected to Stripe&quot;." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000923_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:23</span>
+                        <span class="caption-text">Interface de configuration des connecteurs montrant les permissions pour Bitly et la notification &quot;Connected to Stripe&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:32 - 00:10:06</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce que nous devons faire, c&#x27;est récupérer notre clé API Stripe. Laissez-moi donc vous montrer exactement comment faire cela maintenant. Nous allons donc revenir sur notre navigateur. Nous allons simplement chercher Stripe, et nous assurer que nous sommes connectés. À partir d&#x27;ici, nous allons simplement dans les paramètres, puis nous voulons cliquer sur développeurs. Ensuite, nous allons voir cette petite interface ici. Cliquez simplement sur gérer les clés API. Et ce que nous allons faire, c&#x27;est cliquer sur créer une clé restreinte. Et vous ne devez partager ceci avec personne. Laissez-moi donc cliquer ici. Je vais sélectionner alimenter une intégration que vous avez construite. Cliquez sur continuer. Je vais donner un nom à ceci. Je vais donc simplement appeler cela Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome / Perplexity AI)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Barre de recherche avec des suggestions automatiques incluant &quot;stripe&quot;, barres de favoris et onglets ouverts.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur utilise le navigateur pour chercher Stripe afin de récupérer sa clé API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000940_seg20.jpg" alt="Capture d&#x27;écran montrant un navigateur web avec la barre de recherche en cours d&#x27;utilisation pour rechercher Stripe, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_000940_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:40</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un navigateur web avec la barre de recherche en cours d&#x27;utilisation pour rechercher Stripe, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:06 - 00:10:40</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, nous devons sélectionner nos autorisations spécifiques. Je vais autoriser l&#x27;écriture pour toutes ces différentes autorisations ici. Ensuite, nous descendons simplement et nous sélectionnons « créer la clé ». Et puis, une fois que nous avons notre API key, nous allons simplement revenir sur Claude et la coller directement ici. Voici le prompt que j&#x27;ai personnellement utilisé. Si vous voulez l&#x27;utiliser, il y a un lien dans la description pour copier essentiellement les prompts exacts que j&#x27;ai utilisés pour la vidéo. Sinon, vous pouvez simplement faire une capture d&#x27;écran de ceci, le mettre dans Claude et recréer exactement le même prompt, et cela générera un résultat très similaire pour vous. Cependant, le style de design sera un peu différent parce que j&#x27;ai personnalisé le mien pour qu&#x27;il ait un aspect spécifique,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le tableau de bord Stripe et une page de présentation de prompts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre de vérification de sécurité Stripe et texte d&#x27;un prompt pour générer un artefact interactif de suivi des revenus.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur effectue une vérification de sécurité sur Stripe avant d&#x27;expliquer l&#x27;utilisation d&#x27;un prompt pour Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001014_seg21.jpg" alt="Capture d&#x27;écran du tableau de bord Stripe affichant une fenêtre modale de vérification de sécurité demandant l&#x27;envoi d&#x27;un lien de validation." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001014_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:14</span>
+                        <span class="caption-text">Capture d&#x27;écran du tableau de bord Stripe affichant une fenêtre modale de vérification de sécurité demandant l&#x27;envoi d&#x27;un lien de validation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001023_seg21.jpg" alt="Capture d&#x27;écran montrant une diapositive avec un exemple de prompt destiné à Claude pour créer un outil de suivi des revenus avec le connecteur Stripe." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001023_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:23</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une diapositive avec un exemple de prompt destiné à Claude pour créer un outil de suivi des revenus avec le connecteur Stripe.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:40 - 00:11:06</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mais assurez-vous simplement de le personnaliser comme vous aimiez qu&#x27;il apparaisse. Ensuite, pour le cas d&#x27;usage numéro trois, nous avons un tableau de bord de préparation de réunion. Je pense que c&#x27;est un artefact assez universel que beaucoup de personnes peuvent utiliser. Par exemple, disons que c&#x27;est quelques minutes avant une réunion à laquelle vous devez participer. Ce tableau de bord va remplir automatiquement qui y participe, les e-mails précédents que vous avez eus avec cette personne, trois sujets de discussion différents, et tout cela va être actualisé à chaque fois que vous l&#x27;ouvrez car cela se met à jour automatiquement en temps réel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de présentation de cas d&#x27;usage.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de présentation du tableau de bord de préparation de réunion (cas d&#x27;usage numéro trois) avec illustration d&#x27;un smartphone.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du troisième cas d&#x27;usage illustrant un tableau de bord de préparation de réunion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001046_seg22.jpg" alt="Capture d&#x27;écran montrant une diapositive de présentation intitulée &quot;Meeting Prep Dashboard&quot; avec le numéro 03 et le texte &quot;Two minutes before any meeting.&quot;" loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001046_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une diapositive de présentation intitulée &quot;Meeting Prep Dashboard&quot; avec le numéro 03 et le texte &quot;Two minutes before any meeting.&quot;</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:06 - 00:11:28</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, voici à quoi cela ressemble. Ça s&#x27;appelle la préparation de réunion, et cela montre la prochaine réunion que j&#x27;ai sur mon Google Agenda. Ça fait cela en extrayant les données de Google Agenda puisque celui-ci est connecté via les connecteurs dans Claude. Je peux voir toutes les personnes qui participent à la réunion, et cela me donne même trois sujets de discussion différents dont je peux parler lors de cette réunion pour me rafraîchir la mémoire sur les différentes choses qui se sont produites dans ce fil de discussion par e-mail.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude (Artifacts / Cowork).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Détails de la prochaine réunion (Podcast Recording avec Nathan Reese), liste des participants et sujets récents extraits via les connecteurs de Google Agenda.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration du tableau de bord de préparation de réunion généré par l&#x27;IA à partir des données de Google Agenda.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001111_seg23.jpg" alt="Interface de Claude affichant un tableau de bord de préparation de réunion (Meeting Prep) avec les détails de la prochaine réunion et les participants." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001111_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:11</span>
+                        <span class="caption-text">Interface de Claude affichant un tableau de bord de préparation de réunion (Meeting Prep) avec les détails de la prochaine réunion et les participants.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:28 - 00:11:52</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et encore une fois, je pense que celui-ci est super universel. Je pense que tout le monde peut l&#x27;utiliser et en tirer parti. Et le meilleur dans tout ça, c&#x27;est que lorsque nous le lançons, il sera toujours sur le côté gauche et nous le verrons toujours juste ici. Donc, chaque fois que nous avons besoin de voir ce qui est sur notre planning, nous pouvons facilement y accéder directement ici, à l&#x27;intérieur de Claude. Voici le prompt que vous pouvez utiliser. Encore une fois, celui-ci sera lié dans la description pour que vous puissiez réellement le copier ou simplement faire une capture d&#x27;écran, le donner à Claude et recréer exactement ce même prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude et navigateur de fichiers d&#x27;artefacts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu latéral avec des options comme « Meeting Prep Demo », et un prompt de configuration pour générer un tableau de bord de préparation de réunion.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface et présentation d&#x27;un prompt pour automatiser la création d&#x27;un tableau de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001134_seg24.jpg" alt="Interface d&#x27;un tableau de bord avec une barre latérale à gauche montrant différents fichiers et artefacts." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001134_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:34</span>
+                        <span class="caption-text">Interface d&#x27;un tableau de bord avec une barre latérale à gauche montrant différents fichiers et artefacts.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001146_seg24.jpg" alt="Diapositive affichant le titre « The prompt » avec un exemple de code ou de texte à copier dans Claude." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001146_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:46</span>
+                        <span class="caption-text">Diapositive affichant le titre « The prompt » avec un exemple de code ou de texte à copier dans Claude.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:52 - 00:12:12</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Passons au numéro quatre, celui-ci est incroyablement utile pour moi. C&#x27;est une façon pour moi de suivre toutes les vidéos tendances dans mon domaine en utilisant une plateforme appelée Appify. De cette façon, je peux avoir un tableau de bord mis à jour en temps réel sur le contenu que font mes concurrents. Et je n&#x27;ai jamais besoin de l&#x27;actualiser car il se met à jour en direct puisque c&#x27;est un artefact en direct.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une diapositive de présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte et visuels sur la performance du contenu et les vidéos tendances.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du quatrième point sur le suivi des vidéos tendances avec Apify.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001157_seg25.jpg" alt="Capture d&#x27;écran montrant une présentation avec le titre &#x27;Content Performance&#x27; et le point &#x27;04: The videos trending up right now&#x27;." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001157_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:57</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une présentation avec le titre &#x27;Content Performance&#x27; et le point &#x27;04: The videos trending up right now&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:12 - 00:12:34</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici exactement à quoi ressemble le tableau de bord des contenus des concurrents. Je dois dire que celui-ci, je suis encore en train de l&#x27;affiner, mais il fonctionne plutôt bien. Évidemment, il ne montre pas les vraies miniatures ici, mais laissez-moi vous faire une visite guidée de la façon exacte dont cela fonctionne. Ainsi, je peux voir les différents meilleurs performeurs de différentes vidéos qui ont bien fonctionné pour les personnes dans la niche. Je peux voir différentes mises en ligne récentes de personnes qui ont publié des vidéos ces derniers jours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion de tâches et de projets avec un tableau de bord personnalisé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques de publications (79 posts totaux, 77 vidéos YouTube, 2 publications IG, 22.3M de vues combinées, 6 chaînes suivies) et grille de miniatures masquées par &quot;NA&quot; ou initiales.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du tableau de bord de suivi des performances des concurrents par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001218_seg26.jpg" alt="Capture d&#x27;écran montrant le tableau de bord des contenus des concurrents (&quot;Competitor Content Dashboard&quot;) avec des métriques de chaînes YouTube et Instagram." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001218_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:18</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tableau de bord des contenus des concurrents (&quot;Competitor Content Dashboard&quot;) avec des métriques de chaînes YouTube et Instagram.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:34 - 00:13:07</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pourrions voir différents sujets tendance. Je pourrais voir tous les différents mots-clés tendance à travers toutes ces différentes vidéos YouTube qui ont été publiées. Et cela montre même les différents engagements ici. Et la façon dont c&#x27;est capable de faire cela est en utilisant Appify afin de scraper toutes ces différentes chaînes YouTube et comptes Instagram en temps réel. Pour faire cela, vous allez simplement dans les connecteurs, assurez-vous d&#x27;activer Appify, de configurer votre compte Appify. Mais si vous n&#x27;êtes pas un YouTuber ou un créateur de contenu, vous n&#x27;avez peut-être pas besoin de cela. Mais je me suis dit que j&#x27;allais montrer cela parce que c&#x27;est un cas d&#x27;usage que j&#x27;utilise personnellement et cela a été assez percutant pour moi et utile pour moi-même.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Dashboard de contenu concurrentiel (Competitor Content Dashboard) et annuaire de connecteurs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques de vues, métriques de chaînes YouTube, filtres de mots-clés et intégration d&#x27;Apify.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des outils de scraping et d&#x27;analyse de données YouTube via Apify.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001243_seg27.jpg" alt="Image #1 : Dashboard affichant les analyses d&#x27;engagement par canal YouTube des concurrents." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001243_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:43</span>
+                        <span class="caption-text">Image #1 : Dashboard affichant les analyses d&#x27;engagement par canal YouTube des concurrents.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001251_seg27.jpg" alt="Image #2 : Grille de vidéos top performers issues du scraping des chaînes concurrentes." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001251_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:51</span>
+                        <span class="caption-text">Image #2 : Grille de vidéos top performers issues du scraping des chaînes concurrentes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001259_seg27.jpg" alt="Image #3 : Annuaire montrant la sélection et la connexion de l&#x27;intégration Apify." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001259_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:59</span>
+                        <span class="caption-text">Image #3 : Annuaire montrant la sélection et la connexion de l&#x27;intégration Apify.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:07 - 00:13:27</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, je me suis dit que j&#x27;allais partager celui-ci. Pour le cas d&#x27;usage numéro cinq, nous avons un tableau de bord des compétences. C&#x27;est un outil que beaucoup de gens dans ma communauté scolaire adorent vraiment. C&#x27;est un outil qui m&#x27;aide personnellement à rester beaucoup plus organisé, car avec toutes ces différentes compétences cloud que nous créons, nous devons vraiment rester à jour afin de pouvoir voir chacune d&#x27;entre elles que nous possédons ainsi que différents cas d&#x27;usage pour celles-ci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page de présentation locale (HTML) avec un design épuré sur fond noir.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;Skills Dashboard&quot;, &quot;05&quot;, &quot;Every Claude skill you own, auto-updated.&quot; et une illustration de tableau de bord de compétences.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit et commente le cas d&#x27;usage numéro 5 du tableau de bord des compétences.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001312_seg28.jpg" alt="Capture d&#x27;écran montrant une présentation web avec le titre &quot;Skills Dashboard&quot; et le cas d&#x27;usage numéro 5, avec le présentateur visible en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001312_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:12</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une présentation web avec le titre &quot;Skills Dashboard&quot; et le cas d&#x27;usage numéro 5, avec le présentateur visible en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:27 - 00:13:46</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">De cette façon, ils ne se perdent pas dans Claude et nous ne les oublions pas complètement. Et je tiens à dire que, avant que la nouvelle fonctionnalité d&#x27;artefacts en direct ne sorte, j&#x27;avais une tâche planifiée qui s&#x27;exécutait tous les jours pour parcourir, examiner toutes les compétences que j&#x27;avais créées et mettre à jour cela automatiquement. Et cela consommait mes jetons Claude. Donc celui-ci va non seulement me faire économiser de l&#x27;argent, mais il est beaucoup plus efficace.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page HTML locale/personnalisée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &quot;Skills Dashboard.&quot;, numéro &quot;05&quot;, et la description &quot;Every Claude skill you own, auto-updated. One live artifact that reads your Cowork skills folder every open.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle du tableau de bord des compétences Claude lors de la démonstration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001332_seg29.jpg" alt="Capture d&#x27;écran montrant une page web intitulée &quot;Skills Dashboard&quot; avec un design moderne sur fond noir et un aperçu vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001332_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page web intitulée &quot;Skills Dashboard&quot; avec un design moderne sur fond noir et un aperçu vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:46 - 00:14:20</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, alors pour vous montrer exactement ce que je veux dire, ceci est mon tableau de bord des compétences qui se met à jour automatiquement à chaque fois que j&#x27;ouvre ceci. Donc si je vais créer une nouvelle compétence, celle-ci sera automatiquement alimentée sans que j&#x27;aie besoin d&#x27;aller dire à Claude de rafraîchir ceci et de gaspiller mes jetons en créant un tout nouveau tableau de bord HTML qui n&#x27;affiche pas réellement d&#x27;informations en temps réel. Donc si je fais défiler vers le bas, vous pouvez voir que j&#x27;ai l&#x27;ensemble de mes 237 compétences différentes ici que j&#x27;utilise à l&#x27;intérieur de Claude. Je pourrais aller cliquer sur celles-ci et cela détaillera à quoi elles servent, ainsi que les différentes commandes</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau (interface personnalisée Claude Cowork / Skills Explorer).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Statistiques chiffrées (237 total skills, 20 plugins), barres de recherche, filtres et cartes de compétences individuelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation du tableau de bord des compétences par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001355_seg30.jpg" alt="Vue d&#x27;ensemble de l&#x27;interface &quot;All Skills Explorer&quot; avec les métriques globales et le panneau de navigation latéral." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001355_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:55</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;interface &quot;All Skills Explorer&quot; avec les métriques globales et le panneau de navigation latéral.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001403_seg30.jpg" alt="Gros plan sur le tableau de bord montrant les statistiques des compétences et plugins installés." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001403_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:03</span>
+                        <span class="caption-text">Gros plan sur le tableau de bord montrant les statistiques des compétences et plugins installés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001412_seg30.jpg" alt="Défilement vers le bas de la page montrant la grille des différentes compétences (invoice-generator, context-builder, etc.)." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001412_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:12</span>
+                        <span class="caption-text">Défilement vers le bas de la page montrant la grille des différentes compétences (invoice-generator, context-builder, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:20 - 00:14:55</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">commandes que je peux utiliser afin de déclencher ces flux de travail. Pour mettre les choses en perspective, la façon dont je faisais cela avant la sortie des nouveaux artefacts Cloud Cowork Live, je exécutais en fait des tâches planifiées où à la fin de chaque journée, cela extrayait automatiquement toutes mes compétences, régénérait tout ce tableau de bord HTML, gaspillait mes jetons, puis me mettait à jour. Mais maintenant, c&#x27;est aussi simple que d&#x27;ouvrir simplement cet artefact d&#x27;explorateur de toutes les compétences et celui-ci sera toujours alimenté par des informations en direct sur l&#x27;ensemble de mon écosystème de compétences cloud. Disons qu&#x27;il y a une application spécifique</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Cowork / Interface de gestion de flux de travail (Workflow Dashboard)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de compétences, statistiques de plugins, listes de tâches planifiées (Scheduled tasks) avec horaires d&#x27;exécution (ex: &quot;Every day at 7:00 AM&quot;, &quot;Weekly receipt scan&quot;, &quot;Youtube new video check&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des outils d&#x27;automatisation et de gestion des tâches planifiées dans Claude Cowork.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001429_seg31.jpg" alt="Interface de Claude Cowork affichant le tableau de bord &quot;All Skills Explorer&quot; avec les statistiques des compétences installées." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001429_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:29</span>
+                        <span class="caption-text">Interface de Claude Cowork affichant le tableau de bord &quot;All Skills Explorer&quot; avec les statistiques des compétences installées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001438_seg31.jpg" alt="Interface de Claude Cowork affichant la section &quot;Scheduled tasks&quot; avec de multiples tâches automatisées programmées." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001438_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:38</span>
+                        <span class="caption-text">Interface de Claude Cowork affichant la section &quot;Scheduled tasks&quot; avec de multiples tâches automatisées programmées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001446_seg31.jpg" alt="Retour sur l&#x27;interface de &quot;All Skills Explorer&quot; de Claude Cowork montrant la navigation dans les différentes catégories de compétences." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001446_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:46</span>
+                        <span class="caption-text">Retour sur l&#x27;interface de &quot;All Skills Explorer&quot; de Claude Cowork montrant la navigation dans les différentes catégories de compétences.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:55 - 00:15:30</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que vous voulez connecter à l&#x27;intérieur de Claude que vous ne voyez pas dans la liste des connecteurs. Une excellente façon de faire cela est d&#x27;utiliser un serveur MCP comme Zapier MCP. Fondamentalement, cela vous permet de vous connecter à plus de 9000 applications différentes, dont certaines ne sont pas intégrées de manière native dans Claude. Donc, pour faire cela, nous allons cliquer sur &quot;commencer&quot;. Et cela ne prendra que 30 secondes environ à configurer. Tout d&#x27;abord, ce que nous allons faire, c&#x27;est que nous allons cliquer sur &quot;nouveau serveur MCP&quot; et sélectionner Claude Cowork comme notre client ici. Ensuite, nous allons voir toutes nos différentes applications que nous avons dans ce serveur. Donc par exemple, j&#x27;ai HubSpot, Stripe, Google Drive, School, toutes celles-ci</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site officiel de Zapier MCP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le titre principal de la page Zapier MCP mentionnant la connexion entre l&#x27;IA (Claude, ChatGPT, Cursor) et plus de 9000 applications, ainsi qu&#x27;un bouton « Get started ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente la page d&#x27;accueil de Zapier MCP sur son écran et clique sur le bouton de démarrage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001504_seg32.jpg" alt="La page d&#x27;accueil du site Zapier avec l&#x27;en-tête Zapier MCP et le slogan « Your AI can talk. Zapier MCP makes it act. »" loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001504_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:04</span>
+                        <span class="caption-text">La page d&#x27;accueil du site Zapier avec l&#x27;en-tête Zapier MCP et le slogan « Your AI can talk. Zapier MCP makes it act. »</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:30 - 00:16:03</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différentes applications. Et pour ajouter nos applications, nous cliquons simplement sur ajouter un outil et pratiquement recherchons n&#x27;importe laquelle des applications que nous voulons ajouter. Donc si nous voulons ajouter Zendesk, par exemple, nous viendrions ici, cliquons sur sélectionner tous les outils, connectons notre compte Zendesk, ce qui prendra juste quelques clics. Et une fois que nous avons toutes les applications ajoutées, que nous voulons ajouter, nous cliquons sur ce bouton connecter, cliquons sur ajouter à Claude. Et ensuite nous allons être amenés ici. Il suffit simplement de cliquer sur connecter à Zapier. Et ensuite maintenant nous pourrions accéder à toutes ces différentes applications et commencer à exécuter différentes actions à travers celles-ci. Si vous voulez accéder à toutes les plus de 50 compétences que j&#x27;ai créées</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Zapier MCP, plateforme Claude AI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes d&#x27;outils et d&#x27;applications intégrées (HubSpot, Stripe, Google Drive, Zendesk, Google Docs).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration des intégrations d&#x27;applications sur Zapier MCP et Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001538_seg33.jpg" alt="Interface Zapier MCP montrant une fenêtre de recherche pour ajouter des outils Zendesk." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001538_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:38</span>
+                        <span class="caption-text">Interface Zapier MCP montrant une fenêtre de recherche pour ajouter des outils Zendesk.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001547_seg33.jpg" alt="Tableau de bord Zapier MCP listant les applications connectées comme HubSpot, Stripe et Google Drive." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001547_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:47</span>
+                        <span class="caption-text">Tableau de bord Zapier MCP listant les applications connectées comme HubSpot, Stripe et Google Drive.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001555_seg33.jpg" alt="Interface de Claude affichant une invite de connexion et d&#x27;autorisation pour Zapier." loading="lazy" onclick="openLightbox('../screenshots/CwvqbHREnYQ/CwvqbHREnYQ_001555_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:55</span>
+                        <span class="caption-text">Interface de Claude affichant une invite de connexion et d&#x27;autorisation pour Zapier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:03 - 00:16:20</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à l&#x27;intérieur de Claude, ainsi que ceux que je partage chaque semaine, au fur et à mesure que je les conçois, assurez-vous de rejoindre ma communauté School. Il y a un lien dans la description pour le faire. Cependant, si vous voulez continuer à obtenir plus de contenu gratuit comme celui-ci, assurez-vous de vous abonner à cette chaîne YouTube. Je vous remercie vraiment d&#x27;être restés jusqu&#x27;à la fin et je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Skool, Navigateur Web, YouTube</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de la plateforme Skool et liste des vidéos de la chaîne YouTube</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la communauté Skool et des ressources associées</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
