@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Claude Code vs Cowork Explained (which should you use?) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Claude Code vs Cowork Explained (which should you use?)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-03-25</span>
+                <span class="badge">⏱️ 00:25:17</span>
+                <span class="badge">🆔 <code>grh7CMl960s</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=grh7CMl960s" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Claude Code vs Cowork Explained (which should you use?)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">CloudCowork and CloudCode are the two most powerful AI tools you could use right now. And if you&#x27;ve been seeing both of these names thrown around and wondering what the differences are, I can guarantee you, you are not alone. I&#x27;ve had countless people ask me, Brock, should I be using CloudCode or CloudCowork? And to be honest, my answer might surprise you because I use both of them every single day.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I made this the only video you&#x27;ll ever need to fully understand both tools, the key differences between them, and which one you should actually be using. So without further ado, let&#x27;s break it down. Alright, so Claude Code versus Claude Cowork. These are two completely different tools from Anthropic for different jobs. So here is how they actually work.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:01:01</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So one thing I&#x27;ve realized is that most people have no idea which of these two tools they should be using on a daily basis. And I could speak from personal experience because I had this same exact problem up until about a month ago. So by the end of this video, you&#x27;re going to have clarity on what these different tools are, specific use cases for each of them, as well as which one you should be using based on your technical background.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:01 - 00:01:22</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">The simple way to think about it is that Claude Cowork is basically your assistant, whereas Claude Code is your entire engineer. So Cowork can handle your task, manage your different applications, create documents, and there is no coding required. This is all done inside of the Claude desktop app that is really easy to use, even if you don&#x27;t know how to code. Literally, anybody can use it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:22 - 00:01:56</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Whereas Code is your engineer that writes your code, builds your apps, runs tests, and lives in your code editor as well as your terminal, which I&#x27;m going to talk about later in this video. So don&#x27;t worry if you don&#x27;t know what those things are. Like I said, Cowork lives in the Claude desktop app. Here is a screenshot of what my Claude Cowork project actually looks like for YouTube videos. So as you can see, we have this button up here that says Cowork. We have a project called YouTube videos with all of the different outputs from this specific project, as well as we have scheduled tasks on the right hand side. And we even have context,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:56 - 00:02:15</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">which is basically all of the files that cowork is accessing and creating on my desktop computer. And I&#x27;m going to show you later in this video, like actually deep dive into the interface and how to actually use cowork. So don&#x27;t worry if you&#x27;ve never used it before. A key thing that we need to mention early on in this video is that cowork runs in something called a sandbox.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:15 - 00:02:51</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you&#x27;re probably like, Brock, what the hell is a sandbox? So let me break it down extremely simple so literally anybody can understand it right now think of it like this claude works inside of a sealed bubble that can&#x27;t touch anything outside of it so inside of this bubble or sandbox you have your selected folders that are on your computer it can create documents can connect to all the different apps you use via connectors which i&#x27;m going to show you later in this video and can run specific tasks on a schedule or on demand completely safely if we were to be running an agent like co-work outside of the sandbox, it would have access to your entire computer and all</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:51 - 00:03:27</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">the files on there. It would have access to your system settings and other apps directly on your desktop computer. So let&#x27;s talk about what the interface of CloudCode is right now, as well as break down a bit on what exactly that is compared to co-work. So this is a screenshot inside of CloudCode for me. I am using this inside of something called Cursor, which is a code editing platform. Let me break down the structure of this interface real quickly so you can kind of understand what I mean. On the left hand side over here we actually have all of our files and this looks pretty messy. Granted I could do a better job at like making this more structured and</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:27 - 00:03:47</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">organized but this could be pretty overwhelming if you don&#x27;t have a technical background as well as we type in a prompt or a specific task and all we get out is this you know generated text here. we don&#x27;t get any specific interface or artifacts that we could use like we can use inside of co-work. And I&#x27;m going to show you exactly what I&#x27;m talking about later in this video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:47 - 00:04:09</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cloud code has access to your entire machine. So it could access all of your files, run any commands in the terminal, install specific packages, execute programs, and build and test code. And if you don&#x27;t have a technical background, all of those words I just said probably are gibberish. You don&#x27;t know what a terminal is. You don&#x27;t know what a terminal command is. You don&#x27;t know how to install packages or what a package even is.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:10 - 00:04:32</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And that is why Cloud Code can be pretty confusing if you don&#x27;t really know what you&#x27;re doing. So now that we talked about what Cloud Cowork is briefly and what Cloud Code is, let&#x27;s talk about what a code editor is because this is where you&#x27;re gonna be using Cloud Code. So I have a simple analogy here that I&#x27;m gonna break down. So think of Google Docs for writing. You type in specific essays, letters, and reports, and it helps you with spelling, formatting, sharing.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:33 - 00:04:54</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Basically, it&#x27;s a collection of all of the documents that you have written inside of a specific app. That is the same thing as a code editor, but a code editor is for coding, obviously. You type in your code, it helps with the colors, errors, extensions that you can install, such as Cloud Code, and that lives inside of an environment like this. So here is what Cloud Code looks like in action inside of Cursor.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:54 - 00:05:18</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I have a couple of different sessions up inside of here. I could go like this and run a couple of different tasks simultaneously at the same time. This is the interface you&#x27;re gonna get. This is obviously specifically Cursor, And there are other different IDEs that you could use that I&#x27;m going to talk about later in this video. But this is kind of the interface you&#x27;re going to get compared to something like Claude Cowork that looks much more organized and easy to look at if you&#x27;re a non-technical person.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:18 - 00:05:44</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is not overwhelming. It&#x27;s almost like you&#x27;re just using Claude or ChatGPT. And again, I&#x27;m going to break down exactly how to use Claude Cowork and Claude Code later in the video. Now, like I said, Cursor is not the only editor that you could use. There are other things like VS Code, Cursor, Windsurf, JetBrains, a bunch of other different coding platforms you could use. But I personally use Cursor when I&#x27;m using CloudCode. So now that you understand like what an IDE is, I want you to know that CloudCode doesn&#x27;t just run inside of that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:45 - 00:06:06</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It could run in other places, whereas a code editor is kind of the easiest place to interface with it. So let me talk about these five places that CloudCode can run inside of right now. It could run inside of your terminal, which if you don&#x27;t know what your terminal is, Let me go ahead and show you. And it is mighty scary if you are not a developer. So it&#x27;s this little thing here where you have to type in specific commands to go ahead and do things on your computer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:26</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So instead of you typing buttons and clicking on your computer, you could type in code and it will go and do things. This is great and you could do some amazing things, but only if you are a developer. Next, we have our code editor extension where I, just like I showed you, this is cursor. I have this little extension thing here that pulls up cloud code and I can begin sending off tasks for it to go in code for me.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:27 - 00:06:45</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and make changes to all of these files on my computer. We could actually access this on our desktop app as well. So if I pull up Claude Desktop and I toggle from co-work to code, you can see that we actually have this interface here. However, it&#x27;s not nearly as powerful like having it inside of your code editor, such as Cursor or VS Code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:45 - 00:07:20</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Then we could also access Claude Code directly inside of the web app here. And it&#x27;s the exact same interface as what I just showed you inside of the desktop app. However, you know, it can&#x27;t really do too much here. honestly, it could just make changes to the pre-existing code that you have, basically. Then we could access this via the remote control mode inside of the Cloud app on your phone, and it functions pretty similarly to what I just showed you on the screen. All right, so let&#x27;s talk about something now that both Cloud Cowork and Cloud have, but they function a little bit differently, and this might give you a look into what tool you would prefer to use based on the ease of use, depending on your technical capabilities. So one of the coolest things about</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:20 - 00:07:54</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">both of these platforms is they connect to all the apps that we use, whether that&#x27;s Gmail, Google Calendar, Slack, Notion, HubSpot, lots of different applications that we use, we can connect to, but the way they connect is the key thing here. So inside of Cowork, it&#x27;s the easy way to do this. They have built-in connector marketplaces where you could just click connect, sign in, and done. You could do that with Gmail, Slack, Drive, Notion, HubSpot, and dozens of other applications. Whereas inside of Cloud Code, it&#x27;s a bit more of a manual approach you have to take to do this. You have to set up an MCP inside of Cloud Code in order</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:54 - 00:08:30</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">to connect to apps, set these up through config files, basically the same power, but it takes a little bit more work right off the bat. I will say if you&#x27;ve used Cloud Code before, you understand how it works. It can be really easy to actually add your different applications, but if you&#x27;re not a technical person, then it might be a bit more difficult. So I think this is a perfect time to hop inside of CoWork. So instead of me just like talking about things, I&#x27;m going to show you a couple of things now. So I&#x27;m going to come over. I&#x27;m going to show you how to set up your connectors very simply. To break it down, we&#x27;re inside of Co-Work, and if you go to the left-hand side, it is very, very organized. I could just click on this customize button, and from here, there&#x27;s a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:30 - 00:08:50</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">couple of different things. We have our skills, we have our connectors, and we have our plugin. So I could just click on connectors, and from here, you could see the different applications I have connected inside of my Co-Work. This just basically means Co-Work can go and perform tasks across those apps for me. So we have things like Bitly, GitHub, Gmail, Google Calendar, all these different apps that you could see here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:50 - 00:09:11</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And if we want to add one, we just click on browse connectors, basically scroll down and find which one we want to add, or we could just search here. And they have a bunch of different tools that we could connect to directly inside of Claude. We could even have it control our Chrome browser, which is pretty cool. We could have it work inside of Figma, read and write our Apple Notes. You could use things like Appify, all these different things.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:11 - 00:09:43</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">These are great, but let&#x27;s say that there&#x27;s an app that you can&#x27;t connect to directly inside of Claude because there is limitations to that right now. I&#x27;m going to show you a quick hack that will allow you to be able to connect to those different applications. So I personally like to use something called Zapier MCP because I&#x27;ve been using Zapier for years. It&#x27;s very easy to use for non-technical people. This is basically a way to connect your apps that Claude doesn&#x27;t automatically connect to. So there&#x27;s going to be a link in the description to sign up and actually use this if you want to go ahead and tap into this yourself. However, you really don&#x27;t need to unless there&#x27;s a specific app you want to connect to and you want to make</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:43 - 00:10:16</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">it easy on yourself. So what we&#x27;re going to do if we&#x27;re going to set this up is we&#x27;re going to click on create new MCP server. I&#x27;m going to click on cloud cowork, since this is basically the platform I&#x27;m using. You could also use something like cloud code too. And it&#x27;s a very similar process. I&#x27;m just going to click on cowork. And you can see I already have some pre configured tools here that I&#x27;ve added to this server. So what these tools are, these are basically just different apps you could use and you could perform actions across those apps. So for example, if I want to connect to Zendesk, I just click on this, I select all the tools I want to use, I&#x27;m just going to</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:16 - 00:10:53</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">click on all of them. So it has the full functionality of this application. I&#x27;m going to click on connect. Once I connect that, it&#x27;s going to show up right here. And in order to add this to cowork, I&#x27;m just going to click on connect, copy this URL that I should see right here, come back over to cowork, and I&#x27;m just going to search up Zapier. And from here, I&#x27;m just going to paste in the URL it gave me, and then it will be connected. And then you can see all of our actions and apps we have configured right here. So this instantly kind of levels up the capabilities of Cowork with just a simple hack. All right. So one thing I really want to note here is that Cowork now has projects. This was something that was just released a couple of days ago. I have a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:53 - 00:11:26</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">full video breaking this new feature down. And this honestly has been a game changer for myself and how I personally use Claude. So if you don&#x27;t know what a project is, think of a project as something that keeps everything separate inside of your ecosystem. So for me, I have a project for YouTube videos, client agency, personal finances, all of these different projects get its own folder on my computer, separate memory. They each have separate instructions and they each have different scheduled tasks. So if I come back to co-work, let me show you exactly what I mean. So on the left-hand sidebar</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:26 - 00:11:46</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">here, and guys, this is one reason that I really have been loving co-work. It&#x27;s so much more organized than using something like Claude Code. Yes, Claude Code is a bit more powerful, But if you don&#x27;t want to have to sit and look at something like this, CoWork is probably the platform you should be using. And that&#x27;s why I&#x27;ve been using it a lot. And projects, honestly, just like kind of solidified that for me.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:46 - 00:12:19</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you look on the left hand side, I have a couple of different projects and I could click in on them. This one right here is everything YouTube video related. This is basically my operating system when it comes to helping me with YouTube content. I have this specific file here I could click on and open. That is basically a breakdown of all of my YouTube competitors. that automatically scrapes YouTube and, you know, adds this to this dashboard every single day that I could check. We have all of our chats that are YouTube related directly inside of here. So this makes it so much more organized and having all of these different chats open that become just like</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:19 - 00:12:40</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">almost impossible to go through. Then on the right hand side, we have instructions, which we could give specific instructions if we want. We have all of our scheduled tasks, which if you don&#x27;t know what these are, these are workflows you can use inside of cowork that basically run automatically. So this one automatically will scrape my YouTube competitors and then add it to that sheet that you saw every day at 11 a.m.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:40 - 00:13:03</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It does this. I could change the frequency whenever I want that to run. And then inside of the YouTube project, you could also see all of this context here that is broken down pretty simply. It&#x27;s much easier to view this and I could just click on all of these and see every single file inside of this. So, for example, this is a shot list thing for one of my YouTube videos I just created. So I could see all the files here, whereas inside of Cloud Code, you know, this is a bit more hectic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:04 - 00:13:24</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I could still like, you know, click on these. But, you know, the output for me is like this code right here instead of showing the actual HTML dashboard, which can just be kind of a pain. Then I&#x27;m not going to go into all these different projects, but I have projects for specific things. My influencer marketing agency. I have one for my school community that helps me with everything school related. I have scheduled tasks running inside of here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:24 - 00:13:45</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If we want to run a scheduled task, we could come over to the left-hand side, click on this little button, click on add new task, and basically break down what it is we want to do and then change the frequency. Or if we&#x27;re in an existing chat here and we did something that we want to replicate or do on a schedule, you could just say, hey, turn that into a scheduled task and it will go ahead and create that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:45 - 00:14:09</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then that will then pop up over here, which here is basically just a collection of all of your scheduled tasks you have in one simple to see views interface. Then if we click on customize, you could also see we have all of our skills. So if you don&#x27;t know what a skill is, take a look at some of my previous videos. I dive really deep into what these are. Think of these as specific markdown files that are stored inside of Claude that are instructions on how something works.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:09 - 00:14:29</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if you have a specific workflow, such as generating these slideshows you see in the videos, like this was created with a skill. Now, moving back to Claude code, we could also use skills and they&#x27;re just as powerful, if not more powerful than inside of CloudCodeWork. And all we have to do is to invoke a skill is just like write in our prompt here. So I&#x27;m just gonna say slideshow, how CloudCode works.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:29 - 00:14:47</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then what this is gonna do is it&#x27;s gonna trigger that skill that I have, which is basically that set of instructions and will automatically generate this slideshow for me. So while I&#x27;m at it, I might as well just like test this for both CloudCode and CloudCodeWork. So let me come back here. I&#x27;m gonna come into this project for YouTube videos. I&#x27;m just gonna say slideshow, how CloudCode works.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:47 - 00:15:06</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then I&#x27;m going to let both of these do their thing and we&#x27;ll come back once they&#x27;re both done. So I could show you kind of how it looks. All right. So both of those tasks ran and here is the output from Claude. Just pay attention to the left hand side because the right hand side is actually a separate task. I have Claude code, you know, going off and doing. As you can see, it shows the slides were created.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:06 - 00:15:27</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It used that specific skill that I have. I could then click on this and this is the HTML that it generated for me. It went ahead and coded this. It also breaks down everything that is inside of the slideshow. And it actually went ahead and opened this inside of my browser. As you can see here, here&#x27;s the slideshow. It&#x27;s nothing crazy. You know, this is just basically how I formatted my slideshows to be created.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:27 - 00:16:01</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So it shows it lives in the terminal, the loop, sees everything. This is, you know, pretty good slideshow right here. And that was generated just by me saying slideshow, how cloud code works. And then as you can see, we have this HTML code now stored. And if you want to see where this file lives, it&#x27;s inside of this slides folder. And if I scroll down, you can see I&#x27;ve generated tons of these and it&#x27;s underneath how cloud code works I open this it now shows the slides html and also shows all of the images it used for that So you can see this is like a little bit cluttered, you know, obviously mine isn&#x27;t super well configured</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:01 - 00:16:38</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s a bit messy. Maybe it&#x27;d be better if it wasn&#x27;t so messy But as a non-technical person just looking at this is so much simpler So let me show you exactly the output that co-workers give us. So it&#x27;s a very very similar slideshow I wouldn&#x27;t say one is better than the other. It&#x27;s the exact same because it&#x27;s using the exact same skill, but I could see this directly inside of coworker. Any interface that it creates for us, whether it&#x27;s a dashboard or a slideshow or an interactive like web application for us to play around with, it&#x27;ll generate it right here. And we could always open it in preview as well as you could see that we have all of our files here. If I just click on this, I could then access that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:38 - 00:17:10</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So for any chat that we have inside of this YouTube videos project, you could see all this configured right here as well as all of the skills it used. I could open up this slide skill that I generated. Whereas inside of Cloud Code, I can&#x27;t really just like open up a skill and look at all of them. I&#x27;d have to go through, you know, this kind of mess right here and basically find the skills. This could just be, you know, a bit overwhelming. So for example, I could click right here and you can see all the different skills I have inside of here and then click on it. And this is the markdown file. But again, for me, this is just much easier to view in my perspective.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:10 - 00:17:42</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">obviously everybody has their preferences but that is one reason why I love co-work it&#x27;s just because it&#x27;s so much easier on the eyes all right so moving on to another feature that both of these platforms have and they work a little bit differently so I&#x27;m going to talk about kind of the nuances here right now Claude co-work just released dispatch mode which is basically a way for me to interact with co-work to have it go and do things on my computer just by typing inside of the Claude app so I&#x27;m not going to show my entire phone here but you can see there&#x27;s a bunch of different things over here. I could click on dispatch mode. It&#x27;s basically a chat interface.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:42 - 00:18:18</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then I could begin working inside of the folders inside of cowork. So I could basically send a new task from my phone and cowork can go off and do those things. Whereas cloud code has something a little bit similar called remote control. And with this remote control feature, you could start a session on your computer, then continue it on your phone while cloud keeps running. Let&#x27;s say you&#x27;re working on a big project or coding some specific application and you want to be able to make changes on the go. You could do that inside of the remote control mode inside of cloud code and you actually access that inside of the mobile phone app all right so moving on let&#x27;s talk about how each of these platforms are able to run specific tasks</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:18 - 00:18:50</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">automatically think of these as scheduled tasks so for example every single morning cloud co-work checks my email slack and gives me a summary on what exactly needs my attention in a specific dashboard every monday it will go and actually pull all of my meetings on for the week through google calendar and then we&#x27;ll condense all that information for me in order for me to understand what I need to actually get ready before those meetings. And to show you exactly what I mean, I have this morning briefing skill here, and this was run automatically today at 7am. I just pre-configured it inside of cowork. And basically if I click on this, you could see I have this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:50 - 00:19:20</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dashboard here that was generated, which basically is a breakdown in a really simple interface. What&#x27;s on my calendar today, urgent emails I need to respond to different AI news and my specific top priorities for the day. And if you guys want access to all the different skills I use inside of CloudCode and CloudCowork, make sure to join my school community. There&#x27;s a link in the description below. So that&#x27;s a great place to stay up to date with CloudCowork and how I&#x27;m using it, as well as me sharing the exact resources and skills you could upload into Cowork yourself.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-45">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:20 - 00:19:42</span>
+                <span class="segment-idx">Segment #45</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that is how scheduled tasks work. We&#x27;ve talked about it a little bit in this video, whereas CloudCode can do this, but this uses something called Cronjobs, which you would have to set up yourself manually. So you&#x27;re probably asking like, Brock, what is a Cronjob? And this is kind of the theme of this video. A lot of the core concepts inside of Cloud Code, you might not even understand the core terminology. So this is what it looks like from like a visual perspective.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-46">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:42 - 00:20:16</span>
+                <span class="segment-idx">Segment #46</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And you basically just type this into a terminal and then your scheduled task can run automatically. All right. So moving on to another feature that both of these platforms have, this is the Cloud MD file. So think of this as just one file for both different tools here. And this is basically just a set of instructions in a very specific markdown file. So that way, both Cloud Code and Cloud Cowork know how to work inside of your folders. And one key thing here, you could actually share CloudMD files between Cowork and Code. So if you are switching between the two platforms working inside of a specific folder, then that could be shared within both of these</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-47">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:16 - 00:20:50</span>
+                <span class="segment-idx">Segment #47</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ecosystems. So here is Cloud Cowork versus Cloud Code at a glance. The left-hand side obviously is a bit more structured. However, if you are comfortable with using code editors like Cursor or VS Code, you should have no problems with Cloud Code on the right. One key thing here, as we get close to the end of this video and wrapping this up is these two platforms can work together. So for example, you could have Claude Cowork research and write the documents, run your scheduled tasks inside this same folder with a Claude MD file, as well as your other shared files. Claude Code could then write code, build and generate images. And in order to do this,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-48">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:20:50 - 00:21:08</span>
+                <span class="segment-idx">Segment #48</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">you would just point these at the same folder. So they&#x27;re using the same exact context. I want to talk real quickly about a real example from this video when I was actually creating this. So I personally hit a wall while creating these slideshows. I was trying to generate these images here, like this one you could see right here, this infographic.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-49">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:08 - 00:21:28</span>
+                <span class="segment-idx">Segment #49</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I was trying to generate this inside of Cloud Cowork. However, I hit a wall because Cowork&#x27;s sandbox environment blocked the image generation API in order to use Nano Banana Pro to do this. So I personally used Cloud Code inside that same folder, generated all eight of those infographics with Nano Banana Pro.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-50">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:28 - 00:21:46</span>
+                <span class="segment-idx">Segment #50</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And then once CloudCode generated those images for me, since it connects to the Nano Banana API very simply, it then added those to that folder that both Cowork and CloudCode were working inside of. And then Cowork was able to stitch that together and turn it into the slides. So let&#x27;s talk quickly about what both of these tools can do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-51">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:21:47 - 00:22:09</span>
+                <span class="segment-idx">Segment #51</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Both have a CloudMD file. Both can connect to your apps, but they do it in different ways. Both have plugins, both use folders, both use the same cloud brain for the different large language models like cloud 4.6 or cloud opus 4.6. And both have mobile access. Personally, I would say right now I&#x27;m using an 80 20 split between cloud cowork 80% and cloud code 20%.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-52">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:09 - 00:22:44</span>
+                <span class="segment-idx">Segment #52</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Let me break down some of the things I&#x27;m using cowork for versus code for cowork. I&#x27;m using it to generate slides and different video assets, research and reports for my competitors. basically manage my email and my slack school community guides document creation scheduled tasks where it goes off and actually you know scrapes the internet for me and does specific things across my apps and anything with different connected apps i&#x27;m basically using inside of co-work whereas for cloud code i have a specific thumbnail generation skill that you probably have seen from my videos the thumbnail on this video and my previous like 10 videos were all generated with</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-53">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:22:44 - 00:23:18</span>
+                <span class="segment-idx">Segment #53</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cloud Code and I use this religiously and this is the best thing ever but I can&#x27;t do this inside of CoWork because it doesn&#x27;t have access to Nano Banana API. So that is one main thing I still use code for. I use it for specific terminal tasks and whenever I need to access raw files on my computer. So for example if I have a video file on my computer that I want to get the transcript from it&#x27;s easier to do that inside of Cloud Code instead of CoWork. You could access both of these tools inside of the $20 per month Cloud Pro plan. Personally I use the Max plan because I&#x27;m a power user of both of these tools, but $20 per month will be a great starting point. And if you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-54">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:18 - 00:23:40</span>
+                <span class="segment-idx">Segment #54</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">need to upgrade, you always can later. So if you got to the end of this video and you&#x27;re thinking, Brock, everything you talked about inside of CloudCode and everything you showed looked a little bit too technical, just looked a little scary for me. I don&#x27;t want to have to deal with that. Then I think CloudCodeWork is a great alternative for you. Whereas if you&#x27;re already a developer, use CloudCode, you&#x27;ll get more out of it because you actually understand how it works.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-55">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:23:40 - 00:24:00</span>
+                <span class="segment-idx">Segment #55</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I think cowork is an amazing thing to master right now. If I had to guess where Claude and Claude Cowork is heading, I genuinely think they&#x27;re going to make this their go-to tool and AI agent that literally anybody can use. And I think it&#x27;s going to get more and more powerful over time. So if I had to guess, I would say that they&#x27;re going to make this almost as powerful as Claude Code over time.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-56">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:00 - 00:24:21</span>
+                <span class="segment-idx">Segment #56</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And when I&#x27;m talking over time, I&#x27;m talking the coming three, six, 12 months. And this tool is obviously built for non-technical users. If you saw the trajectory of kind of how fast they&#x27;re shipping to Claude Cowork, you would get the sense of like, okay, I think this is going to become that ultimate Swiss army knife platform where I could do almost anything on my computer with AI just with Cowork.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-57">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:21 - 00:24:41</span>
+                <span class="segment-idx">Segment #57</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I genuinely do think that this could replace a need for Claude Code over time, even for technical people. And the main thing here is that the gap between these two tools is shrinking every single week with all of these new updates. And the bottom right here, my bet is that cowork is gonna get so powerful that in the next few months, even more people never need to touch CloudCode.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-58">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:24:41 - 00:25:03</span>
+                <span class="segment-idx">Segment #58</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So guys, if you got some value from this video and you wanna dive even deeper into CloudCode and CloudCowork, make sure to join my school community. There&#x27;s a link in the description to do so. However, if you wanna still enjoy the free content on this YouTube channel, make sure to subscribe for more content exactly like this. Please leave some feedback on what you think of this video. I&#x27;m trying to really make these videos as perfect as possible for you guys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-59">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:25:03 - 00:25:16</span>
+                <span class="segment-idx">Segment #59</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I&#x27;ve really been listening to feedback to try to make these as good as possible. So with that being said, guys, thank you so much for saying that. And we&#x27;re in some crazy times right now. And I&#x27;m stoked and very happy to be doing it with you. With that being said, I&#x27;ll see you guys in the next video. Cheers.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
