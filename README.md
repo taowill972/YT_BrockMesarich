@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `92 / 273` (`33.7%`)
+- **Vidéos traitées** : `93 / 273` (`34.1%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -109,6 +109,7 @@
 | 2026-02-25 | [nA-_ANMtAU8](https://www.youtube.com/watch?v=nA-_ANMtAU8) | **Claude Just Got 13 New Superpowers… (Cowork Plugins)** | [2026-02-25_YT-[nA-_ANMtAU8]_Claude Just Got 13 New Superpowers… (Cowork Plugins)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-25_YT-[nA-_ANMtAU8]_Claude Just Got 13 New Superpowers… (Cowork Plugins)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-25_YT-[nA-_ANMtAU8]_Claude Just Got 13 New Superpowers… (Cowork Plugins)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-02-24 | [2KS3PjAbPek](https://www.youtube.com/watch?v=2KS3PjAbPek) | **How I Run a $70K/Month Business With No Team (Claude Code)** | [2026-02-24_YT-[2KS3PjAbPek]_How I Run a $70KMonth Business With No Team (Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-24_YT-[2KS3PjAbPek]_How I Run a $70KMonth Business With No Team (Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-24_YT-[2KS3PjAbPek]_How I Run a $70KMonth Business With No Team (Claude Code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `16` |
 | 2026-02-21 | [cD5XuAYTcY4](https://www.youtube.com/watch?v=cD5XuAYTcY4) | **Can Lindy Replace OpenClaw? (CEO Interview)** | [2026-02-21_YT-[cD5XuAYTcY4]_Can Lindy Replace OpenClaw (CEO Interview)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-21_YT-[cD5XuAYTcY4]_Can Lindy Replace OpenClaw (CEO Interview)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-21_YT-[cD5XuAYTcY4]_Can Lindy Replace OpenClaw (CEO Interview)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `71` |
+| 2026-02-20 | [3uIbTvgaNRY](https://www.youtube.com/watch?v=3uIbTvgaNRY) | **Voici l'application d'IA la plus puissante que j'aie jamais testée (Rork Max)** | [2026-02-20_YT-[3uIbTvgaNRY]_Voici l'application d'IA la plus puissante que j'aie jamais testée (Rork Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-20_YT-[3uIbTvgaNRY]_Voici l'application d'IA la plus puissante que j'aie jamais testée (Rork Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-20_YT-[3uIbTvgaNRY]_Voici l'application d'IA la plus puissante que j'aie jamais testée (Rork Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `30` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

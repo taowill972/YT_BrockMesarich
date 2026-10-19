@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Voici l&#x27;application d&#x27;IA la plus puissante que j&#x27;aie jamais testée (Rork Max) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Voici l&#x27;application d&#x27;IA la plus puissante que j&#x27;aie jamais testée (Rork Max)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-20</span>
+                <span class="badge">⏱️ 00:09:34</span>
+                <span class="badge">🆔 <code>3uIbTvgaNRY</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=3uIbTvgaNRY" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Cette vidéo de la chaîne *Brock Mesarich | AI for Non Techies* met en lumière une avancée majeure dans le développement logiciel assisté par l'intelligence artificielle : la capacité de concevoir, compiler et déployer de véritables applications iOS natives (en Swift) directement sur un iPhone à partir d'un simple prompt textuel. Grâce à l'association des capacités de codage complexes du modèle Claude Opus 4.6 et de l'outil Rork Max, les utilisateurs n'ont plus besoin de se limiter à des applications web s'exécutant dans un navigateur. Ils peuvent désormais exploiter toutes les fonctionnalités matérielles des appareils physiques, telles que la caméra, le microphone, la géolocalisation et la réalité augmentée, avec des icônes sur l'écran d'accueil et des notifications push fonctionnelles.<br><br>La démonstration pratique illustre la puissance de cette synergie à travers la création rapide d'applications concrètes, incluant un jeu de type Minecraft et un studio de design en réalité augmentée (AI Space Studio) permettant de placer des objets 3D en temps réel dans une pièce filmée par la caméra du téléphone. Le flux de travail présenté montre comment passer d'une idée formulée vocalement (via Whisper Flow et ChatGPT) à un prompt structuré hautement spécifique, avant de compiler l'application sur l'écosystème Rork et de la transférer de manière transparente sur un iPhone physique via l'application compagnon et un compte de développeur Apple.<br><br>Ce changement de paradigme démocratise radicalement la création logicielle, permettant à des non-techniciens de matérialiser instantanément des concepts complexes en applications prêtes à être publiées sur l'App Store. Bien que le contenu s'adresse à des créateurs et des entrepreneurs cherchant à prototyper ou commercialiser des solutions mobiles sans compétences en programmation traditionnelle, la rigueur méthodologique exigée dans la structuration des prompts s'apparente aux meilleures pratiques d'ingénierie des processus automatisés.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Rork Max** : Environnement de développement et plateforme de création d'applications permettant de générer et de compiler du code Swift natif pour iOS à partir de descriptions textuelles.<br>* **Claude Opus 4.6** : Modèle linguistique de pointe de haute performance, particulièrement optimisé pour la gestion de tâches de codage complexes et la génération de structures logicielles robustes sans erreur.<br>* **ChatGPT** : Assistant conversationnel généraliste utilisé pour transformer des idées brutes en prompts structurés et ultra-spécifiques.<br>* **Whisper Flow** : Outil de dictée vocale et de transcription permettant de formuler rapidement des idées textuelles par la voix avant de les structurer par IA.<br>* **n8n** : Plateforme d'automatisation de flux de travail (mentionnée dans l'écosystème technique global de la chaîne pour l'interconnexion d'agents et d'APIs).<br>* **Make** : Outil d'intégration et d'automatisation no-code pour connecter des applications web et exécuter des processus automatisés.<br>* **Zapier** : Solution pionnière d'automatisation de tâches entre différentes applications logicielles.<br>* **Gemini** : Modèle d'intelligence artificielle de Google offrant de larges fenêtres de contexte pour l'analyse de données et la génération de contenu.<br>* **Grok** : Modèle d'intelligence artificielle orienté vers l'accès à l'information en temps réel.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Dépassement du paradigme Web-App** : Abandon des applications hébergées dans un navigateur (Chrome, Safari) au profit d'applications natives Swift s'exécutant directement sur le matériel physique de l'appareil.<br>* **Accès aux fonctionnalités natives du hardware** : Intégration transparente et fluide des composants matériels de l'iPhone, incluant la caméra haute résolution, le microphone, la géolocalisation et les capteurs de mouvement.<br>* **Expérience utilisateur de niveau production** : Les applications générées disposent d'icônes sur l'écran d'accueil, gèrent les notifications push et continuent de fonctionner en arrière-plan, offrant une ergonomie indiscernable des applications développées de manière traditionnelle.<br>* **Exploitation de la Réalité Augmentée (RA)** : Capacité à concevoir des applications interactives complexes capables de superposer des objets virtuels 3D dans un flux vidéo en direct de l'environnement réel de l'utilisateur.<br>* **Stratégie de prompt engineering structuré** : Nécessité de fournir des instructions hautement détaillées et méthodiques pour maximiser le taux de réussite de la génération de code en un seul essai (*one-shot*).<br>* **Utilisation combinée de la dictée vocale et du LLM** : Optimisation du flux de création par l'utilisation de Whisper Flow pour verbaliser une idée brute, convertie ensuite par ChatGPT en un prompt technique hyper-spécifique destiné à Claude Opus 4.6.<br>* **Gestion des capacités de calcul asynchrones** : Acceptation d'un temps de génération initial plus long par l'IA pour garantir la structuration d'un code propre, fonctionnel et exempt d'erreurs logiques.<br>* **Processus de déploiement physique simplifié** : Utilisation de l'application compagnon Rork pour authentifier un identifiant Apple et transférer l'application compilée directement sur un iPhone connecté par USB.<br>* **Accessibilité de la publication sur l'App Store** : Potentiel de mise sur le marché immédiat des applications générées en quelques clics, ouvrant la voie à une monétisation rapide pour les non-programmeurs.<br>* **Suppression des barrières techniques à l'entrée** : Démocratisation totale de la création logicielle où l'imagination et la clarté de la vision stratégique priment sur la maîtrise des langages de programmation bas niveau.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Rork Max</span><span class="tool-tag">Claude Opus 4.6</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Whisper Flow</span><span class="tool-tag">n8n</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">Gemini</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Dépassement du paradigme Web-App** : Abandon des applications hébergées dans un navigateur (Chrome, Safari) au profit d&#x27;applications natives Swift s&#x27;exécutant directement sur le matériel physique de l&#x27;appareil.</span></li><li><span class="point-bullet">✦</span><span>Accès aux fonctionnalités natives du hardware** : Intégration transparente et fluide des composants matériels de l&#x27;iPhone, incluant la caméra haute résolution, le microphone, la géolocalisation et les capteurs de mouvement.</span></li><li><span class="point-bullet">✦</span><span>Expérience utilisateur de niveau production** : Les applications générées disposent d&#x27;icônes sur l&#x27;écran d&#x27;accueil, gèrent les notifications push et continuent de fonctionner en arrière-plan, offrant une ergonomie indiscernable des applications développées de manière traditionnelle.</span></li><li><span class="point-bullet">✦</span><span>Exploitation de la Réalité Augmentée (RA)** : Capacité à concevoir des applications interactives complexes capables de superposer des objets virtuels 3D dans un flux vidéo en direct de l&#x27;environnement réel de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Stratégie de prompt engineering structuré** : Nécessité de fournir des instructions hautement détaillées et méthodiques pour maximiser le taux de réussite de la génération de code en un seul essai (*one-shot*).</span></li><li><span class="point-bullet">✦</span><span>Utilisation combinée de la dictée vocale et du LLM** : Optimisation du flux de création par l&#x27;utilisation de Whisper Flow pour verbaliser une idée brute, convertie ensuite par ChatGPT en un prompt technique hyper-spécifique destiné à Claude Opus 4.6.</span></li><li><span class="point-bullet">✦</span><span>Gestion des capacités de calcul asynchrones** : Acceptation d&#x27;un temps de génération initial plus long par l&#x27;IA pour garantir la structuration d&#x27;un code propre, fonctionnel et exempt d&#x27;erreurs logiques.</span></li><li><span class="point-bullet">✦</span><span>Processus de déploiement physique simplifié** : Utilisation de l&#x27;application compagnon Rork pour authentifier un identifiant Apple et transférer l&#x27;application compilée directement sur un iPhone connecté par USB.</span></li><li><span class="point-bullet">✦</span><span>Accessibilité de la publication sur l&#x27;App Store** : Potentiel de mise sur le marché immédiat des applications générées en quelques clics, ouvrant la voie à une monétisation rapide pour les non-programmeurs.</span></li><li><span class="point-bullet">✦</span><span>Suppression des barrières techniques à l&#x27;entrée** : Démocratisation totale de la création logicielle où l&#x27;imagination et la clarté de la vision stratégique priment sur la maîtrise des langages de programmation bas niveau.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:23</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est l&#x27;un de ces moments révélateurs où l&#x27;IA me scotche littéralement. Je viens de créer de vraies applications iOS en un seul produit. Pas des applications web, pas des démos dans un navigateur. Ce sont de vraies applications natives téléchargées sur mon iPhone. Et je pourrais littéralement les publier sur l&#x27;App Store en quelques clics seulement. Le tout nouveau Claude Opus 4.6 et la nouvelle mise à jour de Rourke Max constituent l&#x27;une des expériences d&#x27;IA les plus folles que j&#x27;aie jamais vécues.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement et de publication d&#x27;application mobile, page web d&#x27;annonce logicielle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes explicatifs sur la création d&#x27;applications sans compte développeur payant et détails sur une mise à jour d&#x27;intelligence artificielle (Claude Opus 4.6).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la création et du déploiement d&#x27;une application iOS native sans frais de compte développeur Apple.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000006_seg1.jpg" alt="Aperçu d&#x27;une application iOS affichant des cours de cryptomonnaies sur un écran de smartphone, avec le texte &#x27;I JUST BUILT a real iOS apps&#x27;." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">Aperçu d&#x27;une application iOS affichant des cours de cryptomonnaies sur un écran de smartphone, avec le texte &#x27;I JUST BUILT a real iOS apps&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000012_seg1.jpg" alt="Interface de déploiement ou de publication d&#x27;application mobile montrant le ciblage d&#x27;un iPhone personnel avec la mention &#x27;no 99$ dev account&#x27;." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000012_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:12</span>
+                        <span class="caption-text">Interface de déploiement ou de publication d&#x27;application mobile montrant le ciblage d&#x27;un iPhone personnel avec la mention &#x27;no 99$ dev account&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:23 - 00:00:56</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous en sommes officiellement au point où n&#x27;importe qui peut créer n&#x27;importe quelle application qu&#x27;il peut imaginer. Donc dans cette vidéo, je vais vous montrer ce qui rend cela si révolutionnaire, vous faire découvrir de vraies applications que j&#x27;ai construites moi-même, et vous montrer comment vous pourriez faire exactement la même chose d&#x27;ici la fin de cette vidéo. Sans plus attendre, plongeons dans le vif du sujet. Très bien, donc je sais que j&#x27;ai placé la barre très haut au début de cette vidéo, en expliquant en gros à quel point cela change tout pour la création d&#x27;applications mobiles, mais il faut que vous compreniez qu&#x27;il s&#x27;agit vraiment d&#x27;une avancée majeure lorsqu&#x27;il s&#x27;agit d&#x27;être capable de créer des applications mobiles avec l&#x27;IA. Je vais l&#x27;expliquer dès maintenant, et ensuite je vais vous montrer les applications que j&#x27;ai construites moi-même, et je vais vous montrer exactement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc en ligne)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Maquettes et captures d&#x27;écrans d&#x27;applications mobiles natives, notes manuscrites sur fond vert et bleu concernant les applications iOS natives et les fonctionnalités.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication visuelle des différentes applications mobiles créées par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000040_seg2.jpg" alt="Une vue d&#x27;écran d&#x27;ordinateur montrant un tableau blanc interactif (Excalidraw) avec plusieurs maquettes d&#x27;applications mobiles et des notes adhésives." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000040_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:40</span>
+                        <span class="caption-text">Une vue d&#x27;écran d&#x27;ordinateur montrant un tableau blanc interactif (Excalidraw) avec plusieurs maquettes d&#x27;applications mobiles et des notes adhésives.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:56 - 00:01:31</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">comment vous pourriez faire cela vous-même en quelques étapes simples. Voici de quoi je parle. Il s&#x27;agit d&#x27;une capture d&#x27;écran sur mon téléphone que je viens de prendre il y a environ cinq minutes des applications que j&#x27;ai téléchargées. Nous avons donc notre application AI Furniture Place, nous avons notre application AI Space Studio, et nous avons notre application Emble Voxel World. Et ce sont des exemples d&#x27;applications que nous avons construites. Alors ici même, nous avons cette application de réalité augmentée où vous pouvez essentiellement prendre une vidéo ou littéralement une vidéo en direct de votre pièce et y placer des objets en temps réel. Cela fonctionne comme n&#x27;importe quelle application de RA, vous en avez déjà utilisé et cela utilise votre véritable appareil photo sur votre iPhone et c&#x27;est ce qui change la donne</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc (Excalidraw) avec des maquettes et captures d&#x27;écran d&#x27;applications iOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Captures d&#x27;écran d&#x27;applications de réalité augmentée (AI Furniture Place, AR Space Studio, Ember View World) et interface de dessin/notes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des captures d&#x27;écran d&#x27;applications mobiles téléchargées récemment par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000105_seg3.jpg" alt="Un écran de navigateur affichant un tableau blanc avec des captures d&#x27;écran mobiles (AI Furniture Place, AR Space Studio, Ember View World) et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000105_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:05</span>
+                        <span class="caption-text">Un écran de navigateur affichant un tableau blanc avec des captures d&#x27;écran mobiles (AI Furniture Place, AR Space Studio, Ember View World) et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000122_seg3.jpg" alt="Vue similaire de l&#x27;écran de navigateur avec les applications mobiles en réalité augmentée et les interfaces d&#x27;outils, ainsi que le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000122_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:22</span>
+                        <span class="caption-text">Vue similaire de l&#x27;écran de navigateur avec les applications mobiles en réalité augmentée et les interfaces d&#x27;outils, ainsi que le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:31 - 00:02:03</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">chose ici et nous avons en fait recréé Minecraft en littéralement un seul prompt et c&#x27;est extrêmement facile à utiliser et le plus grand point à ce sujet c&#x27;est que j&#x27;ai téléchargé cela sur mon application mobile et je pourrais facilement les publier sur l&#x27;App Store en quelques étapes simples ce ne sont pas des applications web que vous utiliseriez sur votre navigateur ce sont des applications qui sont sur votre vrai téléphone et vos appareils physiques et c&#x27;est l&#x27;un des plus grands aspects de cette mise à jour dont nous allons parler dans cette vidéo. Passons maintenant à l&#x27;action pour montrer exactement ce que fait Rourke Max. Ensuite je vais vous montrer mes applications puis vous montrer des cas d&#x27;usage et comment vous pouvez commencer à faire cela vous-même. Tous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique interactif, navigateur web et interface de présentation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Icônes d&#x27;applications mobiles, captures d&#x27;écrans de jeux (style Minecraft) et illustrations de développement d&#x27;applications.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration visuelle d&#x27;applications mobiles créées à l&#x27;aide de l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000139_seg4.jpg" alt="Capture d&#x27;écran montrant un tableau blanc numérique avec des applications mobiles, incluant une application inspirée de Minecraft, et le visage du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000139_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau blanc numérique avec des applications mobiles, incluant une application inspirée de Minecraft, et le visage du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000147_seg4.jpg" alt="Vue similaire centrée sur les applications mobiles présentées sur le tableau blanc numérique avec le curseur pointant sur une icône." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000147_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:47</span>
+                        <span class="caption-text">Vue similaire centrée sur les applications mobiles présentées sur le tableau blanc numérique avec le curseur pointant sur une icône.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000155_seg4.jpg" alt="Vue détaillée des applications mobiles créées et présentées sur le tableau blanc avec une application rappelant l&#x27;univers de Minecraft." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000155_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:55</span>
+                        <span class="caption-text">Vue détaillée des applications mobiles créées et présentées sur le tableau blanc avec une application rappelant l&#x27;univers de Minecraft.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:03 - 00:02:38</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Exactement, alors parlons d&#x27;abord d&#x27;avant Roark Max et Opus 4.6. Chaque créateur d&#x27;applications construisait des applications web. Donc, essentiellement, ce qu&#x27;est une application web, c&#x27;est quelque chose qui s&#x27;exécute dans un navigateur. Donc, si vous utilisez Chrome, vous devez y accéder par ce biais. Vous ne pouviez pas y accéder sur votre appareil physique. Vous ne pouviez pas accéder correctement à des éléments comme votre caméra ou votre micro. Il n&#x27;y avait pas d&#x27;App Store, pas de téléchargements. Vous ne pouviez pas réellement les utiliser sur vos appareils et cela ressemblait à un site web. Ce n&#x27;était pas comme une vraie application que vous utiliseriez sur votre téléphone. Cependant, cela change tout et c&#x27;est en quelque sorte le changement de paradigme qui vous permet de réellement construire ces applications sur vos téléphones. Avant</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc en ligne)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur les applications web (« Run in browser », « Can&#x27;t access your camera/mic properly », etc.)</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les limites des applications web en pointant du curseur les éléments du schéma.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:38 - 00:03:05</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous n&#x27;avions pas d&#x27;icônes sur l&#x27;écran d&#x27;accueil. Nous n&#x27;avions pas de notifications push et l&#x27;application s&#x27;arrête dès que vous fermez l&#x27;onglet. Alors qu&#x27;aujourd&#x27;hui, avec Rourke Max et Opus 4.6, nous avons du Swift natif, qui est essentiellement un langage de codage vous permettant de créer des applications iOS directement sur vos appareils. Cela s&#x27;exécute donc directement sur votre téléphone. Vous pouvez utiliser votre appareil photo, votre micro et l&#x27;accès à votre position. Cela va sur l&#x27;App Store. Et pour l&#x27;expliquer d&#x27;une manière très élémentaire, c&#x27;est comme utiliser Instagram ou TikTok sur votre téléphone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc numérique en ligne) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif listant les avantages du Swift natif (&quot;Runs directly on your iPhone&quot;, &quot;App Store&quot;, &quot;Push notifications&quot;, &quot;Works even when closed&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le tableau blanc et souligne les points clés sur les applications natives iOS.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000252_seg6.jpg" alt="Vue d&#x27;un tableau blanc interactif (Excalidraw) comparant les applications web et natives, mettant en avant Rork Max (Native Swift)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000252_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:52</span>
+                        <span class="caption-text">Vue d&#x27;un tableau blanc interactif (Excalidraw) comparant les applications web et natives, mettant en avant Rork Max (Native Swift).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000258_seg6.jpg" alt="Gros plan sur le tableau blanc interactif zoomé détaillant les caractéristiques des &quot;Real Native iOS Apps&quot;." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000258_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:58</span>
+                        <span class="caption-text">Gros plan sur le tableau blanc interactif zoomé détaillant les caractéristiques des &quot;Real Native iOS Apps&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:38</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On dirait vraiment une application native. On n&#x27;a pas l&#x27;impression que c&#x27;est quelque chose qui a été assemblé de bric et de broque. Une autre chose importante, c&#x27;est que ça utilise toutes les fonctionnalités de l&#x27;iPhone, ça peut vivre sur votre écran d&#x27;accueil, avec de vraies notifications push, et ça fonctionne même lorsque l&#x27;application est fermée. Maintenant que nous comprenons exactement pourquoi c&#x27;est si percutant, je vais vous montrer les applications que j&#x27;ai construites et vous montrer comment vous pourriez faire exactement la même chose. Très bien, passons donc à Rourke. Je vais vous montrer exactement comment vous pouvez commencer à utiliser ceci dès maintenant. Juste ici, nous avons en fait ce bouton Rourke max. Nous allons donc nous assurer de l&#x27;activer. C&#x27;est ce qui nous permet réellement de construire ces applications Swift qui</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, site Rork (rork.com), outil de présentation / tableau blanc.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les avantages des apps natives (exécutées sur iPhone, App Store, notifications push, écran d&#x27;accueil) et champ de saisie pour décrire une application mobile.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site web de Rork et présentation des caractéristiques d&#x27;une application mobile native par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000313_seg7.jpg" alt="Présentation des fonctionnalités des applications iOS natives sur fond vert (Real Native iOS Apps)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000313_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:13</span>
+                        <span class="caption-text">Présentation des fonctionnalités des applications iOS natives sur fond vert (Real Native iOS Apps).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000330_seg7.jpg" alt="Interface web du service Rork permettant de créer des applications mobiles natives à l&#x27;aide de l&#x27;IA (Rork Max)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000330_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:30</span>
+                        <span class="caption-text">Interface web du service Rork permettant de créer des applications mobiles natives à l&#x27;aide de l&#x27;IA (Rork Max).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:38 - 00:04:11</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que nous pourrions commencer à utiliser sur notre téléphone. Ce que je vais faire, c&#x27;est que je vais coller ce prompt ici. C&#x27;est un prompt très détaillé. Essentiellement, ce que j&#x27;ai fait, c&#x27;est que je suis juste allé sur ChatGPT. J&#x27;ai utilisé Whisper Flow. Et j&#x27;ai en gros simplement parlé à mon ordinateur et j&#x27;ai dit : Hé, je veux une application qui soit essentiellement Minecraft. Je veux que tu me fasses un prompt hyper spécifique pour une application iOS Swift à construire en utilisant RORC. Et ensuite, il m&#x27;a donné ce résultat ici. C&#x27;est donc vraiment important que nous donnions un prompt assez structuré lorsque nous allons construire notre application, parce qu&#x27;Opus 4.6 est phénoménal quand il s&#x27;agit de tâches de codage vraiment complexes. Et nous pourrions en fait choisir le modèle que nous voulons utiliser ici. Nous allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site rork.com.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt détaillé décrivant des indices sonores, une navigation minimaliste et le titre &#x27;Rork Max&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment il utilise un prompt détaillé copié-collé depuis ChatGPT pour générer une application mobile.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:11 - 00:04:46</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">d&#x27;utiliser Opus 4.6. Et si je configure ceci pour dire RORC max, cela va automatiquement l&#x27;utiliser, je crois. Donc ce que je vais faire, je vais envoyer ceci maintenant et Rourke va commencer à construire notre application. Très bien. Donc ce que nous allons voir à l&#x27;intérieur de Rourke maintenant, c&#x27;est ce plan très détaillé. Donc il semble que nous ayons déjà deux de nos 13 tâches de faites. Une chose que je veux mentionner à propos de Rourke Max et de Claude Opus 4.6, c&#x27;est que cela prendra un certain temps pour générer notre application. Et ce n&#x27;est pas une mauvaise chose parce que quand je vous dis que vous pouvez créer une application en un seul essai, vous pouvez créer une application en un seul essai. Et ce que je veux dire par un seul essai, c&#x27;est que vous donnez juste un prompt détaillé comme celui-ci et il va construire une application entière qui est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (type Bolt/v0 ou outil similaire de génération d&#x27;application par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif d&#x27;une application mobile (« Ember: Luxe Wood Survival ») avec spécifications techniques et visuelles, et prévisualisation d&#x27;écran de smartphone.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la génération et de la configuration de l&#x27;application en cours par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000420_seg9.jpg" alt="Capture d&#x27;écran montrant une interface de développement d&#x27;application avec un panneau de code/prompt à gauche et une simulation d&#x27;interface mobile à droite, ainsi que le présentateur en incrustation (webcam)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000420_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:20</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de développement d&#x27;application avec un panneau de code/prompt à gauche et une simulation d&#x27;interface mobile à droite, ainsi que le présentateur en incrustation (webcam).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:46 - 00:05:08</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">fonctionnant en douceur avec zéro erreur exactement comme vous le voulez. Donc cela va prendre un petit moment ici. Laissons-le faire, réfléchir à la façon de s&#x27;attaquer, vous savez, à la tâche de construire cette application et ensuite nous verrons le résultat final. Donc nous avons maintenant cette application de style Minecraft ici, ce qui est super. Mais une chose que je veux mentionner est que nous utilisons ceci à l&#x27;intérieur du navigateur. Maintenant nous sommes sur le site web de Rourke en utilisant ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface de développement d&#x27;application et simulateur mobile.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code de spécification textuelle à gauche et aperçu graphique d&#x27;un jeu de type voxel sur l&#x27;écran du smartphone virtuel.</p>
+                        <p><strong>Action / Démonstration :</strong> Chargement initial puis affichage du résultat final de l&#x27;application interactive générée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000452_seg10.jpg" alt="Interface de développement avec une application mobile en cours de chargement (écran noir avec logo), et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000452_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:52</span>
+                        <span class="caption-text">Interface de développement avec une application mobile en cours de chargement (écran noir avec logo), et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000503_seg10.jpg" alt="Interface de développement montrant le jeu voxel en 3D fonctionnel dans l&#x27;émulateur mobile, avec le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000503_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Interface de développement montrant le jeu voxel en 3D fonctionnel dans l&#x27;émulateur mobile, avec le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:08 - 00:05:26</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tu te demandes probablement, Brock, comment est-ce que j&#x27;utilise ça sur mon téléphone ? Donc je vais te montrer exactement comment faire ça en ce moment même en seulement deux ou trois étapes simples. Donc tout d&#x27;abord, laisse-moi te montrer juste genre comment l&#x27;application fonctionne. On pourrait essentiellement juste genre, tu sais, sauter partout et, tu sais, en gros c&#x27;est essentiellement juste genre Minecraft. On pourrait utiliser différents blocs, et cetera, tout ce genre de trucs. C&#x27;est super, mais je vais te montrer maintenant comment faire ça sur ton téléphone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement / preview mobile avec panneau de code et simulation d&#x27;application.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Simulation d&#x27;application mobile avec interface de jeu en 3D voxel et instructions textuelles dans le panneau latéral gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation de l&#x27;application sur un écran de téléphone simulé dans l&#x27;interface de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000517_seg11.jpg" alt="Interface de développement montrant la simulation d&#x27;un écran de smartphone au centre avec une application en cours d&#x27;utilisation et du texte descriptif sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000517_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:17</span>
+                        <span class="caption-text">Interface de développement montrant la simulation d&#x27;un écran de smartphone au centre avec une application en cours d&#x27;utilisation et du texte descriptif sur la gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:26 - 00:06:01</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que nous allons faire, c&#x27;est que nous allons aller dans le coin supérieur droit à l&#x27;intérieur de Rourke. Nous allons cliquer sur exécuter sur votre appareil. Et ce que nous allons faire, c&#x27;est télécharger cette application compagnon Rourke. C&#x27;est donc crucial. Si vous voulez pouvoir faire cela, nous devons avoir cette application téléchargée. Je vais donc cliquer sur télécharger et cela va m&#x27;emmener pour télécharger réellement ce fichier. Je vais ouvrir ce fichier. Et juste comme ça, nous avons maintenant l&#x27;application compagnon Rourke. Vous ne pouvez pas la voir sur mon bureau. Cependant, je l&#x27;ai bien téléchargée sur mon ordinateur maintenant. Donc ce que je vais faire, c&#x27;est simplement me connecter à mon compte Rourke. Donc si vous n&#x27;en avez pas déjà un, assurez-vous de vous inscrire. Je vais juste me connecter rapidement et je vais cliquer sur ouvrir l&#x27;application compagnon Rourke.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement Bolt/Rourke, émulateur d&#x27;application mobile (iOS).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de description détaillée d&#x27;un jeu voxel &#x27;Ember&#x27;, aperçu interactif d&#x27;un smartphone simulant le rendu du jeu 3D, options de téléchargement et de connexion de l&#x27;application compagnon.</p>
+                        <p><strong>Action / Démonstration :</strong> Téléchargement et ouverture de l&#x27;application compagnon Rourke pour tester le prototype directement sur un appareil physique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000535_seg12.jpg" alt="Interface web affichant un code de description de jeu à gauche, un aperçu d&#x27;application mobile au centre et le menu &#x27;Rourke Companion&#x27; en haut à droite." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000535_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:35</span>
+                        <span class="caption-text">Interface web affichant un code de description de jeu à gauche, un aperçu d&#x27;application mobile au centre et le menu &#x27;Rourke Companion&#x27; en haut à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000544_seg12.jpg" alt="Vue similaire centrée sur l&#x27;aperçu du jeu mobile avec le panneau &#x27;Rourke Companion&#x27; visible dans le coin supérieur droit." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000544_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:44</span>
+                        <span class="caption-text">Vue similaire centrée sur l&#x27;aperçu du jeu mobile avec le panneau &#x27;Rourke Companion&#x27; visible dans le coin supérieur droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000552_seg12.jpg" alt="Apparition de la fenêtre pop-up de connexion &#x27;Rourke Companion&#x27; superposée à l&#x27;écran principal de développement." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000552_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Apparition de la fenêtre pop-up de connexion &#x27;Rourke Companion&#x27; superposée à l&#x27;écran principal de développement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:34</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;était la première étape, c&#x27;était extrêmement facile à faire. Maintenant, ce que je dois faire, c&#x27;est en fait me connecter à mon identifiant Apple ou à mon compte de développeur Apple. Je vais donc vous montrer comment faire dès maintenant. Donc, essentiellement, ce que vous allez faire, c&#x27;est vous connecter à votre compte d&#x27;identifiant Apple. Je vais donc me connecter maintenant. On va me demander de vérifier cela et je viens de recevoir une notification. Je vais l&#x27;accepter sur mon téléphone. Ensuite, je vais simplement taper ce code de vérification que je viens de recevoir sur mon téléphone, sélectionner une équipe. Et juste comme ça, nous sommes maintenant configurés. Ensuite, je vais essentiellement brancher mon téléphone sur mon ordinateur. Nous devons donc connecter notre appareil via USB. Je vais donc brancher mon</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, site de Rork, fenêtre pop-up de connexion Apple.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de connexion Apple ID / Apple Developer, étapes d&#x27;installation de l&#x27;application Rork Companion (Rork Account, Apple Account, Connect Device).</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion au compte Apple Developer pour configurer le déploiement d&#x27;applications mobiles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000609_seg13.jpg" alt="Interface web montrant une fenêtre de connexion &quot;Sign in with Apple&quot; avec des champs pour l&#x27;identifiant et le mot de passe." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000609_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Interface web montrant une fenêtre de connexion &quot;Sign in with Apple&quot; avec des champs pour l&#x27;identifiant et le mot de passe.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000626_seg13.jpg" alt="Fenêtre modale &quot;Rork Companion&quot; affichant les étapes de configuration avec un compte Apple connecté validé." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000626_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:26</span>
+                        <span class="caption-text">Fenêtre modale &quot;Rork Companion&quot; affichant les étapes de configuration avec un compte Apple connecté validé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:07:08</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">téléphone maintenant. Et juste comme ça, nous sommes maintenant prêts. Je vais donc cliquer sur openwork.com. Et ensuite, je vais aller sur notre application que nous venons en fait de créer. Et à partir de là, tout ce que j&#x27;ai à faire, c&#x27;est de cliquer sur exécuter sur votre appareil. Vous pouvez donc voir que nous avons l&#x27;iPhone de Brock installé juste ici. Et laissez-moi aller de l&#x27;avant et transférer la vue sur mon téléphone maintenant. Pour que vous puissiez me voir en train d&#x27;accéder directement à l&#x27;application ici. Très bien. Donc si vous jetez un œil à mon téléphone, j&#x27;ai en fait cette icône d&#x27;application ici. Et ce qu&#x27;est cette application, c&#x27;est en gros une réplication de Minecraft. Laissez-moi donc l&#x27;ouvrir. Je pourrais même l&#x27;utiliser de côté sur mon écran. Je pourrais construire des choses. Vous pouvez voir que je suis juste en train de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> OpenWork, émulateur mobile, interface iOS (iPhone).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Application voxel mobile nommée &#x27;Ember Voxel World&#x27; générée par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur l&#x27;application web OpenWork et présentation de l&#x27;application mobile nouvellement créée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000659_seg14.jpg" alt="Gros plan sur l&#x27;écran d&#x27;un smartphone affichant l&#x27;icône de l&#x27;application &#x27;Ember Voxel World&#x27; récemment créée." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000659_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:59</span>
+                        <span class="caption-text">Gros plan sur l&#x27;écran d&#x27;un smartphone affichant l&#x27;icône de l&#x27;application &#x27;Ember Voxel World&#x27; récemment créée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:08 - 00:07:44</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en collant différents blocs ici. Et tout cela a été construit à partir d&#x27;une seule invite. Laissez-moi donc vous montrer une autre application que j&#x27;ai construite. Cette application juste ici est une application de réalité augmentée qui me permet essentiellement de placer différentes choses dans ma pièce et de voir à quoi cela ressemble. Me voilà donc à l&#x27;intérieur de la caméra. Laissez-moi aller voir par ici et je vais placer, comme vous pouvez le voir, j&#x27;ai en fait placé quelques lampadaires juste ici. Laissez-moi aller placer une table basse. Nous avons donc cette toute petite table basse ici. Je pourrais en fait continuer. Je pourrais placer une bibliothèque et elle utilise la réalité augmentée sur mon téléphone. Et l&#x27;une des choses les plus importantes que je tiens à mentionner ici, c&#x27;est que puisqu&#x27;elle utilise la réalité augmentée, elle utilise ma véritable caméra.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application mobile de réalité augmentée (AR Space Studio) affichée sur un iPhone, avec retour vidéo du présentateur en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de l&#x27;application AR avec des icônes de sélection de meubles (canapé, table, lampe, étagère) et un espace de prévisualisation en réalité augmentée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur démontre l&#x27;utilisation d&#x27;une application mobile en réalité augmentée pour placer et visualiser des objets virtuels dans un environnement réel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000717_seg15.jpg" alt="Interface d&#x27;une application mobile de réalité augmentée montrant un menu avec des options de mobilier." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000717_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:17</span>
+                        <span class="caption-text">Interface d&#x27;une application mobile de réalité augmentée montrant un menu avec des options de mobilier.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000735_seg15.jpg" alt="Affichage en réalité augmentée sur l&#x27;écran d&#x27;un smartphone d&#x27;un objet virtuel bleu modélisant un meuble dans une pièce." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000735_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Affichage en réalité augmentée sur l&#x27;écran d&#x27;un smartphone d&#x27;un objet virtuel bleu modélisant un meuble dans une pièce.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:44 - 00:08:02</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, comme il s&#x27;agit d&#x27;une application Swift, elle est capable d&#x27;utiliser les fonctionnalités intégrées à mon iPhone. Et c&#x27;est un peu pour cela que ça change la donne. Très bien. Donc cette dernière application que je veux vous montrer n&#x27;a probablement l&#x27;air de rien d&#x27;extraordinaire en surface, mais je vais vous montrer ce qui a de si spécial là-dedans. Nous avons cette nouvelle icône d&#x27;application ici qui indique les prix des cryptos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Écran d&#x27;accueil iOS d&#x27;un iPhone montrant plusieurs icônes d&#x27;applications.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Icônes d&#x27;applications mobiles sur iOS (UniFi Endpoint, AR Space Studio, Ember Voxel World, CryptoPriceWidget).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration d&#x27;une application mobile développée en Swift intégrée à l&#x27;écosystème iPhone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000753_seg16.jpg" alt="Vue de l&#x27;écran d&#x27;un iPhone affichant l&#x27;interface d&#x27;applications mobiles, avec le présentateur en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000753_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:53</span>
+                        <span class="caption-text">Vue de l&#x27;écran d&#x27;un iPhone affichant l&#x27;interface d&#x27;applications mobiles, avec le présentateur en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:21</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si je clique là-dessus, vous pouvez voir qu&#x27;on peut suivre les cryptos en temps réel. Ce sont des informations réelles, en direct et actualisées, qui utilisent une API de crypto, laquelle a pu aller chercher [des données] afin d&#x27;obtenir des informations en temps réel. Cependant, la chose qui est vraiment incroyable avec ça, c&#x27;est regardez ça. Je vais retourner sur mon écran d&#x27;accueil. Je vais cliquer sur &quot;ajouter un widget&quot; et je peux réellement ajouter un widget à mon application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface d&#x27;application mobile de suivi des cryptomonnaies.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Cours actuels et graphiques d&#x27;évolution pour le Bitcoin ($68,872.00), l&#x27;Ethereum ($1,961.13), Solana ($86.20) et Dogecoin ($0.1025).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;application mobile de suivi des cryptomonnaies en direct.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000807_seg17.jpg" alt="Une application mobile affichant les cours en temps réel de différentes cryptomonnaies (Bitcoin, Ethereum, Solana, Dogecoin)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000807_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:07</span>
+                        <span class="caption-text">Une application mobile affichant les cours en temps réel de différentes cryptomonnaies (Bitcoin, Ethereum, Solana, Dogecoin).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:21 - 00:08:41</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais chercher un outil de suivi des prix des cryptos et des widgets et boum, juste comme ça, nous pouvons désormais suivre tous les prix des cryptos sur mon téléphone. Et bien sûr, il y a d&#x27;autres applications qui peuvent faire cela. Cependant, le fait qu&#x27;au sein de Rourke, en utilisant Claude Opus 4.6, nous pouvons désormais créer une application mobile sur notre téléphone qui peut utiliser des widgets. Elle peut utiliser Siri. Elle peut utiliser la Dynamic Island sur notre téléphone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface mobile (iOS) avec widget de suivi des prix (Bitcoin, Ethereum, Solana).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prix et variations en pourcentage pour Bitcoin ($91,500.00 / +2.34%), Ethereum ($3,450.00 / -1.50%) et Solana ($195.00 / +5.67%).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du widget de suivi des prix de cryptomonnaies intégré sur l&#x27;écran d&#x27;un téléphone.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000826_seg18.jpg" alt="Capture d&#x27;écran d&#x27;un smartphone affichant un widget de suivi des prix des cryptomonnaies sur l&#x27;écran d&#x27;accueil." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000826_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:26</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un smartphone affichant un widget de suivi des prix des cryptomonnaies sur l&#x27;écran d&#x27;accueil.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:41 - 00:09:01</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Toutes ces différentes choses n&#x27;étaient pas possibles par le codage à l&#x27;instinct jusqu&#x27;à cette nouvelle mise à jour de Rourke Max. Très bien. Donc pour les personnes qui veulent aller de l&#x27;avant et utiliser Rourke Max, je dois faire un préambule et dire que ce n&#x27;est pas bon marché. Cependant, vous payez pour beaucoup de haute qualité ici. Donc actuellement c&#x27;est 200 dollars par mois pour le forfait de 1000 crédits sur le forfait max.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la page de tarification de la plateforme Rork.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau des prix montrant les offres Free, Pro (20$/mois) et Max (200$/mois) avec les crédits et fonctionnalités incluses.
+[DESC_IMAGE_1] (Ignorée selon les critères car pas de graphique/code/terminal pertinent)
+[DESC_IMAGE_2] Présentation des tarifs de l&#x27;outil Rork Max abordés dans l&#x27;audio.
+[DESC_IMAGE_3] Zoom sur l&#x27;option tarifaire Rork Max commentée par le présentateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des coûts d&#x27;abonnement de la plateforme d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000851_seg19.jpg" alt="Capture montrant la page web des tarifs (pricing) de la plateforme de développement avec les différentes formules, dont le plan Max à 200$/mois." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000851_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Capture montrant la page web des tarifs (pricing) de la plateforme de développement avec les différentes formules, dont le plan Max à 200$/mois.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000856_seg19.jpg" alt="Gros plan sur la section du plan Max à 200$/mois de la page de tarification." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000856_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:56</span>
+                        <span class="caption-text">Gros plan sur la section du plan Max à 200$/mois de la page de tarification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:01 - 00:09:26</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je vais dire que les 1 000 crédits vont vraiment très loin. Donc ça devrait vous suffire. Donc si vous voulez vraiment commencer à utiliser le plan Rourke, vous pouvez aller de l&#x27;avant et le faire, mais ça ne va pas être bon marché. Très bien. Donc si vous êtes quelqu&#x27;un qui veut utiliser Rourke max et commencer à créer des applications mobiles, j&#x27;ai généré ce document ici, qui est un guide détaillant des astuces et des conseils que vous pourriez commencer à utiliser pour essentiellement accélérer votre passage de débutant à expert en utilisant cette nouvelle fonctionnalité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la grille tarifaire de la plateforme Rourke et visionneuse de PDF.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau des prix des abonnements avec les options Free ($0), Pro ($20) et Max ($200), incluant les détails des crédits et fonctionnalités.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des différents plans tarifaires et options d&#x27;abonnement de la plateforme par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000908_seg20.jpg" alt="Capture d&#x27;écran montrant la page de tarification du service Rourke avec les différents forfaits (Free, Pro à 20$, et Max à 200$)." loading="lazy" onclick="openLightbox('../screenshots/3uIbTvgaNRY/3uIbTvgaNRY_000908_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:08</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la page de tarification du service Rourke avec les différents forfaits (Free, Pro à 20$, et Max à 200$).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:26 - 00:09:34</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez ceci, il y aura un lien gratuit dans la description. Ceci étant dit, les gars, merci beaucoup d&#x27;être restés jusqu&#x27;à la fin de cette vidéo. J&#x27;espère que vous en avez retiré de la valeur et je vous vois dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune (caméra frontale du présentateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun graphique, code ou indicateur technique.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur conclut la vidéo et indique la description.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
