@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Cette compétence Claude vient de tout changer (Remotion) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Cette compétence Claude vient de tout changer (Remotion)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-25</span>
+                <span class="badge">⏱️ 00:17:20</span>
+                <span class="badge">🆔 <code>FVrNRnfC8oM</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=FVrNRnfC8oM" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo de la chaîne de Brock Mesarich met en lumière une révolution dans la création de contenus automatisés grâce à l'intégration des « compétences » (skills) dans l'écosystème Claude. L'invité, Salman, y démontre comment il est possible de générer des vidéos marketing complexes, incluant des graphiques animés, des interfaces logicielles et des voix off, de manière entièrement autonome et sans compétences en codage. En utilisant des environnements locaux et en injectant des répertoires de compétences spécifiques, les utilisateurs peuvent transformer une simple invite textuelle en un pipeline de production multimédia automatisé.<br><br>Au-delà de la simple génération de code, la discussion explore la transition vers des flux de travail agentiques où les modèles de langage agissent comme des chefs d'orchestre capables de coordonner des services tiers spécialisés. Des outils comme Remotion, combinés à des moteurs de synthèse vocale et d'avatars comme HeyGen, permettent d'envisager une automatisation marketing de niveau supérieur. Cette rupture technologique crée une opportunité d'arbitrage massive pour les créateurs et les entreprises capables d'adopter ces technologies avant qu'elles ne se démocratisent totalement.<br><br>La démonstration pratique prouve qu'un utilisateur non technique peut, à l'aide d'un simple dossier local et d'une URL de compétences, déléguer à Claude l'installation, la configuration et l'exécution d'un projet vidéo complet. En pointant l'intelligence artificielle vers des ressources existantes — telles qu'un site web d'entreprise —, le système récupère les éléments graphiques et structure une production visuelle sur mesure, illustrant parfaitement l'efficacité redoutable de ces nouvelles architectures d'agents autonomes.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude / Claude Code** : Modèle de langage avancé et environnement de développement assisté servant de chef d'orchestre central pour exécuter les instructions et installer des compétences dynamiques.<br>* **Remotion** : Framework de programmation vidéo permettant de générer et d'éditer des animations et des montages graphiques complexes directement via du code piloté par l'IA.<br>* **Nano Banana (et Nano Banana Pro)** : Outil de génération d'images et de composants visuels intégré pour enrichir les rendus graphiques des projets vidéo.<br>* **Eleven Labs** : Plateforme de synthèse vocale ultra-réaliste utilisée pour automatiser la création des voix off à partir de scripts textuels.<br>* **HeyGen** : Solution d'avatars parlants dotée d'une compétence Claude permettant de synchroniser des présentateurs virtuels avec des vidéos générées par Remotion.<br>* **Make** : Plateforme d'automatisation de flux de travail sans code pour connecter différentes applications entre elles.<br>* **Zapier** : Outil d'intégration et d'automatisation logicielle reliant divers services cloud pour piloter des tâches répétitives.<br>* **n8n** : Logiciel d'automatisation de flux de travail orienté technique et open-source pour orchestrer des architectures d'agents complexes.<br>* **Gemini** : Modèle d'intelligence artificielle multimodal développé par Google, mentionné dans l'écosystème des grands LLM actuels.<br>* **ChatGPT** : Modèle conversationnel d'OpenAI, utilisé comme référence comparative dans le paysage des IA génératives.<br>* **Grok** : Modèle de langage développé par xAI, intégré à l'écosystème des outils d'intelligence artificielle évoqués.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **L'ère des agents augmentés par compétences** : L'utilisation de compétences modulaires permet de transformer un modèle de langage textuel (comparé à Thanos sans gant) en un système surpuissant capable d'interagir avec des outils externes spécialisés.<br>* **Disparition des barrières techniques** : Il n'est plus nécessaire de maîtriser le code ou des logiciels de montage complexes pour produire des démos produits ou des vidéos marketing de haute qualité, l'IA se chargeant de la traduction technique en arrière-plan.<br>* **Le concept de l'arbitrage technologique** : Une fenêtre d'opportunité majeure existe actuellement pour les pionniers capables d'exploiter ces outils avant qu'ils ne deviennent des standards grand public universellement adoptés.<br>* **Pipelines marketing en pilotage automatique** : La combinaison de LLM et de compétences logicielles permet de concevoir des équipes marketing entièrement automatisées, capables d'itérer et de produire du contenu en continu.<br>* **Injection simplifiée de compétences** : Il suffit de fournir une URL de dépôt (provenant par exemple de GitHub) directement dans l'interface de développement de Claude pour installer automatiquement de nouvelles capacités de production.<br>* **Extraction et réutilisation de ressources web** : L'IA est capable d'analyser un site web existant (palettes de couleurs, visuels, identité de marque) pour concevoir dynamiquement des vidéos alignées sur l'image de l'entreprise.<br>* **Industrialisation de la voix off et des avatars** : L'intégration native d'outils comme Eleven Labs et HeyGen permet d'automatiser la synchronisation labiale et la narration vocale sans intervention humaine manuelle.<br>* **Évolution du rôle du créateur de contenu** : Le métier de créateur et de monteur évolue vers une fonction de direction artistique et de supervision stratégique de systèmes autonomes générant le contenu brut.<br>* **Simplification de la configuration locale** : La création d'un simple dossier de projet et son association à l'application Claude suffisent pour initialiser un environnement de travail multimédia prêt à l'emploi.<br>* **L'effet de levier des écosystèmes interconnectés** : À mesure que de plus en plus d'éditeurs de logiciels intégreront des compétences pour Claude, la puissance des flux de travail agentiques croîtra de manière exponentielle, décuplant la productivité individuelle.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude / Claude Code</span><span class="tool-tag">Remotion</span><span class="tool-tag">Nano Banana (et Nano Banana Pro)</span><span class="tool-tag">Eleven Labs</span><span class="tool-tag">HeyGen</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">n8n</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>L&#x27;ère des agents augmentés par compétences** : L&#x27;utilisation de compétences modulaires permet de transformer un modèle de langage textuel (comparé à Thanos sans gant) en un système surpuissant capable d&#x27;interagir avec des outils externes spécialisés.</span></li><li><span class="point-bullet">✦</span><span>Disparition des barrières techniques** : Il n&#x27;est plus nécessaire de maîtriser le code ou des logiciels de montage complexes pour produire des démos produits ou des vidéos marketing de haute qualité, l&#x27;IA se chargeant de la traduction technique en arrière-plan.</span></li><li><span class="point-bullet">✦</span><span>Le concept de l&#x27;arbitrage technologique** : Une fenêtre d&#x27;opportunité majeure existe actuellement pour les pionniers capables d&#x27;exploiter ces outils avant qu&#x27;ils ne deviennent des standards grand public universellement adoptés.</span></li><li><span class="point-bullet">✦</span><span>Pipelines marketing en pilotage automatique** : La combinaison de LLM et de compétences logicielles permet de concevoir des équipes marketing entièrement automatisées, capables d&#x27;itérer et de produire du contenu en continu.</span></li><li><span class="point-bullet">✦</span><span>Injection simplifiée de compétences** : Il suffit de fournir une URL de dépôt (provenant par exemple de GitHub) directement dans l&#x27;interface de développement de Claude pour installer automatiquement de nouvelles capacités de production.</span></li><li><span class="point-bullet">✦</span><span>Extraction et réutilisation de ressources web** : L&#x27;IA est capable d&#x27;analyser un site web existant (palettes de couleurs, visuels, identité de marque) pour concevoir dynamiquement des vidéos alignées sur l&#x27;image de l&#x27;entreprise.</span></li><li><span class="point-bullet">✦</span><span>Industrialisation de la voix off et des avatars** : L&#x27;intégration native d&#x27;outils comme Eleven Labs et HeyGen permet d&#x27;automatiser la synchronisation labiale et la narration vocale sans intervention humaine manuelle.</span></li><li><span class="point-bullet">✦</span><span>Évolution du rôle du créateur de contenu** : Le métier de créateur et de monteur évolue vers une fonction de direction artistique et de supervision stratégique de systèmes autonomes générant le contenu brut.</span></li><li><span class="point-bullet">✦</span><span>Simplification de la configuration locale** : La création d&#x27;un simple dossier de projet et son association à l&#x27;application Claude suffisent pour initialiser un environnement de travail multimédia prêt à l&#x27;emploi.</span></li><li><span class="point-bullet">✦</span><span>L&#x27;effet de levier des écosystèmes interconnectés** : À mesure que de plus en plus d&#x27;éditeurs de logiciels intégreront des compétences pour Claude, la puissance des flux de travail agentiques croîtra de manière exponentielle, décuplant la productivité individuelle.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça affole Internet en ce moment et c’est vraiment l’un des cas d’usage les plus fous que j’ai vus de l’IA. Les gens génèrent des vidéos entières avec des voix off, des motion graphics et des démos de produits, le tout à partir d’une simple invite textuelle dans Claude. Pas de montage et pas de code, juste en tapant ce que vous voulez et vous obtenez un résultat en moins de quelques minutes. Donc dans cet épisode, je reçois mon ami Salman pour nous montrer exactement comment il fait ça pour créer des vidéos de fou. Donc sans plus attendre, plongeons dans cette vidéo. Très bien, alors allons-y tout de suite rapidement. Je veux vous montrer ces publications sur Twitter parce que ça cartonne absolument en ce moment sur Twitter si vous ne l&#x27;avez pas</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUNE</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:08</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vivez sous une roche. Remotion permet désormais apparemment de créer et d&#x27;éditer des vidéos directement dans Cloud Code, et voici juste quelques-uns des exemples que les gens ont partagés. Donc, par exemple, celui-ci, Solomon, si je ne me trompe pas, a été littéralement généré entièrement à l&#x27;intérieur de Cloud Code. Personne ne... aucun monteur n&#x27;édite cette vidéo. C&#x27;est littéralement tout Cloud Code qui génère les graphiques et tout le reste. Donc, ce que nous allons faire dans cette vidéo, c&#x27;est que nous allons montrer des choses que Salman a construites, car il a utilisé ceci ces derniers jours pour créer des choses plutôt cool. Et ensuite, il va réellement nous montrer comment nous pouvons commencer à faire cela dès maintenant, même si nous n&#x27;avons aucune compétence en codage ou technique. Alors Salman, plongeons là-dedans, mon vieux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tweet de Remotion avec un aperçu de code et de projet vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication Twitter de @Remotion montrant le processus de création vidéo et l&#x27;historique des prompts associés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente un exemple concret de génération de vidéo partagé sur les réseaux sociaux.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000052_seg2.jpg" alt="Capture d&#x27;un tweet du compte officiel Remotion affichant un exemple de code et d&#x27;interface de création vidéo, aux côtés des deux intervenants incrustés à gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000052_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Capture d&#x27;un tweet du compte officiel Remotion affichant un exemple de code et d&#x27;interface de création vidéo, aux côtés des deux intervenants incrustés à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:42</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est clair, c&#x27;est clair. Ça va être amusant. Donc, un truc que je voulais montrer, c&#x27;est que, juste avec une ou deux instructions, j&#x27;avais une autre vidéo. Ça peut, je peux maintenant faire des vidéos où ça prend des composants de mon interface utilisateur et ça peut littéralement construire, ajouter des voix off et générer des démos de produits complètes. Je ne veux pas vous montrer tout le truc, mais par exemple ici, ça prend littéralement les composants de mon logiciel et ensuite ça génère une voix off, ça utilise Nano Banana pour faire une vidéo entière, n&#x27;est-ce pas ? C&#x27;est plutôt amusant à faire parce que maintenant ce que je peux</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface utilisateur (UI) de type builder / Miro / outil no-code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de construction d&#x27;agent (« Create Your AI Sales Agent »), champs de texte, sélecteurs de voix et icônes de canaux de communication.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration d&#x27;une interface de conception d&#x27;application ou d&#x27;agent IA interactif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000117_seg3.jpg" alt="Vue d&#x27;ensemble de l&#x27;écran avec deux intervenants en visioconférence à gauche et une interface web interactive Miro affichant un outil de création d&#x27;agent commercial (« Create Your AI Sales Agent ») à droite." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000117_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:17</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;écran avec deux intervenants en visioconférence à gauche et une interface web interactive Miro affichant un outil de création d&#x27;agent commercial (« Create Your AI Sales Agent ») à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000133_seg3.jpg" alt="Gros plan sur l&#x27;interface de création d&#x27;agent (« Agent Builder ») montrant les options de configuration telles que le nom de l&#x27;agent, le choix de la voix et les canaux d&#x27;action (Voice, SMS, Email, Whatsapp)." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000133_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:33</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface de création d&#x27;agent (« Agent Builder ») montrant les options de configuration telles que le nom de l&#x27;agent, le choix de la voix et les canaux d&#x27;action (Voice, SMS, Email, Whatsapp).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:42 - 00:02:02</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce que je peux faire, c&#x27;est que si je peux simplement commencer à réfléchir à d&#x27;autres cas d&#x27;usage sur d&#x27;autres vidéos marketing, je peux avoir un pipeline automatisé où c&#x27;est juste comme une équipe marketing en pilotage automatique, n&#x27;est-ce pas ? La raison pour laquelle nous pouvons faire ce genre de vidéos de type re-motion avec Claude, c&#x27;est parce que Claude peut utiliser cette chose, qui sont des compétences. Et à un haut niveau, vous pouvez concevoir les compétences comme ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web Miro et interface utilisateur de tableau de bord marketing.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphiques d&#x27;engagement, métriques en temps réel (&quot;Real-Time Metrics at a Glance&quot;), flux d&#x27;activité et indicateurs chiffrés.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du tableau de bord marketing automatisé et discussion sur les cas d&#x27;usage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000147_seg4.jpg" alt="Vue d&#x27;un tableau Miro montrant un prototype de tableau de bord de métriques marketing en temps réel." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000147_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:47</span>
+                        <span class="caption-text">Vue d&#x27;un tableau Miro montrant un prototype de tableau de bord de métriques marketing en temps réel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:03 - 00:02:21</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors imaginez que c&#x27;est Claude. C&#x27;est un petit diagramme de Thanos des Avengers. Je ne sais pas si vous avez vu, du genre il fait ce claquement de doigts pour éliminer tout le monde. Mais, vous savez, Thanos lui-même est cool. Il est plutôt faible, mais il n&#x27;est pas super fort. Mais Thanos avec le Gant de l&#x27;infini, il obtient tellement de choses qu&#x27;il peut faire, comme manipuler le temps, tout ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc collaboratif Miro, affiché en plein écran à droite, avec deux flux vidéo des intervenants à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un diagramme visuel intitulé &#x27;WEAK vs POWERFUL&#x27; représentant le personnage de Thanos et l&#x27;évolution de ses compétences à l&#x27;aide des éléments de l&#x27;infini.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique le concept de compétences et de puissance en utilisant une analogie visuelle basée sur le personnage de Thanos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000207_seg5.jpg" alt="Capture d&#x27;écran montrant un tableau blanc Miro avec un schéma comparatif intitulé &#x27;Skills&#x27; illustrant Thanos dans une version &#x27;Weak&#x27; et une version &#x27;Powerful&#x27; avec le gant de l&#x27;infini." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000207_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau blanc Miro avec un schéma comparatif intitulé &#x27;Skills&#x27; illustrant Thanos dans une version &#x27;Weak&#x27; et une version &#x27;Powerful&#x27; avec le gant de l&#x27;infini.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:22 - 00:02:44</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pensez donc à donner des compétences à Claude de la même manière. Donc et les éléments comme la capacité de coder, d&#x27;utiliser Remotion pour créer des vidéos, d&#x27;utiliser Nano Banana pour en quelque sorte faire plus d&#x27;images, d&#x27;utiliser Eleven Labs pour générer une voix off. Ce sont tous des types de compétences différents que nous pouvons donner à Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro affiché sur un navigateur web, avec deux vignettes vidéo des intervenants sur le côté gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma visuel montrant un personnage (style Thanos) passant de &quot;Weak&quot; à &quot;Powerful&quot;, avec une rangée de six gemmes de couleur (rouge, orange, jaune, vert, bleu, violet) représentant des capacités de compétences.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les concepts visuels du diagramme Miro concernant l&#x27;ajout de compétences aux agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000227_seg6.jpg" alt="Un tableau Miro illustrant le concept des &quot;éléments infinis&quot; symbolisés par des gemmes colorées représentant différentes compétences d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000227_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Un tableau Miro illustrant le concept des &quot;éléments infinis&quot; symbolisés par des gemmes colorées représentant différentes compétences d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:44 - 00:03:04</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donc il peut faire de très, très bonnes vidéos, n&#x27;est-ce pas ? C&#x27;est donc en quelque sorte un super-pouvoir, donner à Claude des super-pouvoirs pour le rendre beaucoup plus puissant. Claude, vous pouvez y intégrer beaucoup de compétences vides et vous assurer qu&#x27;à la fin, après avoir équipé Claude de toutes ces compétences, il peut faire des choses incroyables. Et c&#x27;est pourquoi tout le monde adore Claude. Sans compter que c&#x27;est aussi un modèle vraiment très puissant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif « WEAK vs POWERFUL » avec un personnage ressemblant à Thanos (faible vs puissant avec le gant de l&#x27;infini) et la section « THE INFINITY ELEMENTS » représentant différentes compétences sous forme de gemmes colorées.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication visuelle du concept d&#x27;ajout de compétences ou de modules (« super-pouvoirs ») à l&#x27;intelligence artificielle Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000249_seg7.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité à gauche, ainsi qu&#x27;un tableau blanc Miro à droite illustrant le concept de Claude doté de « super-pouvoirs » avec des gemmes de l&#x27;infini." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000249_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité à gauche, ainsi qu&#x27;un tableau blanc Miro à droite illustrant le concept de Claude doté de « super-pouvoirs » avec des gemmes de l&#x27;infini.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:04 - 00:03:37</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est un peu comme juste ça, où Claude aura maintenant accès à Remotion et il peut aussi créer des images avec Nano Banana Pro et 11 Labs. Très bien, donc une chose que je veux mentionner avant qu&#x27;on continue et qu&#x27;on montre comment les gens peuvent réellement commencer à faire ça ainsi que certains des cas d&#x27;usage que tu as construits. Je veux rapidement mentionner que cette compétence Remotion est l&#x27;une des premières qui est en train de, en quelque sorte, casser Internet parce que les gens se disent, ou d&#x27;accord, nous donnons à Claude cette compétence d&#x27;aller générer des vidéos. Mais ce qui m&#x27;enthousiasme, c&#x27;est quand de plus en plus de ces applications et outils que nous utilisons au quotidien commenceront à implémenter ces compétences dans Claude, parce que ça va vraiment devenir insensé. Et c&#x27;est là qu&#x27;on va donner à Thanos des genres de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc collaboratif en ligne (Miro) et interface de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas illustrés représentant &quot;The Infinity Elements&quot;, &quot;The Empowerment Process&quot; et &quot;Unleashed Potential&quot; avec des icônes liées aux capacités des outils d&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et commente un schéma conceptuel ou un diagramme explicatif visuel hébergé sur Miro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000312_seg8.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche et en bas à gauche, ainsi qu&#x27;un tableau blanc Miro affichant des graphiques thématiques sur les éléments infinis et un personnage de style Thanos." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000312_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:12</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche et en bas à gauche, ainsi qu&#x27;un tableau blanc Miro affichant des graphiques thématiques sur les éléments infinis et un personnage de style Thanos.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:37 - 00:04:11</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des super-pouvoirs parce que, en ce moment, on a peut-être genre une ou deux pierres d&#x27;infinité. Mais genre, qu&#x27;est-ce qui se passe quand la majorité de ces plateformes commencent maintenant à avoir ces compétences qui rendent nos flux de travail agentiques genre super productifs et capables de faire des choses assez cool au lieu de juste faire ce genre de tâches de codage basiques, ouais exactement, donc c&#x27;est comme passer au niveau supérieur où maintenant Claude peut non seulement coder, ce qui est cool, tu peux seulement écrire une certaine quantité de code, mais ensuite il peut exploiter d&#x27;autres services, des gens qui ont passé des milliers d&#x27;heures à construire leurs produits, genre je vais vous montrer, HeyGen a très récemment introduit sa compétence Claude où maintenant tu peux essentiellement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro (tableau blanc interactif)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma visuel avec des icônes colorées représentant des pierres d&#x27;infinité (&quot;The Infinity Elements&quot;), un processus d&#x27;autonomisation et une illustration de Thanos portant le Gant de l&#x27;Infini avec diverses capacités d&#x27;IA listées autour (Write Code, Create Documents, Browse Web, Automate Tasks, Generate Images, Analyze Data).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente le schéma conceptuel affiché à l&#x27;écran concernant l&#x27;évolution et l&#x27;impact des agents IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:11 - 00:04:45</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">créez votre propre avatar. Vous pouvez utiliser Remotion pour créer une vidéo et ensuite y faire parler votre avatar comme si vous étiez le créateur de contenu en train de la faire. Et cela ouvre tout un nouveau monde de possibilités, en particulier pour la création de contenu où, vous savez, à mesure que cette technologie ne cesse de s&#x27;améliorer, tout pourrait changer tel que nous le connaissons. Ouais, mec, c&#x27;est fou. Toi et moi, Salman, en tant que YouTubers, enfin je suis plutôt un YouTuber. Tu es, tu es, tu es aussi propriétaire d&#x27;entreprise, mais moi je m&#x27;identifie un peu comme un YouTuber. Mon travail pourrait bien disparaître d&#x27;ici peu. C&#x27;est donc vraiment intéressant à voir et honnêtement, je pense sincèrement que c&#x27;est la plus grande opportunité pour commencer à apprendre comment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, tableau blanc Miro, interface de présentation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphique circulaire de pourcentage (65% of developers use AI assistants), diagrammes visuels et éléments graphiques de présentation.
+[DESC_IMAGE_1] Le présentateur explique l&#x27;utilisation des assistants IA avec une illustration chiffrée.
+[DESC_IMAGE_2] Le présentateur présente un schéma conceptuel sur Miro illustrant un flux de travail.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000420_seg10.jpg" alt="Vue d&#x27;une interface présentant une statistique de 65% avec un avatar vidéo parlant sur le côté droit." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000420_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:20</span>
+                        <span class="caption-text">Vue d&#x27;une interface présentant une statistique de 65% avec un avatar vidéo parlant sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000436_seg10.jpg" alt="Capture d&#x27;un tableau blanc Miro illustrant un processus avec des illustrations thématiques de super-héros." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000436_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:36</span>
+                        <span class="caption-text">Capture d&#x27;un tableau blanc Miro illustrant un processus avec des illustrations thématiques de super-héros.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:45 - 00:05:10</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">d&#x27;utiliser quelque chose comme Cloud Code et anti-gravity parce que ça va vraiment juste suralimenter les gens qui comprennent comment utiliser ces technologies oui absolument c&#x27;est un peu comme j&#x27;ai l&#x27;impression qu&#x27;il y a une si grande opportunité d&#x27;arbitrage dont nous pouvons profiter parce que c&#x27;est encore seulement comme une poignée de personnes qui peuvent faire ça en ce moment donc si vous apprenez vraiment cette technologie et qu&#x27;en fait même rien qu&#x27;en la connaissant, les possibilités auxquelles vous pouvez penser et que vous pouvez débloquer et dont vous pouvez profiter avant tout le monde sont vraiment insensées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro affiché dans un navigateur web avec deux flux vidéo des intervenants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas et graphiques représentant des éléments de surpuissance (pierres de l&#x27;infini, processus d&#x27;habilitation) et une métaphore visuelle avec le personnage de Thanos pour illustrer le potentiel libéré par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explication des concepts d&#x27;autonomisation et d&#x27;opportunités d&#x27;arbitrage grâce aux technologies d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000451_seg11.jpg" alt="Capture d&#x27;écran montrant le présentateur principal et son invité à gauche, ainsi qu&#x27;un tableau blanc Miro partagé à droite illustrant le concept d&#x27;&quot;Infinity Elements&quot; et de &quot;Potential Unleashed&quot; avec des illustrations thématiques." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000451_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur principal et son invité à gauche, ainsi qu&#x27;un tableau blanc Miro partagé à droite illustrant le concept d&#x27;&quot;Infinity Elements&quot; et de &quot;Potential Unleashed&quot; avec des illustrations thématiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:29</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Oui, c&#x27;est sans fin. Très bien, alors Salman, on comprend en gros les compétences maintenant et pourquoi elles sont importantes et pourquoi elles vont être importantes à l&#x27;avenir, mais comment quelqu&#x27;un dans mon audience en ce moment qui n&#x27;a aucune idée de comment coder, n&#x27;utilise pas cursor, n&#x27;utilise pas anti-gravity, comment pourrait-il commencer à créer ces vidéos avec cette compétence Claude ? Pourrais-tu me guider à travers cette partie ? Oui, bien sûr.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application de tableau blanc collaboratif Miro, avec les flux vidéo des deux participants incrustés sur le côté gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma visuel intitulé &quot;The Infinity Elements&quot; et &quot;Unleashed Potential&quot; représentant des compétences ou des capacités sous forme de pierres colorées autour d&#x27;un personnage (Thanos) portant un gant d&#x27;infinité.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un concept métaphorique sur l&#x27;acquisition de compétences et le potentiel débloqué grâce à l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000515_seg12.jpg" alt="Capture d&#x27;écran montrant l&#x27;animateur en haut à gauche, l&#x27;invité en bas à gauche, et une grande fenêtre de navigateur affichant un tableau blanc Miro avec un schéma métaphorique inspiré de Thanos et des pierres d&#x27;infinité." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000515_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:15</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;animateur en haut à gauche, l&#x27;invité en bas à gauche, et une grande fenêtre de navigateur affichant un tableau blanc Miro avec un schéma métaphorique inspiré de Thanos et des pierres d&#x27;infinité.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:29 - 00:05:51</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais garder ça super simple. Tout ce dont nous avons besoin pour créer ces types de vidéos, c&#x27;est juste d&#x27;un abonnement à Claude et c&#x27;est tout. Donc après avoir pris l&#x27;abonnement à Claude, vous voyez, c&#x27;est juste une petite photo rapide que j&#x27;ai. C&#x27;est tout avec quoi nous allons interagir. Très bien. Donc si j&#x27;ouvre mon application Claude, d&#x27;abord, ce que vous voulez faire, c&#x27;est vraiment facile. Vous voulez ouvrir un nouveau dossier. Donc par exemple, je vais créer un nouveau dossier dans mes documents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro (tableau blanc virtuel), Claude AI (application Anthropic)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre principal &quot;How to build&quot;, capture d&#x27;écran montrant l&#x27;interface utilisateur de Claude AI avec son historique de conversations (&quot;Create interactive AI product demos&quot;, &quot;Document AI agent architecture&quot;) et sa fenêtre de saisie.</p>
+                        <p><strong>Action / Démonstration :</strong> Explication des prérequis techniques (simple abonnement et accès à Claude AI) pour développer et générer les vidéos/applications présentées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000534_seg13.jpg" alt="Un tableau virtuel Miro affichant le titre &quot;How to build&quot; et une capture d&#x27;écran intégrée de l&#x27;interface de l&#x27;application Claude AI." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000534_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:34</span>
+                        <span class="caption-text">Un tableau virtuel Miro affichant le titre &quot;How to build&quot; et une capture d&#x27;écran intégrée de l&#x27;interface de l&#x27;application Claude AI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:51 - 00:06:11</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Disons Remotion Brock. Très bien. Donc tout ce qu&#x27;on a fait là maintenant, c&#x27;est juste aller dans notre application Claude. J&#x27;ai cliqué sur ce bouton de code et j&#x27;ai sélectionné un dossier. C&#x27;est tout. Il n&#x27;y a rien d&#x27;extraordinaire que je fais en ce moment. Donc maintenant ce qu&#x27;on veut faire, c&#x27;est qu&#x27;on veut donner à ce dossier dans notre dossier, on devrait dire à Claude, hé, juste ici, nous allons créer des vidéos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Desktop (Anthropic) sous macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sélecteur de dossier contenant le répertoire `remotionbrock`, champ de saisie de prompt vide et panneau latéral avec l&#x27;historique des projets.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un dossier de travail local dans Claude Desktop avant le lancement de la génération de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000556_seg14.jpg" alt="Interface de l&#x27;application Claude Desktop affichant la sélection du dossier projet &quot;remotionbrock&quot;." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000556_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:56</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude Desktop affichant la sélection du dossier projet &quot;remotionbrock&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:11 - 00:06:30</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, vous avez besoin de cette compétence Remotion, n&#x27;est-ce pas ? Et pour faire ça, ce qu&#x27;on va faire, c&#x27;est qu&#x27;on va prendre ce fichier juste ici, qui vient du créateur de Claude Code. Et on va prendre ça, tout ce que je fais, c&#x27;est simplement copier l&#x27;URL. Je la colle ici et je lui dis, hé, est-ce que tu peux installer cette compétence Claude pour moi ? On va créer des vidéos Remotion ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, GitHub Gist, interface de développement / chat IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier Markdown nommé CLAUDE.md avec des exemples de code JSX et une URL GitHub collée dans une interface de chat.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie de l&#x27;URL d&#x27;un fichier GitHub Gist pour l&#x27;intégrer dans l&#x27;outil de développement IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000616_seg15.jpg" alt="Vue d&#x27;un navigateur affichant un Gist GitHub contenant la documentation et du code React pour Remotion Claude." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000616_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:16</span>
+                        <span class="caption-text">Vue d&#x27;un navigateur affichant un Gist GitHub contenant la documentation et du code React pour Remotion Claude.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000625_seg15.jpg" alt="Vue d&#x27;une interface de chat (potentiellement Claude Code ou Cursor) où une URL GitHub est collée." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000625_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:25</span>
+                        <span class="caption-text">Vue d&#x27;une interface de chat (potentiellement Claude Code ou Cursor) où une URL GitHub est collée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:30 - 00:06:52</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, est-ce que tu peux s&#x27;il te plaît créer une vidéo pour moi ? Ouais, eh bien, c&#x27;est facile. Et puis les gars, si vous voulez accéder à ça, il va y avoir un lien dans la description juste pour pouvoir cliquer là-dessus et, vous savez, pour que vous puissiez copier cette URL tout comme Solomon vient de le faire à l&#x27;instant. Ouais. Donc normalement, ce que vous auriez à faire, c&#x27;est de créer un fichier. Vous auriez à mettre le fichier à l&#x27;intérieur de toutes ces choses. Mais maintenant, étant donné que Cloud Code est devenu tellement intelligent, je n&#x27;ai même plus besoin de lire ou de savoir ce qui se passe.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un chatbot/assistant IA, fenêtres de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt textuel d&#x27;un utilisateur demandant de générer une vidéo basée sur un contenu précédent.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de l&#x27;interface de l&#x27;assistant IA pendant la démonstration ou la discussion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000636_seg16.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de type assistant IA (style Claude) à droite, avec deux intervenants en visioconférence sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000636_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application de type assistant IA (style Claude) à droite, avec deux intervenants en visioconférence sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:53 - 00:07:26</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je peux juste lui donner un lien et je lui dis, hé, va comprendre tout ça. Je veux juste que ce soit fait. Ouais. Et le plus drôle, c&#x27;est que je pense que les gens en arrière-plan, sur le backend, je veux dire, les gens de l&#x27;extérieur qui regardent ne savent même pas ce que ça fait sur le backend. Et c&#x27;est un truc super complexe. mais genre je ne sais pas coder, je ne suis pas technique, je m&#x27;en fous, ça le fait juste pour moi, c&#x27;est ça la puissance du truc et le meilleur côté ouais c&#x27;est juste genre à peu près fais-moi juste une vidéo c&#x27;est ça, on pointe ça vers genre comme imagine si tu es un chef, tu peux utiliser des tonnes de trucs différents n&#x27;est-ce pas pour disons faire une vidéo, tu peux utiliser comme disons qu&#x27;on prépare un repas, on peut</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de l&#x27;outil Claude (Anthropic), affichée dans un navigateur avec une disposition en deux colonnes (historique des sessions et zone de chat).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt contenant un lien (YouTube/vidéo) et une réponse structurée de l&#x27;IA comprenant des liens vers le Model Context Protocol (MCP), Sequential Thinking, et SQLite.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une démonstration montrant comment donner un lien à l&#x27;IA pour qu&#x27;elle analyse et automatise des tâches de backend.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000701_seg17.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;IA (Claude) avec une liste de sessions à gauche et une conversation comprenant des liens et du texte généré à droite, ainsi que les deux intervenants en vignettes vidéo à gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000701_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil d&#x27;IA (Claude) avec une liste de sessions à gauche et une conversation comprenant des liens et du texte généré à droite, ainsi que les deux intervenants en vignettes vidéo à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:26 - 00:08:01</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On peut faire quelque chose comme un plat au poulet, on peut faire un plat au bœuf, donc maintenant c&#x27;est un peu comme un ingrédient, on lui dit : « Hé, utilise ces ustensiles, utilise ces ingrédients pour me faire ce genre de... C&#x27;est ça. » Et si tu ne sais pas comment le faire, alors va et débrouille-toi pour trouver comment le faire. Et il va y aller et trouver comment assembler les ingrédients. Genre c&#x27;est dingue là. Il vient de récupérer toutes les compétences Claude et il vient de me demander la permission. Et il était genre : « Hé, est-ce que je peux mettre ça dans un fichier ? » Donc il est littéralement en train de télécharger toutes ces compétences qui étaient à l&#x27;intérieur de ce truc GitHub. Et donc maintenant, votre Claude a accès à la capacité d&#x27;aller faire plusieurs choses différentes, n&#x27;est-ce pas ? Sans même que nous ayons à lui donner cette compétence. Ouais. Donc là, maintenant il dit la remotion</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude sur macOS avec double encadré vidéo des intervenants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt et réponses structurées de l&#x27;assistant concernant l&#x27;utilisation d&#x27;outils et de scripts.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une démonstration textuelle d&#x27;un échange avec un assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000735_seg18.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Claude) avec une fenêtre de chat textuel affichant un prompt et des réponses générées." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000735_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Claude) avec une fenêtre de chat textuel affichant un prompt et des réponses générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:01 - 00:08:20</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">la compétence est installée. Le répertoire du projet est vide. Je dois donc configurer un nouveau projet Motion. Avant de faire cela, quel genre de vidéo aimerais-tu que je construise ? Donc, il demande toutes ces choses. Brock, as-tu un site web ? Je n&#x27;ai pas de site web en fait. D&#x27;accord. Donc, parce que ce que je pourrais faire, c&#x27;est que je pourrais dire, hé, va sur ce site web, va récupérer ces ressources, puis construis une vidéo pour cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Claude Code / application de développement avec panneaux de discussion et webcams.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché indiquant l&#x27;état d&#x27;installation de la compétence Remotion, ainsi qu&#x27;une liste de propositions de types de vidéos (Intro/outro, Social media content, Explainer video, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des suggestions de l&#x27;assistant de code pour configurer un nouveau projet Remotion en fonction des besoins de l&#x27;utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000806_seg19.jpg" alt="Vue d&#x27;écran partagée montrant l&#x27;interface d&#x27;une application de type assistant ou terminal de code (Claude) avec du texte généré à droite et les webcams des deux intervenants sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000806_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:06</span>
+                        <span class="caption-text">Vue d&#x27;écran partagée montrant l&#x27;interface d&#x27;une application de type assistant ou terminal de code (Claude) avec du texte généré à droite et les webcams des deux intervenants sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:20 - 00:08:53</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est ça. Bon, allons sur votre site web et voyons à quoi ressemble le vôtre. Parce que, je crois que vous avez fait quelque chose de similaire pour votre vidéo, n&#x27;est-ce pas ? Oui. Alors ici, donc par exemple, ceci est mon site web booked in that AI, j&#x27;ai une palette de couleurs et tout ça. J&#x27;ai quelques, vous savez, des images, et cetera. Donc ce que je peux faire, c&#x27;est que je peux copier ceci et y retourner et dire : pour ce site web, pouvez-vous aller chercher les ressources, utiliser les mêmes couleurs, comme le texte blanc, noir, les accents bleus, des trucs comme ça, et ensuite construire une vidéo pour une démonstration de produit pour ce SaaS ou cet outil exact ? Et je suis intentionnellement juste incroyablement vague dans ce que je dis, parce que je veux montrer que,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de développement Claude et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Sessions de code, instructions d&#x27;installation de compétences Remotion et saisie de l&#x27;URL du site web bookedin.ai dans le champ de chat.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;outil de développement et saisit l&#x27;adresse du site web pour générer une vidéo promotionnelle basée sur son contenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000837_seg20.jpg" alt="Capture d&#x27;écran montrant une interface de développement avec un assistant IA (Claude / code) et la saisie de l&#x27;URL &quot;https://www.bookedinin.ai&quot;." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000837_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:37</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de développement avec un assistant IA (Claude / code) et la saisie de l&#x27;URL &quot;https://www.bookedinin.ai&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:53 - 00:09:28</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tu sais, tant que tu te contentes de parler à ce truc, c&#x27;est à peu près tout. C&#x27;est tout ce que tu as à faire, n&#x27;est-ce pas ? Et maintenant tu vois, maintenant ça dit &quot;hé, est-ce que tu peux me permettre d&#x27;aller chercher ces trucs ?&quot; je suis genre &quot;ouais, vas-y, fais ton truc&quot;. Ouais, je pense que la barrière à l&#x27;entrée pour faire quoi que ce soit, honnêtement, baisse de plus en plus, de plus en plus, de plus en plus. C&#x27;est juste que, tu vois, tu dois en quelque sorte franchir cet obstacle initial, il y aura toujours un peu de vocabulaire bizarre que les gens utilisent parce que, euh, les gens techniques utilisent beaucoup de jargon, mais honnêtement, tu dois juste ignorer ce que les gens disent et si jamais tu as un doute, va juste sur Claude et colle-le et dis : &quot;hé&quot;</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude / outil de développement avec panneau latéral pour les sessions et panneau principal de discussion, et flux vidéo des présentateurs.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt demandant de récupérer les éléments d&#x27;un site web (https://www.bookedin.ai) pour construire une vidéo de démonstration de produit avec un thème visuel spécifique, suivi d&#x27;une action &quot;WebFetch&quot; en cours d&#x27;exécution.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;assistant analyse la demande de l&#x27;utilisateur et s&#x27;apprête à récupérer les ressources du site web mentionné pour générer le projet vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000902_seg21.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant de code (Claude) avec une conversation en cours sur la création de vidéos Remotion, accompagnée de deux vignettes vidéo des intervenants sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000902_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:02</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant de code (Claude) avec une conversation en cours sur la création de vidéos Remotion, accompagnée de deux vignettes vidéo des intervenants sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:28 - 00:10:00</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">trouve ça pour moi, c&#x27;est ça que je veux, qu&#x27;est-ce que je fais ensuite ? Oui, et je pense que moi, depuis que j&#x27;utilise Claude Code ces deux dernières semaines de façon assidue pour la toute première fois parce que je pensais que ce serait trop difficile, j&#x27;ai remarqué que c&#x27;est beaucoup plus facile que ça en a l&#x27;air. Je suis d&#x27;accord avec cette histoire de jargon technique, parce que ça a tendance à intimider tellement de gens et les empêche de faire ce premier pas, alors que si on ne s&#x27;inquiète pas du jargon technique et qu&#x27;on demande juste à Claude de faire quelque chose, et si on ne sait pas comment faire, qu&#x27;on lui demande de nous l&#x27;expliquer comme si on était en CM1, il est tellement doué pour simplifier les choses, pour rendre ça facile, et la plupart du temps, je n&#x27;ai même pas besoin de savoir ce qu&#x27;il fait en arrière-plan parce qu&#x27;il est capable de le faire tout seul et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude Code sur macOS avec double affichage vidéo des intervenants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt demandant de récupérer les éléments d&#x27;un site web (bookedin.ai) et liste de tâches (Update Todos) pour initialiser un projet Remotion.</p>
+                        <p><strong>Action / Démonstration :</strong> Utilisation de Claude Code pour automatiser la génération d&#x27;une vidéo de présentation produit à partir d&#x27;un site web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000936_seg22.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Claude Code avec des instructions de prompt et une liste de tâches pour créer une vidéo de démonstration." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_000936_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:36</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Claude Code avec des instructions de prompt et une liste de tâches pour créer une vidéo de démonstration.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:00 - 00:10:34</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Travailler dessus, faire des itérations et trouver comment faire. Oui, c&#x27;est assez dingue la façon dont la trajectoire de tout évolue, parce que maintenant, je ne sais pas, il y a eu ce concept, je ne sais pas si tu as vu, de Ralph Wiggum. Et la raison pour laquelle ce genre de concept est né, c&#x27;est parce que Ralph Wiggum, en tant que personnage dans Les Simpson, est dépeint comme un personnage stupide, n&#x27;est-ce pas ? Mais ce qu&#x27;il fait, c&#x27;est qu&#x27;il a une ténacité illimitée et il fonce, tu vois, et essaie de s&#x27;attaquer aux problèmes, super persistant, c&#x27;est ça, exactement, oui. Donc c&#x27;est un peu comme une analogie amusante, mais on doit tous juste être des Ralph Wiggum, nous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement IA assisté par agent (session de code / terminal Claude Cowork ou outil similaire d&#x27;orchestration de code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur demandant d&#x27;extraire les assets et couleurs du site bookedin.ai pour créer une vidéo produit ; journal d&#x27;exécution de l&#x27;agent : `WebFetch`, liste de tâches (&quot;Update Todos&quot; pour initialiser le projet Remotion), commande Bash `npx create-video@latest --template=blank`, statut &quot;Pondering...&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution automatisée d&#x27;un agent IA lançant des commandes bash et planifiant la création d&#x27;un projet vidéo Remotion basé sur l&#x27;analyse d&#x27;un site web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001008_seg23.jpg" alt="Interface d&#x27;un agent de développement IA en cours d&#x27;exécution d&#x27;une tâche pour créer une vidéo de démo de produit via Remotion à partir d&#x27;un site web, avec les deux intervenants en médaillons à gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001008_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:08</span>
+                        <span class="caption-text">Interface d&#x27;un agent de développement IA en cours d&#x27;exécution d&#x27;une tâche pour créer une vidéo de démo de produit via Remotion à partir d&#x27;un site web, avec les deux intervenants en médaillons à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:34 - 00:11:06</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il suffit de continuer à demander à Claude : « Hé, qu&#x27;est-ce que je fais ? » « Hé, fais ça pour moi », et à la fin, on va juste obtenir notre résultat. Ouais, très bien, donc cette chose vient juste de se terminer, alors ça dit juste d&#x27;ouvrir cette chose sur ton navigateur, ouvrons-la. D&#x27;accord, alors cliquons sur lecture, et tu vois, ça a littéralement pris mon titre, ça a pris tout le texte de notre site web, ouais, c&#x27;est en fait vraiment insensé, ça fait toutes ces animations graphiques, ça a même construit ces petits téléphones, c&#x27;est plutôt cool, ouais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de discussion Claude et Remotion Studio en local (localhost:3000).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Structure de vidéo en plusieurs scènes, palette de couleurs, commandes npm et rendu visuel du logo Bookedin.ai.</p>
+                        <p><strong>Action / Démonstration :</strong> Consultation du résultat généré par l&#x27;IA et ouverture de l&#x27;application web locale pour visualiser la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001042_seg24.jpg" alt="L&#x27;écran montre une application de type assistant IA (Claude) avec le résultat de la génération de code et la structure de la vidéo expliquée point par point." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001042_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:42</span>
+                        <span class="caption-text">L&#x27;écran montre une application de type assistant IA (Claude) avec le résultat de la génération de code et la structure de la vidéo expliquée point par point.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001050_seg24.jpg" alt="L&#x27;écran affiche l&#x27;interface d&#x27;un lecteur ou logiciel vidéo local en cours d&#x27;exécution (Remotion Studio) avec le rendu de la vidéo « Bookedin.ai »." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001050_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:50</span>
+                        <span class="caption-text">L&#x27;écran affiche l&#x27;interface d&#x27;un lecteur ou logiciel vidéo local en cours d&#x27;exécution (Remotion Studio) avec le rendu de la vidéo « Bookedin.ai ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:06 - 00:11:42</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et bien sûr, tu sais, tu peux modifier plein de trucs super facilement en lui demandant simplement, et disons, par exemple, maintenant tu aimes cette vidéo ou tu l&#x27;approuves. Tu veux t&#x27;assurer qu&#x27;elle est automatiquement envoyée à mon patron pour qu&#x27;il puisse l&#x27;approuver ou la désapprouver, n&#x27;est-ce pas ? Ce que je pourrais faire maintenant, c&#x27;est de te montrer ce graphique qui pourrait rendre les choses plus faciles. Donc maintenant, disons que notre agent Cloud Code, celui-ci s&#x27;appelle agent anti-gravité, parce que la semaine prochaine, nous allons en fait vous montrer comment faire ces choses avec l&#x27;anti-gravité aussi. Restez à l&#x27;écoute pour ça. Mais nous venons juste de générer cette vidéo. Et ensuite, ce qu&#x27;on peut faire maintenant, c&#x27;est utiliser quelque chose comme Zapier pour nous envoyer un message Slack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro, application web de schématisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma d&#x27;architecture &quot;Autopilot&quot; illustrant les étapes : Agent IA (création) -&gt; Génération de vidéo -&gt; Pont Zapier (notification avec boutons d&#x27;approbation) -&gt; Publication sur les plateformes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explication du flux de travail automatisé avec validation humaine.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001133_seg25.jpg" alt="Schéma explicatif sur Miro montrant le workflow &quot;Autopilot&quot; avec un agent IA, la génération de vidéo, un pont Zapier avec validation humaine et la publication." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001133_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:33</span>
+                        <span class="caption-text">Schéma explicatif sur Miro montrant le workflow &quot;Autopilot&quot; avec un agent IA, la génération de vidéo, un pont Zapier avec validation humaine et la publication.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:42 - 00:12:04</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et la vidéo automatiquement une fois qu&#x27;elle est terminée. Et si nous donnons le feu vert, elle va automatiquement être publiée sur tous nos réseaux sociaux. La façon dont nous faisons cela est en utilisant Zapier et nous allons directement ici. Donc nous allons sur zapier.com slash MCP. Nous allons sur commencer à créer. Et ensuite, c&#x27;est déjà un serveur MCP, mais vous pouvez créer un nouveau serveur MCP. Vous pouvez sélectionner Claude ou Claude code, selon celui que vous voulez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro, navigateur web affichant l&#x27;interface Zapier MCP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme de flux d&#x27;automatisation (Autopilot) et interface de configuration de serveur Zapier MCP.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow d&#x27;automatisation de la création et publication de vidéos, suivie d&#x27;une navigation sur l&#x27;interface Zapier MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001148_seg26.jpg" alt="Schéma de workflow sur Miro intitulé &#x27;Autopilot&#x27;, montrant les étapes de création par un agent d&#x27;IA, génération vidéo, pont Zapier avec notification d&#x27;approbation, et publication sur les réseaux sociaux (YouTube, TikTok, LinkedIn)." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001148_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:48</span>
+                        <span class="caption-text">Schéma de workflow sur Miro intitulé &#x27;Autopilot&#x27;, montrant les étapes de création par un agent d&#x27;IA, génération vidéo, pont Zapier avec notification d&#x27;approbation, et publication sur les réseaux sociaux (YouTube, TikTok, LinkedIn).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001158_seg26.jpg" alt="Interface de Zapier MCP Server affichant les configurations de serveur avec des outils connectés comme Google Slides et Google Sheets." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001158_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:58</span>
+                        <span class="caption-text">Interface de Zapier MCP Server affichant les configurations de serveur avec des outils connectés comme Google Slides et Google Sheets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:04 - 00:12:37</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Exact. Donc, oh, il y a même cowork maintenant, en fait, c&#x27;est plutôt cool. Donc disons que vous créez ça. Et ensuite, après avoir ça, vous ajoutez n&#x27;importe quelle application dont vous avez besoin. Donc par exemple, nous pouvons ajouter quelque chose comme Slack. Et ici, nous pouvons demander des approbations à notre équipe ou à nos managers, et cetera. Vous pouvez donc ajouter ces choses-là. Vous pouvez toutes les sélectionner et cliquer sur connecter. Et ensuite, après avoir connecté votre Slack, vous pouvez faire quelque chose comme Metricool. Oui. Ensuite, vous pouvez utiliser quelque chose comme Metricool pour essentiellement, vous savez, ajouter vos publications ou planifier vos publications automatiquement. Et en faisant cela, donc disons que vous avez fait les deux, vous cliquez simplement sur connecter et ensuite vous copiez cette commande,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (interface de configuration d&#x27;agent ou d&#x27;outil de type ChatGPT/Make/Zapier) avec deux intervenants en visioconférence sur le côté gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale de sélection d&#x27;outils avec une barre de recherche et des icônes d&#x27;applications (Slack, Salesforce, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection ou ajout d&#x27;outils tiers (comme Slack) à l&#x27;environnement en cours de configuration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001212_seg27.jpg" alt="Interface web montrant une fenêtre contextuelle &quot;Add tools&quot; permettant d&#x27;intégrer différentes applications tierces." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001212_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:12</span>
+                        <span class="caption-text">Interface web montrant une fenêtre contextuelle &quot;Add tools&quot; permettant d&#x27;intégrer différentes applications tierces.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:37 - 00:13:11</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donne-le à Claude et tu peux lui dire, hey, va demander à mon manager si je peux, si c&#x27;est approuvé pour publier. Et s&#x27;il dit oui, tu peux juste lui dire, ok, maintenant publie ceci avec Metricool et ensuite ça fera tout ça pour toi. Donc avec tout ça, tu peux voir que tu peux avoir un flux automatisé où tu peux faire une vidéo, tu peux la générer, et ensuite tu peux faire tes modifications facilement juste en faisant des requêtes à Claude, en disant, hey, change le mouvement de ceci ici et là. Et ensuite tu la connectes à Zapier et tu peux juste publier et faire tout ton travail depuis un seul endroit avec juste Claude desktop. Je suppose que c&#x27;est juste un exemple très simple de ce qu&#x27;on pourrait faire avec le MCP Zapier,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une documentation Zapier MCP Server.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions textuelles sur la configuration de Claude Code et la connexion du serveur MCP de Zapier avec une ligne de commande visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la configuration des outils d&#x27;automatisation et de l&#x27;intégration entre Claude Code et Zapier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001246_seg28.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité à gauche, et une page Web de Zapier expliquant comment configurer et connecter le serveur MCP de Zapier à Claude Code." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001246_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:46</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité à gauche, et une page Web de Zapier expliquant comment configurer et connecter le serveur MCP de Zapier à Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:11 - 00:13:44</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que ça se connecte littéralement à plus de 8 000 applications différentes. Je pense qu&#x27;il y a plus de 30 000 actions qu&#x27;il peut exécuter à travers ces applications. Donc si vous utilisez un truc spécifique, comme vous pourriez envoyer un message Gmail à votre équipe, vous pourriez ajouter ce lien vidéo à Google Sheets ou mettre à jour votre page Notion, tout ce genre de choses, juste en lui donnant en quelque sorte ces mains pour qu&#x27;il puisse aller de l&#x27;avant et s&#x27;exécuter et, vous savez, utiliser différentes applications que vous utilisez. C&#x27;est donc une façon de combler ce fossé, comme vous l&#x27;avez dit. Exactement. Ouais. Franchement, le monde est à vous. C&#x27;est comme chaque fois que vous essayez de faire quelque chose, pensez simplement à ce que vous faites au jour le jour, à toutes les petites étapes, vous pouvez simplement faire en sorte qu&#x27;elles soient toutes connectées et pensez à ça comme donner à Zapier, pensez à Zapier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface logicielle de type éditeur ou assistant textuel avec des panneaux de code et de documentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif d&#x27;une structure vidéo, listes à puces et instructions de commandes (`npm start`, `npm run build`).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des résultats d&#x27;une session de travail ou d&#x27;une documentation générée par un outil d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001319_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application logicielle à droite, avec deux fenêtres vidéo des intervenants sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001319_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:19</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application logicielle à droite, avec deux fenêtres vidéo des intervenants sur la gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:44 - 00:14:18</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">comme donner à Claude une compétence différente comme le gant de Thanos, c&#x27;est juste une autre compétence où tu peux dire hé Claude va faire ce truc pour moi il y a accès ouais non c&#x27;est fou bon Saman donc on a cette vidéo maintenant qui est générée avec Remotion mais comment est-ce qu&#x27;on peut maintenant ajouter une autre compétence et utiliser un autre outil comme ElevenLabs pour aller de l&#x27;avant et générer une voix off pour la vidéo donc non seulement on a une vidéo maintenant on a une vidéo entière avec une voix off dessus ouais donc c&#x27;est en fait vraiment simple donc de la même manière ce qu&#x27;on va faire c&#x27;est qu&#x27;on va lui donner une nouvelle compétence et la façon dont on donne de nouvelles compétences aux choses c&#x27;est donc par exemple pour ElevenLabs ce que j&#x27;aime utiliser</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de configuration d&#x27;assistant IA avec une fenêtre contextuelle &quot;Add tools&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Icônes d&#x27;applications et de services intégrables (Asana, Salesforce, Jira Software Cloud, ClickUp, monday.com, Confluence, Microsoft Excel, Microsoft Sharepoint, Zillow, Docker et autres).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection ou présentation des différentes compétences et intégrations logicielles connectables à l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001352_seg30.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;ajout d&#x27;outils et de compétences tierces sous forme de grille d&#x27;applications." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001352_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;ajout d&#x27;outils et de compétences tierces sous forme de grille d&#x27;applications.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:18 - 00:14:54</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est cette chose qui s&#x27;appelle Wave Speed et avec Wave Speed ce que je peux faire c&#x27;est juste ici vous voyez qu&#x27;il y a beaucoup de modèles Eleven Labs n&#x27;est-ce pas et ce que je peux faire c&#x27;est que je peux générer ces voix off avec Claude et Wave Speed. Donc la façon de faire c&#x27;est que vous allez simplement dans clés API, vous copiez cette chose, et ensuite vous venez ici, vous collez votre clé, et ensuite vous dites, hé, est-ce que tu peux me créer un script de voix off en utilisant Wave Speed Eleven Labs V3, et ensuite l&#x27;attacher à cette vidéo. Et en ce moment je vais juste coller ma clé API Wave Speed, mais je vais la cacher pour que vous ne la voyiez pas. Mais très bien. Donc je viens juste</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, WaveSpeed AI, bureau macOS, Claude Code, Remotion Studio.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèles de voix off Eleven Labs, structure de vidéo Remotion, commandes de build (npm start, npm run build).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la plateforme WaveSpeed AI et explication du processus de génération de voix off avec Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001427_seg31.jpg" alt="Capture montrant l&#x27;interface web de WaveSpeed AI avec le modèle elevenlabs/eleven-v3 sélectionné." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001427_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:27</span>
+                        <span class="caption-text">Capture montrant l&#x27;interface web de WaveSpeed AI avec le modèle elevenlabs/eleven-v3 sélectionné.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001436_seg31.jpg" alt="Vue d&#x27;ensemble du bureau avec plusieurs fenêtres ouvertes, dont une présentation &#x27;Autopilot&#x27; et du code." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001436_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:36</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du bureau avec plusieurs fenêtres ouvertes, dont une présentation &#x27;Autopilot&#x27; et du code.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001445_seg31.jpg" alt="Interface de Claude Code affichant des instructions de développement pour la création d&#x27;une vidéo avec Remotion." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001445_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:45</span>
+                        <span class="caption-text">Interface de Claude Code affichant des instructions de développement pour la création d&#x27;une vidéo avec Remotion.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:54 - 00:15:12</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">j&#x27;ai ouvert le localhost, et ensuite j&#x27;ai téléchargé cette vidéo. Et vous pouvez voir en ce moment, je veux juste m&#x27;assurer que vous l&#x27;entendez et qu&#x27;il y aura une voix off. Donc par exemple, je vais juste aller au milieu. Le tunnel grandit alors que les agents IA travaillent 24 heures sur 24. Ensuite, le constructeur d&#x27;agents. Créez des agents commerciaux IA en quelques minutes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de création d&#x27;agent IA (Agent Builder).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration d&#x27;un agent IA (Agent Name : Sales Assistant Pro, canaux actifs : Voice, SMS, Email, sélection de voix et instructions système).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de création et de configuration d&#x27;un agent IA commercial.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001507_seg32.jpg" alt="Interface d&#x27;un constructeur d&#x27;agent IA montrant les paramètres de création d&#x27;un agent commercial (Agent Builder, canaux de communication, voix)." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001507_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:07</span>
+                        <span class="caption-text">Interface d&#x27;un constructeur d&#x27;agent IA montrant les paramètres de création d&#x27;un agent commercial (Agent Builder, canaux de communication, voix).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:12 - 00:15:30</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est tellement fou. Choisissez une voix, configurez des canaux comme la voix, SM... Donc maintenant, ça peut parler. C&#x27;est littéralement une synthèse vocale en cours. Vous pouvez aussi, vous savez, lui donner des sous-titres. Vous pouvez dire des choses comme « supprime ça si tu n&#x27;aimes pas la voix » ou même si vous avez enregistré votre propre voix, vous pouvez simplement dire : « voici l&#x27;enregistrement, va l&#x27;attacher au projet remotion et tu seras prêt à partir de ce côté-là aussi ».</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application SaaS avec une liste de leads (&quot;Track Every Lead&#x27;s Journey&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de suivi des prospects avec noms, e-mails, statuts et options de lecture audio intégrées (lecteur multimédia visible au premier plan de la fenêtre).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration en direct d&#x27;une application web intégrant des fonctionnalités vocales ou de synthèse audio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001517_seg33.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un tableau de bord de gestion de prospects avec une fenêtre de démonstration et les deux participants en visioconférence dans des cadres à gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001517_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:17</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un tableau de bord de gestion de prospects avec une fenêtre de démonstration et les deux participants en visioconférence dans des cadres à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:30 - 00:16:05</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ouais, donc tu dis que tu peux littéralement cloner ta propre voix et ensuite ajouter ta propre voix par-dessus. Littéralement tout généré par IA juste avec quelques invites simples dans Clog. C&#x27;est fou. Ouais, je veux dire, la barrière à l&#x27;entrée de tout ça devient tellement basse juste parce que tout ce que tu as à faire, c&#x27;est d&#x27;aller dans cette zone de texte et de taper ce que tu veux. Ouais, c&#x27;est fou mec. Je ne sais pas quoi dire d&#x27;autre à part ça. Bon les gars, c&#x27;est dingue. Salman, je suis ravi que tu nous aies montré comment utiliser ça. Je vais en fait aller commencer à créer des vidéos après cette vidéo et probablement me prendre la tête avec ça pendant les prochaines heures. Donc tout d&#x27;abord, où est-ce qu&#x27;on peut te trouver ? Et ensuite</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de gestion de leads / CRM (Lead Management) affichée dans une fenêtre de navigateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de suivi des leads avec des noms, statuts, icônes de contact et une barre de lecture multimédia intégrée.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle d&#x27;une interface d&#x27;application web générée par IA pendant la discussion sur les outils de clonage vocal et d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001539_seg34.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface utilisateur d&#x27;une application web de gestion de leads (« Track Every Lead&#x27;s Journey ») avec les deux intervenants en incrustation vidéo sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/FVrNRnfC8oM/FVrNRnfC8oM_001539_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface utilisateur d&#x27;une application web de gestion de leads (« Track Every Lead&#x27;s Journey ») avec les deux intervenants en incrustation vidéo sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:05 - 00:16:35</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">B, je veux te poser une question sur l&#x27;anti-gravité et savoir ce que tu en penses. Oh, donc si tu veux, tu peux me trouver sur ma chaîne YouTube. Je devrais être en collaboration avec le lien, mais c&#x27;est juste Saman Yassar. C&#x27;est mon nom. Mais la partie sur l&#x27;anti-gravité, c&#x27;est vraiment intéressant parce que tout ce qu&#x27;on vient de faire avec Cloud Code en ce moment, on peut aussi le faire avec l&#x27;anti-gravité. Le truc, c&#x27;est qu&#x27;on devrait apprendre les deux parce que cette course à l&#x27;intelligence artificielle est un peu folle. Cette semaine ou ce mois-ci, disons que ClotCode est en avance, mais tu ne sais pas ce qu&#x27;OpenAI ou Gemini va sortir de manière aléatoire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> YouTube (profil de chaîne) et interface d&#x27;appel vidéo</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes de vidéos YouTube sur l&#x27;intelligence artificielle et les outils numériques.</p>
+                        <p><strong>Action / Démonstration :</strong> Conversation en visio-conférence et présentation du profil YouTube de l&#x27;invité.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:35 - 00:17:09</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça va juste exploser en flèche. Donc anti-gravity nous permet en quelque sorte d&#x27;utiliser tout un tas de modèles différents. En ce moment, le seul problème, ce sont les limites de taux, mais c&#x27;est gratuit. Donc si vous voulez juste commencer avec tout ça gratuitement, plutôt que de payer 200 balles par mois pour ClotCode, je vous suggère d&#x27;utiliser anti-gravity pour commencer. Et ensuite, vous pouvez faire la même chose avec les compétences là-bas. Ouais, parfait. Et si vous êtes intéressés, abonnez-vous, on va en parler la semaine prochaine lors de notre prochain podcast. Mais Salman, merci mec, ces podcasts ont été amusants, je pense que mon audience en tire beaucoup de valeur. C&#x27;est amusant de parler à quelqu&#x27;un qui a un bagage en programmation mais qui est capable de l&#x27;expliquer d&#x27;une manière super simple à quelqu&#x27;un comme moi, et ensuite je peux poser les questions que mon audience se pose peut-être, alors</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visioconférence ou interface de double caméra sans support technique, graphique ou code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, graphique boursier, métrique ou élément technique affiché à l&#x27;écran.</p>
+                        <p><strong>Action / Démonstration :</strong> Discussion et échange en visioconférence entre deux intervenants sans manipulation d&#x27;outils techniques.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:09 - 00:17:20</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous appréciez ce format, faites-le-moi savoir dans les commentaires ci-dessous, j&#x27;apprécie vraiment d&#x27;entendre vos retours. Salman, les gens peuvent aller vous suivre, dans la description, il y aura un lien et ouais, merci d&#x27;être venu, mec. Génial, merci de m&#x27;avoir reçu, frérot, c&#x27;était super amusant. Ouais, bien sûr.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun logiciel, graphique ou terminal n&#x27;est affiché.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, indicateur technique ou donnée chiffrée n&#x27;est présent.</p>
+                        <p><strong>Action / Démonstration :</strong> Discussion de fin d&#x27;entretien et remerciements entre le présentateur et son invité.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
