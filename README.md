@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `84 / 273` (`30.8%`)
+- **Vidéos traitées** : `85 / 273` (`31.1%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -101,6 +101,7 @@
 | 2026-03-14 | [q10iB6E11O0](https://www.youtube.com/watch?v=q10iB6E11O0) | **How to Build $10,000+ Animated Websites with Claude Cowork (INSTANTLY)** | [2026-03-14_YT-[q10iB6E11O0]_How to Build $10,000+ Animated Websites with Claude Cowork (INSTANTLY)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-14_YT-[q10iB6E11O0]_How to Build $10,000+ Animated Websites with Claude Cowork (INSTANTLY)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-14_YT-[q10iB6E11O0]_How to Build $10,000+ Animated Websites with Claude Cowork (INSTANTLY)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-12 | [UHz8sQ6ZM24](https://www.youtube.com/watch?v=UHz8sQ6ZM24) | **Perplexity Computer Runs AI Employees 24/7 (Cowork Killer?)** | [2026-03-12_YT-[UHz8sQ6ZM24]_Perplexity Computer Runs AI Employees 247 (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-12_YT-[UHz8sQ6ZM24]_Perplexity Computer Runs AI Employees 247 (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-12_YT-[UHz8sQ6ZM24]_Perplexity Computer Runs AI Employees 247 (Cowork Killer)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-11 | [Namp-sV0UEw](https://www.youtube.com/watch?v=Namp-sV0UEw) | **I Set Up Claude Cowork to Work While I Sleep (Full Guide)** | [2026-03-11_YT-[Namp-sV0UEw]_I Set Up Claude Cowork to Work While I Sleep (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-11_YT-[Namp-sV0UEw]_I Set Up Claude Cowork to Work While I Sleep (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-11_YT-[Namp-sV0UEw]_I Set Up Claude Cowork to Work While I Sleep (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-03-09 | [LxJz0ITHAqI](https://www.youtube.com/watch?v=LxJz0ITHAqI) | **5 Things I Wish I Knew About Claude Cowork Before I Started** | [2026-03-09_YT-[LxJz0ITHAqI]_5 Things I Wish I Knew About Claude Cowork Before I Started_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-09_YT-[LxJz0ITHAqI]_5 Things I Wish I Knew About Claude Cowork Before I Started_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-09_YT-[LxJz0ITHAqI]_5 Things I Wish I Knew About Claude Cowork Before I Started_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
