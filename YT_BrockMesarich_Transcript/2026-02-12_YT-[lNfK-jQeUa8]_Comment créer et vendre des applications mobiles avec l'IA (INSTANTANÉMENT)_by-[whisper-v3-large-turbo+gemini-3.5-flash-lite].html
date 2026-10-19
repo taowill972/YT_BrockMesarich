@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment créer et vendre des applications mobiles avec l&#x27;IA (INSTANTANÉMENT) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment créer et vendre des applications mobiles avec l&#x27;IA (INSTANTANÉMENT)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-12</span>
+                <span class="badge">⏱️ 00:08:24</span>
+                <span class="badge">🆔 <code>lNfK-jQeUa8</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=lNfK-jQeUa8" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo immersive explore la création, l'optimisation et la monétisation accélérée d'une application mobile entièrement pilotée par l'intelligence artificielle, illustrant le concept de « vibe coding » appliqué au développement logiciel no-code. Grâce à des interfaces de programmation intuitive, l'auteur démontre comment concevoir un produit fonctionnel — en l'occurrence une application de retouche et de génération de photos par IA — en combinant des grands modèles de langage de pointe pour le design et le raisonnement logique, sans écrire manuellement une seule ligne de code.<br><br>Au-delà de la simple génération visuelle et du prototypage testé en direct via des outils de simulation mobile (Expo Go), la démonstration aborde l'infrastructure technique indispensable à la viabilité d'un produit numérique : l'intégration d'un backend complet (gestion des utilisateurs et bases de données) et la mise en place d'un système d'abonnement payant récurrent (modèle SaaS à 1 dollar par mois) via RevenueCat. L'analyse met en lumière la fluidité des boucles de rétroaction itératives pour corriger les bugs de génération d'images et la gestion des environnements de test (bac à sable) pour valider les tunnels de conversion avant un déploiement public.<br><br>Enfin, la vidéo met l'accent sur l'automatisation intégrale du cycle de vie du produit, depuis la structuration initiale du prompt stratégique jusqu'à la publication finale sur l'App Store ou via une URL dédiée. Cette approche démontre l'abaissement drastique des barrières techniques et financières pour lancer des micro-SaaS, permettant à des non-développeurs de valider rapidement des hypothèses de marché et de générer des flux de revenus récurrents (MRR/ARR) automatisés.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude (Anthropic, notamment Opus 4.5)** : Modèle de langage de pointe utilisé pour ses capacités supérieures de raisonnement logique et d'exécution des tâches complexes de codage.<br>* **ChatGPT (OpenAI)** : Outil conversationnel employé en amont pour concevoir et structurer le prompt initial détaillant l'architecture et les fonctionnalités de l'application.<br>* **Gemini (Google, notamment Gemini 3 Pro)** : Modèle sélectionné pour sa grande précision dans la conception graphique et le rendu des interfaces utilisateur en programmation intuitive.<br>* **Rourke** : Plateforme de développement d'applications mobiles no-code et de « vibe coding » permettant de piloter la création, l'intégration backend et le déploiement par simple interaction textuelle.<br>* **Expo Go** : Application mobile compagnon permettant de tester et de prévisualiser en temps réel l'application en cours de développement via un simple scan de code QR.<br>* **Nano Banana Pro** : Moteur d'intelligence artificielle intégré ou associé pour la génération d'images, de logos et le traitement des angles de prises de vue virtuelles.<br>* **RevenueCat** : Solution unifiée d'infrastructure d'achats in-app et d'abonnements, connectée pour gérer la monétisation, le suivi des transactions et les métriques financières.<br>* **Make / Zapier / n8n** : Outils d'automatisation de flux de travail mentionnés dans l'écosystème global d'intelligence artificielle et d'optimisation de processus sans code.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Ingénierie de prompt initiale** : L'utilisation de ChatGPT en amont pour rédiger un cahier des charges textuel extrêmement précis garantit que le modèle de génération comprend la structure globale, de l'UI aux fonctionnalités principales.<br>* **Spécialisation des LLMs par tâche** : Combinaison stratégique de modèles (ex: Gemini 3 Pro pour l'excellence du design visuel et Opus 4.5 pour la robustesse du raisonnement) pour maximiser la qualité du code généré.<br>* **Prototypage et test instantané** : Validation immédiate de l'expérience utilisateur sur un terminal mobile réel grâce à l'association d'un code QR, d'Expo Go et de l'environnement de développement Rourke.<br>* **Correction itérative par « Vibe Coding »** : Correction des anomalies de comportement de l'application (comme le mauvais rendu des angles de photos) par de simples instructions textuelles correctives directement depuis le smartphone.<br>* **Déploiement d'infrastructure Backend en un clic** : Activation instantanée de la couche base de données, des clés API et de la gestion des profils utilisateurs sans intervention sur des serveurs distants.<br>* **Intégration d'un tunnel de monétisation SaaS** : Connexion fluide de RevenueCat pour transformer une application gratuite en un service payant basé sur un abonnement mensuel ou annuel.<br>* **Gestion des variables d'environnement automatisée** : Délégation complète au système de la configuration technique complexe (variables d'environnement), rendant la création accessible aux non-programmeurs.<br>* **Validation via environnement bac à sable (Sandbox)** : Test rigoureux des scénarios de transaction (achats validés ou échecs simulés) pour s'assurer de l'étanchéité du tunnel de paiement avant la mise en production.<br>* **Suivi des métriques financières en temps réel** : Visualisation centralisée des indicateurs clés de performance (revenus récurrents mensuels MRR, ARR, abonnements actifs et données analytiques par utilisateur).<br>* **Canaux de distribution multiples** : Possibilité de publier l'application instantanément soit via une URL web partageable, soit par un déploiement direct et automatisé sur l'App Store.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude (Anthropic, notamment Opus 4.5)</span><span class="tool-tag">ChatGPT (OpenAI)</span><span class="tool-tag">Gemini (Google, notamment Gemini 3 Pro)</span><span class="tool-tag">Rourke</span><span class="tool-tag">Expo Go</span><span class="tool-tag">Nano Banana Pro</span><span class="tool-tag">RevenueCat</span><span class="tool-tag">Make / Zapier / n8n</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Ingénierie de prompt initiale** : L&#x27;utilisation de ChatGPT en amont pour rédiger un cahier des charges textuel extrêmement précis garantit que le modèle de génération comprend la structure globale, de l&#x27;UI aux fonctionnalités principales.</span></li><li><span class="point-bullet">✦</span><span>Spécialisation des LLMs par tâche** : Combinaison stratégique de modèles (ex: Gemini 3 Pro pour l&#x27;excellence du design visuel et Opus 4.5 pour la robustesse du raisonnement) pour maximiser la qualité du code généré.</span></li><li><span class="point-bullet">✦</span><span>Prototypage et test instantané** : Validation immédiate de l&#x27;expérience utilisateur sur un terminal mobile réel grâce à l&#x27;association d&#x27;un code QR, d&#x27;Expo Go et de l&#x27;environnement de développement Rourke.</span></li><li><span class="point-bullet">✦</span><span>Correction itérative par « Vibe Coding »** : Correction des anomalies de comportement de l&#x27;application (comme le mauvais rendu des angles de photos) par de simples instructions textuelles correctives directement depuis le smartphone.</span></li><li><span class="point-bullet">✦</span><span>Déploiement d&#x27;infrastructure Backend en un clic** : Activation instantanée de la couche base de données, des clés API et de la gestion des profils utilisateurs sans intervention sur des serveurs distants.</span></li><li><span class="point-bullet">✦</span><span>Intégration d&#x27;un tunnel de monétisation SaaS** : Connexion fluide de RevenueCat pour transformer une application gratuite en un service payant basé sur un abonnement mensuel ou annuel.</span></li><li><span class="point-bullet">✦</span><span>Gestion des variables d&#x27;environnement automatisée** : Délégation complète au système de la configuration technique complexe (variables d&#x27;environnement), rendant la création accessible aux non-programmeurs.</span></li><li><span class="point-bullet">✦</span><span>Validation via environnement bac à sable (Sandbox)** : Test rigoureux des scénarios de transaction (achats validés ou échecs simulés) pour s&#x27;assurer de l&#x27;étanchéité du tunnel de paiement avant la mise en production.</span></li><li><span class="point-bullet">✦</span><span>Suivi des métriques financières en temps réel** : Visualisation centralisée des indicateurs clés de performance (revenus récurrents mensuels MRR, ARR, abonnements actifs et données analytiques par utilisateur).</span></li><li><span class="point-bullet">✦</span><span>Canaux de distribution multiples** : Possibilité de publier l&#x27;application instantanément soit via une URL web partageable, soit par un déploiement direct et automatisé sur l&#x27;App Store.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:35</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je viens de créer toute cette application mobile avec l&#x27;IA en quelques minutes et je pourrais même faire payer pour cela et j&#x27;ai ajouté des abonnements payants à mon application. Dans cette vidéo, je vais vous montrer non seulement comment créer une application mobile avec l&#x27;IA, mais je vais vous montrer comment vous pourriez commencer à gagner de l&#x27;argent avec en 2026 en seulement quelques étapes simples. Alors sans plus attendre, plongeons directement dans cette vidéo. Très bien les gars, voici donc l&#x27;interface de Rourke, c&#x27;est ici que nous allons créer notre application mobile, c&#x27;est un outil de programmation intuitive spécifique aux applications mobile. Donc ce que je vais faire, c&#x27;est que je vais coller mon prompt pour mon application ici, c&#x27;est un prompt très spécifique, j&#x27;ai en fait utilisé ChatGPT pour m&#x27;aider à le concevoir. Et il détaille tout, de la conception aux fonctionnalités principales.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Rork (rork.com)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil de Rork avec le slogan &#x27;Build native mobile apps, fast.&#x27; et un champ de saisie de prompt utilisant Claude 3.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la plateforme de création d&#x27;applications mobiles par IA Rork.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000026_seg1.jpg" alt="Capture d&#x27;écran du site web de l&#x27;outil Rork avec le texte principal &#x27;Build native mobile apps, fast.&#x27; et le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000026_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Capture d&#x27;écran du site web de l&#x27;outil Rork avec le texte principal &#x27;Build native mobile apps, fast.&#x27; et le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:35 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez ce prompt pour recréer cette application, il y aura un lien dans la description pour le faire. Et une chose que je veux mentionner ici, c&#x27;est que nous avons la possibilité de sélectionner n&#x27;importe quel grand modèle de langage que nous voulons utiliser pour réellement construire notre application. Et je vais personnellement cliquer sur Gemini 3 Pro pour concevoir notre application, car j&#x27;ai remarqué que Gemini 3 crée les meilleures conceptions en matière de programmation intuitive. Et ensuite, à partir de là, je vais passer à Opus 4.5, qui est le meilleur modèle d&#x27;Anthropic pour les tâches de raisonnement. Très bien, voici donc notre résultat. Nous avons maintenant notre application sur le côté droit. Je pourrais même la tester sur mon téléphone avec ce code QR, ce que je vais vous montrer exactement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Rork (rork.com) dédiée à la création d&#x27;applications mobiles natives par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des modèles de langage disponibles incluant Sonnet 4.5, Opus 4.5, GPT-5.2 et Gemini 3 Pro.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et démonstration du choix du modèle de langage pour la génération de l&#x27;application mobile.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000044_seg2.jpg" alt="Capture montrant l&#x27;interface de l&#x27;application web Rork avec un menu déroulant permettant de sélectionner différents grands modèles de langage (LLM)." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000044_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:44</span>
+                        <span class="caption-text">Capture montrant l&#x27;interface de l&#x27;application web Rork avec un menu déroulant permettant de sélectionner différents grands modèles de langage (LLM).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000100_seg2.jpg" alt="Capture montrant la suite de la sélection des LLM dans l&#x27;interface de Rork avec le curseur sur les options disponibles." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000100_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:00</span>
+                        <span class="caption-text">Capture montrant la suite de la sélection des LLM dans l&#x27;interface de Rork avec le curseur sur les options disponibles.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:41</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">comment le faire et à quoi ça ressemble. Mais je veux souligner ceci sur le côté gauche. Donc, si vous regardez notre chat, vous pouvez voir que Rourke a réellement généré ces images. Il a donc généré notre logo et il a généré cette image de séance photo virtuelle ici. Je suppose qu&#x27;il utilise probablement Nano Banana Pro pour faire cela, mais c&#x27;est tellement cool. Très bien, alors utilisons maintenant mon téléphone ici et testons réellement notre application pour voir à quoi elle ressemblera sur un téléphone mobile. Donc ce que je vais faire, c&#x27;est que je vais ouvrir ma caméra ici. Je vais ensuite scanner ce code QR et j&#x27;ai besoin d&#x27;avoir l&#x27;application Expo Go, que vous pouvez télécharger. Comme vous pouvez le voir, je peux ouvrir ceci ici. Et ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (Bolt / outil de génération d&#x27;application) et simulation d&#x27;interface mobile.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, panneau de chat IA, logo généré, aperçu d&#x27;application mobile &quot;Virtual Photoshoot&quot; et code QR de test.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le code et les images générées automatiquement par l&#x27;IA (le chat) affichées à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000117_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;application avec le chat de l&#x27;assistant IA à gauche, affichant le logo et l&#x27;image générés, un aperçu de l&#x27;application mobile au centre et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000117_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:17</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;application avec le chat de l&#x27;assistant IA à gauche, affichant le logo et l&#x27;image générés, un aperçu de l&#x27;application mobile au centre et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:41 - 00:02:12</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">va maintenant nous emmener vers l&#x27;application de séance photo virtuelle que j&#x27;ai construite directement à l&#x27;intérieur de Rourke. Elle a ce design de style suisse. Je trouve que ça a vraiment l&#x27;air bien, vraiment propre. Je peux donc maintenant télécharger une référence. Laissez-moi donc aller de l&#x27;avant et sélectionner une image ici. J&#x27;ai donc cette image de cette dame provenant d&#x27;une séance photo et ensuite je peux sélectionner n&#x27;importe lequel de ces différents angles que je veux pour cette séance photo par IA si vous voulez l&#x27;appeler ainsi. Je vais donc cliquer sur ceux-ci juste ici. Faisons 45 degrés à gauche, 45 degrés à droite, profil latéral, angle en plongée, angle en contre-plongée, et nous n&#x27;avons pas besoin de faire de face parce qu&#x27;elle montre déjà un angle de face. Je vais donc simplement cliquer sur générer la séance photo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application mobile de séance photo virtuelle (Rourke Studio).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec le titre &#x27;VIRTUAL PHOTOSHOOT&#x27;, un bouton &#x27;UPLOAD REFERENCE&#x27; et des paramètres de configuration en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;application de création de séances photo par IA et préparation au téléchargement d&#x27;une image de référence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000149_seg4.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface mobile de l&#x27;application &#x27;Virtual Photoshoot&#x27; avec un design épuré, comportant une zone pour télécharger une image de référence." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000149_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface mobile de l&#x27;application &#x27;Virtual Photoshoot&#x27; avec un design épuré, comportant une zone pour télécharger une image de référence.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:48</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il commence maintenant à rendre et à générer ceux-ci en utilisant Nano Banana Pro. Je suis curieux de voir à quel point le résultat est bon. Très bien, alors c&#x27;est parti. Voici notre résultat initial. On dirait qu&#x27;il n&#x27;a pas compris en quelque sorte la dynamique de la façon dont nous voulions que ces angles soient, vous pouvez voir que l&#x27;angle gauche ne montre pas depuis l&#x27;angle gauche, l&#x27;angle droit montre bien depuis l&#x27;angle droit, euh le profil latéral a l&#x27;air vraiment bien, c&#x27;est solide, et l&#x27;angle haut montre un angle bas, donc nous pouvons aller de l&#x27;avant et juste corriger cela dans nos instructions à l&#x27;intérieur de work, alors laissez-moi aller de l&#x27;avant et faire cela maintenant, et ensuite une fois que nous aurons réglé cela, je vais vous montrer comment nous pourrions maintenant ajouter des paiements à notre application afin que nous puissions commencer à facturer pour une application comme celle-ci. Très bien, alors en revenant à work en ce moment, laissez-moi aller de l&#x27;avant et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application mobile de génération d&#x27;images affichée sur un écran de smartphone, avec une incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur mobile montrant un résultat de génération d&#x27;image étiqueté &quot;45° Left&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et commente le résultat visuel initial généré par l&#x27;application mobile.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000221_seg5.jpg" alt="Un smartphone affichant l&#x27;interface d&#x27;une application de génération d&#x27;images, avec une photo générée d&#x27;une femme posant, et le présentateur visible en incrustation (picture-in-picture) dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000221_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Un smartphone affichant l&#x27;interface d&#x27;une application de génération d&#x27;images, avec une photo générée d&#x27;une femme posant, et le présentateur visible en incrustation (picture-in-picture) dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:48 - 00:03:21</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">apporter quelques modifications afin qu&#x27;il génère réellement les bons résultats et les bons angles pour notre application, et ensuite cela fonctionnera correctement. Je veux que tu t&#x27;assures qu&#x27;il affiche le bon angle pour chacun des résultats générés de ces images. Donc s&#x27;il est écrit 45 degrés à gauche, assure-toi que c&#x27;est bel et bien un angle de 45 degrés par la gauche, tout comme s&#x27;il est écrit angle en contre-plongée ou angle en plongée, qu&#x27;il s&#x27;agisse du bon angle. Très bien, alors je vais envoyer ça à Rourke et ça devrait être une correction vraiment simple. Allons voir à quoi ressemble le résultat dans une petite seconde. Très bien, alors une autre fonctionnalité dont je veux parler à l&#x27;intérieur de Rourke. Donc nous pourrions soit scanner cela</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement web / éditeur de code d&#x27;application mobile et aperçu de simulation d&#x27;appareil mobile.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, logs de débogage, messages d&#x27;erreur, et un QR code de test d&#x27;application (« Test on your phone »).</p>
+                        <p><strong>Action / Démonstration :</strong> Développement et configuration de l&#x27;application, vérification des erreurs et préparation du test sur appareil mobile.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000257_seg6.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;une application mobile avec un panneau latéral de code/logs et un aperçu interactif de l&#x27;application sur smartphone avec un QR code, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000257_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:57</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;une application mobile avec un panneau latéral de code/logs et un aperçu interactif de l&#x27;application sur smartphone avec un QR code, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:21 - 00:03:54</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">code QR et cela nous mènera vers Expo Go, ou nous pourrions utiliser l&#x27;application Rourke elle-même, qui est ce que vous voyez juste ici. Si je clique sur ce bouton noir, cela fera apparaître cette boîte de saisie pour l&#x27;IA ici, et je peux aller de l&#x27;avant et décrire réellement quels changements je veux apporter, et je pournerais faire du « vibe coding » directement depuis mon téléphone, et c&#x27;est l&#x27;une des raisons pour lesquelles j&#x27;aime tant Rourke. Très bien, alors allons-y pour tester notre application maintenant, donc je vais téléverser cette image de cette dame. Utilisons exactement la même image, et ensuite générons simplement ces quatre angles différents et voyons à quel point ils ont l&#x27;air bien. Très bien, et juste comme ça, nous avons l&#x27;angle à 45 degrés depuis la droite. Nous avons le profil de côté qui a l&#x27;air</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application mobile Rourke Studio sur iOS affichée sur fond bleu.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;une application mobile avec des blocs de texte, une zone de saisie pour l&#x27;IA et des menus de configuration de prise de vue.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration des fonctionnalités de l&#x27;application mobile Rourke Studio, montrant l&#x27;utilisation de l&#x27;IA pour modifier l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000329_seg7.jpg" alt="Aperçu de l&#x27;application mobile Rourke Studio sur iPhone montrant une interface de code avec une boîte de saisie pour l&#x27;IA en bas." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000329_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:29</span>
+                        <span class="caption-text">Aperçu de l&#x27;application mobile Rourke Studio sur iPhone montrant une interface de code avec une boîte de saisie pour l&#x27;IA en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000346_seg7.jpg" alt="Écran de configuration de l&#x27;application Rourke Studio sur iPhone affichant des options de sélection d&#x27;angles de prise de vue et un bouton noir en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000346_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:46</span>
+                        <span class="caption-text">Écran de configuration de l&#x27;application Rourke Studio sur iPhone affichant des options de sélection d&#x27;angles de prise de vue et un bouton noir en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:54 - 00:04:31</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parfait. Nous avons l&#x27;angle en plongée et ensuite nous avons l&#x27;angle en contre-plongée. Donc notre application génère ces images correctement maintenant. Ce que je veux faire, c&#x27;est en fait ajouter un système dorsal, un backend, à notre application. Comme ça, nous pourrions avoir des utilisateurs, nous pourrions stocker chacune de ces différentes séances photo et les utilisateurs peuvent même les télécharger depuis leurs profils. Pour faire cela, tout ce que nous avons à faire est de venir ici en haut à droite de notre écran, de cliquer sur intégrations et de cliquer sur backend. Donc je peux simplement l&#x27;activer et cela va maintenant configurer les utilisateurs et les bases de données, les clés API, et tout ce dont nous aurions besoin pour notre application. Très bien. Donc juste comme ça, vous pouvez voir dans notre chat ici que cela a activé tout le backend de notre application. Donc maintenant, allons de l&#x27;avant et passons à l&#x27;ajout de paiements à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un outil de développement d&#x27;application no-code/low-code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu déroulant des intégrations affichant les options pour le backend, GitHub et RevenueCat.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de développement pour ajouter un système dorsal (backend) à l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000413_seg8.jpg" alt="Interface de développement web montrant l&#x27;application mobile en cours de chargement et le menu des intégrations avec l&#x27;option backend." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000413_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Interface de développement web montrant l&#x27;application mobile en cours de chargement et le menu des intégrations avec l&#x27;option backend.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:31 - 00:05:06</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">notre application. Donc nous allons cliquer à nouveau sur ce bouton intégrations. Nous allons descendre sur revenue cat ici et nous allons simplement sélectionner connecter. Et si vous n&#x27;avez pas encore de profil revenue cat configuré, vous allez tout simplement vous inscrire avec votre email et créer un mot de passe. Et ensuite, vous pouvez voir ici, nous avons juste besoin d&#x27;autoriser tout cela afin qu&#x27;il puisse réellement apporter des modifications à notre application Rourke. Donc je vais cliquer sur autoriser. Cela va nous ramener sur notre application Rourke ici. Et ensuite, nous allons tout simplement sélectionner projet, qui va être ce projet juste ici. Donc je vais sélectionner projet, cliquer sur ce bouton là, et vous pouvez voir que notre application est maintenant connectée. Nous pouvons ensuite cliquer sur ce lien gérer dans le tableau de bord revenue cat. Vous pouvez voir que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme de développement d&#x27;application avec panneau d&#x27;intégrations et interface RevenueCat.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Demande d&#x27;accès et permissions RevenueCat (Projects, Apps, Products, Entitlements, Offerings, Packages) et options d&#x27;intégration (Backend, GitHub, RevenueCat).</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion et autorisation de l&#x27;intégration RevenueCat avec l&#x27;application en cours de configuration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000440_seg9.jpg" alt="Fenêtre de navigateur affichant une demande d&#x27;autorisation de RevenueCat pour l&#x27;application avec les permissions de lecture et écriture." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000440_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:40</span>
+                        <span class="caption-text">Fenêtre de navigateur affichant une demande d&#x27;autorisation de RevenueCat pour l&#x27;application avec les permissions de lecture et écriture.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000457_seg9.jpg" alt="Interface de développement avec un aperçu mobile, un QR code de test et le panneau latéral affichant les options d&#x27;intégration dont RevenueCat." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000457_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:57</span>
+                        <span class="caption-text">Interface de développement avec un aperçu mobile, un QR code de test et le panneau latéral affichant les options d&#x27;intégration dont RevenueCat.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:06 - 00:05:42</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous avons maintenant les statistiques de notre application et tout ça directement ici. Maintenant, ce que je vais faire, c&#x27;est que je vais revenir vers Rourke et lui expliquer fondamentalement ce que nous voulons connecter. Je veux essentiellement m&#x27;assurer que les utilisateurs doivent payer pour pouvoir utiliser l&#x27;application. Je vais donc simplement expliquer cela à Rourke. Très bien, nous venons donc d&#x27;ajouter RevenueCat pour les paiements de notre application. Je veux m&#x27;assurer que désormais, si vous voulez utiliser l&#x27;application et générer des images, vous devez être un utilisateur payant de notre application. Et je veux que notre application coûte 1 dollar par mois. L&#x27;une de mes choses préférées avec Rourke, c&#x27;est que vous pouvez voir chacune des tâches au fur et à mesure qu&#x27;elles sont exécutées ici même. Vous pouvez voir qu&#x27;il vient de cocher celle-ci juste ici. Trois de nos neuf tâches ont maintenant été cochées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement web / éditeur de code avec aperçu mobile et QR code.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Lignes de code, instructions de backend, et un simulateur d&#x27;application mobile avec un QR code pour tester sur téléphone.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;état actuel de l&#x27;application et de son interface de développement avant d&#x27;expliquer les prochaines étapes d&#x27;intégration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000515_seg10.jpg" alt="Un écran d&#x27;ordinateur montrant une interface de développement avec du code et un aperçu d&#x27;application mobile à côté, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000515_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:15</span>
+                        <span class="caption-text">Un écran d&#x27;ordinateur montrant une interface de développement avec du code et un aperçu d&#x27;application mobile à côté, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:42 - 00:06:19</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et il va traiter chacun d&#x27;eux individuellement. Il va les analyser, trouver la meilleure façon d&#x27;aborder ces tâches. Vous pouvez voir ici, il me demande en fait de configurer des variables d&#x27;environnement. En tant que non-programmeur, je ne sais même pas ce que cela signifie, mais je vais simplement sélectionner oui, les configurer. Et c&#x27;est toute la beauté d&#x27;utiliser Rourke pour coder vos applications mobiles au feeling. Très bien. Donc, en quelques étapes seulement, nous avons maintenant notre RevenueCat ajouté. Laissez-moi donc tester cela maintenant à l&#x27;intérieur d&#x27;Aurora. Je vais télécharger une image sur notre application de séance photo virtuelle et je vais simplement choisir chacun de ces angles ici, tout comme avant. Je vais cliquer sur générer la séance photo et maintenant nous voyons ceci ici. Nous devons passer à la version pro, donc nous pouvons soit passer à la version annuelle, soit nous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement mobile (type Bolt/v0), simulateur de smartphone et webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration des variables d&#x27;environnement, journaux d&#x27;exécution de l&#x27;IA (Thought process) et aperçu d&#x27;application React Native/mobile.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des variables d&#x27;environnement et test interactif de l&#x27;application mobile générée par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000551_seg11.jpg" alt="Interface de développement avec un panneau de configuration demandant de configurer des variables d&#x27;environnement, et un aperçu mobile à droite." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000551_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Interface de développement avec un panneau de configuration demandant de configurer des variables d&#x27;environnement, et un aperçu mobile à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000600_seg11.jpg" alt="Panneau latéral affichant les réflexions et étapes d&#x27;exécution de l&#x27;IA, avec un aperçu d&#x27;application mobile affichant &#x27;Virtual Photoshoot&#x27;." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000600_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:00</span>
+                        <span class="caption-text">Panneau latéral affichant les réflexions et étapes d&#x27;exécution de l&#x27;IA, avec un aperçu d&#x27;application mobile affichant &#x27;Virtual Photoshoot&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000609_seg11.jpg" alt="Interface montrant l&#x27;interaction avec l&#x27;application mobile virtuelle et le code source édité dans le panneau de gauche." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000609_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Interface montrant l&#x27;interaction avec l&#x27;application mobile virtuelle et le code source édité dans le panneau de gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:19 - 00:06:51</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pourrait passer à un abonnement mensuel, donc je vais cliquer sur mensuel et étant donné qu&#x27;il s&#x27;agit d&#x27;un environnement de test dans Revenue Cat et que ce n&#x27;est pas un vrai achat que je vais sélectionner, nous devons choisir si nous voulons tester un échec d&#x27;achat ou un achat valide. Testons donc un achat valide pour les besoins de cette vidéo. Et c&#x27;est aussi simple que ça, nous avons maintenant accès au compte pro. Et ensuite, nous devrions être capables de générer notre séance photo. Jetons un coup d&#x27;œil maintenant, mais cela devrait fonctionner de manière 100 % fluide. Boum. Et c&#x27;est aussi simple que ça, nous avons cette photo de profil de notre sujet dans cette image. Et nous avons effectivement dû payer pour utiliser notre application. Laissez-moi donc venir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Simulateur d&#x27;application mobile et interface de test (RevenueCat / environnement de développement).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de test d&#x27;achat in-app avec options de test de paiement et message de succès.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un test d&#x27;achat valide et validation de l&#x27;abonnement dans l&#x27;environnement de test.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000627_seg12.jpg" alt="Interface de simulation affichant une fenêtre modale de test d&#x27;achat d&#x27;abonnement sur l&#x27;application mobile testée." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000627_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:27</span>
+                        <span class="caption-text">Interface de simulation affichant une fenêtre modale de test d&#x27;achat d&#x27;abonnement sur l&#x27;application mobile testée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000635_seg12.jpg" alt="Message de confirmation de succès indiquant que l&#x27;achat fictif a bien été validé." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000635_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:35</span>
+                        <span class="caption-text">Message de confirmation de succès indiquant que l&#x27;achat fictif a bien été validé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000643_seg12.jpg" alt="Affichage de l&#x27;application mobile avec une image générée après la validation de l&#x27;abonnement." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000643_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:43</span>
+                        <span class="caption-text">Affichage de l&#x27;application mobile avec une image générée après la validation de l&#x27;abonnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:51 - 00:07:27</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vers RevenueCat. Et je veux juste m&#x27;assurer que cela s&#x27;affiche bien dans mon profil ici. Donc si je clique sur les données bac à sable, cela va nous montrer cet environnement bac à sable qui est essentiellement l&#x27;endroit où cette fausse transaction passe pour s&#x27;assurer que notre application fonctionne correctement et comme nous pouvons le voir, nous avons un abonnement actif, nous avons dix dollars de revenus récurrents mensuels, nous avons soixante dollars de revenus sur les 28 derniers jours parce que j&#x27;ai testé cela quelques fois pour m&#x27;assurer que ça fonctionne et nous pourrions effectivement cliquer là-dessus pour regarder les abonnements actifs et toutes ces informations avec tous nos utilisateurs et le montant des revenus que nous avons, que ce soit l&#x27;ARR, le MRR, tout ça, vont</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de gestion d&#x27;achats in-app RevenueCat.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de gestion d&#x27;applications, métriques financières (MRR, abonnements actifs, revenus), graphiques d&#x27;analyse d&#x27;abonnements.
+[DESC_IMAGE_2] Navigation dans les menus analytiques et présentation des graphiques de suivi des abonnements actifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000700_seg13.jpg" alt="Vue d&#x27;ensemble du tableau de bord RevenueCat affichant les métriques d&#x27;abonnements, les revenus et les options de configuration du bac à sable." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000700_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du tableau de bord RevenueCat affichant les métriques d&#x27;abonnements, les revenus et les options de configuration du bac à sable.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000718_seg13.jpg" alt="Graphique des abonnements actifs (&#x27;Active Subscriptions&#x27;) sur le tableau de bord RevenueCat avec navigation dans les rapports analytiques." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000718_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:18</span>
+                        <span class="caption-text">Graphique des abonnements actifs (&#x27;Active Subscriptions&#x27;) sur le tableau de bord RevenueCat avec navigation dans les rapports analytiques.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:27 - 00:07:55</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">être directement dans la limite des revenus pour que nous puissions réellement l&#x27;examiner pour notre application. Ensuite, ce que nous pourrions faire puisque notre application fonctionne désormais correctement avec toutes ses fonctionnalités, nous pourrions maintenant publier notre application. Nous pourrions donc soit la publier et y accéder via une URL. Donc si vous voulez voir à quoi cela ressemble, ce sera comme ceci. Elle a même généré cette image pour nous, séance photo virtuelle. Nous pourrions la scanner sur notre téléphone et commencer réellement à utiliser notre application directement sur notre téléphone. Ou ce que nous pourrions faire, c&#x27;est même publier directement sur l&#x27;App Store à l&#x27;intérieur de Rourke, ce qui est l&#x27;une des fonctionnalités qui rend cette plateforme si précieuse.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement d&#x27;application (Rork / environnement de test).</p>
+                        <p><strong>Contenu textuel & Code :</strong> QR code de test, aperçu d&#x27;application mobile, logs de génération de code et de vérification d&#x27;abonnement.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;application prête à être testée ou publiée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000734_seg14.jpg" alt="Interface du navigateur affichant le tableau de bord de l&#x27;application de développement &quot;PhotoAngle Swiss App&quot;, avec un aperçu mobile et un QR code." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000734_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:34</span>
+                        <span class="caption-text">Interface du navigateur affichant le tableau de bord de l&#x27;application de développement &quot;PhotoAngle Swiss App&quot;, avec un aperçu mobile et un QR code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:56 - 00:08:16</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous voulez que je montre comment publier réellement vos applications Rourke sur l&#x27;App Store pour les applications mobiles, alors assurez-vous de commenter dans la section des commentaires ci-dessous et de me faire savoir que vous voulez cela et peut-être que je pourrais faire une vidéo là-dessus. Mais je vais juste cliquer sur publier et maintenant nous pouvons aller de l&#x27;avant et utiliser notre application. Très bien, les gars, voilà. Nous avons construit une application en utilisant l&#x27;intelligence artificielle avec Rourke et avons même ajouté des paiements à nos applications.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement d&#x27;application web/mobile avec panneau d&#x27;aperçu, QR code de test et options de publication (App Store, Google Play).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Journal de l&#x27;assistant IA (« Add RevenueCat subscription system »), code configuré, et options de publication (« photoangle-swiss-app mini app »).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface de publication d&#x27;une application mobile sur l&#x27;App Store.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000801_seg15.jpg" alt="Interface d&#x27;une application de développement mobile affichant un aperçu de smartphone, des options de publication sur l&#x27;App Store et un assistant IA textuel sur le panneau de gauche." loading="lazy" onclick="openLightbox('../screenshots/lNfK-jQeUa8/lNfK-jQeUa8_000801_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:01</span>
+                        <span class="caption-text">Interface d&#x27;une application de développement mobile affichant un aperçu de smartphone, des options de publication sur l&#x27;App Store et un assistant IA textuel sur le panneau de gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:16 - 00:08:26</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous avez tiré un peu de valeur de cette vidéo, laissez un pouce bleu. Dites-moi ce que vous en pensez dans les commentaires. Abonnez-vous à cette chaîne pour plus de contenu de ce genre. Cela étant dit, les gars, j&#x27;espère que vous passez une bonne journée et je vous vois dans la prochaine vidéo. Donc</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> YouTube</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun graphique, code ou interface technique pertinente (simple conclusion de vidéo).</p>
+                        <p><strong>Action / Démonstration :</strong> Conclusion de la vidéo et appel à l&#x27;action pour s&#x27;abonner.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
