@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `88 / 273` (`32.2%`)
+- **Vidéos traitées** : `89 / 273` (`32.6%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -105,6 +105,7 @@
 | 2026-03-07 | [RL6hK-Xo7cM](https://www.youtube.com/watch?v=RL6hK-Xo7cM) | **7 Claude Cowork Skills I Can't Live Without (steal them)** | [2026-03-07_YT-[RL6hK-Xo7cM]_7 Claude Cowork Skills I Can't Live Without (steal them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-07_YT-[RL6hK-Xo7cM]_7 Claude Cowork Skills I Can't Live Without (steal them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-07_YT-[RL6hK-Xo7cM]_7 Claude Cowork Skills I Can't Live Without (steal them)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-05 | [f95-O8C88uw](https://www.youtube.com/watch?v=f95-O8C88uw) | **Comment utiliser Claude Code mieux que 99% des gens** | [2026-03-05_YT-[f95-O8C88uw]_Comment utiliser Claude Code mieux que 99% des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-05_YT-[f95-O8C88uw]_Comment utiliser Claude Code mieux que 99% des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-05_YT-[f95-O8C88uw]_Comment utiliser Claude Code mieux que 99% des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-03-03 | [b9gvuODIiQU](https://www.youtube.com/watch?v=b9gvuODIiQU) | **How to Build an AI Employee with Claude Cowork (Skills Guide)** | [2026-03-03_YT-[b9gvuODIiQU]_How to Build an AI Employee with Claude Cowork (Skills Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-03-03_YT-[b9gvuODIiQU]_How to Build an AI Employee with Claude Cowork (Skills Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-03-03_YT-[b9gvuODIiQU]_How to Build an AI Employee with Claude Cowork (Skills Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-02-26 | [MMHa28g0z6k](https://www.youtube.com/watch?v=MMHa28g0z6k) | **Claude is Now a 24/7 Employee (Cowork Scheduled Tasks)** | [2026-02-26_YT-[MMHa28g0z6k]_Claude is Now a 247 Employee (Cowork Scheduled Tasks)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-26_YT-[MMHa28g0z6k]_Claude is Now a 247 Employee (Cowork Scheduled Tasks)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-26_YT-[MMHa28g0z6k]_Claude is Now a 247 Employee (Cowork Scheduled Tasks)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
