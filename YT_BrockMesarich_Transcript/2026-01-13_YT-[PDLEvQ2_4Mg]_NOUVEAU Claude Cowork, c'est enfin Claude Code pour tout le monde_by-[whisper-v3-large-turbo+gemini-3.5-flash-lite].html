@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 NOUVEAU : Claude Cowork, c&#x27;est enfin Claude Code pour tout le monde — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 NOUVEAU : Claude Cowork, c&#x27;est enfin Claude Code pour tout le monde</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-13</span>
+                <span class="badge">⏱️ 00:06:39</span>
+                <span class="badge">🆔 <code>PDLEvQ2_4Mg</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=PDLEvQ2_4Mg" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **NOUVEAU : Claude Cowork, c'est enfin Claude Code pour tout le monde**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic vient de lancer Claude Cowork et ça va changer la façon dont les non-techniciens interagissent avec leurs ordinateurs. Claude Code était l&#x27;outil de référence pour les développeurs qui créent des applications et automatisent des flux de travail, mais les gens ont commencé à l&#x27;utiliser aussi pour les tâches quotidiennes. Le problème, c&#x27;est que ça se trouve à l&#x27;intérieur du terminal et ça peut être intimidant. Même pour moi, je n&#x27;utilise pas Claude Code parce que je déteste utiliser les terminaux.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Terminal de commandes (Claude Code CLI / interface en ligne de commande) et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes textuelles, tâches d&#x27;analyse de code source d&#x27;une application Next.js, lecture de fichiers et invite de confirmation pour l&#x27;installation de paquets via npm.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans la structure d&#x27;un projet, analyse de fichiers de code et exécution de commandes de configuration de test.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000010_seg1.jpg" alt="Terminal de commandes montrant Claude Code en train d&#x27;analyser la structure d&#x27;un projet Next.js avec le présentateur en incrustation vidéo." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Terminal de commandes montrant Claude Code en train d&#x27;analyser la structure d&#x27;un projet Next.js avec le présentateur en incrustation vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000015_seg1.jpg" alt="Terminal de commandes affichant l&#x27;exécution d&#x27;une commande Bash par Claude Code pour installer des dépendances de test (Jest et React Testing Library)." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Terminal de commandes affichant l&#x27;exécution d&#x27;une commande Bash par Claude Code pour installer des dépendances de test (Jest et React Testing Library).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:39</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais Claude Cowork résout ce problème, alors dans cette vidéo je vais vous montrer ce que c&#x27;est, comment commencer à l&#x27;utiliser, et pourquoi je pense que c&#x27;est l&#x27;une des sorties d&#x27;IA les plus importantes que j&#x27;ai vues. Plongeons directement dans cette vidéo. Très bien, les gars. Alors très rapidement, allons à la source où cette nouvelle a été lancée. Donc si vous regardez Twitter en ce moment, ce lancement est devenu absolument fou. Tant de gens en parlent.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (X / Twitter), application Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publication officielle de Claude présentant &quot;Claude Cowork&quot; et expliquant ses fonctionnalités pour les tâches non techniques.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface du post X/Twitter tout en commentant l&#x27;annonce de Claude Cowork.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000034_seg2.jpg" alt="Capture d&#x27;écran du navigateur affichant une publication sur le réseau social X (Twitter) du compte officiel de Claude concernant &quot;Claude Cowork&quot;." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Capture d&#x27;écran du navigateur affichant une publication sur le réseau social X (Twitter) du compte officiel de Claude concernant &quot;Claude Cowork&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:01:02</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici Claude Cowork. Claude code pour le reste de votre travail. Cowork vous permet d&#x27;accomplir des tâches non techniques, un peu de la même manière que les développeurs utilisent Claude code. Ainsi, par exemple, l&#x27;un des cas d&#x27;utilisation que Claude montre réellement dans ce fil Twitter est que vous pouvez donner à Claude accès à n&#x27;importe quel dossier sur votre ordinateur, et il peut aller de l&#x27;avant et organiser ces dossiers. Par exemple, vous pouvez voir Claude Cowork en action juste ici, et il est littéralement en train d&#x27;organiser tous ces fichiers sur ce bureau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme X (Twitter) et une vidéo de démonstration de Claude Cowork.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Publications du compte officiel de Claude (@claudeai) présentant les fonctionnalités de Cowork pour automatiser les tâches non techniques.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente la présentation officielle de Claude Cowork sur Twitter/X pour expliquer ses cas d&#x27;usage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000045_seg3.jpg" alt="Capture d&#x27;écran montrant le fil Twitter de Claude présentant &quot;Cowork: Claude Code for the rest of your work&quot;, avec le présentateur incrusté en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000045_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:45</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le fil Twitter de Claude présentant &quot;Cowork: Claude Code for the rest of your work&quot;, avec le présentateur incrusté en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000056_seg3.jpg" alt="Capture d&#x27;écran montrant la suite du fil Twitter de Claude avec une vidéo de démonstration de Cowork interagissant avec des dossiers et des fichiers sur ordinateur." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000056_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:56</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la suite du fil Twitter de Claude avec une vidéo de démonstration de Cowork interagissant avec des dossiers et des fichiers sur ordinateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:02 - 00:01:22</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors laissez-moi vous montrer maintenant ce qui est différent à ce sujet, et je vais vous montrer exactement comment vous pourriez commencer à l&#x27;utiliser dès maintenant aussi. Très bien, donc afin de commencer à utiliser ceci dès maintenant, vous allez devoir télécharger l&#x27;application de bureau Claude, et pour l&#x27;instant, Claude Cowork est uniquement disponible pour les utilisateurs Mac. Il va y avoir un lien dans la description si vous n&#x27;avez pas déjà l&#x27;application de bureau Claude. Assurez-vous de télécharger ceci sur votre ordinateur, et je vais vous montrer à quoi cela ressemble maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site officiel de Claude (claude.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de téléchargement de l&#x27;application desktop Claude, options pour macOS et Windows.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la page de téléchargement de l&#x27;application de bureau Claude par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000107_seg4.jpg" alt="Page web officielle de téléchargement de l&#x27;application de bureau Claude avec le titre &quot;Bring Claude to your desktop&quot;." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000107_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:07</span>
+                        <span class="caption-text">Page web officielle de téléchargement de l&#x27;application de bureau Claude avec le titre &quot;Bring Claude to your desktop&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000112_seg4.jpg" alt="Même page web de téléchargement de Claude avec le curseur se positionnant sur les options de téléchargement." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000112_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:12</span>
+                        <span class="caption-text">Même page web de téléchargement de Claude avec le curseur se positionnant sur les options de téléchargement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:22 - 00:01:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, comme vous pouvez le voir, j&#x27;ai maintenant Claude Desktop de téléchargé, et nous avons quelques onglets différents ici. Nous avons notre mode de chat normal juste ici. Nous avons notre mode Claude code sur le bureau que nous pourrions également utiliser juste ici. Activez cela. Et maintenant, nous avons cet onglet Cowork. Et vous pouvez voir que je l&#x27;ai même utilisé pour une tâche précédente. Et laissez-moi décomposer cela dès maintenant et parler de l&#x27;interface et de la façon dont nous pourrions commencer à l&#x27;utiliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude Desktop application sur macOS</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Claude Desktop avec le message d&#x27;accueil &quot;Evening, brock&quot;, une barre de saisie de texte &quot;How can I tip you today?&quot;, et un menu latéral affichant l&#x27;historique des discussions.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole l&#x27;onglet &quot;Code&quot; dans l&#x27;interface de Claude Desktop pour montrer les différentes options disponibles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000127_seg5.jpg" alt="Capture d&#x27;écran montrant l&#x27;application Claude Desktop avec un curseur pointant sur les onglets du mode chat et code." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000127_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;application Claude Desktop avec un curseur pointant sur les onglets du mode chat et code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:06</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici donc un bref aperçu de ce que j&#x27;essayais exactement de faire faire à Claude Cowork. La consigne que je lui ai donnée est la suivante : va dans le dossier Shorts et donne-moi la transcription de toutes les vidéos qui s&#x27;y trouvent et qui sont dans le sous-dossier Shorts 1-9. Pour vous donner un exemple de ce que je veux dire, j&#x27;ai ce dossier qui est stocké sur mon bureau, sur mon ordinateur, où je mets toutes mes vidéos courtes lorsque mon monteur me les envoie et qu&#x27;elles sont prêtes à être publiées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude Cowork et explorateur de fichiers macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt textuel demandant d&#x27;extraire la transcription des vidéos du sous-dossier &quot;Shorts 1-9&quot;, ainsi que les étapes d&#x27;exécution de la tâche par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage de la conversation avec l&#x27;assistant IA et visualisation des dossiers locaux contenant les vidéos à transcrire.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000149_seg6.jpg" alt="Interface de l&#x27;application montrant l&#x27;interaction avec Claude Cowork et la transcription en cours d&#x27;exécution suite au prompt." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000149_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:49</span>
+                        <span class="caption-text">Interface de l&#x27;application montrant l&#x27;interaction avec Claude Cowork et la transcription en cours d&#x27;exécution suite au prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000200_seg6.jpg" alt="Interface de Claude Cowork avec une fenêtre de l&#x27;explorateur de fichiers macOS superposée montrant les dossiers &quot;Shorts&quot;." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000200_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:00</span>
+                        <span class="caption-text">Interface de Claude Cowork avec une fenêtre de l&#x27;explorateur de fichiers macOS superposée montrant les dossiers &quot;Shorts&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:06 - 00:02:28</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et j&#x27;ai ces quelques sous-dossiers différents ici. Nous avons shorts 12-17, celui-ci aussi. Et ensuite nous avons shorts 1-9, qui est celui dont j&#x27;essaie d&#x27;extraire les transcriptions. Et nous avons toutes ces vidéos de contenu court. Donc, essentiellement, ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai juste créé une nouvelle tâche. J&#x27;ai donné cette consigne et maintenant ce qu&#x27;il fait, c&#x27;est qu&#x27;il s&#x27;en va et essaie réellement d&#x27;exécuter cette tâche à l&#x27;intérieur de mon dossier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:28 - 00:02:48</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pourriez donc accorder l&#x27;accès pour avoir essentiellement la possibilité d&#x27;exploiter n&#x27;importe lequel des différents dossiers et applications que vous utilisez sur votre ordinateur. Et il va aller de l&#x27;avant et essayer de travailler sur cette tâche. Très bien, alors allons de l&#x27;avant et essayons une autre tâche ici. Je vais vous montrer à quel point c&#x27;est facile à faire. Je vais donc cliquer sur nouvelle tâche en haut à gauche. Et puis il y a quelques tâches différentes pré-invitées que nous pourrions utiliser.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:48 - 00:03:07</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, cela rend les choses vraiment simples pour commencer à automatiser des choses dès le départ, même si vous ne savez pas quoi automatiser. Par exemple, nous pourrions créer un fichier, nous pourrions analyser des données, nous pourrions faire un prototype, nous pourrions organiser les fichiers. Laissez-moi donc cliquer sur organiser les fichiers. Et ce que je vais faire, c&#x27;est coller cette consigne : organiser et ranger mes images. Je veux que tu ajoutes toutes les images miniatures dans un dossier qui s&#x27;appelle miniatures terminées. Je vais donc cliquer sur c&#x27;est parti.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:07 - 00:03:30</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It&#x27;s using Opus 4.5 and it&#x27;s now going to go ahead and begin doing this task. Also something I want to talk about inside the user interface of Claude Cowork is on the right hand side, you could see that we could see the progress as well as we have the ability to use artifacts. If you don&#x27;t know what artifacts are, this is essentially a way to spin up quick user interfaces using Claude and begin building our own mini web apps that we could start using.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:30 - 00:03:52</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si j&#x27;ai un tas de données, par exemple, je pourrais alors dire, prends toutes ces données de ce fichier et ensuite je veux que tu crées un tableau de bord qui en quelque sorte visualise tout cela. C&#x27;est en quelque sorte quelque chose que nous pourrions faire maintenant en utilisant Claude Cowork. Donc il semble que Claude Cowork me demande maintenant ces étapes. Donc je ne vois aucun miniature dans votre dossier de shorts. Oh, et cela a du sens parce que je n&#x27;ai donné du contexte qu&#x27;au dossier de shorts que j&#x27;ai fait pour cette tâche précédente.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:52 - 00:04:28</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que je dois faire, c&#x27;est que je dois cliquer sur ajouter des fichiers ou des photos. Très bien. Donc juste comme ça, nous pouvons maintenant voir Claude Cowork en action. Il exécute ces commandes. Il est en train d&#x27;aller de l&#x27;avant, de trier ces images miniatures. Et on dirait qu&#x27;il est effectivement allé de l&#x27;avant et a terminé cette tâche en moins de 10 secondes, honnêtement. Boum. Et juste comme ça, si j&#x27;ouvre ce dossier d&#x27;images ici, avant, toutes les photos miniatures étaient ici, mais il a sélectionné chacune d&#x27;entre elles qui était une photo miniature et l&#x27;a ajoutée à un dossier appelé miniatures terminées. Et comme vous pouvez le voir, ce sont toutes de vraies miniatures. J&#x27;ai donc pu identifier laquelle était une miniature YouTube, laquelle ne l&#x27;était pas, par exemple, celle-ci est une adorable</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Claude Cowork, application macOS, Finder.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste textuelle de fichiers d&#x27;images à trier (« 7 free ai tools », « Zuck Evil Plan ») et interface de bureau.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;automatisation de tâches de tri de fichiers par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000401_seg12.jpg" alt="Interface de Claude Cowork affichant une liste de fichiers d&#x27;images identifiés et le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000401_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:01</span>
+                        <span class="caption-text">Interface de Claude Cowork affichant une liste de fichiers d&#x27;images identifiés et le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000410_seg12.jpg" alt="Claude Cowork en train d&#x27;exécuter des commandes de tri de fichiers avec une fenêtre du Finder macOS ouverte au centre." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000410_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:10</span>
+                        <span class="caption-text">Claude Cowork en train d&#x27;exécuter des commandes de tri de fichiers avec une fenêtre du Finder macOS ouverte au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:28 - 00:05:03</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">logo que j&#x27;utilise réellement pour une vignette, mais ce n&#x27;est pas une vignette entièrement complète. J&#x27;ai donc pu réellement identifier cela et trier ceci en littéralement 10 secondes. C&#x27;est absolument dingue. Très bien. Je vais donc essayer une dernière tâche maintenant ici. Je vais cliquer sur nouvelle tâche. Et encore une fois, je dois aller sélectionner un dossier différent que je veux utiliser. Celui-ci s&#x27;appelle profit. J&#x27;ai donc essentiellement créé un faux fichier CSV d&#x27;un compte de résultat d&#x27;une entreprise. Et juste ici, je vais simplement cliquer sur autoriser. Pour qu&#x27;il ait accès à cela. Et ensuite, je vais dire, sur la base de ce dossier, je veux que tu crées réellement un artefact visuel de ce compte de résultat.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau (interface de type assistant IA / Cowork avec panneau latéral et zone de chat)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les fichiers déplacés vers un dossier « completed thumbnails » (20 fichiers) et les fichiers restants (7 fichiers), avec indication de l&#x27;utilisation d&#x27;Opus 4.5.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du résumé textuel généré par l&#x27;IA confirmant le tri et l&#x27;organisation des fichiers d&#x27;images de miniatures.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000436_seg13.jpg" alt="Une application de bureau affichant le résultat de l&#x27;organisation automatique d&#x27;un dossier d&#x27;images par une intelligence artificielle, avec le présentateur en médaillon dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000436_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:36</span>
+                        <span class="caption-text">Une application de bureau affichant le résultat de l&#x27;organisation automatique d&#x27;un dossier d&#x27;images par une intelligence artificielle, avec le présentateur en médaillon dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:03 - 00:05:35</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donc je pouvais facilement voir ce que notre entreprise a fait cette année. Donc en temps réel, nous allons le voir en train d&#x27;aller dans ce dossier, d&#x27;extraire le fichier CSV, puis de le transformer directement en artefact dans cette interface à l&#x27;intérieur de Claude Cowork. Et les gars, c&#x27;est la première fois que je m&#x27;amuse vraiment avec Claude Code. J&#x27;ai honte de l&#x27;admettre, mais comme nous pouvons maintenant l&#x27;utiliser à l&#x27;intérieur de Claude Cowork, c&#x27;est tellement plus facile à utiliser au lieu d&#x27;avoir à aller dans quelque chose comme Cursor ou Windsurf ou l&#x27;un de ces IDE, parce que c&#x27;est beaucoup plus difficile pour une personne non technique alors que nous pouvons simplement basculer à l&#x27;intérieur de Claude ici même et simplement cliquer sur Cowork et commencer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:35 - 00:06:04</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">actually creating tasks and a task list for our agent to go off and do. It just becomes so much more simple. All right, guys. And just like that, about 30 seconds later, we now have this breakdown with an interactive visual dashboard of our 2024 profit and loss statement from this CSV file that was actually in a folder on my desktop. So I could just click on this. I could either open the code or I could just quickly open up this artifact here and we could begin playing around with this dashboard that actually went ahead and created based on all this data from the CSV file.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de développement/assistant IA et tableau de bord financier interactif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> KPIs financiers (chiffre d&#x27;affaires de 100M$, profit brut de 62,9M$, revenu net de 25,7M$), graphiques en barres et courbes de tendance trimestrielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du tableau de bord interactif généré à partir d&#x27;un fichier CSV de compte de résultat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000550_seg15.jpg" alt="Interface d&#x27;un assistant IA listant un rapport financier détaillé avec KPI et onglets de revenus, profitabilité et dépenses." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000550_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Interface d&#x27;un assistant IA listant un rapport financier détaillé avec KPI et onglets de revenus, profitabilité et dépenses.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000557_seg15.jpg" alt="Tableau de bord financier interactif divisé en deux fenêtres affichant des graphiques de performance et des indicateurs clés (chiffre d&#x27;affaires, profit net)." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000557_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:57</span>
+                        <span class="caption-text">Tableau de bord financier interactif divisé en deux fenêtres affichant des graphiques de performance et des indicateurs clés (chiffre d&#x27;affaires, profit net).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:05 - 00:06:23</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So guys, there we have it. That is Claude Cowork. I wanted to quickly make a video on this. It&#x27;s just released a couple of hours ago, but I wanted to show you the capabilities. If you&#x27;re a non-technical person, you could start using Cloud Code in a very simple interface like this. If you wanna use this right now, you have to be a Cloud Max user. So I believe you have to pay about $100 per month to access this as of right now.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application macOS Claude Cowork.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de tâches (« Create a file », « Crunch data », « Make a prototype », etc.) et zone de saisie pour les requêtes utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration de l&#x27;interface utilisateur de Claude Cowork.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000609_seg16.jpg" alt="Interface principale de l&#x27;application Claude Cowork affichant des options de tâches et la bulle vidéo du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000609_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Interface principale de l&#x27;application Claude Cowork affichant des options de tâches et la bulle vidéo du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000614_seg16.jpg" alt="Gros plan sur les boutons de fonctionnalités et la zone de saisie de prompt de l&#x27;interface Claude Cowork." loading="lazy" onclick="openLightbox('../screenshots/PDLEvQ2_4Mg/PDLEvQ2_4Mg_000614_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:14</span>
+                        <span class="caption-text">Gros plan sur les boutons de fonctionnalités et la zone de saisie de prompt de l&#x27;interface Claude Cowork.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:23 - 00:06:39</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">This is of course a day of the release. So they should be rolling this out to hopefully free users, but users of the cheaper plans. So if you wanna use this, hopefully you&#x27;ll be able to use this over the coming days. That being said, guys, hope you got some value. Let me know what you think in the comments, subscribe to the channel for more content like this, and I&#x27;ll see you guys in the next video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo standard sans graphique, terminal ou interface technique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, indicateur technique, graphique de trading ou configuration affiché.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur conclut la vidéo en invitant les spectateurs à laisser des commentaires et à s&#x27;abonner.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
