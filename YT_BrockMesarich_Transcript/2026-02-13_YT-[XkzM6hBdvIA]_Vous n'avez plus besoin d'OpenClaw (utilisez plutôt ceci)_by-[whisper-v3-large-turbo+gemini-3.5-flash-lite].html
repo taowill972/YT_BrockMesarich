@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Vous n&#x27;avez plus besoin d&#x27;OpenClaw (utilisez plutôt ceci) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Vous n&#x27;avez plus besoin d&#x27;OpenClaw (utilisez plutôt ceci)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-13</span>
+                <span class="badge">⏱️ 00:11:48</span>
+                <span class="badge">🆔 <code>XkzM6hBdvIA</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=XkzM6hBdvIA" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La vidéo de la chaîne *Brock Mesarich | AI for Non Techies* présente une alternative moderne, cloud et no-code à OpenClaw prénommée **Lindy**, un agent conversationnel intelligent capable d'interagir directement via iMessage et des SMS. Alors qu'OpenClaw exige des compétences techniques avancées (installation de Node.js, manipulation du terminal, gestion des ports, configuration de VPS et risques de sécurité liés aux clés API), Lindy se déploie en moins de 60 secondes sans aucune ligne de code. Cette accessibilité démocratise l'utilisation d'assistants personnels autonomes pour automatiser des flux de travail quotidiens complexes.<br><br>L'analyste démontre la puissance de Lindy à travers des cas d'usage concrets en temps réel : la lecture et le résumé automatisé des e-mails, le filtrage intelligent avec l'ajout dynamique d'étiquettes (« à répondre », « pour info », « newsletter »), et surtout la rédaction de réponses contextuelles capables de imiter parfaitement le ton, le style et le vocabulaire de l'utilisateur. Grâce à l'intégration native de plus de 5 000 applications tierces (Gmail, Slack, Notion, Google Sheets, CRM), l'agent peut exécuter des tâches avancées sur le web (recherche, remplissage de formulaires, navigation) et traiter des notes vocales, s'affranchissant ainsi de la contrainte d'un ordinateur personnel alloué 24h/24 et 7j/7.<br><br>Bien qu'OpenClaw conserve des avantages spécifiques pour les développeurs recherchant une confidentialité 100 % locale et une gratuité totale via des modèles open-source comme Ollama, Lindy s'impose comme la solution idéale pour le grand public et les professionnels non techniques. Elle offre une sécurité de niveau professionnel, un écosystème d'intégrations riche et une expérience utilisateur fluide gérée entièrement dans le cloud, transformant radicalement la gestion de la productivité personnelle et de la messagerie par de simples SMS.<br><br>---<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Lindy** : Agent conversationnel IA cloud et no-code qui se configure en moins de deux minutes et s'intègre nativement à plus de 5 000 applications.<br>* **OpenClaw** : Solution d'agent IA open-source et locale, puissante mais complexe, nécessitant des compétences techniques avancées, un terminal et un VPS.<br>* **Claude** : Modèle de langage conversationnel de pointe utilisé pour les tâches de raisonnement et de génération de texte de haut niveau.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle développé par xAI, orienté vers l'analyse en temps réel et l'interaction textuelle.<br>* **Gemini** : Suite de modèles multimodaux de Google intégrée aux écosystèmes cloud et bureautiques pour le traitement d'informations variées.<br>* **ChatGPT** : Modèle conversationnel de référence d'OpenAI exploité pour la génération de contenu et l'assistance textuelle générale.<br>* **Make** : Plateforme d'automatisation de flux de travail visuelle et sans code pour connecter des applications complexes.<br>* **Zapier** : Outil d'automatisation pionnier permettant de relier des milliers d'applications web entre elles pour exécuter des tâches répétitives.<br>* **n8n** : Logiciel d'automatisation de flux de travail orienté automatisation avancée, offrable en auto-hébergement ou sur le cloud.<br><br>---<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Accessibilité No-Code vs Complexité Technique** : Lindy s'installe en moins de 60 secondes sans terminal ni compétences en programmation, s'opposant directement à OpenClaw qui exige l'installation de Node.js, une configuration par fichiers et une gestion ardue des clés API.<br>* **Infrastructure Cloud vs Locale** : Lindy fonctionne entièrement dans le cloud, s'affranchissant du besoin d'un VPS ou d'un ordinateur dédié tournant 24h/24 et 7j/7, contrairement à OpenClaw qui privilégie la confidentialité 100 % locale.<br>* **Écosystème d'Intégrations Massif** : La plateforme propose plus de 5 000 connecteurs natifs (Gmail, Slack, Notion, Google Sheets, CRM), permettant une interopérabilité immédiate avec la quasi-totalité des outils logiciels du marché.<br>* **Canal d'Interaction par SMS / iMessage** : L'utilisation de Lindy se fait de manière transparente via des SMS textuels classiques ou iMessage, offrant une expérience utilisateur aussi familière que de parler à un ami.<br>* **Mimétisme Stylistique et Rédactionnel** : L'agent possède la capacité d'analyser l'historique des e-mails sortants de l'utilisateur pour reproduire fidèlement son ton, son niveau de franchise et son vocabulaire lors de la rédaction de réponses automatisées.<br>* **Classification et Étiquetage Automatique** : Lindy trie et étiquette de manière autonome les e-mails entrants selon leur criticité ou leur nature (ex. : « à répondre », « pour info », « newsletter »), simplifiant drastiquement la gestion de la boîte de réception.<br>* **Traitement Multimodal des Notes Vocales** : La prise en charge de messages vocaux permet à l'utilisateur de dicter des bilans journaliers ou des listes de tâches, que l'agent structure et planifie instantanément.<br>* **Sécurité et Conformité de Niveau Professionnel** : En tant que solution cloud établie, Lindy sécurise les données et gère la conformité, éliminant les risques de compromission de clés API ou de failles inhérentes aux configurations locales mal maîtrisées.<br>* **Capacités de Navigation Web (Browser Use)** : L'agent peut exécuter des actions complexes en ligne, telles que le remplissage de formulaires, la recherche d'informations ou la gestion de commandes, tout en permettant un suivi visuel de ses actions en temps réel.<br>* **Arbitrage Économique et Temporel** : Bien qu'OpenClaw puisse être opéré à coût nul via des modèles locaux (comme Ollama), le coût temporel et la complexité technique de sa mise en place justifient pleinement l'adoption d'une solution payante mais clé en main comme Lindy pour les utilisateurs non techniques.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Lindy</span><span class="tool-tag">OpenClaw</span><span class="tool-tag">Claude</span><span class="tool-tag">Grok</span><span class="tool-tag">Gemini</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Accessibilité No-Code vs Complexité Technique** : Lindy s&#x27;installe en moins de 60 secondes sans terminal ni compétences en programmation, s&#x27;opposant directement à OpenClaw qui exige l&#x27;installation de Node.js, une configuration par fichiers et une gestion ardue des clés API.</span></li><li><span class="point-bullet">✦</span><span>Infrastructure Cloud vs Locale** : Lindy fonctionne entièrement dans le cloud, s&#x27;affranchissant du besoin d&#x27;un VPS ou d&#x27;un ordinateur dédié tournant 24h/24 et 7j/7, contrairement à OpenClaw qui privilégie la confidentialité 100 % locale.</span></li><li><span class="point-bullet">✦</span><span>Écosystème d&#x27;Intégrations Massif** : La plateforme propose plus de 5 000 connecteurs natifs (Gmail, Slack, Notion, Google Sheets, CRM), permettant une interopérabilité immédiate avec la quasi-totalité des outils logiciels du marché.</span></li><li><span class="point-bullet">✦</span><span>Canal d&#x27;Interaction par SMS / iMessage** : L&#x27;utilisation de Lindy se fait de manière transparente via des SMS textuels classiques ou iMessage, offrant une expérience utilisateur aussi familière que de parler à un ami.</span></li><li><span class="point-bullet">✦</span><span>Mimétisme Stylistique et Rédactionnel** : L&#x27;agent possède la capacité d&#x27;analyser l&#x27;historique des e-mails sortants de l&#x27;utilisateur pour reproduire fidèlement son ton, son niveau de franchise et son vocabulaire lors de la rédaction de réponses automatisées.</span></li><li><span class="point-bullet">✦</span><span>Classification et Étiquetage Automatique** : Lindy trie et étiquette de manière autonome les e-mails entrants selon leur criticité ou leur nature (ex. : « à répondre », « pour info », « newsletter »), simplifiant drastiquement la gestion de la boîte de réception.</span></li><li><span class="point-bullet">✦</span><span>Traitement Multimodal des Notes Vocales** : La prise en charge de messages vocaux permet à l&#x27;utilisateur de dicter des bilans journaliers ou des listes de tâches, que l&#x27;agent structure et planifie instantanément.</span></li><li><span class="point-bullet">✦</span><span>Sécurité et Conformité de Niveau Professionnel** : En tant que solution cloud établie, Lindy sécurise les données et gère la conformité, éliminant les risques de compromission de clés API ou de failles inhérentes aux configurations locales mal maîtrisées.</span></li><li><span class="point-bullet">✦</span><span>Capacités de Navigation Web (Browser Use)** : L&#x27;agent peut exécuter des actions complexes en ligne, telles que le remplissage de formulaires, la recherche d&#x27;informations ou la gestion de commandes, tout en permettant un suivi visuel de ses actions en temps réel.</span></li><li><span class="point-bullet">✦</span><span>Arbitrage Économique et Temporel** : Bien qu&#x27;OpenClaw puisse être opéré à coût nul via des modèles locaux (comme Ollama), le coût temporel et la complexité technique de sa mise en place justifient pleinement l&#x27;adoption d&#x27;une solution payante mais clé en main comme Lindy pour les utilisateurs non techniques.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:24</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Lindy vient de sortir une alternative à OpenClaw. Et honnêtement, la plupart des gens n&#x27;ont probablement plus besoin d&#x27;OpenClaw. J&#x27;ai passé six heures à configurer OpenClaw. Lindy m&#x27;a pris moins de deux minutes. Pas de terminal, pas de VPS, et c&#x27;est totalement sûr à utiliser. Vous pouvez littéralement échanger des SMS avec via iMessage et lui faire faire des choses pour vous. Donc dans cette vidéo, je vais décortiquer les principales différences, comment le configurer, et les cas d&#x27;usage que j&#x27;utilise moi-même ces derniers jours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation vidéo avec graphismes textuels et incrustations d&#x27;images.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte publicitaire et promotionnel concernant l&#x27;alternative à OpenClaw (Lindy).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit le sujet et illustre les avantages de l&#x27;outil avec des éléments visuels à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:24 - 00:00:43</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous n&#x27;avez pas configuré OpenClaw ou si vous voulez une alternative sûre, c&#x27;est celle-ci. Donc, sans plus attendre, plongeons-nous dedans. Très bien, alors avant de plonger et de vous montrer réellement comment utiliser l&#x27;agent Lindy, je vais vous montrer les principaux facteurs de différenciation entre Lindy AI et OpenClaw. Tout d&#x27;abord, Lindy AI prend environ 60 secondes à configurer et vous n&#x27;avez pas besoin de terminal.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc comparatif (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif entre Lindy AI (vert) et OpenClaw (rouge) listant le temps de configuration, les intégrations, les fonctionnalités téléphoniques et la sécurité.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation comparative des avantages et différences entre Lindy AI et OpenClaw.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000033_seg2.jpg" alt="Capture d&#x27;écran d&#x27;un tableau blanc numérique comparant Lindy AI et OpenClaw, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000033_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:33</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tableau blanc numérique comparant Lindy AI et OpenClaw, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:43 - 00:01:05</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tandis que pour OpenClaw, j&#x27;ai vu des gens prendre entre une et même cinq heures pour le configurer. Vous devez installer Node.js, utiliser des clés API, le terminal est requis, toutes ces choses qui sont assez difficiles à faire pour une personne non technique. Pour Lindy AI, vous pouvez taper en anglais simple et le créateur d&#x27;agents va le créer pour vous. Et pour revenir à OpenClaw, vous devez utiliser des commandes de terminal, des fichiers de configuration, déboguer des erreurs et gérer des conflits de ports.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de tableau blanc Excalidraw et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau comparatif en anglais intitulé « Lindy AI vs OpenClaw », détaillant le temps de configuration, l&#x27;utilisation du terminal, les intégrations, la sécurité et les coûts.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et compare les caractéristiques des deux outils d&#x27;IA en pointant ou commentant le tableau affiché à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000054_seg3.jpg" alt="Un tableau comparatif sur Excalidraw entre Lindy AI (rapide et simple) et OpenClaw (complexe, requérant Node.js et terminal), avec le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000054_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:54</span>
+                        <span class="caption-text">Un tableau comparatif sur Excalidraw entre Lindy AI (rapide et simple) et OpenClaw (complexe, requérant Node.js et terminal), avec le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000059_seg3.jpg" alt="Vue détaillée du tableau comparatif Excalidraw, soulignant les différences de configuration, d&#x27;intégrations et de sécurité entre Lindy AI et OpenClaw." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000059_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:59</span>
+                        <span class="caption-text">Vue détaillée du tableau comparatif Excalidraw, soulignant les différences de configuration, d&#x27;intégrations et de sécurité entre Lindy AI et OpenClaw.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:05 - 00:01:23</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est tout simplement une vraie corvée si vous ne savez pas ce que vous faites dès le départ. Et ici, OpenClaw propose plus de 50 intégrations, un accès complet au système ainsi qu&#x27;un contrôle du navigateur, ce qui est cool. Mais au sein de Lindy AI, nous avons plus de 5 000 intégrations intégrées, qui incluent des choses comme Gmail, Slack, Calendar, quel que soit le CRM que vous utilisez, etc.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc virtuel) avec incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaison structurée sous forme de tableau : temps de configuration (60 secondes vs 1-3 heures), intégrations (5 000+ vs 50+), sécurité et tarification.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur compare visuellement Lindy AI et OpenClaw en pointant du curseur les avantages de Lindy AI par rapport à OpenClaw.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000110_seg4.jpg" alt="Tableau comparatif sur Excalidraw entre Lindy AI et OpenClaw, montrant les différences de configuration, d&#x27;intégrations et de sécurité." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000110_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:10</span>
+                        <span class="caption-text">Tableau comparatif sur Excalidraw entre Lindy AI et OpenClaw, montrant les différences de configuration, d&#x27;intégrations et de sécurité.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000114_seg4.jpg" alt="Vue rapprochée du tableau comparatif avec le curseur soulignant les spécificités d&#x27;OpenClaw (contrôle du navigateur et accès système)." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000114_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Vue rapprochée du tableau comparatif avec le curseur soulignant les spécificités d&#x27;OpenClaw (contrôle du navigateur et accès système).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000119_seg4.jpg" alt="Gros plan sur le tableau comparatif où le curseur pointe vers les intégrations intégrées de Lindy AI (plus de 5 000)." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000119_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:19</span>
+                        <span class="caption-text">Gros plan sur le tableau comparatif où le curseur pointe vers les intégrations intégrées de Lindy AI (plus de 5 000).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:23 - 00:01:44</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et puis, en passant à la sécurité, à l&#x27;intérieur de Lindy, nous avons une sécurité de niveau professionnel parce que c&#x27;est une plateforme très bien connue et populaire dans tout l&#x27;espace de l&#x27;automatisation. Alors qu&#x27;à l&#x27;intérieur de Clawedbot, il y a des tonnes de problèmes de sécurité différents que vous allez probablement rencontrer. Passant à notre conclusion. Tous les deux sont des agents IA. Lindy, cela vous prendra 60 secondes et aucun code.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique (type Excalidraw) affichant des comparaisons de caractéristiques techniques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur les critères d&#x27;installation, les intégrations, la sécurité (SOC 2, HIPAA vs CVE) et les coûts des agents IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur compare les aspects de sécurité et les spécifications techniques des deux plateformes d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000128_seg5.jpg" alt="Un tableau comparatif sur fond blanc montrant les fonctionnalités de deux outils d&#x27;IA, avec un panneau de configuration à gauche et le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000128_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:28</span>
+                        <span class="caption-text">Un tableau comparatif sur fond blanc montrant les fonctionnalités de deux outils d&#x27;IA, avec un panneau de configuration à gauche et le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000134_seg5.jpg" alt="Le même tableau comparatif avec le curseur de la souris pointant sur la section de sécurité et des annotations manuscrites." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000134_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:34</span>
+                        <span class="caption-text">Le même tableau comparatif avec le curseur de la souris pointant sur la section de sécurité et des annotations manuscrites.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:04</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tandis qu&#x27;OpenClaw, ça va prendre des heures de configuration. Et c&#x27;est vraiment réservé aux développeurs, à moins que vous ne vouliez vraiment faire des sacrifices et, vous savez, avoir des problèmes de sécurité. Je tiens à dire qu&#x27;il y a quelques cas où OpenClaw va réellement l&#x27;emporter, mais je pense que la majorité des gens n&#x27;ont pas besoin d&#x27;utiliser OpenClaw et de passer par tous ces tracas. Bien sûr, vous bénéficiez d&#x27;une confidentialité 100 % locale, de sorte que vos données ne quittent jamais votre machine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un outil de tableau blanc collaboratif (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif structuré : comparaison entre Lindy (utilisateurs non techniques, sans code) et OpenClaw (développeurs, contrôle total, vie privée locale). Liste des avantages d&#x27;OpenClaw : vie privée locale à 100%, gratuité avec des modèles locaux, contrôle total du système, choix du modèle d&#x27;IA et open source personnalisable.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente visuellement les avantages concurrentiels d&#x27;OpenClaw par rapport aux solutions cloud grand public à l&#x27;aide d&#x27;un schéma explicatif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000154_seg6.jpg" alt="Un tableau blanc virtuel (whiteboard) présentant une comparaison entre Lindy et OpenClaw, avec en-dessous la section intitulée &quot;WHERE OPENCLAW ACTUALLY WINS&quot; listant 5 points clés (100% Local Privacy, Truly Free, Full System Control, Pick Any AI Model, Open Source + Customizable). Le présentateur apparaît en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000154_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:54</span>
+                        <span class="caption-text">Un tableau blanc virtuel (whiteboard) présentant une comparaison entre Lindy et OpenClaw, avec en-dessous la section intitulée &quot;WHERE OPENCLAW ACTUALLY WINS&quot; listant 5 points clés (100% Local Privacy, Truly Free, Full System Control, Pick Any AI Model, Open Source + Customizable). Le présentateur apparaît en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:04 - 00:02:24</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et Linde stocke effectivement cela sur leur serveur cloud, vous pouvez donc faire confiance à Linde avec ces informations. Cependant, si vous souhaitez vraiment avoir tout cela sur votre ordinateur local, c&#x27;est ce que propose OpenClaw. Et ensuite, à l&#x27;intérieur d&#x27;OpenClaw, c&#x27;est vraiment gratuit si vous décidez d&#x27;utiliser des modèles locaux. Vous pouvez donc exécuter Olama localement, ce qui coûte 0 dollar par mois pour toujours. Et à l&#x27;intérieur de Lindy, vous devrez payer pour leur plateforme.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de prise de notes ou tableau blanc numérique (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif listant les points forts d&#x27;OpenClaw (100% Local Privacy, Truly Free, Full System Control, Pick Any AI Model, Open Source).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et commente le tableau comparatif entre OpenClaw et Lindy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000209_seg7.jpg" alt="Comparatif visuel illustrant les avantages d&#x27;OpenClaw, affichant les points forts comme la confidentialité locale et la gratuité." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000209_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:09</span>
+                        <span class="caption-text">Comparatif visuel illustrant les avantages d&#x27;OpenClaw, affichant les points forts comme la confidentialité locale et la gratuité.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000214_seg7.jpg" alt="Suite du comparatif affichant les avantages d&#x27;OpenClaw avec une annotation soulignant la comparaison avec Lindy." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000214_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:14</span>
+                        <span class="caption-text">Suite du comparatif affichant les avantages d&#x27;OpenClaw avec une annotation soulignant la comparaison avec Lindy.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:25 - 00:02:43</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais encore une fois, si vous n&#x27;êtes pas technique et que vous voulez commencer à utiliser quelque chose comme ça, c&#x27;est une excellente alternative pour vous de le faire sans risque pour la sécurité. Voici donc pourquoi j&#x27;utilise personnellement Lindy en ce moment même. Je voulais des agents maintenant, pas le week-end prochain. Je ne voulais pas rencontrer d&#x27;erreurs lors de la configuration de mon CloudBot. La sécurité est gérée pour moi, ce qui est un point vraiment très important.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc en ligne)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit comparant les avantages de Lindy : &quot;Open Source + Customizable&quot;, &quot;So why I still switched to Lindy&quot;, &quot;I wanted agents NOW&quot;, &quot;Security is handled FOR me&quot;, &quot;Don&#x27;t need a separate computer running 24/7&quot;, &quot;Phone calls + computer use&quot;, &quot;I&#x27;m not a developer&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des arguments expliquant pourquoi l&#x27;auteur utilise Lindy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000234_seg8.jpg" alt="Capture d&#x27;écran d&#x27;un tableau blanc numérique (Excalidraw) listant les raisons de l&#x27;utilisation de Lindy, avec la webcam du présentateur incrustée en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000234_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:34</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un tableau blanc numérique (Excalidraw) listant les raisons de l&#x27;utilisation de Lindy, avec la webcam du présentateur incrustée en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:43 - 00:03:08</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je n&#x27;ai pas à m&#x27;inquiéter des clés API compromises ou d&#x27;informations de ce genre. Et je n&#x27;ai pas besoin d&#x27;un ordinateur séparé qui tourne 24 heures sur 24, 7 jours sur 7. Étant donné que Lindy s&#x27;exécute dans le cloud, je n&#x27;ai pas besoin d&#x27;aller acheter un Mac mini pour y faire tourner Open Claw, car je ne veux pas qu&#x27;il ait accès à mon ordinateur personnel. Ce n&#x27;est donc pas un problème si vous utilisez Lindy. Maintenant que nous avons compris ces différences clés, plongeons-nous dans la façon dont vous pouvez commencer à utiliser l&#x27;agent IA Lindy et pourquoi je pense que c&#x27;est véritablement un outil révolutionnaire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Excalidraw (tableau blanc en ligne)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit listant les avantages de Lindy par rapport à OpenClaw, notamment la gestion de la sécurité, l&#x27;exécution dans le cloud 24/7 et l&#x27;absence de code requis.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente les points écrits sur le tableau blanc pour justifier son choix de plateforme.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:09 - 00:03:31</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc passons à Lindy et à la manière dont nous pourrions réellement commencer à l&#x27;utiliser dès maintenant. Voici une page d&#x27;atterrissage. Si vous voulez vous inscrire, il y a un lien dans la description pour le faire. Donc vous pouvez voir juste ici, envoyez un SMS à votre assistant IA, obtenez des réponses, faites les choses. Et comme nous le voyons juste ici sur la page d&#x27;atterrissage, vous pouvez envoyer un SMS via SMS sur iMessage. Donc par exemple, la façon dont j&#x27;ai utilisé ceci, c&#x27;est que je lui envoie littéralement un SMS comme si j&#x27;envoyais un SMS à un ami et il peut s&#x27;occuper de planifier des choses pour moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la page d&#x27;accueil de l&#x27;outil d&#x27;intelligence artificielle Lindy.ai.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Présentation des fonctionnalités de l&#x27;assistant IA Lindy (gestion d&#x27;e-mails, planification, automatisation des tâches).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la page web de présentation du service Lindy pour illustrer l&#x27;utilisation de l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000314_seg10.jpg" alt="Page d&#x27;atterrissage du site Lindy.ai affichant un aperçu de l&#x27;assistant intelligent avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000314_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Page d&#x27;atterrissage du site Lindy.ai affichant un aperçu de l&#x27;assistant intelligent avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000326_seg10.jpg" alt="Suite de la page d&#x27;atterrissage de Lindy.ai illustrant les fonctionnalités de planification et d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000326_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:26</span>
+                        <span class="caption-text">Suite de la page d&#x27;atterrissage de Lindy.ai illustrant les fonctionnalités de planification et d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:31 - 00:03:53</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il peut lire tous mes e-mails. Il me donne un résumé chaque matin de tous les e-mails que j&#x27;ai manqués et propose même des brouillons de réponses pour moi. Pour que nous puissions commencer à utiliser ceci dès maintenant, nous avons juste besoin de nous connecter à un compte. Laissez-moi aller sur mon compte maintenant. Et une fois que vous êtes dans votre compte, vous allez cliquer sur accueil. Et c&#x27;est juste ici que nous pouvons le configurer. Et les gars, dommage que ce tutoriel ne soit pas long, moi expliquant exactement comment le configurer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme SaaS Lindy (lindy.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des sections d&#x27;aide (« How can I help? »), des suggestions de requêtes textuelles et les options de configuration du compte (« Complete your setup »).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site web de Lindy puis visualisation de l&#x27;interface principale de l&#x27;application connectée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000337_seg11.jpg" alt="Page d&#x27;accueil du site web de l&#x27;outil d&#x27;IA Lindy, montrant le titre « You&#x27;re drowning in busywork instead of doing the work that matters » avec des statistiques de productivité." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000337_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:37</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web de l&#x27;outil d&#x27;IA Lindy, montrant le titre « You&#x27;re drowning in busywork instead of doing the work that matters » avec des statistiques de productivité.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000342_seg11.jpg" alt="Interface de l&#x27;application Lindy montrant les options de configuration initiale, notamment la connexion à un compte Google pour la gestion des e-mails." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000342_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:42</span>
+                        <span class="caption-text">Interface de l&#x27;application Lindy montrant les options de configuration initiale, notamment la connexion à un compte Google pour la gestion des e-mails.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:53 - 00:04:12</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais c&#x27;est très, très simple et je ne le dirai jamais assez. Donc tout ce que vous avez à faire, c&#x27;est de cliquer ici, de connecter votre compte Google, ce que j&#x27;ai déjà fait. Extrêmement facile à faire. Et ensuite, partagez simplement votre numéro de téléphone avec l&#x27;assistant. Laissez-moi faire ça tout de suite. Je ne veux pas que vous voyiez mon numéro de téléphone pour le bombarder, mais je vais ajouter mon numéro de téléphone et ensuite je pourrai commencer à envoyer des SMS avec mon agent. Très bien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;assistant IA Lindy AI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de configuration du compte incluant la connexion du compte Google et le partage du numéro de téléphone.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur clique sur l&#x27;option pour partager son numéro de téléphone avec l&#x27;assistant, ouvrant la boîte de dialogue de saisie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000358_seg12.jpg" alt="Interface web montrant les options de configuration avec le curseur sur le bouton de connexion du numéro de téléphone." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000358_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:58</span>
+                        <span class="caption-text">Interface web montrant les options de configuration avec le curseur sur le bouton de connexion du numéro de téléphone.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000403_seg12.jpg" alt="Fenêtre modale demandant la saisie du numéro de téléphone avec une case à cocher pour accepter de recevoir des SMS." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000403_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:03</span>
+                        <span class="caption-text">Fenêtre modale demandant la saisie du numéro de téléphone avec une case à cocher pour accepter de recevoir des SMS.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:12 - 00:04:45</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, comme ça, ça m&#x27;a littéralement pris 10 secondes à configurer et je pouvais commencer à chatter avec ici même. Mais ensuite, je vais vous montrer comment vous pourrez chatter avec par SMS d&#x27;ici peu. Laissez-moi juste dire : Salut. Donc maintenant, nous avons notre agent configuré ici. Je veux tester les fonctionnalités et je compare ça à OpenClaw. Donc j&#x27;essaie juste de me faire une idée de ce en quoi tu peux m&#x27;aider. Très bien. Donc ça détaille tout ça ici. Ça peut donc m&#x27;aider pour la planification. Ça peut m&#x27;aider pour les e-mails, les réunions, la recherche. Ça peut donc réellement faire de la recherche web, de l&#x27;analyse de la concurrence, trouver des informations de contact et l&#x27;utilisation de l&#x27;ordinateur. C&#x27;est un point vraiment important ici que je vais vous montrer plus tard dans cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de discussion de l&#x27;assistant IA Lindy (chat.lindy.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste numérotée des fonctionnalités de l&#x27;assistant (scheduling, email, meetings, research, computer use, summarization, image generation, etc.) et messages de test textuels.
+[DESC_IMAGE_1] Test de communication textuelle avec l&#x27;agent d&#x27;IA nouvellement configuré.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000420_seg13.jpg" alt="Interface de chat web (chat.lindy.ai) montrant un échange initial avec un assistant virtuel configuré." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000420_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:20</span>
+                        <span class="caption-text">Interface de chat web (chat.lindy.ai) montrant un échange initial avec un assistant virtuel configuré.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000428_seg13.jpg" alt="L&#x27;assistant virtuel liste ses fonctionnalités principales (scheduling, email, meetings, research, computer use, etc.) en réponse à une question de test." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000428_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:28</span>
+                        <span class="caption-text">L&#x27;assistant virtuel liste ses fonctionnalités principales (scheduling, email, meetings, research, computer use, etc.) en réponse à une question de test.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000436_seg13.jpg" alt="Vue détaillée de la liste des capacités de l&#x27;agent d&#x27;IA, avec le curseur soulignant la fonction &quot;computer use&quot;." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000436_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:36</span>
+                        <span class="caption-text">Vue détaillée de la liste des capacités de l&#x27;agent d&#x27;IA, avec le curseur soulignant la fonction &quot;computer use&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:45 - 00:05:05</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">il pouvait naviguer sur le web. Il pouvait réellement accomplir des tâches en ligne comme commander sur Uber Eats ou faire des courses, annuler des abonnements, remplir des formulaires, et cetera. C&#x27;est donc insensé si l&#x27;on y réfléchit vraiment. Il pouvait générer des images tout comme il pouvait également comprendre nos notes vocales. Je vais donc vous montrer plus tard comment je pouvais simplement déposer une note vocale par SMS et il sera capable de tout comprendre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de chat (chat.lindy.ai) et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée des capacités de l&#x27;assistant numérique (scheduling, email, meetings, research, computer use, summarization, image generation, image &amp; voice processing, CRM, reminders, workflows, memory, task completion).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et survole les différentes fonctionnalités listées par l&#x27;assistant virtuel à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000450_seg14.jpg" alt="Vue de l&#x27;interface chat.lindy.ai listant les fonctionnalités de l&#x27;assistant virtuel, avec le curseur pointant sur la tâche &#x27;computer use&#x27;." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000450_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:50</span>
+                        <span class="caption-text">Vue de l&#x27;interface chat.lindy.ai listant les fonctionnalités de l&#x27;assistant virtuel, avec le curseur pointant sur la tâche &#x27;computer use&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000455_seg14.jpg" alt="Poursuite de la présentation des fonctionnalités de l&#x27;assistant sur chat.lindy.ai, le curseur se déplaçant vers &#x27;image &amp; voice processing&#x27;." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000455_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:55</span>
+                        <span class="caption-text">Poursuite de la présentation des fonctionnalités de l&#x27;assistant sur chat.lindy.ai, le curseur se déplaçant vers &#x27;image &amp; voice processing&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000500_seg14.jpg" alt="Sélection du texte &#x27;image &amp; voice processing&#x27; sur l&#x27;interface chat.lindy.ai, illustrant les capacités multimodales de l&#x27;outil." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000500_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:00</span>
+                        <span class="caption-text">Sélection du texte &#x27;image &amp; voice processing&#x27; sur l&#x27;interface chat.lindy.ai, illustrant les capacités multimodales de l&#x27;outil.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:24</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc j&#x27;utilise ceci tous les jours pour décomposer toutes les choses que j&#x27;ai faites dans cette journée et tout ce qui me stresse à faire pour demain. Et ça fait gagner tellement de temps. Donc maintenant que nous avons ceci ici, nous pouvons interagir avec cela directement à l&#x27;intérieur de Lindy si nous voulons. Mais là où ça devient vraiment intéressant et la partie la plus incroyable de tout cela, c&#x27;est que je peux envoyer un SMS à mon agent IA via mon téléphone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Lindy (chat.lindy.ai) et encart vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste détaillée des capacités de l&#x27;assistant virtuel (scheduling, email, meetings, research, computer use, summarization, etc.) et sélection du modèle (Sonnet 4.5).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et lecture de la liste des fonctionnalités proposées par l&#x27;assistant IA Lindy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000510_seg15.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;assistant IA Lindy avec une conversation listant ses fonctionnalités, et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000510_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:10</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;assistant IA Lindy avec une conversation listant ses fonctionnalités, et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000514_seg15.jpg" alt="Capture d&#x27;écran montrant la suite de la liste des fonctionnalités de l&#x27;assistant IA Lindy dans l&#x27;interface de chat, avec la webcam du présentateur." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000514_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la suite de la liste des fonctionnalités de l&#x27;assistant IA Lindy dans l&#x27;interface de chat, avec la webcam du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:05:42</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais vous montrer ça tout de suite. Très bien. Donc pour tester ça maintenant, j&#x27;ai ouvert mon chat textuel par SMS ici sur iMessages. Donc ce que je peux faire maintenant, c&#x27;est que je peux réellement taper avec. Disons que je vais dire, hé, quoi de neuf, Lindy ? Et ensuite, vous pouvez aussi voir sur le côté gauche, nous avons cette instance de Lindy en cours d&#x27;exécution.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de messagerie / iMessages.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion textuelle avec des messages de test (&quot;hey! testing testing&quot;, &quot;if you&#x27;re seeing this, we&#x27;re all good&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface de messagerie texte pour démontrer le fonctionnement de l&#x27;IA par SMS.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000529_seg16.jpg" alt="Capture d&#x27;écran montrant une interface de messagerie (iMessages / application de chat) avec une conversation textuelle, accompagnée d&#x27;un encart vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000529_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de messagerie (iMessages / application de chat) avec une conversation textuelle, accompagnée d&#x27;un encart vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:42 - 00:06:00</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pourrions, encore une fois, interagir avec ceci sur Lindy si nous voulons, ou nous pourrions en fait envoyer des SMS avec. Mais la raison pour laquelle j&#x27;ai ceci affiché sur le côté gauche, c&#x27;est parce que nous pouvons voir exactement ce qu&#x27;il fait en arrière-plan. Donc par exemple, si je lui dis d&#x27;utiliser browser use et d&#x27;aller remplir des formulaires pour moi en ligne, je peux voir cela en temps réel pour voir ce qu&#x27;il est en train de faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Lindy (chat.lindy.ai) et interface de messagerie/SMS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion textuelle simulant des tests de SMS (« hey testing testing », « I&#x27;ve confirmed the SMS functionality is working! ») et interface de l&#x27;assistant IA Lindy.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration et explication de l&#x27;interaction avec l&#x27;agent IA Lindy via des messages textuels et des SMS, en affichant l&#x27;arrière-plan de l&#x27;application à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000551_seg17.jpg" alt="Interface de la plateforme d&#x27;intelligence artificielle Lindy divisée en deux fenêtres, montrant des discussions par messages (chat et SMS) avec une petite vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000551_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Interface de la plateforme d&#x27;intelligence artificielle Lindy divisée en deux fenêtres, montrant des discussions par messages (chat et SMS) avec une petite vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:38</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc ce que je vais faire, c&#x27;est que je vais simplement envoyer un message texte ici et dire, c&#x27;est incroyable. Peux-tu vérifier mes derniers e-mails pour moi ? Donc je vais envoyer ça maintenant. Et ce que ça fait sur le côté gauche ici sur l&#x27;écran de Lindy, vous pouvez voir que ça recherche dans tous mes e-mails parce que ceci a déjà accès à mes e-mails à l&#x27;intérieur de Lindy, car Lindy se connecte à plus de 5 000 intégrations et applications. Et c&#x27;est pourquoi c&#x27;est une utilisation phénoménale. Si vous utilisez des choses comme Notion, Gmail, Google Sheets, et littéralement n&#x27;importe quelle application que vous utilisez, parce qu&#x27;il y a de fortes chances que Lindy s&#x27;y connecte. Très bien. Donc c&#x27;est plutôt cool en fait. Vous pouvez voir que j&#x27;ai résumé mes cinq derniers e-mails. Et ensuite, ce que je vais dire, c&#x27;est simplement, je veux que tu ailles répondre à l&#x27;e-mail de Sentry et que tu leur donnes une suite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application chat.lindy.ai et application de messagerie macOS, avec une incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de conversation avec demande de vérification d&#x27;e-mails et résumé des 5 derniers e-mails reçus (rappels d&#x27;événements Skool, promos, notifications).</p>
+                        <p><strong>Action / Démonstration :</strong> Envoi d&#x27;un message textuel à l&#x27;assistant Lindy pour tester la fonctionnalité de vérification automatique des e-mails.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000610_seg18.jpg" alt="Vue d&#x27;écran partagée montrant l&#x27;interface web de Lindy à gauche et l&#x27;application de messagerie à droite, avec le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000610_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:10</span>
+                        <span class="caption-text">Vue d&#x27;écran partagée montrant l&#x27;interface web de Lindy à gauche et l&#x27;application de messagerie à droite, avec le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000629_seg18.jpg" alt="Vue détaillée de l&#x27;écran partagé montrant les résultats de la recherche d&#x27;e-mails effectuée par l&#x27;assistant IA dans l&#x27;interface de messagerie." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000629_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Vue détaillée de l&#x27;écran partagé montrant les résultats de la recherche d&#x27;e-mails effectuée par l&#x27;assistant IA dans l&#x27;interface de messagerie.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:38 - 00:06:59</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en utilisant le style de mes réponses d&#x27;e-mails normales. Donc il a en fait la capacité de voir mes e-mails précédents que j&#x27;ai envoyés pour reproduire mon style et en quelque sorte le langage que j&#x27;utilise afin de répondre à tous mes e-mails. Disons que je veux répondre à l&#x27;un de mes collègues, par exemple, il y a de fortes chances que quelqu&#x27;un ne puisse même pas faire la différence entre si c&#x27;est moi ou si c&#x27;est moi qui envoie un SMS à mon agent windy pour qu&#x27;il parte et réponde à ma place.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web et application de messagerie de Lindy (chat.lindy.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résumé des derniers e-mails (rappels d&#x27;événements Skool, promo brain.fm, suivi Centripe) et prompt demandant à l&#x27;IA d&#x27;utiliser le style d&#x27;écriture personnel pour répondre.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation de l&#x27;agent IA Lindy pour analyser les e-mails récents et rédiger une réponse automatisée personnalisée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000649_seg19.jpg" alt="Interface de l&#x27;application Lindy affichant une conversation textuelle où l&#x27;IA résume les 5 derniers e-mails et où l&#x27;utilisateur lui demande de répondre à un e-mail dans son style habituel." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000649_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:49</span>
+                        <span class="caption-text">Interface de l&#x27;application Lindy affichant une conversation textuelle où l&#x27;IA résume les 5 derniers e-mails et où l&#x27;utilisateur lui demande de répondre à un e-mail dans son style habituel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:59 - 00:07:19</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, et juste comme ça, il a littéralement répondu à mon e-mail pour moi. Vous pouvez voir qu&#x27;il a ouvert le fil de discussion ici et a réellement envoyé cet e-mail. Laissez-moi donc ouvrir cet e-mail exact pour vous montrer ce qu&#x27;il a envoyé. Voici donc la réponse par e-mail. Merci pour le suivi. J&#x27;apprécie les détails de la refonte, mais je suis plutôt engagé dans mon flux de travail actuel pour le moment. Ce n&#x27;est pas le bon moment pour changer, mais je garderai certainement Sentripe à l&#x27;esprit si cela change à l&#x27;avenir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Gmail et interface de chat Lindy AI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un e-mail de réponse rédigé automatiquement par une IA (« Thanks for the follow-up... ») et l&#x27;historique de chat de l&#x27;assistant IA Lindy.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;e-mail effectivement rédigé et envoyé par l&#x27;IA en réponse au message de Centripe.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000709_seg20.jpg" alt="Écran divisé montrant à gauche un fil de discussion Gmail avec une réponse automatique envoyée, et à droite une application de chat (Lindy AI) affichant la conversation et la confirmation de l&#x27;action." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000709_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:09</span>
+                        <span class="caption-text">Écran divisé montrant à gauche un fil de discussion Gmail avec une réponse automatique envoyée, et à droite une application de chat (Lindy AI) affichant la conversation et la confirmation de l&#x27;action.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000714_seg20.jpg" alt="Vue similaire de l&#x27;écran partagé avec Gmail à gauche et le chatbot Lindy AI à droite montrant le résumé des e-mails et la validation de la réponse automatique." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000714_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:14</span>
+                        <span class="caption-text">Vue similaire de l&#x27;écran partagé avec Gmail à gauche et le chatbot Lindy AI à droite montrant le résumé des e-mails et la validation de la réponse automatique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:20 - 00:07:39</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Bonne chance avec le produit. Et c&#x27;est très franc. C&#x27;est exactement comme ça que je réponds à mes e-mails. C&#x27;est donc un excellent cas d&#x27;usage, de pouvoir répondre à vos différents e-mails simplement en disant à Lindy de le faire. Autre chose que je tiens à mentionner et qui rend l&#x27;utilisation de cet agent Lindy dans mon e-mail super fluide et super facile à utiliser, c&#x27;est que vous pouvez peut-être voir ces étiquettes ici. Et je n&#x27;ai pas ajouté ces étiquettes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Gmail et interface de chat de l&#x27;assistant IA Lindy.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Échanges de messages de chat avec l&#x27;IA résumant les derniers e-mails et confirmant l&#x27;envoi d&#x27;une réponse automatisée.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation d&#x27;un agent IA (Lindy) pour analyser et répondre automatiquement aux e-mails de manière personnalisée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000724_seg21.jpg" alt="Capture d&#x27;écran montrant une interface double avec une boîte de réception d&#x27;e-mails à gauche et une application de messagerie de type chatbot (Lindy) à droite, illustrant l&#x27;automatisation de la gestion des e-mails." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000724_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:24</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface double avec une boîte de réception d&#x27;e-mails à gauche et une application de messagerie de type chatbot (Lindy) à droite, illustrant l&#x27;automatisation de la gestion des e-mails.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:39 - 00:07:59</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Lindy ajoute automatiquement des étiquettes à ceux-ci en se basant sur l&#x27;e-mail que je reçois. Donc par exemple, celui-ci juste ici, il y a écrit « à répondre ». C&#x27;est donc quelque chose auquel je dois répondre. « Pour info » juste ici, c&#x27;est essentiellement un peu comme, vous savez, un fait intéressant. Celui-ci juste ici, il y a écrit « pour info ». Ce sont fondamentalement juste des faits intéressants. Ça ne me concerne probablement pas. C&#x27;est donc pour cela que j&#x27;ai ajouté l&#x27;étiquette « pour info ».</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Gmail (messagerie électronique).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;e-mails avec des badges d&#x27;étiquettes personnalisés et colorés générés automatiquement par l&#x27;IA (Lindy).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur survole et commente les étiquettes automatiques dans sa boîte de réception.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000749_seg22.jpg" alt="Capture d&#x27;écran montrant la boîte de réception Gmail avec des étiquettes colorées (« FY!» et « To Respond ») ajoutées aux e-mails." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000749_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la boîte de réception Gmail avec des étiquettes colorées (« FY!» et « To Respond ») ajoutées aux e-mails.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:59 - 00:08:33</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouviez voir que celui-ci était étiqueté comme newsletter parce que c&#x27;est le récapitulatif de l&#x27;IA. Donc ça a été formidable pour filtrer automatiquement tous ces e-mails pour moi. Ça rend les choses tellement plus simples quand j&#x27;ai besoin d&#x27;aller dans ma boîte de réception e-mail. Comme par exemple, juste ici, il y a une facture pour Apify que j&#x27;ai effectivement payée. Donc ensuite, je peux suivre tous mes paiements en utilisant ceci parce que ça étiquette tout automatiquement. Très bien. Donc je viens de trouver un cas d&#x27;usage plutôt sympa pour mon agent Lindy. Je viens de faire une session de tableau blanc sur mon tableau blanc juste ici. Vous pouvez voir que j&#x27;ai décomposé toutes les tâches que je dois faire. J&#x27;ai décomposé mon travail d&#x27;agence. J&#x27;ai écrit des factures. Je dois rassembler différentes tâches que je dois faire à travers mon entreprise pour la création de contenu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lindy.ai, macOS, interface de chat d&#x27;agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Automatisation d&#x27;e-mails, résumés de boîte de réception, listes de tâches organisationnelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;automatisation des e-mails et du traitement des tâches par l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000816_seg23.jpg" alt="Interface de l&#x27;outil d&#x27;IA Lindy affichant des automatisations de gestion d&#x27;e-mails et de réponses automatiques." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000816_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:16</span>
+                        <span class="caption-text">Interface de l&#x27;outil d&#x27;IA Lindy affichant des automatisations de gestion d&#x27;e-mails et de réponses automatiques.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000825_seg23.jpg" alt="Bureau d&#x27;ordinateur montrant une photo de liste de tâches manuscrite (&quot;Wednesday To Do&quot;) et des dossiers de fichiers." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000825_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:25</span>
+                        <span class="caption-text">Bureau d&#x27;ordinateur montrant une photo de liste de tâches manuscrite (&quot;Wednesday To Do&quot;) et des dossiers de fichiers.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:34 - 00:08:54</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et donc ce que je vais faire, c&#x27;est que je vais maintenant déposer ça dans Lindy ici. Donc je vais ouvrir les photos et je vais essentiellement déposer ça dedans. Et je ne vais pas juste déposer ça dedans. Ce que je vais faire, c&#x27;est que je vais lui envoyer un message vocal et fondamentalement exposer mes pensées et tout ça, lui déverser mon flux de pensées. Et ensuite, je vais lui demander de catégoriser tout ça et même d&#x27;exécuter des tâches pour moi en mon nom.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Lindy (chat.lindy.ai) et interface de messagerie.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion textuelle et tâches automatisées de gestion d&#x27;e-mails (&quot;Get email&quot;, &quot;Send reply&quot;) avec intégration d&#x27;images.</p>
+                        <p><strong>Action / Démonstration :</strong> Interaction avec l&#x27;assistant IA Lindy pour automatiser le traitement et la réponse à des e-mails.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000839_seg24.jpg" alt="Interface de l&#x27;application Lindy montrant une discussion de messagerie avec un échange sur la gestion d&#x27;e-mails et l&#x27;envoi d&#x27;une photo de tableau blanc." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000839_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:39</span>
+                        <span class="caption-text">Interface de l&#x27;application Lindy montrant une discussion de messagerie avec un échange sur la gestion d&#x27;e-mails et l&#x27;envoi d&#x27;une photo de tableau blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000844_seg24.jpg" alt="Vue similaire de l&#x27;interface Lindy avec le présentateur visible en incrustation (caméra) dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000844_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Vue similaire de l&#x27;interface Lindy avec le présentateur visible en incrustation (caméra) dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:54 - 00:09:27</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc c&#x27;est vraiment un aperçu de la puissance de ce que notre agent Lindy peut faire directement dans iMessage. Donc ce que je vais faire, c&#x27;est que je vais envoyer ça et ensuite je vais cliquer sur ce bouton de message vocal ici. Salut Lindy. Donc je viens de faire une session de brainstorming au tableau blanc et ce sont toutes les tâches sur lesquelles je travaille en ce moment. C&#x27;est fondamentalement un déversement d&#x27;idées. Donc ce que je veux que tu fasses, c&#x27;est que je veux que tu catégorises tout ça et toutes les tâches. Donc je veux que ce soit décomposé, tu vois, en fonction de chaque catégorie. Je veux aussi que tu sépares, genre, mon entreprise de création de contenu de mon travail d&#x27;agence, ce qui doit être fait pour garder ça séparé. Et ensuite, ce que je veux que tu fasses, c&#x27;est que tu accomplisses ensuite certaines de ces tâches pour moi que tu es réellement capable d&#x27;accomplir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web et interface de messagerie Lindy / iMessage.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de l&#x27;agent IA Lindy montrant des interactions textuelles, des résumés d&#x27;e-mails et une image de tableau blanc avec des notes manuscrites.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;utilisation de l&#x27;agent Lindy pour interagir avec des applications et traiter des notes de brainstorming.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000902_seg25.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;agent Lindy sur un écran partagé, avec une photo de tableau blanc partagée dans le chat." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000902_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:02</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;agent Lindy sur un écran partagé, avec une photo de tableau blanc partagée dans le chat.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:27 - 00:09:46</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, je veux aussi que tu balances tout ça en vrac dans Notion et je veux que ce soit parfaitement mis en forme. Comme ça, j&#x27;ai une idée de toutes les tâches que je dois accomplir aujourd&#x27;hui. Je vais utiliser ça comme ma liste de choses à faire. Très bien. Donc, je lui ai donné ce long message vocal là. Je vais l&#x27;envoyer. Très bien. Donc, c&#x27;est parti. Ça a effectivement pris le message vocal que j&#x27;avais et ça a décomposé tout ça ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lindy (interface d&#x27;assistant IA) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte transcrit de la liste de tâches à accomplir (Wednesday to do, check, close by) basé sur une photo de tableau blanc.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la conversion d&#x27;une photo de tableau blanc en liste de tâches structurée par l&#x27;assistant IA Lindy.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000932_seg26.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Lindy avec des fenêtres de discussion et le texte de la liste de tâches générée à partir d&#x27;un tableau blanc." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000932_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Lindy avec des fenêtres de discussion et le texte de la liste de tâches générée à partir d&#x27;un tableau blanc.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:46 - 00:10:18</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça m&#x27;a donné ce texte. Très bien. Voici ce que j&#x27;ai fait. J&#x27;ai analysé votre tableau blanc et extrait toutes les tâches. J&#x27;ai organisé le tout dans votre page Notion avec des cases à cocher. J&#x27;ai trouvé l&#x27;e-mail du brief artistique d&#x27;amour de Victoria Tang du 24 janvier parce que c&#x27;est l&#x27;une des choses que j&#x27;ai demandées et ils ont réellement créé cette page Notion pour moi, alors laissez-moi afficher ça maintenant. Très bien, alors maintenant j&#x27;ai une page Notion entière, puisqu&#x27;elle a accès à mon Notion, avec toutes ces choses. J&#x27;ai donc besoin de tourner la vidéo Lindy, de créer la miniature Lindy, de tourner la vidéo de construction d&#x27;application Rourke Claude opus 4.6 et la miniature Rourke. Je dois travailler sur le travail client et l&#x27;administratif, ça dit que je dois envoyer Sally.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Lindy (assistant IA) et page Notion.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte généré par l&#x27;IA listant les actions réalisées (analyse du tableau blanc, organisation Notion, recherche d&#x27;e-mail de Victoria Tang) et page Notion interactive avec listes de tâches.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;automatisation d&#x27;un flux de travail par l&#x27;IA : extraction de texte depuis une photo de tableau blanc et mise à jour automatique d&#x27;un espace de travail Notion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000954_seg27.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Lindy) affichant un résumé des tâches extraites d&#x27;un tableau blanc et des liens Notion, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_000954_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:54</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Lindy) affichant un résumé des tâches extraites d&#x27;un tableau blanc et des liens Notion, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001010_seg27.jpg" alt="Capture d&#x27;écran montrant une page Notion avec des listes de tâches à cocher classées par catégories (Video Production, Client Work &amp; Admin, Agency Work)." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001010_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:10</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page Notion avec des listes de tâches à cocher classées par catégories (Video Production, Client Work &amp; Admin, Agency Work).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:18 - 00:10:54</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">la facture de cinq mille dollars pour le travail de design, je dois vérifier le brief de Love Art et l&#x27;envoyer sur Slack, tout ce genre de choses. Et il a même détaillé le travail de l&#x27;agence et l&#x27;a gardé séparé de mon flux de travail de création de contenu. Et il a aussi détaillé tout et chaque tâche qu&#x27;il a accomplie. Laissez-moi retourner sur mon agent. Maintenant, tout cela a l&#x27;air super. En ce qui concerne la réunion avec Brian, je veux que vous génériez simplement cette réunion et je l&#x27;ajouterai en fait plus tard. Cependant, je veux que vous fassiez des recherches sur l&#x27;entreprise, que vous ayez des données, puis que vous me décomposiez tout cela et m&#x27;envoyiez les informations que vous trouvez par SMS. Quant à la facture pour Sally, pouvez-vous procéder et générer réellement la facture ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Notion, application de chat Lindy AI, navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches détaillée avec des éléments comme &quot;Send invoice to Sally - $5,000 for Design work&quot; et &quot;Check Lovart brief in email and send it in Slack&quot;, ainsi que les messages de l&#x27;agent IA Lindy.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parcourt sa liste de tâches organisée par l&#x27;IA et discute de la gestion des factures et des briefs clients.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001027_seg28.jpg" alt="Capture d&#x27;écran montrant une page de tâches sur Notion avec des sections de production vidéo, de travail client et d&#x27;agence, incluant la facture de 5 000 $ pour Sally et le brief de Lovart." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001027_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:27</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une page de tâches sur Notion avec des sections de production vidéo, de travail client et d&#x27;agence, incluant la facture de 5 000 $ pour Sally et le brief de Lovart.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001036_seg28.jpg" alt="Interface de chat de l&#x27;assistant IA Lindy affichant l&#x27;analyse d&#x27;un tableau blanc et l&#x27;organisation des tâches dans Notion, avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001036_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:36</span>
+                        <span class="caption-text">Interface de chat de l&#x27;assistant IA Lindy affichant l&#x27;analyse d&#x27;un tableau blanc et l&#x27;organisation des tâches dans Notion, avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:54 - 00:11:20</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour moi et l&#x27;envoyer ici ? Et ensuite, je m&#x27;occuperai de l&#x27;envoyer moi-même à Sally. Je vais donc confier ces tâches ici à Lindy et je reviendrai une fois qu&#x27;elle aura réellement terminé. Très bien, c&#x27;est parti. Nous avons désormais notre réunion planifiée. Elle a utilisé mon agenda Google puisqu&#x27;elle y a accès via Lindy et toutes les intégrations dont elle dispose. Elle a même généré cette facture ici pour Sally d&#x27;un montant de 5 000 dollars pour un travail de design. Et ensuite, elle a même mis à jour notre base de données Notion avec tout le reste qu&#x27;elle a accompli.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Lindy (assistant IA) et navigateur affichant un document PDF de facture.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif de l&#x27;entreprise HasData, résumé de tâches planifiées, et modèle de facture (Invoice #2026-002) avec le détail des prestations (« Design Work »).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et affichage des résultats générés par l&#x27;assistant IA (planification de réunion et génération de facture).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001100_seg29.jpg" alt="Interface de l&#x27;assistant IA Lindy affichant des messages textuels, des informations sur une entreprise (HasData) et la webcam du présentateur incrustée en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001100_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:00</span>
+                        <span class="caption-text">Interface de l&#x27;assistant IA Lindy affichant des messages textuels, des informations sur une entreprise (HasData) et la webcam du présentateur incrustée en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001114_seg29.jpg" alt="Aperçu d&#x27;une facture (Invoice) au nom de Brock Mesarich pour Sally d&#x27;un montant de 5 000,00 $, avec un panneau de chat sur le côté et la webcam du présentateur." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001114_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:14</span>
+                        <span class="caption-text">Aperçu d&#x27;une facture (Invoice) au nom de Brock Mesarich pour Sally d&#x27;un montant de 5 000,00 $, avec un panneau de chat sur le côté et la webcam du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:21 - 00:11:42</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, les amis, voilà qui est fait. C&#x27;est le nouvel assistant Lindy AI qui pourrait bien vous éviter d&#x27;avoir à utiliser quelque chose comme OpenClaw. C&#x27;est une alternative beaucoup plus sûre et plus simple si vous ne voulez pas configurer OpenClaw vous-même ou si vous n&#x27;avez pas besoin d&#x27;acheter un Mac mini ou de configurer un VPS pour le faire tourner. Si vous avez apprécié cette vidéo, n&#x27;oubliez pas de vous abonner à cette chaîne pour plus de contenu de ce genre. Je traite de tout ce qui touche à l&#x27;IA pour les non-techniciens, ce qui permet à n&#x27;importe qui d&#x27;apprendre à utiliser l&#x27;IA en toute simplicité.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface vidéo YouTube et démonstration logicielle d&#x27;assistant IA (Lindy AI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages texte de rappel de rendez-vous sur smartphone et bannières YouTube.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de démonstration illustrant l&#x27;utilisation d&#x27;un assistant IA personnel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001131_seg30.jpg" alt="Démonstration vidéo montrant un utilisateur consultant un smartphone avec des notifications textuelles à l&#x27;écran (« Next up, meeting with Jen, CIO of Nike »), avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XkzM6hBdvIA/XkzM6hBdvIA_001131_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:31</span>
+                        <span class="caption-text">Démonstration vidéo montrant un utilisateur consultant un smartphone avec des notifications textuelles à l&#x27;écran (« Next up, meeting with Jen, CIO of Nike »), avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:42 - 00:11:48</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela étant dit, les gars, merci beaucoup d&#x27;être restés jusqu&#x27;à la fin. Dites-moi ce que vous avez pensé de ceci dans les commentaires, et je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle ou graphique affichée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, graphique, indicateur ou donnée technique présent.
+[N/A] Le présentateur conclut simplement la vidéo en s&#x27;adressant directement à la caméra sans support visuel technique.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
