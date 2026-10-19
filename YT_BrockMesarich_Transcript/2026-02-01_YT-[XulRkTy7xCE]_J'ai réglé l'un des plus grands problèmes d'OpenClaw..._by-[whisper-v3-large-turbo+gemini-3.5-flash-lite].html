@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 J&#x27;ai réglé l&#x27;un des plus grands problèmes d&#x27;OpenClaw... — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 J&#x27;ai réglé l&#x27;un des plus grands problèmes d&#x27;OpenClaw...</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-01</span>
+                <span class="badge">⏱️ 00:07:36</span>
+                <span class="badge">🆔 <code>XulRkTy7xCE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=XulRkTy7xCE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>La présente intervention, ancrée dans l'écosystème de l'intelligence artificielle pour non-techniciens, s'attaque à un écueil majeur de l'utilisation des agents autonomes et des bots de code (tels que ClaudeBot ou Claude Code) : l'opacité opérationnelle. Lorsqu'un opérateur délègue des tâches complexes à un agent via des interfaces mobiles comme Telegram, le manque de visibilité en temps réel sur l'exécution des processus, l'état d'avancement des livrables et la localisation des fichiers générés engendre une friction cognitive importante. Pour y remédier, la vidéo démontre la construction de bout en bout d'un centre de commande centralisé, capable de s'interfacer avec un environnement local (`localhost`) et d'être piloté par la voix depuis n'importe quel terminal mobile.<br><br>La stratégie présentée repose sur un pont technologique fluide entre l'interaction conversationnelle et le déploiement applicatif sans code (*no-code*). En extrayant le code source HTML d'un tableau de bord initial hébergé localement, l'auteur utilise la plateforme de développement rapide Mocha pour générer instantanément une application cloud dotée d'une base de données intégrée. Cette architecture permet à l'agent IA d'injecter en direct les flux de données (files d'attente de tâches, statuts d'urgence, actifs multimédias générés) vers une interface web publique accessible via une URL personnalisée, sranchoumillant ainsi des contraintes de l'infrastructure locale.<br><br>Enfin, la démonstration s'élève d'un cran en abordant l'intégration des protocoles de communication avancés, notamment les serveurs MCP (*Model Context Protocol*). En connectant l'agent à des écosystèmes applicatifs tiers via des passerelles automatisées (similaires à des logiques de type Zapier ou Make), l'agent IA acquiert la capacité d'exécuter des actions concrètes à travers des dizaines d'applications logicielles (comme Slack ou Airtable). Cette approche transforme un simple assistant textuel en un véritable système d'exécution multi-agent capable de orchestrer des flux de travail complexes à distance, en toute transparence et sans aucune ligne de code traditionnelle.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Claude / ClaudeBot / Claude Code** : Assistant conversationnel et agent IA avancé utilisé pour exécuter des tâches, transcrire des commandes vocales et automatiser des flux de travail locaux ou distants.<br>* **Telegram** : Application de messagerie instantanée mobile servant d'interface de commande principale pour interagir par messages vocaux et textuels avec l'agent IA.<br>* **Mac Mini** : Infrastructure matérielle locale hébergeant l'environnement d'exécution de l'agent et le serveur de développement initial (`localhost`).<br>* **Mocha (getmocha.com)** : Plateforme de développement d'applications sans code avec bases de données intégrées, utilisée pour transformer un code source HTML en une application web interactive et publiable.<br>* **Zapier MCP / Client MCP** : Protocole et connecteur d'intégration permettant d'interfacer les agents IA avec des centaines d'applications tierces pour exécuter des actions automatisées.<br>* **Airtable** : Outil de base de données relationnelle cloud mentionné comme exemple d'application connectable via le serveur MCP pour la gestion des flux de données.<br>* **Slack** : Application de messagerie d'équipe intégrable via les protocoles MCP pour automatiser l'envoi de notifications de mise à jour de projets.<br>* **Make / Zapier** : Outils d'automatisation de référence évoqués pour l'interconnexion de services et l'optimisation des architectures d'agents.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Résolution de l'opacité agentique** : La création d'un centre de commande centralisé pallie le manque de visibilité inhérent à l'utilisation des agents IA autonomes, permettant de suivre en temps réel les tâches en cours, les files d'attente et les statuts d'exécution.<br>* **Commandes multimodales et vocales** : L'utilisation de Telegram combinée à des capacités de transcription permet d'injecter des instructions complexes ou des ajouts de tâches à distance, directement depuis un terminal mobile sans friction technique.<br>* **Extraction et portabilité d'interface** : La méthodologie d'exportation repose sur la récupération du code source HTML d'une interface locale (`localhost`) pour l'injecter instantanément dans un générateur d'applications cloud.<br>* **Affranchissement des environnements locaux** : Le passage d'une structure hébergée en local à une URL publique via une application cloud permet d'emporter son tableau de bord sur n'importe quel appareil (tablette, smartphone, PC tiers) ou de le partager avec des collaborateurs.<br>* **Persistance des données en temps réel** : L'intégration d'une base de données native au sein de la plateforme de déploiement garantit la synchronisation instantanée des informations poussées par l'agent IA (tâches, priorités, états d'avancement).<br>* **Centralisation des livrables multimédias** : Le tableau de bord intègre un système d'affichage direct des actifs générés par l'IA (images, mèmes, documents), évitant à l'opérateur de fouiller manuellement dans les dossiers de l'ordinateur hôte.<br>* **Personnalisation visuelle assistée par IA** : Les interfaces générées sans code peuvent être modifiées soit par des ajustements visuels directs (curseur, édition de texte), soit par des instructions textuelles en langage naturel pour modifier l'ambiance graphique.<br>* **Publication instantanée et sécurisée** : Le déploiement d'une application se résume à une action un-clic sur un bouton de publication, générant immédiatement une URL dédiée et fonctionnelle sans configuration de serveur complexe.<br>* **Exploitation des serveurs MCP (*Model Context Protocol*)** : L'intégration de clients MCP permet d'octroyer à l'agent IA des capacités d'action directe sur l'ensemble de la stack logicielle de l'utilisateur (bases de données, messageries, outils de productivité).<br>* **Passage d'un assistant passif à un système exécutif** : En connectant l'agent à des dizaines d'actions tierces via des connecteurs modulaires, l'opérateur transforme une simple interface de chat en un véritable orchestrateur de workflows opérationnels.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude / ClaudeBot / Claude Code</span><span class="tool-tag">Telegram</span><span class="tool-tag">Mac Mini</span><span class="tool-tag">Mocha (getmocha.com)</span><span class="tool-tag">Zapier MCP / Client MCP</span><span class="tool-tag">Airtable</span><span class="tool-tag">Slack</span><span class="tool-tag">Make / Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Résolution de l&#x27;opacité agentique** : La création d&#x27;un centre de commande centralisé pallie le manque de visibilité inhérent à l&#x27;utilisation des agents IA autonomes, permettant de suivre en temps réel les tâches en cours, les files d&#x27;attente et les statuts d&#x27;exécution.</span></li><li><span class="point-bullet">✦</span><span>Commandes multimodales et vocales** : L&#x27;utilisation de Telegram combinée à des capacités de transcription permet d&#x27;injecter des instructions complexes ou des ajouts de tâches à distance, directement depuis un terminal mobile sans friction technique.</span></li><li><span class="point-bullet">✦</span><span>Extraction et portabilité d&#x27;interface** : La méthodologie d&#x27;exportation repose sur la récupération du code source HTML d&#x27;une interface locale (`localhost`) pour l&#x27;injecter instantanément dans un générateur d&#x27;applications cloud.</span></li><li><span class="point-bullet">✦</span><span>Affranchissement des environnements locaux** : Le passage d&#x27;une structure hébergée en local à une URL publique via une application cloud permet d&#x27;emporter son tableau de bord sur n&#x27;importe quel appareil (tablette, smartphone, PC tiers) ou de le partager avec des collaborateurs.</span></li><li><span class="point-bullet">✦</span><span>Persistance des données en temps réel** : L&#x27;intégration d&#x27;une base de données native au sein de la plateforme de déploiement garantit la synchronisation instantanée des informations poussées par l&#x27;agent IA (tâches, priorités, états d&#x27;avancement).</span></li><li><span class="point-bullet">✦</span><span>Centralisation des livrables multimédias** : Le tableau de bord intègre un système d&#x27;affichage direct des actifs générés par l&#x27;IA (images, mèmes, documents), évitant à l&#x27;opérateur de fouiller manuellement dans les dossiers de l&#x27;ordinateur hôte.</span></li><li><span class="point-bullet">✦</span><span>Personnalisation visuelle assistée par IA** : Les interfaces générées sans code peuvent être modifiées soit par des ajustements visuels directs (curseur, édition de texte), soit par des instructions textuelles en langage naturel pour modifier l&#x27;ambiance graphique.</span></li><li><span class="point-bullet">✦</span><span>Publication instantanée et sécurisée** : Le déploiement d&#x27;une application se résume à une action un-clic sur un bouton de publication, générant immédiatement une URL dédiée et fonctionnelle sans configuration de serveur complexe.</span></li><li><span class="point-bullet">✦</span><span>Exploitation des serveurs MCP (*Model Context Protocol*)** : L&#x27;intégration de clients MCP permet d&#x27;octroyer à l&#x27;agent IA des capacités d&#x27;action directe sur l&#x27;ensemble de la stack logicielle de l&#x27;utilisateur (bases de données, messageries, outils de productivité).</span></li><li><span class="point-bullet">✦</span><span>Passage d&#x27;un assistant passif à un système exécutif** : En connectant l&#x27;agent à des dizaines d&#x27;actions tierces via des connecteurs modulaires, l&#x27;opérateur transforme une simple interface de chat en un véritable orchestrateur de workflows opérationnels.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je viens de résoudre l&#x27;un des plus grands problèmes de Claudebot. Chaque fois que je lui confie une tâche, je n&#x27;ai aucune idée de ce qu&#x27;il est train de faire. Est-ce que ça fonctionne ? A-t-il terminé ? Et où est passé ce fichier ? J&#x27;ai donc construit un centre de commande qui me montre tout ce qu&#x27;il fait en un seul endroit. Il m&#x27;affiche mes tâches, les livrables qu&#x27;il m&#x27;a fournis, ce qu&#x27;il est en train d&#x27;exécuter en ce moment, et tout cela, je peux le faire fonctionner depuis mon téléphone.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de tableau de bord / diagramme de flux et application mobile conceptuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus interactifs de suivi (« Tasks », « Deliverables », « Running Now ») et diagrammes de processus.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle du centre de commande et illustration du suivi des tâches automatisées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000009_seg1.jpg" alt="Un homme assis à son bureau face à un grand écran incurvé affichant un diagramme ou un flux de travail, avec le texte « so i built » en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Un homme assis à son bureau face à un grand écran incurvé affichant un diagramme ou un flux de travail, avec le texte « so i built » en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000014_seg1.jpg" alt="Illustration en gros plan d&#x27;un smartphone affichant trois icônes tactiles translucides et lumineuses nommées « TASKS », « DELIVERABLES » et « RUNNING NOW »." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Illustration en gros plan d&#x27;un smartphone affichant trois icônes tactiles translucides et lumineuses nommées « TASKS », « DELIVERABLES » et « RUNNING NOW ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:40</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous montrer exactement comment j&#x27;ai construit ceci sans absolument aucun codage nécessaire. Laissez-moi donc vous montrer exactement ce que je veux dire, et je vais vous montrer comment le faire vous-même. Très bien, je vais donc vous montrer rapidement comment cela fonctionne en ce moment en utilisant CloudBot sur mon téléphone via Telegram, ce qui est la façon dont je souhaite réellement interagir avec mon assistant CloudBot, et c&#x27;est super simple à utiliser. Donc cette vidéo ne va pas montrer comment vous pourriez configurer CloudBot ou tout le reste.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le tableau de bord &quot;Clawd Dashboard&quot; sur localhost.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de suivi de tâches, listes de tâches actives (&quot;Active Tasks&quot;, &quot;Completed Today&quot;), files d&#x27;attente (&quot;Queue&quot;, &quot;In Progress&quot;, &quot;Waiting&quot;, &quot;Done Today&quot;) et sections de livrables (&quot;Deliverables&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du tableau de bord d&#x27;automatisation et de gestion de tâches sans code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000030_seg2.jpg" alt="Interface Web d&#x27;un tableau de bord (Clawd Dashboard) montrant des tâches actives, complétées et en cours, avec une incrustation vidéo du présentateur tenant un smartphone." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000030_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:30</span>
+                        <span class="caption-text">Interface Web d&#x27;un tableau de bord (Clawd Dashboard) montrant des tâches actives, complétées et en cours, avec une incrustation vidéo du présentateur tenant un smartphone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:40 - 00:01:16</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais plutôt simplement vous montrer ce centre de commande que j&#x27;ai construit et comment vous pouvez le construire et l&#x27;utiliser sur votre téléphone. Tout d&#x27;abord, ce que je vais faire, c&#x27;est simplement envoyer un message vocal à CloudBot et il sera capable de le transcrire. Et puis à partir de là, d&#x27;exécuter des tâches pour moi sur mon Mac mini. Hé, Claude, donc je veux que tu ajoutes quelque chose à ma liste de tâches. Je dois créer la vignette Manus pour ma prochaine vidéo YouTube. Donc, s&#x27;ajoute ça. Donc essentiellement, j&#x27;ai littéralement just envoyé ce message vocal et il va maintenant recevoir ce message vocal, l&#x27;écouter, puis l&#x27;ajouter réellement à mon tableau de bord que j&#x27;ai créé sur localhost. Très bien. Donc juste comme ça, vous pouvez voir dans notre file d&#x27;attente maintenant nous avons cette nouvelle tâche, créer la vignette Manus. Et ça</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface du tableau de bord Clawd Dashboard.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de suivi des tâches (Active tasks : 5, Completed today : 12, Videos queued : 3) organisées en colonnes kanban (Queue, In progress, Waiting, Done today) avec des vignettes de livrables en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface du centre de commande par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000049_seg3.jpg" alt="Capture d&#x27;écran montrant le tableau de bord principal de Clawd, un centre de commande pour la gestion de tâches et de projets." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000049_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:49</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tableau de bord principal de Clawd, un centre de commande pour la gestion de tâches et de projets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:16 - 00:01:37</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">essentiellement parce que Claude mettra à jour ce tableau de bord avec toutes ces informations. Mais encore une fois, c&#x27;est un serveur local et je ne peux pas vraiment y accéder sur mon téléphone, ni même sur mon ordinateur portable ou ma tablette, alors que je veux vraiment pouvoir l&#x27;emporter partout et utiliser mon assistant IA. Je vais donc vous montrer très rapidement comment nous pouvons maintenant le transformer en une application fonctionnelle, puis la publier afin de pouvoir l&#x27;utiliser sur nos différents appareils.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau de bord local hébergé sur &quot;http://localhost:3000/dashboard&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de productivité et de suivi de tâches (Active tasks: 5, Completed today: 12, Videos queued: 3), avec des colonnes de gestion de projet (Queue, In Progress, Waiting, Done Today) et un aperçu vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface de son tableau de bord local piloté par Claude pour illustrer la gestion de ses tâches et workflows.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000121_seg4.jpg" alt="Capture d&#x27;écran montrant le tableau de bord local &quot;Clawd Dashboard&quot; hébergé sur localhost, affichant des tâches actives, complétées et en file d&#x27;attente." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000121_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:21</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le tableau de bord local &quot;Clawd Dashboard&quot; hébergé sur localhost, affichant des tâches actives, complétées et en file d&#x27;attente.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:37 - 00:01:58</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors tout d&#x27;abord, pour parler rapidement de la façon dont j&#x27;ai construit ceci avec CloudBot, puisque j&#x27;ai simplement dit sur Telegram, hé, je veux créer ce tableau de bord de centre de commande qui montre essentiellement toutes mes tâches en un seul endroit, ainsi qu&#x27;il montre absolument tout sur quoi tu travailles. Et ensuite, ajoute aussi ces livrables ici. Encore une fois, je pouvais voir ce mème de Drake ici. Donc n&#x27;importe quel actif qu&#x27;il génère pour moi, je pouvais le voir directement sur mon tableau de bord.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application locale sur &#x27;localhost&#x27; nommée &#x27;Clawd Dashboard&#x27;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de gestion de tâches (&#x27;Active tasks&#x27;, &#x27;Completed today&#x27;, &#x27;Video queues&#x27;), colonnes de suivi (Queue, In Progress, Waiting, Done Today) et mème explicatif.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication visuelle du tableau de bord de centre de commande construit avec l&#x27;aide de CloudBot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000142_seg5.jpg" alt="Capture montrant le tableau de bord principal &#x27;Clawd&#x27; affichant les tâches actives, l&#x27;état d&#x27;avancement et les livrables." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000142_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:42</span>
+                        <span class="caption-text">Capture montrant le tableau de bord principal &#x27;Clawd&#x27; affichant les tâches actives, l&#x27;état d&#x27;avancement et les livrables.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000153_seg5.jpg" alt="Capture affichant un mème humoristique &#x27;Drake&#x27; illustrant le contraste entre le travail manuel et l&#x27;automatisation par assistant IA." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000153_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:53</span>
+                        <span class="caption-text">Capture affichant un mème humoristique &#x27;Drake&#x27; illustrant le contraste entre le travail manuel et l&#x27;automatisation par assistant IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:58 - 00:02:17</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ce que je veux faire maintenant, c&#x27;est simplement faire un clic droit sur cette interface ici, et je vais cliquer sur afficher le code source de la page. Et cela va me donner ce code HTML. Ne vous inquiétez pas, vous n&#x27;avez pas besoin de savoir coder. Je vais littéralement juste coller ou copier ce code ici. Et ensuite, ce que je vais faire, c&#x27;est que je vais aller sur getmocha.com. Je vais m&#x27;inscrire pour créer un compte si vous n&#x27;en avez pas déjà un.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le tableau de bord local &quot;Clawd Dashboard&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord de gestion de tâches et de monitoring (&quot;Active Tasks&quot;, &quot;Completed Today&quot;, &quot;Videos Queued&quot;), menu contextuel de navigation web.</p>
+                        <p><strong>Action / Démonstration :</strong> Clic droit sur l&#x27;interface utilisateur web pour afficher le code source de la page.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000203_seg6.jpg" alt="Interface du tableau de bord Clawd avec un clic droit affichant le menu contextuel et l&#x27;option &quot;View Page Source&quot; sélectionnée, en bas à droite le présentateur à l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000203_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:03</span>
+                        <span class="caption-text">Interface du tableau de bord Clawd avec un clic droit affichant le menu contextuel et l&#x27;option &quot;View Page Source&quot; sélectionnée, en bas à droite le présentateur à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000212_seg6.jpg" alt="Navigateur affichant une page blanche avec une barre de recherche &quot;Ask anything&quot; et une nouvelle vue d&#x27;onglet en cours de création." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000212_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:12</span>
+                        <span class="caption-text">Navigateur affichant une page blanche avec une barre de recherche &quot;Ask anything&quot; et une nouvelle vue d&#x27;onglet en cours de création.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:17 - 00:02:45</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous n&#x27;en avez pas déjà un, il y a un lien dans la description pour le faire. Je vais cliquer sur ajouter une application. Et à partir de là, ce que je vais faire, c&#x27;est simplement coller ce code. Vous pouvez voir qu&#x27;il a collé ce markdown. Et ensuite, je vais juste dire, littéralement, je vais juste dire, construis ceci et clique sur envoyer. Et maintenant, Mocha va commencer à construire notre application. Quelques points clés que je tiens à mentionner ici. Donc, la raison pour laquelle nous utilisons Mocha, c&#x27;est non seulement pour que nous puissions publier ceci et commencer réellement à l&#x27;utiliser sur différents appareils, le partager avec nos amis, et cetera, mais cela possède également des bases de données intégrées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de développement no-code Mocha (getmocha.com) avec le présentateur en incrustation vidéo en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de saisie contenant du texte markdown collé (« pasted_text...md »), options d&#x27;attachement, boutons « Inspiration », « Templates », et message « Working on it... Your app is being created ».</p>
+                        <p><strong>Action / Démonstration :</strong> Collage d&#x27;un contenu markdown dans l&#x27;outil no-code, validation de la création et affichage de l&#x27;écran de chargement de l&#x27;application en cours de génération par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000224_seg7.jpg" alt="Interface de l&#x27;application no-code Mocha affichant le champ de saisie avec le texte collé et le curseur de la souris." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000224_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:24</span>
+                        <span class="caption-text">Interface de l&#x27;application no-code Mocha affichant le champ de saisie avec le texte collé et le curseur de la souris.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000231_seg7.jpg" alt="L&#x27;interface passe en mode génération avec une icône de cerveau animée indiquant que l&#x27;application est en cours de création." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000231_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:31</span>
+                        <span class="caption-text">L&#x27;interface passe en mode génération avec une icône de cerveau animée indiquant que l&#x27;application est en cours de création.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000238_seg7.jpg" alt="Vue complète du panneau de génération de l&#x27;application Mocha montrant les détails de la tâche en cours avec un aperçu en chargement." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000238_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:38</span>
+                        <span class="caption-text">Vue complète du panneau de génération de l&#x27;application Mocha montrant les détails de la tâche en cours avec un aperçu en chargement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:45 - 00:03:20</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, afin de peupler réellement ce tableau de bord avec des informations réelles et à jour provenant de mon CloudBot avec lequel j&#x27;interagis tout au long de la journée, nous avons évidemment besoin d&#x27;avoir des informations réelles, en direct et à jour dans notre application. Donc, utiliser la base de données à l&#x27;intérieur de Mocha est la façon dont cela fonctionne réellement, car mon CloudBot va automatiquement pousser toutes les données que je lui donne à travers cette base de données. Vous n&#x27;avez pas besoin de savoir comment cela fonctionne. Ça fonctionne tout simplement pour vous. Et il y a quelques autres cas d&#x27;utilisation à l&#x27;intérieur de Mocha qui rendent cela vraiment utile au lieu d&#x27;avoir réellement à coder au feeling une application sur localhost en utilisant le CloudBot. Très bien, donc maintenant, juste environ 30 secondes plus tard, nous avons maintenant</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de type No-Code / générateur d&#x27;IA (Mocha).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de génération d&#x27;interface utilisateur en cours de traitement (&quot;Working on it...&quot;, &quot;I&#x27;ll build the Clawd Dashboard...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur présente la génération automatique de l&#x27;interface utilisateur pour intégrer les données en direct du bot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000254_seg8.jpg" alt="Interface de création d&#x27;application avec un panneau latéral montrant un assistant textuel générant une interface de tableau de bord, et une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000254_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:54</span>
+                        <span class="caption-text">Interface de création d&#x27;application avec un panneau latéral montrant un assistant textuel générant une interface de tableau de bord, et une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:20 - 00:03:52</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avons ce tableau de bord interactif ici qui fonctionne de manière très similaire à celui qui était sur localhost. Et nous pourrions aller de l&#x27;avant et effectivement apporter quelques modifications à cela avant de vouloir aller le publier sur notre site Web. Afin de commencer à apporter des modifications, je pourrais même venir ici, cliquer sur cette petite flèche ici, la flèche du curseur, et je pourrais modifier individuellement des parties de ce site Web. Donc si je veux juste changer le texte, je pourrais simplement changer, comme supprimer ceci ici, cliquer sur mettre à jour, et cela changera automatiquement cela juste là. Donc cela rend vraiment très facile de commencer à apporter des modifications à notre application au lieu de devoir faire cela à l&#x27;intérieur de Claudevot. Et nous pourrions même simplement venir ici et expliquer différentes choses que nous voulons changer. Très bien, donc je pense</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de création/gestion d&#x27;application &quot;Clawd&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord interactif affichant différentes métriques (tâches actives, complétées, file d&#x27;attente) et un panneau de chat latéral pour modifier le code.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du tableau de bord interactif et de sa structure de gestion de tâches.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000328_seg9.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface complète du tableau de bord &quot;Clawd&quot; avec des colonnes de gestion des tâches et le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000328_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:28</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface complète du tableau de bord &quot;Clawd&quot; avec des colonnes de gestion des tâches et le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:52 - 00:04:26</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça a l&#x27;air vraiment bien. Cependant, je veux que tu changes le truc de surveillance façon Claude en haut à gauche de notre site. Je veux que tu lui mettes un logo Claude sympa qui correspond un peu à l&#x27;ambiance de notre bot Claude. Aussi, je veux que notre site fasse plus futuriste, en accord avec cette ambiance qu&#x27;on recherche avec genre un agent IA qui fait des trucs pour nous. Très bien, voilà ce que ça a généré. C&#x27;est définitivement plus futuriste, ça a l&#x27;air un peu plus « vibe codé ». Donc je ne suis pas un très grand fan personnellement, mais vous pouvez voir qu&#x27;on a maintenant ce logo Claude là-haut. Du coup, je vais en fait revenir en arrière et rétablir l&#x27;autre interface juste parce que je trouve ça plus facile à regarder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;outil de développement No-Code Mocha et un tableau de bord de gestion de tâches / agent IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de chat latéral contenant des instructions textuelles de modification de design, listes de tâches actives, complétées, en attente (&quot;Queue&quot;, &quot;In Progress&quot;, &quot;Waiting&quot;, &quot;Done Today&quot;) et métriques du projet.</p>
+                        <p><strong>Action / Démonstration :</strong> Modification en temps réel de l&#x27;interface utilisateur du tableau de bord via le panneau de chat de l&#x27;assistant IA (changement de design vers un style plus futuriste et mise à jour du logo).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000401_seg10.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;un tableau de bord de gestion de tâches avec un logo d&#x27;application simple en haut à gauche et un panneau de chat latéral à gauche." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000401_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de développement d&#x27;un tableau de bord de gestion de tâches avec un logo d&#x27;application simple en haut à gauche et un panneau de chat latéral à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000418_seg10.jpg" alt="Capture d&#x27;écran montrant le même tableau de bord après modification, avec un design futuriste en mode sombre et un logo mis à jour en haut à gauche conformément aux instructions vocales." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000418_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le même tableau de bord après modification, avec un design futuriste en mode sombre et un logo mis à jour en haut à gauche conformément aux instructions vocales.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:26 - 00:04:58</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">à. Donc laissez-moi faire ça maintenant. Très bien, alors c&#x27;est parti, nous avons notre interface précédente et ensuite je tiens également à mentionner que j&#x27;ai effectivement configuré ma base de données. Donc maintenant, cela devrait fonctionner correctement. Alors ce que je vais faire, c&#x27;est que je vais tester mon bot Claude maintenant. Je vais maintenant envoyer un message sur Telegram en disant à mon bot Claude que j&#x27;ai effectivement quelques trucs à faire pour qu&#x27;il puisse l&#x27;ajouter à notre liste de tâches. Très bien, alors je viens d&#x27;envoyer le message sur mon téléphone à l&#x27;instant. Attendons quelques secondes et nous devrions voir cela s&#x27;afficher sur notre centre de commande. Et juste comme ça, j&#x27;ai en gros dit que je dois tourner la courte vidéo de Manish et envoyer les publications de la newsletter.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de gestion de projet / tableau de bord &#x27;Clawd&#x27; (getmocha.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de productivité (Active Tasks: 5, Completed Today: 12, Videos Queued: 3, Next Scan: 9m) et colonnes de gestion de tâches (Queue, In Progress, Waiting, Done Today).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;interface utilisateur et présente le fonctionnement des tâches et de la base de données configurée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000434_seg11.jpg" alt="Interface principale du tableau de bord &#x27;Clawd&#x27; montrant les tâches actives, les tâches complétées et les files d&#x27;attente." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000434_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Interface principale du tableau de bord &#x27;Clawd&#x27; montrant les tâches actives, les tâches complétées et les files d&#x27;attente.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000442_seg11.jpg" alt="Vue légèrement actualisée du tableau de bord &#x27;Clawd&#x27; montrant l&#x27;état des tâches avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000442_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:42</span>
+                        <span class="caption-text">Vue légèrement actualisée du tableau de bord &#x27;Clawd&#x27; montrant l&#x27;état des tâches avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:58 - 00:05:33</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et j&#x27;ai dit que les deux étaient urgents. J&#x27;ai donc ajouté les deux. Et une autre chose que je tiens à mentionner, c&#x27;est que nous avons nos livrables ici. Donc, chaque fois que cela génère réellement quelque chose pour moi, disons que cela génère une image ou un mème, je peux en fait cliquer dessus et cela ouvrira ce mème directement sur mon écran. De cette façon, je n&#x27;ai pas besoin d&#x27;aller dans mes dossiers sur mon bureau pour voir réellement les résultats que cela me donne. Si vous avez utilisé Claudecode ou Claudebot, cela peut être assez pénible de devoir faire ça. Le fait d&#x27;avoir tout cela centralisé dans un seul tableau de bord a donc vraiment été un véritable্ভ salut. Très bien, maintenant que notre centre de commande fonctionne pour notre Claudebot, il ne me reste plus qu&#x27;à le partager pour pouvoir commencer à l&#x27;utiliser sur mon téléphone, ma tablette ou mon</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de tableau de bord de gestion de tâches.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de bord avec statistiques (Active tasks: 5, Completed today: 12, Videos queued: 3, Next scan: 9m) et colonnes de tâches avec badges d&#x27;urgence.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation dans l&#x27;interface du tableau de bord de l&#x27;application Clawd.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000516_seg12.jpg" alt="Interface de gestion de projets nommée Clawd avec un tableau de bord affichant des tâches en file d&#x27;attente (queue, in progress, waiting, done) et le présentateur visible en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000516_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:16</span>
+                        <span class="caption-text">Interface de gestion de projets nommée Clawd avec un tableau de bord affichant des tâches en file d&#x27;attente (queue, in progress, waiting, done) et le présentateur visible en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:33 - 00:06:08</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">autre ordinateur ou fondamentalement l&#x27;envoyer à un ami pour qu&#x27;il puisse l&#x27;utiliser aussi. Donc ce que je vais faire, c&#x27;est simplement cliquer sur ce bouton de publication violet. Je vais changer ceci pour publier, cliquer sur ce bouton de publier en bas, et ça va effectivement le faire pour moi maintenant. Et juste comme ça, j&#x27;ai maintenant cette URL personnalisée sur laquelle je peux accéder à mon site. Je vais l&#x27;ouvrir dès maintenant. Très bien. Donc juste comme ça, nous pouvons maintenant effectivement copier ce lien, le coller dans notre navigateur ou l&#x27;envoyer à un ami, et nous pouvons maintenant accéder à notre application directement via cette URL au lieu de passer par localhost. Très bien. Donc maintenant, une chose dont je veux parler, c&#x27;est si vous utilisez CloudBot, en lui donnant accès à quelque chose comme Zapier MCP,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme de développement d&#x27;applications Mocha (getmocha.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de l&#x27;application générée, lien de partage et icônes de réseaux sociaux (X, LinkedIn, Facebook, Reddit).</p>
+                        <p><strong>Action / Démonstration :</strong> Partage de l&#x27;application et copie du lien dans le presse-papier pour permettre à d&#x27;autres utilisateurs de l&#x27;utiliser.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000550_seg13.jpg" alt="Interface de la plateforme Mocha avec une boîte de dialogue pop-up &quot;Share your app!&quot; affichant le lien de l&#x27;application et des options de partage sur les réseaux sociaux. Le curseur survole le bouton &quot;Copy link&quot;." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000550_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Interface de la plateforme Mocha avec une boîte de dialogue pop-up &quot;Share your app!&quot; affichant le lien de l&#x27;application et des options de partage sur les réseaux sociaux. Le curseur survole le bouton &quot;Copy link&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000559_seg13.jpg" alt="Vue similaire de l&#x27;interface Mocha montrant le pop-up de partage d&#x27;application avec le lien et les boutons de réseaux sociaux." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000559_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:59</span>
+                        <span class="caption-text">Vue similaire de l&#x27;interface Mocha montrant le pop-up de partage d&#x27;application avec le lien et les boutons de réseaux sociaux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:08 - 00:06:29</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ce qui permet fondamentalement à votre agent d&#x27;aller effectuer différentes actions à travers les applications que vous utilisez est super puissant. Donc je vais vous montrer très rapidement comment vous pouvez faire cela maintenant et comment je le fais personnellement pour amplifier mon expérience CloudBot. Donc tout d&#x27;abord, pour faire cela, vous venez juste ici, vous cliquez sur le client MCP. Je vais cliquer sur Cloud Code ici, puis lui donner simplement un nom de serveur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur Web affichant la plateforme Zapier MCP et son tableau de bord de configuration.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de pages promotionnels et interfaces de configuration d&#x27;outils d&#x27;automatisation (Slack, Notion, Manus MCP).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface de connexion d&#x27;un agent IA à des applications via Zapier MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000613_seg14.jpg" alt="Page d&#x27;accueil du site Web Zapier présentant l&#x27;intégration Zapier MCP pour connecter une intelligence artificielle à n&#x27;importe quelle application." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000613_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:13</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Web Zapier présentant l&#x27;intégration Zapier MCP pour connecter une intelligence artificielle à n&#x27;importe quelle application.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000618_seg14.jpg" alt="Interface de configuration du serveur Zapier MCP affichant les clients et les outils connectés tels que Slack et Notion." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000618_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:18</span>
+                        <span class="caption-text">Interface de configuration du serveur Zapier MCP affichant les clients et les outils connectés tels que Slack et Notion.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:29 - 00:06:48</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais juste appeler ça CloudBot et ensuite créer le serveur MCP. Et puis à partir d&#x27;ici, ce qu&#x27;on va faire, c&#x27;est qu&#x27;on pourrait littéralement connecter ceci à n&#x27;importe quelle application que nous utilisons. Donc par exemple, si j&#x27;utilise Airtable pour les bases de données ou Slack, disons que je veux envoyer un message à mon équipe sur Slack chaque fois que quelque chose est mis à jour dans Google Sheets, je peux simplement cliquer là-dessus, sélectionner ce bouton ici qui sélectionne tous ces outils.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Zapier MCP avec une fenêtre modale de sélection d&#x27;applications tierces (Gmail, Google Calendar, Google Sheets, Airtable, Slack, etc.).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;applications populaires compatibles avec le serveur MCP : Gmail, Google Calendar, Google Sheets, Google Docs, Notion, Airtable, Slack, HubSpot, etc.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue et sélectionne des applications dans la liste pour les connecter au serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000634_seg15.jpg" alt="Interface web de Zapier MCP montrant une fenêtre contextuelle pour ajouter des outils, avec le curseur sur l&#x27;application Google Calendar, et le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000634_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:34</span>
+                        <span class="caption-text">Interface web de Zapier MCP montrant une fenêtre contextuelle pour ajouter des outils, avec le curseur sur l&#x27;application Google Calendar, et le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000638_seg15.jpg" alt="Interface web de Zapier MCP montrant la sélection de l&#x27;application Airtable dans la liste des outils disponibles à ajouter au serveur MCP." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000638_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:38</span>
+                        <span class="caption-text">Interface web de Zapier MCP montrant la sélection de l&#x27;application Airtable dans la liste des outils disponibles à ajouter au serveur MCP.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:48 - 00:07:06</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant nous avons accès à ces 34 actions à travers cette application et il suffit de cliquer sur connecter. Et maintenant ceci est ajouté à notre serveur MCP. Et c&#x27;est un moyen facile pour nous de configurer un serveur qui a la capacité d&#x27;aller et de réellement exécuter un tas d&#x27;actions différentes à travers toutes les applications que nous utilisons. Disons que nous ajoutons tout ce que nous voulons ajouter ici pour ce serveur spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Zapier MCP, navigateur web, vue incrustée du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;actions/outils disponibles pour Slack (Find message, Find user, etc.), statut de connexion au client Claude Code.</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion et ajout d&#x27;actions d&#x27;une application (Slack) au serveur MCP pour permettre leur exécution automatique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000653_seg16.jpg" alt="Fenêtre modale montrant l&#x27;ajout d&#x27;outils Slack à l&#x27;application avec un indicateur de chargement « Adding tools... »." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000653_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:53</span>
+                        <span class="caption-text">Fenêtre modale montrant l&#x27;ajout d&#x27;outils Slack à l&#x27;application avec un indicateur de chargement « Adding tools... ».</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000657_seg16.jpg" alt="Interface Zapier MCP montrant la configuration d&#x27;un serveur relié à Claude Code avec l&#x27;outil Slack ajouté avec succès." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000657_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:57</span>
+                        <span class="caption-text">Interface Zapier MCP montrant la configuration d&#x27;un serveur relié à Claude Code avec l&#x27;outil Slack ajouté avec succès.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:07 - 00:07:30</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je peux cliquer sur ce bouton de connexion. Et ensuite, à partir d&#x27;ici, je vais simplement cliquer sur copier la commande. Et ensuite, je vais aller sur Cloud Code ou même donner ceci à mon Cloud Bot qui se trouve dans mon Telegram et simplement coller cette commande. Et il va aller de l&#x27;avant et réellement implémenter ceci dans notre flux de travail Argentic. Très bien, les gars, voilà. Nous avons construit tout ce tableau de bord de centre de commande Cloud Bot. Et nous pouvons désormais y accéder sur tous nos appareils parce que nous l&#x27;avons publié sur une URL publique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface Zapier MCP / Clawdbot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions de configuration et commande textuelle pour connecter Zapier MCP au terminal Claude Code.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie de la commande de configuration depuis l&#x27;interface web pour l&#x27;utiliser dans le terminal ou l&#x27;assistant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/XulRkTy7xCE/XulRkTy7xCE_000712_seg17.jpg" alt="Interface de configuration affichant les instructions de connexion de Zapier MCP à Claude Code avec un bouton de copie de commande." loading="lazy" onclick="openLightbox('../screenshots/XulRkTy7xCE/XulRkTy7xCE_000712_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:12</span>
+                        <span class="caption-text">Interface de configuration affichant les instructions de connexion de Zapier MCP à Claude Code avec un bouton de copie de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:30 - 00:07:36</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc vous avez retiré de la valeur de cette vidéo. Assurez-vous de vous abonner à cette chaîne pour plus de contenu comme celui-ci. Dites-moi ce que vous en pensez dans les commentaires et je vous vois, les gars, dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
