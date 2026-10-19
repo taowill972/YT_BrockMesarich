@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `99 / 273` (`36.3%`)
+- **Vidéos traitées** : `100 / 273` (`36.6%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -116,6 +116,7 @@
 | 2026-02-12 | [lNfK-jQeUa8](https://www.youtube.com/watch?v=lNfK-jQeUa8) | **Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)** | [2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `23` |
 | 2026-02-02 | [6OSEZx8v4so](https://www.youtube.com/watch?v=6OSEZx8v4so) | **Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)** | [2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
 | 2026-02-01 | [XulRkTy7xCE](https://www.youtube.com/watch?v=XulRkTy7xCE) | **J'ai réglé l'un des plus grands problèmes d'OpenClaw...** | [2026-02-01_YT-[XulRkTy7xCE]_J'ai réglé l'un des plus grands problèmes d'OpenClaw..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-01_YT-[XulRkTy7xCE]_J'ai réglé l'un des plus grands problèmes d'OpenClaw..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-01_YT-[XulRkTy7xCE]_J'ai réglé l'un des plus grands problèmes d'OpenClaw..._by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `28` |
+| 2026-01-29 | [kairgvzdUpo](https://www.youtube.com/watch?v=kairgvzdUpo) | **Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)** | [2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `44` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*

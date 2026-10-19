@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Je déteste OpenClaw... mais je ne peux plus m&#x27;en passer (Clawdbot) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Je déteste OpenClaw... mais je ne peux plus m&#x27;en passer (Clawdbot)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-01-29</span>
+                <span class="badge">⏱️ 00:19:57</span>
+                <span class="badge">🆔 <code>kairgvzdUpo</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=kairgvzdUpo" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>La vidéo de la chaîne *Brock Mesarich | AI for Non Techies* (animée par Brock et son invité Salman) explore l'un des phénomènes technologiques les plus viraux du moment : **Clawdbot** (initialement nommé *Clodbot* puis renommé *Moltbot* suite à des pressions juridiques d'Anthropic). Loin du simple gadget marketing, l'outil est présenté comme le précurseur de l'interaction future avec l'intelligence artificielle : un agent autonome doté de sa propre machine physique (ou d'un environnement isolé), d'une adresse e-mail dédiée et d'un accès étendu à divers outils, capable d'exécuter des tâches complexes à distance sur simple instruction textuelle ou vocale.<br><br>Au-delà de l'effet de mode, les intervenants partagent un retour d'expérience réaliste, oscillant entre l'enthousiasme face aux capacités quasi-magiques de l'agent et la frustration liée à l'instabilité inhérente aux versions précoces. Le cœur de la discussion s'articule autour des aspects pratiques de déploiement — notamment l'arbitrage entre l'achat d'un Mac Mini dédié ou l'utilisation d'un VPS — et de la sécurité. Les créateurs démontrent comment déléguer des flux de travail complets (comme la génération automatisée d'animations via l'intégration d'API) en pilotant l'agent à distance via des applications de messagerie comme Telegram, transformant ainsi un ordinateur de bureau en un assistant virtuel pilotable depuis une montre connectée.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude** : Modèle de langage central utilisé par l'agent autonome (à l'origine du nom initial *Clodbot* / *Clawdbot*) pour interpréter les instructions et piloter les flux de travail.<br>* **Grok** : Modèle d'intelligence artificielle alternatif évoqué dans l'écosystème global des LLMs concurrents.<br>* **Gemini** : Modèle d'IA de Google dont la clé API est exploitée par l'agent pour alimenter des fonctionnalités de génération multimédia (comme la voix et l'animation).<br>* **ChatGPT** : Modèle de référence d'OpenAI mentionné dans le panorama des assistants conversationnels actuels.<br>* **Make** : Plateforme d'automatisation no-code et d'intégration de flux de travail entre différentes applications logiques.<br>* **Zapier** : Outil historique d'automatisation et de connexion d'API pour déclencher des actions automatisées.<br>* **n8n** : Logiciel d'automatisation de flux de travail open-source et flexible, souvent privilégié pour des configurations techniques avancées.<br>* **Telegram** : Application de messagerie sécurisée utilisée comme interface principale de commande pour dialoguer avec l'agent et le piloter à distance.<br>* **TG Watch** : Application pour montre connectée permettant d'interagir avec Telegram et de contrôler l'ordinateur de l'agent par la voix ou de simples pressions.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Le paradigme du « second employé »** : Il convient de concevoir l'agent non pas comme un simple chatbot textuel ou un outil de génération de code brut (ses performances en programmation pure étant perfectibles), mais comme un collaborateur numérique autonome capable d'exécuter des tâches en arrière-plan.<br>* **Isolation rigoureuse de l'infrastructure** : Ne jamais installer ce type d'agent autonome sur sa machine personnelle principale, afin d'éviter des actions non sollicitées ou des prises de contrôle automatisées à grande échelle (comme l'envoi d'e-mails professionnels par erreur).<br>* **Arbitrage matériel (Mac Mini vs VPS)** : L'utilisation d'un Mac Mini dédié est recommandée pour les utilisateurs non techniques souhaitant une configuration simple et l'accès natif à certaines fonctionnalités (comme iMessage), tandis que le VPS s'adresse aux profils techniques maîtrisant l'administration de serveurs distants.<br>* **Recyclage technologique** : Une alternative économique et écologique consiste à réutiliser un vieux portatif délaissé au fond d'un placard, à condition de le formater entièrement et de s'assurer qu'aucune donnée personnelle sensible n'y réside.<br>* **Gestion du compromis accès/utilité** : Plus l'agent dispose de permissions et d'accès aux différents comptes et fichiers, plus il est efficace, mais plus le niveau de risque augmente ; un équilibre minutieux doit être trouvé selon les cas d'usage.<br>* **Interface de commande conversationnelle** : L'utilisation de messageries instantanées comme Telegram offre une alternative extrêmement sécurisée et intuitive pour piloter l'agent, s'affranchissant des interfaces de bureau complexes.<br>* **Contrôle ubiquitaire via les objets connectés** : L'intégration d'applications de messagerie sur des montres connectées (Apple Watch) permet de transformer l'agent en un assistant vocal opérationnel de type "James Bond", permettant d'exécuter des requêtes complexes sans même utiliser ses mains.<br>* **Délégation multimodale** : En connectant l'agent à des clés API tierces (comme Gemini), il devient possible d'automatiser des processus de création complexes, allant de la génération de scripts jusqu'à la production de supports visuels et animés.<br>* **Anticipation de l'obsolescence technologique** : Considérer l'outil dans sa version actuelle comme "la pire qu'il ne sera jamais" permet de relativiser les bugs rencontrés et de se positionner précocement sur les standards futurs de l'interaction homme-machine.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude</span><span class="tool-tag">Grok</span><span class="tool-tag">Gemini</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">n8n</span><span class="tool-tag">Telegram</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Le paradigme du « second employé »** : Il convient de concevoir l&#x27;agent non pas comme un simple chatbot textuel ou un outil de génération de code brut (ses performances en programmation pure étant perfectibles), mais comme un collaborateur numérique autonome capable d&#x27;exécuter des tâches en arrière-plan.</span></li><li><span class="point-bullet">✦</span><span>Isolation rigoureuse de l&#x27;infrastructure** : Ne jamais installer ce type d&#x27;agent autonome sur sa machine personnelle principale, afin d&#x27;éviter des actions non sollicitées ou des prises de contrôle automatisées à grande échelle (comme l&#x27;envoi d&#x27;e-mails professionnels par erreur).</span></li><li><span class="point-bullet">✦</span><span>Arbitrage matériel (Mac Mini vs VPS)** : L&#x27;utilisation d&#x27;un Mac Mini dédié est recommandée pour les utilisateurs non techniques souhaitant une configuration simple et l&#x27;accès natif à certaines fonctionnalités (comme iMessage), tandis que le VPS s&#x27;adresse aux profils techniques maîtrisant l&#x27;administration de serveurs distants.</span></li><li><span class="point-bullet">✦</span><span>Recyclage technologique** : Une alternative économique et écologique consiste à réutiliser un vieux portatif délaissé au fond d&#x27;un placard, à condition de le formater entièrement et de s&#x27;assurer qu&#x27;aucune donnée personnelle sensible n&#x27;y réside.</span></li><li><span class="point-bullet">✦</span><span>Gestion du compromis accès/utilité** : Plus l&#x27;agent dispose de permissions et d&#x27;accès aux différents comptes et fichiers, plus il est efficace, mais plus le niveau de risque augmente ; un équilibre minutieux doit être trouvé selon les cas d&#x27;usage.</span></li><li><span class="point-bullet">✦</span><span>Interface de commande conversationnelle** : L&#x27;utilisation de messageries instantanées comme Telegram offre une alternative extrêmement sécurisée et intuitive pour piloter l&#x27;agent, s&#x27;affranchissant des interfaces de bureau complexes.</span></li><li><span class="point-bullet">✦</span><span>Contrôle ubiquitaire via les objets connectés** : L&#x27;intégration d&#x27;applications de messagerie sur des montres connectées (Apple Watch) permet de transformer l&#x27;agent en un assistant vocal opérationnel de type &quot;James Bond&quot;, permettant d&#x27;exécuter des requêtes complexes sans même utiliser ses mains.</span></li><li><span class="point-bullet">✦</span><span>Délégation multimodale** : En connectant l&#x27;agent à des clés API tierces (comme Gemini), il devient possible d&#x27;automatiser des processus de création complexes, allant de la génération de scripts jusqu&#x27;à la production de supports visuels et animés.</span></li><li><span class="point-bullet">✦</span><span>Anticipation de l&#x27;obsolescence technologique** : Considérer l&#x27;outil dans sa version actuelle comme &quot;la pire qu&#x27;il ne sera jamais&quot; permet de relativiser les bugs rencontrés et de se positionner précocement sur les standards futurs de l&#x27;interaction homme-machine.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Plodbot, autrement connu sous le nom de Multbot, est en train de casser internet en ce moment. Mais avant de faire rapidement une simple vidéo de plus pour créer le buzz, je voulais vraiment tester cet outil en conditions réelles. Alors, mon ami Saman et moi avons plongé en profondeur dans ce truc ces derniers jours. Nous avons décidé de faire un podcast pour tout décortiquer. Ce que c&#x27;est, six différentes manières dont nous l&#x27;utilisons, et si ça vaut vraiment le coup d&#x27;œil.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / YouTube.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de la chaîne YouTube de Samin Yasar avec ses différentes vidéos sur l&#x27;intelligence artificielle.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation introductive du collaborateur Saman Yasar et de son contenu sur les outils d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:54</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et pour être honnête, cela ressemble vraiment à un aperçu du futur de la façon dont nous allons utiliser l&#x27;IA, mais il y a des choses incroyablement importantes que vous devez savoir avant de le faire. Alors sans plus attendre, plongeons dans cette vidéo. Très bien, Salmon, nous sommes de retour. Littéralement genre deux jours après avoir tourné notre dernier podcast. Je sais, c&#x27;est comme si je profitais littéralement de toi pour enregistrer ces podcasts, mais j&#x27;ai vraiment pris tellement de plaisir et c&#x27;est marrant de faire des geeks avec toi. Donc aujourd&#x27;hui, nous allons parler de Clodbot, Moldbot, ou peu importe comment vous voulez l&#x27;appeler maintenant. Salmon et moi avons joué avec ça. Nous avons chacun nos expériences individuelles et uniques en l&#x27;utilisant. Donc dans cette vidéo, nous allons parler de ce qu&#x27;est Clodbot ainsi que d&#x27;analyser certains des cas d&#x27;utilisation que j&#x27;ai</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro, visioconférence à deux participants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre de présentation &quot;What is ClawdBot/MoltBot?&quot; illustré par des icônes (globe, cloche, engrenage, microphone) et un personnage rouge stylisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Introduction du sujet de la vidéo par les intervenants avec un support visuel explicatif sur Miro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000037_seg2.jpg" alt="Écran partagé montrant Brock Mesarich en haut à gauche, Samin Yasar en bas à gauche, et au centre un tableau blanc Miro avec le titre &quot;What is ClawdBot/MoltBot?&quot;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000037_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Écran partagé montrant Brock Mesarich en haut à gauche, Samin Yasar en bas à gauche, et au centre un tableau blanc Miro avec le titre &quot;What is ClawdBot/MoltBot?&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:54 - 00:01:31</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ainsi que Salmon. Donc Salmon, plongeons dedans. Neurasthénisons un peu là-dessus et montrons au public de quoi il s&#x27;agit, bien sûr. Eh bien, je suis ravi d&#x27;être de retour, merci de m&#x27;avoir invité sur ce Clod Pod, euh mais tu sais, je voulais vraiment aborder ce qu&#x27;est Clod Bot, mais en fait, on devrait l&#x27;appeler Molt Bot parce qu&#x27;Anthropic a apparemment poursuivi ces gars en justice pour avoir utilisé Clod dans leur nom, n&#x27;est-ce pas ? Euh ouais, mais essentiellement, quand on pense à ce que cette chose est vraiment et pourquoi elle fait autant de bruit, c&#x27;est à cause de ce qu&#x27;elle nous permet de faire. Et c&#x27;est un peu comme un aperçu du futur, de la façon dont nous utilisons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro, application de visioconférence</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &#x27;What is ClawdBot/MoltBot?&#x27; avec des icônes explicatives et un personnage rouge stylisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet principal de la discussion par les intervenants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000103_seg3.jpg" alt="Capture d&#x27;écran montrant le présentateur principal et son invité en visioconférence, avec au centre un tableau blanc Miro affichant la question &#x27;What is ClawdBot/MoltBot?&#x27;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000103_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur principal et son invité en visioconférence, avec au centre un tableau blanc Miro affichant la question &#x27;What is ClawdBot/MoltBot?&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:31 - 00:01:51</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">la technologie et la façon dont nous allons interagir avec des agents d&#x27;intelligence artificielle, n&#x27;est-ce pas ? Donc, à l&#x27;heure actuelle, vous pouvez voir CloudBot, de la manière la plus simple, comme si vous installiez un bot, que vous lui donniez son propre ordinateur, sa propre adresse e-mail et un accès à tout. Vous le traitez comme sa propre entité capable de faire des choses. Et puis, vous savez, vous pouvez simplement lui envoyer des SMS comme à un collègue et il fera le travail pour vous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface Miro avec une présentation visuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte &#x27;What is ClawdBOT/MoltBot?&#x27; accompagné d&#x27;icônes illustratives (cloche, icônes web, engrenage, micro) et d&#x27;un personnage rouge en forme de robot.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet et introduction des concepts de ClawdBOT et MoltBot lors d&#x27;une discussion en visioconférence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000136_seg4.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche, ainsi qu&#x27;une interface web Miro affichant le titre explicatif &#x27;What is ClawdBOT/MoltBot?&#x27;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000136_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche, ainsi qu&#x27;une interface web Miro affichant le titre explicatif &#x27;What is ClawdBOT/MoltBot?&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:51 - 00:02:24</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Peu importe l&#x27;interface que vous utilisez. Vous pouvez envoyer un mémo vocal, ou autre. Et j&#x27;ai l&#x27;impression que c&#x27;est la manière la plus simple de se faire une idée de ce qu&#x27;est vraiment ce truc. Bien sûr, il y a quelques bugs ici et là, mais ce truc est tout neuf et il ne va faire que s&#x27;améliorer avec le temps. C&#x27;est littéralement la pire version qu&#x27;il ne sera jamais. Oui, c&#x27;est un bon point. Et je tiens à préciser, nous ne allons pas juste rester là à encenser la chose dans cette vidéo, comme vous l&#x27;avez probablement déjà vu partout sur YouTube ou sur Twitter. Vous en avez sans doute assez, mais nous allons parler de notre vraie expérience avec ça, car personnellement, j&#x27;ai configuré cet outil il y a quelques jours. J&#x27;ai eu de superbes expériences avec. Cependant, j&#x27;ai aussi été tellement énervé contre lui. Je me suis dit, mon Dieu, pourquoi est-ce que ça continue de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de visioconférence et tableau blanc Miro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Présentation du sujet &#x27;What is ClawdBot/MoltBot?&#x27; avec des icônes illustratives (cloche, globe, microphone, engrenage) et un personnage rouge stylisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet principal de la vidéo par les intervenants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000208_seg5.jpg" alt="Capture d&#x27;écran montrant le présentateur et son invité en visioconférence à gauche, et une interface Miro avec une présentation intitulée &#x27;What is ClawdBot/MoltBot?&#x27; à droite." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000208_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:08</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et son invité en visioconférence à gauche, et une interface Miro avec une présentation intitulée &#x27;What is ClawdBot/MoltBot?&#x27; à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:24 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qui plante tous les trois messages que j&#x27;envoie. Donc tout n&#x27;est pas rose, mais oui, je suis d&#x27;accord. C&#x27;est une nouvelle façon dont nous allons interagir avec l&#x27;IA. Alors Salman, plongeons dans le vif du sujet et parlons un peu plus de ce que c&#x27;est. Et ensuite, nous pourrons montrer concrètement comment nous l&#x27;utilisons tous les deux. Bien sûr. Donc en fait, au début, je me rappelle que les gens se demandaient ce qu&#x27;était CloudBot et les gens pensaient juste que c&#x27;était comme CloudCode sur votre téléphone, mais ce n&#x27;est pas vraiment ça, n&#x27;est-ce pas ? C&#x27;est, c&#x27;est un peu comme un deuxième employé. Donc si vous y pensez de cette façon, je pense que vous pouvez l&#x27;utiliser beaucoup mieux, car honnêtement, ce n&#x27;est pas le meilleur pour coder. Donc ça en soi, c&#x27;est juste la première chose que j&#x27;ai remarquée en l&#x27;utilisant. Bien sûr, vous pouvez, vous savez, avoir vos astuces pour contourner le moment où</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc interactif (Miro) et interface de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le titre &quot;What is ClawdBot/MoltBot?&quot; accompagné d&#x27;icônes vectorielles (cloche, globes, micro, engrenage) et d&#x27;un personnage rouge animé.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du sujet principal de la discussion et introduction de ClawdBot/MoltBot par les animateurs.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000232_seg6.jpg" alt="Un tableau blanc interactif Miro affichant la question &quot;What is ClawdBot/MoltBot?&quot; avec des icônes explicatives et une petite mascotte rouge, tandis que les deux intervenants apparaissent en vignettes vidéo sur le côté." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000232_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Un tableau blanc interactif Miro affichant la question &quot;What is ClawdBot/MoltBot?&quot; avec des icônes explicatives et une petite mascotte rouge, tandis que les deux intervenants apparaissent en vignettes vidéo sur le côté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:44</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il s&#x27;occupe de tout le code et de tout le reste. Mais ce que je tiens à préciser, c&#x27;est que ce truc n&#x27;est qu&#x27;une sorte d&#x27;assistant, et plus vous lui donnez de compétences, mieux il s&#x27;en sortira. C&#x27;est vrai. Et c&#x27;est pourquoi vous voyez des gens acheter des Mac minis par lots pour y installer leur Clodbot, parce que cela devient la machine personnelle du Clodbot, là où vous mettez votre adresse e-mail et tout le reste. C&#x27;est clair. Et Salman, Salman et moi tous les deux, pour préciser, nous avons tous les deux acheté le Mac mini pour nos propres raisons. Genre, j&#x27;aime avoir de nouveaux produits Apple brillants. Je n&#x27;en ai probablement pas besoin. Vous savez, les gens disent qu&#x27;on peut faire tourner ça sur un VPS et tout le reste. Donc Salman, si tu pouvais expliquer maintenant à mon audience, genre, est-ce qu&#x27;ils devraient se ruer pour s&#x27;acheter un Mac mini comme toi et moi l&#x27;avons fait ? Ou penses-tu que c&#x27;est un peu exagéré ? Parce que je suis sûr et je sais qu&#x27;il y a des solutions de contournement que vous pourriez utiliser pour ne pas avoir à utiliser un Mac mini. Et ensuite, peut-être expliquer rapidement pourquoi les gens font tourner ça sur un ordinateur complètement séparé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro (tableau blanc en ligne)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif entre &quot;What people think&quot; (une simple appli mobile avec une icône de téléphone) et &quot;What it actually is&quot; (un ordinateur de bureau complet avec automatisation active).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication visuelle de la différence conceptuelle entre une application mobile simple et un système d&#x27;automatisation de bureau complet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000310_seg7.jpg" alt="Présentation comparative sur Miro montrant &quot;ClawdBot ≠ Claude Code on your phone&quot; avec des illustrations explicatives." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000310_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:10</span>
+                        <span class="caption-text">Présentation comparative sur Miro montrant &quot;ClawdBot ≠ Claude Code on your phone&quot; avec des illustrations explicatives.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:44 - 00:04:05</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que je pense que c&#x27;est une distinction vraiment importante à faire au début de cette vidéo. Pour que les gens n&#x27;aillent pas configurer ça sur leur ordinateur personnel, qu&#x27;ils n&#x27;envoient pas un e-mail à leur patron pour démissionner en pilotage automatique, tu vois, et qu&#x27;après, tu te retrouves avec des gens qui nous rejettent la faute. Alors, décompose un peu ces points pour nous. Pour que mon audience puisse mieux comprendre cela. Bien sûr. Alors ouais, il y a ce débat en ce moment en ligne et c&#x27;est assez fou, où certaines personnes se disent, oh, utilisons simplement un Mac Mini.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Miro avec un mème et appel vidéo (deux intervenants).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Graphique de distribution normale (courbe de Gauss) annoté avec des mèmes aux extrémités (&quot;MacMini Good Sir&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le mème illustrant les différents niveaux d&#x27;utilisation technique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000350_seg8.jpg" alt="Capture d&#x27;écran montrant le présentateur à gauche et un mème de courbe de Gauss (distribution normale) illustrant le niveau de compétence technique à droite." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000350_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:50</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur à gauche et un mème de courbe de Gauss (distribution normale) illustrant le niveau de compétence technique à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:05 - 00:04:26</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et d&#x27;autres personnes disent, oh, vous pouvez configurer ça sur un VPS. Honnêtement, si vous êtes assez doué pour le configurer sur un VPS, faites-le par tous les moyens. Mais je pense que pour la majorité des gens, ils ne savent pas ce que c&#x27;est. Ils ne savent même pas ce que signifient les lettres VPS ou ce qu&#x27;est un serveur ou même comment utiliser le cloud. Donc pour eux, utiliser un Mac mini ou même vous pouvez être un peu plus économe.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Miro et un appel vidéo multi-fenêtres.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème humoristique basé sur une courbe de distribution normale avec des notes et des illustrations représentant les avis sur l&#x27;utilisation d&#x27;un VPS par rapport à un Mac Mini.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le mème illustrant l&#x27;utilisation des VPS et des configurations matérielles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000416_seg9.jpg" alt="Capture d&#x27;écran montrant une interface Miro avec un mème en forme de courbe de Gauss (courbe normale) illustrant le choix entre VPS et Mac Mini, avec deux intervenants dans des vignettes vidéo sur le côté." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000416_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface Miro avec un mème en forme de courbe de Gauss (courbe normale) illustrant le choix entre VPS et Mac Mini, avec deux intervenants dans des vignettes vidéo sur le côté.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:26 - 00:04:45</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous avez un vieux vieil ordinateur portable qui pourrit dans votre placard, vous pouvez simplement y installer cloud bot. Assurez-vous simplement qu&#x27;il n&#x27;y a rien de personnel dessus. Nettoyez-le complètement et ensuite vous pourrez le faire tourner. C&#x27;est fondamentalement, vous savez, nous pouvons réellement recycler notre vieille technologie avec ça. Et j&#x27;ai l&#x27;impression que c&#x27;est la meilleure utilisation possible. Mais disons que vous n&#x27;avez rien ou que vous en voulez un. Honnêtement, si vous voulez juste avoir l&#x27;air cool, c&#x27;est là que vous utilisez le Mac mini.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro et interface de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème humoristique basé sur une courbe de Gauss (courbe en cloche) et du texte technique en haut à gauche concernant des configurations matérielles et serveurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une illustration humoristique pour appuyer les explications sur le choix du matériel informatique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000436_seg10.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité en visioconférence à gauche, et un tableau blanc Miro affichant un mème sur une courbe de distribution gaussienne (courbe en cloche) avec &quot;MacMini Good Sir&quot; à gauche et à droite, illustrant des concepts techniques liés au matériel." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000436_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:36</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité en visioconférence à gauche, et un tableau blanc Miro affichant un mème sur une courbe de distribution gaussienne (courbe en cloche) avec &quot;MacMini Good Sir&quot; à gauche et à droite, illustrant des concepts techniques liés au matériel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:46 - 00:05:05</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc encore une fois, si vous avez un vieux ordinateur, utilisez-le en premier. Si vous ne savez pas ce qu&#x27;est un VPS, si vous savez comment faire tout le cloud VPS, tout ce truc, faites-le. Mais si vous voulez juste les points cool et utiliser iMessage, alors vous avez besoin en gros d&#x27;un Mac mini. Bien sûr. Et personnellement, VPS me, genre je veux dire ces mots ne vont pas vraiment ensemble. Je ne comprends pas totalement. J&#x27;ai une vague idée peut-être.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro, application de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème avec une courbe de distribution normale (courbe de Gauss) illustrant le concept &#x27;MacMini Good Sir&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Discussion et présentation visuelle d&#x27;un mème sur l&#x27;utilisation du Mac mini par rapport aux solutions VPS complexes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000455_seg11.jpg" alt="Écran partagé montrant deux intervenants en visioconférence et un graphique de distribution normale (courbe de Gauss) humoristique sur le Mac mini." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000455_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:55</span>
+                        <span class="caption-text">Écran partagé montrant deux intervenants en visioconférence et un graphique de distribution normale (courbe de Gauss) humoristique sur le Mac mini.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:23</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais pour moi, genre si j&#x27;avais eu un vieux vieil ordinateur portable, ç&#x27;aurait probablement été le plus pratique pour moi d&#x27;utiliser ça à la place. Mais à la place, je n&#x27;en avais pas. J&#x27;étais genre, j&#x27;ai d&#x27;autres cas d&#x27;utilisation pour mon Mac mini. Donc je vais juste aller en acheter un. Donc vous n&#x27;en avez pas besoin, c&#x27;est ce que Solomon est en train de dire. Ne faites tout simplement pas tourner ça sur votre ordinateur personnel à moins que vous ne vouliez, genre, frôler la limite, vous savez, genre, vous savez, marcher sur des œufs. Ouais.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de visioconférence et tableau blanc en ligne (Miro)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème humoristique basé sur la distribution normale (courbe de Gauss) avec des illustrations de type &quot;wojak&quot; et le texte &quot;MacMini Good Sir&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication d&#x27;un mème humoristique illustrant le choix du matériel informatique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000509_seg12.jpg" alt="Capture d&#x27;écran montrant une visioconférence avec deux intervenants et une application de tableau blanc Miro affichant un mème humoristique sur une courbe de Gauss comparant l&#x27;utilisation d&#x27;un Mac Mini." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000509_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une visioconférence avec deux intervenants et une application de tableau blanc Miro affichant un mème humoristique sur une courbe de Gauss comparant l&#x27;utilisation d&#x27;un Mac Mini.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:23 - 00:05:42</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ne le faites pas, c&#x27;est bien la seule chose que je dirai, genre, ne lui donnez pas accès à vos affaires personnelles, mais ce que vous pouvez faire, c&#x27;est lui donner un accès en lecture seule ou quelque chose comme ça. Pour qu&#x27;il puisse, genre, vous parler de trucs. Mais il y a aussi, genre, vous savez, la limite entre l&#x27;utilité et l&#x27;accessibilité, où plus vous lui donnez d&#x27;accès, plus il est utile, mais moins vous lui donnez d&#x27;accès, moins il est utile.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec l&#x27;outil de tableau blanc Miro et un outil de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un mème humoristique basé sur une courbe gaussienne (distribution normale) avec différents archétypes de personnages (cerveau lisse, wojak, personnage encapuchonné) et le texte &quot;MacMini Good Sir&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Partage d&#x27;écran d&#x27;un mème humoristique illustrant le sujet discuté par les intervenants lors de la réunion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000528_seg13.jpg" alt="Capture d&#x27;écran montrant une visioconférence avec deux intervenants à gauche et un tableau Miro partagé à droite affichant un mème sur une courbe de distribution normale." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000528_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:28</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une visioconférence avec deux intervenants à gauche et un tableau Miro partagé à droite affichant un mème sur une courbe de distribution normale.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:42 - 00:06:04</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a donc un équilibre à trouver. Très bien, Salman. Maintenant que les gens comprennent à peu près comment cela fonctionne, pourquoi ils ne devraient pas faire tourner ceci sur leurs ordinateurs personnels, et comment ils peuvent, vous savez, utiliser une solution de contournement pour le faire tourner sur autre chose, quels sont les cas d&#x27;utilisation clés ici ? Parce que j&#x27;ai vu des gens faire monter la sauce et montrer certaines choses, en disant qu&#x27;ils donnaient littéralement le contrôle total à ce truc pour qu&#x27;il réponde à leur femme, à leur famille et fasse toutes ces choses insensées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de tableau blanc Miro et flux vidéo de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un diagramme en cloche (courbe de distribution normale) annoté avec le texte &quot;MacMini Good Sir&quot; et des mèmes associés aux différentes sections statistiques.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un concept technique sous forme d&#x27;humour visuel (mème de la courbe de Gauss) pour illustrer le choix du matériel informatique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000547_seg14.jpg" alt="Capture montrant les deux présentateurs à gauche et un tableau blanc Miro affichant un graphique de distribution normale (courbe de Gauss) illustrant le mème &quot;MacMini Good Sir&quot;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000547_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:47</span>
+                        <span class="caption-text">Capture montrant les deux présentateurs à gauche et un tableau blanc Miro affichant un graphique de distribution normale (courbe de Gauss) illustrant le mème &quot;MacMini Good Sir&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000558_seg14.jpg" alt="Capture similaire à l&#x27;image 1 montrant la suite de la discussion avec les deux intervenants et le diagramme humoristique sur l&#x27;utilisation d&#x27;un Mac Mini." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000558_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:58</span>
+                        <span class="caption-text">Capture similaire à l&#x27;image 1 montrant la suite de la discussion avec les deux intervenants et le diagramme humoristique sur l&#x27;utilisation d&#x27;un Mac Mini.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:04 - 00:06:36</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, quels sont les cas d&#x27;usage pratiques que vous observez en ce moment et que les gens peuvent commencer à mettre en œuvre pour se simplifler un peu la vie ? Alors oui, passons en revue quelques cas d&#x27;usage différents. J&#x27;ai en fait réalisé une petite vidéo sympa et quelques animations pour cela afin que vous puissiez avoir une idée de ce que nous faisons. Mais en fait, pendant que nous préparions ce podcast, je me suis dit, hé, je devrais peut-être montrer quelques animations de ce à quoi ressemblerait ce CloudBot et de ce que c&#x27;est visuellement de travailler avec lui. Et, vous savez, j&#x27;ai simplement demandé à mon CloudBot de me préparer quelques vidéos. Et parce que je lui ai donné accès à ma clé API Gemini.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro et fenêtres de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un graphique statistique (courbe de distribution normale) illustré par des mèmes internet.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle et explication des cas d&#x27;usage ou d&#x27;un mème illustratif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000612_seg15.jpg" alt="Capture d&#x27;écran montrant l&#x27;intervenant en bas à gauche et un tableau Miro affichant un mème sur une courbe de Gauss avec les mentions &#x27;MacMini Good Sir&#x27;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000612_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:12</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;intervenant en bas à gauche et un tableau Miro affichant un mème sur une courbe de Gauss avec les mentions &#x27;MacMini Good Sir&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:36 - 00:06:55</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce qu&#x27;il a fait, c&#x27;est d&#x27;utiliser l&#x27;IA vocale pour créer ces animations. C&#x27;est juste un premier cas d&#x27;usage. C&#x27;est donc comme une vidéo expliquant un peu ce qu&#x27;est CloudBot, vous voyez le Mac mini là. Vous pouvez voir que cette personne est en train d&#x27;envoyer un message à CloudBot et que celui-ci s&#x27;en va et vérifie sur l&#x27;ordinateur, le fait pour vous. Et puis Salman, une chose que je veux mentionner aussi, c&#x27;est où est-ce que tu interagissais même avec CloudBot ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro et interface de lecteur vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif et illustration vidéo présentant des cas d&#x27;usage pratiques de l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des cas d&#x27;usage sur un tableau Miro avec lecture d&#x27;une vidéo explicative.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000641_seg16.jpg" alt="Capture montrant l&#x27;écran de l&#x27;ordinateur avec un tableau Miro affichant le texte &quot;8 practical use cases that will change how you work&quot; illustré par un personnage et un robot devant un ordinateur portable." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000641_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:41</span>
+                        <span class="caption-text">Capture montrant l&#x27;écran de l&#x27;ordinateur avec un tableau Miro affichant le texte &quot;8 practical use cases that will change how you work&quot; illustré par un personnage et un robot devant un ordinateur portable.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000646_seg16.jpg" alt="Capture montrant le tableau Miro avec la lecture d&#x27;une vidéo animée mettant en scène le robot et le personnage." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000646_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:46</span>
+                        <span class="caption-text">Capture montrant le tableau Miro avec la lecture d&#x27;une vidéo animée mettant en scène le robot et le personnage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:14</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Corrige-moi si je me trompe, mais tu viens de lui envoyer un message sur Telegram comme si tu envoyais un message à un ami et ensuite ça a généré ça ? Exactement, ouais. Donc tout ce que tu vois peut être fait via Telegram. Tu peux aussi simplement l&#x27;envoyer par iMessage, WhatsApp. Il y a une douzaine de façons différentes. Je dirais que si tu es débutant ou non technique, configure simplement Telegram parce que Telegram est la chose la plus sûre que tu puisses faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le tableau blanc Miro et interface de visioconférence avec deux intervenants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Visuels de démonstration d&#x27;animations générées par IA intégrés dans un tableau blanc Miro.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;exemples de générations visuelles et d&#x27;automatisations d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000700_seg17.jpg" alt="Image montrant une discussion en visioconférence à deux et un navigateur affichant un tableau blanc Miro avec l&#x27;animation d&#x27;un robot bleu sur un bureau en bois." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000700_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:00</span>
+                        <span class="caption-text">Image montrant une discussion en visioconférence à deux et un navigateur affichant un tableau blanc Miro avec l&#x27;animation d&#x27;un robot bleu sur un bureau en bois.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000705_seg17.jpg" alt="Image montrant la même visioconférence et le navigateur avec le tableau blanc Miro affichant cette fois une animation style anime d&#x27;un personnage sur une plage utilisant un smartphone." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000705_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:05</span>
+                        <span class="caption-text">Image montrant la même visioconférence et le navigateur avec le tableau blanc Miro affichant cette fois une animation style anime d&#x27;un personnage sur une plage utilisant un smartphone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:14 - 00:07:34</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et avec Telegram, après avoir configuré cela, vous lui donnez simplement accès à tout ce dont vous avez besoin. Donc, par exemple, voici il y a une application sympa que j&#x27;utilise où sur Telegram, vous pouvez réellement obtenir une application sur votre montre. Et maintenant, un peu comme, je ne sais pas si c&#x27;est comme James Bond ou autre, mais je peux simplement faire genre, hé, fais ces trucs pour moi. Je peux cliquer dessus grâce à cette application juste ici, TG Watch pour Telegram.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme Miro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vidéo intitulée &quot;Anime_Video_Generation_Beach_to_Robot&quot; d&#x27;une durée de 00:08 avec un logo Veo.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente ou commente une vidéo générée par une IA sur une plage.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000719_seg18.jpg" alt="Un écran partagé montrant deux présentateurs (en haut et en bas à gauche) et un navigateur affichant une application web (probablement Miro) avec une vidéo animée montrant un personnage sur une plage utilisant un smartphone." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000719_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Un écran partagé montrant deux présentateurs (en haut et en bas à gauche) et un navigateur affichant une application web (probablement Miro) avec une vidéo animée montrant un personnage sur une plage utilisant un smartphone.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:34 - 00:07:56</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je peux contrôler mon bureau entier avec ma montre juste en lui parlant. Je n&#x27;ai même pas besoin de taper. Et j&#x27;ai l&#x27;impression que ça a été vraiment amusant à concocter juste à cause de son côté futuriste, tu vois ? Ouais, nous avons exactement la même Apple Watch, ce qui est drôle, même le même bracelet. Donc, genre, j&#x27;aurais souhaité pouvoir avoir un truc comme ça depuis si longtemps, parce qu&#x27;en fait, genre, si tu y penses, c&#x27;est un peu comme Siri, ce que tu aurais souhaité que ce soit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> AUCUNE</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:56 - 00:08:31</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est que Siri devrait hypothétiquement être capable de partir et de faire toutes ces choses sur votre téléphone et votre ordinateur. Mais il ne le peut tout simplement pas, il n&#x27;est tout simplement pas assez bon. Alors je me demande si, dans six mois, Siri sera peut-être assez bon. Mais on dirait que Claudepot est peut-être une solution de contournement pour commencer à construire cette utilité sans avoir cette fonctionnalité native à l&#x27;intérieur des produits Apple et tout ça. Donc j&#x27;adore l&#x27;idée de l&#x27;Apple Watch, c&#x27;est juste une façon super créative d&#x27;interagir avec ça. Oui, alors j&#x27;aime juste être euh créatif de cette façon. En fait, c&#x27;est plutôt cool et euh c&#x27;est quelque chose auquel la plupart des gens n&#x27;ont pas pensé, mais ce que vous pouvez faire, c&#x27;est euh Brock, tu te souviens de mes lunettes Meta ? Oui, oui. Vous pouvez en fait contrôler Claudepot depuis vos</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Visioconférence (gauche) et tableau blanc Miro (centre/droite).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Une vidéo de démonstration animée intitulée &quot;Anime_Video_Generation_Beach_to_Robot&quot; intégrée dans un tableau Miro.</p>
+                        <p><strong>Action / Démonstration :</strong> Les intervenants discutent pendant qu&#x27;une vidéo de génération d&#x27;anime est affichée à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:31 - 00:09:08</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les lunettes Meta aussi mec c&#x27;est génial tu peux même prendre des photos j&#x27;ai vu des gens les utiliser et tu peux prendre des photos et dire genre hé va commander ça sur Amazon si c&#x27;est moins cher et je vais faire ça pour toi aussi c&#x27;est tellement fou mec ouais on se dirige vers des époques intéressantes on a l&#x27;impression que c&#x27;est juste le début de cette nouvelle façon d&#x27;interagir avec ces trucs comme je l&#x27;ai dit avant Salman on sait maintenant exactement comment utiliser Claudbot quelques cas d&#x27;usage différents que tu utilises tu l&#x27;utilises aussi et un gros truc que j&#x27;ai remarqué depuis que je l&#x27;utilise personnellement c&#x27;est le fait que ce n&#x27;est pas seulement réactif donc ce n&#x27;est pas comme ChatGPT où tu dois poser une question ou lui donner un certain prompt tu peux le laisser agir et être proactif faire des choses</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc numérique interactif (Miro) affichant un diagramme explicatif.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif divisé en deux parties : &#x27;REACTIVE AI (Most Agents)&#x27; avec des flux de commande basiques et &#x27;PROACTIVE AI (The Goal!)&#x27; illustrant l&#x27;anticipation des besoins et les bénéfices pour l&#x27;utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différences conceptuelles entre les agents d&#x27;IA réactifs et proactifs à l&#x27;aide d&#x27;un schéma explicatif visuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000858_seg21.jpg" alt="Présentation d&#x27;un tableau comparatif sur l&#x27;intelligence artificielle intitulé &#x27;AI AGENTS: REACTIVE vs. PROACTIVE (BENEFITS!)&#x27; montrant les différences de fonctionnement et de bénéfices utilisateur." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000858_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Présentation d&#x27;un tableau comparatif sur l&#x27;intelligence artificielle intitulé &#x27;AI AGENTS: REACTIVE vs. PROACTIVE (BENEFITS!)&#x27; montrant les différences de fonctionnement et de bénéfices utilisateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:08 - 00:09:41</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tu parce qu&#x27;il comprend exactement les processus que tu veux qu&#x27;il suive et qu&#x27;il te revient. Alors Salman, genre explique, genre c&#x27;est quoi la différence entre cette IA qui est réactive par rapport à proactive ? D&#x27;accord. Alors celui-ci est honnêtement le plus simple, mais mon cas d&#x27;usage préféré parce que moi, comme la plupart des gens, j&#x27;aime bien scroller machinalement parfois. Et tu sais, j&#x27;ai mon bot Telegram qui, si je fais des trucs stupides, m&#x27;envoie un message pour me dire, hé, est-ce que tu as fait ton travail pour la journée ? Et il m&#x27;envoie aussi des messages la nuit avant que je me détende, il m&#x27;envoie, hé, quelles sont tes trois principales choses que tu veux accomplir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Miro affiché à l&#x27;écran, interface de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif « AI AGENTS: REACTIVE vs. PROACTIVE (BENEFITS!) » détaillant le fonctionnement de l&#x27;IA réactive (attend les commandes, agit uniquement sur demande) et de l&#x27;IA proactive (anticipe les besoins, suggère des actions).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication théorique et visuelle des concepts d&#x27;agents IA réactifs et proactifs par l&#x27;intervenant.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000916_seg22.jpg" alt="Un tableau blanc illustre la différence entre l&#x27;IA réactive et proactive, avec deux intervenants en visioconférence sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000916_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:16</span>
+                        <span class="caption-text">Un tableau blanc illustre la différence entre l&#x27;IA réactive et proactive, avec deux intervenants en visioconférence sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000932_seg22.jpg" alt="Vue similaire montrant le schéma explicatif sur l&#x27;IA réactive versus proactive partagé à l&#x27;écran, avec les deux interlocuteurs." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000932_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:32</span>
+                        <span class="caption-text">Vue similaire montrant le schéma explicatif sur l&#x27;IA réactive versus proactive partagé à l&#x27;écran, avec les deux interlocuteurs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:41 - 00:10:13</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">fait demain ? Et ensuite, il continue de faire le point périodiquement. J&#x27;ai trouvé que cela m&#x27;a vraiment gardé super concentré. Et c&#x27;est pourquoi j&#x27;ai pu sortir autant de vidéos récemment, parce que j&#x27;ai littéralement quelqu&#x27;un qui veille sur moi et qui me court après si je ne fais pas les choses. Même de petites choses, par exemple, si ma femme me dit de, je ne sais pas, aller chercher du lait ou autre, plutôt que ce soit elle qui doive me rappeler de faire les choses, je peux juste lui dire de me le rappeler et il le fait pour moi, et c&#x27;est donc un endroit de moins où il y a des sollicitations, et c&#x27;est tellement facile à configurer, car tout ce que vous avez à faire, c&#x27;est juste de dire à CloudBot : hé, rappelle-moi de faire ceci à chaque fois, au rythme que tu souhaites, et il le fait tout simplement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc explicatif avec deux intervenants en visioconférence à gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif entre &quot;REACTIVE AI&quot; (attend les commandes, n&#x27;agit que sur demande) et &quot;PROACTIVE AI&quot; (anticipe les besoins, suggère des actions, support continu, comme un assistant exécutif).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les concepts d&#x27;agents IA réactifs versus proactifs à l&#x27;aide d&#x27;un schéma explicatif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_000949_seg23.jpg" alt="Un tableau blanc illustrant la différence entre agents IA réactifs et proactifs." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_000949_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:49</span>
+                        <span class="caption-text">Un tableau blanc illustrant la différence entre agents IA réactifs et proactifs.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:13 - 00:10:46</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">c&#x27;est c&#x27;est un peu comme de la magie si on y pense. C&#x27;est ça donc on n&#x27;a pas besoin de plonger trop profondément là-dedans genre la technicité derrière mais techniquement ça utilise genre du code cloud en arrière-plan pour ensuite créer ces genres de compétences ces compétences pour qu&#x27;il comprenne exactement comment fonctionner et donc tout comme le code cloud ou cloud co-work on peut juste lui donner genre une commande et il sait exactement genre chaque étape du processus pour que ce flux de travail soit fait c&#x27;est bien ça exactement donc comme par exemple juste ici n&#x27;est-ce pas tu vois il me dit mes priorités pour aujourd&#x27;hui parce que j&#x27;avais déjà eu une discussion parfois je je le dis la nuit mais j&#x27;ai oublié hé quelles sont les grandes choses que je veux faire aujourd&#x27;hui j&#x27;ai dit filmer un podcast avec</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro, Telegram, navigateur web</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif « REACTIVE vs PROACTIVE (BENEFITS!) » et flux de messages sur l&#x27;application Telegram.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des concepts d&#x27;IA proactive par rapport aux agents réactifs traditionnels.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001021_seg24.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface Miro avec un tableau blanc explicatif sur l&#x27;intelligence artificielle réactive versus proactive, ainsi qu&#x27;une superposition de l&#x27;application Telegram." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001021_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:21</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface Miro avec un tableau blanc explicatif sur l&#x27;intelligence artificielle réactive versus proactive, ainsi qu&#x27;une superposition de l&#x27;application Telegram.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:46 - 00:11:19</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Brock et tu vois ça m&#x27;a rappelé juste ici il y a deux ou trois autres choses que je veux faire mais tu sais ça me garde super bien cadré c&#x27;est littéralement ok genre en tant qu&#x27;entrepreneur solo n&#x27;importe qui qui est là et qui est du genre entrepreneur n&#x27;a pas de patron tu sais est dans ce monde des affaires ou peu importe genre tu comprends tu adores avoir la liberté mais parfois j&#x27;aimerais avoir quelqu&#x27;un qui me dise ce que je dois faire tu vois ce que je veux dire genre parfois cette structure fait du bien donc c&#x27;est marrant parce que c&#x27;est comme si les entrepreneurs veulent vraiment cette liberté mais genre ensuite je vois ça et je me dis mec c&#x27;est tellement génial d&#x27;avoir un truc qui est presque juste comme en train de me coacher à travers tout ce dont j&#x27;ai besoin</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Miro (tableau blanc interactif en ligne) et visioconférence à deux participants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma comparatif sur tableau blanc : &quot;AI AGENTS: REACTIVE vs PROACTIVE (BENEFITS!)&quot; détaillant le fonctionnement de l&#x27;IA réactive (attend les commandes) versus l&#x27;IA proactive (anticipe les besoins et suggère des actions).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication visuelle des différences entre les agents IA réactifs et proactifs lors d&#x27;une discussion en direct.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001055_seg25.jpg" alt="Vue en incrustation montrant un tableau blanc Miro comparant l&#x27;IA réactive et l&#x27;IA proactive, avec deux intervenants en vidéo sur le côté." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001055_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:55</span>
+                        <span class="caption-text">Vue en incrustation montrant un tableau blanc Miro comparant l&#x27;IA réactive et l&#x27;IA proactive, avec deux intervenants en vidéo sur le côté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001111_seg25.jpg" alt="Vue identique à l&#x27;image 1 montrant le diagramme explicatif des agents IA (réactif vs proactif) sur le tableau blanc partagé à l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001111_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:11</span>
+                        <span class="caption-text">Vue identique à l&#x27;image 1 montrant le diagramme explicatif des agents IA (réactif vs proactif) sur le tableau blanc partagé à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:19 - 00:11:52</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour le faire, ça a été genre ça a été mon cas d&#x27;usage préféré aussi pour ça, genre la nuit dernière, je lui ai donné une note vocale de cinq minutes et demie, juste via Telegram, j&#x27;ai juste envoyé une note vocale et j&#x27;ai pratiquement découpé tout ce sur quoi je travaille, tout ce qui me stresse, tout ce que j&#x27;ai fait hier, les choses que je dois accomplir aujourd&#x27;hui, et ça a littéralement genre tout découpé et genre découpé chaque tâche, expliqué l&#x27;urgence, si c&#x27;était urgent à faire aujourd&#x27;hui ou genre, je ne sais pas, c&#x27;est juste dingue ce que ça peut faire. C&#x27;est juste amusant de jouer avec. Genre par exemple, en ce moment, euh, je vais vous montrer ça. C&#x27;est un cas d&#x27;usage vraiment cool, c&#x27;est que maintenant je l&#x27;utilise en quelque sorte comme mon chef de projet parce que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> ClickUp, navigateur web, tableau blanc de présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes de tâches, tableaux de projets et organisation de flux de travail.
+[DESC_ACTION] Navigation dans l&#x27;application de gestion de tâches pour illustrer l&#x27;organisation du travail.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001144_seg26.jpg" alt="Vue détaillée d&#x27;un gestionnaire de tâches (ClickUp) montrant des listes de projets et des tâches planifiées." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001144_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:44</span>
+                        <span class="caption-text">Vue détaillée d&#x27;un gestionnaire de tâches (ClickUp) montrant des listes de projets et des tâches planifiées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:52 - 00:12:26</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">CloudBot n&#x27;oublie pas. C&#x27;est exact. Donc, il me gère. Comme vous voyez, il gère certaines de mes tâches personnelles, celles que je vous ai montrées, et il gère mon équipe. Je ne vais pas montrer ça, mais ouais. Donc, c&#x27;est comme rappeler aux gens ce qu&#x27;ils ont à faire. Il nettoie nos tickets, nos tâches pour la journée et nous n&#x27;avons pas à y toucher. Je peux juste dire : Hé, j&#x27;ai fait X, Y, Z aujourd&#x27;hui. Et ensuite, il va, il gère mon ClickUp. Ouais, non, c&#x27;est, c&#x27;est fou. D&#x27;accord. Donc, nous avons parlé de la façon dont CloudBot ou MultiBot est proactif. Maintenant, passons peut-être au, au processus suivant ici. Ouais. Donc, il y a une tonne de cas d&#x27;utilisation que nous pouvons couvrir, mais je voudrais vraiment vous montrer ceci. Donc, pour</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de tâches / tableau de bord (type Jira, Miro ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Listes de tâches, tickets et colonnes de gestion de projet (comme &quot;To Do&quot;, &quot;In Progress&quot;, &quot;Done&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration de l&#x27;interface de gestion des tâches gérée ou nettoyée par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001200_seg27.jpg" alt="Capture d&#x27;écran montrant une interface de gestion de tâches (style Kanban/tableau) avec des tickets ou des cartes de tâches organisées en colonnes." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001200_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:00</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de gestion de tâches (style Kanban/tableau) avec des tickets ou des cartes de tâches organisées en colonnes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:26 - 00:12:58</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Par exemple, récemment, je viens juste de mettre en ligne cette vidéo sur CloudBot et vous voyez, elle décolle. Euh, d&#x27;accord. Elle décolle, mais le point positif, c&#x27;est qu&#x27;elle s&#x27;en sort bien, mais sans que j&#x27;aie à faire quoi que ce soit. Vous pouvez voir qu&#x27;il y a des shorts qui s&#x27;en sortent plutôt bien aussi. Vous voyez, ça me rapporte des vues, ces shorts. Je n&#x27;y touche absolument pas. Ce qui se passe, c&#x27;est que j&#x27;ai dit à CloudBot : « Hé, chaque fois que je sors une vidéo, fais-en des extraits et publie-les. » Donc ce qui s&#x27;est passé, c&#x27;est qu&#x27;elle est sortie, elle est allée sur Zapier parce que Opus Clip n&#x27;a pas d&#x27;API.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> YouTube Studio (interface web de gestion de chaîne et d&#x27;analyse de contenu).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Métriques de performance vidéo : 923 vues, indicateur « Great job! Views are 2.9 times higher », graphiques de croissance des vues au fil du temps et statistiques de trafic par source (Shorts feed à 54,9%, YouTube search à 39,4%).</p>
+                        <p><strong>Action / Démonstration :</strong> Analyse des statistiques de performance et de l&#x27;engagement d&#x27;une vidéo publiée récemment.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001242_seg28.jpg" alt="Le présentateur présente un tableau de bord analytique YouTube Studio affichant les performances d&#x27;une vidéo récente (« CloudBot »), avec des graphiques de vues et de rétention d&#x27;audience." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001242_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:42</span>
+                        <span class="caption-text">Le présentateur présente un tableau de bord analytique YouTube Studio affichant les performances d&#x27;une vidéo récente (« CloudBot »), avec des graphiques de vues et de rétention d&#x27;audience.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:58 - 00:13:33</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc il utilise Zapier pour, tu sais, attraper chaque fois que je fais une vidéo, je ne sais pas ce qui se passe bordel ici. Donc il découpe les vidéos, il a écrit du code dans trigger dev, je ne suis pas sûr de ce qui se passe non plus, et ensuite, tu sais, il les publie sur mon YouTube, mon Instagram, mon Twitter, et ça me rapporte juste beaucoup plus de visibilité que ce que j&#x27;aurais voulu, donc c&#x27;est plutôt cool de voir comment on assiste à ça en temps réel. Mec, c&#x27;est de la folie, en tant que créateur de contenu, genre, je détesterais avoir ça moi-même, le fait que ça puisse simplement réutiliser automatiquement ça. Donc une chose à noter ici, et je suis curieux de savoir comment ça fonctionne, c&#x27;est comment ça fait pour aller réellement publier sur ton YouTube Studio.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de Trigger.dev, avec deux flux vidéo des intervenants en incrustation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches automatisées en cours d&#x27;exécution dans le panneau principal, avec des identifiants de tâches (task ID), des durées et des statuts (Running, Queued).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de l&#x27;outil d&#x27;automatisation Trigger.dev pour illustrer le traitement et le découpage automatisé des vidéos.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001307_seg29.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du tableau de bord de Trigger.dev avec les deux participants visibles dans des encarts vidéo à gauche." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001307_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du tableau de bord de Trigger.dev avec les deux participants visibles dans des encarts vidéo à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:33 - 00:14:07</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">donc je suppose qu&#x27;il utilise peut-être l&#x27;accès au navigateur et qu&#x27;il va cliquer littéralement sur votre ordinateur ou est-ce que je me trompe donc ce que je lui ai dit de faire c&#x27;est qu&#x27;il y a ce euh truc appelé blowtato et avec blowtato j&#x27;avais déjà un compte donc je lui ai juste donné la clé API et je suis genre hé utilise ce truc c&#x27;est déjà connecté à tous mes comptes va utiliser ça pour publier parce que blowtato fait en sorte que ce soit facile tu sais tu peux programmer ça jour par jour ça le met juste en file d&#x27;attente pour le jour suivant et tout est pris en charge donc je vais m&#x27;assurer que lorsque vous faites des automatisations avec thoughtbot ce que vous faites c&#x27;est que ce que vous faites c&#x27;est aussi de trouver des services qu&#x27;il peut utiliser pour rendre son travail beaucoup plus facile</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur Web affichant la page d&#x27;accueil de la plateforme Blowtato.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le titre principal de la page web &quot;Scale your brand with organic Social SEO&quot;, ainsi que des exemples de visuels et de publications marketing.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la plateforme Blowtato mentionnée dans l&#x27;audio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001341_seg30.jpg" alt="Capture d&#x27;écran montrant la page d&#x27;accueil du site Web &quot;Blowtato&quot; avec deux intervenants en visioconférence sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001341_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:41</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant la page d&#x27;accueil du site Web &quot;Blowtato&quot; avec deux intervenants en visioconférence sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:07 - 00:14:28</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que quand vous pouvez faire ça et si vous pouvez transformer la chose que vous faites en une automatisation directe où elle n&#x27;a pas besoin de réfléchir, alors votre automatisation va être cohérente parce qu&#x27;elle ne suit même pas un ensemble d&#x27;étapes, mais elle déclenche simplement un script Python ou quelque chose comme ça. C&#x27;est vrai, ouais, c&#x27;est fou. Et le fait que vous ayez dit, hé, je veux que tu, comme vous expliquez le flux de travail et qu&#x27;ensuite il a compris que la meilleure façon de faire cela était de créer un Zap dans Zapier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un outil d&#x27;automatisation de type Zapier / Make.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;automatisation composé de deux blocs : &quot;1. Catch Hook&quot; (Webhooks by Zapier) et &quot;2. Clip Your Video&quot; (OpusClip), reliés par une flèche.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un flux d&#x27;automatisation reliant un webhook à un outil de découpage vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001423_seg31.jpg" alt="Un schéma d&#x27;automatisation montrant un workflow avec Webhooks by Zapier (Catch Hook) connectant vers OpusClip (Clip Your Video)." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001423_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:23</span>
+                        <span class="caption-text">Un schéma d&#x27;automatisation montrant un workflow avec Webhooks by Zapier (Catch Hook) connectant vers OpusClip (Clip Your Video).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:28 - 00:15:05</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et je suppose que c&#x27;est une sorte de bonne transition pour, genre, ajouter un peu plus de fonctionnalité à notre CloudBus. Donc une façon simple de faire ça, n&#x27;est-ce pas, ce serait d&#x27;utiliser quelque chose comme Zapier mcp, qui en gros, si vous ne savez pas ce qu&#x27;est mcp, ne vous inquiétez pas, ce n&#x27;est pas aussi effrayant que ça en a l&#x27;air, ça permet essentiellement, genre, de connecter vos flux de travail agentiques, dans ce cas-ci, à n&#x27;importe quelle application avec laquelle Zapier se connecte ou peu importe ce que cet-te serveur mcp est. Donc ouais, Solomon juste ici a ça, genre, d&#x27;ouvert et littéralement, vous pouvez juste cliquer sur « ajouter un outil » et vous avez toutes ces applications différentes à choisir, vous en avez, genre, plus de 8 000 juste là, et ça peut réellement exécuter des actions à travers n&#x27;importe laquelle de ces applications. Ouais, j&#x27;adore utiliser ça, ça me rend la vie tellement plus facile et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface d&#x27;automatisation (Zapier/OpusClip)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;intégration comprenant une étape de réception de webhook (&#x27;Catch Hook&#x27;) connectée à une action de traitement vidéo (&#x27;Clip Your Video&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un flux de travail automatisé reliant des webhooks à un outil de découpage vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001437_seg32.jpg" alt="Capture d&#x27;écran montrant une interface de workflow d&#x27;automatisation avec deux blocs reliés : Webhooks by Zapier (&#x27;Catch Hook&#x27;) et OpusClip (&#x27;Clip Your Video&#x27;). Le présentateur et un invité apparaissent dans des encadrés sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001437_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:37</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de workflow d&#x27;automatisation avec deux blocs reliés : Webhooks by Zapier (&#x27;Catch Hook&#x27;) et OpusClip (&#x27;Clip Your Video&#x27;). Le présentateur et un invité apparaissent dans des encadrés sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:05 - 00:15:30</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et la vie de mon CloudBot est tellement plus facile parce qu&#x27;il n&#x27;a pas à comprendre tout un tas de trucs. Ouais, littéralement. Ouais, et ça rend juste tout cohérent et ça ne plante pas parce que, tu sais, techniquement l&#x27;IA ne produit pas le même résultat à chaque fois, mais une automatisation, quand elle est simplement écrite en code, si. Il y a donc ce grand concept de flux de travail agentiques qui cartonnent en ce moment où, par exemple, tu peux amener Cloud à créer ces automations et ensuite à les exécuter aussi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application CloudBot / Interface web avec fenêtre modale d&#x27;intégration d&#x27;outils.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;applications et d&#x27;outils logiciels connectables affichés dans une fenêtre modale (Asana, Salesforce, Jira, ClickUp, Microsoft Excel, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et sélection d&#x27;outils pour configurer les intégrations d&#x27;un bot cloud.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001517_seg33.jpg" alt="Capture montrant l&#x27;écran de l&#x27;application CloudBot avec une fenêtre pop-up permettant d&#x27;ajouter des outils et des intégrations." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001517_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:17</span>
+                        <span class="caption-text">Capture montrant l&#x27;écran de l&#x27;application CloudBot avec une fenêtre pop-up permettant d&#x27;ajouter des outils et des intégrations.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:30 - 00:15:49</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais ces automatisations ne sont essentiellement que des fichiers Python. Donc si vous fabriquez quelque chose avec, disons, N8N ou autre, tout cela à la fin n&#x27;est que du code, n&#x27;est-ce pas ? Et quand nous faisons des flux de travail agentiques, c&#x27;est la même chose. Nous sommes juste, nous sommes retournés à la case départ et nous écrivons simplement le code parce que Claude est tellement meilleur pour écrire le code. Il est juste hébergé à l&#x27;intérieur de votre Mac mini, par exemple. Donc vous n&#x27;avez pas besoin de le déployer ou quoi que ce soit. Il tourne juste en permanence.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface d&#x27;automatisation ou de workflow avec une boîte de dialogue d&#x27;intégration d&#x27;outils.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale &quot;Add tools&quot; montrant des icônes d&#x27;applications tierces (Asana, Salesforce, Jira, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation d&#x27;une plateforme d&#x27;intégration ou d&#x27;automatisation de flux de travail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001534_seg34.jpg" alt="Capture montrant l&#x27;écran partagé avec une interface web affichant une fenêtre modale d&#x27;ajout d&#x27;outils, accompagnée des deux intervenants en vignette vidéo." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001534_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:34</span>
+                        <span class="caption-text">Capture montrant l&#x27;écran partagé avec une interface web affichant une fenêtre modale d&#x27;ajout d&#x27;outils, accompagnée des deux intervenants en vignette vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:49 - 00:16:07</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et Claudebot a accès à tout. C&#x27;est vrai. Ouais, non, c&#x27;est génial. Très bien, Salman. Donc on a pas mal parlé de ce qu&#x27;est Claudebot, à qui il s&#x27;adresse, comment vous pouvez commencer à l&#x27;utiliser, le booster avec quelque chose comme un MCP et des cas d&#x27;usage différents qu&#x27;on a trouvés pour ça. Donc une question que je veux poser, parce que je ne veux pas faire cette vidéo juste pour faire du ऑफ़ de ça... Enfin, c&#x27;est évident que c&#x27;est cool. C&#x27;est nouveau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web de type assistant ou intégration d&#x27;outils (MCP) avec une modale &quot;Add tools&quot;.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale listant divers outils d&#x27;applications professionnelles (Asana, Salesforce, Jira, ClickUp, Notion, Confluence, Microsoft Excel, Microsoft SharePoint, Zendesk, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des intégrations d&#x27;applications tierces disponibles pour connecter l&#x27;outil d&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001554_seg35.jpg" alt="Une vue d&#x27;écran d&#x27;un navigateur web montrant une interface de configuration avec une fenêtre modale d&#x27;ajout d&#x27;outils, accompagnée des fenêtres vidéo des deux interlocuteurs sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001554_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:54</span>
+                        <span class="caption-text">Une vue d&#x27;écran d&#x27;un navigateur web montrant une interface de configuration avec une fenêtre modale d&#x27;ajout d&#x27;outils, accompagnée des fenêtres vidéo des deux interlocuteurs sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:07 - 00:16:27</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est amusant de l&#x27;utiliser. Selon vous, dans quels domaines cet outil excelle-t-il ? Où pensez-vous qu&#x27;il est bon ? Mais aussi, où pensez-vous qu&#x27;il n&#x27;est peut-être pas le meilleur et qu&#x27;il est un peu trop surestimé ? Et je veux qu&#x27;on discute un peu plus de la direction que prend l&#x27;interaction avec ce genre de technologie, parce qu&#x27;on a vraiment l&#x27;impression que c&#x27;est l&#x27;avenir, que ce soit ClaudeBot ou non. Ouais. C&#x27;est donc vraiment fou de voir comment les choses évoluent actuellement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de configuration d&#x27;assistant virtuel / application d&#x27;IA, avec intégration d&#x27;outils professionnels.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre modale &quot;Add tools&quot; présentant des applications et services connectables (Asana, Salesforce, Jira Software Cloud, ClickUp, Monday.com, Confluence, Microsoft Excel, Microsoft SharePoint, Zendesk, Box).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des options d&#x27;intégration d&#x27;outils et de connecteurs tiers au sein d&#x27;une plateforme d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001617_seg36.jpg" alt="Écran partagé montrant une visioconférence avec deux intervenants à gauche et une interface de configuration logicielle affichant un menu &quot;Add tools&quot; avec des intégrations tierces (Salesforce, Jira, etc.) au centre." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001617_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:17</span>
+                        <span class="caption-text">Écran partagé montrant une visioconférence avec deux intervenants à gauche et une interface de configuration logicielle affichant un menu &quot;Add tools&quot; avec des intégrations tierces (Salesforce, Jira, etc.) au centre.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:27 - 00:16:47</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En fait, A16Z a fait un grand pari sur la transformation agentique du web, et peut-être que je vais vous montrer un petit graphique. En ce trop moment, vous savez, ce qu&#x27;on faisait, c&#x27;est juste utiliser nos ordinateurs et tout était fait par ici. Maintenant, on arrive un peu au point où, vous savez, la bande passante est une chose importante, donc la vitesse à laquelle nous pouvons accomplir les choses et utiliser le levier.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une illustration explicative sur l&#x27;évolution du web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustration en trois parties montrant la transition du PC Web à l&#x27;ère mobile, puis à l&#x27;ère du web agentique (Agentic Web Era).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;évolution technologique et illustre l&#x27;ère agentique du web à l&#x27;aide d&#x27;un schéma visuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001632_seg37.jpg" alt="Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche et en bas à gauche, ainsi qu&#x27;une illustration centrale divisée en trois étapes : PC WEB ERA, MOBILE WB ERA et AGENTIC WEB ERA." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001632_seg37.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur et un invité en haut à gauche et en bas à gauche, ainsi qu&#x27;une illustration centrale divisée en trois étapes : PC WEB ERA, MOBILE WB ERA et AGENTIC WEB ERA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:48 - 00:17:21</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ce que nous pouvons faire essentiellement, c&#x27;est lorsque nous interagissons avec le Web. Donc, par exemple, je veux acheter un billet d&#x27;avion pour ce voyage que moi, Brock, et un groupe de personnes allons faire, n&#x27;est-ce pas ? Et pour faire ça en ce moment, je devrais aller sur Google Flights. Je devrais chercher un tas de vols. Je devrais acheter toutes ces différentes petites étapes, n&#x27;est-ce pas ? La façon dont nous voyons le Web évoluer, c&#x27;est qu&#x27;en fait, les sites Web seront optimisés au départ pour les agents. Cela signifie donc que je peux dire à mon CloudBot ou à n&#x27;importe quel agent, par exemple : Hé, va me trouver le vol le moins cher pour Le Cap. Et ce qu&#x27;il va faire, c&#x27;est qu&#x27;il va me donner quelques options. Je vais simplement les parcourir et ensuite je clique sur « c&#x27;est parti ».</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une infographie explicative.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma en trois étapes illustrant l&#x27;évolution technologique vers l&#x27;ère des agents autonomes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle des différentes ères d&#x27;interaction avec internet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001656_seg38.jpg" alt="Une illustration schématique comparant trois époques du web : PC Web Era, Mobile Web Era et Agentic Web Era." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001656_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:56</span>
+                        <span class="caption-text">Une illustration schématique comparant trois époques du web : PC Web Era, Mobile Web Era et Agentic Web Era.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:21 - 00:17:53</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite il l&#x27;achète pour moi. C&#x27;est donc une façon un peu différente d&#x27;interagir avec le web. Bien sûr, il y aura des interfaces utilisateur, de jolies choses et tout ça. Mais ce qu&#x27;on voit en ce moment, c&#x27;g&#x27;est que la bande passante avec laquelle nous effectuons des tâches sur notre ordinateur diminue radicalement parce que notre agent contrôle l&#x27;ordinateur, ce qui signifie que toute l&#x27;infrastructure d&#x27;internet doit changer et s&#x27;adapter de cette manière. C&#x27;est exact. 100 %. On a un peu l&#x27;impression que CloudBot n&#x27;est peut-être pas le premier du genre. Pour moi, j&#x27;ai l&#x27;impression que c&#x27;est la première chose tangible du genre : ok, je vois vraiment où tout cela nous mène maintenant et comment je vais interagir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une infographie explicative et fenêtres de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustration schématique comparant l&#x27;ère du PC (bureau), l&#x27;ère du mobile et l&#x27;ère des agents autonomes (Agentic Web Era) où l&#x27;utilisateur se détend pendant que des agents IA travaillent pour lui.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur et son invité commentent l&#x27;évolution des interfaces et de l&#x27;interaction avec le web vers l&#x27;automatisation par agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001737_seg39.jpg" alt="Écran partagé montrant les deux interlocuteurs à gauche et une illustration centrale représentant l&#x27;évolution du web en trois ères : PC Web Era, Mobile WB Era et Agentic Web Era." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001737_seg39.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:37</span>
+                        <span class="caption-text">Écran partagé montrant les deux interlocuteurs à gauche et une illustration centrale représentant l&#x27;évolution du web en trois ères : PC Web Era, Mobile WB Era et Agentic Web Era.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:53 - 00:18:13</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avec mes ordinateurs, ma technologie et mes agents IA, au lieu de devoir aller dans quelque chose comme N8N et de connecter tous ces nœuds qui se rompent probablement de temps en temps, à la place, je pourrais simplement utiliser quelque chose comme ça, lui donner accès à des serveurs MCP ou à certaines API. Et il est capable d&#x27;aller simplement interagir, d&#x27;extraire des choses et de créer des choses sans même que j&#x27;aie besoin de savoir comment il fait cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une infographie sur l&#x27;évolution du web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma illustratif divisé en trois époques : ordinateur fixe, smartphone, et agents intelligents automatisés.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la vision et de l&#x27;évolution vers l&#x27;ère des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001758_seg40.jpg" alt="Une illustration en trois parties montrant l&#x27;évolution technologique : PC Web Era, Mobile Web Era et Agentic Web Era, avec les deux intervenants en médaillon." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001758_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:58</span>
+                        <span class="caption-text">Une illustration en trois parties montrant l&#x27;évolution technologique : PC Web Era, Mobile Web Era et Agentic Web Era, avec les deux intervenants en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:13 - 00:18:34</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ouais, ça a été intéressant à voir. Je suppose que ma dernière question pour toi c&#x27;est du genre, est-ce que tu as rencontré des problèmes avec CloudBot ? Parce que moi personnellement, genre, je l&#x27;ai fait bien fonctionner hier pendant une bonne demi-heure à une heure, et puis je n&#x27;arrête pas de rencontrer des problèmes. Donc ce n&#x27;est pas tout rose, mais on a vraiment l&#x27;impression que c&#x27;est le début de quelque chose d&#x27;intéressant. Ouais, donc en fait, tu vas rencontrer énormément de problèmes quand tu utilises CloudBot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur Web (Chrome)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustration synthétique représentant l&#x27;évolution des interfaces utilisateur vers l&#x27;ère des agents IA autonome.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation conceptuelle et discussion autour de l&#x27;évolution des outils IA sans manipulation technique ni démonstration de code/terminal à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:34 - 00:18:56</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Principalement parce que souvenez-vous, ce sont des technologies open source. Je veux dire, un type dans sa cave, probablement, je ne plaisante pas. Je ne sais pas, en fait, c&#x27;est un ingénieur estimé, mais il a juste concocté ça lui-même. Et puis maintenant, tout le monde du monde entier y contribue lentement. Donc cette chose évolue sous nos yeux. Et vous verrez probablement beaucoup plus d&#x27;entreprises se précipiter pour essayer de créer une interface facile pour cela ou pour le rendre encore plus facile.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur Web (Google Chrome)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Diagramme visuel montrant trois étapes de l&#x27;informatique : l&#x27;utilisateur sur PC (&quot;PC WEB ERA&quot;), l&#x27;utilisateur sur smartphone (&quot;MOBILE WEB ERA&quot;), et l&#x27;utilisateur assisté par des agents autonomes IA (&quot;AGENTIC WEB ERA&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication conceptuelle de la transition vers le Web fondé sur les agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001839_seg42.jpg" alt="Illustration schématique comparant l&#x27;évolution des étapes technologiques : &quot;PC WEB ERA&quot;, &quot;MOBILE WEB ERA&quot; et &quot;AGENTIC WEB ERA&quot;." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001839_seg42.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:18:39</span>
+                        <span class="caption-text">Illustration schématique comparant l&#x27;évolution des étapes technologiques : &quot;PC WEB ERA&quot;, &quot;MOBILE WEB ERA&quot; et &quot;AGENTIC WEB ERA&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:57 - 00:19:32</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc en ce moment c&#x27;est probablement le plus dur que ça ne le sera. C&#x27;est toujours faisable. Si tu as vu ma vidéo, c&#x27;est un peu du genre, je te montre comment déboguer où tu fais juste copier et coller, copier et coller, mais c&#x27;est juste comprendre comment tu fais ça qui est la clé dont tu as besoin pour commencer à utiliser cette technologie. À cent pour cent. Salman, ça a été sympa, mec. Pour mon audience, s&#x27;ils entendent ça, ils se disent, hé, je veux prendre le risque. Je veux commencer à jouer avec ça et à tester ça parce que je vois ça comme le futur et je veux apprendre à, tu vois, interagir avec l&#x27;IA comme ça, quelle est la première chose que tu leur suggérerais d&#x27;aller faire ? Franchement, j&#x27;ai beaucoup réfléchi à la vidéo que je viens de faire, euh, et j&#x27;ai essayé, j&#x27;ai littéralement configuré un tout nouvel ordinateur, alors jetez peut-être un œil à cette vidéo, c&#x27;est probablement le meilleur endroit pour commencer, si tu peux faire ça, tu peux tout faire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web Google Chrome affichant un schéma illustré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Illustration synthétique découpée en trois panneaux (&quot;PC WEB ERA&quot;, &quot;MOBILE WB ERA&quot;, &quot;AGENTIC WEB ERA&quot;) représentant la transition d&#x27;un travail manuel sur PC vers une utilisation smartphone, puis vers la prise en charge des tâches par des agents IA autonomes.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation explicative et échange entre les intervenants sur la transition actuelle vers l&#x27;automatisation par les agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/kairgvzdUpo/kairgvzdUpo_001906_seg43.jpg" alt="Infographie explicative comparant l&#x27;évolution technologique à travers trois étapes : l&#x27;ère PC Web, l&#x27;ère Mobile Web et l&#x27;ère Web Agentique." loading="lazy" onclick="openLightbox('../screenshots/kairgvzdUpo/kairgvzdUpo_001906_seg43.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:06</span>
+                        <span class="caption-text">Infographie explicative comparant l&#x27;évolution technologique à travers trois étapes : l&#x27;ère PC Web, l&#x27;ère Mobile Web et l&#x27;ère Web Agentique.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:32 - 00:20:01</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Parfait, eh bien Salman, ça a été génial mec, merci d&#x27;avoir encore une fois rejoint ce podcast, j&#x27;ai tellement aimé simplement geeker sur ces ces nouvelles sorties, les choses vont tellement vite donc merci infiniment d&#x27;être venu, je te vois dans une semaine et ça a été super de faire ça mec, c&#x27;est clair ouais, peut-être que pour la prochaine folle avancée on sera en personne pour tourner le podcast, je sais, ce serait génial, ce serait tellement génial, je ne douterais pas que ça arrive, ouais, bon les gars, merci de m&#x27;avoir reçu Brox, ça a été super sympa, ouais, je vous vois les gars dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun</p>
+                        <p><strong>Action / Démonstration :</strong> Aucun</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
