@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `102 / 273` (`37.4%`)
+- **Vidéos traitées** : `103 / 273` (`37.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -119,6 +119,7 @@
 | 2026-01-29 | [kairgvzdUpo](https://www.youtube.com/watch?v=kairgvzdUpo) | **Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)** | [2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-29_YT-[kairgvzdUpo]_Je déteste OpenClaw... mais je ne peux plus m'en passer (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `44` |
 | 2026-01-28 | [7ASCWheuTtc](https://www.youtube.com/watch?v=7ASCWheuTtc) | **De nouvelles compétences Manus surclassent vos agents IA (Instantanément)** | [2026-01-28_YT-[7ASCWheuTtc]_De nouvelles compétences Manus surclassent vos agents IA (Instantanément)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-28_YT-[7ASCWheuTtc]_De nouvelles compétences Manus surclassent vos agents IA (Instantanément)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-28_YT-[7ASCWheuTtc]_De nouvelles compétences Manus surclassent vos agents IA (Instantanément)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `48` |
 | 2026-01-25 | [FVrNRnfC8oM](https://www.youtube.com/watch?v=FVrNRnfC8oM) | **Cette compétence Claude vient de tout changer (Remotion)** | [2026-01-25_YT-[FVrNRnfC8oM]_Cette compétence Claude vient de tout changer (Remotion)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-25_YT-[FVrNRnfC8oM]_Cette compétence Claude vient de tout changer (Remotion)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-25_YT-[FVrNRnfC8oM]_Cette compétence Claude vient de tout changer (Remotion)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `39` |
+| 2026-01-14 | [EPfnhyjn78E](https://www.youtube.com/watch?v=EPfnhyjn78E) | **Maîtrisez 99 % de Claude Cowork en 26 minutes (Sans code)** | [2026-01-14_YT-[EPfnhyjn78E]_Maîtrisez 99 % de Claude Cowork en 26 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-14_YT-[EPfnhyjn78E]_Maîtrisez 99 % de Claude Cowork en 26 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-14_YT-[EPfnhyjn78E]_Maîtrisez 99 % de Claude Cowork en 26 minutes (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `67` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
