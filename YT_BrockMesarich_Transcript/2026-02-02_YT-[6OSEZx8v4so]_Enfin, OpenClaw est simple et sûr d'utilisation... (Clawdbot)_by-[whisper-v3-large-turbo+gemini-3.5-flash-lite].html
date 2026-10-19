@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Enfin, OpenClaw est simple et sûr d&#x27;utilisation... (Clawdbot) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Enfin, OpenClaw est simple et sûr d&#x27;utilisation... (Clawdbot)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-02-02</span>
+                <span class="badge">⏱️ 00:09:13</span>
+                <span class="badge">🆔 <code>6OSEZx8v4so</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=6OSEZx8v4so" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo présentée par Brock Mesarich pour la chaîne *Brock Mesarich | AI for Non Techies* aborde le déploiement simplifié et sécurisé de « Claudebot » (également appelé OpenClaw ou Moltibot), un agent conversationnel autonome et open-source capable d'exécuter des actions complexes sur un système. Auparavant, la configuration de cet outil relevait du parcours du combattant pour les profils non techniques : elle nécessitait l'achat d'un Mac Mini dédié ou la location d'un VPS, la maîtrise des lignes de commande via le Terminal, ainsi que l'installation complexe de dépendances telles que Node.js, Docker, NPM et divers pare-feu. De plus, la gestion manuelle des clés API d'Anthropic ou d'OpenAI exposait les utilisateurs à des risques financiers liés à une surconsommation de jetons, voire à des failles de sécurité majeures compromettant des données confidentielles.<br><br>La vidéo met en lumière une solution radicalement simplifiée et exempte de code : l'utilisation de la plateforme **Emergent** et de son bouton d'automatisation préconfiguré (MoldBot). Cette approche permet de s'affranchir de toute infrastructure matérielle locale en faisant tourner l'environnement directement dans le cloud, sans configuration manuelle de terminal. L'interface gère automatiquement l'attribution des clés API (en offrant une option gratuite pour débuter) et guide l'utilisateur pas à pas pour connecter l'instance d'OpenClaw à des applications de messagerie instantanée comme Telegram via Botfather, transformant l'interaction avec l'agent en un simple échange de SMS sécurisé et instantané.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Claude (Anthropic)** : Modèle de langage avancé utilisé comme moteur principal pour propulser les capacités de raisonnement et d'exécution d'OpenClaw.<br>* **Grok** : Moddeur et modèle d'intelligence artificielle alternatif évoqué dans l'écosystème global des LLMs actuels.<br>* **Gemini** : Modèle d'intelligence artificielle de Google mentionné parmi les solutions concurrentes du marché.<br>* **ChatGPT (OpenAI)** : Modèle de référence et fournisseur potentiel de clés API pour alimenter les agents conversationnels.<br>* **Make** : Plateforme d'automatisation de flux de travail no-code (au même titre que Zapier ou n8n) pour connecter différentes applications logicielles.<br>* **Zapier** : Outil d'intégration et d'automatisation cloud permettant de lier des API tierces sans coder.<br>* **n8n** : Logiciel d'automatisation de workflows open-source et flexible pour orchestrer des tâches complexes.<br>* **OpenClaw (alias Claudebot / Moltibot)** : Agent open-source autonome capable d'interagir avec des environnements et des applications de messagerie.<br>* **Emergent** : Plateforme no-code/cloud facilitant le déploiement instantané et sécurisé d'applications autonomes comme MoldBot sans configuration matérielle.<br>* **Telegram & Botfather** : Application de messagerie sécurisée et outil natif de création de bots utilisés pour interagir à distance avec l'agent OpenClaw.<br>* **Node.js, Docker & NPM** : Environnements techniques et gestionnaires de paquets traditionnellement requis (et ici contournés) pour l'installation locale de l'agent.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>1. **Élimination des barrières matérielles** : Finis l'obligation d'investir 1 500 dollars dans un Mac Mini dédié ou de configurer un VPS (Serveur Virtuel Privé) complexe et abstrait pour les non-initiés.<br>2. **Sécurité de l'écosystème personnel** : Isoler l'agent open-source dans le cloud évite qu'un script autonome ou une boucle d'exécution incontrôlée n'accède aux fichiers sensibles de l'ordinateur principal ou n'envoie des messages inopinés.<br>3. **Contournement des configurations de Terminal** : Suppression totale de l'utilisation des lignes de commande, rendant l'outil accessible aux profils strictement non techniques en quelques clics.<br>4. **Gestion financière et clés API intégrées** : Utilisation d'un environnement cloud pré-approvisionné (via Emergent) permettant de tester l'outil gratuitement sans lier immédiatement ses propres cartes bancaires ou risquer d'épuiser ses crédits d'API OpenAI/Anthropic.<br>5. **Déploiement instantané no-code** : Automatisation complète de la mise en place de l'environnement en 2 à 5 minutes grâce à un simple bouton de pré-chargement de prompt sur la plateforme cloud.<br>6. **Intégration fluide avec Telegram** : Utilisation de l'outil natif *Botfather* pour créer un bot personnalisé, générer un jeton d'accès sécurisé et lier l'instance cloud à une interface de messagerie mobile familière.<br>7. **Expérience utilisateur conversationnelle** : Interagir avec OpenClaw par le biais de Telegram procure l'expérience fluide d'un échange de SMS avec un assistant personnel capable d'exécuter des tâches en arrière-plan.<br>8. **Évolutivité et flexibilité des modèles** : Possibilité de basculer à tout moment sur ses propres clés API (Anthropic ou OpenAI) en un minimum de manipulations dès que l'utilisateur souhaite passer à un usage avancé ou professionnel.<br>9. **Prévention des fuites de données** : Le passage par une interface cloud sécurisée protège l'utilisateur contre l'exposition accidentelle de clés API sensibles dans les registres publics ou les historiques de code locaux.<br>10. **Personnalisation de l'agent** : L'initialisation via Telegram permet de paramétrer instantanément le ton (décontracté, professionnel) et le profil comportemental du bot selon les besoins spécifiques de l'utilisateur.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude (Anthropic)</span><span class="tool-tag">Grok</span><span class="tool-tag">Gemini</span><span class="tool-tag">ChatGPT (OpenAI)</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span><span class="tool-tag">n8n</span><span class="tool-tag">OpenClaw (alias Claudebot / Moltibot)</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>1. **Élimination des barrières matérielles** : Finis l&#x27;obligation d&#x27;investir 1 500 dollars dans un Mac Mini dédié ou de configurer un VPS (Serveur Virtuel Privé) complexe et abstrait pour les non-initiés.</span></li><li><span class="point-bullet">✦</span><span>2. **Sécurité de l&#x27;écosystème personnel** : Isoler l&#x27;agent open-source dans le cloud évite qu&#x27;un script autonome ou une boucle d&#x27;exécution incontrôlée n&#x27;accède aux fichiers sensibles de l&#x27;ordinateur principal ou n&#x27;envoie des messages inopinés.</span></li><li><span class="point-bullet">✦</span><span>3. **Contournement des configurations de Terminal** : Suppression totale de l&#x27;utilisation des lignes de commande, rendant l&#x27;outil accessible aux profils strictement non techniques en quelques clics.</span></li><li><span class="point-bullet">✦</span><span>4. **Gestion financière et clés API intégrées** : Utilisation d&#x27;un environnement cloud pré-approvisionné (via Emergent) permettant de tester l&#x27;outil gratuitement sans lier immédiatement ses propres cartes bancaires ou risquer d&#x27;épuiser ses crédits d&#x27;API OpenAI/Anthropic.</span></li><li><span class="point-bullet">✦</span><span>5. **Déploiement instantané no-code** : Automatisation complète de la mise en place de l&#x27;environnement en 2 à 5 minutes grâce à un simple bouton de pré-chargement de prompt sur la plateforme cloud.</span></li><li><span class="point-bullet">✦</span><span>6. **Intégration fluide avec Telegram** : Utilisation de l&#x27;outil natif *Botfather* pour créer un bot personnalisé, générer un jeton d&#x27;accès sécurisé et lier l&#x27;instance cloud à une interface de messagerie mobile familière.</span></li><li><span class="point-bullet">✦</span><span>7. **Expérience utilisateur conversationnelle** : Interagir avec OpenClaw par le biais de Telegram procure l&#x27;expérience fluide d&#x27;un échange de SMS avec un assistant personnel capable d&#x27;exécuter des tâches en arrière-plan.</span></li><li><span class="point-bullet">✦</span><span>8. **Évolutivité et flexibilité des modèles** : Possibilité de basculer à tout moment sur ses propres clés API (Anthropic ou OpenAI) en un minimum de manipulations dès que l&#x27;utilisateur souhaite passer à un usage avancé ou professionnel.</span></li><li><span class="point-bullet">✦</span><span>9. **Prévention des fuites de données** : Le passage par une interface cloud sécurisée protège l&#x27;utilisateur contre l&#x27;exposition accidentelle de clés API sensibles dans les registres publics ou les historiques de code locaux.</span></li><li><span class="point-bullet">✦</span><span>10. **Personnalisation de l&#x27;agent** : L&#x27;initialisation via Telegram permet de paramétrer instantanément le ton (décontracté, professionnel) et le profil comportemental du bot selon les besoins spécifiques de l&#x27;utilisateur.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les gars, je viens de trouver une nouvelle façon de configurer Claudebot. Vous n&#x27;avez pas besoin de payer pour un Mac Mini. Vous n&#x27;avez pas besoin de configurer un VPS. C&#x27;est extrêmement facile pour littéralement n&#x27;importe qui de le faire en moins de 5 à 10 minutes. Et je vais vous montrer dans cette vidéo d&#x27;abord pourquoi c&#x27;était pénible de le configurer avant et pourquoi c&#x27;est peut-être la meilleure solution pour vous de commencer à utiliser Claudebot dès maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;outil de dessin collaboratif Excalidraw et une fenêtre de visioconférence.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaison en deux colonnes : &#x27;Before&#x27; (1-3 heures avec configuration complexe, clés API et erreurs) versus &#x27;Now&#x27; (5 minutes, hébergé dans le cloud avec un seul bouton).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique visuellement la simplification de la configuration de Claudebot à l&#x27;aide d&#x27;un tableau comparatif.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000005_seg1.jpg" alt="Capture d&#x27;écran montrant un schéma comparatif sur Excalidraw intitulé &#x27;Setting Up Clawdbot&#x27; avec le présentateur en incrustation vidéo à gauche." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un schéma comparatif sur Excalidraw intitulé &#x27;Setting Up Clawdbot&#x27; avec le présentateur en incrustation vidéo à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:38</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est tout à fait sûr pour vous de l&#x27;utiliser. Donc, sans plus attendre, plongeons-nous dedans. Très bien, alors parlons rapidement du avant et du après de la configuration de Claudebot, Moltibot, ou maintenant OpenClaude. Il est impossible de suivre réellement le nom de ce truc qui change chaque jour. Alors venons sur ce tableau ici. Et je vais parler rapidement du avant de configurer Claudebot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site OpenClaw et l&#x27;outil de tableau blanc Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Comparaison avant/après de l&#x27;installation d&#x27;un bot d&#x27;IA : complexité technique, clés API, configuration de terminal versus installation en un clic dans le cloud.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit la plateforme et présente le comparatif visuel du processus d&#x27;installation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000023_seg2.jpg" alt="Le navigateur montre la page d&#x27;accueil du site OpenClaw avec son logo et le titre &quot;The AI that actually does things&quot;." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000023_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:23</span>
+                        <span class="caption-text">Le navigateur montre la page d&#x27;accueil du site OpenClaw avec son logo et le titre &quot;The AI that actually does things&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000033_seg2.jpg" alt="Un tableau comparatif sur Excalidraw intitulé &quot;Setting Up Clawdbot&quot;, opposant l&#x27;ancienne configuration complexe (&quot;Before&quot;) à la nouvelle version simplifiée (&quot;Now&quot;)." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000033_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:33</span>
+                        <span class="caption-text">Un tableau comparatif sur Excalidraw intitulé &quot;Setting Up Clawdbot&quot;, opposant l&#x27;ancienne configuration complexe (&quot;Before&quot;) à la nouvelle version simplifiée (&quot;Now&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:38 - 00:00:57</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc avant, cela nous prenait probablement une à deux heures si cela fonctionnait tout court. Donc personnellement, j&#x27;ai configuré ceci. Cela m&#x27;a pris deux à trois heures pour le faire fonctionner correctement. Et il y a deux ou trois autres choses vraiment importantes que nous devons noter lorsque nous configurons cela. Donc tout d&#x27;abord, vous devez choisir un appareil. Personnellement, j&#x27;ai acheté un Mac mini. J&#x27;ai configuré le mien au maximum.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Excalidraw et une miniature vidéo de l&#x27;orateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte comparatif sur le temps de configuration (&quot;Before: 1-2 hours if it works at all&quot;) et étapes techniques (Pick a device, Terminal setup, Get API keys, Connect messaging apps, Troubleshoot everything).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;orateur explique et commente le schéma comparatif des difficultés de configuration sur le tableau blanc.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000043_seg3.jpg" alt="Présentation Excalidraw montrant une comparaison &quot;Before&quot; (1-2 heures) avec les étapes complexes de configuration (Pick a device, Terminal setup, Get API keys, etc.)." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000043_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:43</span>
+                        <span class="caption-text">Présentation Excalidraw montrant une comparaison &quot;Before&quot; (1-2 heures) avec les étapes complexes de configuration (Pick a device, Terminal setup, Get API keys, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000048_seg3.jpg" alt="Même tableau comparatif Excalidraw montrant la section &quot;Before&quot; avec les étapes fastidieuses barrées par des croix rouges." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000048_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:48</span>
+                        <span class="caption-text">Même tableau comparatif Excalidraw montrant la section &quot;Before&quot; avec les étapes fastidieuses barrées par des croix rouges.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000052_seg3.jpg" alt="Gros plan sur le schéma Excalidraw illustrant les difficultés de configuration initiale comparées au processus simplifié." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000052_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Gros plan sur le schéma Excalidraw illustrant les difficultés de configuration initiale comparées au processus simplifié.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:57 - 00:01:19</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;était 1 500 dollars. J&#x27;avais d&#x27;autres raisons de faire cela pour mon entreprise et pour mon travail. C&#x27;est la raison pour laquelle je l&#x27;ai fait. Vous n&#x27;êtes pas obligé de faire cela. Mais beaucoup de gens se précipitent et dépensent cinq cents dollars pour un Mac mini dont ils n&#x27;ont pas besoin, ou vous utilisez un VPS, et beaucoup de gens ne savent même pas ce qu&#x27;est un VPS, et parfois cela peut être vraiment difficile à configurer si vous n&#x27;êtes pas technique, ce que je sais que beaucoup d&#x27;entre vous sont, c&#x27;est une option difficile pour nous, votre ordinateur portable, est-ce que c&#x27;est sûr ?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc Excalidraw dans un navigateur web avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du tableau listant les contraintes : &quot;Before&quot;, &quot;1-2 hours if it works at all&quot;, &quot;Pick a device - Mac Mini ($500)?&quot;, &quot;Terminal setup&quot;, &quot;Get API keys&quot;, &quot;Connect messaging apps&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les étapes fastidieuses et les dépenses inutiles (comme l&#x27;achat d&#x27;un Mac mini à 500 dollars) lors de la configuration initiale.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000103_seg4.jpg" alt="Capture d&#x27;écran montrant un tableau blanc Excalidraw avec la section &quot;Before&quot; listant les étapes complexes (Pick a device, Terminal setup, Get API keys, Connect messaging apps) avec des croix rouges et une mention &quot;Mac Mini ($500)&quot;." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000103_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau blanc Excalidraw avec la section &quot;Before&quot; listant les étapes complexes (Pick a device, Terminal setup, Get API keys, Connect messaging apps) avec des croix rouges et une mention &quot;Mac Mini ($500)&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000108_seg4.jpg" alt="Capture similaire montrant le curseur soulignant la mention du Mac Mini ($500) sur le tableau blanc." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000108_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Capture similaire montrant le curseur soulignant la mention du Mac Mini ($500) sur le tableau blanc.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000114_seg4.jpg" alt="Capture similaire montrant la suite de l&#x27;explication du présentateur avec le même schéma Excalidraw en arrière-plan." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000114_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Capture similaire montrant la suite de l&#x27;explication du présentateur avec le même schéma Excalidraw en arrière-plan.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:19 - 00:01:45</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Comme vous voyez tellement de choses de gens qui disent qu&#x27;ils sont comme vous voyez tellement de choses de gens qui disent que leurs ordinateurs se font pirater et qu&#x27;ils publient ces informations confidentielles qu&#x27;ils ne devraient pas divulguer aux gens. Puisqu&#x27;il s&#x27;agit d&#x27;un produit open source et que CloudBot peut essentiellement faire n&#x27;importe quoi sur votre ordinateur, il est donc important de choisir un appareil qui est séparé de votre écosystème préexistant afin qu&#x27;il ne s&#x27;emballe pas pour envoyer un message à votre patron et envoyer un courriel à votre patron pour lui dire d&#x27;aller se faire foutre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Excalidraw et une page web d&#x27;article de sécurité.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte sur la sécurité des bots open-source et des configurations de serveurs exposés.
+[DESC_IMAGE_2] Le présentateur commente un article de blog sur les risques de sécurité des instances Clawdbot exposées en ligne.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000132_seg5.jpg" alt="Une capture d&#x27;article affichée par-dessus le tableau blanc, titrée &#x27;Hundreds of Clawdbot instances were exposed on the internet&#x27;." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000132_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Une capture d&#x27;article affichée par-dessus le tableau blanc, titrée &#x27;Hundreds of Clawdbot instances were exposed on the internet&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:45 - 00:02:05</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ensuite, nous avons la configuration du terminal. Et ça, les gars, c&#x27;est une plaie. Si vous ne savez pas comment utiliser les terminaux, un terminal, c&#x27;est essentiellement ce truc-là. C&#x27;est en gros ce truc de code. Je ne sais même pas comment l&#x27;expliquer. Si vous n&#x27;êtes pas du milieu technique, je ne sais pas comment vous l&#x27;expliquer. Mais essentiellement, c&#x27;est là que vous devez installer. Et ça peut être une vraie plaie de faire ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Excalidraw et application Terminal macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface d&#x27;un tableau blanc comparatif et une invite de commande (shell) active affichant les informations de connexion.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur affiche une fenêtre de terminal pour illustrer visuellement la configuration technique évoquée dans le segment audio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000155_seg6.jpg" alt="Une fenêtre de terminal zsh ouverte par-dessus le tableau blanc Excalidraw, illustrant concrètement ce qu&#x27;est un terminal de commande." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000155_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:55</span>
+                        <span class="caption-text">Une fenêtre de terminal zsh ouverte par-dessus le tableau blanc Excalidraw, illustrant concrètement ce qu&#x27;est un terminal de commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:05 - 00:02:28</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous devons exécuter Node.js, Docker, NPM, des configurations, un pare-feu. Ensuite, nous devons obtenir nos clés d&#x27;API. Nous devrions donc nous inscrire sur Anthropic, OpenAI, ajouter des paiements, coller nos clés. Et puis cela pose ses propres problèmes parce qu&#x27;ensuite nous ne savons pas combien nos clés d&#x27;API vont être utilisées, car nous sommes facturés à chaque fois que nous l&#x27;utilisons. Et CloudBot peut utiliser beaucoup de vos crédits d&#x27;API si vous n&#x27;êtes pas proactif et si vous ne vérifiez pas réellement combien il en utilise.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Tableau blanc en ligne (Excalidraw) avec vignette vidéo du présentateur incrustée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit listant les étapes : &quot;Pick a device&quot;, &quot;Terminal setup (Node.js, Docker, npm, configs, firewall rules)&quot;, &quot;Get API keys (Sign up for Anthropic/OpenAI)&quot;, &quot;Connect messaging apps&quot;, &quot;Troubleshoot everything&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et pointe du doigt les étapes complexes du processus de configuration manuel sur le tableau blanc.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000210_seg7.jpg" alt="Un tableau blanc Excalidraw présente une liste d&#x27;étapes manuelles complexes avec des croix rouges, montrant les difficultés du processus traditionnel." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000210_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:10</span>
+                        <span class="caption-text">Un tableau blanc Excalidraw présente une liste d&#x27;étapes manuelles complexes avec des croix rouges, montrant les difficultés du processus traditionnel.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000216_seg7.jpg" alt="Le tableau blanc Excalidraw continue d&#x27;afficher les étapes manuelles avec une annotation en bas soulignant que la plupart des gens abandonnent à ce stade." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000216_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:16</span>
+                        <span class="caption-text">Le tableau blanc Excalidraw continue d&#x27;afficher les étapes manuelles avec une annotation en bas soulignant que la plupart des gens abandonnent à ce stade.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:28 - 00:02:46</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, le processus suivant consiste à nous connecter à nos applications de messagerie. Nous devons utiliser des codes QR, des jetons de bot, des déconnexions de passerelle. Cette partie est aussi une galère. Et ensuite, tout dépanner. Les gars, c&#x27;est à ça que j&#x27;ai passé énormément de temps sur CloudBot. Et ça a juste été une galère. Des erreurs Docker, le bot qui se fige, des clés API divulguées, ce qui n&#x27;est pas bon, soit dit en passant, si vous êtes familier avec les clés API.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Excalidraw et une webcam de présentation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste d&#x27;étapes d&#x27;installation incluant « Connect messaging apps » et « Troubleshoot everything », avec une note indiquant « Most people give up here ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différentes étapes de configuration et pointe les sections problématiques sur le tableau blanc.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000232_seg8.jpg" alt="Capture d&#x27;écran montrant un tableau blanc Excalidraw avec le curseur sur l&#x27;étape « Connect messaging apps » et le présentateur dans une vignette à gauche." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000232_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un tableau blanc Excalidraw avec le curseur sur l&#x27;étape « Connect messaging apps » et le présentateur dans une vignette à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000237_seg8.jpg" alt="Capture d&#x27;écran similaire montrant le tableau blanc Excalidraw avec le curseur se déplaçant vers l&#x27;étape « Troubleshoot everything »." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000237_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:37</span>
+                        <span class="caption-text">Capture d&#x27;écran similaire montrant le tableau blanc Excalidraw avec le curseur se déplaçant vers l&#x27;étape « Troubleshoot everything ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:47 - 00:03:07</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est là que la plupart des gens abandonnent, juste ici. Et dans cette vidéo, je vais vous montrer un truc qui vous permet en gros de configurer ça en deux à cinq minutes à chaque fois, que vous pouvez faire dès maintenant. Vous pouvez cliquer sur un bouton. Vous n&#x27;avez pas à choisir d&#x27;appareil. Il n&#x27;y a pas de sécurité dont vous devez vous soucier. En passant à l&#x27;étape suivante, nous avons déjà des clés API incluses.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un tableau blanc Excalidraw et une incrustation vidéo de la webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte schématique sur le tableau blanc listant des points de configuration (Click one button, AI key included, Runs in the cloud, Connect Whatsapp or Telegram).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle en pointant ou en commentant les éléments visuels affichés sur le tableau blanc numérique.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:07 - 00:03:26</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si vous ne voulez pas ajouter votre abonnement OpenAI ou Cloud, vous n&#x27;êtes pas obligé de le faire. C&#x27;est déjà prêt à l&#x27;emploi. Pas d&#x27;inscriptions, pas de méthodes de paiement, et c&#x27;est prêt à fonctionner. Et ça tourne dans le cloud, donc nous n&#x27;avons pas à nous soucier du terminal comme je vous l&#x27;ai montré tout à l&#x27;heure. C&#x27;est donc juste une interface beaucoup plus simple à utiliser. Et ensuite, nous pouvons aussi nous connecter à WhatsApp ou Telegram.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site Excalidraw.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma textuel listant des points clés : &quot;Click one button&quot;, &quot;AI key included (No signups, No payment methods, Ready to go)&quot;, &quot;Runs in the cloud&quot;, et &quot;Connect WhatsApp or Telegram&quot;, avec des coches vertes. On aperçoit également la webcam du présentateur incrustée à gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et pointe du doigt les différents avantages listés sur le schéma explicatif à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000312_seg10.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;Excalidraw avec un schéma explicatif sur les fonctionnalités et avantages du service." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000312_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:12</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;Excalidraw avec un schéma explicatif sur les fonctionnalités et avantages du service.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:27 - 00:03:50</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et nous sommes réellement guidés à travers cette configuration. Et nous pourrions commencer à utiliser Multibot ou OpenClaw immédiatement. Ensuite, à partir de là, CloudBot fonctionne. Nous n&#x27;en avons pas besoin par appareil. Aucun code à écrire. Aucune clé à gérer. Aucune chose à casser. C&#x27;est juste un écosystème vraiment, vraiment facile à utiliser CloudBot. Alors maintenant que vous comprenez le avant et le après, allons-y et montrons-vous cette astuce dont je suis en train de parler afin que vous puissiez commencer à l&#x27;utiliser si vous n&#x27;êtes pas technique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de tableau blanc collaboratif (Excalidraw) affichée dans un navigateur web, avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte schématique listant les points clés : &quot;Click one button&quot;, &quot;AI key included&quot;, &quot;Runs in the cloud&quot;, &quot;Connect WhatsApp or Telegram&quot;, et &quot;Clawdbot is running: No device to buy. No code to write. No keys to manage. No things to break.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le schéma explicatif en parcourant visuellement les points clés de la configuration simplifiée du bot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000333_seg11.jpg" alt="Capture d&#x27;écran montrant un schéma explicatif sur Excalidraw listant les avantages d&#x27;une solution (&quot;Now&quot;) avec des icônes et des coches vertes, tandis que le présentateur apparaît en médaillon à gauche." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000333_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:33</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un schéma explicatif sur Excalidraw listant les avantages d&#x27;une solution (&quot;Now&quot;) avec des icônes et des coches vertes, tandis que le présentateur apparaît en médaillon à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000339_seg11.jpg" alt="Zoom avant sur le schéma Excalidraw, mettant en évidence la section &quot;Clawdbot is running&quot; avec le texte récapitulatif des avantages." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000339_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:39</span>
+                        <span class="caption-text">Zoom avant sur le schéma Excalidraw, mettant en évidence la section &quot;Clawdbot is running&quot; avec le texte récapitulatif des avantages.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:50 - 00:04:26</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, les amis. Passons donc à la solution. Et les amis, c&#x27;est probablement la façon la plus simple d&#x27;utiliser ClawedBot ou OpenClaw en ce moment même. Voici donc exactement comment faire. J&#x27;utilise donc Emergent et ils viennent juste de sortir ce bouton ici en bas qui s&#x27;appelle MoldBot. Donc essentiellement, ce que vous pouvez faire, c&#x27;est simplement cliquer sur ce bouton. Cela vous donne ce prompt préchargé ici et va commencer à construire une application personnalisée pour que nous puissions commencer à utiliser multibot et cela configure le tout pour nous et je vais vous montrer exactement comment faire les amis, c&#x27;est vraiment insensé si vous n&#x27;êtes pas techniques, cela rend tout ce processus super simple, je vais cliquer sur envoyer et ce que ça va faire, c&#x27;est que ça va prendre, ça va configurer cet environnement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web Emergent (app.emergent.sh) et interface de discussion avec l&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions d&#x27;installation de MoltBot, étapes pour obtenir une clé LLM et script d&#x27;installation.
+[DESC_IMAGE_1] Sélection et démonstration de l&#x27;utilisation du bouton MoltBot sur l&#x27;interface d&#x27;Emergent.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000359_seg12.jpg" alt="Interface web d&#x27;Emergent montrant le tableau de bord principal avec le bouton MoldBot en bas." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000359_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:59</span>
+                        <span class="caption-text">Interface web d&#x27;Emergent montrant le tableau de bord principal avec le bouton MoldBot en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000408_seg12.jpg" alt="Interface d&#x27;Emergent affichant les instructions d&#x27;installation de MoltBot dans la zone de texte." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000408_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:08</span>
+                        <span class="caption-text">Interface d&#x27;Emergent affichant les instructions d&#x27;installation de MoltBot dans la zone de texte.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000417_seg12.jpg" alt="Interface d&#x27;Emergent affichant la suite des instructions textuelles et le lien du tutoriel pour MoltBot." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000417_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:17</span>
+                        <span class="caption-text">Interface d&#x27;Emergent affichant la suite des instructions textuelles et le lien du tutoriel pour MoltBot.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:26 - 00:04:54</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça va prendre quelques minutes pour le faire, alors laissons-la faire son travail et le meilleur dans tout ça, c&#x27;est que mes mains sont loin du clavier, je ne touche à rien, je n&#x27;ai pas besoin de configurer ça moi-même, tout se passe en arrière-plan et ça va juste fonctionner à la fin de la journée. Laissons-la faire son travail et nous y reviendrons. Très bien, alors ça a pris peut-être deux à trois minutes. Maintenant, ce que je peux faire, c&#x27;est me connecter rapidement avec Google ici même pour configurer réellement mon OpenClaw. Donc ce que je vais faire, c&#x27;est me connecter maintenant et littéralement cliquer sur continuer. Et ensuite, elle veillera à nous connecter à notre compte.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Emergent (app.emergent.sh) et l&#x27;aperçu de l&#x27;application OpenClaw / MoltBot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions d&#x27;installation, statut &quot;Agent is running...&quot;, puis &quot;Agent Finished&quot; avec le résumé de l&#x27;installation réussie de MoltBot.</p>
+                        <p><strong>Action / Démonstration :</strong> Exécution automatisée en arrière-plan d&#x27;une installation d&#x27;agent IA sans intervention manuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000433_seg13.jpg" alt="L&#x27;interface d&#x27;Emergent montrant un agent en cours d&#x27;exécution avec les instructions de configuration à l&#x27;écran." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000433_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:33</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;Emergent montrant un agent en cours d&#x27;exécution avec les instructions de configuration à l&#x27;écran.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000440_seg13.jpg" alt="L&#x27;interface d&#x27;Emergent affichant la fin de l&#x27;installation du MoltBot et l&#x27;aperçu de l&#x27;application OpenClaw." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000440_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:40</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;Emergent affichant la fin de l&#x27;installation du MoltBot et l&#x27;aperçu de l&#x27;application OpenClaw.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000447_seg13.jpg" alt="L&#x27;écran de connexion sécurisée de l&#x27;application MoltBot après la fin du processus automatisé." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000447_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:47</span>
+                        <span class="caption-text">L&#x27;écran de connexion sécurisée de l&#x27;application MoltBot après la fin du processus automatisé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:54 - 00:05:27</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite d&#x27;ici, vous pouvez voir que nous avons maintenant les clés API chargées. Donc juste ici se trouve la clé API Emergent. Nous pouvons soit sélectionner celle d&#x27;Anthropic ou d&#x27;OpenAI. Cependant, si nous ne voulons pas avoir à configurer notre propre clé API, ce que je suggère de faire au début, parce que c&#x27;est complètement gratuit pour vous de commencer à faire cela, d&#x27;en profiter. Je cliquerais là-dessus. Je vais cliquer sur démarrer Open Claw, et ça va effectivement la configurer maintenant en utilisant la clé API Emergent. Et encore une fois, vous n&#x27;avez pas besoin d&#x27;ajouter votre propre clé API. Sinon, vous pourriez simplement épuiser vos jetons et gaspiller votre argent. Très bien. Donc l&#x27;étape suivante dans Emergent, c&#x27;est que vous pouvez voir que nous avons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface OpenClaw Control UI.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de sélection du fournisseur LLM avec les options : Emergent (Recommended - No key needed), Anthropic (Claude) - Bring your own key, et OpenAI (GPT) - Bring your own key.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris survole ou sélectionne les options de configuration des clés API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000502_seg14.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de configuration des clés API pour un fournisseur LLM, avec un menu déroulant affichant les options Emergent, Anthropic et OpenAI." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000502_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:02</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de configuration des clés API pour un fournisseur LLM, avec un menu déroulant affichant les options Emergent, Anthropic et OpenAI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:27 - 00:06:02</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cet aperçu d&#x27;application ici avec la configuration OpenClaw. Je vais donc simplement l&#x27;ouvrir dans un nouvel onglet, cliquer sur ce bouton pour ouvrir dans un nouvel onglet. Et voici notre environnement privé pour commencer à utiliser notre Claudebot en action. Ce que je pourrais faire, c&#x27;est cliquer ici. Je pourrais donc cliquer sur ouvrir l&#x27;interface de contrôle. Et cela va vous amener au tableau de bord de Claudebot auquel tout le monde a accès. Donc si vous utilisez Claudebot, c&#x27;est la manière habituelle d&#x27;interagir avec lui. Cependant, je vais vous montrer maintenant comment le connecter à Telegram, qui est l&#x27;endroit où j&#x27;utilise mon Claudebot, ce qui rend les choses super simples, on a l&#x27;impression d&#x27;envoyer des SMS à un ami et il est capable de s&#x27;en aller et de vraiment</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface OpenClaw Setup et l&#x27;application Cloudbot Control.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de configuration OpenClaw avec le fournisseur Emergent et l&#x27;interface de chat Cloudbot Control.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur clique sur le bouton pour ouvrir l&#x27;interface de contrôle dans un nouvel onglet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000536_seg15.jpg" alt="Interface OpenClaw Setup montrant le statut en cours d&#x27;exécution et le bouton pour ouvrir l&#x27;interface de contrôle." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000536_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:36</span>
+                        <span class="caption-text">Interface OpenClaw Setup montrant le statut en cours d&#x27;exécution et le bouton pour ouvrir l&#x27;interface de contrôle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000545_seg15.jpg" alt="Interface de l&#x27;application Cloudbot Control affichant la section de chat et les options de configuration." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000545_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Interface de l&#x27;application Cloudbot Control affichant la section de chat et les options de configuration.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:37</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">faire des choses pour vous. Par exemple, j&#x27;ai testé ça ici. Bonjour. Et il a dit, Hé, je viens de me connecter. Qui suis-je ? Qui es-tu ? On recommence à zéro ici. Je peux voir les fichiers de l&#x27;espace de travail, mais pas de mémoire. Donc, il me demande en gros comment il veut communiquer, comment je veux communiquer avec lui et comment il pourrait nous être utile. C&#x27;est donc l&#x27;expérience CloudBot. Je ne vais pas trop approfondir ce sujet. Cependant, je vais vous montrer maintenant comment nous pourrions commencer à connecter notre Telegram à notre instance CloudBot. Mais avant de faire cela, je voulais faire une brève remarque. Si vous voulez passer à Anthropic et utiliser Claude et utiliser votre propre clé API ainsi qu&#x27;OpenAI. C&#x27;est aussi simple que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant les interfaces Clawbot Control et OpenClaw Setup.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages textuels de l&#x27;agent IA (« Hey! I just came online. Who am I? Who are you? ») et panneau de configuration OpenClaw.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et montre l&#x27;initialisation d&#x27;un agent IA et son interface de contrôle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000611_seg16.jpg" alt="Interface de contrôle Clawbot affichant un chat où l&#x27;assistant IA pose des questions sur son identité et son démarrage à zéro." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000611_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:11</span>
+                        <span class="caption-text">Interface de contrôle Clawbot affichant un chat où l&#x27;assistant IA pose des questions sur son identité et son démarrage à zéro.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000620_seg16.jpg" alt="Vue similaire de l&#x27;interface Clawbot, avec le curseur de la souris positionné au milieu de l&#x27;écran pendant que le présentateur parle." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000620_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:20</span>
+                        <span class="caption-text">Vue similaire de l&#x27;interface Clawbot, avec le curseur de la souris positionné au milieu de l&#x27;écran pendant que le présentateur parle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000629_seg16.jpg" alt="Interface de configuration OpenClaw montrant la fin de l&#x27;installation et le statut &quot;OpenClaw is running&quot;." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000629_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Interface de configuration OpenClaw montrant la fin de l&#x27;installation et le statut &quot;OpenClaw is running&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:37 - 00:07:13</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">juste en faisant ça ici. Il va redémarrer avec une configuration différente. C&#x27;est aussi simple que d&#x27;avoir juste besoin de coller votre clé API et c&#x27;est extrêmement facile à faire. Cependant, utilisez simplement Emergent pour commencer. C&#x27;est gratuit et vous n&#x27;avez pas à vous soucier de l&#x27;utilisation de l&#x27;API. Très bien, donc la prochaine étape de notre processus est que nous allons télécharger Telegram si vous ne l&#x27;avez pas déjà. Je l&#x27;ai ouvert ici et nous allons chercher Botfather sur Telegram. C&#x27;est essentiellement notre façon d&#x27;installer Claudebot sur notre Telegram. Donc vous pouvez voir ici, nous avons maintenant ceci. Maintenant, ce que nous allons faire quand nous voyons cette interface ici, c&#x27;est que je vais simplement taper slash puis dire nouveau bot. Vous pouvez voir que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Emergent, interface de contrôle OpenClaw/ClawBot) et application de messagerie Telegram.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration LLM, interface de chat Telegram, panneau de contrôle de bot, messages d&#x27;installation réussie.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de déploiement Emergent et basculement vers Telegram pour configurer les bots.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000646_seg17.jpg" alt="Interface d&#x27;Emergent montrant la configuration d&#x27;OpenClaw avec les options de redémarrage et de fournisseur LLM." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000646_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:46</span>
+                        <span class="caption-text">Interface d&#x27;Emergent montrant la configuration d&#x27;OpenClaw avec les options de redémarrage et de fournisseur LLM.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000655_seg17.jpg" alt="Écran partagé affichant Telegram d&#x27;un côté et l&#x27;interface de contrôle du bot de l&#x27;autre." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000655_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:55</span>
+                        <span class="caption-text">Écran partagé affichant Telegram d&#x27;un côté et l&#x27;interface de contrôle du bot de l&#x27;autre.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000704_seg17.jpg" alt="Application Telegram ouverte montrant les interactions avec BotFather et la liste des discussions." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000704_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:04</span>
+                        <span class="caption-text">Application Telegram ouverte montrant les interactions avec BotFather et la liste des discussions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:46</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">il y a ces commandes auxquelles nous pouvons accéder directement à l&#x27;intérieur d&#x27;ici. Très bien, un nouveau bot, comment allons-nous l&#x27;appeler ? Vous devez avoir un nouveau nom d&#x27;utilisateur. J&#x27;ai donc essayé d&#x27;ouvrir &quot;claw bot&quot;, cela n&#x27;a pas fonctionné. J&#x27;en ai donc un personnalisé ici. Je vais juste l&#x27;envoyer. Et hop, nous avons créé notre nouveau bot. Très bien. Donc ce que nous allons voir maintenant, c&#x27;est que vous voyez que notre bot est configuré. Cependant, nous devons utiliser cette clé API qu&#x27;il nous donne. Assurez-vous donc de la copier. Ne laissez personne voir ceci. Une fois que vous avez copié votre clé API, vous allez revenir sur Emergent et vous allez simplement la coller ici. Et je vais dire clé API Telegram. Et c&#x27;est aussi simple que ça, un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Telegram Desktop et interface web OpenClaw Setup / application de configuration de bot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Commandes de création de bot Telegram via BotFather et tableau de bord de configuration d&#x27;un agent IA OpenClaw.</p>
+                        <p><strong>Action / Démonstration :</strong> Interaction avec BotFather pour nommer et créer un bot, puis visualisation de l&#x27;écran de configuration et de lancement de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000721_seg18.jpg" alt="Interface Telegram montrant les interactions avec BotFather pour créer un nouveau bot nommé OpenClaw_Bot." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000721_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:21</span>
+                        <span class="caption-text">Interface Telegram montrant les interactions avec BotFather pour créer un nouveau bot nommé OpenClaw_Bot.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000738_seg18.jpg" alt="Interface de configuration OpenClaw Setup montrant l&#x27;installation réussie et le statut &#x27;OpenClaw is running&#x27;." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000738_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Interface de configuration OpenClaw Setup montrant l&#x27;installation réussie et le statut &#x27;OpenClaw is running&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:46 - 00:08:23</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">quelques minutes plus tard, il a foncé et a configuré ça. Il a fait plein de trucs en arrière-plan, mais on n&#x27;a même pas besoin de savoir ce qu&#x27;il a fait parce que ça marche tout simplement. Revenons sur Telegram et je cherche le nom exact du bot que j&#x27;ai réellement créé, je le copie à partir d&#x27;ici, et ensuite je vais l&#x27;ouvrir. Et nous avons maintenant une nouvelle discussion avec laquelle nous pouvons commencer à interagir. Donc je vais cliquer sur démarrer, accès au CloudBot non configuré. Ensuite, ce que nous allons faire, c&#x27;est que nous allons simplement copier ce code depuis Telegram. Et je vais revenir sur Emergent. Et puis ce que je vais faire, je vais tout simplement coller ce jeton ici. Donc je vais dire code d&#x27;appariement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web et application Telegram.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Historique de discussion avec BotFather, messages de création de bot et messages d&#x27;appairage de Clawbot.</p>
+                        <p><strong>Action / Démonstration :</strong> Recherche et sélection d&#x27;un bot Telegram préalablement créé pour récupérer ses informations d&#x27;accès.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000755_seg19.jpg" alt="Vue de l&#x27;interface Telegram avec le bot BotFather et la recherche d&#x27;un nom de bot en cours." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000755_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">Vue de l&#x27;interface Telegram avec le bot BotFather et la recherche d&#x27;un nom de bot en cours.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000804_seg19.jpg" alt="Navigation dans Telegram sur une conversation de bot nommée OpenClaw." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000804_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:04</span>
+                        <span class="caption-text">Navigation dans Telegram sur une conversation de bot nommée OpenClaw.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000813_seg19.jpg" alt="Affichage d&#x27;un message du bot Clawbot indiquant un accès non configuré avec un identifiant utilisateur et un code d&#x27;appairage." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000813_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:13</span>
+                        <span class="caption-text">Affichage d&#x27;un message du bot Clawbot indiquant un accès non configuré avec un identifiant utilisateur et un code d&#x27;appairage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:23 - 00:08:45</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et ensuite collez ce code. Très bien, les gars, et juste comme ça, vous pouvez voir que j&#x27;interagis avec mon bot Claude directement dans Telegram. Il me demande certaines choses. Comment dois-je m&#x27;appeler ? Quel genre d&#x27;ambiance voulez-vous ? Décontracté, professionnel, tout ça ici. Et il pose même des questions sur moi. Donc si nous voulons obtenir les meilleurs résultats ici et que nous voulons vraiment perfectionner cet assistant IA que nous configurons, nous voulons vraiment lui donner beaucoup de contexte ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Telegram et panneau de configuration OpenClaw (App Preview).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages de configuration du bot interactif demandant le nom, l&#x27;ambiance (décontracté/professionnel) et les préférences utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre et commente les interactions en direct avec son bot sur Telegram et l&#x27;interface de configuration OpenClaw.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000828_seg20.jpg" alt="Vue d&#x27;écran montrant l&#x27;application Telegram à gauche avec les messages du bot OpenClaw, et le panneau de configuration OpenClaw à droite, avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000828_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:28</span>
+                        <span class="caption-text">Vue d&#x27;écran montrant l&#x27;application Telegram à gauche avec les messages du bot OpenClaw, et le panneau de configuration OpenClaw à droite, avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000834_seg20.jpg" alt="Gros plan sur l&#x27;interface Telegram montrant les questions de configuration du bot (choix du nom, de l&#x27;ambiance, etc.) et le panneau OpenClaw en arrière-plan à droite." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000834_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:34</span>
+                        <span class="caption-text">Gros plan sur l&#x27;interface Telegram montrant les questions de configuration du bot (choix du nom, de l&#x27;ambiance, etc.) et le panneau OpenClaw en arrière-plan à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:45 - 00:09:09</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les gars, nous venons de configurer Claudebot en probablement environ 10 minutes en utilisant Emergent et nous n&#x27;avons pas eu à payer 500 dollars et plus pour un Mac mini. Nous n&#x27;avons pas eu à configurer un VPS. Il a fondamentalement fait tout cela pour nous. Donc si vous voulez commencer à faire cela dès maintenant, il y a un lien dans la description. J&#x27;espère vraiment que vous avez tiré un certain profit de cela. J&#x27;espère que cela rend vraiment beaucoup plus facile pour vous de commencer à utiliser OpenClaw et ClawedBot parce que cela a vraiment changé ma vie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Emergent (app.emergent.sh) et l&#x27;interface de configuration OpenClaw Setup.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de configuration OpenClaw indiquant « OpenClaw is running », un bouton orange « Open Control UI », et des options de configuration de fournisseur LLM.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le succès de la configuration rapide et automatisée d&#x27;OpenClaw et Claudebot via la plateforme Emergent.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000851_seg21.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de la plateforme Emergent avec la configuration d&#x27;OpenClaw et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000851_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de la plateforme Emergent avec la configuration d&#x27;OpenClaw et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:09 - 00:09:13</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;espère que vous avez apprécié. Abonnez-vous pour plus de contenu de ce genre et je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface OpenClaw Setup et terminal de commandes intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de configuration OpenClaw indiquant « OpenClaw is running » avec un bouton « Open Control UI », ainsi que des options de redémarrage et de sélection de fournisseur LLM.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur conclut la vidéo tout en montrant l&#x27;interface finale opérationnelle de l&#x27;application OpenClaw.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/6OSEZx8v4so/6OSEZx8v4so_000910_seg22.jpg" alt="Capture d&#x27;écran montrant une interface de configuration OpenClaw sur une application web, avec une fenêtre de terminal à gauche et la webcam du présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/6OSEZx8v4so/6OSEZx8v4so_000910_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:10</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de configuration OpenClaw sur une application web, avec une fenêtre de terminal à gauche et la webcam du présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

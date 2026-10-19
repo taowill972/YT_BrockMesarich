@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `97 / 273` (`35.5%`)
+- **Vidéos traitées** : `98 / 273` (`35.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -114,6 +114,7 @@
 | 2026-02-16 | [9owy-NV5l6k](https://www.youtube.com/watch?v=9owy-NV5l6k) | **Comment mieux utiliser Claude Code que 99 % des gens** | [2026-02-16_YT-[9owy-NV5l6k]_Comment mieux utiliser Claude Code que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-16_YT-[9owy-NV5l6k]_Comment mieux utiliser Claude Code que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-16_YT-[9owy-NV5l6k]_Comment mieux utiliser Claude Code que 99 % des gens_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `77` |
 | 2026-02-13 | [XkzM6hBdvIA](https://www.youtube.com/watch?v=XkzM6hBdvIA) | **Vous n'avez plus besoin d'OpenClaw (utilisez plutôt ceci)** | [2026-02-13_YT-[XkzM6hBdvIA]_Vous n'avez plus besoin d'OpenClaw (utilisez plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-13_YT-[XkzM6hBdvIA]_Vous n'avez plus besoin d'OpenClaw (utilisez plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-13_YT-[XkzM6hBdvIA]_Vous n'avez plus besoin d'OpenClaw (utilisez plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `48` |
 | 2026-02-12 | [lNfK-jQeUa8](https://www.youtube.com/watch?v=lNfK-jQeUa8) | **Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)** | [2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-12_YT-[lNfK-jQeUa8]_Comment créer et vendre des applications mobiles avec l'IA (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `23` |
+| 2026-02-02 | [6OSEZx8v4so](https://www.youtube.com/watch?v=6OSEZx8v4so) | **Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)** | [2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-02-02_YT-[6OSEZx8v4so]_Enfin, OpenClaw est simple et sûr d'utilisation... (Clawdbot)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
