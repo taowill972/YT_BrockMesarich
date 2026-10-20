@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-11-18</span>
+                <span class="badge">⏱️ 00:06:10</span>
+                <span class="badge">🆔 <code>w8hRge2NiJc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=w8hRge2NiJc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:30</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les gars, Gemini 3 est arrivé. Il vient tout juste de sortir et franchement, il est à la hauteur du battage médiatique. Ceci a été construit avec Gemini 3, tout comme ceci en une seule invite. Et dans cette vidéo, je vais vous montrer comment vous pouvez l&#x27;utiliser dès maintenant et gratuitement, car le design est insensé quand il s&#x27;agit de coder avec ce modèle. Cette application a également été créée en utilisant le nouveau Gemini 3.0 Pro, qui vous permet fondamentalement de tout importer et vous pouvez le transformer en diagramme interactif. Vous pouvez voir que j&#x27;ai importé ce plan d&#x27;étage et j&#x27;utilise réellement ce gestionnaire de plan interactif qui a entièrement été construit avec Gemini 3.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Google Labs / application web de démonstration.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de création de site web et de plans architecturaux interactifs générés par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des capacités de Gemini 3 à travers des exemples de projets interactifs générés en une seule invite.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000007_seg1.jpg" alt="Image #1 montre une interface web avec un aperçu de site e-commerce minimaliste (&quot;Quiet living&quot;)." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000007_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:07</span>
+                        <span class="caption-text">Image #1 montre une interface web avec un aperçu de site e-commerce minimaliste (&quot;Quiet living&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000015_seg1.jpg" alt="Image #2 montre la page d&#x27;accueil d&#x27;une application web Labs Google avec le texte &quot;Bring anything to life&quot;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Image #2 montre la page d&#x27;accueil d&#x27;une application web Labs Google avec le texte &quot;Bring anything to life&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000022_seg1.jpg" alt="Image #3 montre un gestionnaire de plans interactif (&quot;Interactive Blueprint Manager&quot;) avec un plan architectural et une palette de mobilier." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000022_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:22</span>
+                        <span class="caption-text">Image #3 montre un gestionnaire de plans interactif (&quot;Interactive Blueprint Manager&quot;) avec un plan architectural et une palette de mobilier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:30 - 00:00:52</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors les gars, dans cette vidéo, je vais vous montrer comment vous pouvez l&#x27;utiliser gratuitement, ainsi que des exemples pour vous montrer à quel point c&#x27;est bon. Très bien, les gars, entrons directement dans le vif du sujet. Voici donc un exemple que Google a réellement publié avec Gemini 3 à l&#x27;intérieur de Google AI Studio, conçu en une seule invite. Remarquez à quel point cela ne fait pas du tout code généré au feeling. Si vous avez déjà fait du code au feeling, vous connaissez l&#x27;interface à l&#x27;apparence générique que vous obtenez toujours lorsque vous utilisez ces modèles.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface Google AI Studio / Studio de développement et de prévisualisation web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de prévisualisation d&#x27;un site web minimaliste intituté &#x27;Aura - Quiet living&#x27; avec des sections de navigation et des images de paysages.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente un exemple d&#x27;application générée ou publiée par Google tout en commentant son utilisation.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:52 - 00:01:15</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Par exemple, laissez-moi vous montrer une comparaison côte à côte. J&#x27;utilise Gemini 3 en une seule invite pour créer ce site Web ici même pour mon agence de marketing d&#x27;influence. Il a l&#x27;air extrêmement soigné et n&#x27;a pas du tout l&#x27;air d&#x27;avoir été généré par IA par rapport à Lovable, qui utilise toujours le modèle Gemini 2.5 ainsi que Claude et ChatGPT 5 et exactement la même invite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un site internet minimaliste pour agence marketing généré par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes marketing, graphiques épurés, sections de présentation d&#x27;agence (&quot;Scale your AI reality&quot;, études de cas, métriques chiffrées).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement du présentateur sur le site web généré par l&#x27;intelligence artificielle pour en démontrer le rendu visuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000058_seg3.jpg" alt="Aperçu d&#x27;un site Web généré avec un design épuré en noir et blanc, présentant le titre &quot;SCALE YOUR AI REALITY&quot; avec des métriques de performance sur le côté." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000058_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:58</span>
+                        <span class="caption-text">Aperçu d&#x27;un site Web généré avec un design épuré en noir et blanc, présentant le titre &quot;SCALE YOUR AI REALITY&quot; avec des métriques de performance sur le côté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000103_seg3.jpg" alt="Défilement de la page du site Web montrant la section &quot;THE LUUME DIFFERENCE&quot; avec du texte explicatif et un aperçu des études de cas." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000103_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:03</span>
+                        <span class="caption-text">Défilement de la page du site Web montrant la section &quot;THE LUUME DIFFERENCE&quot; avec du texte explicatif et un aperçu des études de cas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000109_seg3.jpg" alt="Vue alternative du site Web montrant la section d&#x27;en-tête &quot;Influencer Marketing for AI Companies&quot; avec des boutons d&#x27;appel à l&#x27;action." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000109_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:09</span>
+                        <span class="caption-text">Vue alternative du site Web montrant la section d&#x27;en-tête &quot;Influencer Marketing for AI Companies&quot; avec des boutons d&#x27;appel à l&#x27;action.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:15 - 00:01:33</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ça m&#x27;a donné ce résultat ici. Donc vous pouvez voir la différence quant à la qualité du modèle Gemini 3 lorsqu&#x27;il s&#x27;agit de concevoir des interfaces utilisateur. Et les gars, ça me rend tellement enthousiaste parce que j&#x27;étais tellement fatigué d&#x27;utiliser ces plateformes de codage intuitif et d&#x27;avoir chaque application et chaque site web qui se ressemblent exactement et qui sont super basiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface utilisateur générée par un modèle d&#x27;intelligence artificielle, combinée à une application de prévisualisation de code et de design.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page web au design moderne avec des sections textuelles (&quot;SCALE YOUR AI REALITY&quot;), des statistiques financières ($95k+) et des logos d&#x27;outils (Bolt, Zapier, StackBlitz), ainsi qu&#x27;un panneau de prompts sur la gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente et présente le résultat visuel d&#x27;une interface utilisateur générée par le modèle Gemini, démontrant la qualité du design obtenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000119_seg4.jpg" alt="Capture d&#x27;écran montrant le présentateur dans un encadré à gauche et une interface web interactive à droite avec un design épuré, du texte en gros caractères (&quot;SCALE YOUR AI REALITY.&quot;) et un panneau latéral de code/génération d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000119_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:19</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur dans un encadré à gauche et une interface web interactive à droite avec un design épuré, du texte en gros caractères (&quot;SCALE YOUR AI REALITY.&quot;) et un panneau latéral de code/génération d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000124_seg4.jpg" alt="Capture similaire montrant l&#x27;interface utilisateur web générée par IA avec le même design minimaliste noir et blanc et des accents rouges, avec la webcam du présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000124_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Capture similaire montrant l&#x27;interface utilisateur web générée par IA avec le même design minimaliste noir et blanc et des accents rouges, avec la webcam du présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:33 - 00:01:53</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si nous revenons sur ce site web, encore une fois, celui-ci a été construit en un seul prompt et il a l&#x27;air extrêmement soigné. Nous avons donc « quiet living ». La typographie a l&#x27;air vraiment solide ici. Il a l&#x27;air vraiment bien, vraiment élégant. Et ensuite, il descend aussi et montre la collection. Je veux dire, cela a l&#x27;air vraiment soigné. Encore une fois, c&#x27;est seulement en un seul prompt que cela a été créé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de prévisualisation de site web conçue par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;un site e-commerce minimaliste généré en un seul prompt, nommé « Aura Quiet Living ».</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement sur la page web pour présenter le design et la section des collections du site.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000138_seg5.jpg" alt="Vue d&#x27;ensemble du site web généré par IA nommé « Aura Quiet Living » avec une typographie soignée et un design élégant sur fond de paysage montagneux." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000138_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:38</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du site web généré par IA nommé « Aura Quiet Living » avec une typographie soignée et un design élégant sur fond de paysage montagneux.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000143_seg5.jpg" alt="Défilement vers le bas du site web montrant la section « The Collection » avec des aperçus de produits en grille." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000143_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:43</span>
+                        <span class="caption-text">Défilement vers le bas du site web montrant la section « The Collection » avec des aperçus de produits en grille.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000148_seg5.jpg" alt="Vue légèrement modifiée de la section « The Collection » avec un curseur pointant sur les options de filtrage des produits." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000148_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:48</span>
+                        <span class="caption-text">Vue légèrement modifiée de la section « The Collection » avec un curseur pointant sur les options de filtrage des produits.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:53 - 00:02:14</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est pourquoi je suis si impressionné par cela. Je pense vraiment que c&#x27;est un changement de paradigme en matière de programmation intuitive. C&#x27;est donc un exemple parfait. Et puis celui-ci me rend super enthousiaste. Donc ce que vous pouvez faire, c&#x27;est que vous pouvez essentiellement tout importer. Par exemple, laissez-moi importer cette image ici. Et les gars, regardez ça. Ça a littéralement construit ce jeu à partir de ce croquis. Donc en gros, ça dit que je dois juste baisser mes doigts pour garder les paupières ouvertes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, explorateur de fichiers système et application de génération visuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur web présentant un design minimaliste, une fenêtre pop-up de sélection de fichiers et des éléments graphiques interactifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration d&#x27;importation de fichiers et d&#x27;interactions avec l&#x27;interface.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000159_seg6.jpg" alt="Aperçu d&#x27;un site web au design épuré avec un arrière-plan en niveaux de gris et le titre &#x27;Quiet living&#x27;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000159_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:59</span>
+                        <span class="caption-text">Aperçu d&#x27;un site web au design épuré avec un arrière-plan en niveaux de gris et le titre &#x27;Quiet living&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000204_seg6.jpg" alt="Interface de sélection de fichiers système ouverte sur un navigateur web pour importer du contenu." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000204_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:04</span>
+                        <span class="caption-text">Interface de sélection de fichiers système ouverte sur un navigateur web pour importer du contenu.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000209_seg6.jpg" alt="Démonstration interactive avec une image d&#x27;œil et un composant graphique dynamique sur la droite." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000209_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:09</span>
+                        <span class="caption-text">Démonstration interactive avec une image d&#x27;œil et un composant graphique dynamique sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:15 - 00:02:39</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si les paupières se ferment et que je m&#x27;endors et bien fondamentalement je perds la partie. À quel punto c&#x27;est fou ? de littéralement prendre cette image pour la transformer en un jeu interactif comme celui-ci. Tout cela est construit avec le nouveau modèle Gemini 3.0 Pro. Et laissez-moi vous montrer comment vous pouvez commencer à l&#x27;utiliser dès maintenant gratuitement. Donc ce que vous allez faire, c&#x27;est que vous allez vous rendre sur Google AI Studio et vous allez cliquer sur Google AI Studio et vous allez vouloir venir dans la section de construction ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google AI Studio / Navigateur web Google Chrome</p>
+                        <p><strong>Contenu textuel & Code :</strong> Application web interactive avec minuteur (&quot;Time Awake: 11.85&quot;) et illustration d&#x27;un œil.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du jeu interactif créé avec Gemini 3.0 Pro, montrant la mécanique de détection de fermeture des paupières.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000221_seg7.jpg" alt="Interface Google AI Studio affichant une application web interactive avec un œil en cours de fermeture." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000221_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Interface Google AI Studio affichant une application web interactive avec un œil en cours de fermeture.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000227_seg7.jpg" alt="Interface Google AI Studio affichant l&#x27;écran de fin de jeu &quot;SLEEP HAS TAKEN YOU&quot;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000227_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:27</span>
+                        <span class="caption-text">Interface Google AI Studio affichant l&#x27;écran de fin de jeu &quot;SLEEP HAS TAKEN YOU&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:39 - 00:03:12</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pouvons maintenant sélectionner le modèle d&#x27;aperçu Gemini 3 Pro. C&#x27;est le modèle qui a été utilisé pour créer tous ces différents jeux et sites web que je vous ai montrés ici. Et ce que nous allons faire, c&#x27;est simplement décrire notre idée ici. Une chose que je tiens à mentionner, c&#x27;est que si vous utilisez un prompt basique avec Gemini 3, cela va vous donner un résultat basique, comme nous avons l&#x27;habitude d&#x27;en voir avec d&#x27;autres LLM en matière de design d&#x27;interface utilisateur. Donc par exemple, ceci a été construit par Gemini 3 avec ce prompt très basique ici. C&#x27;est fondamentalement juste un prompt d&#x27;un seul paragraphe, pas super spécifique. Et ça a l&#x27;air un peu généré par IA. C&#x27;est mieux que ce que Claude nous aurait donné. C&#x27;est créatif, mais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google AI Studio (Navigateur web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de génération d&#x27;applications, champ de description d&#x27;idées, sélecteur de modèle &quot;Gemini 3 Pro Preview&quot;, et exemples de projets dans la galerie.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection du modèle d&#x27;aperçu Gemini 3 Pro et préparation de la saisie d&#x27;un prompt pour créer une application ou un site web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000247_seg8.jpg" alt="Vue d&#x27;ensemble de Google AI Studio avec l&#x27;interface de création d&#x27;applications Gemini et le sélecteur de modèle Gemini 3 Pro Preview." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000247_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:47</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de Google AI Studio avec l&#x27;interface de création d&#x27;applications Gemini et le sélecteur de modèle Gemini 3 Pro Preview.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000256_seg8.jpg" alt="Gros plan sur la barre de saisie de Google AI Studio permettant de décrire une idée de projet avec le modèle Gemini 3 Pro Preview sélectionné." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000256_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:56</span>
+                        <span class="caption-text">Gros plan sur la barre de saisie de Google AI Studio permettant de décrire une idée de projet avec le modèle Gemini 3 Pro Preview sélectionné.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000304_seg8.jpg" alt="Interface de prévisualisation d&#x27;un site web généré par l&#x27;IA (&quot;The Future of Influence is Intelligent&quot;) avec panneau de code latéral sur Google AI Studio." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000304_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:04</span>
+                        <span class="caption-text">Interface de prévisualisation d&#x27;un site web généré par l&#x27;IA (&quot;The Future of Influence is Intelligent&quot;) avec panneau de code latéral sur Google AI Studio.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:12 - 00:03:42</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">il utilise toujours ces dégradés qui donnent l&#x27;impression que c&#x27;est généré par IA. Cependant, c&#x27;est exactement le même style de site web. Cependant, je lui ai donné ce prompt complet. Donc pour le prompt de celui-ci, j&#x27;ai dit : construis-moi un site web de style Apple pour mon agence de marketing d&#x27;influence. Et ensuite, je lui ai pour ainsi dire donné quelques instructions générales sur la façon dont je veux qu&#x27;il soit. Et il m&#x27;a donné ça, ça ne fait pas très style Apple, mais regardez celui-ci les gars, celui-ci a l&#x27;air impeccable. Je pense vraiment que ça a l&#x27;air extrêmement solide, très, très propre. Et tout ça parce que je lui ai donné ce prompt super approfondi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de développement d&#x27;un site web et la webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt de conception de site web de style Apple et aperçu de page d&#x27;accueil d&#x27;agence marketing.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la maquette de site web générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000319_seg9.jpg" alt="Aperçu du site web de l&#x27;agence de marketing d&#x27;influence &#x27;Luume&#x27; avec le titre &#x27;Influencer Marketing for AI Companies&#x27;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000319_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:19</span>
+                        <span class="caption-text">Aperçu du site web de l&#x27;agence de marketing d&#x27;influence &#x27;Luume&#x27; avec le titre &#x27;Influencer Marketing for AI Companies&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000327_seg9.jpg" alt="Interface de prévisualisation affichant un site au style Apple avec le titre en gros caractères &#x27;The Future of Influence is Intelligent&#x27;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000327_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:27</span>
+                        <span class="caption-text">Interface de prévisualisation affichant un site au style Apple avec le titre en gros caractères &#x27;The Future of Influence is Intelligent&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000334_seg9.jpg" alt="Vue détaillée du site web de Luume avec le code et les sections de configuration visibles dans le panneau latéral gauche." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000334_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">Vue détaillée du site web de Luume avec le code et les sections de configuration visibles dans le panneau latéral gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:42 - 00:04:01</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si vous voulez utiliser le GPT personnalisé que j&#x27;ai créé pour cette vidéo, qui transformera vos invites de base en invites complètes afin de construire d&#x27;incroyables interfaces utilisateur à partir, vous savez, de quelques phrases expliquant ce que vous voulez construire, alors il y a un lien dans la description pour l&#x27;utiliser gratuitement. Très bien, alors essayons maintenant de construire réellement une interface utilisateur pour un site web.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google Chrome / Studio), interface de prévisualisation web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page web intitulée &quot;Influencer Marketing for AI Companies&quot; avec des boutons d&#x27;action et des sections de texte.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface utilisateur construite à partir des invites.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000347_seg10.jpg" alt="Capture d&#x27;écran montrant un navigateur web affichant une interface utilisateur générée, avec un encart vidéo du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000347_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:47</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un navigateur web affichant une interface utilisateur générée, avec un encart vidéo du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:02 - 00:04:22</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc je lui ai donné ce prompt. C&#x27;est assez complet. J&#x27;utilise ce GPT personnalisé ChatGPT que j&#x27;ai lié comme ressource. Je vais cliquer sur construire et passons en revue ce processus. Donc cela ne devrait probablement prendre qu&#x27;environ une minute ou un peu plus. Vous pouvez voir qu&#x27;il tourne avec le modèle Gemini 3 Pro juste ici. Mais les gars, il y a quelques choses que je veux mentionner pendant que j&#x27;attends que cela génère réellement ceci pour moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google AI Studio / Interface de développement web et de génération d&#x27;applications par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur détaillé (&quot;Build me an ultra-minimal, Apple-inspired website...&quot;), options de style, code/prévisualisation d&#x27;une page web et barre de statut de génération.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur lance la construction/génération d&#x27;une application web à partir d&#x27;un prompt complet dans Google AI Studio.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000407_seg11.jpg" alt="Interface de Google AI Studio montrant une boîte de prompt avec une maquette d&#x27;application &quot;Apple-style Website for Luume&quot;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000407_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:07</span>
+                        <span class="caption-text">Interface de Google AI Studio montrant une boîte de prompt avec une maquette d&#x27;application &quot;Apple-style Website for Luume&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000412_seg11.jpg" alt="Interface de génération en cours avec affichage des éléments textuels et de l&#x27;aperçu du site web (section &quot;Implement a Smooth Scrolling Experience&quot;)." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000412_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Interface de génération en cours avec affichage des éléments textuels et de l&#x27;aperçu du site web (section &quot;Implement a Smooth Scrolling Experience&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000417_seg11.jpg" alt="Vue détaillée du panneau de génération et de l&#x27;interface de prévisualisation web en cours d&#x27;exécution (&quot;Running for 9s&quot;)." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000417_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:17</span>
+                        <span class="caption-text">Vue détaillée du panneau de génération et de l&#x27;interface de prévisualisation web en cours d&#x27;exécution (&quot;Running for 9s&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:40</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc encore une fois, Gemini 3 Pro est phénoménal lorsque vous lui donnez un prompt complet. Je dirai que si vous lui donnez un prompt basique, vous allez obtenir un résultat basique. Mais j&#x27;ai l&#x27;impression que nous avons eu un léger changement de paradigme avec la sortie de ce modèle, parce que nous étions coincés dans les the limbes en ce qui concerne le vibe coding depuis un petit moment maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web / Application de type LLM ou outil de génération de contenu.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte généré à l&#x27;écran incluant des options de copie, des variations et des recommandations de palette de couleurs, avec un champ de saisie de prompt en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle tandis que l&#x27;écran affiche l&#x27;interface d&#x27;un outil d&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:01</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est parce que les modèles étaient bons, mais ils n&#x27;étaient pas excellents. Et j&#x27;ai l&#x27;impression que c&#x27;est le premier grand modèle de codage, du moins pour le design d&#x27;interface utilisateur, parce que c&#x27;est tout ce que j&#x27;ai pu tester jusqu&#x27;à présent que l&#x27;on ait vu depuis très longtemps. Donc cela m&#x27;excite vraiment à l&#x27;approche de 2026 en tant que quelqu&#x27;un qui code au feeling tout le temps, parce que je pense vraiment que cela est tout simplement en train d&#x27;égaliser les chances pour quiconque ne sait pas coder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google / outil de développement web) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;un projet web avec options de prévisualisation et de code, et un élément central interactif lié au traitement audio.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;interface affichée à l&#x27;écran pour illustrer ses propos sur les modèles de codage et de design d&#x27;interface utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000445_seg13.jpg" alt="Capture d&#x27;écran montrant le présentateur dans une pastille vidéo et un navigateur web affichant une interface utilisateur de design ou de code (Google AI / outil de développement)." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000445_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:45</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur dans une pastille vidéo et un navigateur web affichant une interface utilisateur de design ou de code (Google AI / outil de développement).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:01 - 00:05:24</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Au moment de cet enregistrement, des plateformes comme Lovable, Bolt ou Base44 n&#x27;ont pas Gemini 3 intégré dans leur plateforme pour l&#x27;instant. Mais si vous voulez commencer à créer des interfaces utilisateur et des interfaces front-end avec Gemini 3, vous pouvez utiliser Google AI Studio et il y a un lien dans la description pour le faire. Et c&#x27;est entièrement gratuit. Les gars, c&#x27;était un seul et unique prompt que nous avons donné à Gemini 3.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (Google AI Studio) et incrustation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface web de Google AI Studio pour la création d&#x27;applications et d&#x27;interfaces.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment utiliser Google AI Studio pour créer des interfaces utilisateur avec Gemini 3.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000507_seg14.jpg" alt="Capture d&#x27;écran montrant le navigateur avec Google AI Studio ouvert, ainsi que la webcam du présentateur incrustée dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000507_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:07</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le navigateur avec Google AI Studio ouvert, ainsi que la webcam du présentateur incrustée dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:05:58</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça a l&#x27;air phénoménal. Oh mon dieu, mec. Je suis trop enthousiaste. Je ne vais pas mentir. J&#x27;en avais tellement marre du &quot;vibe coding&quot; et d&#x27;avoir les mêmes résultats génériques. Les gars, c&#x27;est tellement solide. Regardez ça. Nous connectons les marques d&#x27;IA avec des créateurs qui stimulent la croissance. Je veux dire, ça a l&#x27;air tellement propre. J&#x27;ai l&#x27;impression d&#x27;en faire des tonnes, mais je suis vraiment, au plus profond de moi, impressionné par la conception de l&#x27;interface utilisateur avec ce nouveau modèle de codage. Très bien les gars, voilà qui est fait. Si vous avez apprécié cette vidéo, assurez-vous de vous abonner à cette chaîne. Je parle d&#x27;IA pour les non-techniciens. Donc si vous n&#x27;êtes pas techniques et que vous voulez quand même rester à jour avec l&#x27;IA</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web ou un site de présentation (AI Influencer Marketing).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de présentation : &quot;We connect AI brands with creators who drive growth&quot; et des boutons d&#x27;action.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement sur la page web pour présenter l&#x27;interface et le concept de la plateforme.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000541_seg15.jpg" alt="Vue de la page web principale montrant le titre principal &quot;We connect AI brands with creators who drive growth&quot;." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000541_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:41</span>
+                        <span class="caption-text">Vue de la page web principale montrant le titre principal &quot;We connect AI brands with creators who drive growth&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000549_seg15.jpg" alt="Vue similaire de la page d&#x27;accueil web avec le même titre principal et la mise en page de l&#x27;agence de marketing d&#x27;influence IA." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000549_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:49</span>
+                        <span class="caption-text">Vue similaire de la page d&#x27;accueil web avec le même titre principal et la mise en page de l&#x27;agence de marketing d&#x27;influence IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:58 - 00:06:10</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est l&#x27;endroit idéal pour le faire sur cette chaîne, commentez ci-dessous ce que vous en pensez les gars, je suis tellement enthousiaste à ce sujet, les ressources dont j&#x27;ai parlé dans cette vidéo sont dans la description ainsi que dans les commentaires. Cela étant dit, les gars, bon &quot;vibe coding&quot;, et je vous vois les gars dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une page d&#x27;accueil d&#x27;une startup avec un éditeur/prévisualisateur sur le côté gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte principal visible sur la page : &quot;We connect AI brands with creators who drive growth.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la plateforme web et de l&#x27;interface utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/w8hRge2NiJc/w8hRge2NiJc_000601_seg16.jpg" alt="Capture d&#x27;écran montrant le présentateur incrusté en médaillon à gauche et une page web présentant une plateforme de marketing d&#x27;influence pour l&#x27;IA, Luome, à l&#x27;écran principal." loading="lazy" onclick="openLightbox('../screenshots/w8hRge2NiJc/w8hRge2NiJc_000601_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:01</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le présentateur incrusté en médaillon à gauche et une page web présentant une plateforme de marketing d&#x27;influence pour l&#x27;IA, Luome, à l&#x27;écran principal.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

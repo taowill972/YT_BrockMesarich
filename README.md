@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `122 / 273` (`44.7%`)
+- **Vidéos traitées** : `123 / 273` (`45.1%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -139,6 +139,7 @@
 | 2025-11-24 | [Bnqa7LVuPJs](https://www.youtube.com/watch?v=Bnqa7LVuPJs) | **Comment créer du contenu UGC VIRAL avec Nano Banana Pro (INSTANTANÉMENT)** | [2025-11-24_YT-[Bnqa7LVuPJs]_Comment créer du contenu UGC VIRAL avec Nano Banana Pro (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-24_YT-[Bnqa7LVuPJs]_Comment créer du contenu UGC VIRAL avec Nano Banana Pro (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-24_YT-[Bnqa7LVuPJs]_Comment créer du contenu UGC VIRAL avec Nano Banana Pro (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `31` |
 | 2025-11-20 | [P3ZQ9a1Q_aA](https://www.youtube.com/watch?v=P3ZQ9a1Q_aA) | **Nano Banana Pro + Gemini 3 c'est complètement DINGUE** | [2025-11-20_YT-[P3ZQ9a1Q_aA]_Nano Banana Pro + Gemini 3 c'est complètement DINGUE_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-20_YT-[P3ZQ9a1Q_aA]_Nano Banana Pro + Gemini 3 c'est complètement DINGUE_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-20_YT-[P3ZQ9a1Q_aA]_Nano Banana Pro + Gemini 3 c'est complètement DINGUE_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `32` |
 | 2025-11-19 | [maHDMKy4lNs](https://www.youtube.com/watch?v=maHDMKy4lNs) | **Comment coder au feeling avec Gemini 3 (gratuitement)** | [2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `24` |
+| 2025-11-18 | [w8hRge2NiJc](https://www.youtube.com/watch?v=w8hRge2NiJc) | **Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)** | [2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `31` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
