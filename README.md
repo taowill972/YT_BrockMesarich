@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `128 / 273` (`46.9%`)
+- **Vidéos traitées** : `129 / 273` (`47.3%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -145,6 +145,7 @@
 | 2025-10-29 | [oHhv-0bm2is](https://www.youtube.com/watch?v=oHhv-0bm2is) | **Google AI Studio Just Replaced Every AI App Builder (It’s FREE)** | [2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `11` |
 | 2025-10-23 | [ya9XWiXA3XM](https://www.youtube.com/watch?v=ya9XWiXA3XM) | **ChatGPT Atlas VS Perplexity Comet (Which is Better?)** | [2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `20` |
 | 2025-10-22 | [3LvyPq7zWBM](https://www.youtube.com/watch?v=3LvyPq7zWBM) | **Did Claude Code Web Just Replace Vibe Coders?** | [2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `29` |
+| 2025-10-21 | [Nd1-gX3rauk](https://www.youtube.com/watch?v=Nd1-gX3rauk) | **I Tried the NEW ChatGPT Browser (Atlas Review)** | [2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `18` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
