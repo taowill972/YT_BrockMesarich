@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `106 / 273` (`38.8%`)
+- **Vidéos traitées** : `107 / 273` (`39.2%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -123,6 +123,7 @@
 | 2026-01-13 | [PDLEvQ2_4Mg](https://www.youtube.com/watch?v=PDLEvQ2_4Mg) | **NOUVEAU : Claude Cowork, c'est enfin Claude Code pour tout le monde** | [2026-01-13_YT-[PDLEvQ2_4Mg]_NOUVEAU Claude Cowork, c'est enfin Claude Code pour tout le monde_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-13_YT-[PDLEvQ2_4Mg]_NOUVEAU Claude Cowork, c'est enfin Claude Code pour tout le monde_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-13_YT-[PDLEvQ2_4Mg]_NOUVEAU Claude Cowork, c'est enfin Claude Code pour tout le monde_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `17` |
 | 2026-01-10 | [Oh84cPhtmFA](https://www.youtube.com/watch?v=Oh84cPhtmFA) | **This Is the Most Powerful AI Agent I’ve Ever Used (Manus 1.6 Max)** | [2026-01-10_YT-[Oh84cPhtmFA]_This Is the Most Powerful AI Agent I’ve Ever Used (Manus 1.6 Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-10_YT-[Oh84cPhtmFA]_This Is the Most Powerful AI Agent I’ve Ever Used (Manus 1.6 Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-10_YT-[Oh84cPhtmFA]_This Is the Most Powerful AI Agent I’ve Ever Used (Manus 1.6 Max)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `2` |
 | 2026-01-06 | [Uw5ykhZ1EbE](https://www.youtube.com/watch?v=Uw5ykhZ1EbE) | **How to Use Gemini's FREE Tools Better Than 99% of People** | [2026-01-06_YT-[Uw5ykhZ1EbE]_How to Use Gemini's FREE Tools Better Than 99% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-06_YT-[Uw5ykhZ1EbE]_How to Use Gemini's FREE Tools Better Than 99% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-06_YT-[Uw5ykhZ1EbE]_How to Use Gemini's FREE Tools Better Than 99% of People_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2026-01-02 | [GT0CKXCbO94](https://www.youtube.com/watch?v=GT0CKXCbO94) | **The Exact Lovable System He Uses to Make $250K/Month (Full Guide)** | [2026-01-02_YT-[GT0CKXCbO94]_The Exact Lovable System He Uses to Make $250KMonth (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-01-02_YT-[GT0CKXCbO94]_The Exact Lovable System He Uses to Make $250KMonth (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-01-02_YT-[GT0CKXCbO94]_The Exact Lovable System He Uses to Make $250KMonth (Full Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
