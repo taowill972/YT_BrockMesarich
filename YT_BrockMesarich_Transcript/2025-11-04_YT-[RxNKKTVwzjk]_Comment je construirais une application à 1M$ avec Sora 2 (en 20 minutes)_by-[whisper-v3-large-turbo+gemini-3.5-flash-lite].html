@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-11-04</span>
+                <span class="badge">⏱️ 00:20:13</span>
+                <span class="badge">🆔 <code>RxNKKTVwzjk</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=RxNKKTVwzjk" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:36</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si vous pouviez utiliser l&#x27;IA pour rétro-concevoir une idée à un million de dollars, en commençant non pas par le produit ou l&#x27;idée, mais par la vidéo virale qui la vend ? Dans cette vidéo, je vais vous montrer exactement comment je ferais. Utiliser l&#x27;IA pour trouver un concept de vidéo virale, puis construire l&#x27;application elle-même autour de cette idée en utilisant l&#x27;IA, et enfin utiliser Sora 2 pour créer les vidéos virales qui commercialisent votre application, le tout en moins de 30 minutes. Voici donc notre plan. Nous ne commençons pas par une application. Nous commençons par une idée de vidéo virale, le genre de concept qui vous donne instantanément envie d&#x27;arrêter de faire défiler votre écran. Pensez à quelque chose qui soit assez drôle, émotionnel ou époustouflant pour que vous ayez envie de l&#x27;envoyer par SMS à vos amis,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec une application de génération vidéo de type Sora 2.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des miniatures de vidéos et une fenêtre de prélecture vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation d&#x27;outils d&#x27;IA vidéo pour la génération de contenu viral.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000018_seg1.jpg" alt="Une interface web montrant une application de génération vidéo avec une fenêtre de lecture au premier plan, et le texte &quot;STEP 3: USE SORA 2 TO GENERATE VIRAL VIDEOS&quot; affiché en bas." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000018_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:18</span>
+                        <span class="caption-text">Une interface web montrant une application de génération vidéo avec une fenêtre de lecture au premier plan, et le texte &quot;STEP 3: USE SORA 2 TO GENERATE VIRAL VIDEOS&quot; affiché en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:36 - 00:01:11</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">parce que toutes ces plateformes de réseaux sociaux boostent désormais les vidéos qui sont envoyées à vos amis. Et une fois que nous aurons ce moment viral, nous allons travailler à l&#x27;envers et concevoir un produit alimenté par l&#x27;IA qui pourrait exister uniquement pour rendre cette vidéo réelle, puisque cette idée de vidéo est un succès potentiel. Donc, comme vous pouvez le voir, c&#x27;est un peu contraire à toute création d&#x27;application d&#x27;IA que vous avez probablement vue, parce que cette application n&#x27;est pas la grande idée ici. C&#x27;est l&#x27;attention. Et c&#x27;est ainsi que l&#x27;on fait réellement buzzer une application et qu&#x27;on la fait connaître à un tas d&#x27;utilisateurs différents. Donc, une fois que nous aurons cette idée de vidéo virale, nous allons en fait construire notre application avec Rocket.new, qui permet à n&#x27;importe qui de créer des applications avec l&#x27;IA. Et puis enfin,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle ou graphique affichée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code, indicateur ou donnée chiffrée.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement à la caméra en faisant des gestes avec ses mains.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:11 - 00:01:44</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous allons utiliser Sora 2 pour créer les vidéos virales qui vont commercialiser notre application. L&#x27;objectif ici est de prouver qu&#x27;une seule personne utilisant l&#x27;IA peut créer ce qui prenait autrefois toute une équipe de startup, de la conception au produit jusqu&#x27;au lancement de notre application, ainsi que la création de matériel marketing en moins de 30 minutes. Donc, sans plus tarder, plongeons-nous là-dedans. Très bien, parlons rapidement d&#x27;un produit qui est devenu complètement viral grâce à une seule vidéo de lancement. Et nous allons essayer de recréer ce succès similaire qu&#x27;a eu cette publicité du Dollar Shave Club. L&#x27;auteur de ce livre est le suivant : L&#x27;auteur de ce livre est le suivant : Parlons-en dès maintenant. Le titre de ceci est Nos lames sont foutrement géniales. Elle a été faite en 2012. Le coût était inférieur à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle, aucun graphique ni terminal affiché (plans de coupe exclusifs du présentateur).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun code source, graphique technique, métrique ni configuration n&#x27;est visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement à l&#x27;audience en expliquant le projet sans manipulation ni démonstration à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:44 - 00:02:21</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">4 500 dollars à produire, et c&#x27;était une vidéo explicative de 90 secondes avec de l&#x27;humour, de la simplicité et de l&#x27;authenticité. Et le résultat a été de 12 000 nouveaux clients inscrits instantanément, le trafic du site web a temporairement planté à cause du trafic et plus de 4 millions de vues la première semaine, et c&#x27;était en 2012. Laissez-moi vous montrer un petit extrait de cette vidéo ici. Donc en gros, comme vous pouvez le voir, juste avec ce petit extrait d&#x27;environ 10-15 secondes, tout le but de cette pub est simplement d&#x27;attirer votre attention.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (YouTube) et document de notes numériques.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant des métriques de performance et lecteur vidéo en ligne.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des résultats d&#x27;une campagne vidéo.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:21 - 00:02:55</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous ne vous souciez pas vraiment de ce qu&#x27;est le produit, c&#x27;est juste que la vidéo attire votre attention. Nous allons essayer de faire exactement la même chose, mais en utilisant des vidéos IA virales que nous allons créer avec Sora 2 à la fin de cette vidéo. Mais maintenant, allons-y et faisons de l&#x27;ingénierie inverse sur une idée de vidéo virale en utilisant l&#x27;IA. Et ensuite, nous allons faire de l&#x27;ingénierie inverse et construire cela avec rocket.new, qui permet à n&#x27;importe qui de créer des applications avec l&#x27;IA. Très bien, entrons dans le vif du sujet. Nous allons d&#x27;abord commencer par l&#x27;idée de vidéo. Donc ce que je vais faire, c&#x27;est utiliser le bon vieux ChatGPT pour m&#x27;aider réellement à trouver cette idée de vidéo virale. Et ensuite, nous allons faire de l&#x27;ingénierie inverse à partir de là et commencer à créer une application à partir de là, puis utiliser Sora 2 pour réellement fabriquer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (YouTube, ChatGPT) et webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de lecture vidéo YouTube avec métriques d&#x27;engagement et interface de chat de l&#x27;assistant IA ChatGPT.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation web et présentation parlée sans démonstration technique pertinente.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:55 - 00:03:30</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ces vidéos générées par IA à grande échelle que nous pourrions publier pour faire exploser notre application. Voici un méta-prompt que je vais utiliser. Si vous voulez l&#x27;utiliser, il y a un lien dans la description qui le renverra comme ressource. Vous pouvez donc utiliser exactement le même prompt si vous le souhaitez, ou vous pouvez simplement faire une capture d&#x27;écran ici et l&#x27;utiliser. Ce que je vais faire, c&#x27;est que je vais amener ceci dans ChatGPT. Et le résumé en gros de ceci, c&#x27;est qu&#x27;on demande essentiellement à ChatGPT d&#x27;agir comme s&#x27;il était un stratège créatif, un expert en idéation de produits IA. L&#x27;objectif est de rétro-concevoir des idées de vidéos virales. Et ensuite, à partir de là, nous allons prendre, vous savez, cela et le transformer en une application que nous pourrions réellement construire. Je vais donc envoyer ceci à ChatGPT. Ça devrait probablement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Notion, interface ChatGPT.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Méta-prompt et structure par étapes pour concevoir des applications et des vidéos virales propulsées par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du méta-prompt utilisé pour générer des idées d&#x27;applications et de vidéos virales.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:30 - 00:04:04</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">faire des recherches approfondies ici. Très bien. Voici donc le résultat que nous avons obtenu. Nous avons plein d&#x27;idées différentes ici. Et comme vous pouvez le voir, vous pouvez voir que nous avons un concept de vidéo virale. Vous montrez donc votre téléphone, vous ouvrez une discussion avec vous-même d&#x27;il y a cinq ans, un message apparaît. Quand allons-nous acheter la caméra dont nous avons parlé ? Vous tapez, l&#x27;as-tu fait ? Puis il répond avec la voix de votre ancien vous et vous réagissez avec choc. Vous pouvez donc voir que cela commence fondamentalement par l&#x27;idée de vidéo et qu&#x27;ensuite, cela détaille même pourquoi elle pourrait devenir virale. La surprise, vous pouvez littéralement envoyer un SMS à votre jeune vous-même, toutes ces différentes choses. Cela détaille fondamentalement pourquoi il pense que chacune de ces vidéos deviendrait virale. Laissez-moi donc parcourir et en trouver une qui, selon moi, serait la meilleure. Très bien, j&#x27;adore personnellement cette idée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (ChatGPT), interface de discussion textuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant des concepts de vidéos virales (&quot;What if you could talk to your past self&#x27;s texts?&quot;, &quot;AI just found my secret childhood diary&quot;), des descriptions d&#x27;applications (TimeChat, DiaryDecoder), et des prompts de développement.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente à l&#x27;écran les concepts d&#x27;applications générées par IA et les idées de vidéos virales correspondantes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000339_seg7.jpg" alt="Capture d&#x27;écran montrant un navigateur affichant ChatGPT avec des idées de concepts de vidéos virales et d&#x27;applications d&#x27;IA, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000339_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un navigateur affichant ChatGPT avec des idées de concepts de vidéos virales et d&#x27;applications d&#x27;IA, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000356_seg7.jpg" alt="Capture d&#x27;écran de l&#x27;interface de ChatGPT détaillant la section de construction de prompts d&#x27;applications et les idées de concepts viraux, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000356_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Capture d&#x27;écran de l&#x27;interface de ChatGPT détaillant la section de construction de prompts d&#x27;applications et les idées de concepts viraux, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:05 - 00:04:37</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voici l&#x27;accroche pour la vidéo. J&#x27;ai téléchargé une photo de mon ami sur cette IA et elle l&#x27;a vanné sévèrement. Ensuite, montrez l&#x27;application en train de générer des phrases de vanne drôles et personnalisées sur l&#x27;expression, la tenue ou l&#x27;ambiance de votre ami. Genre, le frérot a l&#x27;air de donner des discours de motivation à deux heures du matin dans des salons vocaux Discord. C&#x27;est plutôt drôle, franchement. Et si je descends ici, ça explique en gros pourquoi elle pense que ça pourrait devenir viral. Donc, de l&#x27;humour plus de la validation sociale, parfait pour les moments « montre ça à tes amis », ce qu&#x27;on veut vraiment créer parce qu&#x27;on veut une application qui puisse devenir virale. Et la meilleure façon d&#x27;y parvenir, c&#x27;est non seulement de capter l&#x27;attention sur des plateformes comme TikTok ou Instagram,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (ChatGPT / interface textuelle)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte décrivant un concept de vidéo virale (« Viral Video Concept »), une application de support (« RoastMyFriend.ai ») et les raisons pour lesquelles elle pourrait devenir virale (« Why It Would Go Viral »).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et illustre le concept de la vidéo virale affiché à l&#x27;écran en le survolant avec la souris.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000413_seg8.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un navigateur web affichant une page avec un concept de vidéo virale et une section sur une application de vannes (« RoastMyFriend.ai »), avec le présentateur visible en incrustation vidéo dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000413_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:13</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un navigateur web affichant une page avec un concept de vidéo virale et une section sur une application de vannes (« RoastMyFriend.ai »), avec le présentateur visible en incrustation vidéo dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:37 - 00:05:05</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mais aussi de faire en sorte que tu aies envie d&#x27;envoyer ceci à un ami et d&#x27;interagir réellement avec lui, essentiellement. Il y a aussi écrit « barrière basse » ici. Tu peux donc charger, rire et partager. Et ensuite, boucle UGC. Les utilisateurs font leurs propres vannes, les publient, ce qui alimente la viralité. Ça détaille même la façon dont il utiliserait l&#x27;IA pour construire ces outils. Ça m&#x27;a également donné un prompt de création ici que nous pourrions utiliser à l&#x27;intérieur de notre générateur d&#x27;applications d&#x27;IA. Et ce que je vais faire, c&#x27;est que je vais maintenant me rendre sur rocket.new, qui est une plateforme que nous allons utiliser pour développer cette application. Tu n&#x27;as pas besoin de savoir coder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant ChatGPT et un document de conception de projet.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte listant les facteurs de viralité (« Why It Would Go Viral »), les outils d&#x27;IA nécessaires (Replicate, GPT-4o, ElevenLabs) et un exemple de prompt de construction pour l&#x27;application.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur sélectionne du texte à l&#x27;écran pour souligner les points clés relatifs à la facilité d&#x27;utilisation et aux fonctionnalités de l&#x27;application présentée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000444_seg9.jpg" alt="Capture d&#x27;écran montrant un document textuel dans un navigateur web avec les sections sur la viralité d&#x27;une application et la méthode de construction, ainsi que le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000444_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:44</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un document textuel dans un navigateur web avec les sections sur la viralité d&#x27;une application et la méthode de construction, ainsi que le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000458_seg9.jpg" alt="Capture d&#x27;écran du navigateur web affichant un prompt détaillé pour créer une application web d&#x27;intelligence artificielle (« RoastMyFriend.ai »), avec le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000458_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:58</span>
+                        <span class="caption-text">Capture d&#x27;écran du navigateur web affichant un prompt détaillé pour créer une application web d&#x27;intelligence artificielle (« RoastMyFriend.ai »), avec le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:24</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous savez taper au clavier, vous pouvez fondamentalement créer une application en utilisant cette plateforme. Donc voici le prompt. J&#x27;utilise littéralement le prompt que ChatGPT m&#x27;a donné. Très bien, donc je vais transmettre ceci à Rocket. Il va commencer à créer notre application maintenant et nous reviendrons dans un instant. Très bien, donc Rocket me demande en fait quels écrans nous voulons créer pour commencer. Il est donc écrit : sélectionnez les écrans que vous souhaitez créer dans la liste ci-dessous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme no-code Rocket (rocket.new).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt utilisateur décrivant l&#x27;application RoastMyFriend.ai, et options de sélection d&#x27;écrans (Photo Upload, Roast Results, User Dashboard).</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et envoi d&#x27;un prompt d&#x27;application pour initialiser la génération automatique par l&#x27;intelligence artificielle Rocket.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000514_seg10.jpg" alt="Interface de la plateforme de création d&#x27;applications &quot;Rocket&quot; montrant un prompt d&#x27;IA pour l&#x27;application &quot;RoastMyFriend.ai&quot; et un aperçu en cours de chargement." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000514_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:14</span>
+                        <span class="caption-text">Interface de la plateforme de création d&#x27;applications &quot;Rocket&quot; montrant un prompt d&#x27;IA pour l&#x27;application &quot;RoastMyFriend.ai&quot; et un aperçu en cours de chargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000519_seg10.jpg" alt="Interface de Rocket affichant la réponse de l&#x27;IA qui propose de construire l&#x27;application avec React et permet de sélectionner les écrans à générer." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000519_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:19</span>
+                        <span class="caption-text">Interface de Rocket affichant la réponse de l&#x27;IA qui propose de construire l&#x27;application avec React et permet de sélectionner les écrans à générer.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:05:43</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La consommation de jetons est directement liée au nombre d&#x27;écrans générés. Téléchargement de photo, résultats de critique. Commençons simplement par cela car c&#x27;est la fonctionnalité principale de notre application. Et je vais cliquer sur créer mon application. Elle commence à le faire maintenant. Très bien. Donc, comme ça, nous avons notre application. Et laissez-moi vous expliquer en gros comment cela fonctionne. Je vais jouer avec. Donc d&#x27;abord, il est écrit de télécharger l&#x27;une des photos de vos amis.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;outil de génération d&#x27;application no-code Rocket.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options de sélection d&#x27;écrans, messages d&#x27;état de l&#x27;IA, code source généré et interface utilisateur de prévisualisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Clic sur le bouton de génération de l&#x27;application web et affichage du résultat en cours de construction.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000529_seg11.jpg" alt="Interface de création d&#x27;application avec la sélection des écrans (Photo Upload, Roast Results) et le bouton de génération." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000529_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Interface de création d&#x27;application avec la sélection des écrans (Photo Upload, Roast Results) et le bouton de génération.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000533_seg11.jpg" alt="L&#x27;application commence à générer les écrans demandés avec le message de chargement." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000533_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:33</span>
+                        <span class="caption-text">L&#x27;application commence à générer les écrans demandés avec le message de chargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000538_seg11.jpg" alt="Affichage de l&#x27;interface générée de l&#x27;application &quot;RoastMyFriend&quot; avec la zone de téléchargement de photo." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000538_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:38</span>
+                        <span class="caption-text">Affichage de l&#x27;interface générée de l&#x27;application &quot;RoastMyFriend&quot; avec la zone de téléchargement de photo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:43 - 00:06:02</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, laissez-moi aller chercher l&#x27;image à utiliser. Très bien, donc je viens de télécharger cette image de moi-même parce que je veux me faire clasher personnellement et vous pouvez choisir votre style de clash. Et les gars, ce n&#x27;est pas une seule et unique instruction. Nous pouvons apporter n&#x27;importe quel changement à notre application comme nous le souhaitons. Et je pourrais aussi rendre l&#x27;interface utilisateur un peu plus jolie. Pour qu&#x27;elle ait moins l&#x27;air générée par IA. Par exemple, allons-y et choisissons Sauvage.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web (RoastMyFriend) affichée dans un navigateur sur le bureau.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec sections pour télécharger une photo, choisir un style de clash (Funny, Savage, Flirty, Wholesome) et générer les résultats.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;application web et téléchargement d&#x27;une photo personnelle pour tester le service.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000548_seg12.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface web de l&#x27;application &#x27;RoastMyFriend&#x27; avec une photo téléchargée et différentes options de styles de clash." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000548_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:48</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface web de l&#x27;application &#x27;RoastMyFriend&#x27; avec une photo téléchargée et différentes options de styles de clash.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:37</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux que ce soit d&#x27;une honnêteté brutale et à la langue acérée. Aucune pitié, que du feu pur. Donc cette application est plutôt amusante et interactive et je pourrais cliquer sur générer un &quot;roast&quot; en faisant tourner cette interface utilisateur ici. Et je viens de réaliser quelque chose. Ce n&#x27;est pas encore connecté à l&#x27;IA, donc ça ne va pas vraiment me &quot;roster&quot;. Donc si je viens dans notre chat à l&#x27;intérieur de Rocket, vous pouvez voir qu&#x27;il est écrit, que voudriez-vous que je fasse ensuite ? Et il m&#x27;a donné ces options d&#x27;intégration afin d&#x27;intégrer l&#x27;IA dans notre application. Je vais donc cliquer sur intégrer OpenAI. Et en gros, ça va intégrer ChatGPT. Il est donc capable d&#x27;analyser les images et ensuite d&#x27;écrire un commentaire amusant à ce sujet. De plus, je peux afficher ceci en mode mobile parce que c&#x27;est probablement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement de type Bolt/v0 ou assistant de code IA, application React en cours de développement.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de fichiers de composants JSX (RoastCard.jsx, EmptyState.jsx, FilterBar.jsx, ToneSelector.jsx, GenerateButton.jsx), boutons de téléchargement et de régénération dans l&#x27;interface, prompt &quot;Integrate OpenAI with my application&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface utilisateur de l&#x27;application de &quot;roast&quot; et interaction avec l&#x27;assistant de code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000620_seg13.jpg" alt="Interface de développement web montrant la liste des fichiers React (.jsx) d&#x27;une application de &quot;roast&quot; et un aperçu de l&#x27;interface utilisateur." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000620_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:20</span>
+                        <span class="caption-text">Interface de développement web montrant la liste des fichiers React (.jsx) d&#x27;une application de &quot;roast&quot; et un aperçu de l&#x27;interface utilisateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000629_seg13.jpg" alt="Interface montrant l&#x27;interaction avec l&#x27;assistant de code avec un message de prompt &quot;Integrate OpenAI with my application&quot;." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000629_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:29</span>
+                        <span class="caption-text">Interface montrant l&#x27;interaction avec l&#x27;assistant de code avec un message de prompt &quot;Integrate OpenAI with my application&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:37 - 00:07:13</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ça va être une application qui est conçue pour le mobile, par exemple, parce que c&#x27;est comme ça qu&#x27;on va l&#x27;utiliser pour créer les vidéos. On va probablement concevoir cette application pour les utilisateurs mobiles parce que ce sera plus facile pour nous de créer de vraies vidéos virales si c&#x27;est sur un téléphone portable au lieu d&#x27;être juste, vous savez, une application pour ordinateur. Très bien. Donc, il demande ma clé API OpenAI. Alors laissez-moi aller la chercher maintenant, entrer une clé API, cliquer sur continuer. Et maintenant, il semble que notre intégration OpenAI devrait fonctionner correctement. Très bien. Donc maintenant nous avons cette application. J&#x27;ai un peu joué avec. Elle n&#x27;est pas totalement finalisée, mais notre application fonctionne maintenant. Elle est intégrée avec OpenAI. Donc elle est capable de vraiment critiquer nos images que nous téléchargeons. Alors laissez-moi continuer</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un IDE de développement d&#x27;application et un aperçu mobile (Bolt / interface de code cloud).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichiers de code source (JS/JSX), arborescence de projet, console de chat et prévisualisation d&#x27;interface utilisateur mobile.
+[DESC_IMAGE_2] Aucun contenu visuel pertinent (plan fixe du présentateur).</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000646_seg14.jpg" alt="Interface de développement affichant le code d&#x27;une application mobile nommée &quot;RoastMyFriend&quot; avec une vue d&#x27;aperçu à droite et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000646_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:46</span>
+                        <span class="caption-text">Interface de développement affichant le code d&#x27;une application mobile nommée &quot;RoastMyFriend&quot; avec une vue d&#x27;aperçu à droite et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000704_seg14.jpg" alt="Aperçu de l&#x27;application mobile &quot;RoastMyFriend&quot; montrant les résultats générés par IA avec des images et du texte, et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000704_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:04</span>
+                        <span class="caption-text">Aperçu de l&#x27;application mobile &quot;RoastMyFriend&quot; montrant les résultats générés par IA avec des images et du texte, et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:13 - 00:07:39</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et de vous montrer comment ça marche. Je peux cliquer sur ce bouton plus, cliquer sur &quot;importer une photo&quot;, et là je peux simplement importer n&#x27;importe quelle image. Très bien. J&#x27;ai donc importé cette sorte de miniature de mon visage que j&#x27;utilise pour mes miniatures. J&#x27;ai l&#x27;air un peu bizarre ici. Genre, je peux voir que ça va me détruire complètement pour ça. Donc ce que je vais faire, c&#x27;est que je peux maintenant choisir mon style. Je vais cliquer sur &quot;sauvage&quot;. Je veux que ce soit aussi sauvage que possible. Alors cliquons sur &quot;générer le tacle&quot;. Génération en cours, ça utilise l&#x27;IA pour analyser la photo et concocter le tacle personnalisé.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement / application web (Rocket.new), panneau de code latéral (fichiers JavaScript, logs de débogage).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de l&#x27;application &quot;RoastMyFriend&quot;, options de style (Savage, Funny, etc.), logs de génération de code et de correction d&#x27;erreurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Importation d&#x27;une image miniature du visage du présentateur dans l&#x27;application web et sélection des options de style.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000720_seg15.jpg" alt="Interface d&#x27;une application web de type générateur de &quot;roast&quot; avec le panneau de code à gauche et l&#x27;application affichant l&#x27;image importée du visage du présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000720_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:20</span>
+                        <span class="caption-text">Interface d&#x27;une application web de type générateur de &quot;roast&quot; avec le panneau de code à gauche et l&#x27;application affichant l&#x27;image importée du visage du présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000726_seg15.jpg" alt="Vue similaire montrant l&#x27;application web avec l&#x27;image du visage téléchargée avec succès dans l&#x27;interface de test." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000726_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:26</span>
+                        <span class="caption-text">Vue similaire montrant l&#x27;application web avec l&#x27;image du visage téléchargée avec succès dans l&#x27;interface de test.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000733_seg15.jpg" alt="L&#x27;application web affichant les options de style de &quot;roast&quot; (Funny, Savage, Flirty, Wholesome) avec le bouton de génération en bas." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000733_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:33</span>
+                        <span class="caption-text">L&#x27;application web affichant les options de style de &quot;roast&quot; (Funny, Savage, Flirty, Wholesome) avec le bouton de génération en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:40 - 00:08:04</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, donnons-lui une seconde. Nous devrions avoir un résultat. Très bien. Donc, il est dit que cette pose assure. J&#x27;ai répété ça 47 fois devant le miroir, et ça se voit. Voilà. C&#x27;est un roast plutôt solide. Ce que je pourrais faire, c&#x27;est que je veux en fait apporter quelques modifications à notre application. Je veux m&#x27;assurer qu&#x27;elle montre la photo entière qui est téléchargée. Alors, laissez-moi venir ici et lui dire ça. Assurons-nous que lorsqu&#x27;une photo est téléchargée et que vous générez le roast, cela montre la photo entière qui a été téléchargée et n&#x27;en coupe aucune partie.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de génération de roasts assistée par IA, avec le présentateur en médaillon vidéo en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur affichant une photo avec une légende générée par IA : « That pose is giving &#x27;I practiced this 47 times in the mirror&#x27; energy and it shows », ainsi que des journaux de modifications de code dans le volet latéral.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur survole le résultat du roast et le présentateur commente le résultat affiché à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000746_seg16.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application web de type &quot;RoastMyFriend&quot; avec un panneau de code/historique à gauche et le résultat du roast d&#x27;une photo à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000746_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:46</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application web de type &quot;RoastMyFriend&quot; avec un panneau de code/historique à gauche et le résultat du roast d&#x27;une photo à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:04 - 00:08:24</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, c&#x27;est parti. Maintenant, ça fonctionne réellement correctement. Vous pouvez voir que ça montre la photo complète ici. Je pourrais même aimer chacune d&#x27;entre elles. Et ensuite, je pourrais parcourir le fil d&#x27;actualité et cela me montre toutes les différentes publications que j&#x27;ai téléversées. Cette application fonctionne plutôt correctement maintenant. Une chose que je tiens à mentionner, c&#x27;est que si je viens ici sur les intégrations en haut, il y a tout un tas de choses différentes que nous pourrions intégrer dans notre application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;application &#x27;RoastMyFriend&#x27; et l&#x27;outil de développement Rocket.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des publications, des options de tri, des images téléchargées et un fil d&#x27;actualité de contenu généré par l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;affichage correct des photos complètes et navigation dans le fil d&#x27;actualité des publications téléversées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000809_seg17.jpg" alt="Aperçu de l&#x27;application web &#x27;RoastMyFriend&#x27; affichant les publications et les photos générées par IA avec des options de filtrage et de notation." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000809_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:09</span>
+                        <span class="caption-text">Aperçu de l&#x27;application web &#x27;RoastMyFriend&#x27; affichant les publications et les photos générées par IA avec des options de filtrage et de notation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000819_seg17.jpg" alt="Navigation dans l&#x27;interface de développement avec le panneau de prévisualisation et le fil d&#x27;actualité de l&#x27;application." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000819_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:19</span>
+                        <span class="caption-text">Navigation dans l&#x27;interface de développement avec le panneau de prévisualisation et le fil d&#x27;actualité de l&#x27;application.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:24 - 00:08:59</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pourrions connecter ceci à une base de données, que nous utiliserions Supabase. Nous pourrions le connecter à Stripe afin de pouvoir réellement facturer l&#x27;utilisation de notre logiciel. Nous pourrions ajouter Perplexity, qui est un modèle d&#x27;IA, Anthropic, Gemini, AdSense, toutes ces différentes choses que nous pourrions réellement intégrer directement dans notre application. Disons que nous voulons vraiment avoir des utilisateurs de sorte que vous puissiez voir ce que vos amis publient, nous devrions configurer quelque chose comme Supabase. Laissez-moi donc vous montrer rapidement exactement comment vous feriez cela. Je vais donc cliquer sur ceci. En fait, je vais continuer, je vais créer un nouveau projet Supabase, je vais l&#x27;appeler roast app. Très bien, maintenant que Supabase est connecté, je vais simplement venir sur rocket et fondamentalement dire, ajoutons maintenant l&#x27;authentification des utilisateurs. De cette façon, il pourrait y avoir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme de développement low-code / no-code avec interface de configuration des API.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres d&#x27;intégration de services tiers (base de données Supabase, paiements Stripe, modèles d&#x27;IA comme Perplexity et OpenAI).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation à travers les menus d&#x27;intégration et configuration des clés d&#x27;API et bases de données pour l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000833_seg18.jpg" alt="Interface de développement montrant les options d&#x27;intégration (Supabase, Stripe, Perplexity, OpenAI, etc.)." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000833_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:33</span>
+                        <span class="caption-text">Interface de développement montrant les options d&#x27;intégration (Supabase, Stripe, Perplexity, OpenAI, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000841_seg18.jpg" alt="Aperçu de l&#x27;application &#x27;RoastMyFriend&#x27; générant des contenus textuels et visuels par IA." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000841_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:41</span>
+                        <span class="caption-text">Aperçu de l&#x27;application &#x27;RoastMyFriend&#x27; générant des contenus textuels et visuels par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000850_seg18.jpg" alt="Fenêtre modale de création d&#x27;un nouveau projet Supabase avec saisie du nom, mot de passe et région." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000850_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:50</span>
+                        <span class="caption-text">Fenêtre modale de création d&#x27;un nouveau projet Supabase avec saisie du nom, mot de passe et région.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:59 - 00:09:36</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différents utilisateurs qui pourraient télécharger leurs propres publications. Et de cette façon, nous pouvons réellement rendre notre application plus fonctionnelle et ensuite, une fois que nous aurons fait fonctionner cela correctement, passons à la façon dont nous allons réellement commercialiser notre application en utilisant Sora 2 et en générant des vidéos virales pour cette application, car c&#x27;est bien là tout le problème. Ajoutons maintenant l&#x27;authentification des utilisateurs afin qu&#x27;ils puissent s&#x27;inscrire et qu&#x27;ensuite cela affiche automatiquement toutes les publications générées par les utilisateurs sur le fil d&#x27;actualité. Très bien, nous avons donc maintenant la possibilité de nous connecter à un compte, nous avons donc l&#x27;authentification et la base de données configurées ici et je lui ai également dit de passer à GPT-5 pour générer réellement le &quot;roast&quot; ainsi que pour analyser ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme de développement no-code/AI, interface utilisateur mobile simulée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, journaux de mise à jour, base de données connectée, écran de connexion utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et test de l&#x27;interface de connexion et de la base de données de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000908_seg19.jpg" alt="Interface de développement avec assistant IA à gauche et prévisualisation mobile de l&#x27;application &#x27;RoastMyFriend&#x27; à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000908_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:08</span>
+                        <span class="caption-text">Interface de développement avec assistant IA à gauche et prévisualisation mobile de l&#x27;application &#x27;RoastMyFriend&#x27; à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000926_seg19.jpg" alt="Interface de l&#x27;application affichant l&#x27;écran de connexion avec des identifiants de démonstration." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000926_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:26</span>
+                        <span class="caption-text">Interface de l&#x27;application affichant l&#x27;écran de connexion avec des identifiants de démonstration.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:36 - 00:10:00</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que nous pourrions faire, c&#x27;est que vous pouvez voir que nous avons ce bouton s&#x27;inscrire maintenant. Donc nous pourrions cliquer sur s&#x27;inscrire ou nous pourrions cliquer sur se connecter. Je vais juste utiliser l&#x27;un de ces identifiants de démonstration ici, qui a déjà un compte créé. Et je pourrions instantanément juste télécharger une image et essayons cela maintenant. Je vais télécharger cette image de LeBron. Je vais cliquer sur le mode sauvage et boum, allons-y et générons ce &quot;roast&quot; pour nous. Très bien. Donc la confiance est admirable, mais l&#x27;angle ne vous rend aucun service, ma belle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application RoastFriend sur la plateforme de développement Rocket.new.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec champs de connexion, panneau de chat à gauche et options de configuration de l&#x27;application web.</p>
+                        <p><strong>Action / Démonstration :</strong> Connexion à l&#x27;application en utilisant des identifiants de démonstration préconfigurés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000942_seg20.jpg" alt="Page de connexion de l&#x27;application RoastFriend avec des identifiants de démonstration visibles en bas." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000942_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:42</span>
+                        <span class="caption-text">Page de connexion de l&#x27;application RoastFriend avec des identifiants de démonstration visibles en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000954_seg20.jpg" alt="L&#x27;application RoastFriend connectée affiche une photo de LeBron James en prévisualisation avec un chargement de génération." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_000954_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:54</span>
+                        <span class="caption-text">L&#x27;application RoastFriend connectée affiche une photo de LeBron James en prévisualisation avec un chargement de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:00 - 00:10:19</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voilà. Voilà notre rôti sauvage. Nous pouvons ensuite l&#x27;envoyer à un ami. Nous pourrions télécharger ceci. Nous pourrions aussi toucher pour écouter le rôti. Il a donc comme une voix hors champ pour nous juste là. Je tiens à mentionner, évidemment, que si nous voulons créer une application complète que nous prévoyons de voir utilisée par des milliers de personnes, nous aurions probablement besoin de passer plus du temps que ce que nous avons fait dans cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de développement sans code avec interface de prévisualisation mobile et panneau de chat pour l&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de l&#x27;application &#x27;RoastFriend&#x27; affichant des options de filtrage, des images générées et des boutons d&#x27;écoute audio et de téléchargement.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration des fonctionnalités de l&#x27;application, notamment l&#x27;écoute audio et le téléchargement des résultats générés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001004_seg21.jpg" alt="Interface de l&#x27;application de génération de roast avec le résultat affiché et les boutons d&#x27;interaction et de téléchargement." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001004_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:04</span>
+                        <span class="caption-text">Interface de l&#x27;application de génération de roast avec le résultat affiché et les boutons d&#x27;interaction et de téléchargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001014_seg21.jpg" alt="Vue de l&#x27;interface montrant les résultats des roasts générés par l&#x27;IA avec les options de filtre et de tri." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001014_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:14</span>
+                        <span class="caption-text">Vue de l&#x27;interface montrant les résultats des roasts générés par l&#x27;IA avec les options de filtre et de tri.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:19 - 00:10:42</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But I want to just basically show the capabilities of using a platform like Rocket to generate an app that is functional, even if you have no idea how to code. So I&#x27;m pretty happy with what we&#x27;ve done here in just a couple of minutes here. So now that we have our app and we might make some changes to this, but let&#x27;s go ahead and actually start creating these advertisements using Sora 2 so we could really make our app blow up.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme de développement d&#x27;applications no-code/AI Rocket.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de création d&#x27;applications avec un volet de discussion conversationnel à gauche et un aperçu interactif de l&#x27;application &quot;RoastFriend&quot; intégrant des fonctionnalités d&#x27;IA à droite.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur démontre l&#x27;utilisation de la plateforme Rocket pour générer et prévisualiser une application fonctionnelle basée sur l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001030_seg22.jpg" alt="Interface de la plateforme Rocket montrant le constructeur d&#x27;application &quot;RoastFriend&quot; avec un panneau de chat à gauche et un aperçu mobile de l&#x27;application à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001030_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:30</span>
+                        <span class="caption-text">Interface de la plateforme Rocket montrant le constructeur d&#x27;application &quot;RoastFriend&quot; avec un panneau de chat à gauche et un aperçu mobile de l&#x27;application à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:42 - 00:11:00</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc, la plateforme que nous allons utiliser pour créer nos publicités UGC par IA — UGC signifie contenu généré par les utilisateurs, et c&#x27;est fondamentalement ce que vous voyez chaque fois que vous regardez une publicité sur TikTok, c&#x27;est simplement du contenu UGC. Donc, ce que nous allons faire, c&#x27;est que nous allons nous connecter à notre compte Arcades, et lorsque nous arrivons ici, ce que nous allons faire, c&#x27;est de cliquer sur ajouter un produit.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme SaaS Arcads.ai.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de création de publicités UGC par IA, avec menus de projets et vignettes de prévisualisation vidéo.
+[DESC_IMAGE_2] Navigation dans l&#x27;interface de l&#x27;outil de génération de vidéos publicitaires avec des acteurs IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001046_seg23.jpg" alt="Page d&#x27;accueil du site web Arcads.ai affichant le titre &#x27;Create winning ads with AI Actors&#x27; avec des exemples de vidéos publicitaires au format vertical." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001046_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Page d&#x27;accueil du site web Arcads.ai affichant le titre &#x27;Create winning ads with AI Actors&#x27; avec des exemples de vidéos publicitaires au format vertical.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001055_seg23.jpg" alt="Interface du tableau de bord de la plateforme Arcads.ai montrant l&#x27;espace de gestion de projets et des aperçus de vidéos générées." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001055_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:55</span>
+                        <span class="caption-text">Interface du tableau de bord de la plateforme Arcads.ai montrant l&#x27;espace de gestion de projets et des aperçus de vidéos générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:00 - 00:11:19</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais appeler cette application &quot;roast app&quot;. Et nous allons voir cette interface ici. Et je vais vous montrer exactement comment vous pouvez commencer à créer de multiples types d&#x27;annonces publicitaires en utilisant l&#x27;intelligence artificielle en seulement quelques instructions. Très bien. Donc, avant d&#x27;aller de l&#x27;avant et de générer ma première annonce pour notre application, je veux vous montrer les fonctionnalités d&#x27;utilisation d&#x27;ArcAds.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web de montage et de génération vidéo par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des options de création de projets, de dossiers et de vignettes de vidéos d&#x27;acteurs.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface de création d&#x27;annonces publicitaires basées sur l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001105_seg24.jpg" alt="Interface d&#x27;une application de création de projets vidéo par IA avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001105_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:05</span>
+                        <span class="caption-text">Interface d&#x27;une application de création de projets vidéo par IA avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001114_seg24.jpg" alt="Interface utilisateur montrant plusieurs vignettes de prévisualisation de vidéos générées pour un projet publicitaire." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001114_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:14</span>
+                        <span class="caption-text">Interface utilisateur montrant plusieurs vignettes de prévisualisation de vidéos générées pour un projet publicitaire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:19 - 00:11:41</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous avons donc plusieurs choses différentes à l&#x27;intérieur d&#x27;ici. Nous avons des acteurs parlants, que nous pourrions venir ici et fondamentalement sélectionner parmi un groupe de différents acteurs qu&#x27;ils ont. Ce sont fondamentalement juste des avatars générés par IA que nous pouvons utiliser pour nos publicités de contenu généré par les utilisateurs. Nous avons également la possibilité de simplement générer une vidéo. Nous pourrions donc sélectionner notre modèle vidéo ici. Nous allons utiliser Sora 2 Pro pour ce cas d&#x27;utilisation parce que c&#x27;est tout simplement le meilleur modèle pour créer ce style de vidéos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération de vidéos par IA, interface de sélection de personnages et de modèles.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie d&#x27;avatairs humains générés par IA, options de modèles (Sora, Kling, Veo).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un acteur virtuel et exploration des options de génération vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001124_seg25.jpg" alt="Interface de sélection d&#x27;acteurs virtuels (avatars IA) avec une grille de profils variés." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001124_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:24</span>
+                        <span class="caption-text">Interface de sélection d&#x27;acteurs virtuels (avatars IA) avec une grille de profils variés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001130_seg25.jpg" alt="Navigation dans la bibliothèque d&#x27;avatars et de modèles vidéo par IA." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001130_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:30</span>
+                        <span class="caption-text">Navigation dans la bibliothèque d&#x27;avatars et de modèles vidéo par IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001135_seg25.jpg" alt="Menu déroulant de sélection de modèles vidéo (Sora 2 Pro, Kling, Veo 3.1) avec zone de prompt texte." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001135_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:35</span>
+                        <span class="caption-text">Menu déroulant de sélection de modèles vidéo (Sora 2 Pro, Kling, Veo 3.1) avec zone de prompt texte.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:41 - 00:12:01</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En plus de cela, nous avons aussi quelque chose qui s&#x27;appelle montre ton application. Donc si je retourne sur un autre projet, j&#x27;ai en fait construit cette application d&#x27;essayage virtuel. Et nous avons notre acteur ici qui tient un téléphone avec l&#x27;interface utilisateur de l&#x27;application sur notre téléphone. C&#x27;est donc une façon pour nous de pouvoir réellement intégrer notre application directement dans nos publicités. Ça a l&#x27;air honnêtement assez organique et ça ne fait même pas vraiment trop généré par IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface d&#x27;application de création vidéo / IA (Arcads.ai) et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de l&#x27;application d&#x27;essayage virtuel avec options de téléchargement, acteur nommé Julien, et paramètres de caméra.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et navigation dans une application de démonstration vidéo montrant un essayage virtuel sur mobile.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001146_seg26.jpg" alt="Interface web montrant un acteur tenant un téléphone affichant une application d&#x27;essayage virtuel, avec le présentateur incrusté en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001146_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:46</span>
+                        <span class="caption-text">Interface web montrant un acteur tenant un téléphone affichant une application d&#x27;essayage virtuel, avec le présentateur incrusté en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001151_seg26.jpg" alt="Gros plan sur la vidéo de démonstration de l&#x27;application d&#x27;essayage virtuel affichée sur le téléphone de l&#x27;acteur." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001151_seg26.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:51</span>
+                        <span class="caption-text">Gros plan sur la vidéo de démonstration de l&#x27;application d&#x27;essayage virtuel affichée sur le téléphone de l&#x27;acteur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:01 - 00:12:23</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite, nous avons One 2.2 Anime, qui est fondamentalement ce modèle de génération vidéo qui vous permet de téléverser une vidéo de vous-même, puis de téléverser un personnage, et il imitera ce que vous faites dans cette vidéo. Laissez-moi donc vous montrer un rapide exemple. J&#x27;ai donc pris cette vidéo juste ici de moi-même en train de bouger mes mains et je vais vous montrer exactement quel est le résultat.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web de génération vidéo (Vidu 2.2 Animate), navigateur web, lecteur vidéo intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de téléchargement de vidéo de référence, téléchargement d&#x27;image de personnage, et vignettes de projets récents.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;interface de l&#x27;outil d&#x27;IA et illustre le processus de téléchargement et de sélection des vidéos de référence.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001212_seg27.jpg" alt="Interface Web d&#x27;un outil de génération vidéo par IA montrant le panneau de configuration pour &quot;Vidu 2.2 Animate&quot; avec des options de téléversement de vidéo et d&#x27;image de personnage." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001212_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:12</span>
+                        <span class="caption-text">Interface Web d&#x27;un outil de génération vidéo par IA montrant le panneau de configuration pour &quot;Vidu 2.2 Animate&quot; avec des options de téléversement de vidéo et d&#x27;image de personnage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001218_seg27.jpg" alt="L&#x27;interface Web affiche en plus une fenêtre de prévisualisation vidéo active montrant le présentateur effectuant des mouvements de bras." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001218_seg27.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:18</span>
+                        <span class="caption-text">L&#x27;interface Web affiche en plus une fenêtre de prévisualisation vidéo active montrant le présentateur effectuant des mouvements de bras.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:23 - 00:12:44</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Voici LeBron James et c&#x27;est lui qui imite exactement ce que je fais dans la vidéo. C&#x27;est fou. Alors pensez à tous les cas d&#x27;utilisation différents. Vous pourriez fondamentalement juste télécharger soit l&#x27;un de nos acteurs que nous avons, ou juste un personnage. Et ensuite, vous pourriez fondamentalement juste faire ce que vous voulez et il imitera ce mouvement et tout ce que vous direz. Mais maintenant, passons à la génération effective de notre première publicité pour ce projet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (application de génération vidéo par IA, style Wan 2.2 Animate).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des vignettes de vidéos générées, des options &quot;Upload a reference video&quot; et &quot;Upload a character image&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation d&#x27;une interface de génération vidéo montrant des exemples de deepfake/animation de personnages.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001228_seg28.jpg" alt="Navigateur affichant une application web de génération vidéo avec un aperçu montrant LeBron James en costume." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001228_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:28</span>
+                        <span class="caption-text">Navigateur affichant une application web de génération vidéo avec un aperçu montrant LeBron James en costume.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001239_seg28.jpg" alt="Interface de l&#x27;application web montrant des projets vidéo récents et des options de téléchargement (reference video / character image)." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001239_seg28.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:39</span>
+                        <span class="caption-text">Interface de l&#x27;application web montrant des projets vidéo récents et des options de téléchargement (reference video / character image).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:44 - 00:13:04</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc la première chose que je vais faire, c&#x27;est que je vais venir tester d&#x27;abord la fonctionnalité des acteurs parlants. Donc ce que cela va faire, c&#x27;est que cela va prendre un acteur unique et il va fondamentalement juste dire exactement ce que je lui demande de dire. Donc comme vous pouvez le voir, j&#x27;ai fondamentalement sélectionné les acteurs parlants. Et voici ce que je vais demander à notre acteur de dire. J&#x27;ai donc téléchargé une photo de mon ami de son IA et elle l&#x27;a clashé sévèrement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web (interface de création de contenu / IA, type Arcade.ai).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu &quot;Talking Actors&quot;, options &quot;Text to Speech&quot; et &quot;Add actors&quot;, champ de saisie de texte pour le script de l&#x27;avatar.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie d&#x27;un texte dans l&#x27;interface web pour configurer le discours d&#x27;un acteur parlant virtuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001249_seg29.jpg" alt="Interface web montrant un outil de génération d&#x27;acteurs parlants avec une zone de saisie de texte et la webcam du présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001249_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:49</span>
+                        <span class="caption-text">Interface web montrant un outil de génération d&#x27;acteurs parlants avec une zone de saisie de texte et la webcam du présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001259_seg29.jpg" alt="Interface web montrant le remplissage du script textuel pour la fonctionnalité &quot;Talking Actors&quot; avec la webcam du présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001259_seg29.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:12:59</span>
+                        <span class="caption-text">Interface web montrant le remplissage du script textuel pour la fonctionnalité &quot;Talking Actors&quot; avec la webcam du présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:04 - 00:13:40</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout ce que vous avez à faire, c&#x27;est de télécharger une image et elle va le roaster avec l&#x27;IA. Et ensuite, ce que je vais faire au début de cette phrase, je vais cliquer sur la barre oblique, puis cliquer sur rires. Rires. Vous pouvez donc ajouter de l&#x27;émotion à tous vos différents acteurs parlants ici. Je vais donc commencer par ça. Je vais sélectionner Arcads 1.0 et je vais simplement sélectionner notre acteur. Et j&#x27;aime bien celui-ci. Je l&#x27;ai déjà utilisé. Je vais donc simplement utiliser celui-ci, cliquer sur &quot;ajouter l&#x27;acteur&quot;. Et ce que je pourrais faire, c&#x27;est en fait en sélectionner plusieurs. Laissez-moi donc en sélectionner quelques-uns ici, cliquer sur &quot;enregistrer les modifications&quot;. Et maintenant, nous avons ces trois personnes. Je clique simplement sur &quot;envoyer&quot;. Et ce que ça va faire, c&#x27;est que ça va générer trois vidéos de personnes qui parlent maintenant à partir de celle-ci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web &quot;Roast App&quot; (Arcade AI) affichant une bibliothèque d&#x27;acteurs parlants.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Grille de profils d&#x27;avatairs IA et options de filtrage par genre, âge et tags.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;acteurs virtuels dans l&#x27;interface de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001322_seg30.jpg" alt="Interface de l&#x27;application de génération montrant une grille de sélection d&#x27;acteurs virtuels IA." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001322_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:22</span>
+                        <span class="caption-text">Interface de l&#x27;application de génération montrant une grille de sélection d&#x27;acteurs virtuels IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001331_seg30.jpg" alt="Vue rapprochée de la sélection des favoris parmi les acteurs parlants avec le bouton de sauvegarde." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001331_seg30.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:31</span>
+                        <span class="caption-text">Vue rapprochée de la sélection des favoris parmi les acteurs parlants avec le bouton de sauvegarde.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:40 - 00:14:16</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">singular prompt that I gave it. All right, so here is our output of our actor saying exactly what we want with Sora 2. So let&#x27;s go take a look. I uploaded a photo of my friend to this AI and it roasted him hard. All you have to do is upload an image and it will roast them with AI. All right, so that is really solid. Honestly, I think that looks pretty good. And what we could do on top of this is edit a video inside of something like CapCut that just shows a clip of the app, throw some captions on there and that could be a good starting point for our ad but now what i&#x27;m going to do is i&#x27;m going to show you exactly how you could generate entire ads not just like talking</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;application IA / Outil de génération vidéo de type Talking Actor</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres du modèle (Talking Actor 1.0 - Text to Speech), voix (Lauren - Default) et script audio correspondant au discours du présentateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du résultat de génération vidéo text-to-speech avec un acteur virtuel animé par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001349_seg31.jpg" alt="Aperçu d&#x27;une application IA affichant un acteur virtuel parlant (Lauren) sur smartphone à gauche et le script textuel à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001349_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:49</span>
+                        <span class="caption-text">Aperçu d&#x27;une application IA affichant un acteur virtuel parlant (Lauren) sur smartphone à gauche et le script textuel à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001358_seg31.jpg" alt="Interface de gestion de projets vidéo montrant le lecteur vidéo de l&#x27;acteur virtuel et la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001358_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:13:58</span>
+                        <span class="caption-text">Interface de gestion de projets vidéo montrant le lecteur vidéo de l&#x27;acteur virtuel et la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:16 - 00:14:53</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des clips de personnes mais comme un vrai petit sketch avec Sora 2 à l&#x27;intérieur d&#x27;Arcads. Bon, alors, en retournant sur ChatGPT et sur le prompt initial que je lui ai donné, voici donc une idée : je pourrais simplement copier ce prompt et le copier dans Arcads : un groupe d&#x27;amis traîne dehors au coucher du soleil en riant, un autre ami arrive dans une tenue absurde et, en gros, ils utilisent l&#x27;application &quot;Roast your friends&quot; pour le chambrer. Donc ce que je vais faire, c&#x27;est que je vais revenir sur Arcads, et au lieu de sélectionner des acteurs parlants, je vais simplement cliquer sur vidéos et je vais sélectionner Sora 2 Pro parce que c&#x27;est le meilleur modèle pour générer une vidéo, et voilà, je vais coller ce prompt ici et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, ChatGPT, interface Arcads.ai</p>
+                        <p><strong>Contenu textuel & Code :</strong> Scripts de génération vidéo textuels et menus de configuration de l&#x27;outil de création vidéo Arcads.ai.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parcourt et montre à l&#x27;écran les étapes de création de prompt et leur intégration dans l&#x27;outil de génération de vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001425_seg32.jpg" alt="Capture montrant un navigateur web affichant une interface ChatGPT avec un prompt descriptif détaillé pour une vidéo cinématique de type Sora." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001425_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:25</span>
+                        <span class="caption-text">Capture montrant un navigateur web affichant une interface ChatGPT avec un prompt descriptif détaillé pour une vidéo cinématique de type Sora.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001443_seg32.jpg" alt="Capture montrant l&#x27;interface de l&#x27;application Arcads.ai avec un menu déroulant pour sélectionner des options de génération vidéo (Talking Actors, Gestures, Scenes)." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001443_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:43</span>
+                        <span class="caption-text">Capture montrant l&#x27;interface de l&#x27;application Arcads.ai avec un menu déroulant pour sélectionner des options de génération vidéo (Talking Actors, Gestures, Scenes).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:53 - 00:15:14</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce que je pourrais faire, c&#x27;est en fait sélectionner combien de vidéos je veux voir générées à partir de cette consigne initiale, alors sélectionnons-en juste trois, parce que, pour être honnête, utiliser Sora, c&#x27;est un peu quitte ou double à l&#x27;heure actuelle. Certaines sont fantastiques, vraiment très bien, et d&#x27;autres sont juste du genre à halluciner et ne sont pas les meilleures. Je suggère donc d&#x27;en faire deux ou trois. Comme ça, si l&#x27;une d&#x27;elles n&#x27;est pas bonne, vous avez d&#x27;autres options.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération de vidéos (interface de type Roast App avec options Sora 2 Pro).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec un prompt textuel décrivant une scène de groupe, et des paramètres de génération vidéo (format, durée, résolution).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur configure les paramètres pour générer trois variations de vidéos à partir d&#x27;un prompt textuel.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:14 - 00:15:50</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors attendons simplement le résultat ici. Très bien, voici notre premier résultat. Nous en avons un sur trois de généré et ce que nous pouvons faire, c&#x27;est que si nous cliquons sur la vidéo, vous pouvez voir qu&#x27;elle affiche le prompt. Elle affiche notre vidéo, nous pouvons la regarder et ensuite nous pouvons aussi la télécharger. Donc je vais procéder au téléchargement et ensuite nous allons la lire. Qu&#x27;est-ce qu&#x27;il porte mon dieu attends une minute je récupère ça on met ça en ligne pour tes amis cet homme a l&#x27;air d&#x27;avoir perdu un pari avec son placard c&#x27;est parfait je veux dire les gars, obtenir ça à partir d&#x27;un seul et unique prompt en utilisant l&#x27;IA, c&#x27;est plutôt solide la cohérence des personnages est là, ça coupe entre différents</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de génération vidéo Sora 2 Pro avec panneau de prompt et lecteur sur smartphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modèle Sora 2 Pro, texte complet du prompt décrivant une scène humoristique entre amis au coucher du soleil.
+[DESC_IMAGE_3] Visualisation du résultat vidéo généré et lecture des détails du prompt associé.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001532_seg34.jpg" alt="Aperçu d&#x27;une vidéo générée affichée sur un smartphone virtuel avec le prompt détaillé du modèle Sora 2 Pro et un bouton de téléchargement." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001532_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:32</span>
+                        <span class="caption-text">Aperçu d&#x27;une vidéo générée affichée sur un smartphone virtuel avec le prompt détaillé du modèle Sora 2 Pro et un bouton de téléchargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001541_seg34.jpg" alt="Suite de la lecture de la vidéo générée montrant la scène extérieure au coucher du soleil avec les options de gestion du prompt." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001541_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:41</span>
+                        <span class="caption-text">Suite de la lecture de la vidéo générée montrant la scène extérieure au coucher du soleil avec les options de gestion du prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:50 - 00:16:10</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plans la qualité vidéo a l&#x27;air superbe genre ceux-là ont l&#x27;air de vraies personnes et ils ont l&#x27;air de vraies personnes aussi. Et puis à la fin, regardez, ça montre même un logo ici. Roast your friends, l&#x27;application dont votre groupe de discussion avait besoin. Donc ça vient juste d&#x27;une seule et unique consigne. Et j&#x27;ai obtenu cette consigne juste depuis Chat2BT. Donc vous pouvez commencer à voir les capacités de ceci à mesure que vous jouez avec ça de plus en plus.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface d&#x27;application vidéo (Roast App).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec panneau latéral listant des projets vidéo, une fenêtre de prévisualisation vidéo active avec le titre &quot;Roast Your Friends&quot; et un encart textuel descriptif.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration visuelle d&#x27;une application de génération de vidéo par IA montrant un aperçu de clips vidéo et des prompts textuels associés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001600_seg35.jpg" alt="Interface d&#x27;un navigateur affichant l&#x27;application &#x27;Roast App&#x27; avec un aperçu vidéo central titré &#x27;Roast Your Friends&#x27;." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001600_seg35.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:00</span>
+                        <span class="caption-text">Interface d&#x27;un navigateur affichant l&#x27;application &#x27;Roast App&#x27; avec un aperçu vidéo central titré &#x27;Roast Your Friends&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:11 - 00:16:33</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc voici une autre vidéo que j&#x27;ai générée. Comme vous pouvez le voir, voici le prompt que j&#x27;ai utilisé. Voici la vidéo qui a été générée. D&#x27;accord. Je teste ma propre application. Qu&#x27;est-ce qui pourrait mal tourner ? Tu as l&#x27;air du personnage principal d&#x27;un documentaire sur la fraude fiscale. Donc encore une fois, les gars, vous pouvez en faire à grande échelle.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface de génération vidéo par IA et panneau de prompt Sora 2 Pro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le prompt complet décrivant la scène : un créateur testant sa propre application, téléchargeant une photo, et recevant un commentaire vocal sarcastique de l&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et démonstration d&#x27;une vidéo générée par IA illustrant un cas d&#x27;usage humoristique de l&#x27;application RoastMyFriend.ai.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001616_seg36.jpg" alt="Capture montrant une interface de génération vidéo affichant la vidéo d&#x27;un créateur devant son bureau et le panneau latéral contenant le prompt textuel utilisé avec le modèle Sora 2 Pro." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001616_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:16</span>
+                        <span class="caption-text">Capture montrant une interface de génération vidéo affichant la vidéo d&#x27;un créateur devant son bureau et le panneau latéral contenant le prompt textuel utilisé avec le modèle Sora 2 Pro.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001622_seg36.jpg" alt="Gros plan sur le rendu de l&#x27;application mobile &#x27;RoastMyFriend.ai&#x27; affichée sur un smartphone simulé, avec le prompt textuel correspondant sur le côté droit." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001622_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:22</span>
+                        <span class="caption-text">Gros plan sur le rendu de l&#x27;application mobile &#x27;RoastMyFriend.ai&#x27; affichée sur un smartphone simulé, avec le prompt textuel correspondant sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-37">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:33 - 00:16:53</span>
+                <span class="segment-idx">Segment #37</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pourriez en faire 10, 20, 100 à la fois si vous voulez. Vous devrez payer pour faire cela. Mais c&#x27;est une façon de générer des publicités à grande échelle qui sont honnêtement plutôt drôles. Et je vais dire maintenant, Sora 2 est plutôt solide. Mais à mesure que ces modèles de génération vidéo s&#x27;améliorent de plus en plus, ceux-ci vont probablement devenir impossibles à distinguer de vraies vidéos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec interface de génération vidéo et webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant les détails d&#x27;un modèle vidéo (Sora 2 Pro) et un prompt textuel.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la plateforme de génération de publicités vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-38">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:53 - 00:17:12</span>
+                <span class="segment-idx">Segment #38</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est un énorme arbitrage dont vous pourriez profiter si vous essayez vraiment de faire exploser votre application et que vous voulez obtenir des utilisateurs payants pour votre application. Très bien, alors voici une nouvelle vidéo que j&#x27;ai générée. Encore une fois, vous pouvez voir le prompt et ensuite c&#x27;est une vidéo qui a été produite. Vous téléchargez la photo de votre témoin de mariage sur l&#x27;IA, en attendant un compliment. Cet homme a l&#x27;air de donner des conseils non sollicités sur la crypto aux enterrements.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération de vidéos (Roast App) et affichage sur smartphone.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du prompt utilisé pour générer la vidéo IA (modèle Sora 2 Pro, description de la scène, voix off et réactions).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la vidéo générée par l&#x27;IA et affichage du prompt textuel associé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001702_seg38.jpg" alt="Capture d&#x27;écran d&#x27;un navigateur montrant l&#x27;interface d&#x27;une application de génération vidéo avec une fenêtre de lecture et un panneau de prompt." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001702_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:02</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un navigateur montrant l&#x27;interface d&#x27;une application de génération vidéo avec une fenêtre de lecture et un panneau de prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001707_seg38.jpg" alt="Gros plan sur un écran de smartphone affichant l&#x27;application en cours d&#x27;utilisation, avec un encadré textuel montrant les détails du prompt de génération." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001707_seg38.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:07</span>
+                        <span class="caption-text">Gros plan sur un écran de smartphone affichant l&#x27;application en cours d&#x27;utilisation, avec un encadré textuel montrant les détails du prompt de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-39">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:16 - 00:17:35</span>
+                <span class="segment-idx">Segment #39</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Roastmyfriend.ai. Encore une fois, les gars, c&#x27;est vraiment solide et ça provient juste de requêtes uniques. Nous pourrions aussi le remixer si nous voulons y changer quelque chose. Vous pouvez simplement décrire comment vous voulez modifier la vidéo. Vous descendez ici, vous écrivez votre requête pour dire comment vous voulez la changer, et boum, vous pouvez générer tout ça. Et encore une fois, vous pouvez simplement en générer plusieurs à la fois en sélectionnant la quantité ici et en choisissant par exemple jusqu&#x27;à 10 si vous voulez.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-40">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:36 - 00:17:54</span>
+                <span class="segment-idx">Segment #40</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, jetons un œil à celui-ci. Celui-ci est un peu intéressant. Donc trois amis sont sur un appel FaceTime chaotique en train de rire. L&#x27;un d&#x27;eux dit, yo, télécharge la photo de Dylan sur cette application d&#x27;intelligence artificielle de critique. Et allons-y et regardons celui-ci maintenant. Frère, je ne peux pas respirer. Yo, télécharge la photo de Dylan sur cette application d&#x27;intelligence artificielle de critique. Cet homme a l&#x27;air de vapoter des citations inspirantes.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web RoastMyFriend.ai affichée sur smartphone, interface de génération vidéo avec prompt textuel.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif du prompt vidéo pour le modèle Sora 2 Pro détaillant une scène d&#x27;appel FaceTime entre trois amis et une application de critique par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et analyse du prompt textuel et de l&#x27;interface de l&#x27;application de génération de vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001750_seg40.jpg" alt="Gros plan sur un écran de smartphone affichant l&#x27;application RoastMyFriend.ai avec une photo de profil et un encadré de description textuelle du prompt pour Sora 2 Pro à droite." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001750_seg40.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:17:50</span>
+                        <span class="caption-text">Gros plan sur un écran de smartphone affichant l&#x27;application RoastMyFriend.ai avec une photo de profil et un encadré de description textuelle du prompt pour Sora 2 Pro à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-41">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:17:54 - 00:18:13</span>
+                <span class="segment-idx">Segment #41</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pas question. Donc celui-là est plutôt solide. J&#x27;aime le côté dynamique. Ça donne vraiment l&#x27;impression qu&#x27;ils sont en train de faire un appel FaceTime. Ce sont des vidéos assez interactives qui, à mon avis, pourraient potentiellement bien marcher si vous les publiiez sur TikTok, par exemple. Très bien, donc une autre chose que je veux montrer, c&#x27;est allons-y et montrons notre application dans une vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de projets vidéo et d&#x27;IA (navigateur web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes de projets vidéo, interface de génération de contenu avec des paramètres (durée, résolution, format 9:16) et prompts textuels.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface de création vidéo par le présentateur.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-42">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:13 - 00:18:41</span>
+                <span class="segment-idx">Segment #42</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So what I&#x27;m gonna do, I&#x27;m gonna come back over to Rocket. I&#x27;m gonna screenshot what the user interface of our app looks like. Then I&#x27;m gonna come to Arcads, I&#x27;m gonna upload it. And then I&#x27;m basically just gonna select an actor and you can see that these actors are holding up a phone and showing off our app. So I like these two. Let me go ahead and select those actors. And then all I need to do is select upload and it&#x27;s going to generate both of these videos here. And let&#x27;s give it a second and take a look. A couple of minutes later, we have our AI generated video. Let&#x27;s take a look at it.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-43">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:18:45 - 00:19:21</span>
+                <span class="segment-idx">Segment #43</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So as you can see, it&#x27;s nothing crazy, but it is our actor holding up a screenshot of what our app looks like. So this is a way that we could either, you know, add B-roll into an existing video. Like for example, we could take this talking actor and then cut it up, throw that video on top of it in certain areas and then we also have our standalone videos like these ones right here that are just basically like skits that we could use for posting on TikTok or Instagram or wherever we want to promote our app. One thing I want to mention is a lot of this boils down to how creative you can get. So if you&#x27;re using creative tools like Chachapiti, Claude, Perplexity, all of these</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-44">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:21 - 00:19:55</span>
+                <span class="segment-idx">Segment #44</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">différents outils d&#x27;IA pour vous aider à devenir plus créatif ou si vous avez vos propres goûts ou votre touche personnelle pour des sketchs humoristiques, c&#x27;est un excellent moyen de leur donner vie pour promouvoir votre application sans avoir réellement à aller de l&#x27;avant et filmer ces vidéos comme si vous étiez un cinéaste ou un réalisateur de publicité. Nous pouvons tous faire cela à grande échelle maintenant avec quelque chose comme Arcads et Sora 2, ainsi qu&#x27;en construisant notre propre application avec Rocket. Je veux donc vous laisser avec ceci. Nous vivons à des époques plutôt palpitantes où n&#x27;importe qui peut désormais construire n&#x27;importe quoi et non seulement le construire, mais il peut ensuite le commercialiser également. Vous n&#x27;avez pas besoin d&#x27;être un créateur de contenu comme moi pour pouvoir rendre une application virale. Alors les gars, si vous voulez</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web créative (interface de tableau de bord avec grille de vignettes vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes de projets vidéo, interface de création de contenu et panneau de configuration de projet d&#x27;application</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface d&#x27;un outil de génération de vidéos publicitaires pour applications</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001930_seg44.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application web de génération de vidéos ou de contenu créatif avec une grille de projets visuels, et le présentateur visible en incrustation dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_001930_seg44.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:19:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;une application web de génération de vidéos ou de contenu créatif avec une grille de projets visuels, et le présentateur visible en incrustation dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-45">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:19:55 - 00:20:13</span>
+                <span class="segment-idx">Segment #45</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pour essayer l&#x27;une ou l&#x27;autre de ces plateformes, il y a un lien dans la description pour le faire merci d&#x27;avoir dit ça dans cette vidéo abonnez-vous à cette chaîne si vous essayez de garder une longueur d&#x27;avance sur cette courbe de l&#x27;IA je couvre tout ce qui touche à l&#x27;IA pour les non-techniciens donc si vous voulez garder une longueur d&#x27;avance sur l&#x27;IA mais que vous n&#x27;êtes pas super technique je simplifie les choses pour que vous puissiez comprendre tout comme dans cette vidéo donc merci d&#x27;avoir regardé jusqu&#x27;à la fin à les gars dans la prochaine j&#x27;espère que vous passez une bonne journée</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de la plateforme YouTube (page d&#x27;accueil d&#x27;une chaîne).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes de vidéos YouTube sur l&#x27;intelligence artificielle (&quot;How to instantly connect...&quot;, &quot;OpenAI Agent Builder Sucks...&quot;, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des contenus de la chaîne YouTube pour encourager l&#x27;abonnement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_002004_seg45.jpg" alt="Capture de la chaîne YouTube du présentateur montrant la grille de ses différentes vidéos avec des vignettes sur l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/RxNKKTVwzjk/RxNKKTVwzjk_002004_seg45.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:20:04</span>
+                        <span class="caption-text">Capture de la chaîne YouTube du présentateur montrant la grille de ses différentes vidéos avec des vignettes sur l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

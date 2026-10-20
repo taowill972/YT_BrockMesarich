@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `124 / 273` (`45.4%`)
+- **Vidéos traitées** : `125 / 273` (`45.8%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -141,6 +141,7 @@
 | 2025-11-19 | [maHDMKy4lNs](https://www.youtube.com/watch?v=maHDMKy4lNs) | **Comment coder au feeling avec Gemini 3 (gratuitement)** | [2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-19_YT-[maHDMKy4lNs]_Comment coder au feeling avec Gemini 3 (gratuitement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `24` |
 | 2025-11-18 | [w8hRge2NiJc](https://www.youtube.com/watch?v=w8hRge2NiJc) | **Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)** | [2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-18_YT-[w8hRge2NiJc]_Le nouveau Gemini 3 surpasse les humains en design UI… (Sérieusement)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `31` |
 | 2025-11-17 | [cV3LtqngaIE](https://www.youtube.com/watch?v=cV3LtqngaIE) | **Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)** | [2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
+| 2025-11-04 | [RxNKKTVwzjk](https://www.youtube.com/watch?v=RxNKKTVwzjk) | **Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)** | [2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `63` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
