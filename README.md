@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `130 / 273` (`47.6%`)
+- **Vidéos traitées** : `131 / 273` (`48.0%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -147,6 +147,7 @@
 | 2025-10-22 | [3LvyPq7zWBM](https://www.youtube.com/watch?v=3LvyPq7zWBM) | **Did Claude Code Web Just Replace Vibe Coders?** | [2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-22_YT-[3LvyPq7zWBM]_Did Claude Code Web Just Replace Vibe Coders_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `29` |
 | 2025-10-21 | [Nd1-gX3rauk](https://www.youtube.com/watch?v=Nd1-gX3rauk) | **I Tried the NEW ChatGPT Browser (Atlas Review)** | [2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-21_YT-[Nd1-gX3rauk]_I Tried the NEW ChatGPT Browser (Atlas Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `18` |
 | 2025-10-20 | [wR3KqfipDmU](https://www.youtube.com/watch?v=wR3KqfipDmU) | **Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)** | [2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `2` |
+| 2025-10-18 | [orRDSACz2xM](https://www.youtube.com/watch?v=orRDSACz2xM) | **I Found a Way to Vibe Code for FREE (Google AI Studio)** | [2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
