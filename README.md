@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `132 / 273` (`48.4%`)
+- **Vidéos traitées** : `133 / 273` (`48.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -149,6 +149,7 @@
 | 2025-10-20 | [wR3KqfipDmU](https://www.youtube.com/watch?v=wR3KqfipDmU) | **Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)** | [2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-20_YT-[wR3KqfipDmU]_Comment créer des publicités UGC virales avec Sora 2 (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `2` |
 | 2025-10-18 | [orRDSACz2xM](https://www.youtube.com/watch?v=orRDSACz2xM) | **I Found a Way to Vibe Code for FREE (Google AI Studio)** | [2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-18_YT-[orRDSACz2xM]_I Found a Way to Vibe Code for FREE (Google AI Studio)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-10-16 | [aEErIP5a6f8](https://www.youtube.com/watch?v=aEErIP5a6f8) | **How to Make $5000 Per Month With Google Nano Banana (Full Beginners Guide)** | [2025-10-16_YT-[aEErIP5a6f8]_How to Make $5000 Per Month With Google Nano Banana (Full Beginners Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-16_YT-[aEErIP5a6f8]_How to Make $5000 Per Month With Google Nano Banana (Full Beginners Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-16_YT-[aEErIP5a6f8]_How to Make $5000 Per Month With Google Nano Banana (Full Beginners Guide)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-10-12 | [_I3Vcp7fuxI](https://www.youtube.com/watch?v=_I3Vcp7fuxI) | **This Makes AI Apps 10x More Useful (In Seconds)** | [2025-10-12_YT-[_I3Vcp7fuxI]_This Makes AI Apps 10x More Useful (In Seconds)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-12_YT-[_I3Vcp7fuxI]_This Makes AI Apps 10x More Useful (In Seconds)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-12_YT-[_I3Vcp7fuxI]_This Makes AI Apps 10x More Useful (In Seconds)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
