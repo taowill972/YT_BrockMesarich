@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 ChatGPT Atlas VS Perplexity Comet (Which is Better?) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 ChatGPT Atlas VS Perplexity Comet (Which is Better?)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-10-23</span>
+                <span class="badge">⏱️ 00:14:07</span>
+                <span class="badge">🆔 <code>ya9XWiXA3XM</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=ya9XWiXA3XM" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **ChatGPT Atlas VS Perplexity Comet (Which is Better?)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ChatGPT Atlas browser was just released yesterday, and everybody&#x27;s asking how it compares to Perplexity Commons. If you don&#x27;t know what either of these platforms are, they are agentic AI browsers that replace the need for Google Chrome, and can actually perform tasks across your computer. As you can see in this demo, it&#x27;s actually controlling my computer, and my hands aren&#x27;t even touching the keyboard.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateurs web, sites officiels de ChatGPT Atlas et Perplexity, interfaces d&#x27;agents d&#x27;automatisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Pages de téléchargement de navigateurs IA et tableaux de bord d&#x27;agents logiciels connectés à différentes applications.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation des interfaces et comparaison des fonctionnalités des nouveaux navigateurs dotés d&#x27;intelligences artificielles agentiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000009_seg1.jpg" alt="Comparaison côte à côte des sites web de deux navigateurs IA : ChatGPT Atlas à gauche et le navigateur de Perplexity à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Comparaison côte à côte des sites web de deux navigateurs IA : ChatGPT Atlas à gauche et le navigateur de Perplexity à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000014_seg1.jpg" alt="Capture d&#x27;écran d&#x27;un navigateur affichant une interface d&#x27;automatisation de tâches avec un panneau d&#x27;agents IA et une petite incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000014_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:14</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un navigateur affichant une interface d&#x27;automatisation de tâches avec un panneau d&#x27;agents IA et une petite incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:01:00</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">In this video, I&#x27;m gonna test them side by side, break down the key differences, and by the end, you&#x27;ll see exactly which browser is best for you, without the hype. So let&#x27;s dive into this. All right guys, so without wasting any time, I want to dive right into this demo here, comparing these side by side. First things first, if you want to download Chachapiti Atlas, just look up Chachapiti Atlas, and then you could download this right now. It&#x27;s only available for download for the Mac operating system. So if you do not have a Mac, unfortunately, you&#x27;re not going to be able to try this out right now, but it&#x27;s still worth it for you to stay to the end of this video to see what it&#x27;s capable of. Same thing for Perplexity, make sure you go ahead and download Perplexity&#x27;s CallMe app. These are both of the browsers that we&#x27;re going to be testing side by side in this video. First things first, let me go ahead and</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:00 - 00:01:19</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">and actually give a prompt to each of these. And then let&#x27;s watch it go off. And I&#x27;m gonna break down exactly how it&#x27;s going through each of these tasks. The first example that I have is I had this idea. So instead of doing some basic demo, like having it add groceries to Instacart or having it go and book flights for us, you&#x27;ve seen so many examples of those in previous videos.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:19 - 00:01:57</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I&#x27;m actually gonna do something a little bit more advanced and this is a very meta. So what I&#x27;m gonna do, I&#x27;m gonna come to agent mode inside of Chachapiti. And this is where it&#x27;s able to actually go off, open a browser and actually click and do different things with inside of Atlas. I had this idea, what if I gave it the task to actually build for me an agent? So I&#x27;m going to use Zapier agents to do this. So this is a very meta example of me using the Chachapiti agent and the perplexity agent to build an agent for me. This is going to be a little bit more of a complex task. Let me describe what I want my task to be now. So I want you to go inside of my Zapier agents account and I want you</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:57 - 00:02:15</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">to build me a Zapier agent, not a Zap. And the point of this agent is to be able to scour my email inbox in Gmail and identify every single email that comes in and figure out if that is a potential sponsorship inquiry. If it is, I want you to label it as sponsorship inside of my email.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:15 - 00:02:45</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, à partir de là, je veux que vous ajoutiez réellement cette entreprise avec une URL pour essayer le produit dans une base de données Notion, ainsi qu&#x27;un résumé en une phrase de ce qu&#x27;est cette plateforme. Comme ça, je pourrais avoir toutes ces informations résumées pour moi. Très bien. Donc, c&#x27;est mon prompt ici. Je vais coller exactement la même chose dans perplexity.com. Donc, ce que je dois faire, c&#x27;est en fait me connecter à mon compte Zapier pour m&#x27;assurer qu&#x27;il ne va pas me demander de me connecter. C&#x27;est donc quelque chose que nous devons savoir avec ces plateformes : si vous n&#x27;êtes pas connecté à une plateforme ou si elle n&#x27;a pas de contexte dans votre navigateur, alors elle ne pourra en fait pas exécuter ces tâches.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:45 - 00:03:05</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc on dirait que Zapier, je suis connecté sur ChatDBT. Laissez-moi aller sur Zapier sur Perplexity. Et voilà. Nous sommes connectés aux deux. Donc ce que je vais faire, laissez-moi revenir à nos onglets ici et je vais cliquer sur exécuter pour les deux. Très bien, donc comme vous pouvez le voir, Perplexity est en fait déjà en train d&#x27;ouvrir un navigateur ici, donc si je viens sur cet onglet Zapier, il l&#x27;a ouvert tout seul.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Zapier, ChatGPT et un second assistant IA (Perplexity/agent).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface Zapier de gestion des zaps, prompts de configuration d&#x27;un agent IA pour automatiser le traitement des e-mails Gmail et l&#x27;ajout dans Notion, et réponses textuelles des assistants.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et configuration d&#x27;agents d&#x27;automatisation d&#x27;IA en parallèle sur deux plateformes différentes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000250_seg7.jpg" alt="Vue partagée montrant l&#x27;interface Zapier et sa page de présentation avec un encart vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000250_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:50</span>
+                        <span class="caption-text">Vue partagée montrant l&#x27;interface Zapier et sa page de présentation avec un encart vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000255_seg7.jpg" alt="Affichage de deux fenêtres de navigateur côte à côte avec des interfaces d&#x27;IA de type chat (ChatGPT et Perplexity/autre) affichant des prompts textuels." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000255_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:55</span>
+                        <span class="caption-text">Affichage de deux fenêtres de navigateur côte à côte avec des interfaces d&#x27;IA de type chat (ChatGPT et Perplexity/autre) affichant des prompts textuels.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000300_seg7.jpg" alt="Exécution des requêtes sur les deux interfaces d&#x27;IA côte à côte montrant des réponses textuelles générées en temps réel." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000300_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:00</span>
+                        <span class="caption-text">Exécution des requêtes sur les deux interfaces d&#x27;IA côte à côte montrant des réponses textuelles générées en temps réel.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:43</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mes mains ne sont plus sur le clavier. Je n&#x27;ai pas pris les devants pour faire cela. Il est maintenant à l&#x27;intérieur de mon compte Zapier et essaie de comprendre exactement comment commencer à concevoir cet agent et, comme vous pouvez le voir sur le côté gauche, ChatGPT Atlas fait exactement la même chose. Chaque fois que vous voyez ce cercle bleu autour de chacun de ces différents navigateurs, cela signifie que l&#x27;intelligence artificielle est réellement à l&#x27;intérieur d&#x27;un navigateur cloud et qu&#x27;elle pointe, clique et tape directement dans notre interface. Très bien, je vais donc décortiquer chacun de ces flux de travail à mesure que je vois chacun de ces navigateurs exécuter cette tâche. Vous pouvez donc voir que Perplexity a ouvert Copilot à l&#x27;intérieur de Zapier et a essentiellement dit exactement ce que je veux que mon agent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Zapier, assistant IA, macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration d&#x27;un agent IA sur Zapier pour surveiller les e-mails Gmail, détecter les demandes de parrainage et automatiser les actions dans Notion.</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;agent IA navigue de manière autonome dans le compte Zapier et interagit avec l&#x27;interface pour concevoir l&#x27;agent personnalisé sans intervention humaine.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000314_seg8.jpg" alt="Vue d&#x27;écran partagée montrant l&#x27;interaction d&#x27;un agent IA naviguant sur Zapier à gauche et l&#x27;assistant conversationnel à droite, avec la vidéo du présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000314_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">Vue d&#x27;écran partagée montrant l&#x27;interaction d&#x27;un agent IA naviguant sur Zapier à gauche et l&#x27;assistant conversationnel à droite, avec la vidéo du présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000333_seg8.jpg" alt="Vue de l&#x27;interface Zapier divisée en deux fenêtres avec l&#x27;agent IA en train de configurer la création d&#x27;un agent personnalisé et l&#x27;assistant textuel à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000333_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:33</span>
+                        <span class="caption-text">Vue de l&#x27;interface Zapier divisée en deux fenêtres avec l&#x27;agent IA en train de configurer la création d&#x27;un agent personnalisé et l&#x27;assistant textuel à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:43 - 00:04:17</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">perform. So it sent this off to Copilot, which is basically Zapier&#x27;s way of helping you build agents with basically just natural language. So you can just write in text, explain what you want to build, and it will actually help create the instructions on how to actually build it. And if I expand this, you could see that there are these instructions here now that Perplexity Comet actually gave to my Zapier agent. ChatGPT Atlas is a little bit behind. You could see that it just now opened up, create a new agent. It&#x27;s actually trying to figure out how to perform this task. To be honest, I&#x27;m really impressed with how quickly Perplexity Comet was able to actually</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:17 - 00:04:53</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">get to this stage because it&#x27;s in the process now of building this agent you could see that it&#x27;s configuring each of these different steps that is extremely interesting here so so far this workflow that each of these are going through looks very similar it looks like perplexity agent has finished the workflow but i think it might be actually testing it to make sure that it&#x27;s actually working so you could see that it says the workflow is ready to activate would you like me to make any adjustments, but it is still, you know, working here because again, you could see this blue ring around our page here. I&#x27;m going to pull up the Chachapi T Atlas page just so you could get a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:53 - 00:05:28</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">pleine conscience de ce qu&#x27;il est en train de faire en ce moment. Donc c&#x27;est comme, encore une fois, ce qui est ici, ce n&#x27;est pas moi qui touche le clavier. C&#x27;est lui qui fait réellement défiler cette page. Il sélectionne différentes choses. Il sélectionne différents champs. En ce moment, on dirait qu&#x27;il essaie réellement de configurer cette page Notion. Donc chaque fois que j&#x27;aura un nouveau demande de parrainage, non seulement il ajoutera une étiquette, mais il l&#x27;ajoutera aussi à ma base de données Notion avec toutes les différentes entreprises et un résumé de ce qu&#x27;est la plateforme. Donc on dirait que Comet et Atlas ont tous les deux bloqué juste au niveau de la partie Notion. En gros, il essaie de comprendre à quelle page Notion je veux qu&#x27;il soit ajouté. Pour les besoins de la cause, je n&#x27;ai en fait pas de page configurée dans Notion. Donc ce que je vais faire, c&#x27;est que je vais venir aux deux</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:28 - 00:06:02</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et dire : Je veux que tu ailles réellement créer une base de données Notion spécifique puis que tu l&#x27;utilises. Donc ils sont tous les deux bloqués au même point ici. Je vais envoyer ça et ils vont commencer réellement à essayer de configurer ceci. Donc je ne serais pas surpris s&#x27;ils ouvrent tous les deux mon Notion, essaient de se connecter à Notion et créent réellement celles-ci à partir de zéro. Et les gars, assurez-vous de rester jusqu&#x27;à la fin de cette vidéo où non seulement je vais montrer les résultats de ceci, but je vais analyser lequel de ceux-ci je pense est le meilleur et lequel vous devriez réellement utiliser. D&#x27;accord, donc il semble que ChattyBT Atlas soit maintenant à l&#x27;intérieur de Notion. Il y a cette page maintenant appelée</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Zapier, assistant IA Copilot, Notion.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration de workflows Zapier, sélection de champs de base de données Notion, instructions d&#x27;automatisation pour le traitement de e-mails de sponsoring.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un agent Zapier et interaction avec l&#x27;assistant IA pour automatiser la création de pages Notion à partir de messages reçus.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000536_seg12.jpg" alt="Interface de configuration Zapier divisée en deux fenêtres avec assistant IA, montrant la configuration d&#x27;une action Notion (création de page) et un panneau de discussion, avec la webcam du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000536_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:36</span>
+                        <span class="caption-text">Interface de configuration Zapier divisée en deux fenêtres avec assistant IA, montrant la configuration d&#x27;une action Notion (création de page) et un panneau de discussion, avec la webcam du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000545_seg12.jpg" alt="Vue similaire de l&#x27;interface Zapier montrant l&#x27;éditeur de workflow, un assistant IA et un menu déroulant pour sélectionner ou créer une base de données Notion." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000545_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Vue similaire de l&#x27;interface Zapier montrant l&#x27;éditeur de workflow, un assistant IA et un menu déroulant pour sélectionner ou créer une base de données Notion.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:23</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Demandes de parrainage. Il est allé ajouter ces différentes lignes. Il a le nom, le lien vers la plateforme, puis le résumé. C&#x27;est exactement ce que je voulais qu&#x27;il fasse. Il va donc de l&#x27;avant et fait cela sans que j&#x27;aie besoin de l&#x27;aider. Et maintenant qu&#x27;il a configuré cette base de données Notion, il est en train de configurer cela dans Zapier. Il connecte donc simplement Zapier à cette page Notion spécifique.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:23 - 00:06:45</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So that way it knows where to actually map this information, if that makes sense. All right, so Perplexity Comet said, I see I was disconnected again. Let me continue where we left off. I can check the existing sponsorship inquiries. It&#x27;s basically asking if it should proceed So let me just say yes, please. Meanwhile, Chachabiti Atlas is off doing all this without me needing to kind of assist what it needs to do.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:45 - 00:07:03</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, let&#x27;s take a quick break and take a step back. You might be asking, Brock, why are you trying to create an agent inside of Zapier instead of just letting Atlas or Comet do this for us? And the reason for that is because right now, these two browsers are not able to go off and be triggered by a specific event.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Notion, interface Zapier Central / Assistant.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Pages Notion intitulées &quot;Sponsorship Database&quot; et &quot;Sponsorship Inquiries&quot;, panneau de discussion d&#x27;un assistant IA avec des instructions textuelles et des étapes d&#x27;automatisation.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la manipulation de bases de données Notion et de l&#x27;automatisation via un agent Zapier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000649_seg15.jpg" alt="Capture d&#x27;écran divisée montrant des fenêtres de navigateur avec Notion et un assistant virtuel Zapier, ainsi que le présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000649_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:49</span>
+                        <span class="caption-text">Capture d&#x27;écran divisée montrant des fenêtres de navigateur avec Notion et un assistant virtuel Zapier, ainsi que le présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:03 - 00:07:39</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que je veux dire par là, c&#x27;est que l&#x27;agent que je configure dans Zapier est déclenché lorsqu&#x27;un nouvel e-mail arrive. Si un nouvel e-mail arrive dans mon compte Gmail, cela déclenchera automatiquement cet agent ou ce flux de travail. Il va parcourir, il va analyser s&#x27;il s&#x27;agit d&#x27;une demande de contrat de marque, puis étiqueter cela. Mais avec Atlas et Comet, il n&#x27;est pas capable de faire cela. Donc pour l&#x27;instant, ces navigateurs, vous devez leur donner une certaine forme d&#x27;entrée. Je dois dire, hé, peux-tu aller créer ça pour moi ? Ou pourrais-tu parcourir ma boîte de réception d&#x27;e-mails, analyser quelles sont les demandes de parrainage potentielles, puis les ajouter à Notion. Je devrais en quelque sorte lui donner cette entrée. Donc la raison pour laquelle je voulais montrer ce cas d&#x27;utilisation de moi essayant de construire un agent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:39 - 00:08:04</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avec ces agents est de montrer essentiellement un peu la différence là-dedans. Mais non seulement ça, je voulais mettre en valeur la puissance de pouvoir donner une tâche à ces plateformes et ensuite de les laisser faire et comprendre comment l&#x27;exécuter étape par étape. Si vous aviez cela, donc si vous aviez cette question, j&#x27;espère que cela clarifie. Maintenant, retournons à l&#x27;observation de leur exécution de cette tâche. En ce moment, il semble qu&#x27;Atlas soit à l&#x27;étape de la création effective de cette base de données à l&#x27;intérieur de ma page Notion.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Notion, assistants IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Bases de données Notion (&quot;Sponsorship Database&quot;, &quot;Sponsorship Inquiries&quot;), panneaux de configuration de propriétés et fenêtres de chat d&#x27;assistant IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration et comparaison de l&#x27;exécution étape par étape d&#x27;une tâche par des agents IA sur Notion.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000745_seg17.jpg" alt="Capture d&#x27;écran montrant une démonstration comparative de deux fenêtres de navigateur avec l&#x27;interface Notion et des assistants IA en action, tandis que le présentateur apparaît en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000745_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:45</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une démonstration comparative de deux fenêtres de navigateur avec l&#x27;interface Notion et des assistants IA en action, tandis que le présentateur apparaît en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:04 - 00:08:26</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pouvons voir ici que c&#x27;est écrit nom de l&#x27;entreprise. Il est en train d&#x27;ajouter ces différentes propriétés ici. On dirait qu&#x27;il va réellement ajouter le lien aussi pour cette entreprise ainsi que le résumé. Et ensuite, si nous ouvrons Perplexity, il vient juste de passer par ce même processus. Il a donc pu réellement aller ajouter cette information ici à l&#x27;intérieur de mon Notion. Encore une fois, pendant qu&#x27;Atlas est en train d&#x27;exécuter cette tâche, on dirait que Perplexity s&#x27;est bloqué à nouveau.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Notion, Zapier Agents, interface vidéo incrustée du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Base de données Notion (&quot;Sponsorship Database&quot;, &quot;Sponsorship Inquiries&quot;), propriétés configurées (Company Name, Product URL, Summary), interface de chatbot/assistant IA et panneau de configuration d&#x27;agent Zapier.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur configure et ajoute dynamiquement des propriétés (URL, résumé) à une base de données Notion via une automatisation par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000809_seg18.jpg" alt="Image #1 montre l&#x27;interface de Notion où le présentateur ajoute de nouvelles propriétés à une base de données de parrainage, avec une fenêtre d&#x27;assistant IA à droite et sa caméra en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000809_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:09</span>
+                        <span class="caption-text">Image #1 montre l&#x27;interface de Notion où le présentateur ajoute de nouvelles propriétés à une base de données de parrainage, avec une fenêtre d&#x27;assistant IA à droite et sa caméra en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000815_seg18.jpg" alt="Image #2 affiche la base de données Notion intitulée &quot;Sponsorship Inquiries&quot; avec les colonnes configurées &quot;Company Name&quot;, &quot;Product URL&quot; et &quot;Summary&quot;." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000815_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Image #2 affiche la base de données Notion intitulée &quot;Sponsorship Inquiries&quot; avec les colonnes configurées &quot;Company Name&quot;, &quot;Product URL&quot; et &quot;Summary&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000820_seg18.jpg" alt="Image #3 présente le menu de configuration des types de propriétés dans Notion (Text, Number, Select, URL, etc.) aux côtés de l&#x27;interface Zapier Central/Agents." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000820_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:20</span>
+                        <span class="caption-text">Image #3 présente le menu de configuration des types de propriétés dans Notion (Text, Number, Select, URL, etc.) aux côtés de l&#x27;interface Zapier Central/Agents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:26 - 00:08:49</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc il est écrit que les prochaines étapes sont nécessaires. J&#x27;étais en train de donner des instructions à Copilot pour qu&#x27;il se connecte à la base de données des demandes de parrainage. Il doit faire ces trois choses maintenant, mais pour une raison quelconque, ça a été coupé. Alors laissez-moi dire de procéder à ces tâches. Très bien. Donc une chose que j&#x27;ai remarquée, c&#x27;est qu&#x27;Atlas est resté bloqué sur la création de cette base de données Notion pendant un bon moment et il a en fait fait tout ce qu&#x27;il fallait, mais il a ajouté cinq onglets de résumé différents ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:49 - 00:09:07</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il n&#x27;avait besoin d&#x27;en ajouter qu&#x27;un seul. On aurait dit qu&#x27;il était en quelque sorte bloqué sur cette tâche et qu&#x27;il ne comprenait pas qu&#x27;il devait en fait aller de l&#x27;avant et créer notre agent et le connecter à Notion. Au lieu de cela, il se concentrait uniquement sur la partie Notion. C&#x27;est donc quelque chose que je voulais souligner, il avait un peu de mal avec ça, mais maintenant il est de retour, il est sur la tâche et, espérons-le, devrait terminer d&#x27;ici peu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de configuration d&#x27;agent Zapier (Zapier Central / Agents Zapier), éditeur d&#x27;instructions de workflow et intégration Gmail/Notion.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions textuelles détaillées pour l&#x27;agent IA : déclencheur sur réception de nouvel e-mail Gmail, analyse du contenu pour repérer les demandes de partenariat, ajout d&#x27;un libellé &quot;Sponsorship&quot;, extraction d&#x27;URL produit, rédaction d&#x27;un résumé et création d&#x27;une entrée dans une base de données Notion.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre l&#x27;interface de configuration de l&#x27;agent Zapier et discute de ses instructions et de sa logique de fonctionnement avec les applications connectées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000858_seg20.jpg" alt="Interface de création d&#x27;agent Zapier partagée en deux fenêtres côte à côte montrant les instructions de l&#x27;agent pour connecter Gmail à Notion, avec une petite incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_000858_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Interface de création d&#x27;agent Zapier partagée en deux fenêtres côte à côte montrant les instructions de l&#x27;agent pour connecter Gmail à Notion, avec une petite incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:07 - 00:09:25</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si nous retournons aux commentaires, il est en train de mapper les champs Notion. Comme vous pouvez le voir pour la page parente, il a sélectionné la bonne page Notion et ensuite pour le titre, il a extrait le nom de l&#x27;entreprise, puis a ajouté un résumé d&#x27;une phrase de ce que fait réellement la plateforme. Il est donc en train de connecter Notion à notre agent ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:25 - 00:09:45</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Une chose que je veux noter ici, les gars, c&#x27;est que ça prend pas mal de temps. Je crois que je fais ça depuis environ 15 minutes maintenant. Ils ont rencontré leurs propres types d&#x27;erreurs. J&#x27;espère donc que cela vous montre où en est cette technologie en ce moment. C&#x27;est vraiment le début de cette nouvelle révolution où des agents de navigation accomplissent des tâches à votre place, mais vous devez être très précis dans votre formulation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:46 - 00:10:07</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And it does take quite a bit of time. It would have been easier for me to go and do this myself instead of sitting here and trying to instruct on how to actually perform this task. All right, I&#x27;m not gonna lie. That was not the smoothest process for either of these browsers, But let me show you what actually went down. So I went ahead, I tested our agent on both. That they went ahead and built, I just clicked this test agent button and it ran our workflow.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:07 - 00:10:26</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si je viens sur celui que j&#x27;ai fait avec Chachabiti Atlas, vous pouvez voir qu&#x27;il a ajouté ces différentes pages à l&#x27;intérieur de la page Notion, mais c&#x27;est le mauvais endroit. Je voulais en fait qu&#x27;ils ajoutent ceci. Vous pouvez donc voir que j&#x27;ai celui-ci juste ici, Sketchflow. Il montre l&#x27;entreprise, il montre le contact, l&#x27;e-mail, il montre l&#x27;URL du produit et le résumé du produit. Donc ça, ça fonctionne.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant les interfaces de Notion et d&#x27;un outil d&#x27;agents IA (Zapier Central / xAgents).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Pages de gestion de partenariats Notion, instructions d&#x27;automatisation d&#x27;agents et détails de formulaires de contact.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et explication de la structure des pages créées automatiquement dans Notion pour les demandes de partenariat.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001012_seg24.jpg" alt="Vue d&#x27;ensemble de l&#x27;écran partagé montrant Notion à gauche et l&#x27;outil d&#x27;automatisation des agents IA à droite, avec une liste de pages de partenariat incluant Sketchflow." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001012_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:12</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;écran partagé montrant Notion à gauche et l&#x27;outil d&#x27;automatisation des agents IA à droite, avec une liste de pages de partenariat incluant Sketchflow.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001021_seg24.jpg" alt="Gros plan sur la page Notion de Sketchflow montrant les détails de la demande de partenariat (contact, email, résumé du produit)." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001021_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:21</span>
+                        <span class="caption-text">Gros plan sur la page Notion de Sketchflow montrant les détails de la demande de partenariat (contact, email, résumé du produit).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:26 - 00:10:53</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il montre même les détails de la demande ainsi que le statut et la date de réception. C&#x27;ప్పటికీ c&#x27;est plutôt sympa, mais il ne l&#x27;a pas ajouté à la base de données exacte à laquelle je voulais l&#x27;ajouter. Je voulais qu&#x27;il l&#x27;ajoute à cette base de données et qu&#x27;il le télécharge simplement ici dans ces différentes cellules comme s&#x27;il s&#x27;agissait d&#x27;un tableur, par exemple. Il n&#x27;a pas compris que c&#x27;était ce que nous voulions faire. C&#x27;était donc le résultat final ici pour Chatgpt Atlas. Et si je viens sur Perplexity Comet, laissez-moi vous montrer ce que cela a fait. Et je dirai que ce n&#x27;était pas aussi bien que Chatgpt Atlas.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Notion et une plateforme de création d&#x27;agents d&#x27;automatisation (Agents.zapier.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions d&#x27;agents pour analyser les emails de demande de partenariat, extraire les informations et les ajouter à une base de données Notion.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;intégration entre l&#x27;agent d&#x27;automatisation et la base de données de suivi des partenariats.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001033_seg25.jpg" alt="Vue partagée montrant une base de données Notion à gauche et une interface de configuration d&#x27;agent d&#x27;automatisation à droite." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001033_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:33</span>
+                        <span class="caption-text">Vue partagée montrant une base de données Notion à gauche et une interface de configuration d&#x27;agent d&#x27;automatisation à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001040_seg25.jpg" alt="Vue similaire avec le curseur de la souris positionné au milieu de l&#x27;écran entre les deux fenêtres d&#x27;application." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001040_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:40</span>
+                        <span class="caption-text">Vue similaire avec le curseur de la souris positionné au milieu de l&#x27;écran entre les deux fenêtres d&#x27;application.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001046_seg25.jpg" alt="Affichage côte à côte de l&#x27;interface d&#x27;automatisation montrant les résultats d&#x27;exécution de l&#x27;agent et les données capturées." loading="lazy" onclick="openLightbox('../screenshots/ya9XWiXA3XM/ya9XWiXA3XM_001046_seg25.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:46</span>
+                        <span class="caption-text">Affichage côte à côte de l&#x27;interface d&#x27;automatisation montrant les résultats d&#x27;exécution de l&#x27;agent et les données capturées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:53 - 00:11:14</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir que cela a ajouté ces éléments dans la base de données de ce sponsor potentiel, mais c&#x27;est la mauvaise base de données de sponsors potentiels. Et si vous regardez ceci, vous pouvez voir que les données à l&#x27;intérieur ne sont pas correctement formatées. Donc c&#x27;est écrit nom de l&#x27;entreprise invité, URL du produit invité, résumé de la plateforme invité. Et ensuite, cela montre bien le résumé de la demande actuelle ici, ce qui, je suppose, est cool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:14 - 00:11:51</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But again, this did not work as seamless as we wanted to. Maybe obviously our instructions that we gave both Comet and Atlas weren&#x27;t as specific as it needed to be. in order to go ahead and craft this prompt and build this agent for us. But let me go ahead and now talk about the key differences when it comes to this platform, aside from just using the agent mode for each of these browsers. All right, so right off the bat, the user interface of both of these browsers are very similar. Again, you can see that we have the Chachabut logo here, we have the Perplexity logo, and we have this box here that we could input our prompt, obviously, or our search. Inside of Chachabut Atlas, we have this agent mode that we could just toggle on. And then</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:51 - 00:12:24</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous pourrions aussi aller de l&#x27;avant et cliquer sur n&#x27;importe laquelle de ces autres choses. Donc nous avons les différents produits que ChatGPT a, mais directement dans notre navigateur ici. Vous pouvez donc voir que nous avons une recherche approfondie, nous pourrions créer des images, nous avons canvas, étude et apprentissage, nous avons accès à toutes ces applications auxquelles nous avons accès à l&#x27;intérieur du ChatGPT normal. C&#x27;est donc ainsi que cela fonctionne. Et puis c&#x27;est la même chose pour Perplexity, vous pouvez voir que nous pourrions venir ici, cela nous donne ces pré-prompts que nous pourrions réellement utiliser. Par exemple, je pourrais simplement cliquer là-dessus et cela va parcourir et réellement chercher cela pour moi ou réellement commencer à exécuter ces tâches. Et puis pour les deux, si je cherche simplement quelque chose, disons par exemple le calendrier des Dallas Cowboys.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:24 - 00:12:43</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So for example, I just searched Dallas Cowboys schedule. And this is what Chachapiti Atlas shows me. I think that this looks a little bit more minimalistic. And I think this is more pleasing to the eye than perplexity has right here. This looks kind of dry, if that&#x27;s the right word. I just don&#x27;t think the interface of this looks the best. But for perplexity, we have this button up here where it is the AI assistant where we could pull it up.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:43 - 00:13:02</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We could ask further questions or we could even have it go off and perform tasks for us. And then the same exact thing for Chachapiti. I could click this ask chat to PT button. It&#x27;ll pull up this side window where we could either chat with whatever is on this page or we could then just click on agent mode and tell it to go perform different tasks for us. So both of these platforms have very similar user interface and functionality.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:02 - 00:13:25</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je dirai qu&#x27;après avoir testé ceux-ci côte à côte, en les comparant pour créer un agent dans Zapier Agents, je pense que ChatGPT Atlas était un peu meilleur pour faire cela. Aucun des deux n&#x27;était parfait, je tiens à le mentionner, mais je lui ai donné une tâche plus complexe au lieu de lui demander simplement de me trouver des vols pas chers ou quelque chose comme ça. Je voulais proposer quelque chose d&#x27;un peu plus dynamique. Je suis surpris que les deux aient réellement réussi à lancer un agent qui fonctionnait vraiment.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:25 - 00:13:43</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">It didn&#x27;t work the best, but both of them were good. I think Atlas was a little bit better. I will say another thing I like about Atlas is the fact that it has all of my context on Chachabiti. So I can just pull this up and this is like my actual Chachabiti account here. So I can ask any of the questions regarding myself or any of my previous conversations I&#x27;ve had and it has context to that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:43 - 00:14:04</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I use Chachabiti every single day, like lots of times. So the fact that it has context to all of these things how I perform different tasks different things that needs to know about my business and stuff That was just much smoother than perplexity comment was for me personally Anyways, guys, thank you so much for saying that in this video If you got some value leave a like leave a comment. Let me know what you think Which platform are you going to use and again?</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:04 - 00:14:07</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Merci d&#x27;avoir dit cela dans cette vidéo et je vous vois les gars dans la prochaine</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

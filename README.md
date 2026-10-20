@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `126 / 273` (`46.2%`)
+- **Vidéos traitées** : `127 / 273` (`46.5%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -143,6 +143,7 @@
 | 2025-11-17 | [cV3LtqngaIE](https://www.youtube.com/watch?v=cV3LtqngaIE) | **Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)** | [2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-17_YT-[cV3LtqngaIE]_Les agents IA ne vous rendront pas riches en 2026… (Ceci le fera)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `42` |
 | 2025-11-04 | [RxNKKTVwzjk](https://www.youtube.com/watch?v=RxNKKTVwzjk) | **Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)** | [2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-11-04_YT-[RxNKKTVwzjk]_Comment je construirais une application à 1M$ avec Sora 2 (en 20 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `63` |
 | 2025-10-29 | [oHhv-0bm2is](https://www.youtube.com/watch?v=oHhv-0bm2is) | **Google AI Studio Just Replaced Every AI App Builder (It’s FREE)** | [2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-29_YT-[oHhv-0bm2is]_Google AI Studio Just Replaced Every AI App Builder (It’s FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `11` |
+| 2025-10-23 | [ya9XWiXA3XM](https://www.youtube.com/watch?v=ya9XWiXA3XM) | **ChatGPT Atlas VS Perplexity Comet (Which is Better?)** | [2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-10-23_YT-[ya9XWiXA3XM]_ChatGPT Atlas VS Perplexity Comet (Which is Better)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `20` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
