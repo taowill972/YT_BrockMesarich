@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `111 / 273` (`40.7%`)
+- **Vidéos traitées** : `112 / 273` (`41.0%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -128,6 +128,7 @@
 | 2025-12-29 | [4EUaPH4mMcg](https://www.youtube.com/watch?v=4EUaPH4mMcg) | **How to Design and Sell Apps with AI in 2026 (Full Blueprint)** | [2025-12-29_YT-[4EUaPH4mMcg]_How to Design and Sell Apps with AI in 2026 (Full Blueprint)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-12-29_YT-[4EUaPH4mMcg]_How to Design and Sell Apps with AI in 2026 (Full Blueprint)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-12-29_YT-[4EUaPH4mMcg]_How to Design and Sell Apps with AI in 2026 (Full Blueprint)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-12-20 | [-YeWODXlmlU](https://www.youtube.com/watch?v=-YeWODXlmlU) | **How to Build $10,000+ AI App Designs in Minutes (FREE)** | [2025-12-20_YT-[-YeWODXlmlU]_How to Build $10,000+ AI App Designs in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-12-20_YT-[-YeWODXlmlU]_How to Build $10,000+ AI App Designs in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-12-20_YT-[-YeWODXlmlU]_How to Build $10,000+ AI App Designs in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-12-18 | [_q5HWwSWCds](https://www.youtube.com/watch?v=_q5HWwSWCds) | **How to Build Lovable Apps Inside ChatGPT (Instantly)** | [2025-12-18_YT-[_q5HWwSWCds]_How to Build Lovable Apps Inside ChatGPT (Instantly)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-12-18_YT-[_q5HWwSWCds]_How to Build Lovable Apps Inside ChatGPT (Instantly)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-12-18_YT-[_q5HWwSWCds]_How to Build Lovable Apps Inside ChatGPT (Instantly)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-12-13 | [b0DiJgU6ktU](https://www.youtube.com/watch?v=b0DiJgU6ktU) | **Google Stitch Creates INSANE App UI in Minutes (FREE)** | [2025-12-13_YT-[b0DiJgU6ktU]_Google Stitch Creates INSANE App UI in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-12-13_YT-[b0DiJgU6ktU]_Google Stitch Creates INSANE App UI in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-12-13_YT-[b0DiJgU6ktU]_Google Stitch Creates INSANE App UI in Minutes (FREE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
