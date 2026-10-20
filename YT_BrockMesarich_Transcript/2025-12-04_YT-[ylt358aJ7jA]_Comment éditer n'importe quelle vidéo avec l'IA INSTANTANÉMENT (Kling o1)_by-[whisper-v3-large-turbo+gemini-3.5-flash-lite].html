@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comment éditer n&#x27;importe quelle vidéo avec l&#x27;IA INSTANTANÉMENT (Kling o1) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comment éditer n&#x27;importe quelle vidéo avec l&#x27;IA INSTANTANÉMENT (Kling o1)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-12-04</span>
+                <span class="badge">⏱️ 00:09:52</span>
+                <span class="badge">🆔 <code>ylt358aJ7jA</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=ylt358aJ7jA" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo, présentée par la chaîne *Brock Mesarich | AI for Non Techies*, met en lumière l'émergence des nouveaux modèles de génération et d'édition vidéo par intelligence artificielle, comparables à un « Photoshop pour la vidéo ». À travers des démonstrations pratiques, la session explore comment transformer radicalement une séquence existante — qu'il s'agisse d'un bâtiment historique à Lisbonne ou d'un personnage marchant dans la rue — en modifiant en quelques secondes l'éclairage, l'arrière-plan (passant des montagnes à une plage ou un champ ouvert) ou la garde-robe du sujet, tout en conservant une cohérence visuelle parfaite.<br><br>L'analyse démontre l'efficacité d'un workflow combinant des outils de pointe et du *prompt engineering* avancé. En s'appuyant sur des interfaces comme Arcads et des modèles de pointe (Kling 01 et Kling 2.6), le présentateur montre comment structurer des requêtes ultra-spécifiques — détaillant le choix des objectifs, l'éclairage et le cadrage — grâce à l'aide de GPTs personnalisés. Cette approche permet d'automatiser et d'accélérer la production de contenus cinématographiques de haute qualité, réduisant drastiquement le besoin d'effets visuels traditionnels complexes.<br><br>Au-delà de la simple manipulation d'images, cette avancée technologique redéfinit les standards de la création de contenu visuel. La capacité à générer et éditer des vidéos de manière instantanée à partir de simples consignes textuelles ouvre des perspectives inédites pour la production rapide de médias, l'itération créative et le prototypage visuel à grande échelle, marquant un tournant décisif dans l'accessnalité des technologies de pointe pour les non-techniciens.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Kling 01 (et Kling 2.6)** : Modèle vidéo de pointe intégré à Arcads, spécialisé dans la génération ultra-réaliste et l'édition dynamique de séquences vidéo à partir de simples consignes textuelles.<br>* **Arcads** : Plateforme centrale de création et d'édition vidéo par IA regroupant plusieurs modèles de pointe pour le montage et la production automatisée.<br>* **ChatGPT** : Assistant conversationnel utilisé pour exploiter des GPTs personnalisés dédiés à la rédaction de prompts vidéo hautement spécifiques et techniques.<br>* **Luma** : Modèle de génération vidéo complémentaire mentionné pour sa capacité à assister dans la construction de séquences visuelles.<br>* **VO 3.1** : Modèle de génération vidéo alternatif disponible sur les plateformes de création pour diversifier les rendus stylistiques.<br>* **Sora 2 Pro** : Modèle de pointe de génération de vidéo cinématique haut de gamme évoqué pour les plans complexes.<br>* **Gemini** : Modèle de langage étendu de Google, mentionné dans l'écosystème technologique global des IA génératives.<br>* **Claude** : Assistant IA de pointe d'Anthropic, utilisé dans les flux de travail d'automatisation et de structuration textuelle.<br>* **Make** et **n8n** : Plateformes d'automatisation de flux de travail (*workflows*) pour connecter des outils d'IA et industrialiser des processus.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle développé par xAI, intégré aux écosystèmes d'analyse en temps réel.<br>* **Zapier** : Outil d'intégration et d'automatisation no-code reliant différentes applications logicielles entre elles.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Le concept du « Photoshop pour la vidéo »** : Les nouveaux modèles permettent d'éditer des séquences existantes de manière instantanée, en modifiant l'arrière-plan, la météo ou l'habillement sans altérer la cohérence du sujet principal.<br>* **Importance du *Prompt Engineering* avancé** : Pour obtenir des résultats professionnels sans artéfacts, il est indispensable de structurer des requêtes extrêmement détaillées spécifiant l'éclairage, les objectifs de caméra et la composition du cadre.<br>* **Utilisation de GPTs personnalisés** : Le recours à des assistants IA spécialisés permet de générer des prompts hyper-spécifiques adaptés aux exigences techniques des moteurs vidéo comme Kling.<br>* **Cohérence temporelle et spatiale** : Les technologies actuelles garantissent que le sujet principal (personnage, bâtiment) reste rigoureusement identique malgré les modifications radicales apportées à l'environnement ou au décor.<br>* **Maîtrise des paramètres de sortie** : Ajuster la durée de la vidéo (par exemple 5 à 10 secondes) et le nombre de générations permet d'optimiser le compromis entre temps de calcul et qualité du rendu final.<br>* **Flexibilité du format d'image** : La capacité à basculer rapidement vers des formats verticaux (9:16) facilite l'adaptation des contenus pour les réseaux sociaux et les plateformes mobiles.<br>* **Itération rapide et prototypage** : Le processus de modification itératif (passer d'une ambiance sombre à un coucher de soleil, puis à un plein jour en montagne) s'exécute en quelques minutes, réduisant les cycles de production.<br>* **Intégration multi-modèle** : La possibilité de basculer facilement entre différents moteurs (Kling 2.6, VO 3.1, Sora 2 Pro) au sein d'une même interface permet de sélectionner le rendu stylistique le plus adapté au projet.<br>* **Démocratisation de la production visuelle** : Les outils présentés permettent à des utilisateurs non-techniques de réaliser des montages de niveau cinématographique autrefois réservés aux studios dotés de budgets conséquents.<br>* **Gestion de l'éclairage et de l'ambiance** : Les modifications textuelles permettent de transformer radicalement la tonalité émotionnelle d'une vidéo (d'une ambiance "moody" et sombre à un plan chaleureux ou lumineux) en une seule instruction.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Kling 01 (et Kling 2.6)</span><span class="tool-tag">Arcads</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Luma</span><span class="tool-tag">VO 3.1</span><span class="tool-tag">Sora 2 Pro</span><span class="tool-tag">Gemini</span><span class="tool-tag">Claude</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Le concept du « Photoshop pour la vidéo »** : Les nouveaux modèles permettent d&#x27;éditer des séquences existantes de manière instantanée, en modifiant l&#x27;arrière-plan, la météo ou l&#x27;habillement sans altérer la cohérence du sujet principal.</span></li><li><span class="point-bullet">✦</span><span>Importance du *Prompt Engineering* avancé** : Pour obtenir des résultats professionnels sans artéfacts, il est indispensable de structurer des requêtes extrêmement détaillées spécifiant l&#x27;éclairage, les objectifs de caméra et la composition du cadre.</span></li><li><span class="point-bullet">✦</span><span>Utilisation de GPTs personnalisés** : Le recours à des assistants IA spécialisés permet de générer des prompts hyper-spécifiques adaptés aux exigences techniques des moteurs vidéo comme Kling.</span></li><li><span class="point-bullet">✦</span><span>Cohérence temporelle et spatiale** : Les technologies actuelles garantissent que le sujet principal (personnage, bâtiment) reste rigoureusement identique malgré les modifications radicales apportées à l&#x27;environnement ou au décor.</span></li><li><span class="point-bullet">✦</span><span>Maîtrise des paramètres de sortie** : Ajuster la durée de la vidéo (par exemple 5 à 10 secondes) et le nombre de générations permet d&#x27;optimiser le compromis entre temps de calcul et qualité du rendu final.</span></li><li><span class="point-bullet">✦</span><span>Flexibilité du format d&#x27;image** : La capacité à basculer rapidement vers des formats verticaux (9:16) facilite l&#x27;adaptation des contenus pour les réseaux sociaux et les plateformes mobiles.</span></li><li><span class="point-bullet">✦</span><span>Itération rapide et prototypage** : Le processus de modification itératif (passer d&#x27;une ambiance sombre à un coucher de soleil, puis à un plein jour en montagne) s&#x27;exécute en quelques minutes, réduisant les cycles de production.</span></li><li><span class="point-bullet">✦</span><span>Intégration multi-modèle** : La possibilité de basculer facilement entre différents moteurs (Kling 2.6, VO 3.1, Sora 2 Pro) au sein d&#x27;une même interface permet de sélectionner le rendu stylistique le plus adapté au projet.</span></li><li><span class="point-bullet">✦</span><span>Démocratisation de la production visuelle** : Les outils présentés permettent à des utilisateurs non-techniques de réaliser des montages de niveau cinématographique autrefois réservés aux studios dotés de budgets conséquents.</span></li><li><span class="point-bullet">✦</span><span>Gestion de l&#x27;éclairage et de l&#x27;ambiance** : Les modifications textuelles permettent de transformer radicalement la tonalité émotionnelle d&#x27;une vidéo (d&#x27;une ambiance &quot;moody&quot; et sombre à un plan chaleureux ou lumineux) en une seule instruction.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:21</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce nouveau modèle vidéo d&#x27;IA vient de sortir et il peut générer et éditer n&#x27;importe quelle vidéo que vous voulez. C&#x27;est en gros Photoshop pour la vidéo, mais en beaucoup plus facile. Regardez ça. J&#x27;ai pris une vraie vidéo de mariage et avec une seule consigne, je l&#x27;ai déplacée des montagnes à une plage. Ensuite, l&#x27;ai fait à nouveau. J&#x27;ai changé la couleur du ciel, échangé l&#x27;arrière-plan, et j&#x27;ai même changé ce que quelqu&#x27;un portait à partir d&#x27;une seule consigne.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de lecteur vidéo et incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Exemple de modification de décor vidéo par IA (passage de la montagne à la plage).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle de l&#x27;édition vidéo par IA à partir d&#x27;une vidéo réelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000010_seg1.jpg" alt="Vidéo d&#x27;un mariage sous un gazebo avec un paysage de montagne en arrière-plan, accompagnée du présentateur en incrustation et du texte &#x27;I took a real wedding&#x27;." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Vidéo d&#x27;un mariage sous un gazebo avec un paysage de montagne en arrière-plan, accompagnée du présentateur en incrustation et du texte &#x27;I took a real wedding&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000015_seg1.jpg" alt="Vidéo du même mariage sous le gazebo mais modifié pour être sur une plage tropicale, avec le présentateur en incrustation et le texte &#x27;I did it again changed&#x27;." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Vidéo du même mariage sous le gazebo mais modifié pour être sur une plage tropicale, avec le présentateur en incrustation et le texte &#x27;I did it again changed&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:40</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ainsi qu&#x27;ici, voici d&#x27;autres vidéos que j&#x27;ai montées en utilisant ce nouveau modèle en seulement quelques minutes. Donc dans cette vidéo, je vais vous montrer exactement comment utiliser Kling01 pour faire des montages comme celui-ci en quelques secondes. Très bien, entrons dans le vif du sujet. Très bien, les gars. Donc nous allons utiliser Arcads dans cette vidéo pour utiliser Kling01. Donc tout d&#x27;abord, ce que vous allez faire, c&#x27;est que vous allez sélectionner nouveau projet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de projets (Nanana Pro)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Vignettes de vidéos verticales avec des aperçus de paysages et de portraits, et une zone de texte pour décrire la vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;interface de l&#x27;application de montage vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:41 - 00:01:02</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Vous pouvez voir que j&#x27;ai un projet ouvert juste ici. Et laissez-moi vous montrer sur quoi je venais juste de travailler en faisant des tests avec ceci avant de filmer réellement cette vidéo. J&#x27;ai donc créé ceci juste ici. Voici donc la première vidéo que j&#x27;ai générée. Parfois le monde bouge, et vous apprenez simplement à bouger avec lui.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;un outil de génération vidéo par IA (type Kling AI ou plateforme similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau latéral affichant les détails du prompt de génération vidéo (&quot;# SIDEWALK EPOCH...&quot;, modèle Kling) et grille de projets.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface de son projet et montre un exemple concret de vidéo générée par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000051_seg3.jpg" alt="Interface d&#x27;un outil de génération vidéo par IA montrant un projet en cours avec une vidéo prévisualisée et son prompt textuel associé." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000051_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:51</span>
+                        <span class="caption-text">Interface d&#x27;un outil de génération vidéo par IA montrant un projet en cours avec une vidéo prévisualisée et son prompt textuel associé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000057_seg3.jpg" alt="Gros plan sur la première vidéo générée montrant un jeune homme marchant dans la rue, avec le texte &quot;Agrads x Kling&quot; en bas." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000057_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Gros plan sur la première vidéo générée montrant un jeune homme marchant dans la rue, avec le texte &quot;Agrads x Kling&quot; en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:04 - 00:01:24</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, comme vous pouvez le voir, ça a l&#x27;air extrêmement bien. C&#x27;est une vidéo très cinématographique de ce type qui marche dans la rue. La caméra le suit fondamentalement. Il reste au milieu du cadre et c&#x27;est exactement ce que je voulais que cette vidéo soit. Vous pouvez voir que j&#x27;ai utilisé ce prompt très complet pour générer cette vidéo et c&#x27;est pourquoi elle est si réussie. Et j&#x27;ai utilisé le modèle vidéo Kling pour faire cela.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération de vidéo par IA (nano.enicards.ai / Kling) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt textuel détaillé de génération vidéo (&quot;SIDEWALK EPOCH&quot;, &quot;Driftframe V6.4&quot;, descriptions des scènes, éclairage, mouvements de caméra).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente et commente le résultat visuel et le prompt de la vidéo générée par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000109_seg4.jpg" alt="Interface d&#x27;un générateur de vidéo par IA montrant le résultat d&#x27;une vidéo verticale d&#x27;un jeune homme marchant dans la rue, avec le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000109_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:09</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de vidéo par IA montrant le résultat d&#x27;une vidéo verticale d&#x27;un jeune homme marchant dans la rue, avec le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000119_seg4.jpg" alt="La même interface de génération vidéo avec une mise en avant du panneau latéral affichant le prompt textuel utilisé pour créer la vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000119_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:19</span>
+                        <span class="caption-text">La même interface de génération vidéo avec une mise en avant du panneau latéral affichant le prompt textuel utilisé pour créer la vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:24 - 00:01:59</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous montrer un truc pour créer des prompts et des vidéos qui sont aussi précis et de si haute qualité au lieu d&#x27;avoir, vous savez, un tas d&#x27;erreurs différentes, et ensuite ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai pris cette vidéo et je l&#x27;ai transformée en celle-ci où il est dans un champ ouvert. Parfois, le monde bouge. Exactement la même vidéo, vous pouvez voir que le personnage est complètement cohérent, et puis j&#x27;ai même fait celle-ci juste ici où il marche et l&#x27;arrière-plan le montre dans les montagnes, et encore une fois, j&#x27;ai fait ça en un seul prompt en modifiant cette vidéo. Parfois, le monde</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web de génération de vidéo par IA (Nano Banana Pro / Kling AI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie de projets vidéo, interface de prévisualisation, paramètres de génération et prompts textuels détaillés pour Kling.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de création et démonstration du résultat vidéo obtenu à partir d&#x27;un prompt.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000133_seg5.jpg" alt="Interface d&#x27;un générateur de vidéo par IA affichant une grille de projets et une fenêtre de prévisualisation avec un prompt détaillé sur le côté." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000133_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:33</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de vidéo par IA affichant une grille de projets et une fenêtre de prévisualisation avec un prompt détaillé sur le côté.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000151_seg5.jpg" alt="Vue large de l&#x27;interface de création vidéo montrant la galerie complète de clips générés par IA et le champ de saisie de prompt." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000151_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:51</span>
+                        <span class="caption-text">Vue large de l&#x27;interface de création vidéo montrant la galerie complète de clips générés par IA et le champ de saisie de prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:59 - 00:02:34</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">mouvements. Et ensuite, ce que j&#x27;ai fait, c&#x27;est que j&#x27;ai même pris celui-ci et je l&#x27;ai encore plus modifié au point où il est de nouveau en train de marcher devant une montagne, mais maintenant il a un chapeau bleu. Parfois, le monde bouge et on apprend simplement à bouger avec lui. Je vais donc vous montrer à quel point il est facile de modifier réellement une vidéo comme celle-ci ou de générer une vidéo à partir de zéro. Tout d&#x27;abord, ce que je vais faire, c&#x27;est descendre ici et cliquer sur « voir plus » et comme vous pouvez le voir, nous avons l&#x27;éditeur vidéo Kling 01 ici</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web Nano Banana Pro et interface de génération vidéo (Kling).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie de projets vidéo montrant des variations de personnages et d&#x27;arrière-plans générés par IA.
+[DESC_IMAGE_3] Présentation et démonstration de modifications d&#x27;images et de vidéos par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000208_seg6.jpg" alt="Interface d&#x27;un outil de création vidéo IA (Nano Banana Pro) montrant plusieurs clips générés, incluant le personnage avec un chapeau bleu devant une montagne." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000208_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:08</span>
+                        <span class="caption-text">Interface d&#x27;un outil de création vidéo IA (Nano Banana Pro) montrant plusieurs clips générés, incluant le personnage avec un chapeau bleu devant une montagne.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000217_seg6.jpg" alt="Gros plan sur la vidéo générée montrant un homme avec un chapeau bleu marchant dans une rue avec une montagne en arrière-plan, avec la mention &quot;Acrads x Kling&quot;." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000217_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:17</span>
+                        <span class="caption-text">Gros plan sur la vidéo générée montrant un homme avec un chapeau bleu marchant dans une rue avec une montagne en arrière-plan, avec la mention &quot;Acrads x Kling&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:34 - 00:03:09</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">qui est un outil que nous pourremmo utiliser à l&#x27;intérieur d&#x27;Arcads, l&#x27;une des raisons pour lesquelles j&#x27;aime vraiment cette plateforme, je vais simplement sélectionner ceci et ensuite ce que je pourrais faire, c&#x27;est que je pourrais télécharger n&#x27;importe quelle vidéo et ensuite je peux y apporter des modifications. Pour les besoins de la cause, téléchargeons réellement une vraie vidéo que j&#x27;ai prise lorsque j&#x27;étais en vacances, ce n&#x27;തല്ല pas une vidéo générée par IA et je vais vous montrer exactement ce que je veux dire. J&#x27;ai donc cette vidéo juste ici, qui est de ce château lorsque j&#x27;étais réellement à Lisbonne, au Portugal, ou ce bâtiment. Je ne sais pas si c&#x27;est nécessairement un château, mais cela a l&#x27;air vraiment cool. Et ce que je veux faire, c&#x27;est que je veux modifier cette vidéo pour y rendre le temps ensoleillé à l&#x27;extérieur et peut-être</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web Arcads (plateforme de génération et d&#x27;édition vidéo).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie de projets vidéo avec vignettes et options d&#x27;édition (Talking Actors, Video, Image, Video editor).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;une option de téléchargement et d&#x27;édition de vidéo au sein de la plateforme Arcads.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000243_seg7.jpg" alt="Interface d&#x27;Arcads montrant une galerie de vidéos avec une fenêtre contextuelle pour télécharger et modifier une vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000243_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:43</span>
+                        <span class="caption-text">Interface d&#x27;Arcads montrant une galerie de vidéos avec une fenêtre contextuelle pour télécharger et modifier une vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:09 - 00:03:44</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avoir un coucher de soleil. Je veux qu&#x27;il ait l&#x27;air un peu plus esthétique au lieu d&#x27;avoir l&#x27;air si sombre et lugubre ici. Je vais vous montrer à quel point il est facile de faire une telle modification. Très bien. La première chose que je vais faire, c&#x27;est simplement télécharger cette image. Et encore une fois, assurez-vous d&#x27;utiliser cet outil de montage vidéo ici qui est Kling 01, et ensuite je vais simplement décrire le changement que je veux apporter à cette vidéo, je vais lui donner un prompt aussi simple que celui-ci : rendre le ciel ensoleillé au coucher du soleil, garder tout le reste pareil. Et ce que je vais faire, c&#x27;est m&#x27;assurer que la durée de sortie ici est de 10 secondes, et ensuite je pourrais changer le nombre de générations de vidéos que je veux, allons-y simplement et commençons par une parce que je pense que cela devrait suffire, donc je suis</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Nano Banana Pro / Kling AI (éditeur vidéo)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menu de téléchargement de fichiers, interface de grille de projets et options de paramètres d&#x27;outils (durée, générations).</p>
+                        <p><strong>Action / Démonstration :</strong> Téléchargement d&#x27;une image/vidéo de coucher de soleil et préparation de l&#x27;édition avec un prompt textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000317_seg8.jpg" alt="L&#x27;interface de l&#x27;application web avec le panneau de téléchargement et le curseur de la souris sélectionnant une vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000317_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:17</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;application web avec le panneau de téléchargement et le curseur de la souris sélectionnant une vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000326_seg8.jpg" alt="La vidéo du coucher de soleil est maintenant téléchargée dans l&#x27;interface de montage vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000326_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:26</span>
+                        <span class="caption-text">La vidéo du coucher de soleil est maintenant téléchargée dans l&#x27;interface de montage vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000335_seg8.jpg" alt="Le panneau de configuration s&#x27;ouvre avec le champ de texte pour taper le prompt de modification de la vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000335_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Le panneau de configuration s&#x27;ouvre avec le champ de texte pour taper le prompt de modification de la vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:44 - 00:04:16</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">on va envoyer ça et Kling et Luma vont commencer à construire notre vidéo, laissez-moi y revenir dans une seconde. Très bien. Et juste quelques minutes plus tard, cette vidéo a été générée. Waouh. Exactement la même vidéo. Vous pouvez voir que c&#x27;est exactement le même sujet ici. C&#x27;est le même bâtiment. Cependant, l&#x27;arrière-plan est juste ce coucher de soleil maintenant, au lieu d&#x27;être cette ambiance sombre et nuageuse de la vidéo d&#x27;origine. Et on ne peut même pas deviner que c&#x27;est généré par IA les gars. C&#x27;est tellement fou. Et je veux que vous réalisiez à quelle époque nous vivons maintenant. Nous vivons à une époque maintenant où vous pouvez éditer vos</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de génération vidéo par IA (type Kling / Luma ou similaire).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fenêtre de lecture vidéo avec barre de progression (0:00/0:05), boutons de téléchargement et panneau latéral affichant le prompt textuel « make the sky sunny at sunset, keep everything else the same ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le résultat généré par l&#x27;IA et montre l&#x27;interface de l&#x27;outil.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000352_seg9.jpg" alt="Capture d&#x27;écran montrant une interface de génération vidéo en ligne avec un aperçu d&#x27;un bâtiment au coucher du soleil et un panneau de prompt textuel à droite." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000352_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de génération vidéo en ligne avec un aperçu d&#x27;un bâtiment au coucher du soleil et un panneau de prompt textuel à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:16 - 00:04:53</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des vidéos. Comme à l&#x27;époque où l&#x27;on pouvait modifier Photoshop et retoucher quelque chose pour le rendre réel et que personne ne savait que c&#x27;est faux et qu&#x27;on peut faire exactement la même chose avec les vidéos IA maintenant. C&#x27;est un peu fou et un peu effrayant. En voici un autre que j&#x27;ai généré juste pour le faire. Je voulais voir à quoi en ressemblerait un autre. Même le zoom arrière, vous pouvez voir que le zoom arrière a exactement le même aspect, mais le background est la seule chose qui a changé. Très bien, je vais donc vous montrer comment vous pouvez créer cette même vidéo ici à partir de zéro en utilisant l&#x27;IA, puis y apporter des modifications pour qu&#x27;elle ait ce changement de décor en arrière-plan. La première chose que je vais donc faire, c&#x27;est de venir sur ce GPT personnalisé que mon ami Rourke m&#x27;a donné. C&#x27;est le meilleur dans le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de génération/modification vidéo par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur web, lecteur vidéo, boutons de téléchargement et panneaux de texte de type prompt IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration de clips vidéo modifiés ou générés par intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:53 - 00:05:18</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">entreprise lorsqu&#x27;il s&#x27;agit de créer des vidéos avec l&#x27;IA. Et ce que nous allons faire, c&#x27;est simplement expliquer ce que nous voulons créer. Alors, laissez-moi faire cela dès maintenant. Je veux que vous créiez un prompt pour une vidéo cinématographique. Un gars qui marche dans la rue, la caméra le suit pendant qu&#x27;il marche et c&#x27;est un plan de profil latéral avec lui directement au milieu du cadre. Je veux que cela ait une ambiance cinématographique et moody. Très bien, c&#x27;est donc le prompt que je vais donner à ce GPT.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de ChatGPT avec un GPT personnalisé.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil de &quot;Block Prompt GPT&quot; avec un champ de saisie de texte en bas (&quot;Prompt anything&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à saisir un prompt pour générer une vidéo cinématographique.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000459_seg11.jpg" alt="Capture d&#x27;écran montrant une interface de chatbot personnalisée nommée &quot;Block Prompt GPT&quot; dans un navigateur web, avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000459_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:59</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de chatbot personnalisée nommée &quot;Block Prompt GPT&quot; dans un navigateur web, avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:18 - 00:05:46</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce qu&#x27;il va faire, c&#x27;est qu&#x27;il va cracher ce prompt hyper spécifique qui est spécifique pour ces outils de génération de vidéo comme Kling et Arcads. Très bien, et voici notre prompt super spécifique. Ça a l&#x27;air un peu fou, donc n&#x27;y prêtez pas attention. Nous allons juste coller ceci dans Arcads, mais vous pouvez voir qu&#x27;il est même dit, genre, il nous donne un dialogue ici. Il détaille même l&#x27;éclairage, l&#x27;objectif et la mise au point de la caméra. C&#x27;est super spécifique, et c&#x27;est comme ça que vous pouvez obtenir de très bons résultats comme ceux que j&#x27;ai montrés dans cette vidéo. Donc ensuite, ce que je vais faire, c&#x27;est que je vais revenir sur Arcads, cliquer sur vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface de type ChatGPT / générateur de prompts.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte détaillé de prompt vidéo incluant des instructions de cadrage, d&#x27;éclairage, de mouvements de caméra et d&#x27;ambiance sonore.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture d&#x27;un prompt hyper spécifique destiné aux outils de génération vidéo comme Kling et Arcads.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000525_seg12.jpg" alt="Interface d&#x27;un générateur de prompts affichant un prompt textuel pour une vidéo cinématique." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000525_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:25</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de prompts affichant un prompt textuel pour une vidéo cinématique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000539_seg12.jpg" alt="Interface du navigateur affichant un prompt détaillé et technique de génération vidéo avec des instructions de caméra et d&#x27;éclairage." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000539_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:39</span>
+                        <span class="caption-text">Interface du navigateur affichant un prompt détaillé et technique de génération vidéo avec des instructions de caméra et d&#x27;éclairage.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:46 - 00:06:06</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais décrire ma vidéo et simplement coller ce prompt. Et ensuite, ce que je pourrais faire, c&#x27;est en fait cliquer sur ce petit outil ici et changer le modèle à utiliser. Kling 2.6 vient de sortir au moment de cette vidéo. Et il est vraiment bon pour ces plans de type cinématographique comme celui que je viens de vous montrer. Donc je vais sélectionner ce modèle, mais nous pourrions aussi utiliser VO 3.1 ou Sora 2 Pro.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Web de génération de vidéo (Nano Banana Pro / Kling AI)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte descriptif détaillé (prompt) pour la génération vidéo et menu des paramètres vidéo affichant le modèle Kling 2.6, le format 9:16 et la durée.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un prompt textuel et sélection des paramètres de modèle pour la génération de plans cinématographiques.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000551_seg13.jpg" alt="Interface d&#x27;un générateur de vidéo par IA montrant une grille de projets et une fenêtre contextuelle de saisie de prompt, avec un encart vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000551_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:51</span>
+                        <span class="caption-text">Interface d&#x27;un générateur de vidéo par IA montrant une grille de projets et une fenêtre contextuelle de saisie de prompt, avec un encart vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:24</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, je vais changer le format d&#x27;image pour du neuf par seize. Donc, c&#x27;est dans ce style que j&#x27;ai montré. Ça va être une vidéo de 10 secondes. Et ensuite, nous pourrons changer la sortie. Faisons trois générations de ceci pour choisir notre préférée. Je vais donc envoyer ça à Arcads et revoyons ça dans un instant. Très bien, voici donc le résultat que nous avons obtenu, et ensuite, je vais y apporter quelques modifications pour éditer notre vidéo, pour ainsi dire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web Arcads (générateur de vidéo par IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de génération vidéo : modèle (Kling 2.0), format d&#x27;image (9:16), durée (10s), nombre de générations (x3), ainsi qu&#x27;une invite textuelle détaillée.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration des paramètres de format d&#x27;image, de durée et de nombre de générations dans l&#x27;interface d&#x27;Arcads.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000615_seg14.jpg" alt="Interface de l&#x27;outil de génération vidéo Arcads affichée à l&#x27;écran, avec une fenêtre de paramètres de vidéo ouverte en bas à droite et le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000615_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:15</span>
+                        <span class="caption-text">Interface de l&#x27;outil de génération vidéo Arcads affichée à l&#x27;écran, avec une fenêtre de paramètres de vidéo ouverte en bas à droite et le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:25 - 00:06:47</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Continuez à marcher. Donc c&#x27;est tout simplement ce type qui marche dans la rue. Il reste au milieu de notre cadre. C&#x27;est vraiment très sombre. J&#x27;ai compris que je voulais un plan vraiment sombre. Donc ce que je vais faire, en fait, c&#x27;est que je vais télécharger cette vidéo et ensuite je vais la modifier pour qu&#x27;elle ne soit plus si sombre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web Kling AI (navigateur web, lecteur vidéo, panneau de configuration des prompts et tableau de bord des projets).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de génération vidéo, modèle Kling, prompt textuel détaillé (&quot;MOODY WALK - Side-Profile Drama&quot;), ratio 9:16 et vignettes de vidéos d&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de Kling AI, lecture d&#x27;une vidéo générée et examen des détails du prompt et des paramètres de génération.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000636_seg15.jpg" alt="Capture d&#x27;écran du navigateur montrant le lecteur vidéo de l&#x27;application Kling AI en plein écran avec les détails du prompt sur le panneau de droite et le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000636_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:36</span>
+                        <span class="caption-text">Capture d&#x27;écran du navigateur montrant le lecteur vidéo de l&#x27;application Kling AI en plein écran avec les détails du prompt sur le panneau de droite et le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000641_seg15.jpg" alt="Interface complète du tableau de bord de Kling AI affichant la bibliothèque de projets avec de multiples vignettes de vidéos générées, les paramètres vidéo et le présentateur dans un encadré." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000641_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:41</span>
+                        <span class="caption-text">Interface complète du tableau de bord de Kling AI affichant la bibliothèque de projets avec de multiples vignettes de vidéos générées, les paramètres vidéo et le présentateur dans un encadré.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:47 - 00:07:06</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En fait, je veux que ce soit une ambiance joyeuse et peut-être introspective. Donc ce que je vais faire, c&#x27;est que je vais à nouveau sélectionner Kling01 Video Editor. Ensuite, je vais venir ici. Je vais simplement glisser notre vidéo, puis je vais décrire mes modifications ici. Très bien, alors voici le prompt que je vais donner à notre GPT. Je veux que tu crées un prompt pour une vidéo cinématographique d&#x27;un gars qui marche dans la rue.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Nano Banana Pro / Application web d&#x27;IA, Kling v1 Video Editor, et interface de ChatGPT.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Grille de vignettes vidéo générées par IA, panneau d&#x27;édition vidéo avec option de téléchargement et zone de saisie de texte pour un prompt de génération de vidéo.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection de l&#x27;outil d&#x27;édition vidéo Kling v1 et saisie des instructions de modification de la vidéo.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000656_seg16.jpg" alt="Interface de l&#x27;application web d&#x27;IA montrant une grille de vidéos générées et l&#x27;outil Kling v1 - Video Editor sélectionné avec une boîte de téléchargement." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000656_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:56</span>
+                        <span class="caption-text">Interface de l&#x27;application web d&#x27;IA montrant une grille de vidéos générées et l&#x27;outil Kling v1 - Video Editor sélectionné avec une boîte de téléchargement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000701_seg16.jpg" alt="Interface de ChatGPT affichant un prompt textuel en anglais pour générer une vidéo cinématique d&#x27;un homme marchant dans la rue." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000701_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Interface de ChatGPT affichant un prompt textuel en anglais pour générer une vidéo cinématique d&#x27;un homme marchant dans la rue.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:06 - 00:07:43</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">La caméra le suit pendant qu&#x27;il marche et c&#x27;est un plan de profil de lui directement au milieu du cadre. Je veux que ça ait une ambiance cinématographique un peu sombre. Donc c&#x27;est le prompt que je vais donner à notre GPT et maintenant il va nous concevoir un prompt vraiment spécifique à donner à Cling. Très bien, c&#x27;est parti. On a un prompt vraiment, vraiment spécifique. Il détaille même, vous savez, le dialogue qu&#x27;on veut avoir. Il détaille la caméra qu&#x27;on veut utiliser, l&#x27;objectif qu&#x27;on veut utiliser, tout ça ainsi que l&#x27;éclairage. Donc je vais copier ça. Je vais ensuite venir sur notre vidéo ici. Je vais coller ça et je vais m&#x27;assurer d&#x27;avoir Cling 2.6 comme sortie ici. Et ensuite, faisons juste une vidéo de cinq secondes et je vais</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de ChatGPT et l&#x27;application web de génération vidéo Nano Banana Pro.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt textuel descriptif pour IA vidéo (&quot;a cinematic video of a guy walking down the street&quot;) et un prompt technique détaillé généré par le GPT personnalisé.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et génération d&#x27;un prompt textuel détaillé destiné à un outil de création de vidéo par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000715_seg17.jpg" alt="Interface de ChatGPT montrant le prompt initial entré par l&#x27;utilisateur pour décrire la scène de la vidéo cinématographique." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000715_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:15</span>
+                        <span class="caption-text">Interface de ChatGPT montrant le prompt initial entré par l&#x27;utilisateur pour décrire la scène de la vidéo cinématographique.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000725_seg17.jpg" alt="Interface de ChatGPT affichant le prompt détaillé et structuré généré en réponse pour la création vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000725_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:25</span>
+                        <span class="caption-text">Interface de ChatGPT affichant le prompt détaillé et structuré généré en réponse pour la création vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000734_seg17.jpg" alt="Interface de l&#x27;application de génération vidéo (Nano Banana Pro) affichant une galerie de projets avec des aperçus de vidéos générées." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000734_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:34</span>
+                        <span class="caption-text">Interface de l&#x27;application de génération vidéo (Nano Banana Pro) affichant une galerie de projets avec des aperçus de vidéos générées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:43 - 00:08:05</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vas-y et envoie ça à nos chats. Très bien. Alors voici le résultat qu&#x27;on a obtenu. Continue d&#x27;avancer. Donc tu peux voir que c&#x27;est notre personnage qui marche simplement dans la rue. C&#x27;est un plan vraiment cinématographique. Ça a l&#x27;air vraiment sombre et mystérieux. On dirait un truc que tu verrais dans un film dramatique ou quelque chose comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération vidéo par IA (Kling AI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un prompt textuel descriptif pour la vidéo intitulé &quot;# STREET DRIFTER - Sidewalk Reverie&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le résultat visuel de la vidéo générée par l&#x27;IA et examine le prompt associé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000800_seg18.jpg" alt="L&#x27;interface d&#x27;une application web de génération vidéo montrant le lecteur vidéo au centre, le panneau du prompt détaillé à droite, et le présentateur en médaillon dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000800_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:00</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;une application web de génération vidéo montrant le lecteur vidéo au centre, le panneau du prompt détaillé à droite, et le présentateur en médaillon dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:05 - 00:08:46</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ce que je vais faire maintenant, allons-y, téléchargeons ceci et créons différentes versions de cela. Je veux que l&#x27;arrière-plan ait, vous savez, des montagnes ou quelque chose comme ça, ou je veux que ça ait l&#x27;air plus léger et chaleureux au lieu de cette scène sombre. Essayons ça maintenant. Donc ce que je vais faire encore une fois, je vais venir et cliquer sur l&#x27;éditeur vidéo de Kling01. Je vais ensuite télécharger cette vidéo et je vais décrire mes changements. Très bien. Donc je vais lui donner ce prompt basique, je vais juste dire de changer l&#x27;ambiance pour que ça ait l&#x27;air chaleureux et lumineux et pas si sombre et ensuite à partir de là, une fois que j&#x27;obtiendrai le résultat suivant, je vais ensuite apporter des modifications au décor et à l&#x27;arrière-plan. Très bien, donc voici le résultat, vous pouvez voir que ça a l&#x27;air beaucoup plus chaleureux, ça a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération et d&#x27;édition vidéo par IA (Nano Banana Pro / Kling AI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Grille de projets vidéo, vignettes de scènes générées, options d&#x27;édition et prompt textuel de modification de scène.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;une vidéo et préparation d&#x27;une modification pour rendre l&#x27;ambiance plus claire et chaleureuse.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000816_seg19.jpg" alt="Interface d&#x27;une application web présentant une grille de vidéos avec un aperçu vidéo en cours de lecture au premier plan et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000816_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:16</span>
+                        <span class="caption-text">Interface d&#x27;une application web présentant une grille de vidéos avec un aperçu vidéo en cours de lecture au premier plan et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000826_seg19.jpg" alt="La même interface web avec un panneau de modification textuel ouvert en bas pour ajuster la scène vidéo." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000826_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:26</span>
+                        <span class="caption-text">La même interface web avec un panneau de modification textuel ouvert en bas pour ajuster la scène vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:46 - 00:09:21</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Des tons chauds provenant de ces lampadaires ici, cependant, allons-y, faisons en sorte que ce soit le jour maintenant, je ne veux pas que ce soit sombre et je ne veux pas que ce soit sombre, alors allons-y simplement et faisons en sorte que ce soit en plein jour. Ce que je vais faire encore une fois, je vais télécharger ceci ici et dire : prends cette vidéo exacte et fais en sorte que ce soit le jour avec un ciel bleu dégagé, et je dis qu&#x27;au lieu de le faire dans la rue, fais en sorte qu&#x27;il soit au milieu de nulle part avec des montagnes en arrière-plan, très bien, alors juste comme ça, nous avons maintenant ce même personnage exact avec les mêmes mouvements exacts ici, mais il est maintenant</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;Arcade (arcads.ai) pour l&#x27;édition et la génération de vidéos par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompts textuels pour l&#x27;édition de vidéos (&quot;Let&#x27;s take this exact same video and make these edits&quot;, &quot;take this layout and make it as if in daytime&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie et application d&#x27;un prompt pour transformer l&#x27;ambiance nocturne d&#x27;une vidéo en scène de plein jour.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000854_seg20.jpg" alt="Interface d&#x27;Arcade affichant une grille de vidéos avec une modale de lecture et d&#x27;édition de prompt." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000854_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:54</span>
+                        <span class="caption-text">Interface d&#x27;Arcade affichant une grille de vidéos avec une modale de lecture et d&#x27;édition de prompt.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000903_seg20.jpg" alt="Interface principale d&#x27;Arcade montrant le panneau de saisie du prompt pour modifier une vidéo existante." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000903_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:03</span>
+                        <span class="caption-text">Interface principale d&#x27;Arcade montrant le panneau de saisie du prompt pour modifier une vidéo existante.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:21 - 00:09:43</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en train de marcher en plein jour et il y a une montagne en arrière-plan exactement comme nous l&#x27;avons demandé, les gars, c&#x27;est comme ça qu&#x27;on monte des vidéos en utilisant Kling 01 à l&#x27;intérieur d&#x27;Arcads, si vous avez tiré de la valeur de cette vidéo, laissez un pouce bleu, faites-moi savoir ce que vous en pensez dans les commentaires et abonnez-vous pour plus de contenu comme celui-ci où j&#x27;apprends fondamentalement aux non-techniciens à utiliser l&#x27;IA. Non seulement je couvre la façon de faire des vidéos par IA, mais je couvre aussi la façon de coder au feeling et d&#x27;utiliser l&#x27;IA dans tout un tas de domaines différents.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de projets vidéo (Arcads), navigateur web et YouTube.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Miniatures de vidéos générées par IA, projets en grille et bannières de chaînes.
+[DESC_IMAGE_3] Navigation et présentation des vignettes vidéo sur la chaîne YouTube de Brock Mesarich.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;interface de montage vidéo et incitation à s&#x27;abonner à la chaîne.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/ylt358aJ7jA/ylt358aJ7jA_000926_seg21.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de création vidéo par IA avec une grille de projets et le présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/ylt358aJ7jA/ylt358aJ7jA_000926_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:26</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de création vidéo par IA avec une grille de projets et le présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:43 - 00:09:52</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si cela vous semble précieux, assurez-vous d&#x27;être abonné à cette chaîne. Cela étant dit, les gars, si vous voulez utiliser Arcad, il y a un lien dans la description pour le faire. Et j&#x27;ai hâte de vous voir dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> AUCUNE</p>
+                        <p><strong>Contenu textuel & Code :</strong> AUCUN</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement à l&#x27;audience pour conclure la vidéo et invite à consulter le lien dans la description.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
