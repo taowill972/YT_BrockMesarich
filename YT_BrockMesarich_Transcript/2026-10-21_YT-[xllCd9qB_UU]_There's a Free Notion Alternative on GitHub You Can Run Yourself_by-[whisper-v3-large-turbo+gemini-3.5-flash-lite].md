@@ -31,11 +31,11 @@ Dans cette vidéo intitulée **There's a Free Notion Alternative on GitHub You C
 > There's a free Notion alternative on GitHub and you can run it yourself. It's called AppFlowy and it has over 60,000 stars. You get docs, task boards, calendars, and a team wiki all in one place. Your data stays on your own servers, not someone else's. And AI is built right in. Ask questions across your pages or have it fill in your tables for you.
 
 **👁️ Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :**
-**Interface & Outils** : Interface logicielle de type Notion (AppFlowy) et illustrations graphiques conceptuelles.
+**Interface & Outils** : Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.
 
-**Contenu textuel & Code** : Menus de navigation de l'application, sections Docs, Tasks, Wiki, Files et icône de serveur personnel versus cloud tiers.
+**Contenu textuel & Code** : Explications orales des stratégies et mise en contexte méthodologique du marché.
 
-**Action / Démonstration** : Présentation visuelle des fonctionnalités de l'application open-source AppFlowy par le créateur.
+**Action / Démonstration** : Explications face caméra et analyse conceptuelle des marchés.
 
 ---
 
