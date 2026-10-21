@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `161 / 273` (`59.0%`)
+- **Vidéos traitées** : `162 / 273` (`59.3%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -178,6 +178,7 @@
 | 2025-07-25 | [mbMjOb_FOHM](https://www.youtube.com/watch?v=mbMjOb_FOHM) | **Créez du contenu VIRAL avec l'IA (Poppy AI)** | [2025-07-25_YT-[mbMjOb_FOHM]_Créez du contenu VIRAL avec l'IA (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-07-25_YT-[mbMjOb_FOHM]_Créez du contenu VIRAL avec l'IA (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-07-25_YT-[mbMjOb_FOHM]_Créez du contenu VIRAL avec l'IA (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-07-22 | [1yBQnZQq16g](https://www.youtube.com/watch?v=1yBQnZQq16g) | **Will ChatGPT Agent Replace Your Job? (Honest Review)** | [2025-07-22_YT-[1yBQnZQq16g]_Will ChatGPT Agent Replace Your Job (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-07-22_YT-[1yBQnZQq16g]_Will ChatGPT Agent Replace Your Job (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-07-22_YT-[1yBQnZQq16g]_Will ChatGPT Agent Replace Your Job (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-07-14 | [Qx_YOEC1HIo](https://www.youtube.com/watch?v=Qx_YOEC1HIo) | **Can I Make an App with ZERO Coding? (Vibe Code Tutorial)** | [2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-06-30 | [AbfMhFsFHKU](https://www.youtube.com/watch?v=AbfMhFsFHKU) | **NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)** | [2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
