@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `142 / 273` (`52.0%`)
+- **Vidéos traitées** : `143 / 273` (`52.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -159,6 +159,7 @@
 | 2025-09-19 | [m-6pEDFHsQY](https://www.youtube.com/watch?v=m-6pEDFHsQY) | **NEW Manus Agent Connects to ALL of Your Apps (INSANE)** | [2025-09-19_YT-[m-6pEDFHsQY]_NEW Manus Agent Connects to ALL of Your Apps (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-19_YT-[m-6pEDFHsQY]_NEW Manus Agent Connects to ALL of Your Apps (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-19_YT-[m-6pEDFHsQY]_NEW Manus Agent Connects to ALL of Your Apps (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-09-14 | [VJKn-IhUzio](https://www.youtube.com/watch?v=VJKn-IhUzio) | **This AI Image Generator is the Photoshop Killer (Gemini Nano Banana)** | [2025-09-14_YT-[VJKn-IhUzio]_This AI Image Generator is the Photoshop Killer (Gemini Nano Banana)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-14_YT-[VJKn-IhUzio]_This AI Image Generator is the Photoshop Killer (Gemini Nano Banana)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-14_YT-[VJKn-IhUzio]_This AI Image Generator is the Photoshop Killer (Gemini Nano Banana)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-09-13 | [zgof0a67bs4](https://www.youtube.com/watch?v=zgof0a67bs4) | **NEW Replit Agent 3 Builds Apps While You Sleep (INSANE)** | [2025-09-13_YT-[zgof0a67bs4]_NEW Replit Agent 3 Builds Apps While You Sleep (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-13_YT-[zgof0a67bs4]_NEW Replit Agent 3 Builds Apps While You Sleep (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-13_YT-[zgof0a67bs4]_NEW Replit Agent 3 Builds Apps While You Sleep (INSANE)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-09-08 | [2nz8CCKne4s](https://www.youtube.com/watch?v=2nz8CCKne4s) | **How to Build an iOS App with AI (In Minutes)** | [2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
