@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `145 / 273` (`53.1%`)
+- **Vidéos traitées** : `146 / 273` (`53.5%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -162,6 +162,7 @@
 | 2025-09-08 | [2nz8CCKne4s](https://www.youtube.com/watch?v=2nz8CCKne4s) | **How to Build an iOS App with AI (In Minutes)** | [2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-08_YT-[2nz8CCKne4s]_How to Build an iOS App with AI (In Minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-09-02 | [1uYyQVk_7N4](https://www.youtube.com/watch?v=1uYyQVk_7N4) | **Transformez vos designs Figma en applications avec l'IA (en quelques minutes)** | [2025-09-02_YT-[1uYyQVk_7N4]_Transformez vos designs Figma en applications avec l'IA (en quelques minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-09-02_YT-[1uYyQVk_7N4]_Transformez vos designs Figma en applications avec l'IA (en quelques minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-09-02_YT-[1uYyQVk_7N4]_Transformez vos designs Figma en applications avec l'IA (en quelques minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `44` |
 | 2025-08-29 | [pIkb3QOf7L0](https://www.youtube.com/watch?v=pIkb3QOf7L0) | **Arrêtez de créer des applications IA moches (faites plutôt ceci)** | [2025-08-29_YT-[pIkb3QOf7L0]_Arrêtez de créer des applications IA moches (faites plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-29_YT-[pIkb3QOf7L0]_Arrêtez de créer des applications IA moches (faites plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-29_YT-[pIkb3QOf7L0]_Arrêtez de créer des applications IA moches (faites plutôt ceci)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `44` |
+| 2025-08-28 | [WJTldaYhnZM](https://www.youtube.com/watch?v=WJTldaYhnZM) | **NOUVEAU Gemini Nano Banana VS ChatGPT (Lequel est le meilleur ?)** | [2025-08-28_YT-[WJTldaYhnZM]_NOUVEAU Gemini Nano Banana VS ChatGPT (Lequel est le meilleur )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-28_YT-[WJTldaYhnZM]_NOUVEAU Gemini Nano Banana VS ChatGPT (Lequel est le meilleur )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-28_YT-[WJTldaYhnZM]_NOUVEAU Gemini Nano Banana VS ChatGPT (Lequel est le meilleur )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `35` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
