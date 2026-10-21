@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `153 / 273` (`56.0%`)
+- **Vidéos traitées** : `154 / 273` (`56.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -170,6 +170,7 @@
 | 2025-08-14 | [b2U98rAcoIQ](https://www.youtube.com/watch?v=b2U98rAcoIQ) | **I Built a MOBILE App with GPT-5 (Honest Review)** | [2025-08-14_YT-[b2U98rAcoIQ]_I Built a MOBILE App with GPT-5 (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-14_YT-[b2U98rAcoIQ]_I Built a MOBILE App with GPT-5 (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-14_YT-[b2U98rAcoIQ]_I Built a MOBILE App with GPT-5 (Honest Review)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-08-09 | [XainJ6GMs1w](https://www.youtube.com/watch?v=XainJ6GMs1w) | **NEW Lovable Agent Mode (Build Anything)** | [2025-08-09_YT-[XainJ6GMs1w]_NEW Lovable Agent Mode (Build Anything)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-09_YT-[XainJ6GMs1w]_NEW Lovable Agent Mode (Build Anything)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-09_YT-[XainJ6GMs1w]_NEW Lovable Agent Mode (Build Anything)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2025-08-08 | [WSxy2H2lDGE](https://www.youtube.com/watch?v=WSxy2H2lDGE) | **This is the EASIEST Way to Build AI Agents (in 2025)** | [2025-08-08_YT-[WSxy2H2lDGE]_This is the EASIEST Way to Build AI Agents (in 2025)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-08_YT-[WSxy2H2lDGE]_This is the EASIEST Way to Build AI Agents (in 2025)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-08_YT-[WSxy2H2lDGE]_This is the EASIEST Way to Build AI Agents (in 2025)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-08-07 | [l2M6eCDyAfM](https://www.youtube.com/watch?v=l2M6eCDyAfM) | **GPT-5 Just Released (Is It Overrated?)** | [2025-08-07_YT-[l2M6eCDyAfM]_GPT-5 Just Released (Is It Overrated)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-08-07_YT-[l2M6eCDyAfM]_GPT-5 Just Released (Is It Overrated)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-08-07_YT-[l2M6eCDyAfM]_GPT-5 Just Released (Is It Overrated)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
