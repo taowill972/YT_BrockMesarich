@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Il y a une alternative gratuite à Notion sur GitHub que vous pouvez lancer vous-même — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Il y a une alternative gratuite à Notion sur GitHub que vous pouvez lancer vous-même</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-21</span>
+                <span class="badge">⏱️ 00:00:36</span>
+                <span class="badge">🆔 <code>xllCd9qB_UU</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=xllCd9qB_UU" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette intervention de la chaîne *Brock Mesarich | AI for Non Techies* met en lumière une alternative open-source majeure à l'écosystème Notion : **AppFlowy**, hébergée sur GitHub et adossée à plus de 60 000 étoiles. Conçue pour s'affranchir des contraintes des serveurs cloud tiers, cette solution offre une souveraineté totale sur les données tout en intégrant des fonctionnalités natives de productivité et d'intelligence artificielle (gestion documentaire, tableaux de tâches, wikis d'équipe et agendas). <br><br>Dans une perspective d'optimisation des flux de travail, l'intégration de l'IA au cœur d'une base de connaissances auto-hébergée change radicalement la donne pour l'automatisation des processus. Qu'il s'agisse de piloter des lancements clients complexes, de centraliser des briefs ou de structurer des prises de décision, l'automatisation par l'IA permet d'interroger instantanément de vastes volumes de données internes ou d'alimenter des matrices décisionnelles sans intervention humaine superflue.<br><br>Bien que la vidéo se concentre sur l'organisation et la gestion de projets, la logique d'auto-hébergement, d'automatisation no-code/low-code et d'IA intégrée présente des passerelles directes avec le trading quantitatif. Tout comme les stratégies de trading algorithmique nécessitent un contrôle strict des infrastructures (serveurs dédiés, latence minimale, propriété des données propriétaires), l'utilisation d'outils modulaires et interopérables comme n8n, Make ou de grands modèles de langage (LLM) permet de bâtir des écosystèmes d'analyse de données hautement performants et sécurisés.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **AppFlowy** : Alternative open-source et auto-hébergée à Notion, cumulant plus de 60 000 étoiles sur GitHub, dotée d'une IA intégrée et multi-plateforme (Mac, Windows, Linux, iOS, Android).<br>* **GitHub** : Plateforme de développement collaborative et d'hébergement de code source permettant de télécharger et auditer des projets open-source.<br>* **ChatGPT** : Modèle de langage conversationnel d'OpenAI utilisé pour l'assistance textuelle, l'automatisation des prompts et le traitement de données.<br>* **Claude** : Assistant IA avancé développé par Anthropic, reconnu pour sa précision dans la synthèse documentaire et le traitement de contextes longs.<br>* **Gemini** : Écosystème d'intelligence artificielle de Google appliqué à l'analyse multimodale et à la recherche d'informations.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle développé par xAI, intégré aux flux de données en temps réel.<br>* **n8n** : Outil d'automatisation de flux de travail (workflow automation) orienté technique et propice à l'auto-hébergement pour connecter des applications entre elles.<br>* **Zapier** : Plateforme cloud leader d'automatisation sans code permettant de relier rapidement des milliers d'applications logicielles.<br>* **Make** : Outil visuel d'intégration et d'automatisation (anciennement Integromat) pour concevoir des scénarios complexes multi-applications.<br>* **Prompt Engineering** : Discipline consistant à concevoir et optimiser les instructions textuelles pour orienter précisément les réponses des modèles d'IA.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Souveraineté et confidentialité des données** : L'auto-hébergement d'outils critiques sur ses propres serveurs élimine les risques de fuite de données propriétaires, un impératif absolu tant pour la gestion d'entreprise que pour la protection de stratégies de trading quantitatif confidentielles.<br>* **Indépendance vis-à-vis des écosystèmes propriétaires** : S'affranchir des solutions SaaS centralisées (comme Notion) protège les structures contre les hausses de tarifs unilatérales, les pannes de serveurs tiers et les modifications soudaines de conditions d'utilisation.<br>* **IA contextuelle intégrée** : L'intégration d'assistants intelligents directement au sein des bases documentaires permet d'interroger l'historique des projets en langage naturel, transformant des notes brutes en bases de connaissances dynamiques et exploitables.<br>* **Automatisation des tâches administratives** : Déléguer le remplissage de tableaux, le suivi des matrices de décision et la synthèse des briefs clients à l'IA libère un temps précieux pour se concentrer sur l'analyse à forte valeur ajoutée (recherche alpha, backtesting).<br>* **Traçabilité et auditabilité des processus** : Centraliser les briefs, les décisions et l'historique des modifications au même endroit garantit une transparence totale et une traçabilité indispensable pour le transfert de compétences ou l'analyse post-mortem d'un projet.<br>* **Interopérabilité multi-plateforme** : Disposer d'un outil fonctionnant de manière fluide sur postes fixes (Mac, Windows, Linux) comme sur terminaux mobiles (iPhone, Android) assure une continuité opérationnelle et un suivi en temps réel, critique en conditions de marché volatiles.<br>* **Synergie entre productivité et automatisation** : Combiner des solutions de gestion de données open-source avec des moteurs d'automatisation (n8n, Make) permet de concevoir des pipelines de données robustes, reliant la documentation opérationnelle aux outils de prise de décision.<br>* **Gestion rigoureuse du cycle de vie des projets** : Structurer l'information autour de cas d'usage précis (comme le lancement de produits ou de clients) favorise la reproductibilité des processus et minimise les erreurs opérationnelles dues à un manque de coordination.<br>* **Optimisation des flux de travail quantitatifs** : Les méthodologies présentées pour centraliser la recherche et l'exécution s'appliquent directement à la gestion de portefeuilles algorithmiques, où chaque signal, hypothèse de recherche et modification de code doit être rigoureusement documenté.<br>* **Accessibilité des technologies avancées** : L'adoption d'alternatives open-source et d'interfaces conversationnelles démocratise l'accès à des infrastructures de pointe, permettant à des profils non techniques de piloter des architectures logicielles complexes sans compétences en programmation pure.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">AppFlowy</span><span class="tool-tag">GitHub</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Claude</span><span class="tool-tag">Gemini</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Souveraineté et confidentialité des données** : L&#x27;auto-hébergement d&#x27;outils critiques sur ses propres serveurs élimine les risques de fuite de données propriétaires, un impératif absolu tant pour la gestion d&#x27;entreprise que pour la protection de stratégies de trading quantitatif confidentielles.</span></li><li><span class="point-bullet">✦</span><span>Indépendance vis-à-vis des écosystèmes propriétaires** : S&#x27;affranchir des solutions SaaS centralisées (comme Notion) protège les structures contre les hausses de tarifs unilatérales, les pannes de serveurs tiers et les modifications soudaines de conditions d&#x27;utilisation.</span></li><li><span class="point-bullet">✦</span><span>IA contextuelle intégrée** : L&#x27;intégration d&#x27;assistants intelligents directement au sein des bases documentaires permet d&#x27;interroger l&#x27;historique des projets en langage naturel, transformant des notes brutes en bases de connaissances dynamiques et exploitables.</span></li><li><span class="point-bullet">✦</span><span>Automatisation des tâches administratives** : Déléguer le remplissage de tableaux, le suivi des matrices de décision et la synthèse des briefs clients à l&#x27;IA libère un temps précieux pour se concentrer sur l&#x27;analyse à forte valeur ajoutée (recherche alpha, backtesting).</span></li><li><span class="point-bullet">✦</span><span>Traçabilité et auditabilité des processus** : Centraliser les briefs, les décisions et l&#x27;historique des modifications au même endroit garantit une transparence totale et une traçabilité indispensable pour le transfert de compétences ou l&#x27;analyse post-mortem d&#x27;un projet.</span></li><li><span class="point-bullet">✦</span><span>Interopérabilité multi-plateforme** : Disposer d&#x27;un outil fonctionnant de manière fluide sur postes fixes (Mac, Windows, Linux) comme sur terminaux mobiles (iPhone, Android) assure une continuité opérationnelle et un suivi en temps réel, critique en conditions de marché volatiles.</span></li><li><span class="point-bullet">✦</span><span>Synergie entre productivité et automatisation** : Combiner des solutions de gestion de données open-source avec des moteurs d&#x27;automatisation (n8n, Make) permet de concevoir des pipelines de données robustes, reliant la documentation opérationnelle aux outils de prise de décision.</span></li><li><span class="point-bullet">✦</span><span>Gestion rigoureuse du cycle de vie des projets** : Structurer l&#x27;information autour de cas d&#x27;usage précis (comme le lancement de produits ou de clients) favorise la reproductibilité des processus et minimise les erreurs opérationnelles dues à un manque de coordination.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des flux de travail quantitatifs** : Les méthodologies présentées pour centraliser la recherche et l&#x27;exécution s&#x27;appliquent directement à la gestion de portefeuilles algorithmiques, où chaque signal, hypothèse de recherche et modification de code doit être rigoureusement documenté.</span></li><li><span class="point-bullet">✦</span><span>Accessibilité des technologies avancées** : L&#x27;adoption d&#x27;alternatives open-source et d&#x27;interfaces conversationnelles démocratise l&#x27;accès à des infrastructures de pointe, permettant à des profils non techniques de piloter des architectures logicielles complexes sans compétences en programmation pure.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:21</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a une alternative gratuite à Notion sur GitHub et vous pouvez l&#x27;exécuter vous-même. Ça s&#x27;appelle AppFlowy et ça a plus de 60 000 étoiles. Vous obtenez des documents, des tableaux de tâches, des calendriers et un wiki d&#x27;équipe, le tout au même endroit. Vos données restent sur vos propres serveurs, pas sur ceux de quelqu&#x27;un d&#x27;autre. Et l&#x27;IA y est directement intégrée. Posez des questions à travers vos pages ou demandez-lui de remplir vos tableaux pour vous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur d&#x27;AppFlowy et présentation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logos d&#x27;application, interface de gestion de notes/wiki, texte descriptif et illustration de serveur sécurisé.
+[DESC_ACTION_1] Présentation du nom de l&#x27;application.
+[DESC_ACTION_2] Illustration des fonctionnalités de type Notion.
+[DESC_ACTION_3] Explication du stockage des données sur serveur personnel.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:21 - 00:00:36</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Disons que vous gérez le lancement d&#x27;un client. Les briefs, les tâches et les décisions sont tous regroupés au même endroit. Ainsi, la personne suivante peut voir ce qui a changé et pourquoi. Ça fonctionne sur Mac, Windows, Linux, iPhone et Android. Si vous voulez l&#x27;essayer, commentez « app flowy » et je vous enverrai le lien.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de gestion de projet (AppFlowy)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableaux de bord de tâches, sections de brief de projet, historique des versions avec modifications d&#x27;utilisateurs.
+[DESC_IMAGE_1] et [DESC_IMAGE_2] illustrent l&#x27;organisation des tâches et le suivi des modifications de projets clients.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xllCd9qB_UU/xllCd9qB_UU_000025_seg2.jpg" alt="Interface d&#x27;un espace de gestion de projet montrant le lancement d&#x27;un client avec les sections Brief, Decisions et Tasks, accompagné du présentateur en bas." loading="lazy" onclick="openLightbox('../screenshots/xllCd9qB_UU/xllCd9qB_UU_000025_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:25</span>
+                        <span class="caption-text">Interface d&#x27;un espace de gestion de projet montrant le lancement d&#x27;un client avec les sections Brief, Decisions et Tasks, accompagné du présentateur en bas.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/xllCd9qB_UU/xllCd9qB_UU_000028_seg2.jpg" alt="Interface d&#x27;un document de brief avec un panneau latéral affichant l&#x27;historique des versions (Version history)." loading="lazy" onclick="openLightbox('../screenshots/xllCd9qB_UU/xllCd9qB_UU_000028_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:28</span>
+                        <span class="caption-text">Interface d&#x27;un document de brief avec un panneau latéral affichant l&#x27;historique des versions (Version history).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
