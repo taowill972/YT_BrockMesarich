@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Anthropic vient de lancer le tueur de Grok Bots ? (Claude Duet) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Anthropic vient de lancer le tueur de Grok Bots ? (Claude Duet)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-21</span>
+                <span class="badge">⏱️ 00:07:39</span>
+                <span class="badge">🆔 <code>nv1aaP3dHzs</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=nv1aaP3dHzs" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Anthropic vient de lancer le tueur de Grok Bots ? (Claude Duet)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic vient tout juste de sortir son propre agent IA personnel, et il vient rivaliser avec GrokBot, Chachabiti, Dots et Metamuse. Il s&#x27;appelle Claude Duet, et c&#x27;est une manière plus intuitive pour vous d&#x27;utiliser l&#x27;IA, où elle peut travailler pour vous et communiquer comme le ferait un vrai coéquipier. Dans cette courte vidéo, je vais vous expliquer exactement ce qu&#x27;il fait, qui peut l&#x27;utiliser, et le seul bémol que vous devriez connaître.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface visuelle conceptuelle / maquette de notification de l&#x27;agent IA Claude Duet.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Icônes de Grok Bot, ChatGPT Dots et Claude Duet ; notification textuelle de l&#x27;agent : &quot;Morning, Nicole! For today: Health permit. Hiring decisions. Northfield renewal.&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation introductive des fonctionnalités du nouvel agent IA personnel Claude Duet et comparaison avec les solutions concurrentes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000005_seg1.jpg" alt="Graphique de présentation affichant le lancement de l&#x27;agent IA d&#x27;Anthropic face aux concurrents Grok Bot et ChatGPT Dots." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Graphique de présentation affichant le lancement de l&#x27;agent IA d&#x27;Anthropic face aux concurrents Grok Bot et ChatGPT Dots.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000010_seg1.jpg" alt="Aperçu d&#x27;une notification de l&#x27;interface Claude Duet envoyant un message de suivi de tâches quotidiennes." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Aperçu d&#x27;une notification de l&#x27;interface Claude Duet envoyant un message de suivi de tâches quotidiennes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:39</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous allons également examiner une grande différence entre Anthropic et GrokBot qui, selon moi, aura beaucoup d&#x27;importance. Donc, sans plus attendre, plongeons-y directement. Très bien, alors passons en revue l&#x27;article réel qu&#x27;Anthropic a publié en commençant tout en haut. Anthropic affirme avoir conçu Claude Duet pour les professionnels et les propriétaires de petites entreprises qui ont plus de pain sur la planche qu&#x27;ils ne peuvent en suivre.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;article officiel d&#x27;Anthropic sur Claude Duet.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte surligné : « We built Claude Duet for professionals and small business owners with more on their plates than their can track. »</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente l&#x27;article publié par Anthropic pour souligner la cible du produit.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000034_seg2.jpg" alt="Capture d&#x27;écran d&#x27;un article en ligne sur claude.com avec un paragraphe surligné en jaune encadré de rouge." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000034_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:34</span>
+                        <span class="caption-text">Capture d&#x27;écran d&#x27;un article en ligne sur claude.com avec un paragraphe surligné en jaune encadré de rouge.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:39 - 00:01:04</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, c&#x27;est vraiment destiné aux personnes qui gèrent une entreprise, pas seulement aux développeurs comme Claude Code. C&#x27;est une application autonome sur iPhone et Android, et vous pouvez également l&#x27;utiliser sur Claude.ai. Maintenant, pour cet aperçu de recherche, c&#x27;est inclus dans les abonnements Pro et Max, vous devrez donc disposer d&#x27;un abonnement payant pour y accéder. Donc, si vous payez déjà pour Claude, vous n&#x27;aurez rien à payer de plus, mais pour l&#x27;instant, c&#x27;est uniquement sur liste d&#x27;attente et c&#x27;est seulement aux États-Unis.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un article d&#x27;aide ou de blog de la plateforme Claude.ai.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte surligné expliquant que l&#x27;application est disponible sur iOS, Android et Claude.ai.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le texte affiché à l&#x27;écran concernant la disponibilité de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:04 - 00:01:27</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ensuite vient une partie qui, je pense, a probablement le plus d&#x27;importance, qu&#x27;Anthropic appelle porter votre attention là où c&#x27;est le plus important. Chaque matin, Duet vous envoie un bref résumé des tâches les plus importantes à travers les applications que vous avez connectées. Ensuite, tout au long de la journée, il garde un œil sur ces applications et ne vous envoie un message que lorsque quelque chose requiert réellement votre attention. Ainsi, au lieu que ce soit nous qui allions voir Claude pour lui poser une question ou lui donner une tâche, cela va être plus proactif.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de concept Claude Duet (Anthropic) / maquette UI mobile et messagerie</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes : &quot;Something I can do right now: Make a sales dashboard for your business based on the latest numbers.&quot; / &quot;Go for it!&quot; ; &quot;A brief each morning, then quiet&quot;, notification &quot;Claude Duet 7:30 am - Morning! Two things need you today and three are in progress.&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du fonctionnement du concept d&#x27;assistant Claude Duet (notifications matinales et exécution autonome de tâches).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000110_seg4.jpg" alt="Interface de messagerie montrant une suggestion proactive de Claude Duet proposant de créer un tableau de bord des ventes, avec une réponse de l&#x27;utilisateur &quot;Go for it!&quot;." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000110_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:10</span>
+                        <span class="caption-text">Interface de messagerie montrant une suggestion proactive de Claude Duet proposant de créer un tableau de bord des ventes, avec une réponse de l&#x27;utilisateur &quot;Go for it!&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000115_seg4.jpg" alt="Diapositive de présentation montrant une notification matinale de Claude Duet sur smartphone : &quot;Morning! Two things need you today and three are in progress.&quot;" loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000115_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:15</span>
+                        <span class="caption-text">Diapositive de présentation montrant une notification matinale de Claude Duet sur smartphone : &quot;Morning! Two things need you today and three are in progress.&quot;</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:27 - 00:01:47</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Anthropic a également dit que c&#x27;est basé sur Claude Opus 5.5, et c&#x27;est un modèle qui va décider de ce qui a besoin de vous, de ce qui peut attendre, et du moment où il faut vérifier avec vous d&#x27;abord avant d&#x27;aller faire quelque chose. Maintenant, parlons de quelques exemples qu&#x27;Anthropic a montrés dans sa vidéo de lancement. Tout d&#x27;abord, ils ont montré une propriétaire de café à qui on annonce que son nouvel établissement ouvre dans 26 jours, et qu&#x27;elle n&#x27;a toujours pas déposé son permis sanitaire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (claude.com), interface de notifications et messagerie d&#x27;agent IA (Claude Duet / Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL &quot;claude.com/resources/articles/claude-duet&quot;, texte explicatif sur Claude Opus 5.5, notifications de statut, document joint &quot;Health-permit.pdf&quot; et slogan de démonstration &quot;and tells you what can wait&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration visuelle des capacités d&#x27;autonomie, de gestion proactive de tâches et de priorisation de l&#x27;agent Claude Duet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000132_seg5.jpg" alt="Page web de l&#x27;article officiel sur claude.com avec texte surligné décrivant le fonctionnement de Claude Duet basé sur Claude Opus 5.5." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000132_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:32</span>
+                        <span class="caption-text">Page web de l&#x27;article officiel sur claude.com avec texte surligné décrivant le fonctionnement de Claude Duet basé sur Claude Opus 5.5.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000137_seg5.jpg" alt="DÉMO de message de notification automatique généré par l&#x27;agent Claude Duet concernant le suivi d&#x27;entretiens." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000137_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:37</span>
+                        <span class="caption-text">DÉMO de message de notification automatique généré par l&#x27;agent Claude Duet concernant le suivi d&#x27;entretiens.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000142_seg5.jpg" alt="Interface de l&#x27;assistant Claude Duet affichant la création automatique d&#x27;un permis de santé au format PDF et la gestion des priorités." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000142_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:42</span>
+                        <span class="caption-text">Interface de l&#x27;assistant Claude Duet affichant la création automatique d&#x27;un permis de santé au format PDF et la gestion des priorités.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:12</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Duet le rédige pour elle et lui dit aussi qu&#x27;un renouvellement client peut attendre jusqu&#x27;à lundi. Vous pouvez également lui confier une tâche plus importante comme la création de tableaux de bord, de prévisions de ventes ou même d&#x27;applications web. Maintenant, je tiens à être transparent ici, car cette partie n&#x27;est pas totalement nouvelle. ChatGPT, les Custom GPTs, GrokBot et Metamuse peuvent déjà faire des choses comme ça, mais ce qui est différent ici, c&#x27;est que c&#x27;est désormais directement à l&#x27;intérieur de l&#x27;écosystème d&#x27;Anthropic et de Claude.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de chat / assistant virtuel IA (Google Duet AI / Google Workspace)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Dialogue textuel : &quot;Something I can do right now: Make a sales dashboard for your business based on the latest numbers.&quot;, réponse &quot;Go for it!&quot;, suivi de la confirmation d&#x27;extraction depuis le CRM, la boutique en ligne, le support et la banque.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la capacité d&#x27;un assistant IA à exécuter des tâches complexes comme la consolidation de données et la génération automatique de tableaux de bord.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000154_seg6.jpg" alt="Interface de discussion montrant un échange textuel avec un assistant IA qui propose de générer un tableau de bord de ventes en extrait des données de plusieurs sources (CRM, boutique en ligne, banque)." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000154_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:54</span>
+                        <span class="caption-text">Interface de discussion montrant un échange textuel avec un assistant IA qui propose de générer un tableau de bord de ventes en extrait des données de plusieurs sources (CRM, boutique en ligne, banque).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:31</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si vous êtes un utilisateur assidu de Claude, que vous utilisez Claude Code ou ces différents produits Claude, alors ceci est pour vous. Ensuite, je veux parler de sécurité, ce qui est vraiment très important pour quelque chose qui va lire vos e-mails et toutes les différentes applications que vous utilisez. Anthropic affirme que Claude Duet ne voit jamais directement vos mots de passe ni aucun de vos jetons de connexion.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Schéma graphique d&#x27;écosystème logiciel, navigateur web (article de documentation claude.com).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre « Inside Anthropic&#x27;s own apps » avec icônes de Claude app, Claude Code et Claude Duet ; points clés sur la sécurité des agents, le traitement des identifiants et l&#x27;utilisation de l&#x27;auto mode classifier.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation visuelle de la suite logicielle Anthropic et analyse des caractéristiques de sécurité des agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000217_seg7.jpg" alt="Schéma explicatif illustrant l&#x27;écosystème des applications Anthropic, incluant Claude app, Claude Code et Claude Duet." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000217_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:17</span>
+                        <span class="caption-text">Schéma explicatif illustrant l&#x27;écosystème des applications Anthropic, incluant Claude app, Claude Code et Claude Duet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000221_seg7.jpg" alt="Article du site claude.com intitulé « Safety and discretion are built in » détaillant les mesures de sécurité et de confidentialité de Claude Duet et Claude Code." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000221_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">Article du site claude.com intitulé « Safety and discretion are built in » détaillant les mesures de sécurité et de confidentialité de Claude Duet et Claude Code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:31 - 00:02:50</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ils ont ajouté un nouveau contrôle de sécurité qui refuse de partager quoi que ce soit comme des numéros de carte de crédit ou des pièces d&#x27;identité officielles. D&#x27;autres informations sensibles, comme votre santé et vos finances personnelles, ne sont envoyées que si vous avez spécifiquement demandé à Duet de les envoyer. Ils ont également fait appel à des « red teams » au sein d&#x27;une entreprise externe pour essayer de s&#x27;y infiltrer, ce que je trouve plutôt rassurant si vous comptez lui confier votre boîte de réception.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web (URL : claude.com/resources/articles/claude-duet).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Textes officiels d&#x27;Anthropic détaillant les contrôles de sécurité, le filtrage des données sensibles et les audits de sécurité par Red Teaming pour Claude Duet.</p>
+                        <p><strong>Action / Démonstration :</strong> Revue et explication à l&#x27;écran des politiques de sécurité et de protection des données personnelles introduites pour Claude Duet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000236_seg8.jpg" alt="Page web de documentation Anthropic mettant en surbrillance le paragraphe expliquant le refus de partage des informations strictement confidentielles (cartes bancaires, pièces d&#x27;identité)." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000236_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:36</span>
+                        <span class="caption-text">Page web de documentation Anthropic mettant en surbrillance le paragraphe expliquant le refus de partage des informations strictement confidentielles (cartes bancaires, pièces d&#x27;identité).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000245_seg8.jpg" alt="Page web de documentation Anthropic soulignant la mention des tests d&#x27;intrusion (penetration testing) réalisés par des Red Teams sur Claude Duet." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000245_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:45</span>
+                        <span class="caption-text">Page web de documentation Anthropic soulignant la mention des tests d&#x27;intrusion (penetration testing) réalisés par des Red Teams sur Claude Duet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:50 - 00:03:11</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, ma partie préférée dans ces articles de lancement, c&#x27;est vraiment de voir comment les gens utilisent ce produit. Ainsi, le gars qui a créé Claude Code, appelé Boris, passe en revue sa liste de tâches avec Duet pendant qu&#x27;il se promène au lieu de tout garder pour son bureau. Une courtière en immobilier a dit qu&#x27;un matin, sans même qu&#x27;elle ne lui demande, il a signalé une visite immobilière qui était sur son calendrier le mauvais jour.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:11 - 00:03:43</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And a restaurant owner with 110 employees has been using it for accounting, customer support, and marketing. All right, so now I want to get into how exactly it works because this is where the Anthropic part really matters. Duet carries over your memory, your skills, and the apps you&#x27;re already connected to from your Claude account. So if you&#x27;re already using Claude, there&#x27;s pretty much no setup. And I think this is the most important thing about this release because all this now lives directly inside of the Anthropic ecosystem. And again, if you&#x27;re already using Claude code and their other products, this is going to be a great fit for you. Now,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucun logiciel, terminal ou interface de démonstration active.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titres de présentation « How Claude Duet works » et mentions conceptuelles « Memory », « Skills », « Apps ».</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation orale et transition vers la partie explicative du fonctionnement de Claude Duet.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:43 - 00:04:17</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">one thing I do want to point out is that you talk to Duet in one ongoing thread by typing or with your voice. So a quick question in a week-long project, both start in the same place. So it&#x27;s going to be really interesting to see if Anthropic lets you have multiple agents like you can inside of GrokBot. And that&#x27;s actually one of the reasons why I genuinely love using the GrokBot platform. Because I can have specific agents for specific jobs that communicate with each other and work together. And this way I can break up the different tasks that I have. So if I want to do anything invoice related, I could go to that specific invoice agent. And this way, all of my</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Diaporama de présentation comparant l&#x27;interface à fil unique (Claude Duet) et l&#x27;architecture multi-agents (Grok Bot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Intitulé &quot;One thread, or a team of agents&quot;, exemples de prompts/tâches (&quot;Quick question about Friday?&quot;, &quot;Weeklong project plan&quot;, &quot;Invoices for this month&quot;), et modules d&#x27;agents Grok Bot (&quot;Invoices&quot;, &quot;Email&quot;, &quot;Research&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Explication conceptuelle de la différence ergonomique et structurelle entre converser dans un fil unique continu et utiliser une équipe d&#x27;agents IA spécialisés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000351_seg11.jpg" alt="Diapositive &quot;One thread, or a team of agents&quot; montrant un schéma de fil de conversation unique pour Claude Duet regroupant plusieurs requêtes." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000351_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:51</span>
+                        <span class="caption-text">Diapositive &quot;One thread, or a team of agents&quot; montrant un schéma de fil de conversation unique pour Claude Duet regroupant plusieurs requêtes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000408_seg11.jpg" alt="Schéma comparatif entre l&#x27;interface à fil unique de Claude Duet et une structure multi-agents avec Grok Bot (agents dédiés Invoices, Email, Research)." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000408_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:08</span>
+                        <span class="caption-text">Schéma comparatif entre l&#x27;interface à fil unique de Claude Duet et une structure multi-agents avec Grok Bot (agents dédiés Invoices, Email, Research).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:17 - 00:04:50</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les différentes conversations ne se mélangent pas. En plus de tout cela, il possède également son propre ordinateur dans le cloud avec son propre navigateur. Il n&#x27;a donc pas besoin que votre téléphone ou votre ordinateur portable soit allumé pour continuer à fonctionner. Et encore une fois, c&#x27;est quelque chose de très similaire que Grokbot et Metamuse, Chachabuti dots ont tous en commun. En gros, il va vérifier vos comptes connectés toutes les quelques heures au lieu de le faire sans arrêt, car s&#x27;il le faisait en continu, il épuiserait vos limites beaucoup plus vite, évidemment. Et avant d&#x27;envoyer un message, d&#x27;effectuer un paiement, de signer un document ou de supprimer quoi que ce soit, il vous montre exactement ce qu&#x27;il s&#x27;apprête à faire et attend votre approbation.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:50 - 00:05:24</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Maintenant, il y a quelques choses qui sont interdites, même si vous les approuvez, comme négocier des actions ou déplacer de l&#x27;argent entre vos différents comptes. Ensuite, cela fonctionne avec plus de 6 000 connecteurs et plugins, et Anthropic donne un tas d&#x27;exemples pour gérer une entreprise. Il peut donc consulter QuickBooks ou Stripe pour les factures impayées et même rédiger les rappels. Il peut préparer votre paie dans Gusto ou même préparer un contrat à signer dans DocuSign. Très bien, cela nous amène donc au piège, qui se trouve tout en bas de l&#x27;article. Duet partage vos limites d&#x27;utilisation avec le reste de Claude et ses vérifications en arrière-plan comptent pour ces limites. Les tâches plus importantes comme</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:06:02</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">building a deck or a financial model use even more of your tokens. So if you&#x27;re already running into your Claude limits, this is probably going to eat them even quicker. But one thing I do want to point out is since I&#x27;ve been using Claude Opus 5.5, it&#x27;s really efficient at spending my token. So it&#x27;s actually not eating through nearly as much as it used to when I use Claude inside of Claude code for even the really complex workflows that I&#x27;m running. So I want to talk about all the other AI agents right now. Grokbot came out back in August, then Meta launched Muse in September, and OpenAI announced ChatGPT dots inside of ChatGPT just a couple of weeks ago. And now we</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface vidéo éducative avec graphiques animés d&#x27;explication conceptuelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schémas conceptuels de répartition de tokens et chronologies d&#x27;utilisation d&#x27;IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les limites de consommation des tokens et la gestion des ressources des IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000534_seg14.jpg" alt="Schéma explicatif sur les limites d&#x27;utilisation partagées (&quot;One shared usage limit&quot;) montrant la répartition des tokens entre les chats, les check-ins et les tâches lourdes, avec la webcam du présentateur à droite." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000534_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:34</span>
+                        <span class="caption-text">Schéma explicatif sur les limites d&#x27;utilisation partagées (&quot;One shared usage limit&quot;) montrant la répartition des tokens entre les chats, les check-ins et les tâches lourdes, avec la webcam du présentateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000552_seg14.jpg" alt="Chronologie horizontale intitulée &quot;Everyone has one now&quot; avec une icône de bot (&quot;Grok Bot&quot;) datée du 11 août, et la webcam du présentateur incrustée dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/nv1aaP3dHzs/nv1aaP3dHzs_000552_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Chronologie horizontale intitulée &quot;Everyone has one now&quot; avec une icône de bot (&quot;Grok Bot&quot;) datée du 11 août, et la webcam du présentateur incrustée dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:20</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">have Claude Duet. I don&#x27;t think it&#x27;s rocket science to think that this is going to be the future of how we use AI. Basically having an always-on assistant that lives inside of our pocket on our phone that we can communicate with instead of having to be at our computer to get work done for us. So now it really just boils down to which one of these platforms you&#x27;re actually going to use.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:20 - 00:06:43</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Now personally I&#x27;ve been using GrokBot as my main daily driver over the last two months and it has completely changed how I work from my computer. I&#x27;ve been using it every single day. I have it replying to basically all of my emails for me. It has saved me so much time and so much headache. So for me personally, I don&#x27;t even know if I&#x27;m going to switch from GrokBot to this new Claude Duet because I&#x27;ve just really been enjoying the experience with GrokBot.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:43 - 00:07:09</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And one of the things that makes GrokBot really interesting is that it doesn&#x27;t only work with the Grok models because earlier this month, Elon posted that GrokBot is going to use the best model for any given task. And one of the models he named was Claude Opus 5.5. Now, to be fair, Elon&#x27;s post is the only official source on this so far, so we don&#x27;t really know which models are being used inside of GrokBot for these different tasks, but Elon said that they are going to be implementing this.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:10 - 00:07:32</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">And I think it&#x27;s going to be really interesting to see if Anthropic does the exact same thing inside of Duet, but I doubt they&#x27;re going to allow you to use any of the other company&#x27;s models. Anyways, as of right now, this is not rolled out to anybody. You do have to join a waitlist, so I went ahead and joined the waitlist. As soon as I get access, I&#x27;m going to make a video on this, breaking it down, comparing it to GrokBot, and giving my honest thoughts on which one I like better.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:07:38</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If you enjoyed this video and you want to see the next one, make sure to subscribe to this channel. Thanks for saying the end, and I&#x27;ll see you in the next one. Cheers.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
