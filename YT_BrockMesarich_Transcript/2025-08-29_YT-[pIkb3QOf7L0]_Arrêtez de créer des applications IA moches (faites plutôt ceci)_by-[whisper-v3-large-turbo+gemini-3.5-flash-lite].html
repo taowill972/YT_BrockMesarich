@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Arrêtez de créer des applications IA moches (faites plutôt ceci) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Arrêtez de créer des applications IA moches (faites plutôt ceci)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-08-29</span>
+                <span class="badge">⏱️ 00:10:13</span>
+                <span class="badge">🆔 <code>pIkb3QOf7L0</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=pIkb3QOf7L0" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Cette vidéo présentée par Brock Mesarich pour la chaîne *AI for Non Techies* s'attaque à un écueil majeur du développement no-code et du prototypage assisté par intelligence artificielle : la production systématique d'interfaces utilisateur (UI) fades, génériques et immédiatement identifiables comme « faites par l'IA ». L'analyste démontre qu'il est désormais possible de s'affranchir de cette limite esthétique en combinant des plateformes de création d'applications intuitives avec des bibliothèques de composants de pointe. À travers le cas concret de la création de « PayPilot », une application gratuite de génération de factures pilotée par le langage naturel, la démonstration expose méthodiquement comment élever la qualité visuelle d'un produit brut au rang d'une application professionnelle haut de gamme.<br><br>La stratégie présentée repose sur un couplage technologique astucieux entre **Base44**, un environnement de développement d'applications par IA, et **21st.dev**, une bibliothèque spécialisée de composants d'interface utilisateur. L'approche méthodologique consiste à ne pas laisser l'intelligence artificielle concevoir l'intégralité du design à partir d'une feuille blanche, mais à lui injecter chirurgicalement des prompts précis, des motifs d'arrière-plan sophistiqués (comme des dégradés animés), des effets typographiques dynamiques (animations de frappe) et des cartes ergonomiques sourcés sur des plateformes de design de référence. <br><br>Au-delà de la simple revue d'outils, la vidéo met en lumière l'importance cruciale de l'expérience utilisateur (UX) dans l'adoption d'un logiciel. En exploitant des fonctionnalités d'édition visuelle ciblée, l'animateur montre comment injecter du contexte contextuel et fonctionnel directement dans les composants importés, garantissant ainsi que l'esthétique serve la proposition de valeur de l'application (ici, la rapidité et l'intuitivité de la facturation textuelle). Cette méthodologie itérative transforme radicalement le rendu final, prouvant qu'un utilisateur sans compétences techniques avancées en codage peut concevoir des prototypes dotés d'un design soigné, fluide et hautement concurrentiel.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Base44** : Plateforme de codage intuitif et de création d'applications assistée par IA permettant de générer rapidement des structures logicielles et des pages de destination fonctionnelles.<br>* **21st.dev** : Bibliothèque riche de composants d'interface utilisateur (UI) haut de gamme offrant des prompts prêts à l'emploi pour intégrer des éléments de design modernes (animations, dégradés, cartes).<br>* **ChatGPT** : Modèle conversationnel d'intelligence artificielle généraliste souvent mobilisé pour la génération de texte et l'assistance au prompt engineering.<br>* **Claude** : Assistant IA de pointe réputé pour ses capacités de raisonnement logique, d'écriture et de structuration de code complexe.<br>* **Gemini** : Modèle multimodal de Google intégré dans divers flux de travail pour l'analyse de données et la génération de contenu.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle axé sur le traitement en temps réel et l'interaction textuelle avancée.<br>* **n8n** : Outil d'automatisation de flux de travail (workflow automation) open-source et flexible pour connecter différentes applications.<br>* **Zapier** : Plateforme cloud leader d'automatisation sans code permettant de relier des milliers d'applications web entre elles.<br>* **Make** : Outil visuel d'intégration et d'automatisation puissant pour concevoir des scénarios complexes multi-applications.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Dépassement du design générique de l'IA** : Lutte active contre l'uniformité visuelle des applications générées par intelligence artificielle en évitant les interfaces basiques et prédictibles.<br>* **Couplage d'outils spécialisés** : Synergie stratégique entre une plateforme de génération d'applications (Base44) et une bibliothèque de composants UI haut de gamme (21st.dev) pour un rendu visuel professionnel.<br>* **Utilisation de prompts de composants** : Extraction et réutilisation de prompts spécifiques fournis par des bibliothèques de design pour reproduire fidèlement des éléments graphiques complexes dans l'application cible.<br>* **Intégration d'arrière-plans immersifs** : Implémentation rapide de dégradés animés pour capter immédiatement l'attention de l'utilisateur dès la page d'atterrissage (*landing page*).<br>* **Effets typographiques dynamiques** : Ajout d'animations de frappe (*typing animations*) sur les sections clés (*hero sections*) pour dynamiser la lecture et mettre en valeur la proposition de valeur centrale.<br>* **Édition visuelle ciblée** : Recours aux fonctionnalités d'édition par sélection de blocs (division d'interface) pour appliquer des modifications précises sans perturber la structure globale de l'application.<br>* **Préservation de la cohérence contextuelle** : Veille à ce que les composants importés de bibliothèques externes s'adaptent sémantiquement au domaine fonctionnel de l'application (ici, la facturation automatisée).<br>* **Personnalisation des cartes UI** : Sélection et intégration de cartes esthétiques dotées d'effets lumineux et d'une hiérarchie visuelle claire pour structurer les fonctionnalités et les témoignages clients.<br>* **Validation instantanée du prototype** : Test immédiat des flux utilisateurs (comme la génération d'une facture par simple description textuelle) pour s'assurer que l'esthétique ne nuit pas à la performance fonctionnelle.<br>* **Démocratisation du design de haut niveau** : Démonstration qu'un non-technicien peut atteindre un niveau de finition d'interface digne d'une agence de design grâce à l'assistance combinée des outils modernes.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Base44</span><span class="tool-tag">21st.dev</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Claude</span><span class="tool-tag">Gemini</span><span class="tool-tag">Grok</span><span class="tool-tag">n8n</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Dépassement du design générique de l&#x27;IA** : Lutte active contre l&#x27;uniformité visuelle des applications générées par intelligence artificielle en évitant les interfaces basiques et prédictibles.</span></li><li><span class="point-bullet">✦</span><span>Couplage d&#x27;outils spécialisés** : Synergie stratégique entre une plateforme de génération d&#x27;applications (Base44) et une bibliothèque de composants UI haut de gamme (21st.dev) pour un rendu visuel professionnel.</span></li><li><span class="point-bullet">✦</span><span>Utilisation de prompts de composants** : Extraction et réutilisation de prompts spécifiques fournis par des bibliothèques de design pour reproduire fidèlement des éléments graphiques complexes dans l&#x27;application cible.</span></li><li><span class="point-bullet">✦</span><span>Intégration d&#x27;arrière-plans immersifs** : Implémentation rapide de dégradés animés pour capter immédiatement l&#x27;attention de l&#x27;utilisateur dès la page d&#x27;atterrissage (*landing page*).</span></li><li><span class="point-bullet">✦</span><span>Effets typographiques dynamiques** : Ajout d&#x27;animations de frappe (*typing animations*) sur les sections clés (*hero sections*) pour dynamiser la lecture et mettre en valeur la proposition de valeur centrale.</span></li><li><span class="point-bullet">✦</span><span>Édition visuelle ciblée** : Recours aux fonctionnalités d&#x27;édition par sélection de blocs (division d&#x27;interface) pour appliquer des modifications précises sans perturber la structure globale de l&#x27;application.</span></li><li><span class="point-bullet">✦</span><span>Préservation de la cohérence contextuelle** : Veille à ce que les composants importés de bibliothèques externes s&#x27;adaptent sémantiquement au domaine fonctionnel de l&#x27;application (ici, la facturation automatisée).</span></li><li><span class="point-bullet">✦</span><span>Personnalisation des cartes UI** : Sélection et intégration de cartes esthétiques dotées d&#x27;effets lumineux et d&#x27;une hiérarchie visuelle claire pour structurer les fonctionnalités et les témoignages clients.</span></li><li><span class="point-bullet">✦</span><span>Validation instantanée du prototype** : Test immédiat des flux utilisateurs (comme la génération d&#x27;une facture par simple description textuelle) pour s&#x27;assurer que l&#x27;esthétique ne nuit pas à la performance fonctionnelle.</span></li><li><span class="point-bullet">✦</span><span>Démocratisation du design de haut niveau** : Démonstration qu&#x27;un non-technicien peut atteindre un niveau de finition d&#x27;interface digne d&#x27;une agence de design grâce à l&#x27;assistance combinée des outils modernes.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:18</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Arrêtez de créer les mêmes applications moches avec l&#x27;IA. Dans cette vidéo, je vais vous montrer comment créer des interfaces utilisateur magnifiques qui ne donnent pas l&#x27;impression d&#x27;avoir été faites par l&#x27;IA. Si vous avez déjà fait du codage intuitif, vous savez exactement de quoi je parle. Et si vous avez eu ce problème ou si vous débutez dans le codage intuitif, c&#x27;est la vidéo parfaite pour vous. Ceci étant dit, entrons dans le vif du sujet. C&#x27;est parti, les gars.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une bibliothèque de composants d&#x27;interface utilisateur (UI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Catalogue de composants web, modèles de design et sections de tarification.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de designs d&#x27;interfaces utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000005_seg1.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un site web de composants UI avec le présentateur en médaillon en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un site web de composants UI avec le présentateur en médaillon en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:18 - 00:00:37</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous allons créer notre application avec l&#x27;IA en utilisant Base44, qui est une plateforme formidable pour faire du codage intuitif et construire des applications qui ont un aspect incroyable. Mais je vais vous montrer tout un tas d&#x27;astuces différentes dans cette vidéo sur la façon de créer des applications à l&#x27;apparence vraiment professionnelle qui n&#x27;ont pas l&#x27;air d&#x27;avoir été générées par une application. Tout d&#x27;abord, je vais cliquer sur commencer à créer ici et laissez-moi aller saisir mon prompt ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Base44.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil du site Base44 avec le slogan &quot;Let&#x27;s make your dream a reality. Right now&quot; et un champ de saisie de prompt (&quot;What do you want to build?&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la plateforme Base44 pour le développement d&#x27;applications par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000028_seg2.jpg" alt="Capture d&#x27;écran du site web Base44 avec le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000028_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:28</span>
+                        <span class="caption-text">Capture d&#x27;écran du site web Base44 avec le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000032_seg2.jpg" alt="Vue similaire du site web Base44 montrant la page d&#x27;accueil de la plateforme de création d&#x27;applications sans code." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000032_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:32</span>
+                        <span class="caption-text">Vue similaire du site web Base44 montrant la page d&#x27;accueil de la plateforme de création d&#x27;applications sans code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:37 - 00:00:57</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Comme nous le savons avec ces plateformes, afin de lancer notre processus de création d&#x27;applications, voici le prompt que je vais utiliser. Crée une application appelée PayPilot. L&#x27;application sera une alternative gratuite aux générateurs de factures. Elle vous permet de créer automatiquement une facture en utilisant des invites en langage naturel, ce qui revient essentiellement à envoyer des SMS tout simplement comme ceci, en fait, vous savez, avec quoi nous interagissons ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de création d&#x27;applications Base 44.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Le champ de texte affiche le prompt : « create an app called PayPilot. The app is going to be a free alternative to invoice generators. It allows you to automatically create an invoice using natural language prompts. » Des catégories d&#x27;applications et un historique des applications récentes (PayPilot) sont également visibles.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur saisit le prompt de création d&#x27;application dans l&#x27;interface de la plateforme Base 44.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000042_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Base 44 avec la zone de saisie du prompt pour créer l&#x27;application PayPilot, ainsi que le présentateur en incrustation vidéo en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000042_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:42</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Base 44 avec la zone de saisie du prompt pour créer l&#x27;application PayPilot, ainsi que le présentateur en incrustation vidéo en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:57 - 00:01:18</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;utilisateur peut taper à qui est destinée la facture, pour quel montant, la date, etc. Et ensuite, cela crée automatiquement une facture en utilisant l&#x27;IA. Créez une page de destination devant l&#x27;application que tous les utilisateurs pourront voir dès qu&#x27;ils verront l&#x27;application. Nous allons donc construire une page de destination magnifique devant notre application. Et c&#x27;est le prompt initial que j&#x27;ai. Cependant, je vais parler de la façon dont je vais réellement rendre l&#x27;interface utilisateur magnifique dès maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme Base 44.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de texte interactif avec le prompt saisi : &quot;Create a landing page infront of the app that all users can see right when they see the app.&quot; et des catégories d&#x27;applications suggérées.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur démontre la saisie de instructions textuelles pour générer automatiquement une page d&#x27;accueil avec l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000108_seg4.jpg" alt="Une interface web (Base 44) montrant un champ de texte où l&#x27;utilisateur saisit des instructions pour l&#x27;application d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000108_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:08</span>
+                        <span class="caption-text">Une interface web (Base 44) montrant un champ de texte où l&#x27;utilisateur saisit des instructions pour l&#x27;application d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:18 - 00:01:39</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">On pourrait simplement envoyer ça à Base44 et on obtiendrait, vous savez, une super application et, vous savez, une interface utilisateur sympa. Mais il y a fort à parier qu&#x27;elle ait l&#x27;air d&#x27;avoir été générée par IA. Laissez-moi donc vous montrer une astuce rapide et comment nous allons rendre notre application incroyable grâce à ce petit truc. Tout d&#x27;abord, ce que je vais faire, c&#x27;est aller sur 21st.dev et, en gros, c&#x27;est une bibliothèque de composants d&#x27;interface utilisateur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme Base44.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de création d&#x27;applications par IA avec des prompts textuels.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue sur la plateforme Base44 puis ouvre un nouvel onglet de navigateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000124_seg5.jpg" alt="Interface de la plateforme Base44 montrant la barre de prompt et les applications récentes." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000124_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:24</span>
+                        <span class="caption-text">Interface de la plateforme Base44 montrant la barre de prompt et les applications récentes.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000134_seg5.jpg" alt="Navigateur web avec l&#x27;ouverture d&#x27;un nouvel onglet et la recherche d&#x27;un site de développement." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000134_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:34</span>
+                        <span class="caption-text">Navigateur web avec l&#x27;ouverture d&#x27;un nouvel onglet et la recherche d&#x27;un site de développement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:39 - 00:02:15</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, si vous ne savez pas ce que c&#x27;est, c&#x27;est essentiellement comme toutes les différentes choses sur notre application. Pensez à ceci ici comme à un composant d&#x27;interface utilisateur ou à ceux-ci ici, ce sont des boutons, qui sont des composants d&#x27;interface utilisateur pour notre application. C&#x27;est ici que nous allons puiser de l&#x27;inspiration et fondamentalement reproduire exactement certaines de ces différentes idées sur ce site web ici. Donc, premièrement, j&#x27;ai fondamentalement parcouru 21st.dev et j&#x27;ai trouvé différents composants d&#x27;interface utilisateur que je veux ajouter à notre site web et à notre application pour lui donner un aspect extrêmement, vous savez, attrayant à regarder. Donc, vous pouvez voir ce petit motif d&#x27;arrière-plan ainsi que, vous savez, celui-ci ici. Je veux dire, tout cela a l&#x27;air vraiment solide et ce ne sont pas juste des applications d&#x27;IA d&#x27;apparence générique, vous savez, qui ont été construites en utilisant</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web présentant une plateforme de composants d&#x27;interface utilisateur (Magic UI).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie de composants UI, boutons, cartes de design et sections de navigation.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et défilement dans la bibliothèque de composants UI pour illustrer leur utilisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000148_seg6.jpg" alt="Vue d&#x27;ensemble d&#x27;une application web avec des briques d&#x27;interface utilisateur et une barre de recherche." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000148_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:48</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;une application web avec des briques d&#x27;interface utilisateur et une barre de recherche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000157_seg6.jpg" alt="Défilement vers le bas affichant différentes sections populaires et héros d&#x27;éléments d&#x27;interface utilisateur." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000157_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:57</span>
+                        <span class="caption-text">Défilement vers le bas affichant différentes sections populaires et héros d&#x27;éléments d&#x27;interface utilisateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000206_seg6.jpg" alt="Gros plan sur la section des boutons d&#x27;interface utilisateur et des appels à l&#x27;action." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000206_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:06</span>
+                        <span class="caption-text">Gros plan sur la section des boutons d&#x27;interface utilisateur et des appels à l&#x27;action.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:15 - 00:02:51</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">L&#x27;IA, évidemment. Donc ce que je vais faire, je vais aller sur mon compte où j&#x27;ai effectivement mis certains de ceux-ci en favori. Et j&#x27;aime vraiment cet arrière-plan en dégradé animé. Je trouve que ça a vraiment l&#x27;air solide. Laissez-moi vous montrer exactement comment je pourrais intégrer quelque chose comme ça dans mon application. Tout ce que j&#x27;ai à faire, c&#x27;est de venir ici et de cliquer sur copier le prompt. Vous pouvez voir que je peux simplement copier ce prompt ici. Et ce que ça va faire, c&#x27;est que ça rédige essentiellement le prompt pour que cela soit reproduit à l&#x27;intérieur de mon application. Donc j&#x27;ai littéralement juste besoin d&#x27;aller sur base 44. Et ensuite, je peux simplement dire, utilise ceci comme arrière-plan pour notre page d&#x27;accueil et notre application. Et ensuite, je vais juste coller ce prompt ici et ça va commencer à l&#x27;implémenter. Donc maintenant, ça va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une bibliothèque de composants (21st.dev) et une plateforme de développement d&#x27;applications par IA (Base 44).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source React/JSX pour un composant d&#x27;arrière-plan animé, options de prompt IA et invite textuelle pour créer une landing page.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue entre les composants web, ouvre une boîte de dialogue pour copier un prompt IA et consulte une interface de création d&#x27;applications.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000224_seg7.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un site web de composants avec du code source et une prévisualisation d&#x27;arrière-plan." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000224_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:24</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un site web de composants avec du code source et une prévisualisation d&#x27;arrière-plan.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000233_seg7.jpg" alt="Fenêtre contextuelle &quot;Copy AI Prompt&quot; affichée par-dessus un aperçu d&#x27;arrière-plan dégradé et du code source." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000233_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:33</span>
+                        <span class="caption-text">Fenêtre contextuelle &quot;Copy AI Prompt&quot; affichée par-dessus un aperçu d&#x27;arrière-plan dégradé et du code source.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000242_seg7.jpg" alt="Interface de création d&#x27;applications avec un champ de saisie de texte &quot;What would you build today?&quot; et des applications récentes." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000242_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:42</span>
+                        <span class="caption-text">Interface de création d&#x27;applications avec un champ de saisie de texte &quot;What would you build today?&quot; et des applications récentes.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:51 - 00:03:27</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vas-y, ça va créer la page d&#x27;atterrissage. Ça va créer l&#x27;application et nous aurons un prototype initial. Et je suis vraiment curieux de voir comment il va intégrer ce composant 21st.dev, qui est cet arrière-plan de notre application. Très bien. Et voilà, regardez cette page d&#x27;atterrissage que nous avons réellement. Nous avons paypilot, créer des factures avec le langage naturel. Ça a l&#x27;air vraiment solide et cet arrière-plan est intégré de manière très, très similaire à, vous savez, celui-ci juste ici que nous avons effectivement récupéré de 21st.dev. C&#x27;est donc un très bon début. Grâce à l&#x27;utilisation de 21st.dev ainsi que de base 44, parce que base 44 est déjà doué, vous savez, pour créer une belle interface utilisateur, j&#x27;aime vraiment beaucoup ça ici, donc paypilot générateur de factures par IA sarah johnson pour le design du logo</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de création de sites/applications par IA et flux vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de l&#x27;application PayPilot avec sections de texte, boutons d&#x27;appel à l&#x27;action et journal de création des composants.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration visuelle d&#x27;une page d&#x27;atterrissage créée automatiquement par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:27 - 00:04:01</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">travail 800 dû le 25 décembre incluant 10 de taxe c&#x27;est vraiment génial que ça montre en fait genre un petit extrait d&#x27;une fonctionnalité de notre application c&#x27;est un excellent point de départ laissez-moi regarder l&#x27;application elle-même donc décrivez votre facture vous savez nous pourrions taper notre facture ici disons simplement que je vais cliquer sur générer cette facture et voyons si c&#x27;est réellement capable de le faire. Et juste comme ça, regardez, nous avons une facture pour John Smith de 800 dollars. C&#x27;est super solide. Le fait qu&#x27;il ait fait ça du premier coup. Maintenant que nous avons cette interface utilisateur et cette application qui ont l&#x27;air assez simples, apportons quelques modifications et faisons en sorte que cela ait l&#x27;air encore plus</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application SaaS &quot;PayPilot&quot; (développée sur Base44).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec section de description de facture (&quot;Invoice: John Smith for logo design work, $800, due December 30th&quot;) et exemples de prompts.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration interactive des fonctionnalités de l&#x27;application de facturation par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000335_seg9.jpg" alt="Vue d&#x27;ensemble de l&#x27;application web de génération de factures &quot;PayPilot&quot; avec le présentateur visible en incrustation." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000335_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de l&#x27;application web de génération de factures &quot;PayPilot&quot; avec le présentateur visible en incrustation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000344_seg9.jpg" alt="Interface de test montrant le champ de saisie &quot;Describe your invoice&quot; avec un exemple de facture et un bouton de génération." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000344_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:44</span>
+                        <span class="caption-text">Interface de test montrant le champ de saisie &quot;Describe your invoice&quot; avec un exemple de facture et un bouton de génération.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:01 - 00:04:22</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Phénoménal. Donc ensuite, un truc que j&#x27;aime bien, c&#x27;est que j&#x27;aime vraiment cette animation de frappe. Alors, et si on essayait d&#x27;implémenter cette animation de frappe en haut de notre application juste ici ? C&#x27;est ce qu&#x27;on appelle la section &quot;hero&quot;. Donc je vais aller de l&#x27;avant et ajouter ça, vous savez, ça a ce genre d&#x27;interface utilisateur de frappe. Je vais à nouveau cliquer sur &quot;copier le prompt&quot;. Je vais le ramener sur Base 44 et dire : &quot;Ajoutons ceci à notre section &#x27;hero&#x27;.&quot;</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une bibliothèque de composants UI et une application web de génération de factures (PayPilot).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source React, commandes d&#x27;installation npm, configuration de prompts IA et interface de prévisualisation web.
+[DESC_IMAGE_3] Navigation dans la bibliothèque de composants et sélection d&#x27;éléments pour les intégrer dans l&#x27;application.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000406_seg10.jpg" alt="Interface d&#x27;un site de composants UI affichant une animation de frappe et du code React à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000406_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:06</span>
+                        <span class="caption-text">Interface d&#x27;un site de composants UI affichant une animation de frappe et du code React à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000412_seg10.jpg" alt="Aperçu de l&#x27;application &quot;PayPilot&quot; en cours d&#x27;édition avec le titre &quot;Create Invoices with Natural Language&quot;." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000412_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Aperçu de l&#x27;application &quot;PayPilot&quot; en cours d&#x27;édition avec le titre &quot;Create Invoices with Natural Language&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000417_seg10.jpg" alt="Fenêtre modale &quot;Copy AI Prompt&quot; ouverte sur le site de composants UI." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000417_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:17</span>
+                        <span class="caption-text">Fenêtre modale &quot;Copy AI Prompt&quot; ouverte sur le site de composants UI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:22 - 00:04:55</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si je veux être plus précis, je pourrais en fait cliquer sur la ligne exacte, vous savez, ou sur le texte exact auquel je voulais réellement appliquer ceci. Donc je vais dire, ajoutons ceci à notre texte ici. Et donc je vais simplement coller ce prompt. Et maintenant, ce que ça devrait faire, c&#x27;est que ça devrait ajouter cette animation de frappe à cette partie de notre page de destination. Et ce que ça devrait faire, c&#x27;est que ça devrait en fait conserver exactement la même police que nous avons, ainsi que la même couleur et le même texte. Donc ça devrait dire « natural language », mais ça va maintenant l&#x27;écrire caractère par caractère. C&#x27;est plutôt cool. Laissons-lui une seconde pour voir ce que ça donne. Boum. Et juste comme ça, environ 15 secondes plus tard, ça a fait cette modification. Alors regardez, maintenant quand je rafraîchis</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web de génération de code et d&#x27;interface PayPilot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source React/JSX et interface visuelle d&#x27;édition de page web en langage naturel.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et modification ciblée d&#x27;un élément textuel de la page web à l&#x27;aide d&#x27;un prompt textuel.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000431_seg11.jpg" alt="Interface de développement web montrant une application PayPilot avec un panneau d&#x27;édition visuelle à gauche et un aperçu du site à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000431_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:31</span>
+                        <span class="caption-text">Interface de développement web montrant une application PayPilot avec un panneau d&#x27;édition visuelle à gauche et un aperçu du site à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000439_seg11.jpg" alt="Affichage du code source du composant textuel dans le volet gauche avec l&#x27;aperçu du site PayPilot à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000439_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:39</span>
+                        <span class="caption-text">Affichage du code source du composant textuel dans le volet gauche avec l&#x27;aperçu du site PayPilot à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000447_seg11.jpg" alt="Modification du texte &quot;Natural Language&quot; sélectionné sur l&#x27;interface PayPilot avec le volet de configuration IA ouvert en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000447_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:47</span>
+                        <span class="caption-text">Modification du texte &quot;Natural Language&quot; sélectionné sur l&#x27;interface PayPilot avec le volet de configuration IA ouvert en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:55 - 00:05:28</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ceci, ça montre l&#x27;animation de frappe ici qui dit créer des factures avec le langage naturel. Les gars, ça a déjà l&#x27;air incroyable et je vais continuer à faire des changements pour que ça ait l&#x27;air encore mieux. Donc j&#x27;ai hâte de vous montrer le résultat final. Et je tiens à dire que c&#x27;est tellement amusant de commencer à s&#x27;amuser avec. Si vous n&#x27;avez jamais utilisé 21st.dev auparavant, ça va être vraiment amusant pour vous de vous amuser avec et de commencer à créer des applications parce que ça donne l&#x27;impression que vous créez réellement quelque chose d&#x27;apparence professionnelle au lieu que ce soit juste une application ou un site web générique, vous savez, généré par IA. Très bien. Alors en revenant sur 21st.dev, regardons certaines des autres choses</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de PayPilot (Bolt/StackBlitz ou plateforme similaire de développement no-code/IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Titre principal de la page web &#x27;Create Invoices with Natural Language&#x27;, texte descriptif et instructions, ainsi qu&#x27;un panneau latéral listant des modifications de code ou des composants d&#x27;interface.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la page d&#x27;accueil de l&#x27;application PayPilot avec son interface de génération de factures en langage naturel et les modifications associées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000503_seg12.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de création de factures par IA nommé PayPilot, avec le texte principal &#x27;Create Invoices with Natural Language&#x27; et une vue du code ou des composants dans le panneau latéral." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000503_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de création de factures par IA nommé PayPilot, avec le texte principal &#x27;Create Invoices with Natural Language&#x27; et une vue du code ou des composants dans le panneau latéral.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:28 - 00:05:47</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que j&#x27;ai en fait marqué d&#x27;un signet ici. Donc j&#x27;aime vraiment beaucoup ça ici. Donc je veux l&#x27;ajouter à notre page de destination. Vous savez, je trouve que c&#x27;est sympa d&#x27;avoir le texte qui défile comme ça. Je trouve que ça ajoute juste une jolie touche professionnelle. Donc je vais copier ce prompt à nouveau, je vais le ramener sur base 44 et dire, je vais l&#x27;ajouter en dessous de cette section ici. Donc ce que je vais faire, c&#x27;est que je vais cliquer sur les modifications visuelles.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme de composants UI (21st.dev / Craft with AI), éditeur de page de destination.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Composant de texte défilant (Text Marquee), code source React/Tailwind, commandes d&#x27;installation npm, et interface de génération de factures par IA (PayPilot).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation parmi les composants UI, sélection et consultation du code source d&#x27;un texte défilant pour intégration sur une page de destination.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000532_seg13.jpg" alt="Interface de composants web avec une sélection de vignettes, dont le composant de texte défilant (&#x27;Text Marquee&#x27;)." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000532_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:32</span>
+                        <span class="caption-text">Interface de composants web avec une sélection de vignettes, dont le composant de texte défilant (&#x27;Text Marquee&#x27;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000537_seg13.jpg" alt="Visualisation d&#x27;un composant de texte défilant à l&#x27;écran avec le code source et le panneau d&#x27;installation sur la droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000537_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:37</span>
+                        <span class="caption-text">Visualisation d&#x27;un composant de texte défilant à l&#x27;écran avec le code source et le panneau d&#x27;installation sur la droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000542_seg13.jpg" alt="Aperçu d&#x27;une page de destination (&#x27;PayPilot&#x27;) en cours de modification avec des outils de génération et d&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000542_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:42</span>
+                        <span class="caption-text">Aperçu d&#x27;une page de destination (&#x27;PayPilot&#x27;) en cours de modification avec des outils de génération et d&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:47 - 00:06:06</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais cliquer là-dessus et ensuite je vais dire sous la div que j&#x27;ai sélectionnée. Donc, en utilisant la fonction d&#x27;éditions visuelles, ça vous rend vraiment les choses faciles pour faire des changements au lieu de devoir genre taper comme, oh, j&#x27;aimerais que tu, tu sais, édites cette partie de l&#x27;appli, tu sais, ça isole vraiment ça. Donc on sait exactement ce qu&#x27;on essaie d&#x27;éditer, si ça a du sens.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (Lovable ou outil similaire de no-code/IA) avec panneau de prévisualisation et options de style (Visual Edit).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Options d&#x27;édition visuelle (Colors, Spacing, Tailwind Classes) et champ de saisie de prompt textuel.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection d&#x27;un élément (div) sur la page web pour appliquer des modifications visuelles guidées par l&#x27;IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000552_seg14.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;édition visuelle avec un panneau de code/prompt à gauche et le site web prévisualisé à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000552_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:52</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;édition visuelle avec un panneau de code/prompt à gauche et le site web prévisualisé à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000601_seg14.jpg" alt="Capture d&#x27;écran similaire à l&#x27;image 1, montrant la sélection d&#x27;une div sur la page web pour l&#x27;édition visuelle." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000601_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:01</span>
+                        <span class="caption-text">Capture d&#x27;écran similaire à l&#x27;image 1, montrant la sélection d&#x27;une div sur la page web pour l&#x27;édition visuelle.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:06 - 00:06:38</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc et ensuite je vais simplement coller notre prompt ici que 21st.dev nous a donné les gars. Ça a l&#x27;air plutôt solide jusqu&#x27;à présent. Je suis vraiment impressionné. Très bien. Alors regardez notre page d&#x27;accueil maintenant. C&#x27;est absolument magnifique. Voici cette section ici que nous avons ajoutée, facturation alimentée par l&#x27;IA, modèles professionnels entièrement gratuits. Ça a l&#x27;air vraiment solide. Non seulement ça ressemble au composant à l&#x27;intérieur de 21st.dev, mais c&#x27;est en fait personnalisé pour notre application parce que ça a du contexte sur notre application. Donc ça comprend que c&#x27;est de la facturation alimentée par l&#x27;IA. Je n&#x27;avais même pas besoin de lui donner le texte à ajouter réellement là. Ça a l&#x27;air vraiment solide. Passons à la partie suivante de cette page d&#x27;accueil afin de rendre cela aussi spectaculaire que possible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface de développement ou de prévisualisation de type no-code / low-code (21st.dev / Bolt.new) avec caméra incrustée du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, panneau de chat interactif avec l&#x27;IA, et aperçu de la landing page de l&#x27;application &#x27;PayPilot&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur fait défiler et présente la page d&#x27;accueil générée par l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000614_seg15.jpg" alt="Aperçu d&#x27;une page d&#x27;accueil web en cours de développement montrant le titre principal &#x27;Create Invoices with Natural Language&#x27; avec un panneau de code et de chat sur la gauche." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000614_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:14</span>
+                        <span class="caption-text">Aperçu d&#x27;une page d&#x27;accueil web en cours de développement montrant le titre principal &#x27;Create Invoices with Natural Language&#x27; avec un panneau de code et de chat sur la gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000630_seg15.jpg" alt="Aperçu de la page d&#x27;accueil avec défilement vers le bas, mettant en évidence une section de texte animé et le titre &#x27;Why Choose PayPilot ?&#x27;." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000630_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:30</span>
+                        <span class="caption-text">Aperçu de la page d&#x27;accueil avec défilement vers le bas, mettant en évidence une section de texte animé et le titre &#x27;Why Choose PayPilot ?&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:38 - 00:07:04</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc ensuite, ce que je veux changer, allons-y et changeons ces cartes ici. C&#x27;est donc comme ça que ça s&#x27;appelle, ce sont des cartes individuelles. Je vais aller de l&#x27;avant et trouver une carte qui me plaît sur 21st.dev. Je vais donc littéralement venir ici et puis cliquer sur &quot;cartes&quot;, et ensuite nous pourrons commencer à regarder les différentes cartes qui nous plaisent, dont nous pensons qu&#x27;elles conviendraient réellement au, vous savez, thème de notre application. Donc celle-ci a l&#x27;air plutôt solide en fait, j&#x27;aime vraiment celle-ci. Donc fondamentalement, encore une fois, tout ce que je vais faire, c&#x27;est de cliquer sur &quot;copier le prompt&quot;.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application PayPilot et la plateforme 21st.dev.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Composants d&#x27;interface utilisateur (cartes, grille Bento, blocs marketing) et instructions textuelles de modification de code.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site 21st.dev pour sélectionner et intégrer un composant de carte personnalisé.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000644_seg16.jpg" alt="Interface de prévisualisation de l&#x27;application PayPilot avec code et panneau latéral de modification." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000644_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:44</span>
+                        <span class="caption-text">Interface de prévisualisation de l&#x27;application PayPilot avec code et panneau latéral de modification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000651_seg16.jpg" alt="Catalogue de composants de l&#x27;interface 21st.dev affichant différentes options de cartes interactives." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000651_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:51</span>
+                        <span class="caption-text">Catalogue de composants de l&#x27;interface 21st.dev affichant différentes options de cartes interactives.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:04 - 00:07:22</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça va commencer à copier ceci et ce que je vais faire, le ramener à Base 44. Je vais cliquer sur les modifications visuelles et ce que je vais faire, c&#x27;est que je vais cliquer sur ceci. Comprend donc que ce sont les cartes dont je parle et ensuite dire, fais en sorte que les cartes que j&#x27;ai sélectionnées ressemblent à ça, colle ce prompt, laisse Base 44 faire son travail et nous y reviendrons sous peu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, constructeur de site no-code, interface de chat d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de PayPilot avec une section « Why Choose PayPilot? » contenant quatre blocs de cartes informatives.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et modification des cartes de fonctionnalités de la page web via l&#x27;interface de l&#x27;outil no-code.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000709_seg17.jpg" alt="Aperçu du site web de PayPilot affichant quatre cartes de fonctionnalités et le présentateur dans l&#x27;encadré en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000709_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:09</span>
+                        <span class="caption-text">Aperçu du site web de PayPilot affichant quatre cartes de fonctionnalités et le présentateur dans l&#x27;encadré en bas à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000713_seg17.jpg" alt="Le panneau de modification visuelle s&#x27;ouvre sur le côté gauche pendant que les quatre cartes sont sélectionnées." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000713_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:13</span>
+                        <span class="caption-text">Le panneau de modification visuelle s&#x27;ouvre sur le côté gauche pendant que les quatre cartes sont sélectionnées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000718_seg17.jpg" alt="Le curseur tape un prompt dans la barre de texte pour modifier les cartes sélectionnées dans le constructeur de site." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000718_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:18</span>
+                        <span class="caption-text">Le curseur tape un prompt dans la barre de texte pour modifier les cartes sélectionnées dans le constructeur de site.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:22 - 00:07:58</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc voici la page d&#x27;atterrissage que nous avons. J&#x27;ai fait quelques changements différents. J&#x27;ai fait quelques modifications sur les boutons. Vous pouvez voir qu&#x27;il y a cette section ici. pourquoi choisir paypilot nous avons cette petite fonctionnalité lumineuse sur toutes nos différentes cartes et aspects de notre interface utilisateur nous avons cette section des invites à la facture instantanément c&#x27;est en fait l&#x27;interface utilisateur de notre générateur de factures ce qui est vraiment cool vous pouvez voir cet effet lumineux derrière et puis nous avons aussi ceci ici qui sont les témoignages ce qui je veux dire regardez ça c&#x27;est vraiment cool paypilot a transformé mon processus de facturation complètement l&#x27;ia comprend exactement ce dont j&#x27;ai besoin je dis juste facture pour développement web 2500 je veux dire c&#x27;est super cool tout cela vient de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une interface de prévisualisation de page d&#x27;atterrissage avec un éditeur/assistant d&#x27;IA sur le côté gauche.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Section &#x27;Why Choose PayPilot?&#x27; avec des cartes de fonctionnalités, et l&#x27;historique ou le journal des modifications de l&#x27;IA sur la gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la page d&#x27;atterrissage et explication des modifications apportées aux composants et aux boutons par l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000731_seg18.jpg" alt="Capture d&#x27;écran montrant le navigateur avec une application web (PayPilot) et son panneau d&#x27;édition latéral en cours de modification." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000731_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:31</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le navigateur avec une application web (PayPilot) et son panneau d&#x27;édition latéral en cours de modification.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:58 - 00:08:16</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">21st.dev et base 44. Ensuite, si je clique sur commencer la création, c&#x27;est exactement à quoi ressemble notre générateur de factures. Nous pouvons alors venir ici, cliquer sur ceci, cliquer sur générer la facture. Elle va commencer à générer notre facture ici et rapidement, en genre 10 secondes, nous obtenons un résultat. Et nous pouvons même aller de l&#x27;avant et modifier notre facture directement. Comme vous pouvez le voir, nous pourrions modifier différents composants de celle-ci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;application (type plateforme de développement/génération de factures par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec des champs de texte &quot;Describe your invoice&quot;, &quot;Invoice Preview&quot;, et un panneau latéral gauche affichant l&#x27;historique des modifications ou des erreurs résolues.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface utilisateur et démonstration visuelle du générateur de factures par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000803_seg19.jpg" alt="Interface du générateur de factures avec un assistant de description de facture et un panneau de chat à gauche, montrant également une miniature vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000803_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:03</span>
+                        <span class="caption-text">Interface du générateur de factures avec un assistant de description de facture et un panneau de chat à gauche, montrant également une miniature vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:17 - 00:08:49</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est super, super cool. Le fait que nous ayons créé ceci très rapidement. Laissez-moi aller de l&#x27;avant et faire quelques changements sur notre interface utilisateur ici même sur notre application actuelle maintenant. Donc ce que je vais faire, laissez-moi venir sur 21st.dev et j&#x27;aime l&#x27;idée de ceci ici donc c&#x27;est fondamentalement comme générer une image si vous avez déjà utilisé la génération d&#x27;image de chatgpt c&#x27;est quelque chose de très similaire à cela donc ce que je vais faire, je vais copier ce prompt voyez comme vous pouvez voir ça révèle fondamentalement ceci a ce texte ici en haut montrant que cela génère en fait une facture pour nous donc ce sera parfait pour notre application de génération de facture ici donc tout ce que je vais faire c&#x27;est venir ici</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, plateforme de composants UI 21st.dev, éditeur d&#x27;application PayPilot.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source React/JSX pour composant d&#x27;interface, instructions de génération d&#x27;images, interface utilisateur d&#x27;application web.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site de composants 21st.dev pour modifier l&#x27;interface utilisateur de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000825_seg20.jpg" alt="Interface de l&#x27;application &#x27;PayPilot&#x27; en cours de modification avec aperçu de facture et panneau de contrôle latéral." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000825_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:25</span>
+                        <span class="caption-text">Interface de l&#x27;application &#x27;PayPilot&#x27; en cours de modification avec aperçu de facture et panneau de contrôle latéral.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000833_seg20.jpg" alt="Navigation sur le site 21st.dev affichant un composant de génération d&#x27;images par chat IA et son code source React." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000833_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:33</span>
+                        <span class="caption-text">Navigation sur le site 21st.dev affichant un composant de génération d&#x27;images par chat IA et son code source React.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000841_seg20.jpg" alt="Visualisation du composant 21st.dev en cours de chargement avec la création d&#x27;une image." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000841_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:41</span>
+                        <span class="caption-text">Visualisation du composant 21st.dev en cours de chargement avec la création d&#x27;une image.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:49 - 00:09:25</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">je vais cliquer sur les modifications visuelles ou en fait je vais juste dire d&#x27;implémenter ceci pour quand nous générons une facture. Voilà. Très bien. Donc ça devrait être implémenté. Maintenant, laissez-moi aller cliquer sur générer une facture. Boum. C&#x27;est parti. Vous voyez ceci juste ici. Ça a l&#x27;air vraiment super. Création de la facture. Cela peut prendre un moment et boum, juste comme ça. Nous avons maintenant notre facture là. Ça a l&#x27;air extrêmement solide. Je suis super enthousiaste par ce que nous avons construit jusqu&#x27;à présent. Nous pourrions aller de l&#x27;avant et faire tellement de changements différents, en implémentant différents composants de 21st.dev dans base 44. Et puis une chose qui est vraiment cool, c&#x27;est une fois que nous avons effectivement implémenté ceux-ci dans notre application. Comme vous pouvez le voir, si je viens sur le tableau de bord, je viens sur le code, je viens sur</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement de type IDE/SaaS et application de génération de factures par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code source, interface de description de facture, exemples de prompts et aperçu de facture structurée.</p>
+                        <p><strong>Action / Démonstration :</strong> Génération et affichage d&#x27;une facture professionnelle à partir d&#x27;une description textuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000858_seg21.jpg" alt="Interface de développement affichant le générateur de factures avec le code source à gauche et l&#x27;interface utilisateur à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000858_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:58</span>
+                        <span class="caption-text">Interface de développement affichant le générateur de factures avec le code source à gauche et l&#x27;interface utilisateur à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000907_seg21.jpg" alt="Aperçu d&#x27;une facture générée affichant les détails d&#x27;un client, la description du service et les montants." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000907_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:07</span>
+                        <span class="caption-text">Aperçu d&#x27;une facture générée affichant les détails d&#x27;un client, la description du service et les montants.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000916_seg21.jpg" alt="Retour à l&#x27;écran de description du générateur de factures après la génération de la facture précédente." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000916_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:16</span>
+                        <span class="caption-text">Retour à l&#x27;écran de description du générateur de factures après la génération de la facture précédente.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:25 - 00:09:47</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">composants et cliquez sur composants d&#x27;interface utilisateur. Vous pouvez voir que ce sont tous les différents composants d&#x27;interface utilisateur qui ont réellement été implémentés dans notre application. Et nous pouvons simplement faire référence à cela chaque fois que nous voulons ajouter quelque chose de similaire. Vous pourriez vous dire, oh, je veux utiliser la carte en dégradé pour cette carte que je veux que vous génériez, ou je veux que vous ajoutiez un bouton dans le même style que les boutons que nous avons eus précédemment, ou juste n&#x27;importe quoi de ce genre. Donc c&#x27;est super, super cool.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de développement/design d&#x27;interface, avec le présentateur en médaillon dans le coin inférieur droit.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de dossiers et de composants d&#x27;interface utilisateur (comme animated-gradient-background, typing-animation, text-marquee, gradient-card, etc.) et aperçu de code dans le panneau de gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur de la souris clique sur un composant de la liste pour afficher ou modifier ses fichiers et son code source dans l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000930_seg22.jpg" alt="Capture d&#x27;écran montrant une interface de développement web avec un panneau latéral listant divers composants d&#x27;interface utilisateur (composants UI) et un éditeur de code." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000930_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de développement web avec un panneau latéral listant divers composants d&#x27;interface utilisateur (composants UI) et un éditeur de code.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:47 - 00:10:13</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les gars, voilà comment créer des interfaces utilisateur d&#x27;aspect professionnel en utilisant base 44 et le &quot;vibe coding&quot;. Vous n&#x27;avez plus besoin de créer des applications à l&#x27;aspect très générique avec l&#x27;IA. Nous pouvons réellement commencer à créer des applications magnifiques grâce à des astuces simples comme celle-ci. Si vous avez retiré de la valeur de cette vidéo, assurez-vous de laisser un pouce bleu, de vous abonner à cette chaîne YouTube. Je montre aux personnes non techniques comment utiliser l&#x27;IA dans leur vie de tous les jours, tout comme je l&#x27;ai fait dans cette vidéo. Donc, si vous avez retiré de la valeur, assurez-vous de vous abonner à la chaîne. Cela étant dit les gars, merci infiniment d&#x27;être restés jusqu&#x27;à la fin et je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement no-code / IA (Lovable.dev / Base 44).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur générée par IA (&quot;Create Invoices with Natural Language&quot;), code source, et bannière promotionnelle avec code promo &quot;BROCK10&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de création d&#x27;interface utilisateur professionnelle via l&#x27;intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000953_seg23.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de développement web ou d&#x27;application (Lovable/Base 44) affichant un site de génération de factures avec du code source à gauche et le rendu visuel professionnel à droite." loading="lazy" onclick="openLightbox('../screenshots/pIkb3QOf7L0/pIkb3QOf7L0_000953_seg23.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:53</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de développement web ou d&#x27;application (Lovable/Base 44) affichant un site de génération de factures avec du code source à gauche et le rendu visuel professionnel à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
