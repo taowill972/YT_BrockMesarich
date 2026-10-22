@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `172 / 273` (`63.0%`)
+- **Vidéos traitées** : `173 / 273` (`63.4%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -189,6 +189,7 @@
 | 2025-05-21 | [Ynk2vI_9Y6o](https://www.youtube.com/watch?v=Ynk2vI_9Y6o) | **NEW Manus AI Image Generation (Better Than Genspark?)** | [2025-05-21_YT-[Ynk2vI_9Y6o]_NEW Manus AI Image Generation (Better Than Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-05-21_YT-[Ynk2vI_9Y6o]_NEW Manus AI Image Generation (Better Than Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-05-21_YT-[Ynk2vI_9Y6o]_NEW Manus AI Image Generation (Better Than Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-05-14 | [4_gH1PCow1g](https://www.youtube.com/watch?v=4_gH1PCow1g) | **The BEST AI Agent I've Ever Used (Genspark AI)** | [2025-05-14_YT-[4_gH1PCow1g]_The BEST AI Agent I've Ever Used (Genspark AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-05-14_YT-[4_gH1PCow1g]_The BEST AI Agent I've Ever Used (Genspark AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-05-14_YT-[4_gH1PCow1g]_The BEST AI Agent I've Ever Used (Genspark AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-05-06 | [Totk2zv_bCo](https://www.youtube.com/watch?v=Totk2zv_bCo) | **Building a Marketing App with the OpenAI Image API (No Coding)** | [2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-04-23 | [Ew3M9AtoMsc](https://www.youtube.com/watch?v=Ew3M9AtoMsc) | **Bolt CEO vs Google Firebase Studio (Which Builds The Better App?)** | [2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `129` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
