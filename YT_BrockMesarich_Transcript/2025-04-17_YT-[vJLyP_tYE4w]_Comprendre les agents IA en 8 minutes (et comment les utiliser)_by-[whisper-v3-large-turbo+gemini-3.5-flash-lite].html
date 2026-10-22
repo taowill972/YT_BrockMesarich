@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Comprendre les agents IA en 8 minutes (et comment les utiliser) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Comprendre les agents IA en 8 minutes (et comment les utiliser)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-04-17</span>
+                <span class="badge">⏱️ 00:08:37</span>
+                <span class="badge">🆔 <code>vJLyP_tYE4w</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=vJLyP_tYE4w" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo présentée sur la chaîne *Brock Mesarich | AI for Non Techies*, l'analyse se penche sur une avancée majeure dans le domaine de l'automatisation des flux de travail : le lancement des agents IA par la plateforme Make.com. Cette nouvelle fonctionnalité redéfinit l'interaction avec les scénarios d'automatisation en combinant un raisonnement agentique (propulsé par des modèles comme ChatGPT-4o mini) avec une "ceinture à outils" composée de scénarios Make existants. Au lieu de concevoir des arbres de décision complexes basés sur des conditions rigides de type "si/alors", l'utilisateur configure un agent doté d'un prompt système comportemental et lui octroie l'accès à des outils modulaires — tels que Google Sheets pour l'extraction de données de vente, Perplexity AI pour la recherche web, ainsi que Gmail et Slack pour la communication omnicanale.<br><br>La démonstration pratique illustre la fluidité de ce paradigme : un message posté sur un canal Slack déclenche l'agent principal, qui analyse dynamiquement la requête ("Quel était le statut de notre dernière commande ?"), sélectionne l'outil adéquat (Google Sheets), traite l'information et formule une réponse contextuelle et empathique directement dans Slack. Cette architecture agentique permet de centraliser des dizaines de micro-scénarios sous une interface décisionnelle unique. L'agent évalue de manière autonome la meilleure stratégie d'exécution pour répondre à une sollicitation, éliminant ainsi la nécessité de prédéfinir manuellement des pipelines séquentiels lourds et redondants.<br><br>Pour les professionnels cherchant à optimiser leurs opérations, l'intégration de ces agents au sein de Make.com représente un gain de temps considérable et introduit une flexibilité cognitive inédite dans l'automatisation sans code. Bien que le déploiement de cette fonctionnalité se fasse de manière progressive sur les comptes utilisateurs, elle préfigure une mutation profonde où l'intelligence artificielle ne se contente plus d'exécuter une tâche isolée, mais orchestre l'ensemble d'un écosystème logiciel de manière adaptative, autonome et proactive.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **Make.com** : Plateforme d'automatisation sans code (no-code) qui introduit nativement des agents IA décisionnels capables d'orchestrer des scénarios complexes.<br>- **ChatGPT-4o mini** : Modèle de langage léger et performant développé par OpenAI, utilisé ici comme moteur cognitif sous-jacent pour alimenter les agents Make.<br>- **Perplexity AI** : Outil de recherche et de navigation web en temps réel intégré comme module dans les scénarios Make pour alimenter l'agent en données externes.<br>- **Google Sheets** : Tableur cloud utilisé comme base de données opérationnelle pour stocker, extraire et analyser les chiffres de vente et l'inventaire.<br>- **Slack** : Application de messagerie collaborative instantanée servant à la fois de canal de déclenchement (trigger) et d'interface de restitution des réponses de l'agent.<br>- **Gmail** : Service de messagerie électronique configuré comme outil d'action pour permettre à l'agent d'envoyer des e-mails automatisés de manière contextuelle.<br>- **n8n** : Alternative de référence dans l'écosystème de l'automatisation de flux de travail (mentionnée dans le contexte global des outils d'automatisation).<br>- **Make, Zapier** : Plateformes majeures d'intégration d'API et d'automatisation de tâches évoquées pour situer l'innovation des agents Make sur le marché.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- **Transition du procédural à l'agentique** : Abandon des structures de conditionnement linéaire (« si/alors ») au profit d'un agent décisionnel qui analyse la requête et choisit lui-même le meilleur outil d'exécution.<br>- **Architecture de la « ceinture à outils »** : Les agents Make ne fonctionnent pas en vase clos ; ils s'appuient sur des scénarios Make existants (Google Sheets, Perplexity, Gmail) qu'ils activent dynamiquement selon les besoins.<br>- **Définition d'un prompt système comportemental** : Chaque agent est configuré avec un rôle précis, un objectif métier (ex. : analyste des stocks) et des directives de ton (ex. : amical et empathique) pour garantir des interactions cohérentes.<br>- **Centralisation des scénarios de messagerie** : Regroupement de multiples flux de communication (Slack, e-mail) sous une entité d'agent unique pour éviter la duplication des étapes d'API dans chaque nouveau scénario.<br>- **Déclenchement omnicanal basé sur les événements** : Capacité à surveiller des canaux de communication publics (comme Slack ou l'ajout d'une ligne dans un tableur) pour amorcer des boucles de traitement automatisées par l'IA.<br>- **Connexion aux données dynamiques en temps réel** : Utilisation d'intégrations Google Sheets et d'agrégateurs de tableaux pour fournir à l'agent un contexte informationnel actualisé sur les commandes et les ventes.<br>- **Recherche web augmentée par Perplexity** : Intégration d'outils de navigation internet directement accessibles par l'agent pour enrichir ses prises de décision avec des données exogènes.<br>- **Réduction drastique de la complexité de design** : Simplification de la création de workflows où l'ingénieur en automatisation n'a plus besoin de prédéfinir chaque embranchement logique, l'IA gérant la complexité d'aiguillage.<br>- **Gain de temps et agilité opérationnelle** : L'utilisation d'agents IA dans Make.com insuffle une dimension dynamique et adaptative aux automatisations, réduisant significativement le temps de maintenance et de configuration des flux.<br>- **Déploiement progressif des fonctionnalités** : Prise en compte du fait que les nouveautés Make AI Agents sont déployées de manière graduelle sur les comptes utilisateurs, nécessitant de vérifier la disponibilité de l'outil sur sa plateforme.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Make.com</span><span class="tool-tag">ChatGPT-4o mini</span><span class="tool-tag">Perplexity AI</span><span class="tool-tag">Google Sheets</span><span class="tool-tag">Slack</span><span class="tool-tag">Gmail</span><span class="tool-tag">n8n</span><span class="tool-tag">Make, Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Transition du procédural à l&#x27;agentique** : Abandon des structures de conditionnement linéaire (« si/alors ») au profit d&#x27;un agent décisionnel qui analyse la requête et choisit lui-même le meilleur outil d&#x27;exécution.</span></li><li><span class="point-bullet">✦</span><span>Architecture de la « ceinture à outils »** : Les agents Make ne fonctionnent pas en vase clos ; ils s&#x27;appuient sur des scénarios Make existants (Google Sheets, Perplexity, Gmail) qu&#x27;ils activent dynamiquement selon les besoins.</span></li><li><span class="point-bullet">✦</span><span>Définition d&#x27;un prompt système comportemental** : Chaque agent est configuré avec un rôle précis, un objectif métier (ex. : analyste des stocks) et des directives de ton (ex. : amical et empathique) pour garantir des interactions cohérentes.</span></li><li><span class="point-bullet">✦</span><span>Centralisation des scénarios de messagerie** : Regroupement de multiples flux de communication (Slack, e-mail) sous une entité d&#x27;agent unique pour éviter la duplication des étapes d&#x27;API dans chaque nouveau scénario.</span></li><li><span class="point-bullet">✦</span><span>Déclenchement omnicanal basé sur les événements** : Capacité à surveiller des canaux de communication publics (comme Slack ou l&#x27;ajout d&#x27;une ligne dans un tableur) pour amorcer des boucles de traitement automatisées par l&#x27;IA.</span></li><li><span class="point-bullet">✦</span><span>Connexion aux données dynamiques en temps réel** : Utilisation d&#x27;intégrations Google Sheets et d&#x27;agrégateurs de tableaux pour fournir à l&#x27;agent un contexte informationnel actualisé sur les commandes et les ventes.</span></li><li><span class="point-bullet">✦</span><span>Recherche web augmentée par Perplexity** : Intégration d&#x27;outils de navigation internet directement accessibles par l&#x27;agent pour enrichir ses prises de décision avec des données exogènes.</span></li><li><span class="point-bullet">✦</span><span>Réduction drastique de la complexité de design** : Simplification de la création de workflows où l&#x27;ingénieur en automatisation n&#x27;a plus besoin de prédéfinir chaque embranchement logique, l&#x27;IA gérant la complexité d&#x27;aiguillage.</span></li><li><span class="point-bullet">✦</span><span>Gain de temps et agilité opérationnelle** : L&#x27;utilisation d&#x27;agents IA dans Make.com insuffle une dimension dynamique et adaptative aux automatisations, réduisant significativement le temps de maintenance et de configuration des flux.</span></li><li><span class="point-bullet">✦</span><span>Déploiement progressif des fonctionnalités** : Prise en compte du fait que les nouveautés Make AI Agents sont déployées de manière graduelle sur les comptes utilisateurs, nécessitant de vérifier la disponibilité de l&#x27;outil sur sa plateforme.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:30</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Make.com vient de lancer son propre agent IA. Ce sont des agents auxquels vous pouvez donner des instructions ainsi que l&#x27;accès à des outils pour exécuter des tâches pour nous. Cette nouvelle fonctionnalité va complètement transformer la manière dont nous interagissons avec les scénarios dans Make.com. Et dans cette vidéo, je vais décortiquer tout cela afin que vous puissiez comprendre comment les utiliser, tout en vous donnant mon avis sur cette nouvelle mise à jour. Très bien, plongeons dans le vif du sujet. Très bien, je vais donc vous expliquer le déroulement sur lequel nous allons travailler dans cette vidéo afin de présenter les fonctionnalités des agents Make.ai. Tout d&#x27;abord, nous allons envoyer un message dans un canal Slack pour poser des questions sur les ventes de produits.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (interface de scénario) et tableau blanc numérique (Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration d&#x27;un agent IA (Make AI Agents) avec des outils intégrés (Google Sheets, Slack, Perplexity AI) et instructions système.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la configuration des outils et des instructions pour l&#x27;agent IA au sein d&#x27;un scénario d&#x27;automatisation.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000015_seg1.jpg" alt="Interface de scénario Make.com montrant un déclencheur Slack connecté à un module &quot;Make AI Agents&quot; avec le panneau de configuration latéral ouvert." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Interface de scénario Make.com montrant un déclencheur Slack connecté à un module &quot;Make AI Agents&quot; avec le panneau de configuration latéral ouvert.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000023_seg1.jpg" alt="Schéma explicatif dessiné sur un tableau blanc numérique illustrant le flux : Message Slack -&gt; Make AI Agent -&gt; Outils." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000023_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:23</span>
+                        <span class="caption-text">Schéma explicatif dessiné sur un tableau blanc numérique illustrant le flux : Message Slack -&gt; Make AI Agent -&gt; Outils.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:30 - 00:00:55</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ce que cela va faire, cela va déclencher notre agent Make IA principal, à qui nous allons donner une consigne et indiquer comment se comporter. À partir de là, il a réellement accès à certains outils. Donc ces outils sont fondamentalement des scénarios que vous avez configurés à l&#x27;intérieur de make.com. Donc par exemple, pour ce cas d&#x27;usage spécifique, nous allons avoir un outil Google Sheets, qui est un scénario qui extrait fondamentalement des données de Google Sheets concernant les informations sur nos ventes de produits.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;outil de schéma en ligne Excalidraw et une incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit schématique : &#x27;Triggers the MAIN Make AI Agent&#x27; relié par des flèches à &#x27;Tools&#x27; et à des notions de vente de produits.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique l&#x27;architecture du workflow et pointe le curseur sur le déclenchement de l&#x27;agent Make IA principal.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000036_seg2.jpg" alt="Schéma explicatif sur Excalidraw montrant le déclenchement d&#x27;un agent Make IA principal connectant vers des &#x27;Tools&#x27;." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000036_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:36</span>
+                        <span class="caption-text">Schéma explicatif sur Excalidraw montrant le déclenchement d&#x27;un agent Make IA principal connectant vers des &#x27;Tools&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:55 - 00:01:14</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, nous pourrions connecter ceci à n&#x27;importe lequel des différents scénarios que nous avons. Ce sont ceux que nous allons utiliser dans cette vidéo. Ensuite, nous avons l&#x27;outil Perplexity, qui est essentiellement un autre scénario qui vous permet de faire des recherches sur Internet, puis de nous renvoyer un résultat de cette recherche. En plus de cela, nous avons un autre outil, qui est un scénario appelé une étape d&#x27;envoi de Gmail ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application de tableau blanc ou de mind mapping (ex: Excalidraw).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma avec les sections &quot;Google Sheets Tool&quot;, &quot;Perplexity Tool&quot;, et &quot;Send Gmail&quot;, reliées à des descriptions de fonctionnalités comme &quot;Pulls data from Google Sheets&quot; et &quot;Research the internet&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente visuellement les différents outils et scénarios disponibles pour l&#x27;intégration.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000100_seg3.jpg" alt="Un schéma heuristique dessiné à la main montrant différentes options sous l&#x27;élément central &quot;Tools&quot;, avec le présentateur visible dans un encadré vidéo à droite." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000100_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:00</span>
+                        <span class="caption-text">Un schéma heuristique dessiné à la main montrant différentes options sous l&#x27;élément central &quot;Tools&quot;, avec le présentateur visible dans un encadré vidéo à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:14 - 00:01:35</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous donnons accès à notre agent pour pouvoir envoyer un e-mail. Et ensuite, encore une fois, nous pourrions ajouter n&#x27;importe quel scénario ici à notre agent IA. Donc pensez-y comme à notre ceinture à outils que notre agent IA possède afin de lui permettre d&#x27;exécuter certaines actions et de récupérer des informations à travers nos scénarios. Et ensuite, à partir de là, nous pouvons également recevoir une réponse sur Slack, car c&#x27;est bien là tout l&#x27;objectif.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de tableau blanc ou de prise de notes visuelle (type Excalidraw) avec incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma conceptuel représentant la &quot;boîte à outils&quot; d&#x27;un agent IA (Google Sheets, Perplexity, Gmail, et scénarios personnalisés).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les différentes fonctionnalités et intégrations possibles d&#x27;un agent IA sous forme de schéma.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:36 - 00:02:11</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc nous pouvons envoyer des messages avec notre agent à l&#x27;intérieur de notre canal Slack. Très bien. Donc je vais vous montrer mon agent IA en action, et ensuite je vais vous montrer exactement comment vous pouvez configurer votre propre agent pour votre propre cas d&#x27;usage spécifique. Et je vais détailler exactement comment faire cela. Très bien. Donc ce à quoi sert ce canal, c&#x27;est pour toutes les questions concernant les produits ou l&#x27;inventaire pour mon entreprise, par exemple. Donc en gros, je pourrais venir ici et dire simplement, quel était le statut de notre dernière commande ? Et puis ce que je vais faire, c&#x27;est que je vais aller dans mon scénario Make Agents ici qui a un agent Make intégré. Je vais l&#x27;exécuter. Donc essentiellement, cela surveille les messages publics</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de messagerie Slack.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Canal Slack nommé &#x27;#product-inventory&#x27; avec la liste des canaux sur le panneau de gauche et la zone de message en bas.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur montre l&#x27;environnement Slack où l&#x27;agent IA va interagir.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000144_seg5.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Slack avec le canal &#x27;#product-inventory&#x27; et la webcam du présentateur incrustée dans un coin." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000144_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Slack avec le canal &#x27;#product-inventory&#x27; et la webcam du présentateur incrustée dans un coin.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:11 - 00:02:30</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">les messages de la chaîne déclenchent maintenant ce message. Il élabore ensuite une réponse et la publie sur Slack. Donc ici, il nous a donné toutes ces informations sur notre commande. Et cela provient essentiellement d&#x27;une feuille de calcul Google. Donc une autre chose que je pourrais faire, je pourrais essentiellement venir ici et dire, envoie un email à un tel avec ces informations.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Slack</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message de bot contenant les détails d&#x27;une commande (Order ID, Product, Order Date, Order Time, Customer ID, Status).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;un message automatisé sur Slack répondant à une requête de commande.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000216_seg6.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Slack avec le canal #product-inventory affichant les détails d&#x27;une commande." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000216_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:16</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Slack avec le canal #product-inventory affichant les détails d&#x27;une commande.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:30 - 00:02:49</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et il pourrait ensuite aller de l&#x27;avant et envoyer un e-mail. Très bien. Ce n&#x27;est donc rien de bien fou en termes d&#x27;automatisation que nous avons mise en place ici, mais là où ça devient vraiment percutant, c&#x27;est que nous avons créé cet agent juste ici qui nous aide pour tout ce qui concerne le lancement de produits. C&#x27;est notre agent de lancement de projet que nous avons développé, nous lui avons donné un prompt système et il sait exactement comment nous voulons qu&#x27;il interagisse.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (anciennement Integromat)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Workflow d&#x27;automatisation d&#x27;agent IA intégrant Slack, Google Sheets, Perplexity AI et des réponses e-mail automatiques, avec instructions système textuelles.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;un agent IA dans Make.com et affichage des outils et instructions qui lui sont assignés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000234_seg7.jpg" alt="Vue globale du workflow d&#x27;automatisation sur Make montrant les trois étapes connectées : Slack, Make AI Agents et Slack." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000234_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:34</span>
+                        <span class="caption-text">Vue globale du workflow d&#x27;automatisation sur Make montrant les trois étapes connectées : Slack, Make AI Agents et Slack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000239_seg7.jpg" alt="Panneau de configuration du module &quot;Make AI Agents&quot; affichant les instructions système et le champ Thread ID." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000239_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:39</span>
+                        <span class="caption-text">Panneau de configuration du module &quot;Make AI Agents&quot; affichant les instructions système et le champ Thread ID.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000244_seg7.jpg" alt="Panneau de configuration étendu montrant les outils d&#x27;agent au niveau de l&#x27;agent (Google Sheets, Slack, Perplexity AI, Send automated email response)." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000244_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:44</span>
+                        <span class="caption-text">Panneau de configuration étendu montrant les outils d&#x27;agent au niveau de l&#x27;agent (Google Sheets, Slack, Perplexity AI, Send automated email response).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:49 - 00:03:12</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Nous lui avons donné accès à différents outils ici, une intégration de Google Sheets pour extraire des données. Nous avons la possibilité d&#x27;envoyer des messages dans un canal Slack. Nous lui avons donné accès à Perplexity AI, ce qui nous permet réellement de naviguer sur le web, d&#x27;extraire ces informations de Perplexity, et ensuite d&#x27;envoyer également des réponses automatisées par e-mail ici. Nous pourrions donc fondamentalement intégrer cet agent dans n&#x27;avoir quel scénario parmi ceux que nous avons au lieu d&#x27;avoir à prédéfinir tous ces scénarios.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make (anciennement Integromat), interface de configuration de scénarios d&#x27;automatisation et de Make AI Agents.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Outils d&#x27;agent listés (Integration Google Sheets, Integration Slack, Integration Perplexity AI, Send automated email response), instructions système pour l&#x27;assistant IA et flux de nœuds Slack vers Make AI Agents.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et présentation des outils et des intégrations attribués à l&#x27;agent IA dans le scénario Make.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000254_seg8.jpg" alt="Interface de Make montrant le panneau de configuration des outils de l&#x27;agent IA avec les intégrations Google Sheets, Slack, Perplexity AI et les instructions système." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000254_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:54</span>
+                        <span class="caption-text">Interface de Make montrant le panneau de configuration des outils de l&#x27;agent IA avec les intégrations Google Sheets, Slack, Perplexity AI et les instructions système.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000306_seg8.jpg" alt="Flux de travail automatisé dans Make reliant Slack à un agent IA Make, puis à un autre module Slack." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000306_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:06</span>
+                        <span class="caption-text">Flux de travail automatisé dans Make reliant Slack à un agent IA Make, puis à un autre module Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:12 - 00:03:37</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et c&#x27;est là que ça devient vraiment percutant. Vous pouvez voir que lorsque nous venons créer des agents IA, nous avons maintenant la capacité de créer un agent IA ici. Et j&#x27;en ai créé un appelé assistant de lancement de projet. Fondamentalement, nous donnons une consigne système à notre agent lui indiquant exactement comment nous voulons qu&#x27;il agisse. Donc fondamentalement, juste ici, j&#x27;ai dit : vous êtes un agent d&#x27;analyse des stocks pour le lancement de produits, dont l&#x27;objectif principal est d&#x27;aider notre entreprise à suivre les commandes de stocks et à résoudre les problèmes rapidement.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (interface web de gestion d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Prompt système de l&#x27;agent et outils d&#x27;intégration actifs (Perplexity AI, Google Sheets, Slack)</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de Make et présentation de la configuration d&#x27;un agent IA</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000318_seg9.jpg" alt="Interface de Make montrant la liste des agents IA avec un bouton de création en haut à droite." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000318_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:18</span>
+                        <span class="caption-text">Interface de Make montrant la liste des agents IA avec un bouton de création en haut à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000325_seg9.jpg" alt="Configuration de l&#x27;agent &quot;Product Launch Assistant&quot; avec le prompt système et les outils intégrés (Perplexity, Google Sheets, Slack)." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000325_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:25</span>
+                        <span class="caption-text">Configuration de l&#x27;agent &quot;Product Launch Assistant&quot; avec le prompt système et les outils intégrés (Perplexity, Google Sheets, Slack).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:38 - 00:03:58</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Répondez toujours avec un ton amical et empathique. À partir de là, vous allez voir qu&#x27;en dessous, nous avons nos outils système. Ce sont donc des scénarios auxquels votre agent peut toujours accéder pour prendre des décisions et accomplir des tâches. Nous pourrions donc soit lui fournir du contexte, soit lui fournir des informations, soit lui donner la capacité d&#x27;exécuter des actions. Par exemple, vous pouvez voir que nous avons un scénario Perplexity AI.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (interface de création d&#x27;agents et de workflows d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> System prompt (&quot;You are a product launch inventory Analyzer Agent...&quot;), System tools (Intégrations Perplexity AI, Google Sheets, Slack)</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication de la configuration des outils système et scénarios accessibles par l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:58 - 00:04:16</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si je clique là-dessus, cela m&#x27;amène ensuite à notre scénario que j&#x27;ai élaboré. Nous avons fondamentalement un module Perplexity AI ici. Il se connecte à mon API Perplexity. Essentiellement, il prend un prompt, qui est notre message ici. Il nous donne ensuite un résultat ici que notre agent IA peut utiliser et nous renvoyer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (anciennement Integromat), interface de configuration des modules d&#x27;automatisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modules Make.com, intégration Perplexity AI, modèle &#x27;sonar&#x27;, champ de configuration &#x27;Content&#x27; pour le prompt utilisateur, rôle &#x27;User&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur clique sur le module Perplexity AI pour ouvrir sa configuration et montre comment le prompt est structuré pour se connecter à l&#x27;API Perplexity.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000402_seg11.jpg" alt="Vue générale du scénario Make.com montrant le module Perplexity AI connecté au module Scenarios." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000402_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:02</span>
+                        <span class="caption-text">Vue générale du scénario Make.com montrant le module Perplexity AI connecté au module Scenarios.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000407_seg11.jpg" alt="Fenêtre de configuration du module Perplexity AI affichant les paramètres de connexion, le modèle &#x27;sonar&#x27; et le champ &#x27;Messages&#x27;." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000407_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:07</span>
+                        <span class="caption-text">Fenêtre de configuration du module Perplexity AI affichant les paramètres de connexion, le modèle &#x27;sonar&#x27; et le champ &#x27;Messages&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000411_seg11.jpg" alt="Fenêtre de configuration du module Perplexity AI avec le menu contextuel des fonctions générales ouvert pour insérer le message/prompt." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000411_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Fenêtre de configuration du module Perplexity AI avec le menu contextuel des fonctions générales ouvert pour insérer le message/prompt.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:16 - 00:04:37</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Un autre exemple est que nous avons ici notre outil système d&#x27;intégration Google Sheets, sur lequel si je clique sur ce scénario, c&#x27;est essentiellement là que nous obtenons des informations sur nos produits. Donc Google Sheets, essentiellement il va extraire des informations ici. Il va extraire les données de ventes de notre feuille de calcul, un agrégateur de tableaux. Et puis encore une fois, cela va renvoyer ce contexte et ces informations à notre agent IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Plateforme d&#x27;automatisation Make (anciennement Integromat), interface web de gestion de scénarios.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Modules d&#x27;automatisation : &quot;Google Sheets&quot; (Search Rows), &quot;Array aggregator&quot;, et &quot;Scenarios&quot; (Return output), reliés par des flux de données animés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique et zoome sur le flux de travail d&#x27;automatisation d&#x27;un scénario Make connectant Google Sheets à des sorties de scénarios.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000427_seg12.jpg" alt="Interface Make montrant un scénario d&#x27;intégration Google Sheets avec trois modules connectés : Google Sheets, Array aggregator et Scenarios." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000427_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Interface Make montrant un scénario d&#x27;intégration Google Sheets avec trois modules connectés : Google Sheets, Array aggregator et Scenarios.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000432_seg12.jpg" alt="Vue rapprochée du même scénario Make avec le curseur pointant sur le module final &#x27;Scenarios&#x27;." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000432_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Vue rapprochée du même scénario Make avec le curseur pointant sur le module final &#x27;Scenarios&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:38 - 00:05:11</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Si vous voulez venir ici et ajouter un outil système, vous allez simplement cliquer là-dessus. Donc si je veux donner accès à ce scénario, par exemple, qui n&#x27;est qu&#x27;un scénario aléatoire de base, mais disons que ce scénario est celui où nous allons récupérer des informations pour les détails de nos produits liés à nos informations de vente. Utilisez ceci pour obtenir des informations sur n&#x27;importe quel produit que nous vendons. Donc, fondamentalement, je vais ajouter cette description. Il est important d&#x27;ajouter une description afin que notre agent IA sache comment utiliser et exploiter ces outils. Alors, voyez les choses ainsi. Vous pouvez créer un agent spécifique pour des tâches spécifiques que vous voulez qu&#x27;il exécute. Créons donc un agent qui ressemble à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface Make.com (gestion de scénarios et d&#x27;agents IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de scénarios Make.com (&quot;Add Tools&quot;, &quot;Integration Perplexity AI&quot;, &quot;Integration Google Sheets&quot;) et fenêtre modale de description.</p>
+                        <p><strong>Action / Démonstration :</strong> Ajout et configuration d&#x27;une description pour un scénario Make.com servant d&#x27;outil système.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000446_seg13.jpg" alt="Fenêtre modale &quot;Add Description&quot; ouverte par-dessus l&#x27;interface Make.com pour ajouter un outil système." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000446_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:46</span>
+                        <span class="caption-text">Fenêtre modale &quot;Add Description&quot; ouverte par-dessus l&#x27;interface Make.com pour ajouter un outil système.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000454_seg13.jpg" alt="Saisie du texte &quot;sales information&quot; dans la boîte de description pour l&#x27;outil sélectionné." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000454_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:54</span>
+                        <span class="caption-text">Saisie du texte &quot;sales information&quot; dans la boîte de description pour l&#x27;outil sélectionné.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000503_seg13.jpg" alt="Aperçu de la description enregistrée sous le scénario Make.com configuré." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000503_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Aperçu de la description enregistrée sous le scénario Make.com configuré.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:11 - 00:05:34</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">un agent de messagerie. Donc appelons simplement cela un agent IA de messagerie. Je vais sélectionner le modèle. Utilisons donc simplement ChatGPT-4o mini ou utilisez le modèle que vous souhaitez utiliser, évidemment. Et nous allons lui donner un prompt système. D&#x27;accord. Donc j&#x27;indique essentiellement comment je veux que mon assistant de messagerie se comporte. Donc je vais enregistrer cela ici. Et ensuite, je peux simplement ajouter mes outils système. Allons-y donc pour ajouter l&#x27;un des outils que j&#x27;ai ici qui concernent la communication, comme l&#x27;envoi de messages.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make AI Agents (Make.com)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration d&#x27;agent IA, modèle gpt-4o-mini, champ de prompt système, liste de scénarios/outils connectés (Google Sheets, Slack).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et paramétrage d&#x27;un agent IA de messagerie avec sélection du modèle et ajout d&#x27;outils/scénarios.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000517_seg14.jpg" alt="Interface de création d&#x27;un agent IA avec sélection du modèle (gpt-4o-mini) et configuration du prompt système." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000517_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:17</span>
+                        <span class="caption-text">Interface de création d&#x27;un agent IA avec sélection du modèle (gpt-4o-mini) et configuration du prompt système.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000529_seg14.jpg" alt="Fenêtre d&#x27;ajout d&#x27;outils (Add Tools) affichant différents scénarios et intégrations disponibles (Google Sheets, Slack, etc.)." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000529_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:29</span>
+                        <span class="caption-text">Fenêtre d&#x27;ajout d&#x27;outils (Add Tools) affichant différents scénarios et intégrations disponibles (Google Sheets, Slack, etc.).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:34 - 00:05:56</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc si nous voulons donner accès, par exemple, à l&#x27;envoi de réponses automatisées par e-mail en utilisant Gmail, je peux aller de l&#x27;avant, je peux ajouter une description ici. Donc maintenant que j&#x27;ai cela là, je pourrais littéralement juste cliquer ici et je pourrais ensuite l&#x27;ajouter. Donc maintenant j&#x27;ai ceci comme outil actif. Et puis un autre que je pourrais ajouter, je pourrais ajouter l&#x27;envoi de messages Slack. Juste ici, la description est : ceci est notre scénario de messagerie Slack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web Make (plateforme d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de scénarios et d&#x27;outils d&#x27;automatisation avec des descriptions modifiables (&#x27;Add Description&#x27;).</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection et ajout d&#x27;un outil d&#x27;automatisation d&#x27;e-mail dans l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000540_seg15.jpg" alt="Interface de configuration Make montrant la fenêtre &#x27;Add Tools&#x27; avec une liste de scénarios et un curseur pointant sur l&#x27;option d&#x27;e-mail automatisé." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000540_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:40</span>
+                        <span class="caption-text">Interface de configuration Make montrant la fenêtre &#x27;Add Tools&#x27; avec une liste de scénarios et un curseur pointant sur l&#x27;option d&#x27;e-mail automatisé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000545_seg15.jpg" alt="Fenêtre &#x27;Add Tools&#x27; sur Make avec le scénario d&#x27;e-mail automatisé sélectionné et sa description ajoutée." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000545_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Fenêtre &#x27;Add Tools&#x27; sur Make avec le scénario d&#x27;e-mail automatisé sélectionné et sa description ajoutée.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000550_seg15.jpg" alt="Défilement de la liste des outils disponibles dans la fenêtre de configuration de l&#x27;agent IA sur Make." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000550_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:50</span>
+                        <span class="caption-text">Défilement de la liste des outils disponibles dans la fenêtre de configuration de l&#x27;agent IA sur Make.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:56 - 00:06:31</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, laissez-moi simplement ajouter cela ici. Donc, pensez-y de cette façon. Puisque c&#x27;est notre agent IA de messagerie, ce que nous pourrions faire, c&#x27;est que nous pourrions ajouter tous nos scénarios de messagerie ici que nous avons déjà créés. De cette façon, lorsque nous voulons réellement créer un message IA à l&#x27;intérieur de notre scénario, au lieu de devoir aller ajouter manuellement une nouvelle étape Gmail et OpenAI ici afin que nous puissions envoyer des e-mails automatisés, à la place, je pourrais simplement appeler cet agent IA lorsque je viens dans mon scenario. Par exemple, créons simplement un nouveau scénario. Donc, en gros, j&#x27;ai un scénario ici où je veux surveiller quand une nouvelle ligne est ajoutée à un tableur. Et puis disons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (plateforme d&#x27;automatisation et d&#x27;agents IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration d&#x27;un agent IA de messagerie avec des invites système et des outils intégrés.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment ajouter des scénarios de messagerie existants à l&#x27;agent IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000605_seg16.jpg" alt="Interface principale de l&#x27;agent IA montrant les outils système avec le présentateur dans un encart." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000605_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:05</span>
+                        <span class="caption-text">Interface principale de l&#x27;agent IA montrant les outils système avec le présentateur dans un encart.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000622_seg16.jpg" alt="Menu latéral déployé de la plateforme Make.com montrant les options de navigation comme Scenarios et AI Agents." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000622_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:22</span>
+                        <span class="caption-text">Menu latéral déployé de la plateforme Make.com montrant les options de navigation comme Scenarios et AI Agents.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:31 - 00:07:04</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Une fois que cette ligne est ajoutée, répondons ensuite avec l&#x27;IA. Donc ce que je pourrais faire, c&#x27;est simplement appeler mon agent IA Make ici, cliquer sur exécuter un agent, et ensuite je pourrais tout simplement choisir l&#x27;agent IA de messagerie ici que j&#x27;ai configuré. Et maintenant, il a accès à tous ces outils. Il peut donc répondre sur Gmail. Il peut aussi répondre sur Slack. C&#x27;est donc une façon de rassembler tous nos scénarios dans un outil à l&#x27;intérieur de notre agent IA. Très bien. Revenons rapidement au tableau blanc et discutons de pourquoi c&#x27;est si important. Pourquoi l&#x27;agent IA est en fait une si grande fonctionnalité, parce qu&#x27;il faut y penser de cette façon : notre agent IA a accès à tous ces différents outils ici, et l&#x27;agent</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Make.com (interface d&#x27;automatisation de scénarios) et outil de tableau blanc numérique.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration d&#x27;un agent IA Make, liste des outils disponibles (Google Sheets Tool, Perplexity Tool, Send Gmail, Any Scenario).
+[DESC_IMAGE_3] Présentation de la logique d&#x27;intégration et des outils accessibles par l&#x27;agent IA principal.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000639_seg17.jpg" alt="Configuration du module Make AI Agents avec affichage des paramètres de l&#x27;agent." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000639_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Configuration du module Make AI Agents avec affichage des paramètres de l&#x27;agent.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000647_seg17.jpg" alt="Sélection d&#x27;un agent IA de messagerie configuré dans Make avec ses outils associés." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000647_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:47</span>
+                        <span class="caption-text">Sélection d&#x27;un agent IA de messagerie configuré dans Make avec ses outils associés.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000656_seg17.jpg" alt="Schéma explicatif dessiné sur un tableau blanc montrant l&#x27;architecture des outils de l&#x27;agent IA." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000656_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:56</span>
+                        <span class="caption-text">Schéma explicatif dessiné sur un tableau blanc montrant l&#x27;architecture des outils de l&#x27;agent IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:04 - 00:07:32</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">la partie agentique de la chose, c&#x27;est qu&#x27;elle décide, d&#x27;accord, en fonction de cette demande que j&#x27;ai reçue, de cette saisie que j&#x27;ai reçue, que dois-je faire ? Quelle est la meilleure façon pour moi d&#x27;aborder cela ? Elle peut donc ensuite choisir parmi tous ces outils que vous lui donnez. Encore une fois, vous pourriez lui donner accès à n&#x27;importe lequel de vos différents scénarios, et ensuite elle choisira quel outil utiliser afin d&#x27;obtenir le résultat dont elle a besoin. Alors, pensez-y comme ceci, au lieu d&#x27;avoir à créer un scénario très complexe, où vous avez certaines étapes de type si, alors faites ceci, comme tout ce truc.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Logiciel de mindmapping / tableau blanc interactif dans un navigateur web avec incrustation vidéo.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma textuel : &quot;MAIN AI Agent&quot;, &quot;Tools&quot;, &quot;Google Sheets Tool&quot;, &quot;Perplexity Tool&quot;, &quot;Send Gmail&quot;, &quot;Any Scenario&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment l&#x27;agent IA choisit et utilise différents outils selon les scénarios.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000711_seg18.jpg" alt="Schéma heuristique (mindmap) montrant l&#x27;architecture d&#x27;un agent IA principal connectant différents outils comme Google Sheets, Perplexity et Gmail, avec la vidéo du présentateur en incrustation." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000711_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:11</span>
+                        <span class="caption-text">Schéma heuristique (mindmap) montrant l&#x27;architecture d&#x27;un agent IA principal connectant différents outils comme Google Sheets, Perplexity et Gmail, avec la vidéo du présentateur en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:32 - 00:07:53</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tu n&#x27;as pas besoin de configurer tout ça. À la place, tu peux simplement donner accès à ton agent IA à tous ces différents scénarios que tu as une fois que tu en as construit toute une série. Et ensuite, il décidera simplement, ok, comment puis-je faire cela pour toi sans avoir à prédéfinir tout ce truc ? Donc si tu utilises déjà make.com, ce sera un outil extrêmement utile pour toi afin de construire des flux de travail et des automatisations avec l&#x27;IA.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de tableau blanc numérique ou logiciel de mind mapping.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Schéma avec des bulles textuelles liées par des flèches : &#x27;Tools&#x27;, &#x27;Google Sheets Tool&#x27; (Pulls data from Google Sheets), &#x27;Perplexity Tool&#x27; (Research the internet), &#x27;Send Gmail&#x27;, et &#x27;Any Scenario&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment l&#x27;agent IA peut utiliser différents scénarios et outils de manière dynamique sans configuration préalable.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000738_seg19.jpg" alt="Schéma heuristique manuscrit représentant différents outils pour un agent IA, incluant &#x27;Google Sheets Tool&#x27;, &#x27;Perplexity Tool&#x27;, &#x27;Send Gmail&#x27; et &#x27;Any Scenario&#x27;." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000738_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:38</span>
+                        <span class="caption-text">Schéma heuristique manuscrit représentant différents outils pour un agent IA, incluant &#x27;Google Sheets Tool&#x27;, &#x27;Perplexity Tool&#x27;, &#x27;Send Gmail&#x27; et &#x27;Any Scenario&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:54 - 00:08:15</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, les amis, voilà. C&#x27;est le « Make AI agents » qu&#x27;ils viennent tout juste de lancer. Ils l&#x27;ont littéralement lancé aujourd&#x27;hui. Donc, malheureusement, je n&#x27;ai pas pu approfondir tout ça. Cependant, je voulais essentiellement le tester et voir si c&#x27;est quelque chose que vous pouvez attendre avec impatience. Et je dirai que, si vous utilisez déjà make.com, cela va être un changement absolu pour vous permettre d&#x27;implémenter l&#x27;IA dans tous vos scénarios.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Site web Make.com (plateforme d&#x27;automatisation no-code).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil de Make affichant les fonctionnalités d&#x27;automatisation et d&#x27;intégration d&#x27;intelligence artificielle (OpenAI), avec des boutons d&#x27;appel à l&#x27;action (« Get started free »).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la page d&#x27;accueil de la plateforme Make.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000810_seg20.jpg" alt="Présentation de la plateforme Make.com à l&#x27;écran, avec incrustation vidéo du présentateur dans le coin inférieur droit." loading="lazy" onclick="openLightbox('../screenshots/vJLyP_tYE4w/vJLyP_tYE4w_000810_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Présentation de la plateforme Make.com à l&#x27;écran, avec incrustation vidéo du présentateur dans le coin inférieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:16 - 00:08:37</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je pense que cela va vous faire gagner énormément de temps et ajouter un aspect dynamique à vos scénarios Make que vous n&#x27;aviez pas auparavant. Cela étant dit, si vous voulez utiliser les agents IA de Make dans vos comptes, ils les déployant lentement. Vous n&#x27;y avez donc peut-être pas encore accès, mais vous l&#x27;obtiendrez avec le temps. Si vous avez apprécié cette vidéo, assurez-vous de vous abonner à la chaîne. Je couvre tout ce qui touche à l&#x27;IA pour les non-techniciens. Ceci étant dit, je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Aucune interface logicielle ou technique affichée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aucun contenu technique, graphique ou de code source visible.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;adresse directement aux spectateurs en parlant des agents IA de Make.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
