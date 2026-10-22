@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Coder au feeling un serveur MCP (en étant grand débutant) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Coder au feeling un serveur MCP (en étant grand débutant)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-04-07</span>
+                <span class="badge">⏱️ 00:09:37</span>
+                <span class="badge">🆔 <code>pB1MRWhS13Y</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=pB1MRWhS13Y" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo, présentée par Brock Mesarich sur la chaîne *Brock Mesarich | AI for Non Techies*, démystifie la création et le déploiement d'un serveur MCP (Model Context Protocol) sans compétences préalables en programmation. L'objectif central est de briser les barrières contextuelles des LLMs en connectant l'application de bureau Claude à des services externes et des API tierces — en l'occurrence, YouTube et Slack — afin de transformer un assistant textuel en un agent conversationnel capable d'exécuter des actions concrètes dans les flux de travail quotidiens.<br><br>À travers une approche guidée par l'intelligence artificielle, la démonstration illustre comment concevoir le pont applicatif, configurer les clés API, intégrer des jetons de bot et activer le protocole MCP en quelques clics. L'utilisation d'outils de transcription vocale et de plateformes de développement no-code propulsées par l'IA permet d'accélérer drastiquement le prototypage, démontrant que l'automatisation avancée et l'interopérabilité logicielle sont désormais accessibles à un public non technique.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>*   **Claude Desktop** : Application de bureau d'Anthropic servant d'interface centrale dotée d'une architecture MCP pour exécuter des actions et interroger des outils externes.<br>*   **DataButton** : Plateforme de développement d'applications pilotée par l'IA qui permet de concevoir, tester et déployer des services backend et des serveurs sans coder manuellement.<br>*   **AquaVoice** : Outil de dictée vocale instantanée permettant de piloter l'ordinateur à la voix et de coller automatiquement le texte dans les interfaces.<br>*   **API YouTube** : Interface de programmation utilisée pour effectuer des recherches de contenu en temps réel et extraire des métadonnées de vidéos.<br>*   **API Slack** : Service de messagerie d'équipe configuré via la création d'une application dédiée (bot) pour envoyer et automatiser des notifications ou des messages sur des canaux spécifiques.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>*   **Dépassement des limites contextuelles des LLMs** : L'intégration d'un serveur MCP résout le problème de l'isolement des IA en leur octroyant un accès direct aux données en temps réel et aux outils de productivité de l'utilisateur.<br>*   **Démocratisation du développement No-Code** : Des plateformes comme DataButton permettent de structurer des architectures complexes (intégration d'API multiples) par le simple biais du prompt engineering et de la conversation en langage naturel.<br>*   **Gain de productivité par la dictée vocale** : L'utilisation d'utilitaires de saisie vocale comme AquaVoice accélère la phase de formulation des prompts et de description des fonctionnalités auprès des IA génératives.<br>*   **Configuration incrémentale par tâches** : La méthodologie de développement s'appuie sur une liste de tâches séquentielle (planification, implémentation des API, tests d'interface, déploiement) pour s'assurer du bon fonctionnement de chaque brique avant l'intégration finale.<br>*   **Sécurisation et gestion des jetons (Tokens)** : L'intégration d'outils professionnels nécessite la manipulation rigoureuse de clés API et de jetons OAuth de bots, qui doivent être injectés dans les variables d'environnement sécurisées de la plateforme.<br>*   **Paramétrage des permissions de bot (OAuth Scopes)** : Pour qu'un agent externe puisse interagir avec une application comme Slack, il est impératif d'octroyer des permissions précises, telles que la lecture de canaux (`channels:read`) et l'écriture de messages (`chat:write`).<br>*   **Test d'intégration unitaire (Sanity Check)** : Avant de connecter les services à Claude, il est indispensable de tester chaque API directement dans l'interface de développement (par exemple, en envoyant une blague automatisée sur un canal Slack) pour valider la robustesse du pipeline.<br>*   **Activation native du protocole MCP** : La transition vers un serveur MCP s'effectue en activant l'option de production sur la plateforme de développement, ce qui génère automatiquement une URL de serveur et un extrait de code d'intégration.<br>*   **Mise à jour du fichier de configuration local** : L'interfaçage avec Claude Desktop requiert l'édition manuelle du fichier de configuration des développeurs au format JSON, où l'on insère l'URL du serveur MCP et la clé API correspondante.<br>*   **Validation visuelle des outils chargés** : L'indicateur de succès dans Claude Desktop se matérialise par l'apparition d'une icône de marteau associée au nombre d'outils connectés, confirmant que le LLM a désormais la capacité d'exécuter des requêtes sur les services externes.<br>*   **Sécurité et autorisation des actions** : Lors de la première exécution d'une commande complexe via Claude, l'interface demande une validation explicite de l'utilisateur pour autoriser l'outil à manipuler les données du chat ou de l'application tierce.<br>*   **Chaînage de tâches multi-applications** : Le véritable potentiel stratégique réside dans la capacité à combiner plusieurs outils en un seul flux (par exemple, rechercher des informations sur YouTube puis diffuser instantanément ces résultats sur Slack pour une équipe).
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Claude Desktop</span><span class="tool-tag">DataButton</span><span class="tool-tag">AquaVoice</span><span class="tool-tag">API YouTube</span><span class="tool-tag">API Slack</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Dépassement des limites contextuelles des LLMs** : L&#x27;intégration d&#x27;un serveur MCP résout le problème de l&#x27;isolement des IA en leur octroyant un accès direct aux données en temps réel et aux outils de productivité de l&#x27;utilisateur.</span></li><li><span class="point-bullet">✦</span><span>Démocratisation du développement No-Code** : Des plateformes comme DataButton permettent de structurer des architectures complexes (intégration d&#x27;API multiples) par le simple biais du prompt engineering et de la conversation en langage naturel.</span></li><li><span class="point-bullet">✦</span><span>Gain de productivité par la dictée vocale** : L&#x27;utilisation d&#x27;utilitaires de saisie vocale comme AquaVoice accélère la phase de formulation des prompts et de description des fonctionnalités auprès des IA génératives.</span></li><li><span class="point-bullet">✦</span><span>Configuration incrémentale par tâches** : La méthodologie de développement s&#x27;appuie sur une liste de tâches séquentielle (planification, implémentation des API, tests d&#x27;interface, déploiement) pour s&#x27;assurer du bon fonctionnement de chaque brique avant l&#x27;intégration finale.</span></li><li><span class="point-bullet">✦</span><span>Sécurisation et gestion des jetons (Tokens)** : L&#x27;intégration d&#x27;outils professionnels nécessite la manipulation rigoureuse de clés API et de jetons OAuth de bots, qui doivent être injectés dans les variables d&#x27;environnement sécurisées de la plateforme.</span></li><li><span class="point-bullet">✦</span><span>Paramétrage des permissions de bot (OAuth Scopes)** : Pour qu&#x27;un agent externe puisse interagir avec une application comme Slack, il est impératif d&#x27;octroyer des permissions précises, telles que la lecture de canaux (`channels:read`) et l&#x27;écriture de messages (`chat:write`).</span></li><li><span class="point-bullet">✦</span><span>Test d&#x27;intégration unitaire (Sanity Check)** : Avant de connecter les services à Claude, il est indispensable de tester chaque API directement dans l&#x27;interface de développement (par exemple, en envoyant une blague automatisée sur un canal Slack) pour valider la robustesse du pipeline.</span></li><li><span class="point-bullet">✦</span><span>Activation native du protocole MCP** : La transition vers un serveur MCP s&#x27;effectue en activant l&#x27;option de production sur la plateforme de développement, ce qui génère automatiquement une URL de serveur et un extrait de code d&#x27;intégration.</span></li><li><span class="point-bullet">✦</span><span>Mise à jour du fichier de configuration local** : L&#x27;interfaçage avec Claude Desktop requiert l&#x27;édition manuelle du fichier de configuration des développeurs au format JSON, où l&#x27;on insère l&#x27;URL du serveur MCP et la clé API correspondante.</span></li><li><span class="point-bullet">✦</span><span>Validation visuelle des outils chargés** : L&#x27;indicateur de succès dans Claude Desktop se matérialise par l&#x27;apparition d&#x27;une icône de marteau associée au nombre d&#x27;outils connectés, confirmant que le LLM a désormais la capacité d&#x27;exécuter des requêtes sur les services externes.</span></li><li><span class="point-bullet">✦</span><span>Sécurité et autorisation des actions** : Lors de la première exécution d&#x27;une commande complexe via Claude, l&#x27;interface demande une validation explicite de l&#x27;utilisateur pour autoriser l&#x27;outil à manipuler les données du chat ou de l&#x27;application tierce.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:25</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous montrer comment connecter Claude Desktop à n&#x27;importe quelle application. Imaginez parler à vos applications et demander à Claude d&#x27;exécuter des actions simplement par la conversation. Je vais créer un serveur MCP à partir de zéro en utilisant la plateforme de programmation propulsée par l&#x27;IA de DataButton. Je peux déjà vous entendre demander, et si je ne suis pas technique ? Absolument aucun souci, car nous créons simplement un pont pour que Claude fonctionne avec toutes vos applications préférées. Vous pouvez personnaliser cela comme vous le voulez, même si vous ne savez pas coder.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de développement ConnectFlow et un panneau de discussion latéral.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur avec une barre de recherche, des vignettes vidéo et un journal de logs montrant des requêtes HTTP (GET /youtube/v3/search).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration du développement d&#x27;une application connectée à l&#x27;API YouTube avec assistance par chat IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000013_seg1.jpg" alt="Interface de développement web ConnectFlow avec le présentateur en incrustation à gauche et un panneau de chat sur la droite." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000013_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:13</span>
+                        <span class="caption-text">Interface de développement web ConnectFlow avec le présentateur en incrustation à gauche et un panneau de chat sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:25 - 00:00:45</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, plongeons-nous là-dedans. Très bien, donc si nous parlons régulièrement avec Claude, comme ici même, nous sommes limités au contexte dont il dispose. Par exemple, si je veux venir voir Claude et lui dire, fais des recherches sur YouTube pour moi, il n&#x27;a pas accès à YouTube pour pouvoir réellement effectuer cette recherche. Voyez les choses ainsi. Il n&#x27;a aucune connaissance du contenu présent sur YouTube.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Claude (Anthropic).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de saisie de texte &quot;How can I help you today?&quot; et mention &quot;Claude 3.5 Sonnet&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit l&#x27;interface de l&#x27;assistant Claude pour illustrer ses limites contextuelles actuelles.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000030_seg2.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface sombre de l&#x27;assistant IA Claude avec le message d&#x27;accueil &quot;What&#x27;s new, brock?&quot; et une petite vidéo incrustée du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000030_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface sombre de l&#x27;assistant IA Claude avec le message d&#x27;accueil &quot;What&#x27;s new, brock?&quot; et une petite vidéo incrustée du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:45 - 00:01:17</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En plus de cela, si je voulais envoyer un e-mail pour moi ou extraire des informations d&#x27;un fil de discussion, il n&#x27;a pas non plus accès à cela. Eh bien, dans cette vidéo, je vais vous montrer comment vous pouvez donner à Claude accès à la fois à YouTube et à votre e-mail afin qu&#x27;il puisse fonctionner dans le cadre de votre flux de travail quotidien. Et encore une fois, cela peut être totalement personnalisé pour n&#x27;importe quelle application que vous utilisez, mais c&#x27;est simplement ce que je vais construire dans cette vidéo. Très bien. DataButton est donc une plateforme qui vous permet de coder des applications avec l&#x27;IA, même si vous n&#x27;avez aucune base technique. Vous m&#x27;avez peut-être vu construire des applications plutôt cool dans certaines de mes vidéos précédentes avec cette plateforme. Cependant,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface utilisateur de type application conversationnelle et navigateur web (Databutten).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champ de saisie utilisateur et texte de présentation pour le développement de logiciels.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une interface logicielle et d&#x27;un outil de développement d&#x27;applications par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000053_seg3.jpg" alt="Interface d&#x27;une application (type Claude) avec un champ de texte et la question &quot;What&#x27;s new, brock?&quot; accompagnée d&#x27;une vignette vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000053_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:53</span>
+                        <span class="caption-text">Interface d&#x27;une application (type Claude) avec un champ de texte et la question &quot;What&#x27;s new, brock?&quot; accompagnée d&#x27;une vignette vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000109_seg3.jpg" alt="Page d&#x27;accueil de la plateforme Databutten affichant le texte &quot;Let&#x27;s turn your ideas into exceptional software&quot; et une vignette vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000109_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:09</span>
+                        <span class="caption-text">Page d&#x27;accueil de la plateforme Databutten affichant le texte &quot;Let&#x27;s turn your ideas into exceptional software&quot; et une vignette vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:17 - 00:01:56</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">nous n&#x27;allons pas construire d&#x27;application d&#x27;interface utilisateur destinée aux clients dans cette vidéo. À la place, nous allons essentiellement l&#x27;utiliser pour connecter nos différents logiciels que nous voulons utiliser, tels que YouTube, pour nous permettre d&#x27;analyser des vidéos YouTube, et la possibilité pour nous d&#x27;envoyer des messages Slack à notre équipe. Très bien, alors première chose, venimeux sur DataBot et parlons simplement pour décrire ce que nous essayons de construire. Hé, je veux donc que tu me construises une application qui utilise l&#x27;API YouTube afin de nous permettre de rechercher des informations YouTube en temps réel pour faire de la recherche de contenu. En plus de cela, je veux que tu implémentes l&#x27;API Slack afin de nous permettre d&#x27;envoyer des messages sur les canaux Slack à</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Databuton (databuton.com/new).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur affichant les étapes de création : Description, Requirements, Inspiration, Integrations.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;outil de création d&#x27;applications et s&#x27;apprête à y saisir les spécifications du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000127_seg4.jpg" alt="Image #1 @ 00:01:27 : Vue de l&#x27;interface du créateur d&#x27;applications Databuton avec le texte d&#x27;introduction &#x27;Let&#x27;s turn your ideas into exceptional software&#x27;." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000127_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Image #1 @ 00:01:27 : Vue de l&#x27;interface du créateur d&#x27;applications Databuton avec le texte d&#x27;introduction &#x27;Let&#x27;s turn your ideas into exceptional software&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000136_seg4.jpg" alt="Image #2 @ 00:01:36 : Gros plan sur la zone de saisie textuelle invitant à décrire l&#x27;application à développer." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000136_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:36</span>
+                        <span class="caption-text">Image #2 @ 00:01:36 : Gros plan sur la zone de saisie textuelle invitant à décrire l&#x27;application à développer.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000146_seg4.jpg" alt="Image #3 @ 00:01:46 : Poursuite de la présentation de l&#x27;interface Databuton avec le curseur positionné dans le champ de description." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000146_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:46</span>
+                        <span class="caption-text">Image #3 @ 00:01:46 : Poursuite de la présentation de l&#x27;interface Databuton avec le curseur positionné dans le champ de description.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:56 - 00:02:31</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Notre équipe. Le but de cette application va être essentiellement d&#x27;être une plateforme qui connecte des API à nos différentes applications et qui sert de serveur MCP pour nous permettre de communiquer via Claude Desktop. Très bien, c&#x27;est parti. Aussi, l&#x27;outil que je viens d&#x27;utiliser à l&#x27;instant s&#x27;appelle AquaVoice. Il vous permet en gros d&#x27;appuyer sur une touche de votre clavier et de parler à votre ordinateur, et il colle automatiquement le texte dans l&#x27;interface utilisateur. Ça me fait gagner tellement de temps. J&#x27;adore ça. C&#x27;est donc un petit conseil pour vous. Ensuite, je vais simplement cliquer sur ignorer pour tout cela parce que nous n&#x27;allons ajouter aucun</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme Databuton.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaires de création de projet et étapes de spécification logicielle (Description, Requirements, Inspiration, Integrations).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation à travers les étapes de configuration initiale de l&#x27;application sur la plateforme Databuton.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000205_seg5.jpg" alt="Interface de l&#x27;application de création de logiciels Databuton affichant la première étape de description du projet." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000205_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:05</span>
+                        <span class="caption-text">Interface de l&#x27;application de création de logiciels Databuton affichant la première étape de description du projet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000213_seg5.jpg" alt="Étape suivante de l&#x27;interface Databuton demandant de téléverser les prérequis et spécifications du projet." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000213_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:13</span>
+                        <span class="caption-text">Étape suivante de l&#x27;interface Databuton demandant de téléverser les prérequis et spécifications du projet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000222_seg5.jpg" alt="Vue similaire sur l&#x27;interface Databuton montrant l&#x27;étape des exigences (Requirements) du projet." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000222_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:22</span>
+                        <span class="caption-text">Vue similaire sur l&#x27;interface Databuton montrant l&#x27;étape des exigences (Requirements) du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:31 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ces intégrations ou quoi que ce soit. Nous allons simplement connecter nos API afin de pouvoir y accéder directement à l&#x27;intérieur de notre application de bureau Claude ici même. Très bien, c&#x27;est parti. Le bouton de données nous donne en fait un flux ou une liste de tâches pour nous permettre de créer réellement notre application. Je vais donc parcourir chacune de ces tâches, identifier lesquelles sont nécessaires, et ensuite nous continuerons à partir de là. Très bien, tout d&#x27;abord, implémentons l&#x27;intégration de l&#x27;API YouTube. Cela va essentiellement nous permettre d&#x27;utiliser YouTube et d&#x27;effectuer des recherches sur YouTube, ce qui est évidemment ce que nous essayons de construire ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Databutton et application Claude Desktop.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste de tâches de développement (« To-Do ») incluant la création d&#x27;une landing page, l&#x27;authentification Firebase, et l&#x27;intégration d&#x27;API (YouTube, Slack).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parcourt le flux de tâches et sélectionne une tâche spécifique pour en afficher les détails.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000244_seg6.jpg" alt="Vue d&#x27;ensemble du plan de projet dans Databutton montrant la liste des tâches (To-Do) pour NexusFlow." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000244_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:44</span>
+                        <span class="caption-text">Vue d&#x27;ensemble du plan de projet dans Databutton montrant la liste des tâches (To-Do) pour NexusFlow.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000251_seg6.jpg" alt="Fenêtre modale détaillée d&#x27;une tâche spécifique (Implémenter l&#x27;intégration de l&#x27;API YouTube) avec sa description et ses options." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000251_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:51</span>
+                        <span class="caption-text">Fenêtre modale détaillée d&#x27;une tâche spécifique (Implémenter l&#x27;intégration de l&#x27;API YouTube) avec sa description et ses options.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:58 - 00:03:19</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, à partir de là, nous allons travailler sur la mise en place de l&#x27;intégration Slack pour que nous puissions ensuite envoyer des messages de canal sur Slack. Donc, il me demande ma clé API, alors je vais juste la coller ici. Très bien, donc il semble que notre API a été implémentée, nous pouvons donc marquer ceci comme fait. Si je veux vérifier cela, je peux en fait venir dans notre application, venir dans l&#x27;aperçu, puis vérifier YouTube ou vérifier les APIs dans cette section de l&#x27;API YouTube qui a été ajoutée ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (Databrutton / NexusFlow) avec un panneau de chat IA intégré à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan de développement listant les intégrations API (YouTube, Slack) et interface de prévisualisation des endpoints.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue dans le plan de projet et montre l&#x27;avancement de l&#x27;intégration des API.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000303_seg7.jpg" alt="L&#x27;interface de l&#x27;application affichant le plan de construction de NexusFlow avec les tâches en cours et à faire." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000303_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:03</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;application affichant le plan de construction de NexusFlow avec les tâches en cours et à faire.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000314_seg7.jpg" alt="L&#x27;interface de prévisualisation de l&#x27;application avec un panneau latéral et une zone de test pour les API YouTube." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000314_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:14</span>
+                        <span class="caption-text">L&#x27;interface de prévisualisation de l&#x27;application avec un panneau latéral et une zone de test pour les API YouTube.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:19 - 00:03:40</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, il va obtenir les résultats de recherche YouTube là-bas. Donc, ça a l&#x27;air bien. Revenons à notre plan. Et construisons maintenant juste une interface de recherche YouTube pour que nous puissions réellement voir s&#x27;il extrait des informations. Et en faisant cela, nous pourrons récupérer de vraies vidéos YouTube et elles seront traduites dans l&#x27;interface utilisateur. Très bien, donc il semble que notre API fonctionne maintenant selon notre interface utilisateur ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de gestion de projet (Databutton) avec panneau de chat de l&#x27;assistant IA intégré.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches du projet ConnectFlow, incluant l&#x27;intégration de l&#x27;API YouTube et la création de l&#x27;interface de recherche.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue dans le plan du projet pour sélectionner la prochaine tâche à réaliser concernant l&#x27;interface de recherche YouTube.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000324_seg8.jpg" alt="Vue d&#x27;un tableau de bord de projet affichant le plan de construction de ConnectFlow avec les tâches en cours et terminées, et le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000324_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Vue d&#x27;un tableau de bord de projet affichant le plan de construction de ConnectFlow avec les tâches en cours et terminées, et le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000330_seg8.jpg" alt="Le curseur sélectionne une tâche spécifique dans le plan de développement du projet, illustrant la planification des fonctionnalités de recherche YouTube." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000330_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:30</span>
+                        <span class="caption-text">Le curseur sélectionne une tâche spécifique dans le plan de développement du projet, illustrant la planification des fonctionnalités de recherche YouTube.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:40 - 00:04:07</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc allons simplement ici et cherchons sur YouTube. Si cela affiche les résultats, c&#x27;est que ça fonctionne. D&#x27;accord, fantastique. Ça fonctionne sans problème. Maintenant, ce que nous devons faire, c&#x27;est en fait aller ajouter l&#x27;API Slack afin que nous puissions envoyer des messages Slack. Nous nous rapprochons donc de la construction du serveur et ensuite nous pourrons le connecter à Cloud Desktop. Je vais donc revenir au plan. Je vais marquer cela comme fait. Maintenant, implémentons l&#x27;intégration de l&#x27;API Slack. Commençons donc cela et partons de là. Il semble que Data Button veuille que nous ajoutions notre jeton de bot Slack.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application web ConnectFlow avec panneau de discussion et interface de gestion de tâches.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Résultats de recherche YouTube, statuts API, et description de la tâche MYA-4 pour l&#x27;intégration de Slack.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;application pour tester les fonctionnalités et préparation de l&#x27;ajout de l&#x27;API Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000347_seg9.jpg" alt="Le présentateur teste l&#x27;interface utilisateur de ConnectFlow avec une recherche YouTube fonctionnelle affichant des vignettes de vidéos." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000347_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:47</span>
+                        <span class="caption-text">Le présentateur teste l&#x27;interface utilisateur de ConnectFlow avec une recherche YouTube fonctionnelle affichant des vignettes de vidéos.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000400_seg9.jpg" alt="Une fenêtre modale de tâche s&#x27;ouvre pour configurer l&#x27;intégration de l&#x27;API Slack." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000400_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:00</span>
+                        <span class="caption-text">Une fenêtre modale de tâche s&#x27;ouvre pour configurer l&#x27;intégration de l&#x27;API Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:07 - 00:04:40</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cependant, je n&#x27;ai pas ceci. Je vais donc lui demander comment configurer réellement cela pour nous. Peux-tu m&#x27;expliquer comment configurer concrètement cela sur Slack ? Je n&#x27;ai jamais fait cela auparavant. Donne-moi donc un récapitulatif sur la façon de faire cela. Très bien. Il nous donne donc un guide étape par étape sur la manière exacte de procéder. Je vais donc venir ouvrir cette page de l&#x27;API Slack ici. Il est dit que je vais créer une nouvelle application. Je vais donc venir ici et simplement cliquer sur créer une nouvelle application. Très bien. Je vais appeler cela l&#x27;application de recherche YouTube. Je vais sélectionner mon espace de travail. Je vais créer cette application. Et ensuite, je vais revenir. Il semble que je doive ajouter des fonctionnalités de bot. Je vais en fait aller sur OAuth et autorisations ici. Je dois ajouter quelques portées. C&#x27;est donc essentiellement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (Databutton / ConnectFlow) avec un panneau de chat latéral.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Guide textuel étape par étape pour configurer une application Slack, incluant la création de l&#x27;application, l&#x27;ajout de capacités de bot, la configuration des permissions (OAuth &amp; Permissions) et la récupération du jeton de bot.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur lit et suit les instructions textuelles générées par l&#x27;IA dans l&#x27;assistant pour configurer l&#x27;intégration Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000423_seg10.jpg" alt="L&#x27;assistant virtuel affiche dans le panneau latéral droit un guide étape par étape pour configurer une application Slack pour l&#x27;intégration d&#x27;API." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000423_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:23</span>
+                        <span class="caption-text">L&#x27;assistant virtuel affiche dans le panneau latéral droit un guide étape par étape pour configurer une application Slack pour l&#x27;intégration d&#x27;API.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000432_seg10.jpg" alt="Gros plan sur le panneau latéral droit montrant la suite des instructions de configuration de Slack, notamment l&#x27;ajout de fonctionnalités de bot et de permissions." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000432_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Gros plan sur le panneau latéral droit montrant la suite des instructions de configuration de Slack, notamment l&#x27;ajout de fonctionnalités de bot et de permissions.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:40 - 00:05:15</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">...correspond en gros à des actions que nous permettons à Slack d&#x27;exécuter à l&#x27;intérieur de notre application. Donc les canaux, lecture, le chat, écriture. Donc je vais en fait installer ceci pour l&#x27;accélérateur d&#x27;IA. Donnons-lui donc l&#x27;accès pour accéder à notre canal Slack. Ensuite, nous devons venir dans nos OAuth et permissions. Nous devons copier notre jeton OAuth d&#x27;utilisateur de bot. Voici mon jeton OAuth de bot. Très bien. Je l&#x27;ai donc collé ici. Voyons ce que nous devons faire d&#x27;autre pour configurer cela réellement. La prochaine étape consiste en fait à l&#x27;ajouter dans nos secrets ici pour nos clés API. Très bien. Il y a donc maintenant cette chose sur l&#x27;interface utilisateur appelée messagerie Slack. Cliquons simplement dessus. Et je suppose que cela va tester pour voir si c&#x27;est</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Slack, interface de développement de type low-code / plateforme d&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Permissions Slack (chat, canaux), interface utilisateur de recherche YouTube, instructions textuelles et blocs de code/jetons.
+[DESC_IMAGE_1] Configuration et octroi des permissions à l&#x27;application Slack.
+[DESC_IMAGE_2] Affichage et test de l&#x27;application ConnectFlow intégrant l&#x27;API YouTube.
+[DESC_IMAGE_3] Enregistrement et sécurisation des jetons d&#x27;authentification pour l&#x27;intégration Slack.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000448_seg11.jpg" alt="Écran de demande d&#x27;autorisation Slack pour une application d&#x27;intelligence artificielle (&quot;Youtube Research App&quot;)." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000448_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:48</span>
+                        <span class="caption-text">Écran de demande d&#x27;autorisation Slack pour une application d&#x27;intelligence artificielle (&quot;Youtube Research App&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000457_seg11.jpg" alt="Interface de développement web &quot;ConnectFlow&quot; montrant un tableau de bord et un assistant conversationnel sur le côté droit." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000457_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:57</span>
+                        <span class="caption-text">Interface de développement web &quot;ConnectFlow&quot; montrant un tableau de bord et un assistant conversationnel sur le côté droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000506_seg11.jpg" alt="Interface de développement &quot;ConnectFlow&quot; avec validation des jetons d&#x27;accès dans le panneau latéral droit." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000506_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Interface de développement &quot;ConnectFlow&quot; avec validation des jetons d&#x27;accès dans le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:15 - 00:05:40</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en train d&#x27;envoyer des messages Slack. Très bien. Ça devrait être prêt. Maintenant, on dirait qu&#x27;on a configuré l&#x27;API Slack. Marquons cette étape comme terminée et allons voir notre plan pour voir ce qu&#x27;on doit ajouter d&#x27;autre. Donc, on dirait qu&#x27;on doit créer l&#x27;interface de messagerie Slack. De cette façon, on peut vraiment vérifier si on est capables d&#x27;envoyer des messages Slack. Une fois que ça fonctionne vraiment, on peut maintenant connecter ça à Claude parce qu&#x27;on a configuré tout notre serveur puisqu&#x27;il peut, d&#x27;une part, faire des recherches sur des vidéos YouTube, mais aussi envoyer des messages à Slack. Donc, on devrait être prêts après ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application de développement web DataStux / ConnectFlow et le panneau latéral d&#x27;interaction avec l&#x27;IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan du projet avec des tâches listées (comme l&#x27;implémentation de l&#x27;intégration de l&#x27;API Slack et la création de l&#x27;interface de messagerie) et le chat de l&#x27;assistant IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur navigue dans l&#x27;interface de l&#x27;application web pour consulter le plan du projet et marquer les tâches terminées ou à venir.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000521_seg12.jpg" alt="L&#x27;interface de développement DataStux montrant l&#x27;écran de chargement &#x27;We&#x27;ll be there in a jiffy&#x27; avec le panneau latéral droit affichant l&#x27;historique des tâches et la webcam du présentateur en bas à gauche." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000521_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:21</span>
+                        <span class="caption-text">L&#x27;interface de développement DataStux montrant l&#x27;écran de chargement &#x27;We&#x27;ll be there in a jiffy&#x27; avec le panneau latéral droit affichant l&#x27;historique des tâches et la webcam du présentateur en bas à gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000527_seg12.jpg" alt="L&#x27;interface de développement DataStux montrant la vue du plan du projet &#x27;Our plan to build ConnectFlow&#x27; avec la tâche &#x27;Build Slack messaging interface&#x27; en cours, et le panneau latéral de chat à droite." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000527_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:27</span>
+                        <span class="caption-text">L&#x27;interface de développement DataStux montrant la vue du plan du projet &#x27;Our plan to build ConnectFlow&#x27; avec la tâche &#x27;Build Slack messaging interface&#x27; en cours, et le panneau latéral de chat à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:40 - 00:06:01</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc la première chose que je dois faire est en fait de venir sur Slack et dans le canal auquel je veux ajouter ceci, pour pouvoir analyser les messages du canal. Je dois ajouter le nom de l&#x27;application que nous avons juste ici. Donc l&#x27;application de recherche ou application de recherche YouTube est ce que je dois ajouter. Alors c&#x27;est parti. Je vais simplement l&#x27;ajouter ici, l&#x27;ajouter au canal. Et donc maintenant, ils peuvent effectivement publier à partir de ce genre d&#x27;application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Slack, Slack API Dashboard</p>
+                        <p><strong>Contenu textuel & Code :</strong> Canal Slack &quot;#blog-posts&quot; et mention d&#x27;application bot &quot;@Youtube Research App&quot;</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et ajout/mention d&#x27;une application de recherche dans un canal Slack pour l&#x27;analyse des messages</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000545_seg13.jpg" alt="Vue de l&#x27;interface Slack montrant un canal de discussion (#blog-posts) avec le curseur positionné dans la zone de message." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000545_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Vue de l&#x27;interface Slack montrant un canal de discussion (#blog-posts) avec le curseur positionné dans la zone de message.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000556_seg13.jpg" alt="Vue de l&#x27;interface Slack avec la mention &quot;@Youtube Research App&quot; saisie dans la barre de message du canal #blog-posts." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000556_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:56</span>
+                        <span class="caption-text">Vue de l&#x27;interface Slack avec la mention &quot;@Youtube Research App&quot; saisie dans la barre de message du canal #blog-posts.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:01 - 00:06:25</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Essentiellement, c&#x27;est presque comme un utilisateur. Il peut désormais publier sur ce canal. Revenons donc au bouton de données et vérifions si les messages Slack sont envoyés. Et je dis essentiellement, je veux que tu envoie une blague dans le canal de l&#x27;article de blog. Cela va de nouveau utiliser cette API ici afin de l&#x27;envoyer. Boum. D&#x27;accord. Donc maintenant, ça fonctionne. Pourquoi les programmeurs préfèrent-ils le mode sombre ? Parce que la lumière attire les bugs. Hilarant. C&#x27;est absolument hilarant. Bref. Donc maintenant, c&#x27;est opérationnel.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de développement web (Databutton/Bolt) et application de messagerie Slack.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fils de discussion de l&#x27;assistant IA, code et messages de test incluant une blague informatique (« Why do programmers prefer dark mode? Because light attracts bugs! »).</p>
+                        <p><strong>Action / Démonstration :</strong> Interaction avec l&#x27;assistant IA pour tester l&#x27;intégration Slack, puis visualisation du message envoyé dans le canal Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000607_seg14.jpg" alt="Interface de développement avec assistant IA (type Databutton) montrant un fil de discussion et un message de l&#x27;utilisateur demandant de tester l&#x27;envoi de messages Slack." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000607_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:07</span>
+                        <span class="caption-text">Interface de développement avec assistant IA (type Databutton) montrant un fil de discussion et un message de l&#x27;utilisateur demandant de tester l&#x27;envoi de messages Slack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000613_seg14.jpg" alt="Vue similaire de l&#x27;interface de développement avec l&#x27;assistant IA qui répond dans le panneau latéral pour tester la fonctionnalité de messagerie Slack." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000613_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:13</span>
+                        <span class="caption-text">Vue similaire de l&#x27;interface de développement avec l&#x27;assistant IA qui répond dans le panneau latéral pour tester la fonctionnalité de messagerie Slack.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000619_seg14.jpg" alt="Interface Slack affichant un canal de discussion (« #blog-posts ») avec une blague envoyée par une application (« YouTube Research App »)." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000619_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:19</span>
+                        <span class="caption-text">Interface Slack affichant un canal de discussion (« #blog-posts ») avec une blague envoyée par une application (« YouTube Research App »).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:25 - 00:06:57</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout cela fonctionne. Nous avons notre application. Elle est connectée à notre API, ce qui permet de récupérer des informations depuis YouTube, ainsi que les messages du canal Slack. Donc ce que nous pouvons faire maintenant, c&#x27;est aller dans ces paramètres et je vais aller dans production. Et tout ce que je vais faire, c&#x27;est activer MCP. Donc cela va essentiellement générer une clé pour nous à copier. Et ensuite ce que je vais faire, c&#x27;est copier cet extrait de code. Je vais ouvrir mon application de bureau Claude. Et à partir de là, ce que je vais faire, c&#x27;est aller dans les paramètres sur mon écran. Donc fondamentalement, aller dans Claude, aller dans les paramètres de Claude. Je vais aller dans développeur. Je vais cliquer sur modifier la configuration.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Databutton (plateforme de développement d&#x27;applications web propulsée par l&#x27;IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Panneau de configuration, options de production, clés API MCP (Model Context Protocol) et intégration de l&#x27;assistant Claude.
+[DESC_IMAGE_3] Navigation dans les paramètres de production de l&#x27;application.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000633_seg15.jpg" alt="Vue de l&#x27;interface de développement de l&#x27;application avec un message d&#x27;erreur d&#x27;aperçu au centre et le panneau d&#x27;assistant IA sur la droite." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000633_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:33</span>
+                        <span class="caption-text">Vue de l&#x27;interface de développement de l&#x27;application avec un message d&#x27;erreur d&#x27;aperçu au centre et le panneau d&#x27;assistant IA sur la droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000641_seg15.jpg" alt="Navigation vers l&#x27;onglet de configuration et de production dans le tableau de bord de l&#x27;application." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000641_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:41</span>
+                        <span class="caption-text">Navigation vers l&#x27;onglet de configuration et de production dans le tableau de bord de l&#x27;application.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000649_seg15.jpg" alt="Affichage de la fenêtre d&#x27;interface utilisateur de l&#x27;application déployée avec un message de salutation personnalisé." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000649_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:49</span>
+                        <span class="caption-text">Affichage de la fenêtre d&#x27;interface utilisateur de l&#x27;application déployée avec un message de salutation personnalisé.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:57 - 00:07:31</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais ouvrir ce fichier avec n&#x27;importe quel éditeur de code que j&#x27;ai. Et je vais simplement coller ce code que je viens d&#x27;obtenir de data button ici. Et ensuite, je dois changer ma clé API data button avec cette API pour le serveur MCP. Donc je vais fondamentalement juste venir ici, supprimer tout ce texte, coller mon texte. Je vais enregistrer ceci et en sortir. Et une autre chose que je dois faire maintenant, c&#x27;est en fait de déployer notre application car si l&#x27;application n&#x27;est pas déployée, elle ne peut en fait pas accéder à cette URL du serveur MCP. Alors attendons que cela se charge. Et puis je vais fondamentalement juste</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Éditeur de code (VS Code ou similaire) et navigateur web affichant l&#x27;interface de DataButton et l&#x27;assistant Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Fichier JSON de configuration `claude_desktop_config.json` contenant les paramètres du serveur MCP et la clé API DataButton.</p>
+                        <p><strong>Action / Démonstration :</strong> Modification du fichier de configuration JSON pour y insérer la clé API DataButton du serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000705_seg16.jpg" alt="Éditeur de code affichant un fichier de configuration JSON pour le serveur MCP de Claude Desktop." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000705_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:05</span>
+                        <span class="caption-text">Éditeur de code affichant un fichier de configuration JSON pour le serveur MCP de Claude Desktop.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000722_seg16.jpg" alt="Interface du tableau de bord Databuton montrant la section MCP avec les clés API et les options de configuration." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000722_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:22</span>
+                        <span class="caption-text">Interface du tableau de bord Databuton montrant la section MCP avec les clés API et les options de configuration.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:08:06</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">je vais recharger Claude et cela devrait fonctionner correctement. Très bien. Donc, à l&#x27;intérieur de notre application de bureau Claude maintenant, vous pouvez voir un petit marteau avec un six à côté. Cela signifie que nos outils MCP que nous avons configurés à l&#x27;intérieur de Data Button sont maintenant prêts à l&#x27;emploi, chargés à l&#x27;intérieur de Claude, et que nous pouvons maintenant les utiliser. Laissez-moi donc venir ici et demander d&#x27;envoyer un message Slack. Peux-tu s&#x27;en, s&#x27;il te plaît, envoyer une blague dans le canal Slack intitulé notion slash workspace slash updates channel ? Très bien. Je vais l&#x27;envoyer maintenant. Il semble que nous devions autoriser quelques éléments ici, ce qui correspond fondamentalement à l&#x27;accès de l&#x27;outil à notre chat. Et nous devions recevoir un message Slack ici bientôt. Boum. Et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude (Desktop app)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des outils MCP intégrés (check_health, list_slack_channels, public_search_videos, search_videos) et requêtes d&#x27;autorisation d&#x27;outils</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des outils MCP configurés au sein de l&#x27;application Claude connectée à Data Button</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000740_seg17.jpg" alt="Interface de l&#x27;application Claude affichant une liste détaillée des outils MCP disponibles (&quot;Available MCP Tools&quot;)." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000740_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:40</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude affichant une liste détaillée des outils MCP disponibles (&quot;Available MCP Tools&quot;).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000749_seg17.jpg" alt="Écran d&#x27;accueil de l&#x27;application de bureau Claude avec le message &quot;Good afternoon, brock&quot; et la barre de saisie." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000749_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:49</span>
+                        <span class="caption-text">Écran d&#x27;accueil de l&#x27;application de bureau Claude avec le message &quot;Good afternoon, brock&quot; et la barre de saisie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000757_seg17.jpg" alt="Fenêtre de chat Claude affichant une boîte de dialogue contextuelle demandant l&#x27;autorisation d&#x27;utiliser un outil (&quot;Allow tool from databutton-app?&quot;)." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000757_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:57</span>
+                        <span class="caption-text">Fenêtre de chat Claude affichant une boîte de dialogue contextuelle demandant l&#x27;autorisation d&#x27;utiliser un outil (&quot;Allow tool from databutton-app?&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:06 - 00:08:42</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">si je vérifie mon Slack juste ici, en gros ça dit, pourquoi est-ce que les scientifiques ne font pas confiance aux atomes, parce qu&#x27;ils inventent tout. Donc super. Maintenant, on a une blague là-dedans. Ça signifie fondamentalement qu&#x27;on peut désormais envoyer des messages depuis Claude Desktop directement. Maintenant, demandons des recherches sur YouTube. Très bien. Alors, allons-y et testons nos capacités de recherche YouTube. En même temps, prenons les informations que nous trouvons sur YouTube et envoyons ensuite ces informations sur Slack pour que notre équipe puisse réellement les voir. Je veux que tu fasses des recherches sur ce qu&#x27;est le vibe coding. Trouve les meilleures vidéos que tu trouves sur YouTube concernant le vibe coding et envoie ensuite une analyse détaillée dans le canal Slack appelé</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Slack, application de messagerie professionnelle.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un message texte de type blague (« Why don&#x27;t scientists trust atoms? Because they make up everything! ») envoyé dans Slack.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;intégration entre l&#x27;IA et l&#x27;application Slack pour l&#x27;envoi de messages automatisés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000815_seg18.jpg" alt="Capture d&#x27;écran montrant l&#x27;application Slack avec le message de la blague sur les atomes affiché dans un canal." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000815_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:15</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;application Slack avec le message de la blague sur les atomes affiché dans un canal.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:42 - 00:09:18</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Notion Updates Works appelé Notion Workspace Updates. Très bien et juste comme ça, si vous consultez ce canal Slack ici, vous pouvez voir que nous avons un aperçu de la recherche sur le « vibe coding », donc cela explique ce qu&#x27;est le « vibe coding » et cela détaille même certaines des meilleures vidéos sur le « vibe coding ». C&#x27;est donc génial parce qu&#x27;à l&#x27;intérieur de Claude, nous n&#x27;aurions pas eu accès à la recherche sur YouTube ou à l&#x27;envoi de messages sur les canaux Slack. Maintenant, nous pouvons l&#x27;utiliser comme un assistant de recherche YouTube qui peut même envoyer des messages sur les canaux Slack, extraire des informations de Slack, tout ça. Donc les gars, je viens de vous montrer comment coder sur mesure avec DataButton, un serveur MCP qui connecte vos applications entre elles et qui vous permet de</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Slack et interface de navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte explicatif sur le &#x27;vibe coding&#x27; initié par Andrej Karpathy, liste de vidéos YouTube, outils populaires (Cursor, Claude 3.7) et étapes de recherche de l&#x27;agent.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et lecture d&#x27;un résumé de recherche automatisé sur le &#x27;vibe coding&#x27; publié sur Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000851_seg19.jpg" alt="Capture montrant l&#x27;application Slack ouverte sur le canal #notion-workspace-updates, affichant un résumé détaillé sur le &#x27;vibe coding&#x27;." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000851_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:51</span>
+                        <span class="caption-text">Capture montrant l&#x27;application Slack ouverte sur le canal #notion-workspace-updates, affichant un résumé détaillé sur le &#x27;vibe coding&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000900_seg19.jpg" alt="Capture montrant le défilement du texte dans le canal Slack, révélant les outils populaires pour le &#x27;vibe coding&#x27; et les limites associées." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000900_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:00</span>
+                        <span class="caption-text">Capture montrant le défilement du texte dans le canal Slack, révélant les outils populaires pour le &#x27;vibe coding&#x27; et les limites associées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000909_seg19.jpg" alt="Capture montrant une fenêtre de navigateur ou d&#x27;application affichant le journal d&#x27;exécution d&#x27;un agent IA effectuant des recherches sur le &#x27;vibe coding&#x27;." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000909_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:09</span>
+                        <span class="caption-text">Capture montrant une fenêtre de navigateur ou d&#x27;application affichant le journal d&#x27;exécution d&#x27;un agent IA effectuant des recherches sur le &#x27;vibe coding&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:18 - 00:09:37</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">connectez-le à Claude Desktop et vous pouvez le personnaliser pour toutes les applications que vous utilisez qui ont un bouton de données d&#x27;API, cela rend les choses vraiment simples à faire. J&#x27;espère donc que vous avez apprécié ce tutoriel. Si vous avez aimé, assurez-vous de vous abonner à cette chaîne. Je couvre tout ce qui touche à l&#x27;IA pour les non-techniciens en vous montrant des cas d&#x27;utilisation sympas comme celui-ci. J&#x27;espère donc que vous en avez retiré de la valeur et je vous vois dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application logicielle de type assistant IA (Claude Desktop ou similaire) avec affichage d&#x27;un prompt et de résultats textuels.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;un prompt utilisateur demandant de rechercher des vidéos sur le « vibe coding » et d&#x27;envoyer un résumé sur Slack, suivi des réponses textuelles détaillant les étapes exécutées.</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage des résultats d&#x27;une automatisation ou d&#x27;une interaction avec une API connectée à un outil externe.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000923_seg20.jpg" alt="Capture d&#x27;écran montrant une interface logicielle avec une conversation textuelle, accompagnée d&#x27;un encart vidéo du présentateur dans le coin supérieur droit." loading="lazy" onclick="openLightbox('../screenshots/pB1MRWhS13Y/pB1MRWhS13Y_000923_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:23</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface logicielle avec une conversation textuelle, accompagnée d&#x27;un encart vidéo du présentateur dans le coin supérieur droit.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
