@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 The EASIEST Way to Build and Host n8n Agents (For Non-Techies) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 The EASIEST Way to Build and Host n8n Agents (For Non-Techies)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-03-30</span>
+                <span class="badge">⏱️ 00:10:46</span>
+                <span class="badge">🆔 <code>cayngY9kP0U</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=cayngY9kP0U" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Cette vidéo, présentée par la chaîne *Brock Mesarich | AI for Non Techies*, s'attaque à l'un des plus grands goulets d'étranglement de l'automatisation moderne par l'intelligence artificielle : le coût prohibitif et la complexité technique de l'hébergement d'agents IA et de workflows sur des plateformes telles que n8n. L'analyste démontre qu'en combinant l'infrastructure cloud VPS de Hostinger avec le moteur d'automatisation n8n, il est possible de concevoir une architecture robuste et clé en main tout en réduisant les coûts d'hébergement d'environ 70 %. Cette approche s'adresse directement aux profils non techniques cherchant à s'affranchir des barrières de l'auto-hébergement complexe.<br><br>Sur le plan pratique, la démonstration se focalise sur l'implémentation d'un cas d'usage hautement reproductible : la qualification automatisée de prospects (leads) collectés via un formulaire et centralisés dans Google Sheets, avant d'être analysés et notés par un modèle de langage (OpenAI ChatGPT). À travers un tutoriel pas à pas, la vidéo détaille l'ensemble des configurations requises, depuis le provisionnement du serveur virtuel jusqu'à l'authentification OAuth 2.0 sur la console Google Cloud, en passant par le paramétrage des invites (*prompt engineering*) décisionnelles.<br><br>L'enseignement stratégique majeur réside dans la standardisation et la reproductibilité des flux de travail autonomes. En automatisant la lecture périodique des bases de données de prospects et leur enrichissement par IA, les structures commerciales éliminent les tâches répétitives à faible valeur ajoutée. L'utilisation de structures de données au format JSON garantit une interopérabilité fluide entre les outils de bureautique cloud et les grands modèles de langage, ouvrant la voie à une scalabilité opérationnelle immédiate pour des entrepreneurs ou des équipes agiles.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **n8n** : Plateforme d'automatisation de workflows open-source et visuelle permettant de connecter des applications et d'orchestrer des agents IA complexes.<br>* **Hostinger** : Hébergeur cloud fournissant des instances VPS préconfigurées avec n8n, permettant de réduire drastiquement les coûts par rapport aux solutions natives.<br>* **OpenAI (ChatGPT / GPT-4)** : Modèle de langage grand public utilisé ici comme moteur décisionnel pour analyser, noter et qualifier les prospects entrants.<br>* **Google Sheets** : Outil de tableur cloud servant de base de données initiale pour centraliser les soumissions de formulaires et stocker les résultats de qualification.<br>* **Google Cloud Console** : Interface de gestion des services Google requise pour configurer les accès API (Google Drive, Sheets) et l'authentification OAuth 2.0.<br>* **Claude** : Modèle linguistique avancé d'Anthropic mentionné dans l'écosystème global de l'IA pour l'assistance à la conception.<br>* **Make** : Alternative d'automatisation no-code concurrente de n8n et Zapier.<br>* **Zapier** : Pionnier des plateformes d'intégration et d'automatisation de tâches entre applications web.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle développé par xAI.<br>* **Gemini** : Suite de modèles d'intelligence artificielle multimodal développée par Google.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Optimisation des coûts d'infrastructure** : Le recours à un VPS Hostinger configuré spécifiquement pour n8n permet de faire chuter la facture annuelle de 215 $ à 86 $ (grâce à un code promotionnel), représentant une économie d'environ 70 % par rapport aux solutions infonuagiques traditionnelles.<br>* **Alternative à l'auto-hébergement complexe** : L'utilisation d'une image VPS pré-installée élimine la nécessité de compétences techniques avancées en administration système pour déployer des environnements d'automatisation souverains.<br>* **Importation rapide de modèles préconçus** : L'exploitation de templates natifs au sein de n8n permet d'amorcer instantanément des architectures complexes, comme le pontage entre Google Sheets et OpenAI, sans repartir d'une page blanche.<br>* **Architecture de déclenchement temporel** : Le paramétrage du nœud Google Sheets pour s'exécuter à intervalles réguliers (toutes les heures) assure une synchronisation asynchrone et un traitement par lots fluide des nouveaux flux de données.<br>* **Sécurisation des accès API Google** : La mise en place rigoureuse d'un projet sur la Google Cloud Console exige l'activation explicite des API Google Drive et Google Sheets pour éviter les erreurs de lecture et d'écriture de données.<br>* **Configuration de l'écran de consentement OAuth** : L'établissement d'une application externe, la définition d'utilisateurs test et l'association d'URL de redirection autorisées garantissent la conformité et la sécurité des liaisons de comptes.<br>* **Injection dynamique de variables** : Le passage de données contextuelles (nom, e-mail, domaine d'activité, taille de l'équipe) depuis les lignes du tableur vers le modèle de langage permet d'obtenir des réponses hautement personnalisées et structurées.<br>* **Standardisation des sorties au format JSON** : Le traitement des données par le modèle d'IA est configuré pour renvoyer des structures normalisées, facilitant la réinjection automatique des statuts de qualification (qualifié / non qualifié) dans la feuille de calcul.<br>* **Prompt engineering décisionnel** : L'intégration d'instructions comportementales claires dans le nœud OpenAI permet d'imposer des critères stricts (ex: le prospect doit être un décideur) pour filtrer objectivement l'entrée des leads.<br>* **Test et validation incrémentaux** : L'exécution manuelle des étapes de test (*fetch test event*) à chaque palier du workflow permet d'isoler immédiatement les erreurs de syntaxe, de mapping de données ou d'authentification avant le passage en production.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">n8n</span><span class="tool-tag">Hostinger</span><span class="tool-tag">OpenAI (ChatGPT / GPT-4)</span><span class="tool-tag">Google Sheets</span><span class="tool-tag">Google Cloud Console</span><span class="tool-tag">Claude</span><span class="tool-tag">Make</span><span class="tool-tag">Zapier</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts d&#x27;infrastructure** : Le recours à un VPS Hostinger configuré spécifiquement pour n8n permet de faire chuter la facture annuelle de 215 $ à 86 $ (grâce à un code promotionnel), représentant une économie d&#x27;environ 70 % par rapport aux solutions infonuagiques traditionnelles.</span></li><li><span class="point-bullet">✦</span><span>Alternative à l&#x27;auto-hébergement complexe** : L&#x27;utilisation d&#x27;une image VPS pré-installée élimine la nécessité de compétences techniques avancées en administration système pour déployer des environnements d&#x27;automatisation souverains.</span></li><li><span class="point-bullet">✦</span><span>Importation rapide de modèles préconçus** : L&#x27;exploitation de templates natifs au sein de n8n permet d&#x27;amorcer instantanément des architectures complexes, comme le pontage entre Google Sheets et OpenAI, sans repartir d&#x27;une page blanche.</span></li><li><span class="point-bullet">✦</span><span>Architecture de déclenchement temporel** : Le paramétrage du nœud Google Sheets pour s&#x27;exécuter à intervalles réguliers (toutes les heures) assure une synchronisation asynchrone et un traitement par lots fluide des nouveaux flux de données.</span></li><li><span class="point-bullet">✦</span><span>Sécurisation des accès API Google** : La mise en place rigoureuse d&#x27;un projet sur la Google Cloud Console exige l&#x27;activation explicite des API Google Drive et Google Sheets pour éviter les erreurs de lecture et d&#x27;écriture de données.</span></li><li><span class="point-bullet">✦</span><span>Configuration de l&#x27;écran de consentement OAuth** : L&#x27;établissement d&#x27;une application externe, la définition d&#x27;utilisateurs test et l&#x27;association d&#x27;URL de redirection autorisées garantissent la conformité et la sécurité des liaisons de comptes.</span></li><li><span class="point-bullet">✦</span><span>Injection dynamique de variables** : Le passage de données contextuelles (nom, e-mail, domaine d&#x27;activité, taille de l&#x27;équipe) depuis les lignes du tableur vers le modèle de langage permet d&#x27;obtenir des réponses hautement personnalisées et structurées.</span></li><li><span class="point-bullet">✦</span><span>Standardisation des sorties au format JSON** : Le traitement des données par le modèle d&#x27;IA est configuré pour renvoyer des structures normalisées, facilitant la réinjection automatique des statuts de qualification (qualifié / non qualifié) dans la feuille de calcul.</span></li><li><span class="point-bullet">✦</span><span>Prompt engineering décisionnel** : L&#x27;intégration d&#x27;instructions comportementales claires dans le nœud OpenAI permet d&#x27;imposer des critères stricts (ex: le prospect doit être un décideur) pour filtrer objectivement l&#x27;entrée des leads.</span></li><li><span class="point-bullet">✦</span><span>Test et validation incrémentaux** : L&#x27;exécution manuelle des étapes de test (*fetch test event*) à chaque palier du workflow permet d&#x27;isoler immédiatement les erreurs de syntaxe, de mapping de données ou d&#x27;authentification avant le passage en production.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:23</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, les gars, si vous avez cliqué sur cette vidéo, vous voulez apprendre à créer des agents IA avec N8N. Cependant, si nous faisons cela, nous allons rencontrer quelques problèmes. Et ces problèmes sont que l&#x27;hébergement de vos agents sur N8N peut devenir cher. Vous avez donc besoin d&#x27;un endroit pour exécuter votre agent IA et le faire sur N8N coûte un peu cher. L&#x27;autre chose que vous pourriez faire est de l&#x27;auto-héberger, mais c&#x27;est hautement technique et vraiment difficile à faire si vous êtes une personne non technique comme moi.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec l&#x27;application de dessin Excalidraw, incrustation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit listant les problèmes : &quot;Problem:&quot;, &quot;1. Hosting on n8n can get expensive&quot;, &quot;2. You can self host it but that is highly technical and hard to do&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique les inconvénients de l&#x27;hébergement sur N8N et de l&#x27;auto-hébergement, en pointant les éléments écrits à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000006_seg1.jpg" alt="Un tableau blanc virtuel (Excalidraw) présente les problèmes liés à l&#x27;hébergement d&#x27;agents IA, avec le présentateur incrusté en médaillon." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000006_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:06</span>
+                        <span class="caption-text">Un tableau blanc virtuel (Excalidraw) présente les problèmes liés à l&#x27;hébergement d&#x27;agents IA, avec le présentateur incrusté en médaillon.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:23 - 00:00:47</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">C&#x27;est un peu hors de question. Voici la solution. Je vais vous montrer un moyen très simple d&#x27;héberger vos propres agents IA. Et c&#x27;est une configuration unique. C&#x27;est donc très simple. Faites cela pour tous vos agents après l&#x27;avoir configuré une seule fois. En plus de cela, cela va coûter 70 % de moins que l&#x27;hébergement sur N8N. Vous allez donc économiser beaucoup d&#x27;argent en faisant cela. Si cela vous intéresse, je vais vous présenter cette solution maintenant et ensuite commencer à construire notre agent IA avec N8N.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web avec l&#x27;application Excalidraw et une incrustation vidéo (webcam).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte manuscrit sur le tableau blanc : &quot;Solution:&quot;, &quot;I will show you a VERY EASY way to host your agents&quot;, et &quot;One time setup&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur parle en pointant l&#x27;écran, tandis que le tableau blanc illustre visuellement la solution d&#x27;hébergement d&#x27;agents IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000029_seg2.jpg" alt="Un écran d&#x27;ordinateur affichant un tableau blanc numérique avec des notes manuscrites, et une incrustation vidéo du présentateur dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000029_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:29</span>
+                        <span class="caption-text">Un écran d&#x27;ordinateur affichant un tableau blanc numérique avec des notes manuscrites, et une incrustation vidéo du présentateur dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:47 - 00:01:07</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien. Donc, nous allons utiliser Hostinger pour héberger réellement notre N8N. Et je vais vous montrer exactement comment configurer cela dans cette vidéo. Ils ont la gentillesse de parrainer ceci, mais je pense que cela va vraiment vous faire économiser tellement d&#x27;argent. C&#x27;est tellement simple à configurer par rapport à un auto-hébergement ou à un hébergement sur N8N. Cliquez donc sur le lien dans la description. Vous allez voir ce plan d&#x27;hébergement VPS ici. Je vais donc cliquer sur choisir votre plan. Nous allons choisir le plan KVM2.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le site Hostinger VPS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Offre VPS à 6.99$/mois, aperçu du panneau de configuration VPS, templates Linux et emplacements de data centers.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit la plateforme d&#x27;hébergement VPS Hostinger pour N8N.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000052_seg3.jpg" alt="Le présentateur présente la page d&#x27;accueil d&#x27;Hostinger pour le VPS hosting à 6.99$/mois." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000052_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Le présentateur présente la page d&#x27;accueil d&#x27;Hostinger pour le VPS hosting à 6.99$/mois.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000102_seg3.jpg" alt="Vue similaire sur le site web d&#x27;Hostinger montrant les options de VPS et les templates Linux." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000102_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:02</span>
+                        <span class="caption-text">Vue similaire sur le site web d&#x27;Hostinger montrant les options de VPS et les templates Linux.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:07 - 00:01:27</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela devrait être plus que suffisant pour nous. Ensuite, je vais simplement cliquer sur 12 mois ici, ce qui a l&#x27;air de coûter 8 dollars par mois. Je vais ajouter un code promo ici, qui sera simplement Brock en majuscules. Cela va faire passer notre total de 215 dollars ici à 86 dollars pour toute une année d&#x27;hébergement. Ensuite, nous allons passer à l&#x27;application. Nous allons sélectionner N8N, puis cliquer sur continuer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme d&#x27;hébergement Hostinger.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Détails du panier d&#x27;achat : plan KVM 2, option 12 mois à 7,99 $/mois, sous-total de 95,88 $ et réduction de 120 $.</p>
+                        <p><strong>Action / Démonstration :</strong> Sélection de l&#x27;abonnement de 12 mois pour le plan d&#x27;hébergement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000112_seg4.jpg" alt="Page de paiement Hostinger montrant le panier d&#x27;achat avec l&#x27;abonnement KVM 2 sélectionné pour 12 mois à 7,99 $/mois." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000112_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:12</span>
+                        <span class="caption-text">Page de paiement Hostinger montrant le panier d&#x27;achat avec l&#x27;abonnement KVM 2 sélectionné pour 12 mois à 7,99 $/mois.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:27 - 00:02:01</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">et nous allons veiller à enregistrer notre compte. Ensuite, nous allons évidemment saisir nos informations de facturation ici. Ici, nous allons simplement ajouter les informations de notre carte. Je vais donc ajouter mon nom, j&#x27;ajouterais mon numéro ici, puis je cliquerais simplement sur soumettre le paiement. Et ensuite, vous devriez avoir accès à votre compte. Très bien. Une fois que c&#x27;est fait, nous obtiendrons ce message ici. On dirait que c&#x27;est fait. Je vais cliquer sur gérer le VPS. Comme vous pouvez le voir, voici le plan VPS N8N juste ici. Gestionons notre application. Et cela va nous amener directement à l&#x27;interface utilisateur de N8N, mais celle-ci est hébergée sur le cloud Hostinger. Comme vous pouvez le voir ici, nous devons simplement ajouter nos informations. Assurez-vous de vous inscrire avec votre compte si vous en avez déjà un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant le panneau de paiement et d&#x27;administration Hostinger, ainsi que l&#x27;interface d&#x27;installation de n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaires de paiement (carte bancaire), informations de connexion SSH, et champs de création de compte propriétaire (email, nom, mot de passe).
+[COMPTE_RENDU] Saisie des informations de paiement pour l&#x27;hébergement, finalisation de la configuration du VPS et première initialisation de l&#x27;application n8n.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000135_seg5.jpg" alt="Page de paiement Hostinger avec le formulaire de saisie des informations de carte bancaire et le récapitulatif de la commande." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000135_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:35</span>
+                        <span class="caption-text">Page de paiement Hostinger avec le formulaire de saisie des informations de carte bancaire et le récapitulatif de la commande.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000144_seg5.jpg" alt="Écran de confirmation Hostinger indiquant que le VPS est prêt (&quot;Well Done, You Are Ready&quot;) avec les options d&#x27;accès SSH et le tableau de bord." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000144_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:44</span>
+                        <span class="caption-text">Écran de confirmation Hostinger indiquant que le VPS est prêt (&quot;Well Done, You Are Ready&quot;) avec les options d&#x27;accès SSH et le tableau de bord.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000152_seg5.jpg" alt="Page de configuration du compte administrateur sur l&#x27;interface n8n (&quot;Set up owner account&quot;)." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000152_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:52</span>
+                        <span class="caption-text">Page de configuration du compte administrateur sur l&#x27;interface n8n (&quot;Set up owner account&quot;).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:01 - 00:02:34</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Un. Si vous ne vous inscrivez pas, ce sera vraiment très simple de le faire. Et voilà. Ensuite, ce que nous allons faire, c&#x27;est que je vais cliquer sur « Commencer à zéro » où nous allons commencer à créer notre agent IA. Et comme vous pouvez le voir, c&#x27;est la plateforme n8n complète maintenant à l&#x27;intérieur de Hostinger. Donc maintenant, nous n&#x27;avons plus rien à toucher. Tout est prêt à l&#x27;emploi. Grâce à Hostinger. Donc une chose formidable avec n8n, c&#x27;est que j&#x27;ai réellement de superbes modèles. Donc ce que je vais faire, c&#x27;est que je vais venir vers ces modèles ici et je vais en sélectionner un qui, selon moi, serait plutôt utile pour un cas d&#x27;usage spécifique pour moi-même, puis m&#x27;appuyer là-dessus. C&#x27;est un modèle plutôt pratique que, je pense, tout le monde pourrait utiliser. Donc, qualifier de nouveaux prospects dans des feuilles de calcul Google via OpenAI.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de la plateforme d&#x27;automatisation n8n et navigateur Chrome.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Espace de travail vide de workflow n8n avec les options d&#x27;ajout d&#x27;étapes et panneau latéral de navigation.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur présente l&#x27;interface principale vide de n8n pour démarrer la création d&#x27;un agent IA à partir de zéro.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000209_seg6.jpg" alt="Interface principale de l&#x27;éditeur n8n affichant un espace de travail vide avec le bouton central « Add first step » et la webcam du présentateur incrustée en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000209_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:09</span>
+                        <span class="caption-text">Interface principale de l&#x27;éditeur n8n affichant un espace de travail vide avec le bouton central « Add first step » et la webcam du présentateur incrustée en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:34 - 00:02:54</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ChatDBT4. Alors, utilisons ce modèle gratuit. Je vais essentiellement copier le modèle. Je vais venir ici. Je vais littéralement me contenter de coller dans cette interface utilisateur. Et maintenant, nous avons ce flux de travail prédéfini au sein de notre plateforme N8N. Cependant, nous devons maintenant faire quelques démarches et connecter ces identifiants afin de les relier à nos applications réelles.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme d&#x27;automatisation de flux de travail N8N.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un canevas de flux de travail avec des blocs textuels et des nœuds d&#x27;intégration (Google Sheets, configuration de messages système).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur importe ou colle un modèle prédéfini de flux de travail dans l&#x27;interface N8N pour l&#x27;expliquer.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000239_seg7.jpg" alt="Interface du logiciel N8N affichant un flux de travail d&#x27;automatisation avec un nœud Google Sheets (&quot;Check for new entries&quot;) et une petite incrustation vidéo du présentateur en haut à droite." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000239_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:39</span>
+                        <span class="caption-text">Interface du logiciel N8N affichant un flux de travail d&#x27;automatisation avec un nœud Google Sheets (&quot;Check for new entries&quot;) et une petite incrustation vidéo du présentateur en haut à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:54 - 00:03:29</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien les gars, avant que je ne configure réellement ces identifiants, expliquons rapidement ce qu&#x27;est cette automatisation et comment fonctionne cette progression. Donc, c&#x27;est lorsqu&#x27;une nouvelle ligne est ajoutée à une feuille de calcul Google. Donc, essentiellement, nous avons une automatisation existante selon laquelle chaque fois que quelqu&#x27;un remplit un formulaire, comme un formulaire de qualification de prospect, cela remplit ensuite une feuille de calcul Google avec ces informations. À partir de là, une fois qu&#x27;une nouvelle ligne est ajoutée avec un nouveau prospect, cela passe ensuite à l&#x27;étape de chatgpt d&#x27;OpenAI, qui va alors réellement prendre ce contenu ici et ensuite effectuer des recherches basées sur cet utilisateur. À partir de là, cela va extraire la réponse au format JSON. Cela va maintenant fusionner et ensuite cela va</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n (éditeur de flux de travail d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un diagramme montrant un déclencheur Google Sheets (&quot;Check for new rows&quot;), des nœuds de traitement OpenAI (&quot;Qualify leads with GPT&quot;), un nœud de fusion (&quot;Merge&quot;) et une mise à jour de statut (&quot;Update lead status&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la logique du flux d&#x27;automatisation et le parcours des données entre les différents nœuds.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000303_seg8.jpg" alt="Une vue d&#x27;ensemble d&#x27;un flux de travail d&#x27;automatisation sur n8n, avec le présentateur en médaillon à gauche." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000303_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:03</span>
+                        <span class="caption-text">Une vue d&#x27;ensemble d&#x27;un flux de travail d&#x27;automatisation sur n8n, avec le présentateur en médaillon à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:29 - 00:03:47</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en fait, remplir ceci avec le statut du prospect ici. Donc ça dira s&#x27;il est qualifié, s&#x27;il n&#x27;est pas qualifié en fonction de la configuration ici à l&#x27;intérieur de l&#x27;étape chatubit. Très bien. Donc maintenant, nous devons configurer notre authentification. Alors laissez-moi faire ça rapidement. Ne vous inquiétez pas. Je vais vous expliquer cela très simplement. Une fois que c&#x27;est configuré, c&#x27;est prêt. Alors ne vous inquiétez pas pour ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:48 - 00:04:07</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ce que je vais faire, c&#x27;est que je vais venir ici. Je vais cliquer sur créer un nouvel identifiant à l&#x27;intérieur de nos Google Sheets. Et à partir d&#x27;ici, je vais venir sur Google Cloud Console. Donc, cherchez simplement Google Cloud Console et cela vous mènera ici. Vous allez créer un nouveau projet. Donc, je vais créer un nouveau projet ici. Appelons ça simplement N8N Build. Allez cliquer sur Créer. Et ensuite, vous pouvez voir ici que cela va créer ce projet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> n8n, Google Cloud Console (navigateur web)</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL de redirection OAuth, champs Client ID et Client Secret, paramètres de projet Google Cloud (nom, compte de facturation, emplacement).
+[DESC_IMAGE_1] Configuration des identifiants API Google Sheets dans n8n et navigation vers Google Cloud Console.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000352_seg10.jpg" alt="Interface n8n montrant la configuration d&#x27;un identifiant pour un déclencheur Google Sheets avec les champs Client ID et Client Secret." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000352_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:52</span>
+                        <span class="caption-text">Interface n8n montrant la configuration d&#x27;un identifiant pour un déclencheur Google Sheets avec les champs Client ID et Client Secret.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000357_seg10.jpg" alt="Tableau de bord d&#x27;accueil de la console Google Cloud affichant le nom du projet et les options de recherche." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000357_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:57</span>
+                        <span class="caption-text">Tableau de bord d&#x27;accueil de la console Google Cloud affichant le nom du projet et les options de recherche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000402_seg10.jpg" alt="Formulaire de création d&#x27;un nouveau projet sur la console Google Cloud avec les champs de nom et de localisation." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000402_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:02</span>
+                        <span class="caption-text">Formulaire de création d&#x27;un nouveau projet sur la console Google Cloud avec les champs de nom et de localisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:07 - 00:04:26</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc cliquons sur Sélectionner un projet ou vous pouvez venir ici et le sélectionner. À partir d&#x27;ici, il y a certaines choses que nous devons configurer. Donc venions-nous en... En fait, tout d&#x27;abord, nous allons chercher l&#x27;API Google Drive. Nous devons l&#x27;activer. Donc j&#x27;ai oublié de faire cela et j&#x27;essayais de comprendre quel était le problème. Et c&#x27;était à cause de ça, je ne l&#x27;avais pas activée. Donc activons notre API Google Drive.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Console Google Cloud Web Interface.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil Google Cloud, barre de recherche, interface de gestion des API et services.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et recherche de l&#x27;API Google Drive dans la console Google Cloud pour l&#x27;activer.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000412_seg11.jpg" alt="Image #1 montrant le tableau de bord Google Cloud Console avec la barre de recherche et un terme saisi." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000412_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:12</span>
+                        <span class="caption-text">Image #1 montrant le tableau de bord Google Cloud Console avec la barre de recherche et un terme saisi.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000416_seg11.jpg" alt="Image #2 montrant la barre de recherche en cours d&#x27;utilisation dans la console Google Cloud." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000416_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:16</span>
+                        <span class="caption-text">Image #2 montrant la barre de recherche en cours d&#x27;utilisation dans la console Google Cloud.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000421_seg11.jpg" alt="Image #3 montrant la page de détails du produit Google Drive API avec le bouton &quot;Enable&quot;." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000421_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:21</span>
+                        <span class="caption-text">Image #3 montrant la page de détails du produit Google Drive API avec le bouton &quot;Enable&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:26 - 00:04:58</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Assez simple. Ça devrait être bon. Ensuite, nous allons activer notre API Google Sheets. Donc, cela vous permet d&#x27;accéder à l&#x27;API de Google Sheets, évidemment. Revenons maintenant. Et ensuite, nous allons aller dans API et services. Allons à l&#x27;écran de consentement OAuth. Cliquez sur &quot;commencer&quot; ici, et donnons un nom à notre application, puis ajoutons notre e-mail de support, donc n&#x27;importe quel e-mail que vous utilisez. Nous allons cliquer sur &quot;externe&quot; pour notre audience et, encore une fois, ajoutons un autre e-mail ici et acceptons, continuons, cliquez sur créer. Tout a l&#x27;air bien jusqu&#x27;à présent. Ensuite, nous devons en fait ajouter un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Console Google Cloud, navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de l&#x27;API Google Sheets et formulaires de configuration de l&#x27;écran de consentement OAuth (App Information, Contact Information).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation vers l&#x27;API Google Sheets et configuration de l&#x27;écran de consentement OAuth sur Google Cloud.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000434_seg12.jpg" alt="Vue de la console Google Cloud affichant la page de détails de l&#x27;API Google Sheets." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000434_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:34</span>
+                        <span class="caption-text">Vue de la console Google Cloud affichant la page de détails de l&#x27;API Google Sheets.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000442_seg12.jpg" alt="Écran de configuration du projet Google Cloud montrant le formulaire de nom d&#x27;application pour l&#x27;écran de consentement OAuth." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000442_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:42</span>
+                        <span class="caption-text">Écran de configuration du projet Google Cloud montrant le formulaire de nom d&#x27;application pour l&#x27;écran de consentement OAuth.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000450_seg12.jpg" alt="Écran de configuration de l&#x27;écran de consentement OAuth montrant le champ de saisie des informations de contact." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000450_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:50</span>
+                        <span class="caption-text">Écran de configuration de l&#x27;écran de consentement OAuth montrant le champ de saisie des informations de contact.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:58 - 00:05:30</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">testeur afin d&#x27;accéder à ceci et de modifier donc venez ici cliquez sur audience nous allons ajouter un testeur ou en fait nous devons d&#x27;abord configurer un identifiant client donc cliquez sur type d&#x27;application client. Allons-y application web, donnez-lui un nom. Et ajoutons maintenant une URL de redirection autorisée. Et ceci est à l&#x27;intérieur de notre flux de travail N8N à l&#x27;intérieur de Hostinger où il est hébergé. Nous allons fondamentalement coller cela là puis cliquer sur créer. Ensuite, nous allons être invités à fournir notre identifiant client et notre secret client. Donc collez votre identifiant client dans nos identifiants Google N8N ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Cloud Console (Google Auth Platform)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration d&#x27;un identifiant client OAuth 2.0 (Application type: Web application, Name, Authorized redirect URIs)</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur clique sur le bouton de création de client puis configure les paramètres de l&#x27;application web et les URL de redirection.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000506_seg13.jpg" alt="Vue de la console Google Cloud montrant la section des clients OAuth 2.0 avec le curseur sur le bouton &quot;+ Create client&quot;." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000506_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:06</span>
+                        <span class="caption-text">Vue de la console Google Cloud montrant la section des clients OAuth 2.0 avec le curseur sur le bouton &quot;+ Create client&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000522_seg13.jpg" alt="Formulaire de création d&#x27;un identifiant client OAuth dans Google Cloud, avec les champs pour le type d&#x27;application, le nom et les URI de redirection autorisées." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000522_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:22</span>
+                        <span class="caption-text">Formulaire de création d&#x27;un identifiant client OAuth dans Google Cloud, avec les champs pour le type d&#x27;application, le nom et les URI de redirection autorisées.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:30 - 00:06:02</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Faites de même pour votre secret. C&#x27;est bon. Nous pourrions cliquer sur enregistrer. Ensuite, ce que nous voulons faire, c&#x27;est cliquer sur se connecter avec Google. En fait, ce que nous allons faire, c&#x27;est venir dans audience, nous devons ajouter un utilisateur test. Je vais donc venir ici. Je vais ajouter une adresse e-mail pour mon compte NNN. Voilà. Je vais maintenant me connecter avec Google. Je vais me connecter avec ce compte ici. Cliquez sur continuer. Et nous devons sélectionner l&#x27;accès à tout cela. Pour que NNN puisse y avoir accès. Et maintenant, il est indiqué que notre connexion a réussi. Maintenant, nous devons tester cela et voir si cela fonctionne réellement. Ce que je vais faire, c&#x27;est donc cliquer sur le document.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Cloud Console (Google Auth Platform), n8n.</p>
+                        <p><strong>Contenu textuel & Code :</strong> OAuth 2.0 Client IDs, identifiant Client ID, redirection OAuth, permissions d&#x27;accès Google Drive / Sheets, adresse email de test utilisateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Ajout d&#x27;un utilisateur de test dans la console Google Cloud et validation du processus d&#x27;authentification OAuth 2.0 (&quot;Sign in with Google&quot;) pour l&#x27;intégration dans n8n.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000538_seg14.jpg" alt="Console Google Cloud dans la section Google Auth Platform affichant l&#x27;identifiant Client OAuth 2.0 &quot;Web client 1&quot; créé." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000538_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:38</span>
+                        <span class="caption-text">Console Google Cloud dans la section Google Auth Platform affichant l&#x27;identifiant Client OAuth 2.0 &quot;Web client 1&quot; créé.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000546_seg14.jpg" alt="Interface Google Cloud Console dans le menu Audience, avec le panneau latéral &quot;Add users&quot; permettant de saisir une adresse email de test." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000546_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:46</span>
+                        <span class="caption-text">Interface Google Cloud Console dans le menu Audience, avec le panneau latéral &quot;Add users&quot; permettant de saisir une adresse email de test.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000554_seg14.jpg" alt="Pop-up d&#x27;autorisation Google OAuth pour accorder les accès Google Drive et Google Sheets à l&#x27;application n8n." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000554_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:54</span>
+                        <span class="caption-text">Pop-up d&#x27;autorisation Google OAuth pour accorder les accès Google Drive et Google Sheets à l&#x27;application n8n.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:02 - 00:06:34</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">here and it should now populate our Google spreadsheets we have. So that is fantastic. You can see I created a spreadsheet called Google Sheets. And let me show you this exact Google Sheet I am talking about. So we titled this leads. And this is essentially just a leads list here that has been auto populated from when people sign up, fill out a Google form with the name, email, business area, size of the team. So we&#x27;re now going to qualify these leads here with this next step in Chachaviti. And then we will be pasting that back into our Google Sheets here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Google Sheets, navigateur web (Chrome)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Tableau de données &quot;Table1&quot; contenant des colonnes Name, Email, Business area, et Size of the team, avec des exemples fictifs de prospects.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation et explication du contenu de la feuille de calcul remplie automatiquement par le workflow.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000618_seg15.jpg" alt="Feuille de calcul Google Sheets intitulée &quot;Leads&quot; montrant un tableau rempli de données de prospects (noms, e-mails, secteurs d&#x27;activité, taille d&#x27;équipe)." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000618_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:18</span>
+                        <span class="caption-text">Feuille de calcul Google Sheets intitulée &quot;Leads&quot; montrant un tableau rempli de données de prospects (noms, e-mails, secteurs d&#x27;activité, taille d&#x27;équipe).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000626_seg15.jpg" alt="Vue rapprochée de la même feuille Google Sheets &quot;Leads&quot; avec un curseur survolant les données." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000626_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:26</span>
+                        <span class="caption-text">Vue rapprochée de la même feuille Google Sheets &quot;Leads&quot; avec un curseur survolant les données.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:34 - 00:06:53</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc passons maintenant à l&#x27;étape ChatGPT. Je vais double-cliquer ici. Nous devons ajouter nos identifiants ici, ce qui est simple. Nous devons juste récupérer notre clé API d&#x27;OpenAI. Donc laissez-moi faire ça. Je vais venir faire, en fait juste chercher ChatGPT ou chercher l&#x27;API OpenAI. Venez ici et vous devriez pouvoir trouver ceci sur cette page ici si vous cliquez sur la référence de l&#x27;API.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web Chrome et interface d&#x27;automatisation de type workflow (n8n).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Champs de configuration pour un compte OpenAI, notamment &#x27;API Key&#x27;, &#x27;Organization ID&#x27; et &#x27;Base URL&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie des identifiants et recherche web pour trouver l&#x27;API OpenAI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000639_seg16.jpg" alt="Interface de configuration d&#x27;un nœud d&#x27;automatisation demandant la saisie d&#x27;une clé API OpenAI." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000639_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:39</span>
+                        <span class="caption-text">Interface de configuration d&#x27;un nœud d&#x27;automatisation demandant la saisie d&#x27;une clé API OpenAI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000648_seg16.jpg" alt="Page de résultats de recherche Google pour la requête &#x27;openai api&#x27; montrant les liens vers la plateforme OpenAI." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000648_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:48</span>
+                        <span class="caption-text">Page de résultats de recherche Google pour la requête &#x27;openai api&#x27; montrant les liens vers la plateforme OpenAI.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:53 - 00:07:26</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, laissez-moi coller le mien maintenant. Évidemment, ne montrez votre clé API à personne. Collons-la ici, enregistrons. Et donc maintenant, elle devrait avoir accès à notre ChatGPT pour que nous puissions commencer à utiliser cette étape. Et puisque nous avons collé ce modèle, nous avons déjà ce contenu ici, qui est essentiellement notre invite pour ChatDBT. Nous pouvons donc utiliser n&#x27;importe quel ChatDBT que nous voulons, ChatDBT4, ChatDBT4O, celui que nous voulons. Mais prenons simplement ChatDBT pour ce cas d&#x27;utilisation spécifique ici. Et en gros, nous devons configurer un tout petit peu d&#x27;information ici. Donc voici les informations d&#x27;Elite. Et cela va être collé dans ChatDBT. De cette façon, nous obtenons un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation (n8n ou similaire), navigateur web avec onglets, et incrustation vidéo du présentateur en bas à droite.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration du nœud GPT : modèle sélectionné (gpt-4-turbo-preview), champs de prompt avec les rôles &quot;System&quot; et &quot;User&quot;, et notification de succès de création d&#x27;identifiants.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur configure les paramètres d&#x27;un nœud d&#x27;automatisation pour intégrer le modèle d&#x27;intelligence artificielle OpenAI.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000701_seg17.jpg" alt="Interface d&#x27;un outil d&#x27;automatisation de flux de travail montrant la configuration d&#x27;une étape d&#x27;IA pour qualifier des leads avec GPT." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000701_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:01</span>
+                        <span class="caption-text">Interface d&#x27;un outil d&#x27;automatisation de flux de travail montrant la configuration d&#x27;une étape d&#x27;IA pour qualifier des leads avec GPT.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:26 - 00:08:02</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">réponse spécifique. Donc nous avons ajouté le nom. Cependant, nous devons supprimer toutes ces étapes ici parce que c&#x27;est des données fictives. Voilà. Ensuite, ce que nous devons faire, c&#x27;est en fait, j&#x27;ai oublié que nous devons revenir à notre étape Google Sheets. Nous devons cliquer ici pour notre temps. Faisons toutes les heures. Donc ça va interroger cette feuille toutes les heures. Et ce que nous devons faire maintenant, nous devons cliquer sur quelle feuille et cliquons sur récupérer l&#x27;événement de test. Et ça devrait maintenant extraire cette information de la feuille Google. Donc vous pouvez voir que c&#x27;est rempli à partir d&#x27;ici. C&#x27;est tout à fait prêt. Et nous pouvons maintenant revenir à notre étape OpenAI. Nous devons maintenant, ou vous pouvez voir que l&#x27;entrée de nos étapes précédentes est ici maintenant. Donc allons</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, outil d&#x27;automatisation de workflow (n8n), Google Sheets, webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres d&#x27;un nœud GPT avec des champs de prompt (System et User), tableau de données Google Sheets avec des entrées fictives (Ava Chen, Liam Rivera, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Suppression d&#x27;étapes contenant des données fictives dans le workflow, puis navigation vers l&#x27;étape Google Sheets pour configurer la source de données.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000735_seg18.jpg" alt="Interface d&#x27;un outil d&#x27;automatisation de workflow affichant le panneau de configuration du nœud &#x27;Qualify leads with GPT&#x27;." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000735_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:35</span>
+                        <span class="caption-text">Interface d&#x27;un outil d&#x27;automatisation de workflow affichant le panneau de configuration du nœud &#x27;Qualify leads with GPT&#x27;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000753_seg18.jpg" alt="Feuille de calcul Google Sheets intitulée &#x27;Leads&#x27; montrant un tableau avec des données fictives de prospects (nom, e-mail, domaine d&#x27;activité, taille de l&#x27;équipe)." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000753_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:53</span>
+                        <span class="caption-text">Feuille de calcul Google Sheets intitulée &#x27;Leads&#x27; montrant un tableau avec des données fictives de prospects (nom, e-mail, domaine d&#x27;activité, taille de l&#x27;équipe).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:02 - 00:08:35</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">remplir ceci avec cette information. Donc je vais glisser et déposer ce nom JSON dynamique, ainsi que le domaine d&#x27;activité de l&#x27;e-mail, et ensuite la taille de l&#x27;équipe. Tout est prêt. Ensuite, tout ce que nous avons à faire est en fait de cliquer sur l&#x27;étape de test et cela devrait nous donner un résultat ici. Le voilà donc. Voici un message ici. Il donne donc notre explication de notation ici. Il est donc qualifié. Voici l&#x27;explication : le lead Eva Chen remplit le critère principal d&#x27;être un décideur, donc comme vous pouvez le voir ici, c&#x27;est le prompt que nous lui avons donné, vous pouvez donc le spécifier comme vous voulez afin de pouvoir</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface du logiciel d&#x27;automatisation n8n, navigateur web affichant un workflow de qualification de leads.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Nœud de configuration &quot;Qualify leads with GPT&quot;, modèle gpt-4-turbo-preview, prompt structuré avec des variables dynamiques ($json.Name, $json.Email, $json.Business area, $json.Size of the team) et résultats JSON de sortie (&quot;qualified&quot;, explications).</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et test d&#x27;un nœud d&#x27;IA dans un workflow d&#x27;automatisation n8n, puis examen des données de sortie générées.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000810_seg19.jpg" alt="Configuration d&#x27;un nœud d&#x27;automatisation n8n pour qualifier des leads avec GPT, montrant le prompt utilisateur avec des variables JSON dynamiques." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000810_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:10</span>
+                        <span class="caption-text">Configuration d&#x27;un nœud d&#x27;automatisation n8n pour qualifier des leads avec GPT, montrant le prompt utilisateur avec des variables JSON dynamiques.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000818_seg19.jpg" alt="Exécution du test du nœud n8n, affichant les résultats JSON de sortie dans le volet droit de l&#x27;interface." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000818_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:18</span>
+                        <span class="caption-text">Exécution du test du nœud n8n, affichant les résultats JSON de sortie dans le volet droit de l&#x27;interface.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000826_seg19.jpg" alt="Sélection du texte de sortie dans le panneau des résultats pour examiner l&#x27;analyse de qualification du lead par l&#x27;IA." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000826_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:26</span>
+                        <span class="caption-text">Sélection du texte de sortie dans le panneau des résultats pour examiner l&#x27;analyse de qualification du lead par l&#x27;IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:35 - 00:09:09</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">décidez de ce qu&#x27;est un prospect qualifié, cependant voici ce que j&#x27;ai utilisé pour cela, vous pouvez modifier ceci donc votre tâche est de qualifier les prospects entrants, les prospects sont des soumissions de formulaires à un groupe de communauté fermé, utilisez les critères suivants pour un prospect de qualité, donc s&#x27;ils remplissent ces deux conditions ici, cela signifie qu&#x27;ils sont qualifiés. Donc c&#x27;est bon. Encore une fois, vous pouvez changer cela pour ce que vous voulez pour votre cas d&#x27;utilisation spécifique. Cependant, maintenant nous avons cette information. Nous devons maintenant coller cette information dans notre feuille Google Sheet. Ensuite, nous devons extraire la réponse JSON. Testons donc cette étape. Cela a fonctionné. Voici la réponse ici. Ensuite, nous devons les fusionner, ce que nous ne</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web d&#x27;automatisation de type workflow (n8n ou similaire) avec une fenêtre modale d&#x27;édition de contenu.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt détaillant les critères de qualification des leads (&quot;Your task is to qualify incoming leads...&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur met en surbrillance et lit le texte du prompt définissant les critères de qualification des prospects.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000843_seg20.jpg" alt="Interface d&#x27;automatisation montrant une fenêtre contextuelle &quot;Edit Content&quot; avec un prompt définissant les critères de qualification des prospects." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000843_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:43</span>
+                        <span class="caption-text">Interface d&#x27;automatisation montrant une fenêtre contextuelle &quot;Edit Content&quot; avec un prompt définissant les critères de qualification des prospects.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000852_seg20.jpg" alt="Vue similaire avec le curseur soulignant une partie du texte du prompt dans l&#x27;interface d&#x27;automatisation." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000852_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:52</span>
+                        <span class="caption-text">Vue similaire avec le curseur soulignant une partie du texte du prompt dans l&#x27;interface d&#x27;automatisation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:09 - 00:09:44</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il faut toucher ça en fait. Donc ensuite, nous devons en fait créer nos identifiants à nouveau. Donc essentiellement, copier les informations de l&#x27;étape précédente en fait. Donc, ou nous pourremmo en fait revenir dans notre Google Cloud. Donc je vais venir ici. Je vais aller sur client. Je vais cliquer sur notre nom ici. Donc copions l&#x27;ID client ainsi que notre secret client. Sauvegardons-le. Très bien, nous devons juste nous connecter avec notre compte ici comme avant. Cliquer sur continuer. Autoriser cela. Donc la connexion devrait réussir maintenant. Et nous voulons nous assurer de tester nos étapes précédentes afin de pouvoir obtenir ces informations ici à partir de la fusion. Donc une fois que nous sommes ici, il y a quelques petites choses que nous devons faire. Donc nous devons en fait faire correspondre quelques champs. Tout d&#x27;abord, nous devons sélectionner notre document. Donc</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:44 - 00:10:06</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc je vais cliquer sur les leads, qui est ce, évidemment ce tableur ici que nous voulons remplir avec la réponse. Cliquez sur la feuille, qui est la feuille un. Nous voulons cliquer sur &quot;associer automatiquement&quot;. Et puis pour ceci, nous voulons aller à taille de votre équipe. Et puis testons cette étape. Et voilà. Voici la réponse ici. Et donc c&#x27;est la réponse avec la qualification des leads que l&#x27;étape ChatGPT a réellement effectuée.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;outil d&#x27;automatisation n8n et la webcam du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Configuration du nœud n8n : Document &quot;Leads&quot;, Feuille &quot;Sheet1&quot;, mode de correspondance &quot;Map Automatically&quot; et colonne &quot;Your team size&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration et paramétrage d&#x27;un nœud d&#x27;automatisation pour mapper les données d&#x27;un lead vers un tableur Google Sheets.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_000950_seg22.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du logiciel n8n avec un nœud &quot;Update lead status&quot; configuré pour interagir avec Google Sheets." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_000950_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:50</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du logiciel n8n avec un nœud &quot;Update lead status&quot; configuré pour interagir avec Google Sheets.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:06 - 00:10:27</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et donc cela devrait maintenant être rempli ici. Vous pouvez donc voir qu&#x27;il y a cette réponse. Ce n&#x27;est pas formidable. Ça n&#x27;a pas l&#x27;air parfait. Mais cependant, nous avons maintenant une explication qualifiée de nos prospects ici. Ainsi, le prospect Ava Chen répond au critère principal en étant une décisionnaire avec une équipe de cinq personnes sur son marché. De plus, l&#x27;e-mail provient d&#x27;un domaine non standard indiquant un domaine d&#x27;entreprise, ce qui satisfait au deuxième critère.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:27 - 00:10:46</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et voilà. Nous avons créé un agent dans N8N qui va maintenant qualifier automatiquement nos prospects qui s&#x27;inscrivent réellement à un formulaire et sont ajoutés à une feuille de calcul Google. C&#x27;est donc chose faite. De plus, nous avons maintenant hébergé ceci sur Hostinger, ce qui rend les choses vraiment faciles à faire. J&#x27;espère donc que vous avez apprécié. Assurez-vous de vous abonner à la chaîne si vous aimez cette vidéo. Je vous retrouve dans la prochaine.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> N8N (interface de workflow d&#x27;automatisation)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration du nœud &#x27;Update lead status&#x27; connectant Google Sheets (sélection de document, opération de mise à jour de ligne, correspondance des colonnes).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du workflow d&#x27;automatisation et explication de la qualification automatique des prospects.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/cayngY9kP0U/cayngY9kP0U_001032_seg24.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du logiciel N8N avec un panneau de configuration ouvert pour la mise à jour du statut des prospects, ainsi que le présentateur visible dans un encart en incrustation." loading="lazy" onclick="openLightbox('../screenshots/cayngY9kP0U/cayngY9kP0U_001032_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du logiciel N8N avec un panneau de configuration ouvert pour la mise à jour du statut des prospects, ainsi que le présentateur visible dans un encart en incrustation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
