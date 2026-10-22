@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `163 / 273` (`59.7%`)
+- **Vidéos traitées** : `164 / 273` (`60.1%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -180,6 +180,7 @@
 | 2025-07-14 | [Qx_YOEC1HIo](https://www.youtube.com/watch?v=Qx_YOEC1HIo) | **Can I Make an App with ZERO Coding? (Vibe Code Tutorial)** | [2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-07-14_YT-[Qx_YOEC1HIo]_Can I Make an App with ZERO Coding (Vibe Code Tutorial)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-06-30 | [AbfMhFsFHKU](https://www.youtube.com/watch?v=AbfMhFsFHKU) | **NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)** | [2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-30_YT-[AbfMhFsFHKU]_NEW ElevenLabs Voice Assistant Just Destroyed Siri (11.ai)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-06-22 | [3j1M08C5B8A](https://www.youtube.com/watch?v=3j1M08C5B8A) | **Vibe Code a $1M Mobile App in MINUTES (For Beginners)** | [2025-06-22_YT-[3j1M08C5B8A]_Vibe Code a $1M Mobile App in MINUTES (For Beginners)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-22_YT-[3j1M08C5B8A]_Vibe Code a $1M Mobile App in MINUTES (For Beginners)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-22_YT-[3j1M08C5B8A]_Vibe Code a $1M Mobile App in MINUTES (For Beginners)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-06-13 | [ZsUz0urp0_E](https://www.youtube.com/watch?v=ZsUz0urp0_E) | **NEW Genspark AI Browser is a Game Changer (SCARY Good)** | [2025-06-13_YT-[ZsUz0urp0_E]_NEW Genspark AI Browser is a Game Changer (SCARY Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-13_YT-[ZsUz0urp0_E]_NEW Genspark AI Browser is a Game Changer (SCARY Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-13_YT-[ZsUz0urp0_E]_NEW Genspark AI Browser is a Game Changer (SCARY Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
