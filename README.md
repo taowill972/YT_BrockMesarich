@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `174 / 273` (`63.7%`)
+- **Vidéos traitées** : `175 / 273` (`64.1%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -191,6 +191,7 @@
 | 2025-05-06 | [Totk2zv_bCo](https://www.youtube.com/watch?v=Totk2zv_bCo) | **Building a Marketing App with the OpenAI Image API (No Coding)** | [2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-05-06_YT-[Totk2zv_bCo]_Building a Marketing App with the OpenAI Image API (No Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-04-23 | [Ew3M9AtoMsc](https://www.youtube.com/watch?v=Ew3M9AtoMsc) | **Bolt CEO vs Google Firebase Studio (Which Builds The Better App?)** | [2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-23_YT-[Ew3M9AtoMsc]_Bolt CEO vs Google Firebase Studio (Which Builds The Better App)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `129` |
 | 2025-04-22 | [PQgdYp3Wwr4](https://www.youtube.com/watch?v=PQgdYp3Wwr4) | **Claude + une voix IA passe des appels à ma place (voici comment faire)** | [2025-04-22_YT-[PQgdYp3Wwr4]_Claude + une voix IA passe des appels à ma place (voici comment faire)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-22_YT-[PQgdYp3Wwr4]_Claude + une voix IA passe des appels à ma place (voici comment faire)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-22_YT-[PQgdYp3Wwr4]_Claude + une voix IA passe des appels à ma place (voici comment faire)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `48` |
+| 2025-04-20 | [CR8wsetblYY](https://www.youtube.com/watch?v=CR8wsetblYY) | **Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)** | [2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `82` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
