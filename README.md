@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `177 / 273` (`64.8%`)
+- **Vidéos traitées** : `178 / 273` (`65.2%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -194,6 +194,7 @@
 | 2025-04-20 | [CR8wsetblYY](https://www.youtube.com/watch?v=CR8wsetblYY) | **Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)** | [2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-20_YT-[CR8wsetblYY]_Créer ET lancer un logiciel grâce à l'IA (Domaine personnalisé)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `82` |
 | 2025-04-17 | [vJLyP_tYE4w](https://www.youtube.com/watch?v=vJLyP_tYE4w) | **Comprendre les agents IA en 8 minutes (et comment les utiliser)** | [2025-04-17_YT-[vJLyP_tYE4w]_Comprendre les agents IA en 8 minutes (et comment les utiliser)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-17_YT-[vJLyP_tYE4w]_Comprendre les agents IA en 8 minutes (et comment les utiliser)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-17_YT-[vJLyP_tYE4w]_Comprendre les agents IA en 8 minutes (et comment les utiliser)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `34` |
 | 2025-04-14 | [Ybez4af5jpo](https://www.youtube.com/watch?v=Ybez4af5jpo) | **NOUVEAU : Google Firebase Studio vs Lovable (Lequel choisir ?)** | [2025-04-14_YT-[Ybez4af5jpo]_NOUVEAU Google Firebase Studio vs Lovable (Lequel choisir )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-14_YT-[Ybez4af5jpo]_NOUVEAU Google Firebase Studio vs Lovable (Lequel choisir )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-14_YT-[Ybez4af5jpo]_NOUVEAU Google Firebase Studio vs Lovable (Lequel choisir )_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `79` |
+| 2025-04-10 | [vFPwtgjNLX0](https://www.youtube.com/watch?v=vFPwtgjNLX0) | **Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)** | [2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `37` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
