@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-04-03</span>
+                <span class="badge">⏱️ 00:10:35</span>
+                <span class="badge">🆔 <code>80nvFVMiJqk</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=80nvFVMiJqk" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:19</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous montrer comment connecter instantanément Claude à 30 000 automatisations. Voici une rapide démonstration de 15 secondes de ce que je veux dire. Avant de les rejoindre réellement. Et pourriez-vous envoyer toutes ces informations à mon adresse e-mail ? Très bien, c&#x27;est parti. Et il va maintenant commencer à envoyer notre e-mail. Indiquez-moi la date pour cette réunion, mais j&#x27;ai maintenant reçu un e-mail.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de type application web ou bureau (Claude / assistant IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;accueil personnalisé (&quot;Good evening, brock&quot;), champ de saisie de texte et compte à rebours incrusté en bas (&quot;demo ends in: 13 sec&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface utilisateur de l&#x27;outil d&#x27;IA dans le cadre d&#x27;une démonstration en direct.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000009_seg1.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface sombre d&#x27;une application (semblable à Claude) avec le texte &quot;Good evening, brock&quot; et un compte à rebours indiquant &quot;demo ends in: 13 sec&quot;." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000009_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface sombre d&#x27;une application (semblable à Claude) avec le texte &quot;Good evening, brock&quot; et un compte à rebours indiquant &quot;demo ends in: 13 sec&quot;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:19 - 00:00:43</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, laissez-moi vérifier ça. Très bien, voici donc la réponse, comme vous pouvez le voir. À la fin de cette vidéo, vous aurez configuré Claude pour qu&#x27;il puisse exécuter des actions en votre nom au lieu d&#x27;être un simple chatbot amélioré. De plus, ne vous inquiétez pas si vous n&#x27;avez pas de compétences techniques. Je vais tout décomposer pour que littéralement n&#x27;importe qui puisse le faire. Bon, assez bavardé. Entrons dans le vif du sujet. Très bien, les amis. Je suis donc maintenant dans Claude Desktop. Et comme vous pouvez le voir juste ici, il y a un accès à 17 outils MCP différents que je vais vous montrer comment configurer plus tard dans cette vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application de bureau ou web de l&#x27;assistant IA Claude.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message de salutation personnalisé, barre de saisie de prompt (« How can I help you today? ») et sélection du modèle (Claude 3.7 Sonnet).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface principale de l&#x27;assistant Claude par le créateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000037_seg2.jpg" alt="Interface de l&#x27;application Claude sur fond sombre affichant un message de bienvenue personnalisé (« Good evening, brock ») et une zone de saisie avec le modèle Claude 3.7 Sonnet, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000037_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude sur fond sombre affichant un message de bienvenue personnalisé (« Good evening, brock ») et une zone de saisie avec le modèle Claude 3.7 Sonnet, ainsi qu&#x27;une incrustation vidéo du présentateur en bas à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:43 - 00:01:18</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Extrêmement facile à faire. Cependant, je vais juste venir ici et lui demander d&#x27;effectuer quelques actions pour moi. Alors, laissez-moi parler avec Claude dès maintenant. Peux-tu s&#x27;il te plaît vérifier mon agenda pour lundi et voir si j&#x27;ai des réunions ? Ainsi que peux-tu me donner des informations sur tous les participants à ma réunion afin que je puisse être à jour avant de les rejoindre réellement, et pourrais-tu envoyer toutes ces informations à mon adresse e-mail brockmesserich arobase gmail.com en me mettant à jour sur les événements de mon agenda ainsi que des résumés des personnes qui assisteront à la réunion ? Très bien, voilà. Aussi, cet outil que je viens d&#x27;utiliser juste là</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude (IA)</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de bienvenue « Good evening, brock » et champ de saisie de texte « How can I help you today? » au centre de l&#x27;interface sombre.
+[DESC_IMAGE_1] Interaction vocale en cours avec l&#x27;assistant Claude pour lui demander de vérifier l&#x27;agenda.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000052_seg3.jpg" alt="Interface de l&#x27;application Claude affichant un écran d&#x27;accueil avec le message de salutation &#x27;Good evening, brock&#x27; et une zone de saisie pour interagir avec l&#x27;assistant IA, tandis que le présentateur apparaît dans une vignette vidéo incrustée." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000052_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:52</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude affichant un écran d&#x27;accueil avec le message de salutation &#x27;Good evening, brock&#x27; et une zone de saisie pour interagir avec l&#x27;assistant IA, tandis que le présentateur apparaît dans une vignette vidéo incrustée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:18 - 00:01:54</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">s&#x27;appelle Aqua Voice, c&#x27;est un outil formidable. J&#x27;appuie littéralement sur une touche de mon clavier et je parle à mon ordinateur au lieu de taper. Ça me fait gagner tellement de temps. Donc voilà une petite astuce pour vous. Ensuite, je vais simplement cliquer sur envoyer et cela va commencer à exécuter ces actions. Je dois donc autoriser cet outil. Vous pouvez voir exécuter Google Agenda, trouver un événement. Je vais simplement cliquer sur autoriser et il va procéder étape par étape et utiliser ces outils auxquels je lui ai donné accès. Il semble donc qu&#x27;il ait effectivement trouvé cet événement. Ensuite, il a appelé cet autre outil et il est en train de faire des recherches sur moi. Je vais cliquer sur autoriser et il va maintenant commencer à envoyer notre e-mail. Laissons-lui une seconde et je devrais le recevoir très prochainement. Très bien,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type assistant IA / interface de chat avec un modèle de langage (Claude).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte transcrit de la requête vocale concernant la vérification d&#x27;un calendrier et l&#x27;envoi d&#x27;e-mails, ainsi qu&#x27;une invite de sécurité demandant l&#x27;autorisation d&#x27;utiliser l&#x27;outil local « zapier-mcp ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur valide une demande d&#x27;autorisation d&#x27;outil pour permettre à l&#x27;IA d&#x27;interagir avec des services tiers (Zapier/MCP).</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000127_seg4.jpg" alt="Vue d&#x27;une interface sombre avec le message de salutation « Good evening, brock » et une boîte de dialogue contenant un long texte dicté vocalement." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000127_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:27</span>
+                        <span class="caption-text">Vue d&#x27;une interface sombre avec le message de salutation « Good evening, brock » et une boîte de dialogue contenant un long texte dicté vocalement.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000145_seg4.jpg" alt="L&#x27;interface affiche une réponse en cours de génération avec une fenêtre contextuelle de demande d&#x27;autorisation pour un outil externe (« zapier-mcp »)." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000145_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:45</span>
+                        <span class="caption-text">L&#x27;interface affiche une réponse en cours de génération avec une fenêtre contextuelle de demande d&#x27;autorisation pour un outil externe (« zapier-mcp »).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:54 - 00:02:27</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, non seulement Claude m&#x27;a tenu informé de cette réunion, mais je viens de recevoir un e-mail. Je vais donc aller vérifier ça. D&#x27;accord, voici donc la réponse. Vous pouvez voir qu&#x27;elle inclut un résumé de notre prochaine réunion de lundi. Elle parle donc de la date, de l&#x27;heure, du titre, du lieu, c&#x27;est-à-dire du lien vers notre Google Meet, et elle a également fait des recherches sur moi. J&#x27;ai évidemment pu me rendre compte qu&#x27;elle faisait des recherches sur moi-même. Cependant, je dis juste ça pour l&#x27;expliquer dans cette vidéo. Je ne voulais pas utiliser l&#x27;une des vraies personnes présentes dans mon agenda. Elle a donc fourni de très bonnes informations de contexte ici. Mais les gars, j&#x27;ai obtenu ce résultat simplement en parlant avec Claude Desktop.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Gmail (Google Mail).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un e-mail intitulé &quot;Monday Meeting Summary and Attendee Information&quot; contenant les détails de la réunion (date, heure, titre, lieu) et des informations sur les participants.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur consulte sa boîte de réception et lit l&#x27;e-mail envoyé par l&#x27;assistant IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000202_seg5.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Gmail avec un e-mail reçu de Claude résumant une réunion de lundi, avec le présentateur visible en vignette vidéo." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000202_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:02</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Gmail avec un e-mail reçu de Claude résumant une réunion de lundi, avec le présentateur visible en vignette vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:27 - 00:02:58</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je lui ai demandé de faire des recherches là-dessus, et c&#x27;est ce qu&#x27;il a fait. Il m&#x27;a envoyé un e-mail. Comme ça, vous pouvez voir qu&#x27;il a des actions pour exécuter réellement certaines tâches, au lieu d&#x27;être simplement un chatbot. Tout comme avant, nous ne pouvions demander aucune information concernant notre calendrier parce que nous devions lui donner l&#x27;accès pour qu&#x27;il puisse le voir. C&#x27;est ce que ces serveurs MCP vous permettent de faire. Je vais vous montrer d&#x27;autres cas d&#x27;usage que vous pouvez utiliser dans Claude en utilisant le MCP Zapier. Très bien, donc pour ce prochain cas d&#x27;usage, je vais échanger avec ma base de données Notion afin d&#x27;obtenir des informations sur mes prochaines vidéos sur lesquelles mon équipe doit travailler.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude (Claude 3.5 Sonnet) et client de messagerie en arrière-plan.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Un échange de chat où l&#x27;utilisateur demande à l&#x27;IA de vérifier son calendrier pour lundi, de rechercher des informations sur les participants, et d&#x27;envoyer un résumé par e-mail. L&#x27;IA affiche les résultats de l&#x27;exécution des outils (actions de calendrier et d&#x27;envoi d&#x27;e-mail).</p>
+                        <p><strong>Action / Démonstration :</strong> L&#x27;assistant IA exécute des actions concrètes (interactions avec des outils externes comme le calendrier et l&#x27;e-mail) au lieu de se limiter à une réponse textuelle de chatbot.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000235_seg6.jpg" alt="Une capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Claude) effectuant des actions automatisées, avec un encadré vidéo du présentateur sur la droite." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000235_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:35</span>
+                        <span class="caption-text">Une capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant IA (Claude) effectuant des actions automatisées, avec un encadré vidéo du présentateur sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:59 - 00:03:31</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, je vais envoyer ces informations sur Slack et en gros juste dire à mon équipe qu&#x27;il faut qu&#x27;on s&#x27;y mette. Alors je vais parler avec Claude et lancer tout ça. Hé, est-ce que tu peux récupérer des informations dans ma base de données Notion appelée Content Calendar ? Je veux que tu regardes l&#x27;entrée intitulée comment connecter instantanément Claude Desktop à 30 000 automations. Donne-moi des informations situées dans cette page Notion afin de briefer mon équipe sur Slack à propos de cette vidéo...</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Claude AI (Anthropic) en mode sombre.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Message de bienvenue « Welcome, brock », champ de prompt « How can I help you today? » et sélecteur de modèle réglé sur « Claude 3.7 Sonnet ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur initialise une session avec Claude pour lui demander d&#x27;extraire des données de sa base Notion Content Calendar.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000307_seg7.jpg" alt="L&#x27;interface d&#x27;accueil de Claude AI est ouverte, prête à recevoir des instructions pour interagir avec Notion." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000307_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:07</span>
+                        <span class="caption-text">L&#x27;interface d&#x27;accueil de Claude AI est ouverte, prête à recevoir des instructions pour interagir avec Notion.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:31 - 00:03:50</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Avec... je veux que tu leur écrives un message disant que nous devons nous y mettre rapidement pour qu&#x27;on puisse publier ça d&#x27;ici mercredi. Je veux que tu publies ça dans mon canal Slack appelé notion databases. Très bien, c&#x27;est parti. Donc on dirait qu&#x27;il essaie maintenant de récupérer cette base de données à l&#x27;intérieur de mon Notion, qui est en fait une base de données juste ici à laquelle je fais référence. Donc c&#x27;est comme mon calendrier de contenu.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface Claude AI (Anthropic), sélecteur de modèle Claude 3.7 Sonnet, widget vocal actif en bas de screen, incrustation webcam de l&#x27;intervenant.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de bienvenue &quot;Welcome, brock&quot;, invite de saisie &quot;How can I help you today?&quot;, modèle sélectionné &quot;Claude 3.7 Sonnet&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Utilisation de l&#x27;assistant IA Claude par commande vocale pour automatiser une tâche de messagerie Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000335_seg8.jpg" alt="Interface Claude AI avec le message d&#x27;accueil &quot;Welcome, brock&quot; et la barre de saisie de prompt configurée sur Claude 3.7 Sonnet." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000335_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:35</span>
+                        <span class="caption-text">Interface Claude AI avec le message d&#x27;accueil &quot;Welcome, brock&quot; et la barre de saisie de prompt configurée sur Claude 3.7 Sonnet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:51 - 00:04:13</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux extraire cette information, puis obtenir un résumé et l&#x27;envoyer sur Slack pour que mon équipe sache que nous devons commencer à travailler sur cette vidéo ici. Très bien, il semble qu&#x27;après quelques dépannages, j&#x27;aie effectivement réussi à trouver cette page dans ma base de données. Et maintenant, il commence à rédiger ce message pour le canal Slack, que je devrais recevoir sous peu. Et voilà. Si je viens dans la page des mises à jour de mon espace de travail Notion, vous pouvez voir qu&#x27;il y a maintenant ce message.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Notion, Claude Desktop (avec MCP / Zapier integration).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Entrée Notion « How to INSTANTLY Connect Claude Desktop to 30,000+ Automations », appels d&#x27;outils MCP (`notion_retrieve_database`, `notion_find_database_item`, `slack_send_channel_message`), cible Slack `Notion Databases`.</p>
+                        <p><strong>Action / Démonstration :</strong> Récupération de données depuis une base de données Notion via Claude Desktop et automatisation de l&#x27;envoi d&#x27;un message d&#x27;urgence/brief vidéo à l&#x27;équipe sur Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000356_seg9.jpg" alt="Vue d&#x27;un espace de travail Notion présentant un tableau « Content Calendar » avec le suivi de production des vidéos AI." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000356_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:56</span>
+                        <span class="caption-text">Vue d&#x27;un espace de travail Notion présentant un tableau « Content Calendar » avec le suivi de production des vidéos AI.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000402_seg9.jpg" alt="Interface de l&#x27;application Claude Desktop affichant les appels d&#x27;outils Zapier MCP pour extraire des informations d&#x27;une page Notion et les publier sur Slack." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000402_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:02</span>
+                        <span class="caption-text">Interface de l&#x27;application Claude Desktop affichant les appels d&#x27;outils Zapier MCP pour extraire des informations d&#x27;une page Notion et les publier sur Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:13 - 00:04:31</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, bref briefing vidéo urgent : comment connecter instantanément Claude Desktop à plus de 30 000 automatisations. Salut l&#x27;équipe, il faut qu&#x27;on avance sur cette vidéo au plus vite. Elle doit être publiée d&#x27;ici mercredi. Avec cela, il y a une ventilation de tout ce qui est inclus dans cette page, dans mon Notion. Donc, ça parle de la structure de la vidéo, ça parle des cinq cas d&#x27;usage pratiques.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Slack, canal de messagerie d&#x27;équipe</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte du brief vidéo indiquant les détails du projet, la date de publication (31 mars 2025) et la structure de la vidéo (démonstration rapide, guide d&#x27;installation, cas d&#x27;usage pratiques).</p>
+                        <p><strong>Action / Démonstration :</strong> Affichage et lecture du message de brief du projet d&#x27;automatisation à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000418_seg10.jpg" alt="Capture d&#x27;écran montrant une interface Slack avec un message de Zapier détaillant le brief vidéo pour Claude Desktop." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000418_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:18</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface Slack avec un message de Zapier détaillant le brief vidéo pour Claude Desktop.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:31 - 00:05:05</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Toutes ces informations ont été extraites de cette base de données Notion, et je les ai récupérées depuis Claude et j&#x27;ai envoyé tout cela depuis l&#x27;application de bureau Claude. Très bien, pour ce prochain cas d&#x27;utilisation, je vais utiliser Claude pour chercher dans ma boîte de réception d&#x27;e-mails et trouver un e-mail spécifique concernant des billets de concert que j&#x27;ai achetés il y a quelque temps. Non seulement cela, mais je vais lui demander de créer un libellé dans Gmail afin que je puisse accéder à cet e-mail plus tard. Tout le monde déteste trier sa boîte de réception d&#x27;e-mails, donc cela va vraiment m&#x27;aider à le faire. Hé Claude, peux-tu m&#x27;aider à trouver un e-mail dans ma boîte Gmail concernant des billets pour Lumineers que j&#x27;ai achetés il y a quelque temps ? Je voudrais que tu étiquettes cet e-mail avec un</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude (Interface de chatbot IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Zone de texte pour interagir avec l&#x27;IA avec la mention &quot;Claude 3.5 Sonnet&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de l&#x27;application Claude pour effectuer de nouvelles requêtes.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000440_seg11.jpg" alt="Capture d&#x27;écran montrant l&#x27;application de bureau Claude avec le message &quot;What&#x27;s new, brock?&quot; et la zone de saisie du prompt, accompagnée d&#x27;un encart vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000440_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:40</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;application de bureau Claude avec le message &quot;What&#x27;s new, brock?&quot; et la zone de saisie du prompt, accompagnée d&#x27;un encart vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:05 - 00:05:40</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">intitulé « Billets de concert des Lumineer », ainsi qu&#x27;à me donner un rapide résumé de cette adresse e-mail juste ici dans cette discussion. Oups. Je ne voulais pas dire adresse e-mail, mais donnons-lui ça et exécutons-le. Donc, il va exécuter l&#x27;outil de recherche d&#x27;e-mail ici auquel nous lui avons donné accès. Je vais vous montrer exactement comment faire. C&#x27;est tellement simple à faire. Très bien, c&#x27;est parti. Donc voici cet e-mail. Évidemment, il s&#x27;agit d&#x27;un e-mail fictif que je me suis envoyé à moi-même, mais il a été capable d&#x27;identifier cela. Il a ensuite pris l&#x27;initiative d&#x27;étiqueter réellement ceci « Billets de concert des Lumineer ». Donc, si j&#x27;ai besoin de le consulter plus tard, je pourrai facilement aller dans mes étiquettes et retrouver facilement cet e-mail, tout comme je lui ai demandé de donner un résumé de cet e-mail juste ici et il l&#x27;a fait. J&#x27;ai parlé des détails de l&#x27;événement. Il a donné</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:40 - 00:06:04</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">tu mes informations de billet. C&#x27;est un cas d&#x27;usage formidable où vous pourriez utiliser ceci pour résumer ou trouver des e-mails précédents depuis votre boîte de réception Gmail, tout cela avec le MCP de Zapier. Non seulement cela, essayons d&#x27;envoyer ceci sur Slack. Super. Peux-tu maintenant envoyer cette information exacte sur Slack ? Mets-la dans le canal des mises à jour Notion. Imaginez donc que nous ayons en quelque sorte notre assistant ou quelque chose comme ça, ou que nous voulions l&#x27;envoyer à quelqu&#x27;un que nous voulons charger de gérer nos informations de billet.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Desktop (mode sombre), outils Zapier MCP (`gmail_create_label`, `gmail_add_label_to_email`).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Informations extraites de l&#x27;e-mail : sujet &quot;Lumineers Concert&quot;, expéditeur, date, détails de l&#x27;événement (The Lumineers - Brightside Tour 2025, Cascade Pavilion) et détails des billets (Section B, Row 8, Seats 12-13).</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de l&#x27;utilisation d&#x27;outils MCP Zapier dans Claude pour rechercher, résumer et appliquer automatiquement une étiquette à des e-mails spécifiques dans Gmail.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000546_seg13.jpg" alt="Interface Claude Desktop affichant la synthèse détaillée d&#x27;un e-mail de billets de concert extrait et étiqueté dans Gmail grâce aux outils MCP de Zapier." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000546_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:46</span>
+                        <span class="caption-text">Interface Claude Desktop affichant la synthèse détaillée d&#x27;un e-mail de billets de concert extrait et étiqueté dans Gmail grâce aux outils MCP de Zapier.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:04 - 00:06:22</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela sera automatiquement collé dans Slack. Donc non seulement nous avons trouvé l&#x27;e-mail, ajouté une étiquette dessus, mais nous allons maintenant l&#x27;envoyer vers un canal externe pour que quelqu&#x27;un puisse réellement y jeter un œil. Encore une fois, j&#x27;utilise seulement quelques applications différentes ici, mais vous pourriez les connecter à n&#x27;Ce sont juste des choses que j&#x27;utiliserais personnellement parce que ce sont des applications que j&#x27;utilise tous les jours.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de type interface de discussion / assistant IA</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte de prompt demandant d&#x27;envoyer les informations vers Slack dans un canal spécifique (#Notion Updates).</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie ou affichage d&#x27;une instruction textuelle pour automatiser l&#x27;envoi d&#x27;informations vers Slack.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000609_seg14.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant textuel avec un prompt utilisateur demandant d&#x27;envoyer des informations sur Slack." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000609_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:09</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un assistant textuel avec un prompt utilisateur demandant d&#x27;envoyer des informations sur Slack.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:22 - 00:06:55</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et boum, juste ici, nous avons cette ventilation de cet e-mail avec les détails de l&#x27;événement afin que notre équipe puisse maintenant examiner cela pour une référence facile. Très bien, les gars, maintenant que nous avons effectivement examiné quelques cas d&#x27;utilisation différents sur ce que nous pourrions faire avec cela, je vais vous montrer exactement comment activer cela ici en utilisant le MCP Zapier. Ça va être extrêmement simple à faire, alors restez avec moi et vous découvrirez exactement comment vous pouvez le faire vous-même. Très bien, il y a trois étapes très simples que nous devons suivre afin de configurer cela. Donc d&#x27;abord, nous devons venir et nous inscrire auprès de Zapier. Voici le lien. Il y a un lien dans la description. Et une fois que nous cliquons sur ce bouton Commencer, nous allons maintenant être dans ce</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface Zapier AI Actions (actions.zapier.com), Zapier MCP (zapier.com/mcp).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Actions MCP sauvegardées (Gmail: Send Email, Notion: Find Database Item, Stripe: Create Payment Link, Notion: Update Database Item, Google Calendar: Find Multiple Events, Stripe: Create Product, Stripe: Create Price), interrupteurs d&#x27;activation actifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Démonstration de la configuration des actions Zapier MCP permettant de lier un assistant IA à différentes applications et services.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000631_seg15.jpg" alt="Interface Zapier AI Actions affichant la liste des actions MCP configurées (Gmail, Notion, Stripe, Google Calendar) avec leurs boutons d&#x27;activation." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000631_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:31</span>
+                        <span class="caption-text">Interface Zapier AI Actions affichant la liste des actions MCP configurées (Gmail, Notion, Stripe, Google Calendar) avec leurs boutons d&#x27;activation.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000647_seg15.jpg" alt="Page de présentation Zapier MCP intitulée « Connect your AI to any app with Zapier MCP » avec boutons « Get started » et « Learn more »." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000647_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:47</span>
+                        <span class="caption-text">Page de présentation Zapier MCP intitulée « Connect your AI to any app with Zapier MCP » avec boutons « Get started » et « Learn more ».</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:55 - 00:07:27</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Section des paramètres MCP de Zapier ici. On va passer à Claude sur le côté gauche. On va cliquer sur copier. On va copier ce code ici. Aussi, n&#x27;ayez pas peur de ce code. C&#x27;est vraiment simple à faire. À partir d&#x27;ici, nous devons télécharger l&#x27;application de bureau Claude. Donc, une fois que vous l&#x27;avez téléchargée, ouvrons-la. Une fois que nous sommes dans notre application de bureau Claude, nous devons venir ici en haut et cliquer sur Claude, aller dans les paramètres, cliquer sur développeur, et nous devons descendre et cliquer sur modifier la configuration. Et quoi qu&#x27;il y ait ici, supprimons simplement tout cela. On va coller ce code, puis nous devons obtenir notre URL spécifique ici que nous allons remplacer.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, macOS Finder, application Claude Desktop.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code de configuration JSON (`mcpServers` avec `zapier-mcp`, `npx`, `mcp-remote`) et arborescence de fichiers de configuration.</p>
+                        <p><strong>Action / Démonstration :</strong> Copie du code JSON depuis la documentation Zapier et navigation vers les fichiers de configuration de Claude sur le bureau.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000703_seg16.jpg" alt="Documentation web de Zapier montrant le code JSON de configuration MCP pour Claude Desktop, avec un bouton de copie." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000703_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:03</span>
+                        <span class="caption-text">Documentation web de Zapier montrant le code JSON de configuration MCP pour Claude Desktop, avec un bouton de copie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000719_seg16.jpg" alt="Explorateur de fichiers macOS affichant les dossiers et le fichier de configuration JSON de Claude Desktop." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000719_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:19</span>
+                        <span class="caption-text">Explorateur de fichiers macOS affichant les dossiers et le fichier de configuration JSON de Claude Desktop.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:27 - 00:08:04</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc, revenons sur notre intégration de bureau « clogged » ici dans la documentation de Zapier. À partir de là, nous allons cliquer sur MCP et nous devons copier ce point de terminaison du serveur MCP ici, le coller là-dedans. Et ensuite, tout ce que nous avons à faire, c&#x27;est de quitter ceci et d&#x27;enregistrer. De plus, j&#x27;utilise Cursor pour éditer cela, mais utilisez n&#x27;importe quel éditeur de code que vous avez déjà sur votre ordinateur, ou Cursor si vous voulez suivre ces étapes exactement comme je l&#x27;ai fait. Ça devrait être bon maintenant. Tout ce que nous avons à faire, c&#x27;est de quitter l&#x27;application de bureau Claude. Très bien. Donc, une fois que nous faisons cela et que nous redémarrons réellement notre application de bureau Claude, nous devrions maintenant voir cette petite barre d&#x27;outils ici avec nos outils MCP. Si vous ne voyez pas cela,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de configuration de Zapier AI Actions.</p>
+                        <p><strong>Contenu textuel & Code :</strong> URL du serveur MCP unique masquée (« Your unique MCP server endpoint ») et instructions de démarrage rapide (« Quick Start »).
+[DESC_IMAGE_1] L&#x27;utilisateur clique sur le point de terminaison du serveur MCP pour copier l&#x27;URL dans le presse-papiers.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000736_seg17.jpg" alt="L&#x27;écran montre la page de configuration de Zapier AI Actions avec le point de terminaison du serveur MCP, et le curseur clique sur le bouton de copie." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000736_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:36</span>
+                        <span class="caption-text">L&#x27;écran montre la page de configuration de Zapier AI Actions avec le point de terminaison du serveur MCP, et le curseur clique sur le bouton de copie.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000746_seg17.jpg" alt="L&#x27;interface affiche toujours les paramètres Zapier MCP Settings avec le bouton « Copy URL » visible à droite du champ de l&#x27;URL du serveur." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000746_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:46</span>
+                        <span class="caption-text">L&#x27;interface affiche toujours les paramètres Zapier MCP Settings avec le bouton « Copy URL » visible à droite du champ de l&#x27;URL du serveur.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000755_seg17.jpg" alt="La page Zapier AI Actions présente les étapes de démarrage rapide et les liens vers les clients MCP pris en charge tels que Cursor, Claude Desktop et Windsurf." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000755_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:55</span>
+                        <span class="caption-text">La page Zapier AI Actions présente les étapes de démarrage rapide et les liens vers les clients MCP pris en charge tels que Cursor, Claude Desktop et Windsurf.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:04 - 00:08:37</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">vous aurez peut-être besoin de réitérer cette étape encore une fois. Essayez de fermer à nouveau Claude et de rouvrir Claude, et cela devrait s&#x27;afficher juste ici. Et ensuite, je vais vous montrer exactement comment ajouter réellement ces outils MCP, et c&#x27;est extrêmement facile à faire. Nous allons donc tout simplement revenir sur Zapier, et ici sur le côté gauche, tout ce que nous allons faire, c&#x27;est cliquer sur MCP, et là où nous avons obtenu notre URL spécifique ici, nous avons juste besoin de cliquer sur modifier les actions MCP. Comme vous pouvez le voir dans mes actions MCP enregistrées, je les ai toutes activées. Donc, envoyer un e-mail, trouver un élément de base de données dans Notion, Stripe, créer un paiement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application Claude Desktop et navigateur web affichant l&#x27;interface de Zapier AI Actions.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Intégrations MCP (Model Context Protocol), actions configurées pour Gmail, Notion, Stripe et Google Calendar.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la configuration des outils MCP et navigation dans les paramètres de Zapier AI Actions.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000812_seg18.jpg" alt="Interface sombre de l&#x27;application Claude Desktop avec un encadré de saisie de texte &quot;What&#x27;s new, brock?&quot;." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000812_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:12</span>
+                        <span class="caption-text">Interface sombre de l&#x27;application Claude Desktop avec un encadré de saisie de texte &quot;What&#x27;s new, brock?&quot;.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000820_seg18.jpg" alt="Navigateur affichant la documentation de Zapier AI Actions pour l&#x27;intégration avec Claude Desktop." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000820_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:20</span>
+                        <span class="caption-text">Navigateur affichant la documentation de Zapier AI Actions pour l&#x27;intégration avec Claude Desktop.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000829_seg18.jpg" alt="Page de configuration Zapier listant diverses actions MCP sauvegardées (Gmail, Notion, Stripe, Google Calendar) avec des boutons d&#x27;activation." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000829_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:29</span>
+                        <span class="caption-text">Page de configuration Zapier listant diverses actions MCP sauvegardées (Gmail, Notion, Stripe, Google Calendar) avec des boutons d&#x27;activation.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:37 - 00:09:04</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">lien, Google Calendar, trouver un événement, créer un produit dans Stripe, tout ce genre de choses. C&#x27;est là que nous donnons vraiment une utilité à notre assistant dans Claude. On vient simplement ici et on tape essentiellement l&#x27;action que l&#x27;on recherche. Disons donc qu&#x27;on essaie d&#x27;automatiser quelque chose dans Trello. Cliquons sur Trello ou recherchons Trello. Disons qu&#x27;on veut créer une nouvelle carte ou qu&#x27;on veut créer une checklist ou autre. Maintenant, tout ce qu&#x27;on a à faire, c&#x27;est de connecter notre compte Trello, ce qui est très facile à faire avec Zapier. Tout ce que j&#x27;ai à faire, c&#x27;est de cliquer sur autoriser, de cliquer sur rafraîchir.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface Zapier AI Actions.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Menus de configuration d&#x27;actions automatisées, intégrations Google Calendar, Google Sheets et Trello.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des options de configuration des actions automatisées dans l&#x27;interface Zapier.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000844_seg19.jpg" alt="Interface web montrant une liste d&#x27;actions configurées avec Zapier AI Actions, incluant Google Calendar et Google Sheets." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000844_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:44</span>
+                        <span class="caption-text">Interface web montrant une liste d&#x27;actions configurées avec Zapier AI Actions, incluant Google Calendar et Google Sheets.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000857_seg19.jpg" alt="Interface de configuration d&#x27;une action MCP Zapier permettant de rechercher ou créer des tâches (Trello)." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000857_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:57</span>
+                        <span class="caption-text">Interface de configuration d&#x27;une action MCP Zapier permettant de rechercher ou créer des tâches (Trello).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:04 - 00:09:37</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et maintenant, cela a accès à notre compte Trello. Nous avons juste besoin de cliquer sur activer l&#x27;action. Par exemple, laissez-moi vous montrer comment configurer cette action d&#x27;envoi de Gmail. Laissez-moi juste descendre ici, cliquer sur ajouter une étape. Même si j&#x27;ai déjà fait cela, nous allons aller sur Gmail. Nous allons cliquer sur envoyer un e-mail et c&#x27;est littéralement aussi simple que de connecter votre compte, ce qui est déjà fait pour le myen et je vais laisser l&#x27;IA deviner ces champs, donc je vais deviner, lui faire deviner les deux destinataires, je vais lui faire deviner l&#x27;objet et je vais lui faire deviner le corps du texte. Nous pouvons venir définir une valeur spécifique pour cela et la rendre spécifique à ce que nous voulons, mais je ne vais pas y toucher parce que cela complique les choses. Cela sera suffisant pour ce que je vous ai montré un peu plus tôt dans</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de configuration Zapier AI Actions / MCP.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Paramètres de configuration d&#x27;action Gmail (Gmail Account, To, Subject, Body) et options de saisie par IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Configuration d&#x27;une action d&#x27;envoi d&#x27;e-mail via l&#x27;interface Zapier et sélection d&#x27;options dans les menus déroulants.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000912_seg20.jpg" alt="Interface Zapier AI Actions montrant le panneau de configuration d&#x27;une action MCP avec un champ de recherche d&#x27;applications." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000912_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:12</span>
+                        <span class="caption-text">Interface Zapier AI Actions montrant le panneau de configuration d&#x27;une action MCP avec un champ de recherche d&#x27;applications.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000920_seg20.jpg" alt="Configuration détaillée d&#x27;une action Gmail Send Email avec les champs de compte, destinataire, objet et corps du message." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000920_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:20</span>
+                        <span class="caption-text">Configuration détaillée d&#x27;une action Gmail Send Email avec les champs de compte, destinataire, objet et corps du message.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000928_seg20.jpg" alt="Menu déroulant actif permettant de choisir entre laisser l&#x27;IA deviner la valeur ou définir une valeur spécifique pour le champ destinataire." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000928_seg20.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:28</span>
+                        <span class="caption-text">Menu déroulant actif permettant de choisir entre laisser l&#x27;IA deviner la valeur ou définir une valeur spécifique pour le champ destinataire.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:37 - 00:10:12</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">cette vidéo et voilà, maintenant nous avons toutes ces actions auxquelles notre serveur MCP a accès à l&#x27;intérieur de Claude. Pour voir ces mises à jour à l&#x27;intérieur de Claude, ce que je dois faire, c&#x27;est de refaire cette étape d&#x27;aller réellement dans la configuration. Donc je viens dans les paramètres, je vais dans développeur. Je dois modifier à nouveau la configuration. Et j&#x27;ai fondamentalement juste besoin de faire un changement simple comme celui-ci, de le sauvegarder à nouveau. Et ensuite, je devrai redémarrer Claude à nouveau. Et une fois que j&#x27;aurais redémarré Claude à nouveau, ces nouvelles actions seront ici. Donc les gars, voilà, c&#x27;est comme ça qu&#x27;on utilise Zapier MCP pour réellement donner des actions à votre application de bureau Claude. Maintenant, nous pourrions littéralement parler</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Application de bureau Claude (Anthropic) et fenêtre de prévisualisation vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> L&#x27;interface de l&#x27;application Claude affichant le message d&#x27;accueil &quot;What&#x27;s new, brock?&quot; avec une zone de texte centrale et un indicateur de modèle &quot;Claude 3.5 Sonnet&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur s&#x27;apprête à naviguer dans les paramètres ou les configurations de l&#x27;application Claude pour actualiser le serveur MCP.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_000946_seg21.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application Claude sur Mac avec le présentateur en incrustation vidéo sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_000946_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:46</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application Claude sur Mac avec le présentateur en incrustation vidéo sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:12 - 00:10:35</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">avec Claude et de lui faire exécuter des actions pour nous comme si c&#x27;était un véritable agent IA ou un véritable assistant qui pourrait réellement accomplir et faire des choses pour nous. Donc, si vous avez tiré de la valeur de cette vidéo, assurez-vous de vous abonner à cette chaîne. Je couvre tout ce qui touche à l&#x27;IA pour les non-techniciens, en vous montrant comment exploiter une nouvelle technologie juste comme celle-ci en tant que personne non technique, ce que je suis. J&#x27;apprécie que vous soyez restés jusqu&#x27;ici. Sérieusement, merci beaucoup. Je vous vois dans la prochaine vidéo.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface de l&#x27;application Claude (Anthropic) sur macOS.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte d&#x27;accueil « What&#x27;s new, brock? » et champ de saisie de prompt « How can I help you today? ».</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface de l&#x27;assistant IA Claude.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/80nvFVMiJqk/80nvFVMiJqk_001018_seg22.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface sombre de l&#x27;application Claude avec une incrustation vidéo du présentateur Brock Mesarich dans le coin inférieur gauche." loading="lazy" onclick="openLightbox('../screenshots/80nvFVMiJqk/80nvFVMiJqk_001018_seg22.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:18</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface sombre de l&#x27;application Claude avec une incrustation vidéo du présentateur Brock Mesarich dans le coin inférieur gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

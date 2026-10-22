@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `181 / 273` (`66.3%`)
+- **Vidéos traitées** : `182 / 273` (`66.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -198,6 +198,7 @@
 | 2025-04-10 | [vFPwtgjNLX0](https://www.youtube.com/watch?v=vFPwtgjNLX0) | **Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)** | [2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-10_YT-[vFPwtgjNLX0]_Le nouveau Google Firebase Studio est surcoté (et voici pourquoi)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `37` |
 | 2025-04-07 | [pB1MRWhS13Y](https://www.youtube.com/watch?v=pB1MRWhS13Y) | **Coder au feeling un serveur MCP (en étant grand débutant)** | [2025-04-07_YT-[pB1MRWhS13Y]_Coder au feeling un serveur MCP (en étant grand débutant)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-07_YT-[pB1MRWhS13Y]_Coder au feeling un serveur MCP (en étant grand débutant)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-07_YT-[pB1MRWhS13Y]_Coder au feeling un serveur MCP (en étant grand débutant)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `43` |
 | 2025-04-04 | [EinBuRc3um4](https://www.youtube.com/watch?v=EinBuRc3um4) | **Comment automatiser n'importe quoi INSTANTANÉMENT grâce à l'IA (Sans code)** | [2025-04-04_YT-[EinBuRc3um4]_Comment automatiser n'importe quoi INSTANTANÉMENT grâce à l'IA (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-04_YT-[EinBuRc3um4]_Comment automatiser n'importe quoi INSTANTANÉMENT grâce à l'IA (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-04_YT-[EinBuRc3um4]_Comment automatiser n'importe quoi INSTANTANÉMENT grâce à l'IA (Sans code)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `93` |
+| 2025-04-03 | [80nvFVMiJqk](https://www.youtube.com/watch?v=80nvFVMiJqk) | **Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)** | [2025-04-03_YT-[80nvFVMiJqk]_Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-04-03_YT-[80nvFVMiJqk]_Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-04-03_YT-[80nvFVMiJqk]_Zapier MCP connecte Claude à 8 000 applications (INSTANTANÉMENT)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `32` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
