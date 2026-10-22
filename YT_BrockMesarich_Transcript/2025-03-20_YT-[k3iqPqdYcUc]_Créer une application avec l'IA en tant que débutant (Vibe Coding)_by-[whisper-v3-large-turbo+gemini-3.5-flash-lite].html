@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Créer une application avec l&#x27;IA en tant que débutant (Vibe Coding) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Créer une application avec l&#x27;IA en tant que débutant (Vibe Coding)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-03-20</span>
+                <span class="badge">⏱️ 00:13:33</span>
+                <span class="badge">🆔 <code>k3iqPqdYcUc</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=k3iqPqdYcUc" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo intitulée **Créer une application avec l'IA en tant que débutant (Vibe Coding)**, Alex Carter détaille une approche stratégique et pratique du trading et de l'automatisation par agents IA.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>- **TradingView & Claude Code** : Analyse technique avancée et automatisation algorithmique.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>- Respect rigoureux du ratio risque/rendement et du money management.<br>- Automatisation méthodique des déclencheurs d'ordres via des agents intelligents.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">TradingView &amp; Claude Code</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Respect rigoureux du ratio risque/rendement et du money management.</span></li><li><span class="point-bullet">✦</span><span>Automatisation méthodique des déclencheurs d&#x27;ordres via des agents intelligents.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:32</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais vous montrer comment l&#x27;intelligence artificielle révolutionne le développement d&#x27;applications pour les personnes non techniques comme moi, mais avec une approche que je n&#x27;ai encore jamais montrée sur cette chaîne. Vous allez voir comment n&#x27;importe qui peut créer des applications impressionnantes simplement en exprimant ses idées à voix haute, littéralement. Je vais utiliser deux outils puissants qui fonctionnent ensemble de manière transparente. D&#x27;abord, nous allons utiliser DataButton, qui est un créateur d&#x27;applications web textuel transformant le langage naturel en applications fonctionnelles sans aucune connaissance en programmation. Le second est AquaVoice, un outil de conversion de la voix en texte qui convertit mes paroles directement dans l&#x27;interface, éliminant ainsi le besoin de tout taper</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Databutton.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil du site Databutton montrant le titre &quot;Built with Databutton&quot;, des témoignages utilisateurs et des visuels d&#x27;interfaces de tableaux de bord.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur introduit l&#x27;outil Databutton pour le développement d&#x27;applications assisté par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000024_seg1.jpg" alt="Présentation de la plateforme web Databutton avec des captures d&#x27;interface et le texte de présentation sur son agent de raisonnement." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000024_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:24</span>
+                        <span class="caption-text">Présentation de la plateforme web Databutton avec des captures d&#x27;interface et le texte de présentation sur son agent de raisonnement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:32 - 00:01:09</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">manuellement. Ensemble, ces outils créent un flux de travail puissant qui permet à n&#x27;importe qui de créer des applications sophistiquées à une vitesse incroyable, quel que soit votre bagage technique. Très bien, j&#x27;ai assez parlé, passons aux choses sérieuses. Très bien, les gars, je suis donc dans Data Button, et commençons à coder aux vibrations notre application ici. Littéralement, je vais fondamentalement parler dans mon ordinateur et expliquer ce que je veux construire, et Data Button va commencer à élaborer un plan basé sur cela, et nous pourrons commencer à construire notre application à partir de là. Laissez-moi donc simplement appuyer sur F5 sur mon clavier et commencer à parler. Nous allons en fait utiliser Aqua Voice afin de capturer notre voix, puis de la transformer en texte et de rendre la création de nos applications vraiment simple</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Databutton (databutton.com/new).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil de création d&#x27;application avec le champ de description &quot;Describe your app, what it does, and who it&#x27;s for&quot; et les étapes de configuration (Description, Requirements, Inspiration, Integrations).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la plateforme de développement d&#x27;applications par IA Databutton.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000051_seg2.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du site web Databutton avec le texte &quot;Let&#x27;s turn your ideas into exceptional software&quot;, avec une incrustation vidéo du présentateur sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000051_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:51</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du site web Databutton avec le texte &quot;Let&#x27;s turn your ideas into exceptional software&quot;, avec une incrustation vidéo du présentateur sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:09 - 00:01:28</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">en faisant du vibe coding, en disant ce que nous voulons. Je veux donc créer une application où les créateurs de contenu peuvent déposer des notes vocales. Et lorsqu&#x27;ils déposent la note vocale, cela la décompose essentiellement en plusieurs éléments. Je veux la résumer automatiquement avec l&#x27;intelligence artificielle. Je veux l&#x27;améliorer avec l&#x27;intelligence artificielle, peut-être en utilisant l&#x27;API d&#x27;OpenAI.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de la plateforme Databutton.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte affiché : « Let&#x27;s turn your ideas into exceptional software », « What are we building? » avec les étapes 1. Description, 2. Requirements, 3. Inspiration, 4. Integrations, et un encadré « Describe your app, what it does, and who it&#x27;s for ».</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique comment utiliser la plateforme de vibe coding pour concevoir une application de gestion de notes vocales pour créateurs de contenu en décrivant le projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000114_seg3.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface du site web Databutton avec un champ pour décrire l&#x27;application à créer, accompagnée d&#x27;une incrustation vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000114_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:14</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface du site web Databutton avec un champ pour décrire l&#x27;application à créer, accompagnée d&#x27;une incrustation vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:28 - 00:01:47</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et ensuite, je veux que les utilisateurs puissent les enregistrer sur leur profil. Donc, pensez au moment où un utilisateur ou un créateur de contenu a une idée, il peut simplement laisser une note vocale et cela capture automatiquement celle-ci ainsi que toutes les informations clés qui peuvent être résumées, tout en développant cela et en l&#x27;améliorant avec l&#x27;IA. Donc maintenant, ce que AcoVoice va faire, c&#x27;est que ça va maintenant coller ceci.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme Databutton (databutton.com/new).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de création de logiciel avec le texte &quot;Let&#x27;s turn your ideas into exceptional software&quot; et un champ de saisie pour décrire l&#x27;application.</p>
+                        <p><strong>Action / Démonstration :</strong> Saisie ou affichage de la description textuelle d&#x27;un projet d&#x27;application pour créateurs de contenu.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000133_seg4.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;outil de développement Databutton avec le présentateur incrusté à gauche." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000133_seg4.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:33</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;outil de développement Databutton avec le présentateur incrusté à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:47 - 00:02:21</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Tout cela a l&#x27;air formidable. C&#x27;est incroyablement bien formaté et je pourrais tout à fait continuer ainsi. C&#x27;anniksi sera donc ma façon d&#x27;interagir avec ceci. Je vais littéralement me contenter d&#x27;utiliser ma voix pour dicter ce que je veux construire. C&#x27;est ça, le « vibe coding ». Alors allons-y et continuons. Je pourrais donner à notre agent ici dans Data Button autant d&#x27;informations que possible. Cependant, je vais me contenter de commencer avec ça. Sautons cette étape. Sautons toutes les inspirations de sites web, les inspirations de design. Et maintenant, nous pouvons choisir les intégrations que nous voulons ajouter à notre application. Nous pouvons donc ajouter l&#x27;authentification Firebase. C&#x27;est une intégration native, Firestore pour stocker ces informations. Nous pouvons ajouter les paiements Stripe pour réellement facturer nos</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Databutton.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Texte « Let&#x27;s turn your ideas into exceptional software » et étapes de configuration (1. Description, 2. Requirements, 3. Inspiration, 4. Integrations).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de l&#x27;outil de développement assisté par IA.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000156_seg5.jpg" alt="Interface web de Databutton invitant à transformer les idées en logiciels, avec le présentateur visible en incrustation à gauche." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000156_seg5.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:01:56</span>
+                        <span class="caption-text">Interface web de Databutton invitant à transformer les idées en logiciels, avec le présentateur visible en incrustation à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:21 - 00:02:54</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">application et nous pourrions utiliser Firebase pour notre stockage. Il y a toutes ces plates-formes différentes qu&#x27;ils pourraient utiliser. Cependant, c&#x27;est ce que je vais choisir dans cette vidéo. Cliquez sur &quot;commencer&quot; et maintenant, il va commencer à élaborer un produit MVP pour nous et cela va créer un plan structuré à suivre afin de construire notre application que nous lui avons donnée en parlant à DataButton. C&#x27;est donc là que DataButton et les plates-formes comme AquaVoice deviennent vraiment incroyables lorsqu&#x27;elles sont combinées, car fondamentalement, je formule simplement en anglais simple ce que je veux construire avec AquaVoice, puis cela élabore un plan avec DataButton. DataButton est un peu plus structuré</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:54 - 00:03:16</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">que certaines de ces autres plateformes. J&#x27;adore la façon dont il crée réellement ces tâches pour nous et analyse réellement ce sur quoi nous pensons devoir travailler à l&#x27;intérieur de ces tâches. Donc chacune de ces tâches a maintenant une description claire et détaillée, et il va commencer à assembler ces tâches en sous-tâches. Et je vais vous montrer exactement comment cela fonctionne à l&#x27;intérieur de DataButton. Donc en gros, il suggère que nous commencions par la tâche numéro un, qui est la création d&#x27;une page de destination.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Databutton, outil de développement d&#x27;applications assisté par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des tâches du projet Vocapture (MYA-1 à MYA-7), chat de l&#x27;assistant IA et descriptions détaillées des tâches.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et consultation des tâches générées par l&#x27;IA pour la construction du MVP de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000259_seg7.jpg" alt="Vue d&#x27;ensemble de la plateforme de développement Databutton montrant le plan de construction pour le projet Vocapture avec une liste de tâches détaillées." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000259_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:59</span>
+                        <span class="caption-text">Vue d&#x27;ensemble de la plateforme de développement Databutton montrant le plan de construction pour le projet Vocapture avec une liste de tâches détaillées.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000305_seg7.jpg" alt="Gros plan sur une fenêtre modale affichant la description détaillée de la tâche MYA-1 pour la création d&#x27;une page d&#x27;atterrissage." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000305_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:05</span>
+                        <span class="caption-text">Gros plan sur une fenêtre modale affichant la description détaillée de la tâche MYA-1 pour la création d&#x27;une page d&#x27;atterrissage.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000310_seg7.jpg" alt="Retour à la vue principale du plan de projet sur Databutton avec le volet de conversation de l&#x27;assistant IA actif sur la droite." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000310_seg7.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:10</span>
+                        <span class="caption-text">Retour à la vue principale du plan de projet sur Databutton avec le volet de conversation de l&#x27;assistant IA actif sur la droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:16 - 00:03:50</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Allons-y et créons ceci, cliquons sur démarrer la tâche, et laissons tourner. Une chose que je tiens à mentionner, c&#x27;est que le lien pour utiliser ces deux plateformes, à la fois Aquavoice et DataButton, se trouve dans la description. Ces plateformes se marient vraiment très bien ensemble. Assurez-vous donc de consulter les deux si vous êtes intéressés et que vous trouvez cette vidéo utile. D&#x27;accord. Donc, une chose à propos de DataButton, c&#x27;est qu&#x27;il réfléchit vraiment à la meilleure façon d&#x27;aborder chacune de ces tâches. Donc, si vous venez ici, vous pouvez voir qu&#x27;il est en train de réfléchir. Si je clique sur réfléchir un instant, il est en train de passer en revue, de créer une observation, d&#x27;élaborer un plan et de concevoir les prochaines étapes. Ensuite, il va de l&#x27;avant, il apporte ces modifications, puis il réobserve et réfléchit : est-ce que cela fonctionne correctement ? Y a-t-il des erreurs ici ? Donc, si vous y allez et que vous</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de DataButton (plateforme de développement d&#x27;applications par IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan du projet découpé en tâches (&quot;Our plan to build Vocapture&quot;) avec des éléments en cours (MVP-1 : création d&#x27;une landing page) et à faire (MVP-2 à MVP-7), ainsi qu&#x27;une conversation avec l&#x27;assistant IA dans le volet droit.</p>
+                        <p><strong>Action / Démonstration :</strong> Le curseur clique sur un élément de la liste des tâches pour lancer le développement de la fonctionnalité correspondante.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000324_seg8.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de la plateforme DataButton avec le plan de développement du projet &#x27;Vocapture&#x27; et un panneau de discussion latéral." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000324_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:24</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de la plateforme DataButton avec le plan de développement du projet &#x27;Vocapture&#x27; et un panneau de discussion latéral.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:50 - 00:04:23</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">on veut voir exactement de quoi il parle ou ce qu&#x27;il est en train de penser, c&#x27;est vraiment détaillé donc vous pouvez voir les observations ici, vous pouvez voir le plan, il est effectivement allé de l&#x27;avant et a coché tout cela du plan dans cette sous-tâche donc il a fait ces quatre tâches et ensuite il y a les tâches qu&#x27;il doit encore accomplir donc ici il semble que l&#x27;écriture du code a échoué cependant il est en train de réévaluer pourquoi cela n&#x27;a pas fonctionné et il s&#x27;attaque à cette tâche sans que nous ayons à faire des allers-retours pour le relancer, très bien, alors voici la page de destination réelle qu&#x27;il a conçue pour nous, c&#x27;est plutôt cool les gars. Donc capturer la voix, libérer les idées, transformer des pensées spontanées en un contenu organisé et amélioré par l&#x27;IA</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement Databutton, éditeur de code et outil de génération de projets par IA.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan de construction de l&#x27;application Vocapture, sous-tâches, code généré par l&#x27;IA et aperçu de la landing page.
+[DESC_IMAGE_1] L&#x27;interface de Databutton montre la liste des tâches à droite avec le plan en cours de lecture et de vérification.</p>
+                        <p><strong>Action / Démonstration :</strong> Examen des étapes du plan et validation des tâches réalisées pour la création de la landing page.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000358_seg9.jpg" alt="L&#x27;interface de Databutton montre la liste des tâches à droite avec le plan en cours de lecture et de vérification." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000358_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:58</span>
+                        <span class="caption-text">L&#x27;interface de Databutton montre la liste des tâches à droite avec le plan en cours de lecture et de vérification.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000406_seg9.jpg" alt="Le volet de droite affiche la progression des sous-tâches avec le texte sélectionné par l&#x27;assistant IA." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000406_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:06</span>
+                        <span class="caption-text">Le volet de droite affiche la progression des sous-tâches avec le texte sélectionné par l&#x27;assistant IA.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000415_seg9.jpg" alt="L&#x27;onglet &#x27;Preview&#x27; affiche la page d&#x27;accueil de l&#x27;application &#x27;Vocapture&#x27; avec le titre &#x27;Capture Voice, Unlock Ideas&#x27;." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000415_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:15</span>
+                        <span class="caption-text">L&#x27;onglet &#x27;Preview&#x27; affiche la page d&#x27;accueil de l&#x27;application &#x27;Vocapture&#x27; avec le titre &#x27;Capture Voice, Unlock Ideas&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:23 - 00:04:56</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">content with a simple voice note. For whatever reason, it looks like this little like voice wave here. It doesn&#x27;t look great. It&#x27;s not exactly how we would want it to look. So let&#x27;s just maybe vibe with this and see if it&#x27;s able to fix this. So the landing page looks great. I love what you tried to do with the little like voice indicator with the waves. However, it doesn&#x27;t look fully put together. It seems a bit odd and it&#x27;s not functioning exactly how we want it to. Can we fix this and just make this look better so it actually looks like a voice wave because we&#x27;re going to give it that using aqua voice now it&#x27;s going to just go ahead and try to code this out</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, interface de développement de type Bolt.new / Databutton, panneau de discussion latéral (chat).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page de présentation affichant le titre &#x27;Capture Voice, Unlock Ideas&#x27;, un bouton violet &#x27;Get Started&#x27;, une section &#x27;How Vocapture Works&#x27; et un panneau de chat avec l&#x27;historique des modifications de code.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur examine la landing page générée et discute de l&#x27;animation de l&#x27;onde vocale affichée à l&#x27;écran.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000432_seg10.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de développement web avec une vue de prépondérance d&#x27;une landing page pour un projet nommé &#x27;Vocapture&#x27;, accompagnée d&#x27;un panneau de chat latéral et de la vidéo incrustée du présentateur." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000432_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:32</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface d&#x27;un outil de développement web avec une vue de prépondérance d&#x27;une landing page pour un projet nommé &#x27;Vocapture&#x27;, accompagnée d&#x27;un panneau de chat latéral et de la vidéo incrustée du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:56 - 00:05:24</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">for us so guys this is technically i guess what vibe coding is it&#x27;s just speaking with our voice and then having ai code it for us very interesting the fact that i&#x27;m not even typing i don&#x27;t even need to a i don&#x27;t need to write code but b i don&#x27;t even have to type on my keyboard pretty crazy times we live in if you have to ask me nice okay this looks much better here this is actually a pretty sweet looking landing page. Let me open the full preview so we can take a look at our application. Wow. That&#x27;s, that&#x27;s great. Before using AI, imagine making a landing page like this.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Databutton (plateforme de développement web assistée par IA) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Aperçu d&#x27;une landing page (&quot;Capture Voice, Unlock Ideas&quot;) et panneau de discussion/planification de l&#x27;IA détaillant les observations et les étapes de codage.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation du processus de développement assisté par IA (&quot;vibe coding&quot;) sans écriture de code manuelle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000503_seg11.jpg" alt="Interface de développement Databutton affichant un aperçu de la landing page &quot;Vocapture&quot; avec un volet latéral d&#x27;assistant IA." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000503_seg11.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:03</span>
+                        <span class="caption-text">Interface de développement Databutton affichant un aperçu de la landing page &quot;Vocapture&quot; avec un volet latéral d&#x27;assistant IA.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:24 - 00:05:51</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cela prendrait des heures, surtout si vous n&#x27;avez aucune base en programmation ou autre. C&#x27;est absolument génial. C&#x27;est un excellent début pour notre application. Évidemment, nous devons construire un peu plus et ajouter réellement des fonctionnalités à notre application. Alors allons-y et passons à la suite. Marquons cette tâche comme terminée. Donc je vais simplement revenir sur notre page de tâches ou notre page de plan ici, et je vais marquer ceci comme fait. Alors, marquez cela comme fait. C&#x27;est maintenant passé de l&#x27;onglet en cours à notre onglet fait ici. Ensuite, nous pouvons simplement aller sur notre liste de tâches et créer ces autres fonctions ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de développement (Databutton) avec panneau de discussion et gestionnaire de tâches.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des fonctionnalités à développer (authentification Firebase, interface d&#x27;enregistrement, intégration API OpenAI, etc.).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;interface de gestion de projet et discussion avec l&#x27;assistant IA pour le développement de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000531_seg12.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application Vocapture avec la page d&#x27;accueil en aperçu et le panneau de discussion de l&#x27;IA à droite." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000531_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:31</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application Vocapture avec la page d&#x27;accueil en aperçu et le panneau de discussion de l&#x27;IA à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000538_seg12.jpg" alt="Capture d&#x27;écran affichant le plan de construction de l&#x27;application Vocapture avec la liste des tâches à accomplir (In progress / To do)." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000538_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:38</span>
+                        <span class="caption-text">Capture d&#x27;écran affichant le plan de construction de l&#x27;application Vocapture avec la liste des tâches à accomplir (In progress / To do).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000545_seg12.jpg" alt="Capture d&#x27;écran montrant le déplacement du curseur de la souris sur le plan de construction de l&#x27;application dans l&#x27;interface de développement." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000545_seg12.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:05:45</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le déplacement du curseur de la souris sur le plan de construction de l&#x27;application dans l&#x27;interface de développement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:52 - 00:06:24</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So I want to create the voice note recording interface. Let&#x27;s go ahead and move forward with that. So I&#x27;m just going to click on start task here, preview this, and let&#x27;s let this thing run. I&#x27;ll come back when this actually is finished. Whoa. Okay. So it&#x27;s not done writing this code. However, this is the recording interface that data button actually built us so capture your voice notes with our little wave like kind of ui element here so this actually this user interface looks super clean this looks better than i thought it was going to whoa nice okay here we go let&#x27;s actually try this</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Databutton (application web de développement assisté par IA) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;une application nommée &quot;Vocapture&quot; avec des éléments de code, un panneau de discussion avec l&#x27;IA et des instructions pour créer une interface d&#x27;enregistrement vocal.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur montre la génération de code par l&#x27;IA pour l&#x27;interface d&#x27;enregistrement vocal et navigue dans les options de prévisualisation de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000600_seg13.jpg" alt="Interface de l&#x27;outil de développement AI (Databutton), montrant une application de note vocale avec un assistant virtuel sur le panneau latéral droit." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000600_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:00</span>
+                        <span class="caption-text">Interface de l&#x27;outil de développement AI (Databutton), montrant une application de note vocale avec un assistant virtuel sur le panneau latéral droit.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000608_seg13.jpg" alt="Suite de la démonstration sur Databutton, montrant le code en cours de rédaction et l&#x27;interface de prévisualisation d&#x27;enregistrement vocal." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000608_seg13.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:08</span>
+                        <span class="caption-text">Suite de la démonstration sur Databutton, montrant le code en cours de rédaction et l&#x27;interface de prévisualisation d&#x27;enregistrement vocal.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:24 - 00:06:42</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">sorti maintenant après qu&#x27;il a terminé sa pensée juste ici donc très bien c&#x27;est parti voici l&#x27;interface ça a l&#x27;air absolument génial allons-y et testons-la hey donc j&#x27;ai une idée de vidéo YouTube où j&#x27;utilise réellement data button et vibe code pour construire une application. Ouais. D&#x27;accord, donc voilà. Nous avons l&#x27;interface utilisateur de ceci qui est construite.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:43 - 00:07:02</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Cependant, il semble que nous n&#x27;ayons pas réellement sa fonctionnalité. Donc cela n&#x27;enregistre pas réellement cette note vocale ici. Cela a seulement construit l&#x27;interface utilisateur. Retournons donc à notre plan. Assurons-nous que tout cela a été complété avant de passer à autre chose. C&#x27;est vraiment important lors de l&#x27;utilisation de Data Button. Assurez-vous qu&#x27;avant de marquer une tâche comme terminée, tout ce qui se trouve ici est complété. Sinon, nous risquons de perturber le déroulement de la construction de notre application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Databutton (interface de développement d&#x27;application web).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Liste des fonctionnalités du projet Vocapture, tâches accomplies et plan de développement (&quot;Our plan to build Vocapture&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et révision des fonctionnalités de l&#x27;interface utilisateur avant de retourner au plan de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000647_seg15.jpg" alt="Interface de prévisualisation de l&#x27;application Vocapture montrant l&#x27;écran d&#x27;enregistrement de notes vocales." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000647_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:47</span>
+                        <span class="caption-text">Interface de prévisualisation de l&#x27;application Vocapture montrant l&#x27;écran d&#x27;enregistrement de notes vocales.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000652_seg15.jpg" alt="Vue du plan de construction (roadmap) de l&#x27;application Vocapture avec les tâches en cours et à venir." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000652_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:52</span>
+                        <span class="caption-text">Vue du plan de construction (roadmap) de l&#x27;application Vocapture avec les tâches en cours et à venir.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000657_seg15.jpg" alt="Vue du plan de développement de Vocapture avec un curseur pointant sur les différentes étapes du projet." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000657_seg15.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:57</span>
+                        <span class="caption-text">Vue du plan de développement de Vocapture avec un curseur pointant sur les différentes étapes du projet.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:02 - 00:07:31</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors, terminez l&#x27;interface d&#x27;enregistrement de notes vocales avec les fonctionnalités suivantes. Revenons à notre truc d&#x27;enregistrement. J&#x27;ai une idée de vidéo où j&#x27;utilise un bouton de données pour créer une application. D&#x27;accord. Donc, on dirait que ce n&#x27;est pas vraiment, j&#x27;ai une idée de vidéo. D&#x27;accord. Donc, ça enregistre bien cela. On dirait que tout est prêt. Alors allons-y et marquons cela comme fait. Tout a l&#x27;air de bien se passer là. Ensuite, ce que nous voulons faire, c&#x27;est passons réellement à l&#x27;étape numéro sept et créons une vue détaillée de note vocale avec des capacités d&#x27;édition après avoir ajouté l&#x27;intégration de l&#x27;API OpenAI pour le traitement des notes vocales.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Databutton (plateforme de développement d&#x27;applications sans code / IA).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Vocapture, plan de projet (tâches MYA-1 à MYA-7), récapitulatif des fonctionnalités d&#x27;enregistrement vocal et panneau de discussion avec l&#x27;assistant IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation dans l&#x27;application Databutton pour examiner l&#x27;interface d&#x27;enregistrement vocal et le plan du projet Vocapture.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000709_seg16.jpg" alt="Interface de prévisualisation de l&#x27;application Vocapture avec un panneau d&#x27;enregistrement vocal en cours d&#x27;utilisation et une barre de discussion latérale." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000709_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:09</span>
+                        <span class="caption-text">Interface de prévisualisation de l&#x27;application Vocapture avec un panneau d&#x27;enregistrement vocal en cours d&#x27;utilisation et une barre de discussion latérale.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000717_seg16.jpg" alt="Vue du plan de développement &quot;Our plan to build Vocapture&quot; montrant les tâches &quot;In Progress&quot; et &quot;To do&quot; sur la plateforme Databutton." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000717_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:17</span>
+                        <span class="caption-text">Vue du plan de développement &quot;Our plan to build Vocapture&quot; montrant les tâches &quot;In Progress&quot; et &quot;To do&quot; sur la plateforme Databutton.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000724_seg16.jpg" alt="Vue détaillée du tableau de bord de gestion de projet avec les tâches terminées (&quot;Done&quot;) et les prochaines étapes de développement." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000724_seg16.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:24</span>
+                        <span class="caption-text">Vue détaillée du tableau de bord de gestion de projet avec les tâches terminées (&quot;Done&quot;) et les prochaines étapes de développement.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:07:49</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So we need to add OpenAI API, which essentially will allow us to take this voice memo or this voice message and then transcribe that using AI and then even give us a summary based on the key points with AI. So that&#x27;s an important step. I need to go to OpenAI and actually grab my API key. So let me go ahead and do that now. All right, I got my key.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface Databutton (planification et panneau de discussion latéral).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan de développement listant les tâches en cours (&quot;Implement OpenAI API integration for voice note processing&quot;) et à faire (Firebase, storage, bibliothèque de notes).</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur explique la prochaine étape consistant à intégrer l&#x27;API OpenAI pour la transcription des mémos vocaux tout en naviguant dans le plan du projet.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000736_seg17.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application de développement no-code Databutton avec un plan de projet listant les tâches pour l&#x27;application Vocapture, et la webcam du présentateur incrustée à gauche." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000736_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:36</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application de développement no-code Databutton avec un plan de projet listant les tâches pour l&#x27;application Vocapture, et la webcam du présentateur incrustée à gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:49 - 00:08:08</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais le coller ici. Cliquons sur envoyer. Et ce que ça va faire, ça va en fait aller dans nos paramètres ici et ça va stocker le nouveau secret. Donc voici le secret de l&#x27;API OpenAI que je viens d&#x27;intégrer dans notre application. Donc personne ne pouvait voir ça. Nous pourrions aller, si nous voulons, nous pourrions en fait créer des instructions personnalisées pour notre agent. Je suis juste dans l&#x27;onglet des paramètres ici. Donc il y a beaucoup de choses cool que nous pouvons faire ici.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:08 - 00:08:43</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Mais cela étant dit, revenons simplement à notre aperçu et voyons comment cela progresse ici. Très bien. Donc, si je regarde ce que notre agent Data Button fait réellement en arrière-plan, il fait quelque chose qui est en fait assez technique. Il crée réellement un point de terminaison d&#x27;API post et un point de terminaison d&#x27;API get qui récupère la note de traitement. Donc, essentiellement, il va envoyer cette note vocale à ChatGPT ou à l&#x27;API d&#x27;OpenAI qui va ensuite la transcrire avec Whisper. Et ensuite, il va utiliser ce point de terminaison pour l&#x27;importer à nouveau dans notre application. Donc, si vous voulez vous plonger dans les aspects techniques de ce que Data Button fait en arrière-plan, c&#x27;est en fait assez incroyable, mais étant une personne non technique et</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de l&#x27;outil de développement sans code / IA Data Button.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Plan du projet Vocapture, tâches en cours liées à l&#x27;intégration de l&#x27;API OpenAI pour le traitement des notes vocales (Whisper, GPT-4o-mini), et journal d&#x27;activité de l&#x27;agent.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur commente le plan d&#x27;exécution et les détails techniques de l&#x27;agent IA en arrière-plan.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000817_seg19.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de Data Button avec le plan de construction de l&#x27;application Vocapture et le panneau de discussion de l&#x27;agent IA à droite." loading="lazy" onclick="openLightbox('../screenshots/k3iqPqdYcUc/k3iqPqdYcUc_000817_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:17</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de Data Button avec le plan de construction de l&#x27;application Vocapture et le panneau de discussion de l&#x27;agent IA à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:43 - 00:09:18</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Pas forcément besoin de tout comprendre, je ne sais pas nécessairement tout ce qui se passe en arrière-plan, mais quand on y regarde de plus près, c&#x27;est en fait assez incroyable de voir à quel point cet agent est complexe ou à quel point la tâche que cet agent peut réellement accomplir est complexe. Très bien. Donc, il indique que cela fonctionne maintenant, nous devrions donc maintenant avoir le résumé et la transcription par IA avec l&#x27;API d&#x27;ouverture que nous avons effectivement incluse, alors maintenant nous pouvons venir ici et nous pouvons réellement enregistrer et testons pour voir si cela fonctionne réellement, donc j&#x27;ai une idée de vidéo où j&#x27;utilise un bouton de données pour créer une application en utilisant l&#x27;IA, mais je le fais en faisant du « vibe coding » avec Aqua Voice, simplement en parlant et en créant une application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:18 - 00:09:54</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Très bien, donc ça devrait être enregistré, cliquons maintenant sur ce bouton de traitement de note vocale et oh maintenant nous avons cette chose dans l&#x27;interface utilisateur maintenant qui donne l&#x27;impression que ça se remplit et se génère réellement, alors donnons-lui une seconde et voyons ensuite si cela nous donne réellement une sorte de résultat ici au lieu de simplement enregistrer l&#x27;enregistrement vocal et rien d&#x27;autre. Très bien, alors voilà, nous avons la transcription juste ici, c&#x27;est fondamentalement exactement ce que j&#x27;ai dit comme on pouvait s&#x27;y attendre et si nous venons dans résumé, vous pouvez maintenant voir les points clés, donc le orateur a une idée de vidéo ou il va utiliser le bouton de données pour créer une application, le plan d&#x27;incorporer AquaVoice et de démontrer le processus par le codage en direct en parlant simplement à l&#x27;application. Donc</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:54 - 00:10:30</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">il y a un résumé. Évidemment, c&#x27;est une note vocale très basique et elle n&#x27;est pas longue. Si nous devions déposer une note vocale de quelques minutes, ce résumé aurait l&#x27;air un peu différent. Et puis il y a aussi cette fonction améliorée qui montre le contenu poli. Donc, elle a en fait même trouvé une idée de vidéo potentielle, créer une application avec l&#x27;IA en utilisant DataButton et AquaVoice. Elle a trouvé une introduction ici. Elle a presque trouvé comme un script entier pour nous pour la vidéo. Donc, elle nous donne quelques idées, quelques introductions à DataButton exploitant AquaVoice, et elle nous donne même la structure de la vidéo pour que nous puissions évidemment personnaliser cela autant que nous voulons, car tout cela a à voir avec ChatGPT et l&#x27;API d&#x27;OpenAI en arrière-plan, donc nous pourrions juste avec quelques</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:30 - 00:11:07</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">simple prompting optimize this to get it to format whatever we want for the output however this is pretty cool i just want to showcase this in this video we could refine it but i think this is actually pretty cool with the time that we spent on this so far all right so now that we got the main user interface and the functionality of our app built with the voice recording as well as the kind of note enhancement features and summarization with AI. Let&#x27;s go ahead and just make some changes here. Like I&#x27;m just going to try to change up this landing page just a little bit. Let&#x27;s just make this user interface look a little bit nicer. And I&#x27;m just going to literally come back over here, use AquaVoice, speak with this and come up with different cool ideas. I&#x27;m not going to be building</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:07 - 00:11:40</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">l&#x27;application entièrement fonctionnelle dans cette vidéo. Si ça vous intéresse, je couvrirai ça dans une autre où je présenterai Data Button et où je construirai réellement des bases de données backend, la connexion des utilisateurs avec authentification, ainsi que l&#x27;ajout de paiements Stripe. Cependant, pour cette vidéo, je ne veux pas aller aussi loin. C&#x27;est plutôt juste pour les personnes qui s&#x27;intéressent à voir ce dont cette plateforme est capable. Mais laissez-moi aller de l&#x27;avant et venir ici pour, en gros, donner un retour à ceci. Très bien. Donc, je veux que tu travailles maintenant sur l&#x27;interface utilisateur de notre application. Je veux que tu ajoutes des fonctionnalités de dégradé, quelque chose, je ne sais même pas, quelque chose d&#x27;un peu futuriste, je suppose, en arrière-plan. J&#x27;aime la vue noire que nous avons en arrière-plan, mais si nous pouvions ajouter peut-être des</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:40 - 00:12:15</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">des accents violets avec quelques nuances de dégradé ou quelque chose comme ça, ce serait super. Bon, alors maintenant nous allons utiliser cette invite, l&#x27;envoyer et donnons une seconde à data button ici pour voir ce qu&#x27;il en ressort, même si cette page d&#x27;atterrissage est plutôt minimale et a un look plutôt sympa, mais je pense qu&#x27;on pourrait faire un peu plus de changements ici si on veut chipoter avec tout ça. Bon, pour une raison quelconque, cela n&#x27;a pas apporté beaucoup de changements ici à notre interface utilisateur, c&#x27;est peut-être quelque chose en arrière-plan qu&#x27;on ne peut pas vraiment voir parce que c&#x27;est tellement sombre en arrière-plan, alors allons-y et je vais faire un changement et lui demander d&#x27;ajouter également un mode clair, donc je veux que tu ajoutes réellement un mode clair à notre application qui contraste avec les couleurs que nous avons pour le thème que nous avons actuellement</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:15 - 00:12:37</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">have with the white, the black, and the purple text and whatnot. I want you to add some purple gradients to the white or to the light mode. Okay, so let&#x27;s give it that and let&#x27;s wait a sec. All right, so now there&#x27;s this toggle button in the right hand corner, so we can now toggle to light mode. So that actually looks pretty cool. It&#x27;s keeping the same theme with the black, the white, and the purple text that we have here. If we go to the record section of our application as well, Let&#x27;s take a look at this.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:37 - 00:13:03</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So same thing. That&#x27;s actually looking pretty great. So this isn&#x27;t a very detailed application. Like we can get way more complex as this. We could charge money for it or we with Stripe payments, or we could even add our Firebase authentication. So it allows users to sign into their profiles as well as store these voice notes to their profiles. However, I wanted to show you just basically what we could build when we combine data button along with AquaVoice and literally just vibe coding, if you want to call it that, whatever people call that nowadays.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:03 - 00:13:32</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">But this is something that we built with no coding experience. I have no coding background. And if you&#x27;re not a technical person, you can honestly build some pretty cool things with these two platforms together So hope you guys enjoyed this if you guys want more content like this Make sure to subscribe to this channel as well as if you want more in-depth videos on data button I have one in the past a couple of them actually and I will be continuing to make these these types of videos So if you want me to dive deeper into this platform, let me know what you&#x27;d like to learn And i&#x27;ll make sure to showcase that later on but yeah, thanks for staying to the end of this video Appreciate it and i&#x27;ll see you guys in the next one</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
