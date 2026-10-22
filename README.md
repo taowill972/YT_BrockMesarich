@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `168 / 273` (`61.5%`)
+- **Vidéos traitées** : `169 / 273` (`61.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -185,6 +185,7 @@
 | 2025-06-11 | [0-OFU1dcOSw](https://www.youtube.com/watch?v=0-OFU1dcOSw) | **Generate Viral Videos with VEO 3 in Manus AI (Insane Results)** | [2025-06-11_YT-[0-OFU1dcOSw]_Generate Viral Videos with VEO 3 in Manus AI (Insane Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-11_YT-[0-OFU1dcOSw]_Generate Viral Videos with VEO 3 in Manus AI (Insane Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-11_YT-[0-OFU1dcOSw]_Generate Viral Videos with VEO 3 in Manus AI (Insane Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-06-05 | [TR18AkGQTpA](https://www.youtube.com/watch?v=TR18AkGQTpA) | **Cet agent IA fait tout pour vous : les nouveautés de Genspark** | [2025-06-05_YT-[TR18AkGQTpA]_Cet agent IA fait tout pour vous les nouveautés de Genspark_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-05_YT-[TR18AkGQTpA]_Cet agent IA fait tout pour vous les nouveautés de Genspark_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-05_YT-[TR18AkGQTpA]_Cet agent IA fait tout pour vous les nouveautés de Genspark_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `10` |
 | 2025-06-03 | [522b1hZjV6Q](https://www.youtube.com/watch?v=522b1hZjV6Q) | **The AI Agent Nobody's Talking About (Not Manus or Genspark)** | [2025-06-03_YT-[522b1hZjV6Q]_The AI Agent Nobody's Talking About (Not Manus or Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-06-03_YT-[522b1hZjV6Q]_The AI Agent Nobody's Talking About (Not Manus or Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-06-03_YT-[522b1hZjV6Q]_The AI Agent Nobody's Talking About (Not Manus or Genspark)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-05-23 | [covztf_cqPs](https://www.youtube.com/watch?v=covztf_cqPs) | **I Tried Vibe Coding with Claude 4 (Honest Results)** | [2025-05-23_YT-[covztf_cqPs]_I Tried Vibe Coding with Claude 4 (Honest Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-05-23_YT-[covztf_cqPs]_I Tried Vibe Coding with Claude 4 (Honest Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-05-23_YT-[covztf_cqPs]_I Tried Vibe Coding with Claude 4 (Honest Results)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
