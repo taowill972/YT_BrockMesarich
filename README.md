@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `187 / 273` (`68.5%`)
+- **Vidéos traitées** : `188 / 273` (`68.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -204,6 +204,7 @@
 | 2025-03-24 | [23Pih_V_nKE](https://www.youtube.com/watch?v=23Pih_V_nKE) | **J'ai recréé le site web le plus laid avec l'IA (Lovable Vibe Coding)** | [2025-03-24_YT-[23Pih_V_nKE]_J'ai recréé le site web le plus laid avec l'IA (Lovable Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-03-24_YT-[23Pih_V_nKE]_J'ai recréé le site web le plus laid avec l'IA (Lovable Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-03-24_YT-[23Pih_V_nKE]_J'ai recréé le site web le plus laid avec l'IA (Lovable Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `37` |
 | 2025-03-20 | [k3iqPqdYcUc](https://www.youtube.com/watch?v=k3iqPqdYcUc) | **Créer une application avec l'IA en tant que débutant (Vibe Coding)** | [2025-03-20_YT-[k3iqPqdYcUc]_Créer une application avec l'IA en tant que débutant (Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-03-20_YT-[k3iqPqdYcUc]_Créer une application avec l'IA en tant que débutant (Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-03-20_YT-[k3iqPqdYcUc]_Créer une application avec l'IA en tant que débutant (Vibe Coding)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `27` |
 | 2025-03-11 | [k9WrU6uR2YM](https://www.youtube.com/watch?v=k9WrU6uR2YM) | **Vibe Coding my Entire Landing Page with AI (Lovable):** | [2025-03-11_YT-[k9WrU6uR2YM]_Vibe Coding my Entire Landing Page with AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-03-11_YT-[k9WrU6uR2YM]_Vibe Coding my Entire Landing Page with AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-03-11_YT-[k9WrU6uR2YM]_Vibe Coding my Entire Landing Page with AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-03-04 | [ELub71s-_HE](https://www.youtube.com/watch?v=ELub71s-_HE) | **How to Add AI Automations to Your Lovable Apps (in 7 minutes)** | [2025-03-04_YT-[ELub71s-_HE]_How to Add AI Automations to Your Lovable Apps (in 7 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-03-04_YT-[ELub71s-_HE]_How to Add AI Automations to Your Lovable Apps (in 7 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-03-04_YT-[ELub71s-_HE]_How to Add AI Automations to Your Lovable Apps (in 7 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
