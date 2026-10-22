@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 J&#x27;ai recréé le site web le plus laid avec l&#x27;IA (Lovable Vibe Coding) — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 J&#x27;ai recréé le site web le plus laid avec l&#x27;IA (Lovable Vibe Coding)</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2025-03-24</span>
+                <span class="badge">⏱️ 00:17:11</span>
+                <span class="badge">🆔 <code>23Pih_V_nKE</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=23Pih_V_nKE" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br><br>Dans cette vidéo, la chaîne *Brock Mesarich | AI for Non Techies* explore le concept du « vibe coding » en démontrant comment une personne non-technique, n'ayant jamais écrit une seule ligne de code de sa vie, peut réinventer de fond en comble une interface web obsolète. L'objectif est de transformer le design austère, daté et purement textuel de la célèbre place de marché Craigslist (qui génère pourtant 250 millions de visiteurs mensuels) en une application moderne, épurée et futuriste dotée d'un design professionnel rehaussé d'accents en dégradé, tout en commentant chaque étape par la simple voix.<br><br>La méthodologie s'appuie sur une stack d'intelligence artificielle générative textuelle et d'outils d'assistance vocale pour concevoir dynamiquement l'architecture front-end et l'expérience utilisateur. En combinant la capture d'écran de l'interface d'origine, des composants d'interface de pointe et une intégration de base de données relationnelle en arrière-plan, la démonstration prouve qu'il est possible de passer d'une idée brute à un prototype interactif hautement fonctionnel en moins de dix minutes, démystifiant ainsi la création d'applications web complexes pour les profils non-techniques.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br><br>* **Lovable** : Créateur d'applications web textuel piloté par l'IA permettant de générer du code front-end et de concevoir des sites web complets à partir de simples instructions textuelles ou vocales.<br>* **AquaVoice** : Modèle de transcription vocale en temps réel (speech-to-text) qui injecte instantanément les paroles de l'utilisateur dans l'interface de prompt de l'application.<br>* **21st.dev** : Plateforme de composants d'interface utilisateur (UI) modernes et élégants, permettant de récupérer et d'intégrer facilement des sections visuelles haut de gamme (comme des bannières hero section à effets de lumière) dans les projets web.<br>* **Supabase** : Service de base de données relationnelle backend-as-a-service (BaaS) utilisé pour stocker durablement les données applicatives (telles que les annonces de produits) et rendre l'application pleinement fonctionnelle et collaborative.<br>* **Claude** : Modèle de langage avancé souvent mobilisé pour la génération de code et la compréhension contextuelle dans les environnements de développement augmentés par l'IA.<br>* **ChatGPT** : Modèle conversationnel d'intelligence artificielle de pointe utilisé pour le prompt engineering et l'assistance à la conception.<br>* **Grok** : Assistant conversationnel et modèle d'intelligence artificielle intégré aux écosystèmes d'analyse en temps réel.<br>* **Gemini** : Modèle multimodal de Google performant dans l'analyse contextuelle et textuelle.<br>* **Make** : Plateforme d'automatisation de flux de travail (workflows) pour interconnecter des applications web sans coder.<br>* **Zapier** : Outil d'automatisation no-code leader permettant de relier des applications et d'exécuter des tâches répétitives.<br>* **n8n** : Outil d'automatisation de flux de travail open-source et extensible, axé sur la gestion de données et l'intégration d'API.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br><br>* **Démocratisation du développement (« Vibe Coding »)** : Le paradigme du codage par la voix et l'intention (« vibe coding ») permet aux entrepreneurs non-techniques de bâtir des applications sophistiquées uniquement en dialoguant naturellement avec des agents conversationnels.<br>* **Prototypage visuel instantané** : L'utilisation d'une capture d'écran d'un site web existant (comme Craigslist) injectée dans l'IA permet d'établir en quelques secondes un point de départ visuel pour une refonte complète.<br>* **Optimisation de l'expérience utilisateur (UX)** : La réorganisation d'une interface monolithique et textuelle en catégories structurées, cliquables et visuellement distinctes améliore radicalement l'ergonomie et le taux de conversion perçu d'une place de marché.<br>* **Intégration de composants UI de pointe** : L'emprunt de sections graphiques pré-stylisées (comme les arrière-plans animés à faisceaux lumineux issus de bibliothèques spécialisées) confère instantanément un aspect premium et moderne aux applications générées.<br>* **Transition du design vers la fonctionnalité** : Un prototype visuel séduisant doit rapidement être couplé à une logique fonctionnelle (gestion des flux de publication et navigation par catégorie) pour valider l'utilisabilité réelle du produit.<br>* **Persistance des données avec Supabase** : L'intégration d'une base de données relationnelle en arrière-plan est indispensable pour transformer une interface locale volatile en une application collaborative où les annonces créées sont partagées et visibles par l'ensemble des utilisateurs.<br>* **Connexion simplifiée des environnements** : Les plateformes modernes de création d'applications par IA intègrent des procédures d'authentification et de liaison en un clic avec des infrastructures backend comme Supabase.<br>* **Évolutivité vers des fonctionnalités avancées** : Une fois la base de données connectée, l'architecture autorise l'implémentation de fonctionnalités complexes telles que l'authentification des utilisateurs, la gestion des comptes et le stockage de données dynamiques.<br>* **Exploitation des fonctions Edge (Edge Functions)** : Le couplage d'applications no-code/IA avec des fonctions serveur distantes permet d'intégrer des points de terminaison d'IA, des notifications par email, des passerelles de paiement et des tâches planifiées.<br>* **Accessibilité du code source** : Bien que l'interface repose entièrement sur le langage naturel, les créateurs gardent la possibilité d'accéder au code sous-jacent et aux différents composants pour des modifications manuelles ou une revue technique approfondie.<br>* **Stratégie deMVP (Produit Minimum Viable) ultra-rapide** : La méthode démontre qu'il est possible de valider un concept de marché en moins de dix minutes de travail effectif, réduisant drastiquement le coût et le temps de mise sur le marché.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Lovable</span><span class="tool-tag">AquaVoice</span><span class="tool-tag">21st.dev</span><span class="tool-tag">Supabase</span><span class="tool-tag">Claude</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Grok</span><span class="tool-tag">Gemini</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Démocratisation du développement (« Vibe Coding »)** : Le paradigme du codage par la voix et l&#x27;intention (« vibe coding ») permet aux entrepreneurs non-techniques de bâtir des applications sophistiquées uniquement en dialoguant naturellement avec des agents conversationnels.</span></li><li><span class="point-bullet">✦</span><span>Prototypage visuel instantané** : L&#x27;utilisation d&#x27;une capture d&#x27;écran d&#x27;un site web existant (comme Craigslist) injectée dans l&#x27;IA permet d&#x27;établir en quelques secondes un point de départ visuel pour une refonte complète.</span></li><li><span class="point-bullet">✦</span><span>Optimisation de l&#x27;expérience utilisateur (UX)** : La réorganisation d&#x27;une interface monolithique et textuelle en catégories structurées, cliquables et visuellement distinctes améliore radicalement l&#x27;ergonomie et le taux de conversion perçu d&#x27;une place de marché.</span></li><li><span class="point-bullet">✦</span><span>Intégration de composants UI de pointe** : L&#x27;emprunt de sections graphiques pré-stylisées (comme les arrière-plans animés à faisceaux lumineux issus de bibliothèques spécialisées) confère instantanément un aspect premium et moderne aux applications générées.</span></li><li><span class="point-bullet">✦</span><span>Transition du design vers la fonctionnalité** : Un prototype visuel séduisant doit rapidement être couplé à une logique fonctionnelle (gestion des flux de publication et navigation par catégorie) pour valider l&#x27;utilisabilité réelle du produit.</span></li><li><span class="point-bullet">✦</span><span>Persistance des données avec Supabase** : L&#x27;intégration d&#x27;une base de données relationnelle en arrière-plan est indispensable pour transformer une interface locale volatile en une application collaborative où les annonces créées sont partagées et visibles par l&#x27;ensemble des utilisateurs.</span></li><li><span class="point-bullet">✦</span><span>Connexion simplifiée des environnements** : Les plateformes modernes de création d&#x27;applications par IA intègrent des procédures d&#x27;authentification et de liaison en un clic avec des infrastructures backend comme Supabase.</span></li><li><span class="point-bullet">✦</span><span>Évolutivité vers des fonctionnalités avancées** : Une fois la base de données connectée, l&#x27;architecture autorise l&#x27;implémentation de fonctionnalités complexes telles que l&#x27;authentification des utilisateurs, la gestion des comptes et le stockage de données dynamiques.</span></li><li><span class="point-bullet">✦</span><span>Exploitation des fonctions Edge (Edge Functions)** : Le couplage d&#x27;applications no-code/IA avec des fonctions serveur distantes permet d&#x27;intégrer des points de terminaison d&#x27;IA, des notifications par email, des passerelles de paiement et des tâches planifiées.</span></li><li><span class="point-bullet">✦</span><span>Accessibilité du code source** : Bien que l&#x27;interface repose entièrement sur le langage naturel, les créateurs gardent la possibilité d&#x27;accéder au code sous-jacent et aux différents composants pour des modifications manuelles ou une revue technique approfondie.</span></li><li><span class="point-bullet">✦</span><span>Stratégie deMVP (Produit Minimum Viable) ultra-rapide** : La méthode démontre qu&#x27;il est possible de valider un concept de marché en moins de dix minutes de travail effectif, réduisant drastiquement le coût et le temps de mise sur le marché.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Dans cette vidéo, je vais recréer l&#x27;un des sites web les plus laids que j&#x27;aie jamais vus grâce à l&#x27;IA. Mais je ne sais pas coder. Je vais simplement parler à l&#x27;IA et le construire en utilisant ma voix. C&#x27;est aussi ce qu&#x27;on appelle le « vibe coding ». Pour ceux qui connaissent, cette place de marché s&#x27;appelle Craigslist. Il y a environ 250 millions d&#x27;utilisateurs par mois qui utilisent cette plateforme, et elle a l&#x27;air absolument horrible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Interface web de Lovable.dev et site web de Craigslist.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Lovable.dev (champ de saisie de prompt, slogan « Idea to app in seconds ») et page d&#x27;accueil textuelle de Craigslist.
+[DESC_IMAGE_1] Illustration contextuelle du présentateur.
+[DESC_IMAGE_2] Navigation sur la plateforme de développement par IA Lovable.
+[DESC_IMAGE_3] Affichage de l&#x27;interface du site web mentionné dans l&#x27;introduction (Craigslist).</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000010_seg1.jpg" alt="Capture d&#x27;écran du site Lovable.dev montrant l&#x27;interface de création d&#x27;application par IA avec une boîte de dialogue centrale et la webcam du présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000010_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:10</span>
+                        <span class="caption-text">Capture d&#x27;écran du site Lovable.dev montrant l&#x27;interface de création d&#x27;application par IA avec une boîte de dialogue centrale et la webcam du présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000015_seg1.jpg" alt="Capture d&#x27;écran de la page d&#x27;accueil du site web Craigslist avec le texte animé « 242 million » au premier plan." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000015_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:15</span>
+                        <span class="caption-text">Capture d&#x27;écran de la page d&#x27;accueil du site web Craigslist avec le texte animé « 242 million » au premier plan.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:43</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je vais transformer ça pour que ça ressemble à ça grâce à l&#x27;IA, tout en le rendant fonctionnel. Si vous restez jusqu&#x27;à la fin, je vais vous montrer comment vous pouvez faire exactement la même chose et créer de superbes sites web et applications pour vous-même. Bon, assez bavardé, entrons dans le vif du sujet. Très bien, les gars, je suis vraiment enthousiaste pour cette vidéo. Je pense que ça va être amusant. Donc tout d&#x27;abord, nous allons utiliser Lovable, qui est un créateur d&#x27;applications web textuel qui utilise l&#x27;IA pour créer des applications et des sites web pour nous.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web en cours de développement via l&#x27;outil Lovable.dev.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;un site web inspiré de Craigslist modernisé, avec code et interactions de l&#x27;assistant IA.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation d&#x27;une refonte visuelle d&#x27;un site web existant généré par intelligence artificielle.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000026_seg2.jpg" alt="Aperçu du site web &#x27;The new craigslist&#x27; redessiné avec une interface moderne et épurée, accompagné du panneau de l&#x27;outil de génération d&#x27;IA sur le côté gauche." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000026_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:26</span>
+                        <span class="caption-text">Aperçu du site web &#x27;The new craigslist&#x27; redessiné avec une interface moderne et épurée, accompagné du panneau de l&#x27;outil de génération d&#x27;IA sur le côté gauche.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000037_seg2.jpg" alt="Page d&#x27;accueil de la plateforme Lovable (lovable.dev) avec le slogan &#x27;Idea to app in seconds&#x27; et une barre de prompt pour créer un prototype." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000037_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:37</span>
+                        <span class="caption-text">Page d&#x27;accueil de la plateforme Lovable (lovable.dev) avec le slogan &#x27;Idea to app in seconds&#x27; et une barre de prompt pour créer un prototype.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-3">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:43 - 00:01:02</span>
+                <span class="segment-idx">Segment #03</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Même en tant que personne non technique, je n&#x27;ai jamais codé de ma vie, mais je vais utiliser cette plateforme pour le faire. Deuxièmement, nous allons recréer cet horrible site web qu&#x27;est Craigslist. La plupart des gens ont probablement déjà entendu parler de Craigslist, mais si ce n&#x27;est pas le cas, c&#x27;est essentiellement un endroit où l&#x27;on peut aller pour acheter des choses. C&#x27;est une place de marché, mais elle a l&#x27;air terrible. On dirait qu&#x27;elle a littéralement été faite en 1963 ou quelque chose comme ça.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Lovable.dev et le site web Craigslist.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interfaces web de développement d&#x27;applications sans code et pages de petites annonces en ligne.
+[DESC_IMAGE_1] Navigation sur la plateforme de création d&#x27;applications et présentation du site Craigslist.
+[DESC_IMAGE_2] Navigation sur la plateforme de création d&#x27;applications et présentation du site Craigslist.
+[DESC_IMAGE_3] Navigation sur la plateforme de création d&#x27;applications et présentation du site Craigslist.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000048_seg3.jpg" alt="Vue de la plateforme Lovable (lovable.dev) affichant le slogan &#x27;Idea to app in seconds&#x27; avec une zone de texte centrale." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000048_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:48</span>
+                        <span class="caption-text">Vue de la plateforme Lovable (lovable.dev) affichant le slogan &#x27;Idea to app in seconds&#x27; avec une zone de texte centrale.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000053_seg3.jpg" alt="Affichage de la page d&#x27;accueil du site web Craigslist pour la région de Bend avec sa mise en page textuelle traditionnelle." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000053_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:53</span>
+                        <span class="caption-text">Affichage de la page d&#x27;accueil du site web Craigslist pour la région de Bend avec sa mise en page textuelle traditionnelle.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000057_seg3.jpg" alt="Vue d&#x27;une page de résultats de recherche sur Craigslist dans la catégorie &#x27;activity partners&#x27;." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000057_seg3.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:57</span>
+                        <span class="caption-text">Vue d&#x27;une page de résultats de recherche sur Craigslist dans la catégorie &#x27;activity partners&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-4">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:03 - 00:01:37</span>
+                <span class="segment-idx">Segment #04</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So what I&#x27;m going to do is I&#x27;m going to use AI to make this look so much better, like make it look like an actual website that somebody would pay money for. So let&#x27;s go ahead and do that now. Basically, I&#x27;m going to take a screenshot here. I&#x27;m going to screenshot this. And what I&#x27;m going to do is I&#x27;m just going to paste this inside of Lovable. and I&#x27;m actually using AquaVoice, which is a voice to text model that essentially just pastes whatever I speak into the user interface. So instead of having to type this out and giving my thoughts doing that, I could literally just like talk to my computer and it will build it for me. So we are going to be doing that. All I need to do is click F5 on my computer and just begin</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-5">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:01:37 - 00:02:12</span>
+                <span class="segment-idx">Segment #05</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">En train de parler. Hé, donc j&#x27;ai cette application que je veux recréer et elle s&#x27;appelle Craigslist. J&#x27;ai joint la capture d&#x27;écran ci-dessus. Essentiellement, ce que je veux faire, c&#x27;est rendre ce site Web beaucoup plus propre, neuf et futuriste. Je veux que tu ajoutes des accents en dégradé. Je veux que tu classes par catégorie de sorte que ça ne montre pas juste une liste entière de chaque article répertorié sur cette page. Et je veux juste que ce soit facile à utiliser et à regarder. Très bien, donc tu peux voir que</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-6">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:12 - 00:02:45</span>
+                <span class="segment-idx">Segment #06</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">J&#x27;ai en fait juste collé ça dans notre invite ici. Tout ce que j&#x27;ai à faire, c&#x27;est de cliquer sur soumettre et ça va commencer à écrire notre code ici. Donc je vais lui donner une minute pendant qu&#x27;il fait ça et ensuite on fera le point après ça. Super. D&#x27;accord. Donc c&#x27;est en fait ce qu&#x27;il nous a donné du premier coup. Ça a l&#x27;air plutôt génial. Donc le nouveau Craigslist, un marché réinventé où la communauté locale se rassemble pour acheter, vendre, échanger et tisser des liens. Nous avons nos catégories ici en bas. Donc on a logement, on a emplois, on a à vendre. Voyons si c&#x27;est cliquable. Donc il semble que ce ne soit pas cliquable. Et ensuite, nous avons des annonces en vedette ainsi qu&#x27;un emplacement populaire.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lovable (plateforme de développement web par IA) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur de Lovable avec panneau de chat à gauche, prévisualisation de l&#x27;application au centre et vignette vidéo du présentateur.</p>
+                        <p><strong>Action / Démonstration :</strong> Le système charge la prévisualisation du code généré, puis affiche la page web interactive avec une erreur à corriger.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000221_seg6.jpg" alt="L&#x27;interface de l&#x27;application Lovable affichant un écran de chargement &quot;Spinning up preview...&quot; avec la webcam du présentateur en incrustation à droite." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000221_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:21</span>
+                        <span class="caption-text">L&#x27;interface de l&#x27;application Lovable affichant un écran de chargement &quot;Spinning up preview...&quot; avec la webcam du présentateur en incrustation à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000229_seg6.jpg" alt="L&#x27;interface de Lovable montrant le résultat généré, une nouvelle version de Craigslist, avec une notification d&#x27;erreur en bas et la webcam du présentateur." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000229_seg6.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:02:29</span>
+                        <span class="caption-text">L&#x27;interface de Lovable montrant le résultat généré, une nouvelle version de Craigslist, avec une notification d&#x27;erreur en bas et la webcam du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-7">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:02:45 - 00:03:05</span>
+                <span class="segment-idx">Segment #07</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Alors ça, tout d&#x27;abord, ça a l&#x27;air super. Ce n&#x27;est pas très fonctionnel. Nous devons y apporter des modifications, mais j&#x27;aime ce que ça nous a donné jusqu&#x27;à présent. Ça a déjà l&#x27;air mieux que ça avec l&#x27;intelligence artificielle en moins de trois minutes environ. Donc c&#x27;est génial. Mais allons de l&#x27;avant et continuons avec ça. Très bien. Donc ensuite, ce que je vais faire, c&#x27;est que je vais aller sur 21st.dev, ce qui est un truc absolument génial.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-8">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:05 - 00:03:24</span>
+                <span class="segment-idx">Segment #08</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">If you have used lovable or these text web app builders, this is a great way for you to actually to get user interface components that look absolutely amazing. And you could add them easily to your websites or to your applications that you&#x27;re building. So I&#x27;m going to click on this and I want to copy this. I think this just looks really clean. So I&#x27;m going to copy this prompt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant la plateforme de composants d&#x27;interface utilisateur 21st.dev.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Galerie de composants visuels (Grid Pattern, Tiles, Hero Highlight, Beams Background, Canvas Reveal Effect) et boutons d&#x27;interaction (&quot;Copy prompt&quot;, &quot;Open component&quot;).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et sélection d&#x27;un composant d&#x27;interface utilisateur pour l&#x27;intégrer dans des applications web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000310_seg8.jpg" alt="Vue d&#x27;ensemble d&#x27;une bibliothèque de composants d&#x27;interface utilisateur (UI) sur le site 21st.dev, avec le présentateur en incrustation vidéo." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000310_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:10</span>
+                        <span class="caption-text">Vue d&#x27;ensemble d&#x27;une bibliothèque de composants d&#x27;interface utilisateur (UI) sur le site 21st.dev, avec le présentateur en incrustation vidéo.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000319_seg8.jpg" alt="Gros plan sur un composant spécifique (&quot;Beams Background&quot;) sélectionné dans la bibliothèque UI, affichant les options de copie et d&#x27;ouverture." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000319_seg8.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:19</span>
+                        <span class="caption-text">Gros plan sur un composant spécifique (&quot;Beams Background&quot;) sélectionné dans la bibliothèque UI, affichant les options de copie et d&#x27;ouverture.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-9">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:03:24 - 00:04:02</span>
+                <span class="segment-idx">Segment #09</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I could open the component to see what it looks like. Like I would love if this could be a highlight of our website here. So what I&#x27;m going to do is I&#x27;m just going to click paste and then I&#x27;m going to come up to the top here and then I&#x27;m going to speak with Aka voice and then just explain what I want to do. I think what you created looks really good so far. However, I want you to implement this hero section to our app at the top of our website. Let&#x27;s also maintain this theme and style across the rest of our website and landing page. I&#x27;m just going to let that run and let&#x27;s</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lovable.dev (outil de développement d&#x27;applications web par IA) et navigateur web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Messages d&#x27;erreur de React Router, instructions de code et interface utilisateur générée avec des composants de style Craigslist.</p>
+                        <p><strong>Action / Démonstration :</strong> Le créateur interagit avec le chat de l&#x27;IA pour corriger des erreurs de code et prévisualiser le rendu du site web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000334_seg9.jpg" alt="Interface Lovable.dev montrant un panneau de chat à gauche et un aperçu d&#x27;application vide à droite." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000334_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:34</span>
+                        <span class="caption-text">Interface Lovable.dev montrant un panneau de chat à gauche et un aperçu d&#x27;application vide à droite.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000343_seg9.jpg" alt="Interface Lovable.dev affichant l&#x27;aperçu complet d&#x27;un site web inspiré de Craigslist (« The new craigslist »)." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000343_seg9.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:03:43</span>
+                        <span class="caption-text">Interface Lovable.dev affichant l&#x27;aperçu complet d&#x27;un site web inspiré de Craigslist (« The new craigslist »).</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-10">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:02 - 00:04:35</span>
+                <span class="segment-idx">Segment #10</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">let it do its thing. All right, here we go. So now we have this little beams background in the hero section of our website here. This looks great. The new critics as well. That&#x27;s just like such a fire punchline for our website here. So next up, what I want to do is I want to actually make this like these categories here clickable because we want to be able to actually click on these and see, you know, each of these like individual listings and whatnot. So this looks great. Now for the browse by category section, I want this to be expansive. So when I view all of the categories,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Lovable.dev et l&#x27;application en cours de prévisualisation.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface utilisateur d&#x27;un site web inspiré de Craigslist, avec panneau de code et explications de l&#x27;assistant IA sur la gauche.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et démonstration du rendu visuel de la section hero et des catégories du site web généré.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000411_seg10.jpg" alt="Aperçu du site web recréant Craigslist avec un arrière-plan animé &#x27;beams&#x27; dans la section hero." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000411_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:11</span>
+                        <span class="caption-text">Aperçu du site web recréant Craigslist avec un arrière-plan animé &#x27;beams&#x27; dans la section hero.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000419_seg10.jpg" alt="Défilement vers le bas de la page montrant la section &#x27;Browse by Category&#x27; avec différentes rubriques (Housing, Jobs, For Sale, etc.)." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000419_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:19</span>
+                        <span class="caption-text">Défilement vers le bas de la page montrant la section &#x27;Browse by Category&#x27; avec différentes rubriques (Housing, Jobs, For Sale, etc.).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000427_seg10.jpg" alt="Vue similaire de la page web avec l&#x27;interface de l&#x27;éditeur de code Lovable visible sur le panneau de gauche." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000427_seg10.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:04:27</span>
+                        <span class="caption-text">Vue similaire de la page web avec l&#x27;interface de l&#x27;éditeur de code Lovable visible sur le panneau de gauche.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-11">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:04:35 - 00:05:12</span>
+                <span class="segment-idx">Segment #11</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Je veux que cela me montre réellement toutes les catégories ainsi que, lorsque je clique sur une catégorie, je veux que cela m&#x27;amène vers une page séparée avec toutes les annonces pour cette catégorie. Aussi les gars, je tiens à mentionner que pour les besoins de cette vidéo, je veux simplement montrer comment vous pourriez créer d&#x27;incroyables interfaces utilisateur avec cette plateforme. Je ne vais pas aller construire réellement un Craigslist complet et tout le tralala. Cela prendrait un peu trop de temps. Cependant, je veux juste montrer ce qu&#x27;il est possible de faire en codant avec l&#x27;IA pour créer des sites web plutôt sympas. Et je me suis dit que ce serait un cas d&#x27;usage intéressant, de prendre quelque chose que la plupart des gens connaissent, quelque chose comme Craigslist, et de lui donner une autre tournure, de s&#x27;appuyer là-dessus et de construire réellement quelque chose.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-12">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:12 - 00:05:41</span>
+                <span class="segment-idx">Segment #12</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Ça a l&#x27;air vraiment super. Très bien. Donc on dirait que ça a effectivement terminé. Et maintenant, si je clique sur ces catégories, si je clique sur afficher les 10 catégories, ça affiche toutes les catégories ici. Donc si je veux aller sur échange de maison, ça m&#x27;amène maintenant dans cette section avec des annonces pour ces échanges de maison et compagnie. Donc bien sûr, il n&#x27;y a pas encore de vrais détails ici pour de vraies annonces, mais c&#x27;est une excellente mise en page pour Craigslist, par opposition à quelque chose qui ressemble à ça, où on arrive ici et puis c&#x27;est juste, je veux dire, ça a l&#x27;air absolument terrible.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-13">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:05:41 - 00:06:00</span>
+                <span class="segment-idx">Segment #13</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So let&#x27;s go ahead and try to build upon this. All right, let&#x27;s do something a little bit crazy here. Let&#x27;s see if we could actually add a listing. So I&#x27;m gonna basically come to Lovable and ask how we could set that up. We might need to use Supabase, which is a place where we actually store information in a database. Let me see what we need to do first. Let me just ask Lovable. All right, this is looking absolutely awesome.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-14">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:00 - 00:06:23</span>
+                <span class="segment-idx">Segment #14</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">However, I want to now add actual products and featured listings. How can we go ahead and implement something like that where we actually allow users to upload an item and save that item on the platform? All right, I&#x27;m going to run with that. Let&#x27;s see. It&#x27;s probably going to give me some instructions on how to set up Superbase, but I want to see what it says first before I actually go ahead and try to do that.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Lovable (outil de développement d&#x27;applications par IA) et navigateur web affichant l&#x27;aperçu d&#x27;un site web similaire à Craigslist (&quot;fresh-find-fusion&quot;).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Interface de génération d&#x27;applications avec des boîtes de dialogue de chat (&quot;Ask Lovable...&quot;), des blocs de code générés (&quot;implement category browsing feature&quot;) et un aperçu visuel en direct d&#x27;une page web avec des sections &quot;Featured Listings&quot; et des prix en dollars.</p>
+                        <p><strong>Action / Démonstration :</strong> Le présentateur consulte l&#x27;aperçu de l&#x27;application générée et interagit avec l&#x27;outil de développement Lovable pour modifier ou ajouter des fonctionnalités au site.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000606_seg14.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;outil Lovable avec un panneau de chat à gauche et un aperçu web d&#x27;une plateforme de petites annonces à droite, ainsi que la webcam du présentateur." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000606_seg14.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:06:06</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;outil Lovable avec un panneau de chat à gauche et un aperçu web d&#x27;une plateforme de petites annonces à droite, ainsi que la webcam du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-15">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:23 - 00:06:57</span>
+                <span class="segment-idx">Segment #15</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Also, one thing to mention, if you are a coder and you want to see all of the code, you can come and edit the code. You can see all these different like pages that have been added, all of the components and whatnot. So I&#x27;m not a coder. I can&#x27;t really do much with this, but if you are a coder, this might be useful. All right, let&#x27;s take a look now and see if this is now working properly. So what I&#x27;m going to do, I&#x27;m going to come over, might as well just come over to a brand new full tab here. So this looks great. The new Craigslist. I mean, guys, this looks clean not to gas myself up here, but let&#x27;s go ahead and play around with this. So I&#x27;m</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-16">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:06:57 - 00:07:31</span>
+                <span class="segment-idx">Segment #16</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">going to click on new post. Let&#x27;s describe what we&#x27;re selling. Let&#x27;s just say MacBook Pro, $1,500. I&#x27;m going to say I&#x27;m in Bend. We&#x27;re going to put this for sale, subcategory, electronics. I&#x27;m going to say brand new MacBook Pro taken out of the box. However, has not been used. Okay. And let&#x27;s just upload some files here. So I&#x27;m going to select this image. Here we are. Boom. Open it. And let&#x27;s go ahead and post the listing. And now this should be somewhere on our page. Okay, here we go. So now</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-17">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:07:31 - 00:08:06</span>
+                <span class="segment-idx">Segment #17</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">dernière annonce, vous pouvez voir que nous avons un MacBook Pro ici. Ça a l&#x27;air super. Ça fonctionne. Cependant, je ne pense pas que cela s&#x27;enregistre réellement sur la plateforme. Laissez-moi donc rafraîchir. Si je rafraîchis ceci et que ce n&#x27;est pas là, nous allons devoir ajouter des intégrations Supabase. Vous savez quoi ? C&#x27;est en train de charger, en fait. C&#x27;est donc plutôt cool. Laissez-moi revenir à l&#x27;intérieur de Lovable. Voir si ça s&#x27;enregistre aussi ici. Très bien. Vous pouvez donc voir que ça s&#x27;enregistre sur cette interface utilisateur ici. Cependant, ça ne s&#x27;enregistre pas dans ce navigateur. Nous devons donc procéder à l&#x27;enregistrement de ceci dans Supabase, ce que je vais vous montrer comment faire. Pour que vous puissiez réellement enregistrer des articles ou quoi que ce soit dans le</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application clone de Craigslist, avec une incrustation vidéo du présentateur et un volet de développement Lovable.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Annonces en ligne, image de MacBook Pro, et trace d&#x27;erreur de pile (stack trace) indiquant une erreur &quot;Maximum update depth exceeded&quot;.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur la plateforme, test de publication et constatation d&#x27;un bug de rafraîchissement avec un message d&#x27;erreur de boucle infinie.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000739_seg17.jpg" alt="Vue d&#x27;une application web de type petites annonces affichant une annonce pour un MacBook Pro avec son prix." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000739_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:39</span>
+                        <span class="caption-text">Vue d&#x27;une application web de type petites annonces affichant une annonce pour un MacBook Pro avec son prix.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000748_seg17.jpg" alt="Affichage de l&#x27;application web avec un panneau latéral de débogage montrant une erreur liée aux boucles infinies de mise à jour React." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000748_seg17.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:07:48</span>
+                        <span class="caption-text">Affichage de l&#x27;application web avec un panneau latéral de débogage montrant une erreur liée aux boucles infinies de mise à jour React.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-18">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:06 - 00:08:38</span>
+                <span class="segment-idx">Segment #18</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">une base de données réelle pour rendre vos applications réellement pleinement fonctionnelles. Ça a l&#x27;air super. Je suis maintenant capable d&#x27;ajouter des produits ici et d&#x27;ajouter des annonces. Cependant, je veux qu&#x27;elles soient stockées dans une base de données. Comme ça, n&#x27;importe qui qui a accès à notre application slash site web peut voir toutes les publications qui ont été créées. Boum. Et voilà.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de développement Lovable et l&#x27;application web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page web inspirée de Craigslist avec des boutons pour poster des annonces, et un panneau d&#x27;assistance textuel expliquant la résolution d&#x27;erreurs de code (infinite update loop error).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;interface utilisateur de l&#x27;application web en cours de création et explication du fonctionnement de l&#x27;outil de développement.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000814_seg18.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application &quot;The new craigslist&quot; en cours de développement, avec un panneau de code/assistant Lovable sur la gauche et la webcam du présentateur incrustée en haut à droite." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000814_seg18.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:14</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface de l&#x27;application &quot;The new craigslist&quot; en cours de développement, avec un panneau de code/assistant Lovable sur la gauche et la webcam du présentateur incrustée en haut à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-19">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:08:38 - 00:09:15</span>
+                <span class="segment-idx">Segment #19</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Les gars, nous faisons des progrès ici. Donc si vous appréciez cette vidéo, assurez-vous de vous abonner à cette chaîne. C&#x27;est AI for non-techies. Je couvre tout ce qui concerne les personnes non techniques et la manière dont elles peuvent utiliser l&#x27;IA dans leur vie de tous les jours, en particulier en utilisant des plateformes comme Lovable pour créer des applications plutôt cool sans aucune formation technique. Très bien. Donc ici, ça me donne des étapes. Nous devons implémenter cette fonctionnalité avec Supabase, connecter votre projet Lovable à Supabase, créer une table de produits dans Supabase. Très bien. J&#x27;ai pris les devants. J&#x27;ai en fait créé une base de données à l&#x27;intérieur de Supabase ou j&#x27;ai créé un nouveau projet. Donc tout ce que j&#x27;ai à faire maintenant, c&#x27;est de venir, de venir sur Supabase, de cliquer sur Connecter Supabase. Je dois autoriser Lovable. Super. Donc tout est configuré maintenant.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant Lovable et Supabase.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Documentation technique, code et interface de gestion de base de données Supabase.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation des étapes d&#x27;intégration d&#x27;une base de données Supabase dans une application web.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000847_seg19.jpg" alt="Interface de prévisualisation web montrant une application inspirée de Craigslist avec le présentateur en médaillon." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000847_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:47</span>
+                        <span class="caption-text">Interface de prévisualisation web montrant une application inspirée de Craigslist avec le présentateur en médaillon.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000856_seg19.jpg" alt="Interface web avec du texte sélectionné à l&#x27;écran concernant l&#x27;intégration de Supabase pour l&#x27;application." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000856_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:08:56</span>
+                        <span class="caption-text">Interface web avec du texte sélectionné à l&#x27;écran concernant l&#x27;intégration de Supabase pour l&#x27;application.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000906_seg19.jpg" alt="Tableau de bord Supabase montrant la vue d&#x27;ensemble du projet &#x27;craigslist&#x27;." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000906_seg19.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:06</span>
+                        <span class="caption-text">Tableau de bord Supabase montrant la vue d&#x27;ensemble du projet &#x27;craigslist&#x27;.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-20">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:15 - 00:09:35</span>
+                <span class="segment-idx">Segment #20</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">I just need to pick and choose which project. So Craigslist is the project that we&#x27;re going to be using. Looks like that is all connected. So let me go back here. All right. So it shows our app is now connected to Supabase. You can now work with a fully featured backend to add powerful features to make your app fully functional. So we could add user logins and accounts.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-21">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:09:35 - 00:10:14</span>
+                <span class="segment-idx">Segment #21</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We could store and use real data. So for example, whenever a user makes a post, it actually stores that information somewhere inside of a database that our user interface can reflect. And we could use advanced features, which are edge functions like AI endpoints, email notifications, payments, and scheduled tasks. So that is all good to go. Let&#x27;s go ahead now and test something. I&#x27;m going to see if we now store all of our posts in our database. Bike. Used bike in great condition, has both wheels intact. Let&#x27;s just upload a photo. Bike. Here is our bike. How amazing is that? Okay.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;interface de développement Lovable et la prévisualisation de l&#x27;application web.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Instructions et panneaux de configuration de l&#x27;intégration Supabase, fonctionnalités avancées (edge functions, authentification, stockage de données).</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de la connexion à la base de données et de la création dynamique d&#x27;une nouvelle annonce utilisateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000945_seg21.jpg" alt="Aperçu d&#x27;une application web inspirée de Craigslist connectée à Supabase avec le panneau de chat de Lovable." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000945_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:45</span>
+                        <span class="caption-text">Aperçu d&#x27;une application web inspirée de Craigslist connectée à Supabase avec le panneau de chat de Lovable.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_000955_seg21.jpg" alt="Navigation sur la page d&#x27;accueil de l&#x27;application affichant les différentes catégories et annonces en vedette." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_000955_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:09:55</span>
+                        <span class="caption-text">Navigation sur la page d&#x27;accueil de l&#x27;application affichant les différentes catégories et annonces en vedette.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001004_seg21.jpg" alt="Formulaire de création d&#x27;une nouvelle annonce (&quot;Post a New Listing&quot;) avec les champs Titre, Prix, Localisation et Description." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001004_seg21.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:10:04</span>
+                        <span class="caption-text">Formulaire de création d&#x27;une nouvelle annonce (&quot;Post a New Listing&quot;) avec les champs Titre, Prix, Localisation et Description.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-22">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:14 - 00:10:49</span>
+                <span class="segment-idx">Segment #22</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc sélectionnons des fichiers. Vélo d&#x27;occasion en super état, les deux roues sont intactes. Très bien, je peux donc publier notre annonce. Appelons ce vélo d&#x27;occasion. D&#x27;accord, publions-le. Il est indiqué que notre annonce a été publiée avec succès. Nous pouvons maintenant voir une publication ici en bas. Cependant, afin de s&#x27;assurer que cela est bien stocké dans notre base de données, nous devons venir sur Supabase et nous devons vérifier notre projet ici. Donc l&#x27;éditeur de tables, il semble que nous n&#x27;ayons aucune table pour cela. Nous devons donc revenir sur Lovable et faire savoir à Lovable, hé, donc j&#x27;ai en fait pris lesdevants et j&#x27;ai essayé d&#x27;ajouter une nouvelle publication.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-23">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:10:49 - 00:11:22</span>
+                <span class="segment-idx">Segment #23</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">ici dans notre application quakelis cependant je ne vois pas cela se refléter dans notre projet superbase donc configurons-le pour que chaque fois qu&#x27;il y a un nouveau message sur la plateforme il soit ensuite stocké dans une base de données superbase et de cette façon nous pourrions euh genre toujours afficher tous les messages qui ont été créés par les utilisateurs même si nous rafraîchissons la page. Les gars, j&#x27;adore utiliser AquaVoice. C&#x27;est tellement simple. Le fait que je n&#x27;écrive plus rien. Je le dis simplement dans mon ordinateur. Et c&#x27;est, je pense, là</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-24">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:22 - 00:11:57</span>
+                <span class="segment-idx">Segment #24</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">we&#x27;re going with the future of the user interface of computers. What&#x27;s the point of typing when we could speak faster and use AI to break that down and paste it into the UI? So, okay. So, looks like now what it&#x27;s going to do is it&#x27;s creating some form of rules. We need to create a product&#x27;s table in Superbase. So I could see us potentially running into issues here. We don&#x27;t want this policy here to be too strict. All right, this looks good. However, I don&#x27;t want our policy to be too strict. Let&#x27;s just make it very seamless so basically anybody can make changes to this table. So the reason I say that is if we&#x27;re actually launching this as a website and a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant un outil de développement (Lovable.dev / Supabase) et un aperçu d&#x27;interface utilisateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Code SQL de création de table (CREATE TABLE public.products) et de politiques de sécurité (Row Level Security).</p>
+                        <p><strong>Action / Démonstration :</strong> Le système génère automatiquement du code SQL et des règles pour configurer la base de données de l&#x27;application.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001130_seg24.jpg" alt="Capture d&#x27;écran montrant une interface de développement web avec un volet de code SQL à gauche et un aperçu d&#x27;application web &quot;The new craigslist&quot; à droite, ainsi qu&#x27;une incrustation vidéo du présentateur." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001130_seg24.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:11:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant une interface de développement web avec un volet de code SQL à gauche et un aperçu d&#x27;application web &quot;The new craigslist&quot; à droite, ainsi qu&#x27;une incrustation vidéo du présentateur.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-25">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:11:57 - 00:12:20</span>
+                <span class="segment-idx">Segment #25</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">plateforme que les gens vont réellement utiliser, vous pourriez vouloir qu&#x27;elle soit un peu plus stricte quant aux personnes qui peuvent réellement apporter des modifications à la base de données. Cependant, je pense que cela devrait aller pour l&#x27;instant simplement parce que j&#x27;utilise ceci essentiellement pour une démonstration pour cette vidéo. Allons donc de l&#x27;avant avec cela. Ainsi qu&#x27;ici, c&#x27;est la table des produits. Elle va donc stocker toutes ces informations. Assurons-nous de stocker les informations que nous recevons sur l&#x27;interface utilisateur.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-26">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:20 - 00:12:39</span>
+                <span class="segment-idx">Segment #26</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">So if there&#x27;s something that we don&#x27;t have the user add to the post, make sure not to actually save that in the table. Vibe coding at its absolute finest. For whatever reason, like vibe coding is a trendy word right now. and the name just kind of annoys me. It&#x27;s just triggering for whatever reason. However, I guess I&#x27;m vibe coding, so whatever.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-27">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:12:40 - 00:13:03</span>
+                <span class="segment-idx">Segment #27</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">All right, let&#x27;s apply these changes, run with this, and then it should now be creating a table in here. So you can see we have a new products table in here with the UID or of the ID of the user, the title, description, we got the price, the category, subcategory, location, images, time, views is featured, blah, blah, blah. So all this stuff that goes into actually creating a post is now going to be stored in the backend using Supabase.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-28">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:04 - 00:13:23</span>
+                <span class="segment-idx">Segment #28</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Let&#x27;s try to go ahead and give this a go. Let me go ahead and add a post and then we&#x27;ll go from there. All right, so that&#x27;s now working. You would see I actually went ahead and I posted this. So new iPhone, obviously that is not a picture of an iPhone, but I did this just for the sake of this, doesn&#x27;t really matter. Featured listings, new iPhone, $500 for sale. Electronics is a category.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-29">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:23 - 00:13:49</span>
+                <span class="segment-idx">Segment #29</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et si je reviens sur notre projet Supabase, vous pouvez voir que toutes ces informations sont désormais répercutées dans nos produits ici. Donc en gros, ce que je peux faire, c&#x27;est que je vais voir si je peux publier notre application. Et si je publie ceci et que je vais ensuite sur cette application dans un autre navigateur, cela devrait maintenant y être stocké, car toute personne qui a accès à notre application ou à notre site Web, Craigslist, peut réellement voir cela parce que c&#x27;est stocké dans notre base de données ici, ce qui se reflète sur l&#x27;interface utilisateur de notre application.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-30">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:13:50 - 00:14:22</span>
+                <span class="segment-idx">Segment #30</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Donc juste ici se trouve un lien vers notre application et on dirait que pour une raison quelconque, ça ne s&#x27;enregistre pas. J&#x27;ai donc besoin de revenir sur Lovable et d&#x27;essayer de comprendre ça. Très bien. Cela nous permet réellement d&#x27;ajouter un produit et ça l&#x27;enregistre dans notre table Supabase. Cependant, quand je vais sur un nouveau navigateur et que j&#x27;accède à notre application, ça ne montre pas tous les produits qui ont été listés. Nous devons faire en sorte que n&#x27;importe qui ayant accès à notre application puisse voir tous les produits dans les listes qui proviennent de Supabase et qui sont stockés dans notre</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-31">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:22 - 00:14:56</span>
+                <span class="segment-idx">Segment #31</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">database there. All right. Okay. So what I did is I actually checked here. Looks like this is loading. So we have the new iPhone. And if I come over here, I come to a new browser. We have our new Craigslist app. And now this listing is now being stored here. So that&#x27;s absolutely great because now anybody that has access to viewing our app or our website will now see all of the posts that are created. Guys, our functionality of our app is coming together. This is actually like turning into a real Craigslist. I didn&#x27;t think I was going to dive in and actually add functionality to our app. I was just thinking I was going to change the interface. However,</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant l&#x27;application Craigslist personnalisée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page d&#x27;accueil de l&#x27;application web avec le titre &quot;The new craigslist.&quot; et des boutons de navigation.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de la nouvelle version de l&#x27;application Craigslist dans le navigateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001430_seg31.jpg" alt="Capture d&#x27;écran montrant l&#x27;application Craigslist repensée dans un navigateur web." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001430_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:30</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;application Craigslist repensée dans un navigateur web.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001439_seg31.jpg" alt="Capture d&#x27;écran montrant l&#x27;interface web de la nouvelle application Craigslist avec le présentateur en incrustation vidéo." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001439_seg31.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:14:39</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant l&#x27;interface web de la nouvelle application Craigslist avec le présentateur en incrustation vidéo.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-32">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:14:56 - 00:15:32</span>
+                <span class="segment-idx">Segment #32</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">might as well continue on and see how far we could go with this. All right, let&#x27;s play around now. And right here, I&#x27;m going to add just another post. Used tennis racket, paid $100 for a brand new less than a year ago. All right, let&#x27;s post our listing. Listing posted successfully. If we want to come back and make sure this is working, we go to Supabase. We have our new amazing. We got our tennis racket, descriptions there, prices there, categories are there. Everything is being</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web, Craigslist, interface Supabase Table Editor.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Formulaire de publication d&#x27;annonce (titre, prix, description) et table de base de données relationnelle affichant des données structurées.</p>
+                        <p><strong>Action / Démonstration :</strong> Remplissage d&#x27;un formulaire pour poster une nouvelle annonce et consultation de la base de données associée.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001505_seg32.jpg" alt="Vue d&#x27;un navigateur affichant le formulaire de création d&#x27;annonce sur Craigslist, avec un menu déroulant pour sélectionner la catégorie de l&#x27;objet." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001505_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:05</span>
+                        <span class="caption-text">Vue d&#x27;un navigateur affichant le formulaire de création d&#x27;annonce sur Craigslist, avec un menu déroulant pour sélectionner la catégorie de l&#x27;objet.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001523_seg32.jpg" alt="Vue de l&#x27;interface Supabase (Table Editor) montrant la table &quot;products&quot; avec des enregistrements de données et les détails de l&#x27;annonce enregistrée." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001523_seg32.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:23</span>
+                        <span class="caption-text">Vue de l&#x27;interface Supabase (Table Editor) montrant la table &quot;products&quot; avec des enregistrements de données et les détails de l&#x27;annonce enregistrée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-33">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:15:32 - 00:16:01</span>
+                <span class="segment-idx">Segment #33</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">stored here. And then what I want to do is I&#x27;m going to come back again. I&#x27;m going to open up a new tab and this should now show our tennis rack. Okay, perfect guys. This is, this is working smoothly. Everything is working exactly how we want it to. All right, here&#x27;s another layer that&#x27;s actually working as well. So if we want to come and check our categories, let&#x27;s check our categories here. We have for sale and then subcategory beauty and health is where our tennis racket is. So if we want to make sure this is working properly, what we&#x27;re going to do is we&#x27;re going to come here.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web personnalisée et l&#x27;interface d&#x27;administration de Supabase.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Base de données contenant des entrées textuelles telles que des articles à vendre (raquette de tennis, téléphone), avec leurs prix et catégories respectifs.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation entre les onglets du navigateur pour montrer le rendu visuel de l&#x27;application et la structure de la base de données sous-jacente.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (2) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-2">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001539_seg33.jpg" alt="Vue d&#x27;un site web de type petite annonce inspiré de Craigslist avec des catégories de services et des listes en vedette." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001539_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:39</span>
+                        <span class="caption-text">Vue d&#x27;un site web de type petite annonce inspiré de Craigslist avec des catégories de services et des listes en vedette.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001554_seg33.jpg" alt="Interface de gestion de base de données Supabase montrant un tableau avec des descriptions d&#x27;articles, des prix et des catégories." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001554_seg33.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:15:54</span>
+                        <span class="caption-text">Interface de gestion de base de données Supabase montrant un tableau avec des descriptions d&#x27;articles, des prix et des catégories.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-34">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:01 - 00:16:19</span>
+                <span class="segment-idx">Segment #34</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">You can see our tennis racket is still there. We&#x27;re going to now come to for sale and I&#x27;m going to click on beauty and health. And you can see our tennis racket is now listed here because it is flagged underneath this section here. So let&#x27;s go to Craigslist and take a look at what we were dealing with before.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web inspirée de Craigslist.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Annonces classées par catégories, prix de la raquette de tennis (25,00 $), filtres de tri (Newest, Price: Low to High, Price: High to Low).</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation sur le site Web pour consulter les catégories et vérifier l&#x27;affichage de l&#x27;annonce de la raquette de tennis dans la section &quot;Beauty &amp; Health&quot;.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001606_seg34.jpg" alt="Page d&#x27;accueil du site Web de type Craigslist montrant les différentes catégories de vente." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001606_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:06</span>
+                        <span class="caption-text">Page d&#x27;accueil du site Web de type Craigslist montrant les différentes catégories de vente.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001610_seg34.jpg" alt="Page de la catégorie &quot;Beauty &amp; Health&quot; affichant une annonce unique pour une raquette de tennis à 25,00 $." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001610_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:10</span>
+                        <span class="caption-text">Page de la catégorie &quot;Beauty &amp; Health&quot; affichant une annonce unique pour une raquette de tennis à 25,00 $.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001615_seg34.jpg" alt="Vue similaire de la catégorie &quot;Beauty &amp; Health&quot; avec la raquette de tennis répertoriée." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001615_seg34.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:15</span>
+                        <span class="caption-text">Vue similaire de la catégorie &quot;Beauty &amp; Health&quot; avec la raquette de tennis répertoriée.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-35">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:20 - 00:16:54</span>
+                <span class="segment-idx">Segment #35</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">We&#x27;re going to for sale. Like, let&#x27;s say we&#x27;re going to auto parts. I mean, this just looks so awful and hideous. look at what we have created with AI in under like 30 minutes or something 45 minutes maybe so guys there we have it I think I&#x27;m gonna leave it there I hope you guys got some value from this video I wanted to see if we could recreate Craigslist with AI using lovable as well as using aqua voice to just speak this out and build it and I think we did pretty well I want to know what your guys thoughts are in the comments below I hope you guys enjoyed this if you guys are new to the channel make sure to subscribe I cover all things AI for non-techies so if you&#x27;re not a</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Présentation ou face-caméra explicatif du trader sans interface logicielle partagée.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Explications orales des stratégies et mise en contexte méthodologique du marché.</p>
+                        <p><strong>Action / Démonstration :</strong> Explications face caméra et analyse conceptuelle des marchés.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-36">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:16:54 - 00:17:10</span>
+                <span class="segment-idx">Segment #36</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">technical person like myself, I&#x27;m going to show you how you could either code with AI, build amazing things with AI, automate things in your life, and a whole bunch more so you could stay ahead of the curve in this world that&#x27;s growing so fast. So if you guys got some value from this, make sure to leave a like, leave a comment, subscribe to the channel. That being said, I&#x27;ll see you guys in the next video.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Navigateur web affichant une application web (&quot;The new craigslist&quot;) et flux vidéo du présentateur.</p>
+                        <p><strong>Contenu textuel & Code :</strong> Page web avec barre de recherche, titre &quot;The new craigslist&quot;, boutons de publication et d&#x27;exploration des catégories.</p>
+                        <p><strong>Action / Démonstration :</strong> Navigation et présentation de l&#x27;application web créée ou démontrée par le présentateur.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/23Pih_V_nKE/23Pih_V_nKE_001658_seg36.jpg" alt="Capture d&#x27;écran montrant un navigateur web affichant une application web inspirée de Craigslist, avec le présentateur en médaillon vidéo à droite." loading="lazy" onclick="openLightbox('../screenshots/23Pih_V_nKE/23Pih_V_nKE_001658_seg36.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:16:58</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant un navigateur web affichant une application web inspirée de Craigslist, avec le présentateur en médaillon vidéo à droite.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
