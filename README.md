@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `192 / 273` (`70.3%`)
+- **Vidéos traitées** : `193 / 273` (`70.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -209,6 +209,7 @@
 | 2025-02-26 | [fyjgMeN6nNI](https://www.youtube.com/watch?v=fyjgMeN6nNI) | **Building an Entire App with Claude 3.7 Sonnet (Scary Good)** | [2025-02-26_YT-[fyjgMeN6nNI]_Building an Entire App with Claude 3.7 Sonnet (Scary Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-26_YT-[fyjgMeN6nNI]_Building an Entire App with Claude 3.7 Sonnet (Scary Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-26_YT-[fyjgMeN6nNI]_Building an Entire App with Claude 3.7 Sonnet (Scary Good)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-02-24 | [bqUB2mFQg4A](https://www.youtube.com/watch?v=bqUB2mFQg4A) | **Comment vendre facilement des employés IA en 20 minutes (GoHighLevel)** | [2025-02-24_YT-[bqUB2mFQg4A]_Comment vendre facilement des employés IA en 20 minutes (GoHighLevel)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-24_YT-[bqUB2mFQg4A]_Comment vendre facilement des employés IA en 20 minutes (GoHighLevel)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-24_YT-[bqUB2mFQg4A]_Comment vendre facilement des employés IA en 20 minutes (GoHighLevel)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `1` |
 | 2025-02-20 | [XBRObDPPFW0](https://www.youtube.com/watch?v=XBRObDPPFW0) | **Can I Build a Startup with AI in 1 Hour? (Deep Research + Lovable)** | [2025-02-20_YT-[XBRObDPPFW0]_Can I Build a Startup with AI in 1 Hour (Deep Research + Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-20_YT-[XBRObDPPFW0]_Can I Build a Startup with AI in 1 Hour (Deep Research + Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-20_YT-[XBRObDPPFW0]_Can I Build a Startup with AI in 1 Hour (Deep Research + Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-02-17 | [jRzVbUDo-iQ](https://www.youtube.com/watch?v=jRzVbUDo-iQ) | **This AI Agent Builds Software in a New Way (Databutton)** | [2025-02-17_YT-[jRzVbUDo-iQ]_This AI Agent Builds Software in a New Way (Databutton)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-17_YT-[jRzVbUDo-iQ]_This AI Agent Builds Software in a New Way (Databutton)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-17_YT-[jRzVbUDo-iQ]_This AI Agent Builds Software in a New Way (Databutton)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
