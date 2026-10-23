@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `196 / 273` (`71.8%`)
+- **Vidéos traitées** : `197 / 273` (`72.2%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -213,6 +213,7 @@
 | 2025-02-15 | [QGFn0hhe3Cs](https://www.youtube.com/watch?v=QGFn0hhe3Cs) | **I Built an AI Agent That Invests for Me (in 10 minutes)** | [2025-02-15_YT-[QGFn0hhe3Cs]_I Built an AI Agent That Invests for Me (in 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-15_YT-[QGFn0hhe3Cs]_I Built an AI Agent That Invests for Me (in 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-15_YT-[QGFn0hhe3Cs]_I Built an AI Agent That Invests for Me (in 10 minutes)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-02-13 | [KI54iZ6wIfg](https://www.youtube.com/watch?v=KI54iZ6wIfg) | **This NEW Lovable Feature Will Save You Money (Visual Edits)** | [2025-02-13_YT-[KI54iZ6wIfg]_This NEW Lovable Feature Will Save You Money (Visual Edits)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-13_YT-[KI54iZ6wIfg]_This NEW Lovable Feature Will Save You Money (Visual Edits)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-13_YT-[KI54iZ6wIfg]_This NEW Lovable Feature Will Save You Money (Visual Edits)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-02-08 | [KwJBfzeBVTg](https://www.youtube.com/watch?v=KwJBfzeBVTg) | **This AI Agent Writes Viral Content for Me (Poppy AI)** | [2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
+| 2025-02-06 | [SfiuqWImfWs](https://www.youtube.com/watch?v=SfiuqWImfWs) | **I Cancelled THIS Software and Built My Own With AI (Lovable)** | [2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `120` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
