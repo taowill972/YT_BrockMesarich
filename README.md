@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `198 / 273` (`72.5%`)
+- **Vidéos traitées** : `199 / 273` (`72.9%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -215,6 +215,7 @@
 | 2025-02-08 | [KwJBfzeBVTg](https://www.youtube.com/watch?v=KwJBfzeBVTg) | **This AI Agent Writes Viral Content for Me (Poppy AI)** | [2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-08_YT-[KwJBfzeBVTg]_This AI Agent Writes Viral Content for Me (Poppy AI)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2025-02-06 | [SfiuqWImfWs](https://www.youtube.com/watch?v=SfiuqWImfWs) | **I Cancelled THIS Software and Built My Own With AI (Lovable)** | [2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-06_YT-[SfiuqWImfWs]_I Cancelled THIS Software and Built My Own With AI (Lovable)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `120` |
 | 2025-02-03 | [zNN3Kjl0JXg](https://www.youtube.com/watch?v=zNN3Kjl0JXg) | **J'ai demandé à ChatGPT Deep Research Comment gagner 1 million de dollars** | [2025-02-03_YT-[zNN3Kjl0JXg]_J'ai demandé à ChatGPT Deep Research Comment gagner 1 million de dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-03_YT-[zNN3Kjl0JXg]_J'ai demandé à ChatGPT Deep Research Comment gagner 1 million de dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-03_YT-[zNN3Kjl0JXg]_J'ai demandé à ChatGPT Deep Research Comment gagner 1 million de dollars_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `25` |
+| 2025-02-03 | [qQv7bavYS34](https://www.youtube.com/watch?v=qQv7bavYS34) | **J'utilise ceci à la place de ChatGPT Operator (économisez 200 $ par mois)** | [2025-02-03_YT-[qQv7bavYS34]_J'utilise ceci à la place de ChatGPT Operator (économisez 200 $ par mois)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2025-02-03_YT-[qQv7bavYS34]_J'utilise ceci à la place de ChatGPT Operator (économisez 200 $ par mois)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2025-02-03_YT-[qQv7bavYS34]_J'utilise ceci à la place de ChatGPT Operator (économisez 200 $ par mois)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `55` |
 
 ---
 *Généré automatiquement par l'agent de veille multimodale Antigravity sur VPS Contabo.*
