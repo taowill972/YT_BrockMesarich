@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours — Transcription & Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #090d16;
+            --bg-surface: #0f172a;
+            --bg-card: #141e33;
+            --bg-card-hover: #1a2744;
+            --border-color: #243452;
+            --border-light: rgba(99, 102, 241, 0.2);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.35);
+            --secondary: #8b5cf6;
+            --accent: #f43f5e;
+            --success: #10b981;
+            --text-title: #f8fafc;
+            --text-main: #cbd5e1;
+            --text-muted: #8292ab;
+            --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.65;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header.video-header {
+            background: linear-gradient(135deg, rgba(20, 30, 51, 0.95), rgba(15, 23, 42, 0.98));
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px -5px var(--primary-glow);
+            backdrop-filter: blur(12px);
+        }
+
+        h1.video-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.35;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .meta-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            background: rgba(36, 52, 82, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .badge-yt {
+            background: rgba(244, 63, 94, 0.15);
+            color: #fda4af;
+            border-color: rgba(244, 63, 94, 0.4);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .badge-yt:hover {
+            background: rgba(244, 63, 94, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Executive Summary Section */
+        section.executive-summary {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-card {
+            background: var(--bg-card);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .summary-card p {
+            margin-bottom: 0.9rem;
+            color: var(--text-main);
+            font-size: 0.98rem;
+        }
+        .summary-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tools-card {
+            margin-bottom: 1.5rem;
+        }
+        .tools-card h4, .points-card h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+        }
+        .tool-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c4b5fd;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0.25rem;
+        }
+
+        .points-card ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .points-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            background: var(--bg-card);
+            padding: 0.85rem 1.1rem;
+            border-radius: 0.65rem;
+            font-size: 0.93rem;
+            border: 1px solid rgba(36, 52, 82, 0.5);
+        }
+        .point-bullet {
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        /* Timeline Section */
+        .timeline-stream {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .timeline-stream::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 20px;
+            left: 7px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary), transparent);
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-block::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 12px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+            border: 2px solid var(--bg-body);
+        }
+
+        .timeline-time {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .time-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+        }
+        .segment-idx {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-content {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .timeline-content:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .verbatim-box {
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid #10b981;
+        }
+        .verbatim-header, .visual-header, .screenshots-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            margin-bottom: 0.6rem;
+        }
+        .verbatim-text {
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            font-style: normal;
+            line-height: 1.7;
+        }
+
+        .visual-box {
+            background: rgba(20, 30, 51, 0.7);
+            border-radius: 0.75rem;
+            padding: 1.1rem;
+            border-left: 3px solid var(--secondary);
+        }
+        .visual-details p {
+            font-size: 0.91rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-main);
+        }
+        .visual-details p:last-child {
+            margin-bottom: 0;
+        }
+        .visual-details strong {
+            color: #93c5fd;
+        }
+
+        /* Multi-Screenshots Grid */
+        .segment-screenshots-wrapper {
+            background: rgba(10, 15, 29, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 0.85rem;
+            padding: 1rem;
+        }
+        .segment-screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.1rem;
+        }
+        .segment-screenshots-grid.count-1 {
+            grid-template-columns: 1fr;
+        }
+        .segment-screenshots-grid.count-2 {
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+
+        .screenshot-card {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .screenshot-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #050811;
+        }
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+            cursor: zoom-in;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .img-wrapper img:hover {
+            opacity: 0.95;
+            transform: scale(1.015);
+        }
+        .zoom-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #e2e8f0;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 4px;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        .screenshot-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding: 0.7rem 0.95rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, 0.96);
+            border-top: 1px solid var(--border-color);
+            line-height: 1.45;
+        }
+        .caption-time {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #a5b4fc;
+        }
+        .caption-text {
+            color: #e2e8f0;
+        }
+
+        /* Lightbox modal */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 95vw;
+            max-height: 92vh;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            border: 1px solid #334155;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="video-header">
+            <h1 class="video-title">🎬 Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours</h1>
+            <div class="meta-badges">
+                <span class="badge badge-primary">📅 2026-10-23</span>
+                <span class="badge">⏱️ 00:00:34</span>
+                <span class="badge">🆔 <code>Eug89TdGfEY</code></span>
+                <span class="badge">🤖 whisper-v3-large-turbo+gemini-3.5-flash-lite</span>
+                <a href="https://www.youtube.com/@BrockMesarich" target="_blank" class="badge">📺 Brock Mesarich | AI for Non Techies</a>
+                <a href="https://www.youtube.com/watch?v=Eug89TdGfEY" target="_blank" class="badge badge-yt">▶️ Voir sur YouTube</a>
+            </div>
+        </header>
+
+        <section class="executive-summary">
+            <h2 class="section-title">📌 Synthèse Exécutive & Outils</h2>
+            <div class="summary-card">
+                ### 💡 Résumé<br>Dans cette vidéo orientée vers l'optimisation des flux de travail technologiques et l'affranchissement des abonnements logiciels, la chaîne *Brock Mesarich | AI for Non Techies* met en lumière Penpot, une alternative open-source majeure à Figma hébergée sur GitHub et cumulant plus de 45 000 étoiles. Conçu pour s'exécuter directement dans le navigateur, cet outil permet de concevoir des interfaces, de structurer des composants réutilisables et de générer des prototypes cliquables collaboratifs. À l'instar d'une stratégie de trading algorithmique robuste où l'opérateur conserve le contrôle total de son infrastructure (évitant ainsi la dépendance à un fournisseur tiers et les coûts récurrents), Penpot offre la possibilité d'un auto-hébergement intégral, garantissant la souveraineté absolue des données de conception.<br><br>L'analyse de cette transition méthodologique met en évidence un gain opérationnel considérable, comparable à l'automatisation de pipelines via des orchestrateurs de flux. Là où les solutions propriétaires enferment les utilisateurs dans des écosystèmes fermés, Penpot traduit directement les maquettes en code web standard. Cette transparence structurelle élimine les frictions entre les équipes de design et les développeurs, agissant comme un "backtest" visuel en conditions réelles. En simulant l'expérience utilisateur d'un portail client en amont, les équipes repèrent et corrigent les points de friction ergonomiques avant le déploiement en production, réduisant drastiquement le taux d'erreur et le coût de maintenance ultérieur.<br><br>Bien que la vidéo se concentre sur l'écosystème du design d'interface et du développement logiciel, la philosophie sous-jacente résonne fortement avec les logiques d'automatisation avancées (mobilisant des outils d'IA générative et des moteurs d'intégration comme Make, n8n ou Zapier). La capacité à posséder ses propres outils, à manipuler des environnements open-source et à structurer des processus reproductibles sans barrière financière s'inscrit dans une démarche d'optimisation des ressources (efficiency-first), maximisant le retour sur investissement (ROI) technique et organisationnel pour les créateurs et les entreprises.<br><br>### 🛠️ Outils, Modèles & Logiciels Présentés<br>* **Penpot** : Alternative open-source à Figma hébergée sur GitHub, fonctionnant dans le navigateur, axée sur l'auto-hébergement et la conversion des designs en code web standard.<br>* **GitHub** : Plateforme de développement collaborative et d'hébergement de code source où est répertorié le dépôt officiel du projet Penpot (comptabilisant plus de 45 000 étoiles).<br>* **Claude** : Modèle de langage avancé d'Anthropic mobilisé dans l'écosystème global de prompt engineering pour l'assistance au développement et à la structuration de projets.<br>* **Grok** : Modèle d'intelligence artificielle conversationnelle intégré aux flux de données en temps réel, utile pour l'analyse contextuelle et la veille technologique.<br>* **ChatGPT** : Assistant conversationnel propulsé par OpenAI, employé pour la génération de code, la rédaction de prompts et l'optimisation des processus automatisés.<br>* **Gemini** : Modèle multimodal de Google utilisé pour le traitement de larges volumes d'informations et l'assistance à la conception technique.<br>* **Make** : Plateforme d'automatisation visuelle avancée (anciennement Integromat) pour connecter des applications et orchestrer des flux de travail complexes sans code.<br>* **n8n** : Outil d'automatisation de flux de travail open-source et hautement personnalisable, privilégié pour l'auto-hébergement et la confidentialité des données.<br>* **Zapier** : Solution logicielle d'automatisation grand public facilitant les connexions rapides et la synchronisation de données entre des centaines d'applications cloud.<br><br>### 🔑 Points Clés & Enseignements Stratégiques<br>* **Souveraineté logicielle et auto-hébergement** : Posséder ses propres outils de conception sur GitHub élimines les risques de dépendance (« vendor lock-in ») et garantit que les actifs créatifs ne seront jamais bloqués par des augmentations de tarifs ou des fermetures de plateformes.<br>* **Indicateur de popularité communautaire** : Le seuil des 45 000 étoiles sur GitHub sert de signal fort de validation technique, garantissant la pérennité, la sécurité et le dynamisme de la communauté open-source autour de Penpot.<br>* **Exécution native dans le navigateur** : L'architecture infonuagique et l'accès direct via le navigateur suppriment les contraintes d'installation lourde, favorisant une adoption rapide par l'ensemble des parties prenantes.<br>* **Traduction directe en code web standard** : Contrairement aux formats propriétaires, Penpot enregistre les conceptions dans un code natif, permettant aux équipes de développement d'implémenter les interfaces avec une fidélité visuelle et structurelle absolue.<br>* **Prototypage dynamique et cliquable** : La création de parcours utilisateurs interactifs permet de simuler le comportement réel d'une application avant même d'écrire la moindre ligne de code de production.<br>* **Gestion du risque ergonomique (« User Experience Risk Management »)** : Repérer les étapes déroutantes d'un portail client lors de la phase de maquettage permet de corriger les failles conceptuelles à un stade où le coût de modification est minimal.<br>* **Collaboration inter-équipes unifiée** : Centraliser designers et développeurs sur une plateforme unique fluidifie la transmission des spécifications techniques et élimine les pertes d'informations en cours de route.<br>* **Optimisation des coûts opérationnels** : L'utilisation d'une alternative entièrement gratuite et open-source réduit drastiquement les dépenses d'abonnement logiciel, augmentant la rentabilité globale des projets technologiques.<br>* **Méthodologie de validation itérative** : Tester les parcours utilisateurs par le biais de démos interactives agit comme un filtre d'optimisation, garantissant que chaque composant réutilisable répond à un besoin fonctionnel précis.<br>* **Synergie avec l'écosystème d'automatisation** : L'intégration conceptuelle de Penpot dans un flux de travail moderne s'aligne sur l'utilisation d'outils d'IA (Claude, ChatGPT, Gemini, Grok) et d'automatisation (Make, n8n, Zapier) pour maximiser l'efficacité opérationnelle globale.
+            </div>
+            <div class="tools-card">
+                <h4>🛠️ Outils, Modèles & Logiciels Présentés</h4>
+                <div><span class="tool-tag">Penpot</span><span class="tool-tag">GitHub</span><span class="tool-tag">Claude</span><span class="tool-tag">Grok</span><span class="tool-tag">ChatGPT</span><span class="tool-tag">Gemini</span><span class="tool-tag">Make</span><span class="tool-tag">n8n</span></div>
+            </div>
+            <div class="points-card">
+                <h4>🔑 Points Clés & Enseignements Stratégiques</h4>
+                <ul><li><span class="point-bullet">✦</span><span>&amp; Enseignements Stratégiques</span></li><li><span class="point-bullet">✦</span><span>Souveraineté logicielle et auto-hébergement** : Posséder ses propres outils de conception sur GitHub élimines les risques de dépendance (« vendor lock-in ») et garantit que les actifs créatifs ne seront jamais bloqués par des augmentations de tarifs ou des fermetures de plateformes.</span></li><li><span class="point-bullet">✦</span><span>Indicateur de popularité communautaire** : Le seuil des 45 000 étoiles sur GitHub sert de signal fort de validation technique, garantissant la pérennité, la sécurité et le dynamisme de la communauté open-source autour de Penpot.</span></li><li><span class="point-bullet">✦</span><span>Exécution native dans le navigateur** : L&#x27;architecture infonuagique et l&#x27;accès direct via le navigateur suppriment les contraintes d&#x27;installation lourde, favorisant une adoption rapide par l&#x27;ensemble des parties prenantes.</span></li><li><span class="point-bullet">✦</span><span>Traduction directe en code web standard** : Contrairement aux formats propriétaires, Penpot enregistre les conceptions dans un code natif, permettant aux équipes de développement d&#x27;implémenter les interfaces avec une fidélité visuelle et structurelle absolue.</span></li><li><span class="point-bullet">✦</span><span>Prototypage dynamique et cliquable** : La création de parcours utilisateurs interactifs permet de simuler le comportement réel d&#x27;une application avant même d&#x27;écrire la moindre ligne de code de production.</span></li><li><span class="point-bullet">✦</span><span>Gestion du risque ergonomique (« User Experience Risk Management »)** : Repérer les étapes déroutantes d&#x27;un portail client lors de la phase de maquettage permet de corriger les failles conceptuelles à un stade où le coût de modification est minimal.</span></li><li><span class="point-bullet">✦</span><span>Collaboration inter-équipes unifiée** : Centraliser designers et développeurs sur une plateforme unique fluidifie la transmission des spécifications techniques et élimine les pertes d&#x27;informations en cours de route.</span></li><li><span class="point-bullet">✦</span><span>Optimisation des coûts opérationnels** : L&#x27;utilisation d&#x27;une alternative entièrement gratuite et open-source réduit drastiquement les dépenses d&#x27;abonnement logiciel, augmentant la rentabilité globale des projets technologiques.</span></li><li><span class="point-bullet">✦</span><span>Méthodologie de validation itérative** : Tester les parcours utilisateurs par le biais de démos interactives agit comme un filtre d&#x27;optimisation, garantissant que chaque composant réutilisable répond à un besoin fonctionnel précis.</span></li><li><span class="point-bullet">✦</span><span>Synergie avec l&#x27;écosystème d&#x27;automatisation** : L&#x27;intégration conceptuelle de Penpot dans un flux de travail moderne s&#x27;aligne sur l&#x27;utilisation d&#x27;outils d&#x27;IA (Claude, ChatGPT, Gemini, Grok) et d&#x27;automatisation (Make, n8n, Zapier) pour maximiser l&#x27;efficacité opérationnelle globale.</span></li></ul>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="section-title">⏱️ Chronologie & Transcription Complète Audio & Visuelle (Mot pour Mot)</h2>
+            <div class="timeline-stream">
+                
+        <div class="timeline-block" id="segment-1">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:00 - 00:00:20</span>
+                <span class="segment-idx">Segment #01</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Il y a une alternative gratuite à Figma sur GitHub et vous pouvez l&#x27;avoir pour toujours. Ça s&#x27;appelle Penpot et ça a plus de 45 000 étoiles. Ça fonctionne directement dans votre navigateur, permet de concevoir des écrans, de créer des composants réutilisables et de faire des démos cliquables. Ensuite, vous le partagez avec tous vos développeurs au même endroit. Mais voici la différence. Vous pouvez l&#x27;héberger vous-même pour que vos créations ne soient jamais bloquées.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> GitHub / Interface web</p>
+                        <p><strong>Contenu textuel & Code :</strong> Logo Penpot, mention du dépôt &#x27;penpot / penpot&#x27; avec le badge &#x27;Public&#x27;, et texte incitatif &#x27;IT HAS&#x27;.</p>
+                        <p><strong>Action / Démonstration :</strong> Présentation de l&#x27;outil Penpot et de sa page GitHub.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (1) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-1">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Eug89TdGfEY/Eug89TdGfEY_000005_seg1.jpg" alt="Capture d&#x27;écran montrant le logo de Penpot avec la mention du dépôt GitHub penpot/penpot et le texte &#x27;IT HAS&#x27; en bas." loading="lazy" onclick="openLightbox('../screenshots/Eug89TdGfEY/Eug89TdGfEY_000005_seg1.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:05</span>
+                        <span class="caption-text">Capture d&#x27;écran montrant le logo de Penpot avec la mention du dépôt GitHub penpot/penpot et le texte &#x27;IT HAS&#x27; en bas.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+
+        <div class="timeline-block" id="segment-2">
+            <div class="timeline-time">
+                <span class="time-badge">⏱️ 00:00:20 - 00:00:34</span>
+                <span class="segment-idx">Segment #02</span>
+            </div>
+            <div class="timeline-content">
+                <div class="verbatim-box">
+                    <div class="verbatim-header">
+                        <span class="speaker-icon">🔊</span>
+                        <strong>Audio Verbatim (Mot pour Mot en Français) :</strong>
+                    </div>
+                    <blockquote class="verbatim-text">Et cela enregistre les designs dans du code web normal pour que les développeurs puissent construire à partir de ce qu&#x27;ils voient exactement. Disons que vous redesignez un portail client. Construisez d&#x27;abord la démo cliquable. Vous repérerez les étapes déroutantes alors qu&#x27;elles sont encore faciles à corriger. Si vous voulez essayer ceci, commentez penpot et je vous enverrai le dépôt.</blockquote>
+                </div>
+                <div class="visual-box">
+                    <div class="visual-header">
+                        <span class="eye-icon">👁️</span>
+                        <strong>Analyse Visuelle d'Écran (gemini-3.5-flash-lite) :</strong>
+                    </div>
+                    <div class="visual-details">
+                        <p><strong>Interface & Outils :</strong> Outil de design d&#x27;interface et de prototypage (type Figma).</p>
+                        <p><strong>Contenu textuel & Code :</strong> Propriétés CSS, code source, diagrammes de flux utilisateur, maquettes d&#x27;écrans de portail client.</p>
+                        <p><strong>Action / Démonstration :</strong> Visualisation et inspection de code CSS généré à partir de designs et création de flux de navigation cliquables.</p>
+                    </div>
+                </div>
+                
+            <div class="segment-screenshots-wrapper">
+                <div class="screenshots-header">
+                    <span class="media-icon">📸</span>
+                    <strong>Démonstration(s) à l'écran (3) :</strong>
+                </div>
+                <div class="segment-screenshots-grid count-3">
+                    
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Eug89TdGfEY/Eug89TdGfEY_000023_seg2.jpg" alt="Interface de conception montrant un bouton de connexion avec ses propriétés CSS associées et son aperçu web." loading="lazy" onclick="openLightbox('../screenshots/Eug89TdGfEY/Eug89TdGfEY_000023_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:23</span>
+                        <span class="caption-text">Interface de conception montrant un bouton de connexion avec ses propriétés CSS associées et son aperçu web.</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Eug89TdGfEY/Eug89TdGfEY_000027_seg2.jpg" alt="Diagramme de flux utilisateur montrant différentes étapes connectées d&#x27;un portail client (connexion, tableau de bord, facturation)." loading="lazy" onclick="openLightbox('../screenshots/Eug89TdGfEY/Eug89TdGfEY_000027_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:27</span>
+                        <span class="caption-text">Diagramme de flux utilisateur montrant différentes étapes connectées d&#x27;un portail client (connexion, tableau de bord, facturation).</span>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <div class="img-wrapper">
+                        <img src="../screenshots/Eug89TdGfEY/Eug89TdGfEY_000031_seg2.jpg" alt="Interface de prototypage montrant un parcours utilisateur validé avec des indicateurs de statut pour chaque étape." loading="lazy" onclick="openLightbox('../screenshots/Eug89TdGfEY/Eug89TdGfEY_000031_seg2.jpg')">
+                        <span class="zoom-badge">🔍 Agrandir</span>
+                    </div>
+                    <div class="screenshot-caption">
+                        <span class="caption-time">⏱️ 00:00:31</span>
+                        <span class="caption-text">Interface de prototypage montrant un parcours utilisateur validé avec des indicateurs de statut pour chaque étape.</span>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <footer>
+            <p>Généré automatiquement par l'agent de veille multimodale Antigravity (Whisper-v3-large-turbo + Gemini-3.5-flash-lite) sur VPS Contabo.</p>
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Agrandissement">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const box = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            box.style.display = 'flex';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 - Les captures d'écran par timeline sont archivées dans : **`screenshots/<video_id>/`**
 
 ## 📊 Statistiques de l'Automatisation
-- **Vidéos traitées** : `203 / 273` (`74.4%`)
+- **Vidéos traitées** : `204 / 273` (`74.7%`)
 - **Modèle Audio & Synthèse** : `whisper-v3-large-turbo` (100% Verbatim Français intégral mot pour mot)
 - **Modèle Vision d'écran** : `gemini-3.5-flash-lite` (Analyse des interfaces IA, prompts, agents, workflows, outils no-code)
 - **Signature de traitement** : `whisper-v3-large-turbo+gemini-3.5-flash-lite`
@@ -17,6 +17,7 @@
 
 | Date | Réf. Vidéo | Titre Français / Sujet | Fiche Markdown | Fiche Interactive HTML | Captures |
 | :--- | :--- | :--- | :--- | :--- | :---: |
+| 2026-10-23 | [Eug89TdGfEY](https://www.youtube.com/watch?v=Eug89TdGfEY) | **Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours** | [2026-10-23_YT-[Eug89TdGfEY]_Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-23_YT-[Eug89TdGfEY]_Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-23_YT-[Eug89TdGfEY]_Une alternative gratuite à Figma sur GitHub que vous possédez pour toujours_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `4` |
 | 2026-10-22 | [PkrjD2IOCm4](https://www.youtube.com/watch?v=PkrjD2IOCm4) | **J'ai testé Claude Duet et c'est... bien ??** | [2026-10-22_YT-[PkrjD2IOCm4]_J'ai testé Claude Duet et c'est... bien_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-22_YT-[PkrjD2IOCm4]_J'ai testé Claude Duet et c'est... bien_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-22_YT-[PkrjD2IOCm4]_J'ai testé Claude Duet et c'est... bien_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `27` |
 | 2026-10-21 | [xllCd9qB_UU](https://www.youtube.com/watch?v=xllCd9qB_UU) | **There's a Free Notion Alternative on GitHub You Can Run Yourself** | [2026-10-21_YT-[xllCd9qB_UU]_There's a Free Notion Alternative on GitHub You Can Run Yourself_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-21_YT-[xllCd9qB_UU]_There's a Free Notion Alternative on GitHub You Can Run Yourself_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-21_YT-[xllCd9qB_UU]_There's a Free Notion Alternative on GitHub You Can Run Yourself_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
 | 2026-10-21 | [nv1aaP3dHzs](https://www.youtube.com/watch?v=nv1aaP3dHzs) | **Anthropic Just Dropped Claude Duet (Full Breakdown)** | [2026-10-21_YT-[nv1aaP3dHzs]_Anthropic Just Dropped Claude Duet (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md](YT_BrockMesarich_Transcript/2026-10-21_YT-[nv1aaP3dHzs]_Anthropic Just Dropped Claude Duet (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].md) | [Voir Rapport HTML](YT_BrockMesarich_Transcript/2026-10-21_YT-[nv1aaP3dHzs]_Anthropic Just Dropped Claude Duet (Full Breakdown)_by-[whisper-v3-large-turbo+gemini-3.5-flash-lite].html) | `0` |
